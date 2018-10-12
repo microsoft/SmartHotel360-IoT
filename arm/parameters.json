@@ -1,0 +1,81 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "acr_location": {
+            "value": "westcentralus"
+        },
+        "acr_sku": {
+            "value": "Basic"
+        },
+        "iot_hub_location": {
+            "value": "westcentralus"
+        },
+        "iot_hub_sku_name": {
+            "value": "F1"
+        },
+        "iot_hub_sku_tier": {
+            "value": "Free"
+        },
+        "db_location": {
+            "value": "West US 2"
+        },
+        "db_database_name": {
+            "value": "DeviceData"
+        },
+        "event_hub_namespace_location": {
+            "value": "West US"
+        },
+        "event_hub_namespace_sku_name": {
+            "value": "Basic"
+        },
+        "event_hub_namespace_sku_tier": {
+            "value": "Basic"
+        },
+        "storage_location": {
+            "value": "westus2"
+        },
+        "storage_sku_name": {
+            "value": "Standard_LRS"
+        },
+        "storage_sku_tier": {
+            "value": "Standard"
+        },
+        "function_asp_location": {
+            "value": "West US 2"
+        },
+        "function_site_location": {
+            "value": "West US 2"
+        },
+        "event_hub_namespace_AuthorizationRules_RootManageSharedAccessKey_name": {
+            "value": "RootManageSharedAccessKey"
+        },
+        "event_hub_authorizationRules_consumer_name": {
+            "value": "consumer"
+        },
+        "event_hub_authorizationRules_producer_name": {
+            "value": "producer"
+        },
+        "function_site_config_name": {
+            "value": "web"
+        },
+        "digitalTwins_sku": {
+            "value": "S1"
+        },
+        "digitalTwins_location": {
+            "value": "WestCentralUS"
+        },
+        "aks_cluster_location": {
+            "value": "westus2"
+        },
+        "website_location": {
+            "value": "West US"
+        },
+        "website_config_name": {
+            "value": "web"
+        },
+        "webapi_config_name": {
+            "value": "web"
+        }
+    }
+}

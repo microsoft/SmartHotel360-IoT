@@ -1,0 +1,7 @@
+/* On small screens, the nav menu spans the full width of the screen. Leave a space for it.*/
+app-nav-menu {
+  position: fixed;
+  left: 0;
+  width: 100%;
+}
+

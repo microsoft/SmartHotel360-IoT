@@ -1,0 +1,80 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: smarthotel.services.facilitymanagement-api
+spec:
+  template:
+    metadata:
+      labels:
+        app: smarthotel.services.facilitymanagement-api
+        component: smarthotel.services.facilitymanagement-api
+    spec:
+      containers:
+      - name: facilitymanagement-api
+        image: smarthoteliot.azurecr.io/facilitymanagement-api:public
+        imagePullPolicy: Always
+        env:
+        - name: ManagementApiUrl
+          value: 
+        - name: MongoDBConnectionString
+          value: 
+        - name: MongoDBName
+          value: DeviceData
+        - name: MongoTableName
+          value: SensorData
+        - name: IoTHubConnectionString
+          value: 
+        ports:
+        - name: http
+          containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: facilitymanagement-api-service
+spec:
+  selector:
+    app: smarthotel.services.facilitymanagement-api
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: smarthotel.services.roomdevices-api
+spec:
+  template:
+    metadata:
+      labels:
+        app: smarthotel.services.roomdevices-api
+        component: smarthotel.services.roomdevices-api
+    spec:
+      containers:
+      - name: roomdevices-api
+        image: smarthoteliot.azurecr.io/roomdevices-api:public
+        imagePullPolicy: Always
+        env:
+        - name: DatabaseConnectionString
+          value: 
+        - name: IoTHubConnectionString
+          value: 
+        ports:
+        - name: http
+          containerPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: roomdevices-api-service
+spec:
+  selector:
+    app: smarthotel.services.roomdevices-api
+  ports:
+  - protocol: TCP
+    port: 2000
+    targetPort: 80
+  type: LoadBalancer
+---

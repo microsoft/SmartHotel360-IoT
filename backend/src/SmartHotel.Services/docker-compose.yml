@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  smarthotel.services.roomdevices:
+    image: smarthoteliot.azurecr.io/roomdevices-api:dev
+    build:
+      context: .
+      dockerfile: SmartHotel.Services.RoomDevices/Dockerfile
+  smarthotel.services.facilitymanagement:
+    image: smarthoteliot.azurecr.io/facilitymanagement-api:dev
+    build:
+      context: .
+      dockerfile: SmartHotel.Services.FacilityManagement/Dockerfile

@@ -1,0 +1,23 @@
+section {
+  padding-top: 40px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.login-button {
+  background-color: #253748;
+  text-align: center;
+  height: 48px;
+  width: 100%;
+  color: white;
+  font-size: 19px;
+  line-height: 48px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.login-img {
+  margin-left: -50%;
+  width: 200%;
+}

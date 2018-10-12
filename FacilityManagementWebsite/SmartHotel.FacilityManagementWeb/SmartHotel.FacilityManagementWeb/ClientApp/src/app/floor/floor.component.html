@@ -1,0 +1,59 @@
+<section>
+  <div class="header">
+    <span class="header-link header-link-active" (click)="returnToHome()">hotels</span>
+    <span class="header-spacer">|</span>
+    <span class="header-link header-link-active" (click)="returnToHotel()">{{ hotel?.name }}</span>
+    <span class="header-spacer">|</span>
+    <span class="header-link">{{ floor?.name }}</span>
+
+  </div>
+</section>
+
+<div class="rooms">
+  <div *ngFor="let room of rooms" class="room">
+    <div class="room-header">
+      {{ room.name }}
+    </div>
+    <div class="room-device room-occupancy">
+      occupied
+    </div>
+    <div *ngIf="room.motion != null" class="room-occupancy room-actual">
+      <div class="{{room.motion.isMotion ? 'led-light-on' : 'led-light-off'}}"></div>
+    </div>
+    <div *ngIf="room.motion == null" class="room-occupancy room-unavailable">
+      unavailable
+    </div>
+    <div class="room-label room-desired">
+      desired
+    </div>
+    <div class="room-label room-actual-label">
+      actual
+    </div>
+    <div class="room-device room-temp">temp (F)</div>
+    <div *ngIf="room.thermostat != null" class="room-desired room-temp">
+      {{ room.thermostat.desired }}
+    </div>
+    <div *ngIf="room.thermostat != null" class="room-actual room-temp">
+      {{ room.thermostat.actual }}
+    </div>
+    <div *ngIf="room.thermostat == null" class="room-temp room-unavailable">
+      unavailable
+    </div>
+    <div *ngIf="room.thermostat != null" class="room-temp-slider custom-slider">
+      <ng5-slider [(value)]="room.thermostat.desired" [options]="thermostatSliderOptions" (userChangeStart)="sliderChangeBegin()" (userChangeEnd)="sliderChangeEnd()" (userChange)="thermostatSliderValueChange(room, $event)"></ng5-slider>
+    </div>
+    <div class="room-device room-light">lights</div>
+    <div *ngIf="room.light != null" class="room-desired room-light">
+      {{ room.light.desired.toFixed(0) }} %
+    </div>
+    <div *ngIf="room.light != null" class="room-actual room-light">
+      {{ room.light.actual.toFixed(0) }} %
+    </div>
+    <div *ngIf="room.light == null" class="room-light room-unavailable">
+      unavailable
+    </div>
+    <div *ngIf="room.light != null" class="room-light-slider custom-slider">
+      <ng5-slider [(value)]="room.light.desired" [options]="lightSliderOptions" (userChangeStart)="sliderChangeBegin()" (userChangeEnd)="sliderChangeEnd()" (userChange)="lightSliderValueChange(room, $event)"></ng5-slider>
+    </div>
+  </div>
+</div>

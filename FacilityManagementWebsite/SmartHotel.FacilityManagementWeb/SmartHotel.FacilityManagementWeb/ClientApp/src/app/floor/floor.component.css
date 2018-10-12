@@ -1,0 +1,138 @@
+section {
+  margin: 4px 64px 0px 26px;
+}
+
+.rooms {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 26px;
+  margin-right: 26px;
+}
+
+.room {
+  width: 250px;
+  display: grid;
+  grid-template-columns: 1fr 62px 62px;
+  grid-template-rows: 48px 32px 32px 32px 32px 32px 32px;
+  background-color: #d4d4d4;
+  padding: 16px;
+  margin-right: 32px;
+  margin-bottom: 32px;
+}
+
+.room-header {
+  grid-row: 1;
+  color: #bc4c1b;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.room-occupancy {
+  grid-row: 2;
+}
+
+.room-temp {
+  grid-row: 4;
+}
+
+.room-light {
+  grid-row: 6;
+}
+
+.room-label {
+  grid-row: 3;
+  color: #378d93;
+  font-size: 14px;
+}
+
+.room-desired {
+  grid-column: 2;
+  text-align: center;
+}
+
+.room-actual-label {
+  grid-column: 3;
+  text-align: center;
+}
+
+.room-actual {
+  grid-column: 3;
+  text-align: center;
+  font-size: 18px;
+  font-family: Poppins-SemiBold;
+  color: #bc4c1b;
+}
+
+.room-temp-slider {
+  grid-row: 5;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  text-align: center;
+  font-size: 18px;
+  font-family: Poppins-SemiBold;
+}
+
+.room-light-slider {
+  grid-row: 7;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  text-align: center;
+  font-size: 18px;
+  font-family: Poppins-SemiBold;
+}
+
+.room-unavailable {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  color: darkgray;
+  text-align: center;
+}
+
+.room-device {
+  grid-column: 1;
+  font-family: Poppins-SemiBold;
+}
+
+.floor-image {
+  background-color: gray;
+  background-image: url("/assets/images/placeholder.png");
+  background-position: center center;
+  height: 304px;
+}
+
+.floor-button {
+  background-color: #bc4c1b;
+  text-align: center;
+  height: 48px;
+  width: 100%;
+  color: white;
+  font-size: 19px;
+  line-height: 48px;
+  text-transform: uppercase;
+}
+
+  .floor-button:hover {
+    cursor: pointer;
+    background-color: pink;
+    transition: background-color .35s ease-in;
+  }
+
+.led-light-on {
+  margin: 0 auto;
+  width: 20px;
+  height: 20px;
+  background-color: #24E0FF;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px, #3F8CFF 0 2px 14px;
+}
+
+.led-light-off {
+  margin: 0 auto;
+  width: 20px;
+  height: 20px;
+  background-color: #16879a;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px, #3F8CFF 0 2px 0;
+}

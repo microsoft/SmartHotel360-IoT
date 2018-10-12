@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  smarthotel.facilitymanagementweb:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "45103:80"
+    volumes:
+      - ${APPDATA}/ASP.NET/Http:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro

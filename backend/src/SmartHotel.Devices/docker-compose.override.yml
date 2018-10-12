@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  smarthotel.devices.light.room11:
+    environment:
+      - HardwareId=
+      - ManagementApiUrl=
+      - MessageIntervalInMilliSeconds=5000
+      - SasToken=
+      - IoTHubDeviceConnectionString=
+      - SensorDataType=Light
+
+  smarthotel.devices.thermostat.room11:
+    environment:
+      - HardwareId=
+      - ManagementApiUrl=
+      - MessageIntervalInMilliSeconds=5000
+      - SasToken=
+      - IoTHubDeviceConnectionString=
+      - SensorDataType=Temperature
+
+  smarthotel.devices.motion.room11:
+    environment:
+      - HardwareId=
+      - ManagementApiUrl=
+      - MessageIntervalInMilliSeconds=5000
+      - SasToken=
+      - RandomizationDelay=60000
+      - SensorDataType=Motion

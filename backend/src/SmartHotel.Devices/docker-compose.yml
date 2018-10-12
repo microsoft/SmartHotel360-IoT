@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  smarthotel.devices.light.room11:
+    image: smarthoteliot.azurecr.io/device-light:dev
+    build:
+      context: .
+      dockerfile: SmartHotel.Devices.Light/Dockerfile
+
+  smarthotel.devices.thermostat.room11:
+    image: smarthoteliot.azurecr.io/device-thermostat:dev
+    build:
+      context: .
+      dockerfile: SmartHotel.Devices.Thermostat/Dockerfile
+
+  smarthotel.devices.motion.room11:
+    image: smarthoteliot.azurecr.io/device-motion:dev
+    build:
+      context: .
+      dockerfile: SmartHotel.Devices.Motion/Dockerfile

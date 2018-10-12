@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  smarthotel.services.roomdevices:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - IoTHubConnectionString=
+      - DatabaseConnectionString=
+    ports:
+      - "2000:80"
+  smarthotel.services.facilitymanagement:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ManagementApiUrl=
+      - MongoDBConnectionString=
+      - MongoDBName=DeviceData
+      - MongoTableName=SensorData
+      - IoTHubConnectionString=
+    ports:
+      - "3000:80"

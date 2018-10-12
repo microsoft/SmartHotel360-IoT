@@ -1,0 +1,112 @@
+{
+    "Name": "SmartHotel",
+    "Description": "SmartHotel360 sample hotel",
+    "FriendlyName": "SmartHotel",
+    "Type": "Venue",
+    "Children": [
+        {
+            "Name": "Floor 1",
+            "Description": "Floor 1",
+            "FriendlyName": "Floor 1",
+            "Type": "Floor",
+            "Children": [
+                {
+                    "Name": "Room 11",
+                    "Description": "Room 11",
+                    "FriendlyName": "Room 11",
+                    "Type": "Room"
+                },
+                {
+                    "Name": "Room 12",
+                    "Description": "Room 12",
+                    "FriendlyName": "Room 12",
+                    "Type": "Room"
+                },
+                {
+                    "Name": "Room 13",
+                    "Description": "Room 13",
+                    "FriendlyName": "Room 13",
+                    "Type": "Room"
+                }
+            ]
+        },
+        {
+            "Name": "Floor 2",
+            "Description": "Floor 2",
+            "FriendlyName": "Floor 2",
+            "Type": "Floor",
+            "Children": [
+                {
+                    "Name": "Room 21",
+                    "Description": "Room 21",
+                    "FriendlyName": "Room 21",
+                    "Type": "Room"
+                },
+                {
+                    "Name": "Room 22",
+                    "Description": "Room 22",
+                    "FriendlyName": "Room 22",
+                    "Type": "Room"
+                },
+                {
+                    "Name": "Room 23",
+                    "Description": "Room 23",
+                    "FriendlyName": "Room 23",
+                    "Type": "Room"
+                }
+            ]
+        },
+        {
+            "Name": "Floor 3",
+            "Description": "Floor 3",
+            "FriendlyName": "Floor 3",
+            "Type": "Floor",
+            "Children": [
+                {
+                    "Name": "Room 31",
+                    "Description": "Room 31",
+                    "FriendlyName": "Room 31",
+                    "Type": "Room"
+                },
+                {
+                    "Name": "Room 32",
+                    "Description": "Room 32",
+                    "FriendlyName": "Room 32",
+                    "Type": "Room"
+                },
+                {
+                    "Name": "Room 33",
+                    "Description": "Room 33",
+                    "FriendlyName": "Room 33",
+                    "Type": "Room"
+                }
+            ]
+        },
+        {
+            "Name": "Floor 4",
+            "Description": "Floor 4",
+            "FriendlyName": "Floor 4",
+            "Type": "Floor",
+            "Children": [
+                {
+                    "Name": "Room 41",
+                    "Description": "Room 41",
+                    "FriendlyName": "Room 41",
+                    "Type": "Room"
+                },
+                {
+                    "Name": "Room 42",
+                    "Description": "Room 42",
+                    "FriendlyName": "Room 42",
+                    "Type": "Room"
+                },
+                {
+                    "Name": "Room 43",
+                    "Description": "Room 43",
+                    "FriendlyName": "Room 43",
+                    "Type": "Room"
+                }
+            ]
+        }
+    ]
+}

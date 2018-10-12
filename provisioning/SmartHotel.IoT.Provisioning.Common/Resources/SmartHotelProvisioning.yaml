@@ -1,0 +1,364 @@
+﻿endpoints:
+- type: EventHub
+  eventTypes:
+   - DeviceMessage
+spaces:
+- name: SmartHotel 360 Tenant
+  description: This is the root node for the SmartHotel360 IoT Demo
+  friendlyName: SmartHotel 360 Tenant
+  type: Tenant
+  keystoreName: SmartHotel360 Keystore
+  resources:
+    - type: IoTHub
+  types:
+  - name: Classic
+    category: SensorType
+  users:
+  - Manager
+  spaces:
+  - name: Elite Hotel
+    description: SmartHotel360 hotel 1
+    friendlyName: Elite Hotel
+    type: Venue
+    spaces:
+    - name: Floor 1
+      description: Floor 1
+      friendlyName: Floor 1
+      type: Floor
+      users:
+      - Employee
+      spaces:
+      - name: Room 11
+        description: Room 11
+        friendlyName: Room 11
+        type: Room
+        devices:
+        - name: Thermostat
+          hardwareId: 11T
+          sensors:
+          - dataType: Temperature
+            type: Classic
+        - name: Motion
+          hardwareId: 11M
+          sensors:
+          - dataType: Motion
+            type: Classic
+        - name: Light
+          hardwareId: 11L
+          sensors:
+          - dataType: Light
+            type: Classic
+      - name: Room 12
+        description: Room 12
+        friendlyName: Room 12
+        type: Room
+        devices:
+        - name: Thermostat
+          hardwareId: 12T
+          sensors:
+          - dataType: Temperature
+            type: Classic
+        - name: Motion
+          hardwareId: 12M
+          sensors:
+          - dataType: Motion
+            type: Classic
+        - name: Light
+          hardwareId: 12L
+          sensors:
+          - dataType: Light
+            type: Classic
+      - name: Room 13
+        description: Room 13
+        friendlyName: Room 13
+        type: Room
+        devices:
+        - name: Thermostat
+          hardwareId: 13T
+          sensors:
+          - dataType: Temperature
+            type: Classic
+        - name: Motion
+          hardwareId: 13M
+          sensors:
+          - dataType: Motion
+            type: Classic
+        - name: Light
+          hardwareId: 13L
+          sensors:
+          - dataType: Light
+            type: Classic
+    - name: Floor 2
+      description: Floor 2
+      friendlyName: Floor 2
+      type: Floor
+      users:
+      - Employee
+      spaces:
+      - name: Room 21
+        description: Room 21
+        friendlyName: Room 21
+        type: Room
+        devices:
+        - name: Thermostat
+          hardwareId: 21T
+          sensors:
+          - dataType: Temperature
+            type: Classic
+        - name: Motion
+          hardwareId: 21M
+          sensors:
+          - dataType: Motion
+            type: Classic
+        - name: Light
+          hardwareId: 21L
+          sensors:
+          - dataType: Light
+            type: Classic
+      - name: Room 22
+        description: Room 22
+        friendlyName: Room 22
+        type: Room
+        devices:
+        - name: Thermostat
+          hardwareId: 22T
+          sensors:
+          - dataType: Temperature
+            type: Classic
+        - name: Motion
+          hardwareId: 22M
+          sensors:
+          - dataType: Motion
+            type: Classic
+        - name: Light
+          hardwareId: 22L
+          sensors:
+          - dataType: Light
+            type: Classic
+      - name: Room 23
+        description: Room 23
+        friendlyName: Room 23
+        type: Room
+        devices:
+        - name: Thermostat
+          hardwareId: 23T
+          sensors:
+          - dataType: Temperature
+            type: Classic
+        - name: Motion
+          hardwareId: 23M
+          sensors:
+          - dataType: Motion
+            type: Classic
+        - name: Light
+          hardwareId: 23L
+          sensors:
+          - dataType: Light
+            type: Classic
+    - name: Floor 3
+      description: Floor 3
+      friendlyName: Floor 3
+      type: Floor
+      spaces:
+      - name: Room 31
+        description: Room 31
+        friendlyName: Room 31
+        type: Room
+        devices:
+        - name: Thermostat
+          hardwareId: 31T
+          sensors:
+          - dataType: Temperature
+            type: Classic
+        - name: Motion
+          hardwareId: 31M
+          sensors:
+          - dataType: Motion
+            type: Classic
+        - name: Light
+          hardwareId: 31L
+          sensors:
+          - dataType: Light
+            type: Classic
+      - name: Room 32
+        description: Room 32
+        friendlyName: Room 32
+        type: Room
+        devices:
+        - name: Thermostat
+          hardwareId: 32T
+          sensors:
+          - dataType: Temperature
+            type: Classic
+        - name: Motion
+          hardwareId: 32M
+          sensors:
+          - dataType: Motion
+            type: Classic
+        - name: Light
+          hardwareId: 32L
+          sensors:
+          - dataType: Light
+            type: Classic
+      - name: Room 33
+        description: Room 33
+        friendlyName: Room 33
+        type: Room
+        devices:
+        - name: Thermostat
+          hardwareId: 33T
+          sensors:
+          - dataType: Temperature
+            type: Classic
+        - name: Motion
+          hardwareId: 33M
+          sensors:
+          - dataType: Motion
+            type: Classic
+        - name: Light
+          hardwareId: 33L
+          sensors:
+          - dataType: Light
+            type: Classic
+    - name: Floor 4
+      description: Floor 4
+      friendlyName: Floor 4
+      type: Floor
+      spaces:
+      - name: Room 41
+        description: Room 41
+        friendlyName: Room 41
+        type: Room
+        devices:
+        - name: Thermostat
+          hardwareId: 41T
+          sensors:
+          - dataType: Temperature
+            type: Classic
+        - name: Motion
+          hardwareId: 41M
+          sensors:
+          - dataType: Motion
+            type: Classic
+        - name: Light
+          hardwareId: 41L
+          sensors:
+          - dataType: Light
+            type: Classic
+      - name: Room 42
+        description: Room 42
+        friendlyName: Room 42
+        type: Room
+        devices:
+        - name: Thermostat
+          hardwareId: 42T
+          sensors:
+          - dataType: Temperature
+            type: Classic
+        - name: Motion
+          hardwareId: 42M
+          sensors:
+          - dataType: Motion
+            type: Classic
+        - name: Light
+          hardwareId: 42L
+          sensors:
+          - dataType: Light
+            type: Classic
+      - name: Room 43
+        description: Room 43
+        friendlyName: Room 43
+        type: Room
+        devices:
+        - name: Thermostat
+          hardwareId: 43T
+          sensors:
+          - dataType: Temperature
+            type: Classic
+        - name: Motion
+          hardwareId: 43M
+          sensors:
+          - dataType: Motion
+            type: Classic
+        - name: Light
+          hardwareId: 43L
+          sensors:
+          - dataType: Light
+            type: Classic
+  - name: Prism Hotel
+    description: SmartHotel360 hotel 2
+    friendlyName: Secret Camp Hotel
+    type: Venue
+    spaces:
+    - name: Floor 1
+      description: Floor 1
+      friendlyName: Floor 1
+      type: Floor
+      users:
+      - Employee
+      spaces:
+      - name: Room 11
+        description: Room 11
+        friendlyName: Room 11
+        type: Room
+      - name: Room 12
+        description: Room 12
+        friendlyName: Room 12
+        type: Room
+      - name: Room 13
+        description: Room 13
+        friendlyName: Room 13
+        type: Room
+    - name: Floor 2
+      description: Floor 2
+      friendlyName: Floor 2
+      type: Floor
+      users:
+      - Employee
+      spaces:
+      - name: Room 21
+        description: Room 21
+        friendlyName: Room 21
+        type: Room
+      - name: Room 22
+        description: Room 22
+        friendlyName: Room 22
+        type: Room
+      - name: Room 23
+        description: Room 23
+        friendlyName: Room 23
+        type: Room
+    - name: Floor 3
+      description: Floor 3
+      friendlyName: Floor 3
+      type: Floor
+      spaces:
+      - name: Room 31
+        description: Room 31
+        friendlyName: Room 31
+        type: Room
+      - name: Room 32
+        description: Room 32
+        friendlyName: Room 32
+        type: Room
+      - name: Room 33
+        description: Room 33
+        friendlyName: Room 33
+        type: Room
+    - name: Floor 4
+      description: Floor 4
+      friendlyName: Floor 4
+      type: Floor
+      spaces:
+      - name: Room 41
+        description: Room 41
+        friendlyName: Room 41
+        type: Room
+      - name: Room 42
+        description: Room 42
+        friendlyName: Room 42
+        type: Room
+      - name: Room 43
+        description: Room 43
+        friendlyName: Room 43
+        type: Room

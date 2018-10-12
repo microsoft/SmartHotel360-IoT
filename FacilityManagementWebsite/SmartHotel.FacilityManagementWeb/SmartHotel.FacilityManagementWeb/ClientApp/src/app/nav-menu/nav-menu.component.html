@@ -1,0 +1,20 @@
+<div class='main-nav'>
+  <a href="/">
+    <img src='/assets/images/logo.svg' />
+    <span>
+      - Facility Management
+    </span>
+  </a>
+
+  <div *ngIf="!authenticated" class="nav-login">
+    <span (click)="login()">Login</span>
+  </div>
+
+  <div *ngIf="authenticated" class="nav-display">
+    <div class="displayName">
+      {{userName}}
+    </div>
+    <span (click)="logout()">Logout</span>
+  </div>
+
+</div>

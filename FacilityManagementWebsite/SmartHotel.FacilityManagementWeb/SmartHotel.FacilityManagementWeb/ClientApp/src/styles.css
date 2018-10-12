@@ -1,0 +1,108 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/assets/fonts//Poppins/Poppins-Regular.woff");
+}
+
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url("/assets/fonts//Poppins/Poppins-SemiBold.woff");
+}
+
+body {
+  color: #253748;
+  font-family: Poppins;
+}
+
+.body-heading {
+  font-family: Poppins;
+  font-size: 22px;
+}
+
+.body-content {
+  padding-top: 20px;
+  font-size: 16px;
+}
+
+.header-link {
+  font-size: 18px;
+  color: #bc4c1b;
+}
+
+.header-link-active {
+  color: #253748;
+}
+
+.header-spacer {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.header-link-active:hover {
+  cursor: pointer;
+  color: #bc4c1b;
+  text-decoration: underline;
+}
+
+.header {
+  font-size: 22px;
+}
+
+.fixed-header {
+  height: 48px;
+}
+
+.custom-slider .ng5-slider {
+  margin: 0;
+}
+
+  .custom-slider .ng5-slider .ng5-slider-bar {
+    background: #5C84A8;
+    height: 2px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-selection {
+    background: #273847;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-pointer {
+    width: 16px;
+    height: 16px;
+    top: -8px;
+    background-color: #273847;
+  }
+
+.custom-slider .ng5-slider .ng5-slider-pointer:focus {
+  outline: none;
+}
+
+.custom-slider .ng5-slider .ng5-slider-pointer:after {
+  display: none;
+}
+
+.custom-slider .ng5-slider .ng5-slider-bubble {
+  bottom: 14px;
+}
+
+  .custom-slider .ng5-slider .ng5-slider-limit {
+    font-weight: bold;
+    color: #273847;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick {
+    width: 1px;
+    height: 10px;
+    margin-left: 4px;
+    border-radius: 0;
+    background: #5C84A8;
+    top: -1px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick.ng5-slider-selected {
+    background: #273847;
+  }
+
+  .invisible {
+    opacity: 0;
+  }

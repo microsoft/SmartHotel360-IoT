@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmartHotel.Services.RoomDevices</name>
+    </assembly>
+    <members>
+        <member name="M:SmartHotel.Services.RoomDevices.Controllers.DevicesController.Get(System.String)">
+            <summary>
+            Returns device(s) sensor data for a given room.
+            </summary>
+            <param name="roomId"></param>
+            <returns>DeviceSensorData</returns>
+        </member>
+        <member name="M:SmartHotel.Services.RoomDevices.Controllers.DevicesController.GetDesired(System.String)">
+            <summary>
+            Returns device(s) desired data for a given room.
+            </summary>
+            <param name="roomId"></param>
+            <returns>DesiredData</returns>
+        </member>
+    </members>
+</doc>
