@@ -1,5 +1,5 @@
 # SmartHotel360
-During **Connect(); 2017** event this year we presented beautiful app demos using Xamarin and many features of Azure. For //build/ 2018's keynote, we updated some components of the back-end API code to support **Azure Kubernetes Service (AKS)**. This repository contains the setup instructions and sample code needed for the Internet of Things (IoT) Demo utilizing Digital Twins the was announced at Ignite 2018.
+During **Connect(); 2017** event this year we presented beautiful app demos using Xamarin and many features of Azure. For //build/ 2018's keynote, we updated some components of the back-end API code to support **Azure Kubernetes Service (AKS)**. This repository contains the setup instructions and sample code needed for the Internet of Things (IoT) Demo utilizing Digital Twins that was announced at Ignite 2018.
 
 # SmartHotel360 Repos
 For this reference app scenario, we built several consumer and line-of-business apps and an Azure backend. You can find all SmartHotel360 repos in the following locations:
@@ -22,7 +22,7 @@ Welcome to the SmartHotel360 IoT repository. Here you'll find everything you nee
 
 ## Getting Started
 
-SmartHotel360 uses a **microservice oriented** architecture implemented using containers. For the IoT Demo there are various services developed in different technologies: .NET Core 2, Asp.Net Core 2, and Angular. These services use different Azure Resources like Digital Twins, App Services, Cosmos DB, Event Hubs, Azure Functions, and IoT Hubs to name a few. The step by step walkthrough for creating and provisioning the demo can be found next in the [Setup](#Setup) section.
+SmartHotel360 uses a **microservice oriented** architecture implemented using containers. For the IoT Demo, there are various services developed in different technologies: .NET Core 2, Asp.Net Core 2, and Angular. These services use different Azure Resources like Digital Twins, App Services, Cosmos DB, Event Hubs, Azure Functions, and IoT Hubs to name a few. The step by step walkthrough for creating and provisioning the demo can be found next in the [Setup](#Setup) section.
 
 End-to-end setup takes about an hour provided you have all of the development environment prerequisites met AND that your user has the required permissions in your Azure subscription.
 
@@ -30,7 +30,7 @@ End-to-end setup takes about an hour provided you have all of the development en
 
 ## Prerequisites
 
-* Powershell for running provisioning Azure provisioning scripts. [Powershell Core](https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-powershell-core-on-macos?view=powershell-6) is available fo Mac and Linux users.
+* Powershell for running provisioning Azure provisioning scripts. [Powershell Core](https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-powershell-core-on-macos?view=powershell-6) is available for Mac and Linux users.
 * [Docker](http://www.docker.com) to build the containers.
 * [Visual Studio 2017](https://www.visualstudio.com) with the `.NET desktop development` and  `ASP.NET and web development` workloads installed.
 * [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -55,7 +55,7 @@ During the creation process you will need to take note of the following informat
 * App Key
 
 ### Obtain the service principal Id
-To obtain the service pricipal Id, open a **Powershell** window and follow these steps:
+To obtain the service principal Id, open a **Powershell** window and follow these steps:
 1. `Login-AzureRmAccount -SubscriptionId {subcription id}`
 2. `Get-AzureRmADServicePrincipal -ApplicationId {app Id}`
 
@@ -71,12 +71,12 @@ Click settings --> Required Permissions
 * Save, and select Grant Permissions
 
 ## Create a service principal for AKS Cluster
-To create a service principal for a AKS Cluster, open a **Powershell/Command Prompt/Bash** window and follow these steps:
+To create a service principal for an AKS Cluster, open a **Powershell/Command Prompt/Bash** window and follow these steps:
 1. `az login`
 2. `az account set -s {subscription id}`
 3. `az ad sp create-for-rbac --skip-assignment`
 
-The `sp create-for-rbac` command will return a json object that will have information needed later in this process.
+The `sp create-for-rbac` command will return a json object that will have the information needed later in this process.
 
 ```json
 {
@@ -89,7 +89,7 @@ The `sp create-for-rbac` command will return a json object that will have inform
 ```
 
 ## Create IoT Demo users
-You need to create two users that that have access to your AAD. These can either be users created in your AAD or guest users that you add. For both of these users, you need to collect the Object Id for them. One user will be used for the **Manager** role and the other the **Employee** role.
+You need to create two users having access to your AAD. These can either be users created in your AAD or guest users that you add. For both of these users, you need to collect the Object Id for them. One user will be used for the **Manager** role and the other the **Employee** role.
 * To get the Object Id, view the user in AAD and you will see **Object ID** under the **Identity Section**. This is a similar process to using the [Admin Center of a subscription backed by an Office 365 environment](http://blog.schertz.name/2018/06/locating-ids-in-azure-ad/).
 
 ## Provision resources in Azure
@@ -111,7 +111,7 @@ The following information parameters are required for the deployment script:
 * `{AKS service principal app id}`: AKS app id from [above](#Create-a-service-principal-for-AKS-Cluster)
 * `{AKS service principal password}`: AKS service principal password from [above](#Create-a-service-principal-for-AKS-Cluster)
 
-There is a collection of parameters that are used by the deployement script that determine properties like resource location, pricing tiers, and naming. If you wish to modify any of these parameters you can edit the values in [parameters.json](./arm/parameters.json).
+There is a collection of parameters that are used by the deployment script that determine properties like resource location, pricing tiers, and naming. If you wish to modify any of these parameters you can edit the values in [parameters.json](./arm/parameters.json).
 
 ## User Settings
 When the deployment script is complete, it will output a `userSettings.json` file with information needed for the rest of the deployment.
@@ -134,7 +134,7 @@ When the deployment script is complete, it will output a `userSettings.json` fil
 }
 ```
 
-**NOTE:** If you are going to be running the IoT Demo for the [Xamarin Mobile Apps](https://github.com/Microsoft/SmartHotel360-mobile-desktop-apps#iot-demo), then you will need the `roomDevicesApiEndpoint` and `room11SpaceId` values from the `userSettings.json` file.
+**NOTE:** If you are going to run the IoT Demo for the [Xamarin Mobile Apps](https://github.com/Microsoft/SmartHotel360-mobile-desktop-apps#iot-demo), then you will need the `roomDevicesApiEndpoint` and `room11SpaceId` values from the `userSettings.json` file.
 
 ## Success!
 To verify that everything is working correctly, open up the `facilityManagementWebsiteUri` (from the `userSettings.json` in the browser and log in with one of the two users created during the provisioning steps.
@@ -207,7 +207,7 @@ From a **Powershell/Command Prompt/Bash** window
 The Website can be run locally at the same time as its Azure counterpart.
 
 1. Open the `/FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb.sln` solution in Visual Studio 2017
-2. If you you desire the website to connect to the Facility Management API in Azure, then run in debug mode.
+2. If you desire the website to connect to the Facility Management API in Azure, then run in debug mode.
 3. Otherwise, update the `environment.ts` and `environment.prod.ts` files under `/SmartHotel.FacilityManagementWeb/ClientApp/src/environments`:
 
    ```javascript
