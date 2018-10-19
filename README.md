@@ -4,21 +4,19 @@ During **Connect(); 2017** event this year we presented beautiful app demos usin
 # SmartHotel360 Repos
 For this reference app scenario, we built several consumer and line-of-business apps and an Azure backend. You can find all SmartHotel360 repos in the following locations:
 
-* [SmartHotel360](https://github.com/Microsoft/SmartHotel360)
-* [IoT Demo](https://github.com/Microsoft/SmartHotel360-IoT)
-* [Backend Services (optimized for Kubernetes)](https://github.com/Microsoft/SmartHotel360-AKS-DevSpaces-Demo)
-* [Public Website](https://github.com/Microsoft/SmartHotel360-public-web)
-* [Pet Checker Serverless Function](https://github.com/Microsoft/SmartHotel360-PetCheckerFunction)
-* [Mobile Apps](https://github.com/Microsoft/SmartHotel360-mobile-desktop-apps)
-* [Sentiment Analysis](https://github.com/Microsoft/SmartHotel360-Sentiment-Analysis-App)
-* [Migrating Internal apps to Azure](https://github.com/Microsoft/SmartHotel360-internal-booking-apps)
-* [Original Backend Services](https://github.com/Microsoft/SmartHotel360-Azure-backend)
+* [SmartHotel360 ](https://github.com/Microsoft/SmartHotel360)
+* [IoT](https://github.com/Microsoft/SmartHotel360-IoT)
+* [Backend](https://github.com/Microsoft/SmartHotel360-Backend)
+* [Website](https://github.com/Microsoft/SmartHotel360-Website)
+* [Mobile](https://github.com/Microsoft/SmartHotel360-Mobile)
+* [Sentiment Analysis](https://github.com/Microsoft/SmartHotel360-SentimentAnalysis)
+* [Registration](https://github.com/Microsoft/SmartHotel360-Registration)
 
 # SmartHotel360 - IoT Demo
 
 Welcome to the SmartHotel360 IoT repository. Here you'll find everything you need to run the website and backend for the IoT demo.
 
-![IoT Demo Architecture Diagram](docs/Architecture.png "IoT Demo Architecture")
+![IoT Demo Architecture Diagram](Documents/Images/Architecture.png "IoT Demo Architecture")
 
 ## Getting Started
 
@@ -93,7 +91,7 @@ You need to create two users having access to your AAD. These can either be user
 * To get the Object Id, view the user in AAD and you will see **Object ID** under the **Identity Section**. This is a similar process to using the [Admin Center of a subscription backed by an Office 365 environment](http://blog.schertz.name/2018/06/locating-ids-in-azure-ad/).
 
 ## Provision resources in Azure
-In the `/arm/` folder of this repository is the deployment script to create and stand up all of the resources to run this demo in Azure. To execute the deployment script, run the following in a **Powershell** window:
+In `Source/ARM/` folder of this repository is the deployment script to create and stand up all of the resources to run this demo in Azure. To execute the deployment script, run the following in a **Powershell** window:
 
 ```powershell
 .\deploy.ps1 -subscriptionId {subscription id} -resourceGroupName {resource group name} -resourceGroupLocation {resource group location} -managerObjId {manager object id} -employeeObjId {employee object id} -clientId {app id} -clientSecret {app key} -clientServicePrincipalId {service principal id} -aksServicePrincipalId {AKS Service Principal App Id} -aksServicePrincipalKey {AKS Service Principal password}

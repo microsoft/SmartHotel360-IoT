@@ -248,13 +248,13 @@ $eventHubName = $outputs.eventHubName.value
 $provisioningOutput = 'ProvisioningOutput.json'
 $iotProvisioningOutput = 'iot-device-connectionstring.json'
 
-Copy-Item $iotProvisioningOutput -Destination "../provisioning/ProvisioningDevicesBits/"
+Copy-Item $iotProvisioningOutput -Destination "../Provisioning/ProvisioningDevicesBits/"
 
 #Update Devices and Services Docker/Kubernetes yaml
 
 Write-Host "Provisioning Digital Twins Topology..."
 
-pushd "../provisioning/ProvisioningBits/"
+pushd "../Provisioning/ProvisioningBits/"
 $dtProvisioningArgs = "-t `"$tenantId`" -ci `"$clientId`" -cs `"$clientSecret`" -dt `"$dtApiEndpoint`" -ehcs `"$eventHubProducerConnnection`" -ehscs `"$eventHubProducerSecondaryConnnection`" -ehn `"$eventHubName`" -moid `"$managerObjId`" -eoid `"$employeeObjId`" -o `"$provisioningOutput`""
 dotnet SmartHotel.IoT.Provisioning.dll $powershellEscape $dtProvisioningArgs
 Copy-Item $provisioningOutput -Destination "../ProvisioningDevicesBits"
@@ -263,26 +263,26 @@ popd
 
 Write-Host "Provisioning Device sample applications..."
 
-pushd "../provisioning/ProvisioningDevicesBits/"
-$deviceProvisioningArgs = "-dt `"$dtManagementEndpoint`" -i $provisioningOutput -d `"../../backend/src/SmartHotel.Devices/`" -cr `"$acrName`" -iot `"$iotProvisioningOutput`""
+pushd "../Provisioning/ProvisioningDevicesBits/"
+$deviceProvisioningArgs = "-dt `"$dtManagementEndpoint`" -i $provisioningOutput -d `"../Backend/SmartHotel.Devices/`" -cr `"$acrName`" -iot `"$iotProvisioningOutput`""
 dotnet SmartHotel.IoT.ProvisioningDevices.dll $powershellEscape $deviceProvisioningArgs
 popd
 
 Write-Host "Provisioning APIs..."
 
-pushd "../provisioning/ProvisioningApisBits/"
-$apiProvisioningArgs = "-dt `"$dtManagementEndpoint`" -d `"../../backend/src/SmartHotel.Services/`" -cr `"$acrName`" -iot `"$iotHubServiceConnectionString`" -db `"$cosmosDbConnectionString`""
+pushd "../Provisioning/ProvisioningApisBits/"
+$apiProvisioningArgs = "-dt `"$dtManagementEndpoint`" -d `"../Backend/SmartHotel.Services/`" -cr `"$acrName`" -iot `"$iotHubServiceConnectionString`" -db `"$cosmosDbConnectionString`""
 dotnet SmartHotel.IoT.ProvisioningApis.dll $powershellEscape $apiProvisioningArgs
 popd
 
 #Build and publish devices and services containers
 Write-Host "Building and publishing device images..."
-pushd "../backend/src/SmartHotel.Devices"
+pushd "../Backend/SmartHotel.Devices"
 ./build-push.ps1 -subscriptionId $subscriptionId -acrName $acrName
 popd
 
 Write-Host "Building and publishing service images..."
-pushd "../backend/src/SmartHotel.Services"
+pushd "../Backend/SmartHotel.Services"
 ./build-push.ps1 -subscriptionId $subscriptionId -acrName $acrName
 popd
 
@@ -292,7 +292,7 @@ Write-Host
 Write-Host
 #Deploy service(s) to Kubernetes
 Write-Host "Deploying Services to Kubernetes..."
-pushd "../backend/src/SmartHotel.Services"
+pushd "../Backend/SmartHotel.Services"
 kubectl apply -f deployments.demo.yaml
 
 #Wait for public IPs/Ports and save
@@ -389,7 +389,7 @@ popd
 $publishOutputFolder = "./webapp"
 $deploymentZip = "./SmartHotel.Services.FacilityManagement.Deployment.zip"
 Write-Host "Publishing the Facility Management api..."
-pushd "../backend/src/SmartHotel.Services/SmartHotel.Services.FacilityManagement"
+pushd "../Backend/SmartHotel.Services/SmartHotel.Services.FacilityManagement"
 
 Write-Host "Running dotnet restore for the Facility Management Api project"
 dotnet restore SmartHotel.Services.FacilityManagement.csproj
@@ -416,7 +416,7 @@ popd
 $publishOutputFolder = "./functionapp"
 $deploymentZip = "./SmartHotel.Services.SensorDataFunction.Deployment.zip"
 Write-Host "Publishing the Azure Function..."
-pushd "../backend/src/SmartHotel.Services/SmartHotel.Services.SensorDataFunction"
+pushd "../Backend/SmartHotel.Services/SmartHotel.Services.SensorDataFunction"
 
 Write-Host "Running dotnet restore for the Azure Function project"
 dotnet restore SmartHotel.Services.SensorDataFunction.csproj
@@ -445,7 +445,7 @@ Write-Host
 Write-Host "Deploying Devices to Kubernetes..."
 Write-Host
 
-pushd "../backend/src/SmartHotel.Devices"
+pushd "../Backend/SmartHotel.Devices"
 kubectl apply -f deployments.demo.yaml
 popd
 

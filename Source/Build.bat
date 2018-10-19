@@ -1,6 +1,6 @@
 @echo off
 echo ********BEGIN IoT Devices********
-pushd "backend/src/SmartHotel.Devices"
+pushd "Backend/SmartHotel.Devices"
 docker-compose build
 popd
 echo ********END IoT Devices********
@@ -18,7 +18,7 @@ echo:
 echo:
 
 echo ********BEGIN APIs********
-pushd "backend/src/SmartHotel.Services"
+pushd "Backend/SmartHotel.Services"
 docker-compose build
 popd
 echo ********END APIs********
