@@ -264,14 +264,14 @@ popd
 Write-Host "Provisioning Device sample applications..."
 
 pushd "../Provisioning/ProvisioningDevicesBits/"
-$deviceProvisioningArgs = "-dt `"$dtManagementEndpoint`" -i $provisioningOutput -d `"../Backend/SmartHotel.Devices/`" -cr `"$acrName`" -iot `"$iotProvisioningOutput`""
+$deviceProvisioningArgs = "-dt `"$dtManagementEndpoint`" -i $provisioningOutput -d `"../../Backend/SmartHotel.Devices/`" -cr `"$acrName`" -iot `"$iotProvisioningOutput`""
 dotnet SmartHotel.IoT.ProvisioningDevices.dll $powershellEscape $deviceProvisioningArgs
 popd
 
 Write-Host "Provisioning APIs..."
 
 pushd "../Provisioning/ProvisioningApisBits/"
-$apiProvisioningArgs = "-dt `"$dtManagementEndpoint`" -d `"../Backend/SmartHotel.Services/`" -cr `"$acrName`" -iot `"$iotHubServiceConnectionString`" -db `"$cosmosDbConnectionString`""
+$apiProvisioningArgs = "-dt `"$dtManagementEndpoint`" -d `"../../Backend/SmartHotel.Services/`" -cr `"$acrName`" -iot `"$iotHubServiceConnectionString`" -db `"$cosmosDbConnectionString`""
 dotnet SmartHotel.IoT.ProvisioningApis.dll $powershellEscape $apiProvisioningArgs
 popd
 
