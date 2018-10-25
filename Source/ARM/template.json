@@ -125,7 +125,7 @@
             "type": "string"
         },
         "digitalTwins_location": {
-            "defaultValue": "WestCentralUS",
+            "defaultValue": "WestUS2",
             "type": "string"
         },
         "aks_cluster_location": {

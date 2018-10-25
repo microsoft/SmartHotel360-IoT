@@ -63,7 +63,7 @@
             "value": "S1"
         },
         "digitalTwins_location": {
-            "value": "WestCentralUS"
+            "value": "WestUS2"
         },
         "aks_cluster_location": {
             "value": "westus2"
