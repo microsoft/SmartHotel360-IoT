@@ -14,12 +14,6 @@
  .PARAMETER resourceGroupLocation
     Optional, a resource group location. If specified, will try to create a new resource group in this location. If not specified, assumes resource group is existing.
 
- .PARAMETER managerObjId
-    The Azure Object Id for the Manager user.
-
- .PARAMETER employeeObjId
-    The Azure Object Id for the Employee user.
-
  .PARAMETER clientId
     The Id of the Azure Active directory application.
 
@@ -53,14 +47,6 @@ param(
 
  [string]
  $resourceGroupLocation,
-
- [Parameter(Mandatory=$True)]
- [string]
- $managerObjId,
-
- [Parameter(Mandatory=$True)]
- [string]
- $employeeObjId,
 
  [Parameter(Mandatory=$True)]
  [string]
@@ -255,7 +241,7 @@ Copy-Item $iotProvisioningOutput -Destination "../Provisioning/ProvisioningDevic
 Write-Host "Provisioning Digital Twins Topology..."
 
 Push-Location "../Provisioning/ProvisioningBits/"
-$dtProvisioningArgs = "-t `"$tenantId`" -ci `"$clientId`" -cs `"$clientSecret`" -dt `"$dtApiEndpoint`" -ehcs `"$eventHubProducerConnnection`" -ehscs `"$eventHubProducerSecondaryConnnection`" -ehn `"$eventHubName`" -moid `"$managerObjId`" -eoid `"$employeeObjId`" -o `"$provisioningOutput`""
+$dtProvisioningArgs = "-t `"$tenantId`" -ci `"$clientId`" -cs `"$clientSecret`" -dt `"$dtApiEndpoint`" -ehcs `"$eventHubProducerConnnection`" -ehscs `"$eventHubProducerSecondaryConnnection`" -ehn `"$eventHubName`" -o `"$provisioningOutput`""
 dotnet SmartHotel.IoT.Provisioning.dll $powershellEscape $dtProvisioningArgs
 if( -not (Test-Path $provisioningOutput))
 {
