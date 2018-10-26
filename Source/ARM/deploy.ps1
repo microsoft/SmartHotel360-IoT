@@ -257,6 +257,12 @@ Write-Host "Provisioning Digital Twins Topology..."
 Push-Location "../Provisioning/ProvisioningBits/"
 $dtProvisioningArgs = "-t `"$tenantId`" -ci `"$clientId`" -cs `"$clientSecret`" -dt `"$dtApiEndpoint`" -ehcs `"$eventHubProducerConnnection`" -ehscs `"$eventHubProducerSecondaryConnnection`" -ehn `"$eventHubName`" -moid `"$managerObjId`" -eoid `"$employeeObjId`" -o `"$provisioningOutput`""
 dotnet SmartHotel.IoT.Provisioning.dll $powershellEscape $dtProvisioningArgs
+if( -not (Test-Path $provisioningOutput))
+{
+    Write-Error "An error occurred while provisioning Azure Digital Twins. Please attempt to fix the issue and re-deploy."
+    exit
+}
+
 Copy-Item $provisioningOutput -Destination "../ProvisioningDevicesBits"
 $room11SpaceId = (Get-Content "$provisioningOutput" | Out-String | ConvertFrom-Json).room11[0].SpaceId
 Pop-Location
