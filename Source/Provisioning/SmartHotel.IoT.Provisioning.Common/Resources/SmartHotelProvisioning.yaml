@@ -285,7 +285,7 @@ spaces:
           sensors:
           - dataType: Light
             type: Classic
-  - name: Prism Hotel
+  - name: Secret Camp Hotel
     description: SmartHotel360 hotel 2
     friendlyName: Secret Camp Hotel
     type: Venue
