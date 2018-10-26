@@ -6,10 +6,14 @@
 
   <ItemGroup>
     <None Remove="Resources\SmartHotelProvisioning.yaml" />
+    <None Remove="Resources\UserAADObjectIds.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Resources\SmartHotelProvisioning.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\UserAADObjectIds.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
