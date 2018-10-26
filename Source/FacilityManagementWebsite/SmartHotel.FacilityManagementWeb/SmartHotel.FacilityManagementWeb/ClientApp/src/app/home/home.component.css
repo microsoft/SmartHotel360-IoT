@@ -3,34 +3,25 @@ section {
 }
 
 .hotels-top-row {
-  display: grid;
-  grid-template-columns: 1370px auto;
   width: 1920px;
 }
 
 .hotels {
   margin-top: 4px;
-  display: grid;
-  grid-template-columns: 660px 660px;
-  grid-column-gap: 24px;
-  grid-row-gap: 24px;
-  margin-left: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -2px 0 -2px 21px;
   overflow-y: auto;
   overflow-x: hidden;
   height: 416px;
-  width: 1364px;
-}
-
-.hotel-side-dash {
-  margin-left: 24px;
-  margin-top: 4px;
 }
 
 .hotel {
-  width: 660px;
+  width: 616px;
   height: 416px;
   cursor: pointer;
   position: relative;
+  margin: 4px 5px 0 5px;
 }
 
 .hotel-image {

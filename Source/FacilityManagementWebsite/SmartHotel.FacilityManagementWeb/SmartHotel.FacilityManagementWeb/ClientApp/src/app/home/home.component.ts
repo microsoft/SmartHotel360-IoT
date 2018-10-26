@@ -28,7 +28,14 @@ export class HomeComponent implements OnInit {
   loadHotels() {
     this.spinnerService.show();
     this.facilityService.getHotel().then((data: IHotel[]) => {
-      this.hotels = data.sort((a, b) => a.name.localeCompare(b.name));
+      const fakeData = data;
+      data.forEach(d => {
+        fakeData.push(d);
+        fakeData.push(d);
+        fakeData.push(d);
+        fakeData.push(d);
+      });
+      this.hotels = fakeData.sort((a, b) => a.name.localeCompare(b.name));
       this.spinnerService.hide();
     });
 
