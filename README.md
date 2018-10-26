@@ -87,8 +87,26 @@ The `sp create-for-rbac` command will return a json object that will have the in
 ```
 
 ## Create IoT Demo users
-You need to create two users having access to your AAD. These can either be users created in your AAD or guest users that you add. For both of these users, you need to collect the Object Id for them. One user will be used for the **Manager** role and the other the **Employee** role.
+You need to create users having access to your AAD. These can either be users created in your AAD or guest users that you add. For all of these users, you need to collect the Object Id for them and update `/Source/ARM/UserAADObjectIds.json` with those values.
 * To get the Object Id, view the user in AAD and you will see **Object ID** under the **Identity Section**. This is a similar process to using the [Admin Center of a subscription backed by an Office 365 environment](http://blog.schertz.name/2018/06/locating-ids-in-azure-ad/).
+* The following users are required for this demo:
+   1. **Head of Operations**: This user is able to view all the Hotel Brands and below.
+   2. **Hotel Brand 1 Manager**: This user is able to view all the Hotels under the first Brand.
+   3. **Hotel 1 Manager**: This user is able to view all the Floors under the first Hotel.
+   4. **Hotel 1 Employee**: This user is able to view Non-VIP Floors under the first Hotel.
+* The following users are optional. They help provide more visibility into the Role Based Access Control (RBAC) functionality of Digital Twins.
+   1. **Hotel Brand 2 Manager**
+   2. **Hotel Brand 3 Manager**
+   3. **Hotel Brand 4 Manager**
+   4. **Hotel 2 Manager**
+   5. **Hotel 3 Manager**
+   6. **Hotel 4 Manager**
+   7. **Hotel 5 Manager**
+   8. **Hotel 6 Manager**
+   9. **Hotel 7 Manager**
+   10. **Hotel 8 Manager**
+   11. **Hotel 9 Manager**
+   12. **Hotel 10 Manager**
 
 ## Provision resources in Azure
 In `Source/ARM/` folder of this repository is the deployment script to create and stand up all of the resources to run this demo in Azure. To execute the deployment script, run the following in a **Powershell** window:

@@ -14,12 +14,6 @@
  .PARAMETER resourceGroupLocation
     Optional, a resource group location. If specified, will try to create a new resource group in this location. If not specified, assumes resource group is existing.
 
- .PARAMETER managerObjId
-    The Azure Object Id for the Manager user.
-
- .PARAMETER employeeObjId
-    The Azure Object Id for the Employee user.
-
  .PARAMETER clientId
     The Id of the Azure Active directory application.
 
@@ -53,14 +47,6 @@ param(
 
  [string]
  $resourceGroupLocation,
-
- [Parameter(Mandatory=$True)]
- [string]
- $managerObjId,
-
- [Parameter(Mandatory=$True)]
- [string]
- $employeeObjId,
 
  [Parameter(Mandatory=$True)]
  [string]
@@ -254,37 +240,43 @@ Copy-Item $iotProvisioningOutput -Destination "../Provisioning/ProvisioningDevic
 
 Write-Host "Provisioning Digital Twins Topology..."
 
-pushd "../Provisioning/ProvisioningBits/"
-$dtProvisioningArgs = "-t `"$tenantId`" -ci `"$clientId`" -cs `"$clientSecret`" -dt `"$dtApiEndpoint`" -ehcs `"$eventHubProducerConnnection`" -ehscs `"$eventHubProducerSecondaryConnnection`" -ehn `"$eventHubName`" -moid `"$managerObjId`" -eoid `"$employeeObjId`" -o `"$provisioningOutput`""
+Push-Location "../Provisioning/ProvisioningBits/"
+$dtProvisioningArgs = "-t `"$tenantId`" -ci `"$clientId`" -cs `"$clientSecret`" -dt `"$dtApiEndpoint`" -ehcs `"$eventHubProducerConnnection`" -ehscs `"$eventHubProducerSecondaryConnnection`" -ehn `"$eventHubName`" -o `"$provisioningOutput`""
 dotnet SmartHotel.IoT.Provisioning.dll $powershellEscape $dtProvisioningArgs
+if( -not (Test-Path $provisioningOutput))
+{
+    Write-Error "An error occurred while provisioning Azure Digital Twins. Please attempt to fix the issue and re-deploy."
+    exit
+}
+
 Copy-Item $provisioningOutput -Destination "../ProvisioningDevicesBits"
 $room11SpaceId = (Get-Content "$provisioningOutput" | Out-String | ConvertFrom-Json).room11[0].SpaceId
-popd
+Pop-Location
 
 Write-Host "Provisioning Device sample applications..."
 
-pushd "../Provisioning/ProvisioningDevicesBits/"
+Push-Location "../Provisioning/ProvisioningDevicesBits/"
 $deviceProvisioningArgs = "-dt `"$dtManagementEndpoint`" -i $provisioningOutput -d `"../../Backend/SmartHotel.Devices/`" -cr `"$acrName`" -iot `"$iotProvisioningOutput`""
 dotnet SmartHotel.IoT.ProvisioningDevices.dll $powershellEscape $deviceProvisioningArgs
-popd
+Pop-Location
 
 Write-Host "Provisioning APIs..."
 
-pushd "../Provisioning/ProvisioningApisBits/"
+Push-Location "../Provisioning/ProvisioningApisBits/"
 $apiProvisioningArgs = "-dt `"$dtManagementEndpoint`" -d `"../../Backend/SmartHotel.Services/`" -cr `"$acrName`" -iot `"$iotHubServiceConnectionString`" -db `"$cosmosDbConnectionString`""
 dotnet SmartHotel.IoT.ProvisioningApis.dll $powershellEscape $apiProvisioningArgs
-popd
+Pop-Location
 
 #Build and publish devices and services containers
 Write-Host "Building and publishing device images..."
-pushd "../Backend/SmartHotel.Devices"
+Push-Location "../Backend/SmartHotel.Devices"
 ./build-push.ps1 -subscriptionId $subscriptionId -acrName $acrName
-popd
+Pop-Location
 
 Write-Host "Building and publishing service images..."
-pushd "../Backend/SmartHotel.Services"
+Push-Location "../Backend/SmartHotel.Services"
 ./build-push.ps1 -subscriptionId $subscriptionId -acrName $acrName
-popd
+Pop-Location
 
 az aks get-credentials --resource-group "$resourceGroupName" --name "$aksClusterName"
 
@@ -292,7 +284,7 @@ Write-Host
 Write-Host
 #Deploy service(s) to Kubernetes
 Write-Host "Deploying Services to Kubernetes..."
-pushd "../Backend/SmartHotel.Services"
+Push-Location "../Backend/SmartHotel.Services"
 kubectl apply -f deployments.demo.yaml
 
 #Wait for public IPs/Ports and save
@@ -310,7 +302,7 @@ while ($roomDevicesApiUri -eq "" -or $roomDevicesApiUri -eq $null)
     Catch {}
 }
 $roomDevicesApiUri = $roomDevicesApiUri + ":" + $kubeOutput.spec.ports.port
-popd
+Pop-Location
 
 $facilityManagementApiName = $outputs.webapiName.value
 $facilityManagementApiDefaultHostName = ((az webapp show -g $resourceGroupName -n $facilityManagementApiName) | ConvertFrom-Json).defaultHostName
@@ -362,7 +354,7 @@ $publishOutputFolder = "./webapp"
 $facilityManagementWebsiteName = $outputs.websiteName.value
 $deploymentZip = "./SmartHotel.FacilityManagementWeb.Deployment.zip"
 Write-Host "Publishing the Facility Management website..."
-pushd "../FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb"
+Push-Location "../FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb"
 
 Write-Host "Running dotnet restore for the Website project"
 dotnet restore SmartHotel.FacilityManagementWeb.csproj
@@ -383,13 +375,13 @@ az webapp deployment source config-zip --resource-group $resourceGroupName --nam
 
 Remove-Item -Path $deploymentZip -Recurse -Force
 Write-Host "Publishing completed"
-popd
+Pop-Location
 
 # Publish the Web Api
 $publishOutputFolder = "./webapp"
 $deploymentZip = "./SmartHotel.Services.FacilityManagement.Deployment.zip"
 Write-Host "Publishing the Facility Management api..."
-pushd "../Backend/SmartHotel.Services/SmartHotel.Services.FacilityManagement"
+Push-Location "../Backend/SmartHotel.Services/SmartHotel.Services.FacilityManagement"
 
 Write-Host "Running dotnet restore for the Facility Management Api project"
 dotnet restore SmartHotel.Services.FacilityManagement.csproj
@@ -410,13 +402,13 @@ az webapp deployment source config-zip --resource-group $resourceGroupName --nam
 
 Remove-Item -Path $deploymentZip -Recurse -Force
 Write-Host "Publishing completed"
-popd
+Pop-Location
 
 # Publish the Function
 $publishOutputFolder = "./functionapp"
 $deploymentZip = "./SmartHotel.Services.SensorDataFunction.Deployment.zip"
 Write-Host "Publishing the Azure Function..."
-pushd "../Backend/SmartHotel.Services/SmartHotel.Services.SensorDataFunction"
+Push-Location "../Backend/SmartHotel.Services/SmartHotel.Services.SensorDataFunction"
 
 Write-Host "Running dotnet restore for the Azure Function project"
 dotnet restore SmartHotel.Services.SensorDataFunction.csproj
@@ -437,7 +429,7 @@ az functionapp deployment source config-zip --resource-group $resourceGroupName 
 
 Remove-Item -Path $deploymentZip -Recurse -Force
 Write-Host "Publishing completed"
-popd
+Pop-Location
 
 Write-Host
 Write-Host
@@ -445,9 +437,9 @@ Write-Host
 Write-Host "Deploying Devices to Kubernetes..."
 Write-Host
 
-pushd "../Backend/SmartHotel.Devices"
+Push-Location "../Backend/SmartHotel.Devices"
 kubectl apply -f deployments.demo.yaml
-popd
+Pop-Location
 
 $facilityManagementWebsiteDefaultHostName = ((az webapp show -g $resourceGroupName -n $facilityManagementWebsiteName) | ConvertFrom-Json).defaultHostName
 $facilityManagementWebsiteUri = "https://$facilityManagementWebsiteDefaultHostName"

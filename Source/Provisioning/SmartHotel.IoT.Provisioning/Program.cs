@@ -57,25 +57,31 @@ namespace SmartHotel.IoT.Provisioning
 		[Required]
 		public string EventHubName { get; }
 
-		[Option( "-moid|--ManagerObjectId", Description = "Azure Object Id for the Manager user" )]
-		[Required]
-		public string ManagerObjectId { get; }
-
-		[Option( "-eoid|--EmployeeObjectId", Description = "Azure Object Id for the Employee user" )]
-		[Required]
-		public string EmployeeObjectId { get; }
+		[Option( "-oids|--UserObjectIdsFile", Description = "Json file containing the Azure AD Object IDs for each user" )]
+		public string UserObjectIdsFile { get; } = Path.Combine( "Resources", "UserAADObjectIds.json" );
 
 		[Option( "-o|--output", Description = "Name of the file to save provisioning data to.  This is used by SmartHotel.IoT.ProvisioningDevices to configure device settings" )]
 		public string OutputFile { get; }
 
 		private async Task OnExecuteAsync()
 		{
+			string fullUserObjectIdsFilePath = Path.GetFullPath( UserObjectIdsFile );
+			string userAadObjectIdsString = await File.ReadAllTextAsync( fullUserObjectIdsFilePath );
+			UserAadObjectIdsDescription userAadObjectIds =
+				JsonConvert.DeserializeObject<UserAadObjectIdsDescription>( userAadObjectIdsString );
+			if ( !userAadObjectIds.AreRequiredValuesFilled() )
+			{
+				Console.WriteLine( $"The {nameof( UserObjectIdsFile )} must have all the required properties filled." +
+								  " (Head Of Operations, Hotel Brand 1 Manager, Hotel 1 Manager, and Hotel 1 Employee)" );
+				return;
+			}
+
 			HttpClient httpClient = await HttpClientHelper.GetHttpClientAsync( DigitalTwinsApiEndpoint, AadInstance, Tenant,
 				DigitalTwinsResourceId, ClientId, ClientSecret );
 
 			ProvisioningDescription provisioningDescription = ProvisioningHelper.LoadSmartHotelProvisioning();
 
-			await CreateSpacesAsync( httpClient, provisioningDescription.spaces, Guid.Empty, Guid.Empty );
+			await CreateSpacesAsync( httpClient, provisioningDescription.spaces, Guid.Empty, Guid.Empty, userAadObjectIds );
 			await CreateEndpointsAsync( httpClient, provisioningDescription.endpoints );
 
 			if ( !string.IsNullOrEmpty( OutputFile ) )
@@ -117,7 +123,7 @@ namespace SmartHotel.IoT.Provisioning
 		}
 
 		private async Task CreateSpacesAsync( HttpClient httpClient, IList<SpaceDescription> spaceDescriptions,
-			Guid parentId, Guid keystoreId )
+			Guid parentId, Guid keystoreId, UserAadObjectIdsDescription userAadObjectIds )
 		{
 			foreach ( SpaceDescription spaceDescription in spaceDescriptions )
 			{
@@ -161,12 +167,12 @@ namespace SmartHotel.IoT.Provisioning
 
 					if ( spaceDescription.users != null )
 					{
-						await CreateUserRoleAssignmentsAsync( httpClient, spaceDescription.users, createdId );
+						await CreateUserRoleAssignmentsAsync( httpClient, spaceDescription.users, createdId, userAadObjectIds );
 					}
 
 					if ( spaceDescription.spaces != null )
 					{
-						await CreateSpacesAsync( httpClient, spaceDescription.spaces, createdId, keystoreIdToUseForChildren );
+						await CreateSpacesAsync( httpClient, spaceDescription.spaces, createdId, keystoreIdToUseForChildren, userAadObjectIds );
 					}
 				}
 			}
@@ -336,7 +342,8 @@ namespace SmartHotel.IoT.Provisioning
 			return null;
 		}
 
-		private async Task CreateUserRoleAssignmentsAsync( HttpClient httpClient, IList<string> users, Guid spaceId )
+		private async Task CreateUserRoleAssignmentsAsync(HttpClient httpClient, IList<string> users, Guid spaceId,
+			UserAadObjectIdsDescription userAadObjectIds)
 		{
 			if ( spaceId == Guid.Empty )
 			{
@@ -345,38 +352,28 @@ namespace SmartHotel.IoT.Provisioning
 
 			foreach ( string user in users )
 			{
-				string oid;
-				switch ( user.ToLower() )
+				if (userAadObjectIds.TryGetValue(user, out string oid))
 				{
-					case "employee":
-						oid = EmployeeObjectId;
-						break;
-					case "manager":
-						oid = ManagerObjectId;
-						break;
-					default:
-						throw new InvalidDataException( $"User value is not supported: {user}" );
+					string spacePath = await GetSpaceFullPathAsync( httpClient, spaceId );
+
+					if ( string.IsNullOrWhiteSpace( spacePath ) )
+					{
+						Console.WriteLine( $"Unable to get the full path for the current space. Cannot create a role assignment. (Space Id: {spaceId})" );
+						continue;
+					}
+
+					var roleAssignment = new RoleAssignment
+					{
+						RoleId = RoleAssignment.UserRoleId,
+						ObjectId = oid,
+						TenantId = Tenant,
+						Path = spacePath
+					};
+
+					Console.WriteLine( $"Creating RoleAssignment: {JsonConvert.SerializeObject( roleAssignment, Formatting.Indented, JsonSerializerSettings )}" );
+					var request = HttpMethod.Post.CreateRequest( "roleassignments", JsonConvert.SerializeObject( roleAssignment, JsonSerializerSettings ) );
+					await httpClient.SendAsync( request );
 				}
-
-				string spacePath = await GetSpaceFullPathAsync( httpClient, spaceId );
-
-				if ( string.IsNullOrWhiteSpace( spacePath ) )
-				{
-					Console.WriteLine( $"Unable to get the full path for the current space. Cannot create a role assignment. (Space Id: {spaceId})" );
-					continue;
-				}
-
-				var roleAssignment = new RoleAssignment
-				{
-					RoleId = "b1ffdb77-c635-4e7e-ad25-948237d85b30",
-					ObjectId = oid,
-					TenantId = Tenant,
-					Path = spacePath
-				};
-
-				Console.WriteLine( $"Creating RoleAssignment: {JsonConvert.SerializeObject( roleAssignment, Formatting.Indented, JsonSerializerSettings )}" );
-				var request = HttpMethod.Post.CreateRequest( "roleassignments", JsonConvert.SerializeObject( roleAssignment, JsonSerializerSettings ) );
-				await httpClient.SendAsync( request );
 			}
 		}
 
