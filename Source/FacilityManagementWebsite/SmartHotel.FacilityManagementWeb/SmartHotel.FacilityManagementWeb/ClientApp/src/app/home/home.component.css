@@ -7,13 +7,12 @@ section {
 }
 
 .hotels {
-  margin-top: 4px;
   display: flex;
   flex-wrap: wrap;
   margin: -2px 0 -2px 21px;
   overflow-y: auto;
   overflow-x: hidden;
-  height: 416px;
+  height: 420px;
 }
 
 .hotel {
