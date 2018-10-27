@@ -39,7 +39,14 @@ export class HotelComponent implements OnInit {
 
       this.hotel = hotels.find(hotel => hotel.id == this.hotelId);
       if (this.hotel != null) {
-        this.floors = this.hotel.floors.sort((a, b) => { return a.name < b.name ? -1 : 1; });
+        const fakeData = this.hotel.floors;
+        this.hotel.floors.forEach(d => {
+          fakeData.push(d);
+          fakeData.push(d);
+          fakeData.push(d);
+          fakeData.push(d);
+        });
+        this.floors = fakeData.sort((a, b) => { return a.name < b.name ? -1 : 1; });
       }
       this.spinnerService.hide();
     },

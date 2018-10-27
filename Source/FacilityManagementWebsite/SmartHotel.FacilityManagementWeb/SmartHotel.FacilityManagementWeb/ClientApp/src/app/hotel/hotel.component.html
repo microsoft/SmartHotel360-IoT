@@ -5,16 +5,16 @@
     <span class="header-link">{{hotel?.name}}</span>
   </div>
 </section>
-
-<div class="floors">
-  <div *ngFor="let floor of floors; let i = index" class="floor" (click)="chooseFloor(floor)">
-    <div class="floor-image" [style.background-image]="getFloorImage(i)"></div>
-    <div class="floor-button">
-      {{floor.name}}
+<div class="floors-top-row">
+  <div class="floors">
+    <div *ngFor="let floor of floors; let i = index" class="floor" (click)="chooseFloor(floor)">
+      <div class="floor-image" [style.background-image]="getFloorImage(i)"></div>
+      <div class="floor-button">
+        {{floor.name}}
+      </div>
     </div>
   </div>
 </div>
-
 <div class="floors-dashboard" *ngIf="hotel !== null">
   <div class="floors-dash-1"><img src="/assets/images/floor-dash-1.jpg" /></div>
   <div class="floors-dash-1"><img src="/assets/images/floor-dash-2.jpg" /></div>
