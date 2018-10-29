@@ -94,7 +94,19 @@ export class FloorComponent implements OnInit, OnDestroy {
         this.floor = this.hotel.floors.find(floor => floor.id === this.floorId);
 
         if (this.floor != null) {
-          this.rooms = this.floor.rooms.sort((a, b) => a.name < b.name ? -1 : 1);
+          const fakeData = this.floor.rooms;
+          this.floor.rooms.forEach(d => {
+            fakeData.push(d);
+            fakeData.push(d);
+            fakeData.push(d);
+            fakeData.push(d);
+            fakeData.push(d);
+            fakeData.push(d);
+            fakeData.push(d);
+            fakeData.push(d);
+          });
+
+          this.rooms = fakeData.sort((a, b) => a.name < b.name ? -1 : 1);
           this.loadDesiredData();
           this.setupTimer();
         }
