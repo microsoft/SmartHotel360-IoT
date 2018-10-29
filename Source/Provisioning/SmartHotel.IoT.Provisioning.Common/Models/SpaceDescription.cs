@@ -11,7 +11,8 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 		public string friendlyName { get; set; }
 		public string type { get; set; }
 	    public string keystoreName { get; set; }
-		public IList<SpaceDescription> spaces { get; set; }
+        public IList<SpaceReferenceDescription> spaceReferences { get; set; }
+        public IList<SpaceDescription> spaces { get; set; }
 		public IList<DeviceDescription> devices { get; set; }
 		public IList<ResourceDescription> resources { get; set; }
 		public IList<TypeDescription> types { get; set; }

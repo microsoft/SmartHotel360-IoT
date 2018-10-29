@@ -86,19 +86,19 @@ namespace ProvisioningBrandGenerator
                 outputFile.WriteLine("  types:");
                 outputFile.WriteLine("  - name: Classic");
                 outputFile.WriteLine("    category: SensorType");
+                outputFile.WriteLine("  - name: Brand");
+                outputFile.WriteLine("    category: SpaceType");
+                outputFile.WriteLine("  - name: Hotel");
+                outputFile.WriteLine("    category: SpaceType");
                 outputFile.WriteLine("  users:");
                 outputFile.WriteLine("  - Manager");
-                outputFile.WriteLine("  spaces:");
+                outputFile.WriteLine("  spaceReferences:");
 
                 foreach (Brand brand in brands)
                 {
                     string brandFilename = GetBrandProvisioningFilename(brand);
 
-                    outputFile.WriteLine($"  - name: {brand.Name} brand filename");
-                    outputFile.WriteLine($"    description: Name of file defining the {brand.Name} brand");
-                    outputFile.WriteLine($"    friendlyName: {brand.Name} brand filename");
-                    outputFile.WriteLine($"    filename: {brandFilename}");
-                    outputFile.WriteLine($"    type: Brand filename");
+                    outputFile.WriteLine($"  - filename: {brandFilename}");
                 }
             }
 
@@ -126,27 +126,26 @@ namespace ProvisioningBrandGenerator
             {
                 var hotelNames = new List<string>();
 
-                outputFile.WriteLine("spaces:");
-                outputFile.WriteLine($"- name: {brand.Name}");
-                outputFile.WriteLine($"  description: SmartHotel360 {brand.Name}");
-                outputFile.WriteLine($"  friendlyName: {brand.Name}");
-                outputFile.WriteLine($"  type: Brand");
-                outputFile.WriteLine($"  users:");
-                outputFile.WriteLine($"  - {brand.Name} Manager");
-                outputFile.WriteLine($"  spaces:");
+                outputFile.WriteLine($"name: {brand.Name}");
+                outputFile.WriteLine($"description: SmartHotel360 {brand.Name}");
+                outputFile.WriteLine($"friendlyName: {brand.Name}");
+                outputFile.WriteLine($"type: Brand");
+                outputFile.WriteLine($"users:");
+                outputFile.WriteLine($"- {brand.Name} Manager");
+                outputFile.WriteLine($"spaces:");
 
                 // Create the hotels
                 foreach (Hotel hotel in brand.Hotels)
                 {
                     string brandHotelPrefix = $"{brand.Name}_{hotel.Name}_";
 
-                    outputFile.WriteLine($"  - name: {hotel.Name}");
-                    outputFile.WriteLine($"    description: SmartHotel360 hotel {hotel.Name}");
-                    outputFile.WriteLine($"    friendlyName: {hotel.Name}");
-                    outputFile.WriteLine($"    type: Venue");
-                    outputFile.WriteLine($"    users:");
-                    outputFile.WriteLine($"    - {hotel.Name} Manager");
-                    outputFile.WriteLine($"    spaces:");
+                    outputFile.WriteLine($"- name: {hotel.Name}");
+                    outputFile.WriteLine($"  description: SmartHotel360 hotel {hotel.Name}");
+                    outputFile.WriteLine($"  friendlyName: {hotel.Name}");
+                    outputFile.WriteLine($"  type: Hotel");
+                    outputFile.WriteLine($"  users:");
+                    outputFile.WriteLine($"  - {hotel.Name} Manager");
+                    outputFile.WriteLine($"  spaces:");
 
                     var hotelType = hotelTypes.FirstOrDefault(t => t.Name == hotel.Type);
 
@@ -155,18 +154,18 @@ namespace ProvisioningBrandGenerator
                     // Create the regular floors
                     for (int i = 0; i < numberRegularFloors; i++)
                     {
-                        outputFile.WriteLine($"    - name: Floor {i + 1:D02}");
-                        outputFile.WriteLine($"      description: Floor {i + 1}");
-                        outputFile.WriteLine($"      friendlyName: Floor {i + 1}");
-                        outputFile.WriteLine($"      type: Floor");
+                        outputFile.WriteLine($"  - name: Floor {i + 1:D02}");
+                        outputFile.WriteLine($"    description: Floor {i + 1}");
+                        outputFile.WriteLine($"    friendlyName: Floor {i + 1}");
+                        outputFile.WriteLine($"    type: Floor");
 
                         if (!String.IsNullOrEmpty(hotel.RegularFloorEmployeeUser))
                         {
-                            outputFile.WriteLine($"      users:");
-                            outputFile.WriteLine($"      - {hotel.Name} {hotel.RegularFloorEmployeeUser}");
+                            outputFile.WriteLine($"    users:");
+                            outputFile.WriteLine($"    - {hotel.Name} {hotel.RegularFloorEmployeeUser}");
                         }
 
-                        outputFile.WriteLine($"      spaces:");
+                        outputFile.WriteLine($"    spaces:");
 
                         // Create the rooms
                         for (int j = 0; j < hotelType.NumberRoomsPerRegularFloor; j++)
@@ -178,11 +177,11 @@ namespace ProvisioningBrandGenerator
                     // Create the VIP floors
                     for (int i = numberRegularFloors; i < hotelType.TotalNumberFloors; i++)
                     {
-                        outputFile.WriteLine($"    - name: Floor {i + 1:D02}");
-                        outputFile.WriteLine($"      description: Floor {i + 1}");
-                        outputFile.WriteLine($"      friendlyName: Floor {i + 1}");
-                        outputFile.WriteLine($"      type: Floor");
-                        outputFile.WriteLine($"      spaces:");
+                        outputFile.WriteLine($"  - name: Floor {i + 1:D02}");
+                        outputFile.WriteLine($"    description: Floor {i + 1}");
+                        outputFile.WriteLine($"    friendlyName: Floor {i + 1}");
+                        outputFile.WriteLine($"    type: Floor");
+                        outputFile.WriteLine($"    spaces:");
 
                         // Create the rooms
                         for (int j = 0; j < hotelType.NumberRoomsPerVipFloor; j++)
@@ -200,29 +199,29 @@ namespace ProvisioningBrandGenerator
 
         private void CreateRoom(StreamWriter outputFile, int roomNumber, string brandHotelPrefix, bool addDevices)
         {
-            outputFile.WriteLine($"      - name: Room {roomNumber}");
-            outputFile.WriteLine($"        description: Room {roomNumber}");
-            outputFile.WriteLine($"        friendlyName: Room {roomNumber}");
-            outputFile.WriteLine($"        type: Room");
+            outputFile.WriteLine($"    - name: Room {roomNumber}");
+            outputFile.WriteLine($"      description: Room {roomNumber}");
+            outputFile.WriteLine($"      friendlyName: Room {roomNumber}");
+            outputFile.WriteLine($"      type: Room");
 
             if (addDevices)
             {
-                outputFile.WriteLine($"        devices:");
-                outputFile.WriteLine($"        - name: Thermostat");
-                outputFile.WriteLine($"          hardwareId: {brandHotelPrefix}{roomNumber}_T");
-                outputFile.WriteLine($"          sensors:");
-                outputFile.WriteLine($"          - dataType: Temperature");
-                outputFile.WriteLine($"            type: Classic");
-                outputFile.WriteLine($"        - name: Motion");
-                outputFile.WriteLine($"          hardwareId: {brandHotelPrefix}{roomNumber}_M");
-                outputFile.WriteLine($"          sensors:");
-                outputFile.WriteLine($"          - dataType: Motion");
-                outputFile.WriteLine($"            type: Classic");
-                outputFile.WriteLine($"        - name: Light");
-                outputFile.WriteLine($"          hardwareId: {brandHotelPrefix}{roomNumber}_L");
-                outputFile.WriteLine($"          sensors:");
-                outputFile.WriteLine($"          - dataType: Light");
-                outputFile.WriteLine($"            type: Classic");
+                outputFile.WriteLine($"      devices:");
+                outputFile.WriteLine($"      - name: Thermostat");
+                outputFile.WriteLine($"        hardwareId: {brandHotelPrefix}{roomNumber}_T");
+                outputFile.WriteLine($"        sensors:");
+                outputFile.WriteLine($"        - dataType: Temperature");
+                outputFile.WriteLine($"          type: Classic");
+                outputFile.WriteLine($"      - name: Motion");
+                outputFile.WriteLine($"        hardwareId: {brandHotelPrefix}{roomNumber}_M");
+                outputFile.WriteLine($"        sensors:");
+                outputFile.WriteLine($"        - dataType: Motion");
+                outputFile.WriteLine($"          type: Classic");
+                outputFile.WriteLine($"      - name: Light");
+                outputFile.WriteLine($"        hardwareId: {brandHotelPrefix}{roomNumber}_L");
+                outputFile.WriteLine($"        sensors:");
+                outputFile.WriteLine($"        - dataType: Light");
+                outputFile.WriteLine($"          type: Classic");
             }
         }
 

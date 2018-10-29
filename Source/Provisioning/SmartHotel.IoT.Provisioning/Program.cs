@@ -30,31 +30,31 @@ namespace SmartHotel.IoT.Provisioning
 		public static async Task<int> Main( string[] args ) => await CommandLineApplication.ExecuteAsync<Program>( args );
 
 		[Option( "-t|--Tenant", Description = "Azure Tenant Id" )]
-		[Required]
+		//[Required]
 		public string Tenant { get; }
 
 		[Option( "-ci|--ClientId", Description = "Azure Active Directory App Id" )]
-		[Required]
+		//[Required]
 		public string ClientId { get; }
 
 		[Option( "-cs|--ClientSecret", Description = "Key from the Azure Active Directory App" )]
-		[Required]
+		//[Required]
 		public string ClientSecret { get; }
 
 		[Option( "-dt|--DigitalTwinsApiEndpoint", Description = "Url for your Digital Twins resource e.g. (https://{resource name}.{resource location}.azuresmartspaces.net/management/api/v1.0" )]
-		[Required]
+		//[Required]
 		public string DigitalTwinsApiEndpoint { get; }
 
 		[Option( "-ehcs|--EventHubConnectionString", Description = "Connection string to the Event Hub" )]
-		[Required]
+		//[Required]
 		public string EventHubConnectionString { get; }
 
 		[Option( "-ehscs|--EventHubSecondaryConnectionString", Description = "Secondary Connection string to the Event Hub" )]
-		[Required]
+		//[Required]
 		public string EventHubSecondaryConnectionString { get; }
 
 		[Option( "-ehn|--EventHubName", Description = "Name of the Event Hub" )]
-		[Required]
+		//[Required]
 		public string EventHubName { get; }
 
 		[Option( "-oids|--UserObjectIdsFile", Description = "Json file containing the Azure AD Object IDs for each user" )]

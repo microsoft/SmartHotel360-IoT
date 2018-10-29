@@ -378,7 +378,7 @@
     "Microsoft.IdentityModel.Clients.ActiveDirectory/3.19.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-DC/k/yfpKvYVUtnnSQaTLFi4bJrWUM//TiWYqb0XC1wSgitZv0IK1PjPzd9Zk9BwwnlBteXKH39JX/Adc2S4ZA==",
+      "sha512": "sha512-iaIYYCzbbarjmDm4Zp98HYL0eeoayPoe/4y6eBMNH3zimKbmljkDzhBd5yWvA4D91mrnuArh2uXxLavTWRr7aw==",
       "path": "microsoft.identitymodel.clients.activedirectory/3.19.8",
       "hashPath": "microsoft.identitymodel.clients.activedirectory.3.19.8.nupkg.sha512"
     },
@@ -406,7 +406,7 @@
     "System.ComponentModel.Annotations/4.4.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ToiYqSCioqhtspq2O/jYKtyTC/T0uwWHBTYlzCi6PRbSSHArN1IaRWeHffDamvms5sye5FDUWCfNZgubQpNRsA==",
+      "sha512": "sha512-9u9RA7adeZVCX5Jd0iJHNcZThjCdv7YbyC3ouznQQLCIjOFLSFkZZdGPGH1pUmyGLwrcBYnigT76JZu2blzQAA==",
       "path": "system.componentmodel.annotations/4.4.1",
       "hashPath": "system.componentmodel.annotations.4.4.1.nupkg.sha512"
     },
@@ -560,7 +560,7 @@
     "System.Runtime.Serialization.Json/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-CpVfOH0M/uZ5PH+M9+Gu56K0j9lJw3M+PKRegTkcrY/stOIvRUeonggxNrfBYLA5WOHL2j15KNJuTuld3x4o9w==",
+      "sha512": "sha512-Ma/DVHfRcOcgQFHVGafUrT7hT1IitsnmUjpNZG5xJCYrI/8wfaYKGYNZycxQyl9Nk+9IAJiMJE6RFuavRQ2WEg==",
       "path": "system.runtime.serialization.json/4.3.0",
       "hashPath": "system.runtime.serialization.json.4.3.0.nupkg.sha512"
     },
@@ -644,7 +644,7 @@
     "YamlDotNet/5.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3tltCmC64lW/Ml3lrTn6BkiHht2EDlOXpoD8odb+gg2mgDi+/zK3zW21zXD67FHxk7lJC1fKjCMYgnHgk8YloA==",
+      "sha512": "sha512-dOf4ofiMv5CISFgebsspyi/Wr/95X9I5VqXaIcrDrB5VmOKLLs8mOtyhUyZbi38HMaBPc9NsXLsdZCB81a3ulw==",
       "path": "yamldotnet/5.0.1",
       "hashPath": "yamldotnet.5.0.1.nupkg.sha512"
     },
