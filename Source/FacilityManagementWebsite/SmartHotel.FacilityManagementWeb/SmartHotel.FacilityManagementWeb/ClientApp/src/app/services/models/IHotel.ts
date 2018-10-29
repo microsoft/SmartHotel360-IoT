@@ -1,4 +1,4 @@
-import { IFloor } from "./IFloor";
+import { IFloor } from './IFloor';
 
 export interface IHotel {
   id: string;

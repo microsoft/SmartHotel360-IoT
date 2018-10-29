@@ -1,4 +1,4 @@
-import { IRoom } from "./IRoom";
+import { IRoom } from './IRoom';
 
 export interface IFloor {
   id: string;

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { AdalGuard } from 'adal-angular4';
 import { HotelComponent } from './hotel/hotel.component';
 import { FloorComponent } from './floor/floor.component';
 import { ErrorComponent } from './error/error.component';
