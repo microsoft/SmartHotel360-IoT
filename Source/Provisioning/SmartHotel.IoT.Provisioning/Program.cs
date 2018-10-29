@@ -30,32 +30,32 @@ namespace SmartHotel.IoT.Provisioning
 		public static async Task<int> Main( string[] args ) => await CommandLineApplication.ExecuteAsync<Program>( args );
 
 		[Option( "-t|--Tenant", Description = "Azure Tenant Id" )]
-		//[Required]
-		public string Tenant { get; }
+        [Required]
+        public string Tenant { get; }
 
 		[Option( "-ci|--ClientId", Description = "Azure Active Directory App Id" )]
-		//[Required]
-		public string ClientId { get; }
+        [Required]
+        public string ClientId { get; }
 
 		[Option( "-cs|--ClientSecret", Description = "Key from the Azure Active Directory App" )]
-		//[Required]
-		public string ClientSecret { get; }
+        [Required]
+        public string ClientSecret { get; }
 
 		[Option( "-dt|--DigitalTwinsApiEndpoint", Description = "Url for your Digital Twins resource e.g. (https://{resource name}.{resource location}.azuresmartspaces.net/management/api/v1.0" )]
-		//[Required]
-		public string DigitalTwinsApiEndpoint { get; }
+        [Required]
+        public string DigitalTwinsApiEndpoint { get; }
 
 		[Option( "-ehcs|--EventHubConnectionString", Description = "Connection string to the Event Hub" )]
-		//[Required]
-		public string EventHubConnectionString { get; }
+        [Required]
+        public string EventHubConnectionString { get; }
 
 		[Option( "-ehscs|--EventHubSecondaryConnectionString", Description = "Secondary Connection string to the Event Hub" )]
-		//[Required]
-		public string EventHubSecondaryConnectionString { get; }
+        [Required]
+        public string EventHubSecondaryConnectionString { get; }
 
 		[Option( "-ehn|--EventHubName", Description = "Name of the Event Hub" )]
-		//[Required]
-		public string EventHubName { get; }
+        [Required]
+        public string EventHubName { get; }
 
 		[Option( "-oids|--UserObjectIdsFile", Description = "Json file containing the Azure AD Object IDs for each user" )]
 		public string UserObjectIdsFile { get; } = Path.Combine( "Resources", "UserAADObjectIds.json" );
@@ -79,7 +79,7 @@ namespace SmartHotel.IoT.Provisioning
 			HttpClient httpClient = await HttpClientHelper.GetHttpClientAsync( DigitalTwinsApiEndpoint, AadInstance, Tenant,
 				DigitalTwinsResourceId, ClientId, ClientSecret );
 
-			ProvisioningDescription provisioningDescription = ProvisioningHelper.LoadSmartHotelProvisioning();
+            ProvisioningDescription provisioningDescription = ProvisioningHelper.LoadSmartHotelProvisioning();
 
 			await CreateSpacesAsync( httpClient, provisioningDescription.spaces, Guid.Empty, Guid.Empty, userAadObjectIds );
 			await CreateEndpointsAsync( httpClient, provisioningDescription.endpoints );
@@ -91,7 +91,7 @@ namespace SmartHotel.IoT.Provisioning
 				await File.WriteAllTextAsync( OutputFile, JsonConvert.SerializeObject( allDevices ) );
 			}
 
-			Console.WriteLine();
+            Console.WriteLine();
 			Console.WriteLine();
 		}
 
