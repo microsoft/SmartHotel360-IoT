@@ -3,13 +3,11 @@ endpoints:
   eventTypes:
   - DeviceMessage
 spaces:
-- name: SmartHotel 360 Tenant
+- name: SmartHotel 360 Tenant - Test01
   description: This is the root node for the SmartHotel360 IoT Demo
   friendlyName: SmartHotel 360 Tenant
   type: Tenant
   keystoreName: SmartHotel360 Keystore
-  resources:
-  - type: IoTHub
   types:
   - name: Classic
     category: SensorType
