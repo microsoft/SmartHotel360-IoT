@@ -4,3 +4,14 @@ app-nav-menu {
   left: 0;
   width: 100%;
 }
+
+.content {
+  margin-top: 48px;
+}
+
+.fixed-header {
+  position: absolute;
+  top: 0;
+  height: 48px;
+  z-index: 1000;
+}

@@ -51,10 +51,6 @@ body {
   font-size: 22px;
 }
 
-.fixed-header {
-  height: 48px;
-}
-
 .custom-slider .ng5-slider {
   margin: 0;
 }
