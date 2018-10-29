@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProvisioningBrandGenerator
+namespace ProvisioningGenerator
 {
     class Program
     {
@@ -86,7 +86,7 @@ namespace ProvisioningBrandGenerator
                 outputFile.WriteLine("  types:");
                 outputFile.WriteLine("  - name: Classic");
                 outputFile.WriteLine("    category: SensorType");
-                outputFile.WriteLine("  - name: Brand");
+                outputFile.WriteLine("  - name: HotelBrand");
                 outputFile.WriteLine("    category: SpaceType");
                 outputFile.WriteLine("  - name: Hotel");
                 outputFile.WriteLine("    category: SpaceType");
@@ -129,7 +129,7 @@ namespace ProvisioningBrandGenerator
                 outputFile.WriteLine($"name: {brand.Name}");
                 outputFile.WriteLine($"description: SmartHotel360 {brand.Name}");
                 outputFile.WriteLine($"friendlyName: {brand.Name}");
-                outputFile.WriteLine($"type: Brand");
+                outputFile.WriteLine($"type: HotelBrand");
                 outputFile.WriteLine($"users:");
                 outputFile.WriteLine($"- {brand.Name} Manager");
                 outputFile.WriteLine($"spaces:");
