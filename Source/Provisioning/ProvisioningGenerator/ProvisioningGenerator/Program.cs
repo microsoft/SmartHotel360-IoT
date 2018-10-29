@@ -70,26 +70,51 @@ namespace ProvisioningBrandGenerator
 
             using (StreamWriter outputFile = new StreamWriter(siteFilename))
             {
-                var hotelNames = new List<string>();
-
                 outputFile.WriteLine("endpoints:");
                 outputFile.WriteLine("- type: EventHub");
                 outputFile.WriteLine("  eventTypes:");
-                outputFile.WriteLine("   - DeviceMessage");
+                outputFile.WriteLine("  - DeviceMessage");
 
-                //TODO: Finish
-                //outputFile.WriteLine($"  type: Brand");
-                //outputFile.WriteLine($"  users:");
-                //outputFile.WriteLine($"  - {brand.Name} Manager");
-                //outputFile.WriteLine($"  spaces:");
+                outputFile.WriteLine("spaces:");
+                outputFile.WriteLine("- name: SmartHotel 360 Tenant");
+                outputFile.WriteLine("  description: This is the root node for the SmartHotel360 IoT Demo");
+                outputFile.WriteLine("  friendlyName: SmartHotel 360 Tenant");
+                outputFile.WriteLine("  type: Tenant");
+                outputFile.WriteLine("  keystoreName: SmartHotel360 Keystore");
+                outputFile.WriteLine("  resources:");
+                outputFile.WriteLine("  - type: IoTHub");
+                outputFile.WriteLine("  types:");
+                outputFile.WriteLine("  - name: Classic");
+                outputFile.WriteLine("    category: SensorType");
+                outputFile.WriteLine("  users:");
+                outputFile.WriteLine("  - Manager");
+                outputFile.WriteLine("  spaces:");
+
+                foreach (Brand brand in brands)
+                {
+                    string brandFilename = GetBrandProvisioningFilename(brand);
+
+                    outputFile.WriteLine($"  - name: {brand.Name} brand filename");
+                    outputFile.WriteLine($"    description: Name of file defining the {brand.Name} brand");
+                    outputFile.WriteLine($"    friendlyName: {brand.Name} brand filename");
+                    outputFile.WriteLine($"    filename: {brandFilename}");
+                    outputFile.WriteLine($"    type: Brand filename");
+                }
             }
+
+            Console.WriteLine($"Successfully created site provisioning file: {siteFilename}");
 
             return true;
         }
 
+        private string GetBrandProvisioningFilename(Brand brand)
+        {
+            return $"{OutputFilePrefix}_{brand.Name}_Provisioning.yaml";
+        }
+
         private bool GenerateBrandProvisioningFile(Brand brand, List<HotelType> hotelTypes)
         {
-            string brandFilename = $"{OutputFilePrefix}_{brand.Name}_Provisioning.yaml";
+            string brandFilename = GetBrandProvisioningFilename(brand);
 
             if (File.Exists(brandFilename))
             {
