@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
 import { IHotel } from '../services/models/IHotel';
@@ -16,7 +16,7 @@ import { ChangeContext, Options } from 'ng5-slider';
   templateUrl: './floor.component.html',
   styleUrls: ['./floor.component.css']
 })
-export class FloorComponent implements OnInit {
+export class FloorComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -24,8 +24,8 @@ export class FloorComponent implements OnInit {
     private spinnerService: Ng4LoadingSpinnerService) {
 
     this.route.params.subscribe(params => {
-      this.hotelId = params["hotelId"];
-      this.floorId = params["floorId"];
+      this.hotelId = params['hotelId'];
+      this.floorId = params['floorId'];
 
       this.loadRooms();
     });
@@ -86,15 +86,15 @@ export class FloorComponent implements OnInit {
     this.spinnerService.show();
 
     this.facilityService.getHotel().then((data: IHotel[]) => {
-      let hotels = data.sort((a, b) => a.name.localeCompare(b.name));
-      this.hotel = hotels.find(hotel => hotel.id == this.hotelId);
+      const hotels = data.sort((a, b) => a.name.localeCompare(b.name));
+      this.hotel = hotels.find(hotel => hotel.id === this.hotelId);
       this.hotelIndex = data.indexOf(this.hotel);
 
       if (this.hotel != null) {
-        this.floor = this.hotel.floors.find(floor => floor.id == this.floorId);
+        this.floor = this.hotel.floors.find(floor => floor.id === this.floorId);
 
         if (this.floor != null) {
-          this.rooms = this.floor.rooms.sort((a, b) => { return a.name < b.name ? -1 : 1; });
+          this.rooms = this.floor.rooms.sort((a, b) => a.name < b.name ? -1 : 1);
           this.loadDesiredData();
           this.setupTimer();
         }
@@ -130,13 +130,13 @@ export class FloorComponent implements OnInit {
         if (sensors != null && sensors.length > 0) {
           sensors.forEach(sensor => {
             switch (sensor.sensorDataType) {
-              case "Temperature":
+              case 'Temperature':
                 this.setTemperatureReading(sensor);
                 break;
-              case "Motion":
+              case 'Motion':
                 this.setMotionReading(sensor);
                 break;
-              case "Light":
+              case 'Light':
                 this.setLightReading(sensor);
                 break;
             }
@@ -145,17 +145,17 @@ export class FloorComponent implements OnInit {
         this.sensorData = sensors;
         this.spinnerService.hide();
       });
-    }      
+    }
   }
 
   setLightReading(sensor: ISensor) {
-    let actual = this.getSensorReading(sensor);
-    let desired = this.getDesiredValue(sensor);
+    const actual = this.getSensorReading(sensor);
+    const desired = this.getDesiredValue(sensor);
 
-    let light:ILight = actual == null ? null :
+    const light: ILight = actual == null ? null :
       { desired: desired * 100.0, actual: actual * 100.0 };
 
-    let room = this.floor.rooms.find(room => room.id == sensor.roomId);
+    const room = this.floor.rooms.find(r => r.id === sensor.roomId);
 
     if (room != null) {
       room.light = light;
@@ -163,13 +163,13 @@ export class FloorComponent implements OnInit {
   }
 
   setTemperatureReading(sensor: ISensor) {
-    let actual = this.getSensorReading(sensor);
-    let desired = this.getDesiredValue(sensor);
+    const actual = this.getSensorReading(sensor);
+    const desired = this.getDesiredValue(sensor);
 
-    let temp:IThermostat = actual == null ? null :
+    const temp: IThermostat = actual == null ? null :
       { desired: desired, actual: actual };
 
-    let room = this.floor.rooms.find(room => room.id == sensor.roomId);
+    const room = this.floor.rooms.find(r => r.id === sensor.roomId);
 
     if (room != null) {
       room.thermostat = temp;
@@ -179,8 +179,8 @@ export class FloorComponent implements OnInit {
 
   setMotionReading(sensor: ISensor) {
 
-    let motion:IMotion = { isMotion: sensor.sensorReading.toLowerCase() == "true" };
-    let room = this.floor.rooms.find(room => room.id == sensor.roomId);
+    const motion: IMotion = { isMotion: sensor.sensorReading.toLowerCase() === 'true' };
+    const room = this.floor.rooms.find(r => r.id === sensor.roomId);
 
     if (room != null) {
       room.motion = motion;
@@ -219,10 +219,11 @@ export class FloorComponent implements OnInit {
       clearTimeout(this.theromstatSliderTimeout);
     }
 
-    const sensor = this.sensorData.find(s => s.roomId === room.id && s.sensorDataType === "Temperature");
+    const sensor = this.sensorData.find(s => s.roomId === room.id && s.sensorDataType === 'Temperature');
 
-    if (!sensor)
+    if (!sensor) {
       return;
+    }
 
     let desired: IDesired = this.desiredData.find((d) => d.roomId === room.id && d.sensorId === sensor.sensorId);
 
@@ -245,7 +246,7 @@ export class FloorComponent implements OnInit {
         desiredValue: d.desiredValue,
         methodName: 'SetDesiredTemperature',
         deviceId: `${room.name.charAt(0).toUpperCase() + room.name.slice(1).replace(' ', '')}Thermostat`
-      }
+      };
       this.facilityService.setDesiredData(request);
     }, 250, desired);
   }
@@ -257,10 +258,11 @@ export class FloorComponent implements OnInit {
       clearTimeout(this.lightSliderTimeout);
     }
 
-    const sensor = this.sensorData.find(s => s.roomId === room.id && s.sensorDataType === "Light");
+    const sensor = this.sensorData.find(s => s.roomId === room.id && s.sensorDataType === 'Light');
 
-    if (!sensor)
+    if (!sensor) {
       return;
+    }
 
     let desired: IDesired = this.desiredData.find((d) => d.roomId === room.id && d.sensorId === sensor.sensorId);
 
@@ -283,7 +285,7 @@ export class FloorComponent implements OnInit {
         desiredValue: d.desiredValue,
         methodName: 'SetDesiredAmbientLight',
         deviceId: `${room.name.charAt(0).toUpperCase() + room.name.slice(1).replace(' ', '')}Light`
-      }
+      };
       this.facilityService.setDesiredData(request);
     }, 250, desired);
   }
@@ -297,10 +299,10 @@ export class FloorComponent implements OnInit {
   }
 
   returnToHome() {
-    this.router.navigate(["/"]);
+    this.router.navigate(['/']);
   }
 
   returnToHotel() {
-    this.router.navigate(["/hotel", { id: this.hotelId, index: this.hotelIndex }]);
+    this.router.navigate(['/hotel', { id: this.hotelId, index: this.hotelIndex }]);
   }
 }

@@ -19,8 +19,8 @@ export class HotelComponent implements OnInit {
     private spinnerService: Ng4LoadingSpinnerService) {
 
     this.route.params.subscribe(params => {
-      this.hotelId = params["id"];
-      this.hotelIndex = params["index"];
+      this.hotelId = params['id'];
+      this.hotelIndex = params['index'];
       this.loadFloors();
     });
   }
@@ -35,9 +35,9 @@ export class HotelComponent implements OnInit {
   loadFloors() {
     this.spinnerService.show();
     this.facilityService.getHotel().then((data: IHotel[]) => {
-      let hotels = data;
+      const hotels = data;
 
-      this.hotel = hotels.find(hotel => hotel.id == this.hotelId);
+      this.hotel = hotels.find(hotel => hotel.id === this.hotelId);
       if (this.hotel != null) {
         const fakeData = this.hotel.floors;
         this.hotel.floors.forEach(d => {
@@ -46,7 +46,7 @@ export class HotelComponent implements OnInit {
           fakeData.push(d);
           fakeData.push(d);
         });
-        this.floors = fakeData.sort((a, b) => { return a.name < b.name ? -1 : 1; });
+        this.floors = fakeData.sort((a, b) => a.name < b.name ? -1 : 1);
       }
       this.spinnerService.hide();
     },
@@ -63,7 +63,7 @@ export class HotelComponent implements OnInit {
   }
 
   returnToHome() {
-    this.router.navigate(["/"]);
+    this.router.navigate(['/']);
   }
 
   getFloorImage(idx) {

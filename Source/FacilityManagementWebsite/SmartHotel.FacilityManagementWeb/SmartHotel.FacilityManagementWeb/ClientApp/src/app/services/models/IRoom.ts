@@ -1,4 +1,4 @@
-import { IThermostat, IMotion, ILight } from "./IDevice";
+import { IThermostat, IMotion, ILight } from './IDevice';
 
 export interface IRoom {
   id: string;

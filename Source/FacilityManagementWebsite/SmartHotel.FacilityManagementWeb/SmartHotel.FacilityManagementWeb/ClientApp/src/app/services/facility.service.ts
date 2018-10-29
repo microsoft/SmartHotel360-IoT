@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { IHotel } from './models/IHotel';
@@ -17,11 +16,11 @@ export class FacilityService {
 
   public getHotel() {
 
-    let promise = new Promise((resolve, reject) => {
+    const promise = new Promise((resolve, reject) => {
 
-      if (sessionStorage["hotels"]) {
-        console.log("loading hotels from cached");
-        resolve(JSON.parse(sessionStorage["hotels"]));
+      if (sessionStorage['hotels']) {
+        console.log('loading hotels from cached');
+        resolve(JSON.parse(sessionStorage['hotels']));
       } else {
         this.adalSvc.acquireToken(`${environment.resourceId}`)
           .toPromise()
@@ -29,7 +28,7 @@ export class FacilityService {
             token => {
               this.http.get<IHotel[]>(this.getEndpoint('spaces'), { headers: { 'azure_token': token } }
               ).toPromise().then(data => {
-                sessionStorage["hotels"] = JSON.stringify(data);
+                sessionStorage['hotels'] = JSON.stringify(data);
                 resolve(data);
               });
             }
@@ -42,8 +41,8 @@ export class FacilityService {
   }
 
   public getSensorData(floor: IFloor) {
-    let promise = new Promise((resolve, reject) => {
-      let roomIds: string[] = [];
+    const promise = new Promise((resolve, reject) => {
+      const roomIds: string[] = [];
       floor.rooms.forEach(room => roomIds.push(room.id));
       this.http.get(this.getEndpoint('sensordata'), { params: { 'roomIds': roomIds } }
       ).toPromise().then(data => {
@@ -57,8 +56,8 @@ export class FacilityService {
   }
 
   public getDesiredData(floor: IFloor) {
-    let promise = new Promise((resolve, reject) => {
-      let roomIds: string[] = [];
+    const promise = new Promise((resolve, reject) => {
+      const roomIds: string[] = [];
       floor.rooms.forEach(room => roomIds.push(room.id));
       this.http.get(this.getEndpoint('desireddata'), { params: { 'roomIds': roomIds } }
       ).toPromise().then(data => {
@@ -71,7 +70,7 @@ export class FacilityService {
   }
 
   public setDesiredData(desired) {
-    let promise = new Promise((resolve, reject) => {
+    const promise = new Promise((resolve, reject) => {
       const httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json'
@@ -94,7 +93,7 @@ export class FacilityService {
   private getEndpoint(path: string): string {
     let endPoint = environment.apiEndpoint;
 
-    if (endPoint.substr(-1) != '/') {
+    if (endPoint.substr(-1) !== '/') {
       endPoint += '/';
     }
 
