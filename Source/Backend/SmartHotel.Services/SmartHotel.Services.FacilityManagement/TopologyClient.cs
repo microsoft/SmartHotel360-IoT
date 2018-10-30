@@ -12,11 +12,23 @@ namespace SmartHotel.Services.FacilityManagement
 	public interface ITopologyClient
 	{
 		string AccessToken { get; set; }
-		Task<List<Hotel>> GetHotels();
+		Task<ICollection<Space>> GetSpaces();
 	}
 
 	public class TopologyClient : ITopologyClient
 	{
+		private readonly Dictionary<int, string> _typesById = new Dictionary<int, string>();
+		private const string HotelBrandTypeName = "HotelBrand";
+		private const string HotelTypeName = "Venue";
+		private const string FloorTypeName = "Floor";
+		private const string RoomTypeName = "Room";
+		private readonly Dictionary<string, int> _typeIdsByName = new Dictionary<string, int>( StringComparer.OrdinalIgnoreCase )
+		{
+			{HotelBrandTypeName, int.MinValue},
+			{HotelTypeName, int.MinValue},
+			{FloorTypeName, int.MinValue},
+			{RoomTypeName, int.MinValue},
+		};
 		private readonly string ApiPath = "api/v1.0/";
 
 		private readonly string SpacesPath = "spaces";
@@ -25,11 +37,7 @@ namespace SmartHotel.Services.FacilityManagement
 
 		private readonly string SpacesFilter = "includes=Parent";
 		private readonly string DevicesFilter = "includes=Sensors";
-		private readonly string TypesFilter = "names=Venue;Floor;Room&categories=SpaceType";
-
-		private int _hotelTypeId = int.MinValue;
-		private int _floorTypeId = int.MinValue;
-		private int _roomTypeId = int.MinValue;
+		private readonly string TypesFilter = "names=HotelBrand;Venue;Floor;Room&categories=SpaceType";
 
 		private readonly IHttpClientFactory _clientFactory;
 		private readonly IConfiguration _config;
@@ -41,7 +49,7 @@ namespace SmartHotel.Services.FacilityManagement
 		}
 
 		public string AccessToken { get; set; }
-		public async Task<List<Hotel>> GetHotels()
+		public async Task<ICollection<Space>> GetSpaces()
 		{
 			var httpClient = _clientFactory.CreateClient();
 			string managementBaseUrl = _config["ManagementApiUrl"];
@@ -49,108 +57,133 @@ namespace SmartHotel.Services.FacilityManagement
 			httpClient.BaseAddress = new Uri( protectedManagementBaseUrl );
 			httpClient.DefaultRequestHeaders.Add( "Authorization", $"Bearer {AccessToken}" );
 
-			Dictionary<string, Hotel> hotels = new Dictionary<string, Hotel>();
-
-			// Separate for each iterations are required due to the flat and unordered nature of the topology json 
 			await GetAndUpdateTypeIds( httpClient );
 
 			var response = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}?{SpacesFilter}" );
 			dynamic topology = JsonConvert.DeserializeObject( response );
 
-			// Hotels
+			Space hotelBrandSpace = null;
+			Space hotelSpace = null;
+			Space floorSpace = null;
+
+			var spacesByParentId = new Dictionary<string, List<Space>>();
 			foreach ( var entry in topology )
 			{
-				if ( entry.parent != null && entry.parent.typeId == _hotelTypeId )
+				if ( _typesById.TryGetValue( entry.typeId, out string typeName ) )
 				{
-					if ( !hotels.TryGetValue( entry.parent.id.ToString(), out Hotel hotel ) )
+					var space = new Space
 					{
-						hotel = new Hotel();
-						hotel.Id = entry.parent.id;
-						hotel.Name = entry.parent.name;
-						hotels.Add( hotel.Id, hotel );
+						Id = entry.id,
+						Name = entry.name,
+						Type = typeName,
+						TypeId = entry.typeId,
+						ParentSpaceId = entry.parent != null ? entry.parent.id : null
+					};
+
+					if ( string.Equals( HotelBrandTypeName, typeName, StringComparison.OrdinalIgnoreCase ) )
+					{
+						hotelBrandSpace = space;
+					}
+					else if ( string.Equals( HotelTypeName, typeName, StringComparison.OrdinalIgnoreCase ) )
+					{
+						hotelSpace = space;
+					}
+					else if ( string.Equals( FloorTypeName, typeName, StringComparison.OrdinalIgnoreCase ) )
+					{
+						floorSpace = space;
+					}
+
+					if ( !spacesByParentId.TryGetValue( space.ParentSpaceId, out List<Space> spaces ) )
+					{
+						spaces = new List<Space>();
+						spacesByParentId.Add( space.ParentSpaceId, spaces );
+					}
+
+					spaces.Add( space );
+				}
+			}
+
+			var hierarchicalSpaces = new List<Space>();
+			Space highestLevelSpace = GetHighestLevelSpace( hotelBrandSpace, hotelSpace, floorSpace );
+			if ( highestLevelSpace != null )
+			{
+				string highestLevelParentSpaceId = highestLevelSpace.ParentSpaceId;
+				hierarchicalSpaces.AddRange( spacesByParentId[highestLevelParentSpaceId] );
+				ICollection<Space> roomSpaces = BuildSpaceHierarchyAndReturnRoomSpaces( hierarchicalSpaces, spacesByParentId );
+				IDictionary<string, Space> roomSpacesById = roomSpaces.ToDictionary( s => s.Id );
+
+				// Devices
+				var deviceResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{DevicesPath}?{DevicesFilter}" );
+				dynamic devices = JsonConvert.DeserializeObject( deviceResponse );
+
+				foreach ( var deviceEntry in devices )
+				{
+					Device device = new Device();
+					device.Id = deviceEntry.id;
+					device.Name = deviceEntry.name;
+					device.HardwareId = deviceEntry.hardwareId;
+					device.SpaceId = deviceEntry.spaceId;
+
+					foreach ( var sensorEntry in deviceEntry.sensors )
+					{
+						Sensor sensor = new Sensor();
+						sensor.Id = sensorEntry.id;
+						sensor.SpaceId = sensorEntry.spaceId;
+						sensor.DataTypeId = sensorEntry.dataTypeId;
+						sensor.DeviceId = sensorEntry.deviceId;
+
+						device.Sensors.Add( sensor );
+					}
+
+					if ( roomSpacesById.TryGetValue( device.SpaceId, out Space roomSpace ) )
+					{
+						roomSpace.Devices.Add( device );
 					}
 				}
 			}
 
-			// Floors
-			foreach ( var entry in topology )
+			return hierarchicalSpaces;
+		}
+
+		private static ICollection<Space> BuildSpaceHierarchyAndReturnRoomSpaces( List<Space> hierarchicalSpaces, Dictionary<string, List<Space>> allSpacesByParentId )
+		{
+			var roomSpaces = new List<Space>();
+			foreach ( Space parentSpace in hierarchicalSpaces )
 			{
-				if ( entry.typeId == _floorTypeId )
+				if ( allSpacesByParentId.TryGetValue( parentSpace.Id, out List<Space> childSpaces ) )
 				{
-					if ( entry.parent != null && entry.parent.typeId == _hotelTypeId )
-					{
-						if ( hotels.TryGetValue( entry.parent.id.ToString(), out Hotel hotel ) )
-						{
-							if ( !hotel.FloorsDictionary.TryGetValue( entry.id.ToString(), out Floor floor ) )
-							{
-								floor = new Floor() { Id = entry.id, Name = entry.name };
-								hotel.FloorsDictionary.Add( floor.Id, floor );
-							}
-						}
-					}
+					parentSpace.ChildSpaces.AddRange( childSpaces );
+					ICollection<Space> result = BuildSpaceHierarchyAndReturnRoomSpaces( childSpaces, allSpacesByParentId );
+					roomSpaces.AddRange( result );
+				}
+
+				if ( string.Equals( RoomTypeName, parentSpace.Type, StringComparison.OrdinalIgnoreCase ) )
+				{
+					roomSpaces.Add( parentSpace );
 				}
 			}
 
-			// Rooms
-			Dictionary<string, Floor> floorsDictionary = hotels.SelectMany( h => h.Value.FloorsDictionary ).ToDictionary( pair => pair.Key, pair => pair.Value );
+			return roomSpaces;
+		}
 
-			foreach ( var entry in topology )
+		private Space GetHighestLevelSpace( Space hotelBrandSpace, Space hotelSpace, Space floorSpace )
+		{
+			if ( hotelBrandSpace != null )
 			{
-				if ( entry.typeId == _roomTypeId )
-				{
-					if ( entry.parent != null && entry.parent.typeId == _floorTypeId )
-					{
-						if ( floorsDictionary.TryGetValue( entry.parent.id.ToString(), out Floor floor ) )
-						{
-							Room room = new Room() { Id = entry.id, Name = entry.name };
-							floor.RoomDictionary.Add( room.Id, room );
-						}
-					}
-				}
+				return hotelBrandSpace;
 			}
 
-			// Devices
-			Dictionary<string, Room> roomsDictionary = hotels.SelectMany( h => h.Value.FloorsDictionary ).SelectMany( f => f.Value.RoomDictionary ).ToDictionary( pair => pair.Key, pair => pair.Value );
-
-			var deviceResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{DevicesPath}?{DevicesFilter}" );
-			dynamic devices = JsonConvert.DeserializeObject( deviceResponse );
-
-			foreach ( var deviceEntry in devices )
+			if ( hotelSpace != null )
 			{
-				Device device = new Device();
-				device.Id = deviceEntry.id;
-				device.Name = deviceEntry.name;
-				device.HardwareId = deviceEntry.hardwareId;
-				device.SpaceId = deviceEntry.spaceId;
-
-				foreach ( var sensorEntry in deviceEntry.sensors )
-				{
-					Sensor sensor = new Sensor();
-					sensor.Id = sensorEntry.id;
-					sensor.SpaceId = sensorEntry.spaceId;
-					sensor.DataTypeId = sensorEntry.dataTypeId;
-					sensor.DeviceId = sensorEntry.deviceId;
-
-					device.Sensors.Add( sensor );
-				}
-
-				if ( roomsDictionary.TryGetValue( device.SpaceId, out Room room ) )
-				{
-					room.Devices.Add( device );
-				}
+				return hotelSpace;
 			}
 
-			foreach ( var hotel in hotels.Values )
+			if ( floorSpace != null )
 			{
-				foreach ( var floor in hotel.FloorsDictionary.Values )
-				{
-					floor.Rooms = floor.RoomDictionary.Values.ToList();
-				}
-
-				hotel.Floors = hotel.FloorsDictionary.Values.ToList();
+				return floorSpace;
 			}
 
-			return hotels.Values.ToList();
+			return null;
 		}
 
 		private async Task GetAndUpdateTypeIds( HttpClient httpClient )
@@ -160,33 +193,14 @@ namespace SmartHotel.Services.FacilityManagement
 
 			foreach ( DigitalTwinsType type in types )
 			{
-				switch ( type.name.ToLower() )
-				{
-					case "venue":
-						_hotelTypeId = type.id;
-						break;
-					case "floor":
-						_floorTypeId = type.id;
-						break;
-					case "room":
-						_roomTypeId = type.id;
-						break;
-				}
+				_typesById[type.id] = type.name;
+				_typeIdsByName[type.name] = type.id;
 			}
 
-			if ( _hotelTypeId.Equals( int.MinValue ) )
+			var typesMissingId = _typeIdsByName.Where( kvp => int.MinValue.Equals( kvp.Value ) ).ToArray();
+			if ( typesMissingId.Length > 0 )
 			{
-				throw new NotSupportedException( "Missing the Hotel type id." );
-			}
-
-			if ( _floorTypeId.Equals( int.MinValue ) )
-			{
-				throw new NotSupportedException( "Missing the Floor type id." );
-			}
-
-			if ( _roomTypeId.Equals( int.MinValue ) )
-			{
-				throw new NotSupportedException( "Missing the Room type id." );
+				throw new NotSupportedException( $"Missing the following type Ids: {string.Join( ", ", typesMissingId )}" );
 			}
 		}
 

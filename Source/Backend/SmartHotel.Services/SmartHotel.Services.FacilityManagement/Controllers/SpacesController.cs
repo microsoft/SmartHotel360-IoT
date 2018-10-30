@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SmartHotel.Services.FacilityManagement.Models;
 
 namespace SmartHotel.Services.FacilityManagement.Controllers
 {
@@ -13,7 +8,7 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
     [ApiController]
     public class SpacesController : ControllerBase
     {
-        private ITopologyClient _client;
+        private readonly ITopologyClient _client;
 
         public SpacesController(ITopologyClient client)
         {
@@ -28,7 +23,7 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 
 			try
 			{
-				var hotels = await _client.GetHotels();
+				var hotels = await _client.GetSpaces();
 
 				return Ok(hotels);
 			}
