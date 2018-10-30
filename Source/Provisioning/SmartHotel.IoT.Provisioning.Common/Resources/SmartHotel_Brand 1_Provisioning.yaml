@@ -1,7 +1,7 @@
 name: Brand 1
 description: SmartHotel360 Brand 1
 friendlyName: Brand 1
-type: Brand
+type: HotelBrand
 users:
 - Brand 1 Manager
 spaces:

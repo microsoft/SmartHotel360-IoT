@@ -15,12 +15,18 @@ namespace ProvisioningGenerator
         public static async Task<int> Main(string[] args) => await CommandLineApplication.ExecuteAsync<Program>(args);
 
         [Option("-op|--outputPrefix", Description = "Prefix of the output filenames")]
-        //[Required]
+        [Required]
         public string OutputFilePrefix { get; private set; }
 
         [Option("-df|--definitionFilename", Description = "Filename of json brand definition")]
-        //[Required]
+        [Required]
         public string DefinitionFilename { get; }
+
+        [Option("-st|--subTenantName", Description = "Create a sub-Tenant with the given name")]
+        public string SubTenantName { get; }
+
+        [Option("-ad|--allDevices", Description = "Add devices to all rooms of all hotels")]
+        public bool AllDevices { get; }
 
         private async Task OnExecuteAsync()
         {
@@ -81,24 +87,52 @@ namespace ProvisioningGenerator
                 outputFile.WriteLine("  friendlyName: SmartHotel 360 Tenant");
                 outputFile.WriteLine("  type: Tenant");
                 outputFile.WriteLine("  keystoreName: SmartHotel360 Keystore");
-                outputFile.WriteLine("  resources:");
-                outputFile.WriteLine("  - type: IoTHub");
-                outputFile.WriteLine("  types:");
-                outputFile.WriteLine("  - name: Classic");
-                outputFile.WriteLine("    category: SensorType");
-                outputFile.WriteLine("  - name: HotelBrand");
-                outputFile.WriteLine("    category: SpaceType");
-                outputFile.WriteLine("  - name: Hotel");
-                outputFile.WriteLine("    category: SpaceType");
-                outputFile.WriteLine("  users:");
-                outputFile.WriteLine("  - Manager");
-                outputFile.WriteLine("  spaceReferences:");
+
+                string subTenantExtraSpacing;
+
+                if (String.IsNullOrWhiteSpace(SubTenantName))
+                {
+                    outputFile.WriteLine("  resources:");
+                    outputFile.WriteLine("  - type: IoTHub");
+                    outputFile.WriteLine("  types:");
+                    outputFile.WriteLine("  - name: Classic");
+                    outputFile.WriteLine("    category: SensorType");
+                    outputFile.WriteLine("  - name: HotelBrand");
+                    outputFile.WriteLine("    category: SpaceType");
+                    outputFile.WriteLine("  - name: Hotel");
+                    outputFile.WriteLine("    category: SpaceType");
+                    outputFile.WriteLine("  users:");
+                    outputFile.WriteLine("  - Manager");
+                    outputFile.WriteLine("  spaceReferences:");
+
+                    subTenantExtraSpacing = "";
+                }
+                else
+                {
+                    outputFile.WriteLine($"  spaces:");
+                    outputFile.WriteLine($"  - name: {SubTenantName}");
+                    outputFile.WriteLine($"    description: This is the root node for the {SubTenantName} sub Tenant");
+                    outputFile.WriteLine($"    friendlyName: {SubTenantName}");
+                    outputFile.WriteLine($"    type: Tenant");
+                    outputFile.WriteLine($"    types:");
+                    outputFile.WriteLine($"    - name: Classic");
+                    outputFile.WriteLine($"      category: SensorType");
+                    outputFile.WriteLine($"    - name: HotelBrand");
+                    outputFile.WriteLine($"      category: SpaceType");
+                    outputFile.WriteLine($"    - name: Hotel");
+                    outputFile.WriteLine($"      category: SpaceType");
+                    outputFile.WriteLine($"    users:");
+                    outputFile.WriteLine($"    - Manager");
+                    outputFile.WriteLine($"    spaceReferences:");
+
+                    subTenantExtraSpacing = "  ";
+                }
 
                 foreach (Brand brand in brands)
                 {
                     string brandFilename = GetBrandProvisioningFilename(brand);
 
-                    outputFile.WriteLine($"  - filename: {brandFilename}");
+                    outputFile.WriteLine($"{subTenantExtraSpacing}  - filename: {brandFilename}");
                 }
             }
 
@@ -260,7 +294,7 @@ namespace ProvisioningGenerator
                         Name = $"Hotel H {j + 1}",
                         Type = hotelTypeH.Name,
                         RegularFloorEmployeeUser = (i == 0 && j == 0) ? "Employee" : null,
-                        AddDevices = j == 0
+                        AddDevices = (i == 0 && j == 0) || AllDevices
                     };
 
                     hotels.Add(hotel);
@@ -273,7 +307,7 @@ namespace ProvisioningGenerator
                         Name = $"Hotel L {j + 1}",
                         Type = hotelTypeL.Name,
                         RegularFloorEmployeeUser = null,
-                        AddDevices = false
+                        AddDevices = AllDevices
                     };
 
                     hotels.Add(hotel);

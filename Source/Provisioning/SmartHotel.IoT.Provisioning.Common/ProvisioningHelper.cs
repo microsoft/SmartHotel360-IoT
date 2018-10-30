@@ -15,37 +15,60 @@ namespace SmartHotel.IoT.Provisioning.Common
 		    string content = File.ReadAllText( Path.Combine( "Resources", "SmartHotel_Site_Provisioning.yaml" ) );
 		    var provisioningDescription = yamlDeserializer.Deserialize<ProvisioningDescription>( content );
 
-            foreach (SpaceDescription tenantDescription in provisioningDescription.spaces)
+            foreach (SpaceDescription rootDescription in provisioningDescription.spaces)
             {
-                LoadBrandProvisionings(tenantDescription);
+                var referenceSpaces = FindAllReferenceSpaces(rootDescription);
+                foreach (var referenceSpace in referenceSpaces)
+                {
+                    LoadReferenceProvisionings(referenceSpace);
+                }
             }
 
             return provisioningDescription;
 	    }
 
-        public static void LoadBrandProvisionings(SpaceDescription tenantDescription)
+        private static IEnumerable<SpaceDescription> FindAllReferenceSpaces(SpaceDescription parentDescription)
         {
-            var brandSpaces = new List<SpaceDescription>();
+            List<SpaceDescription> referenceSpaces = new List<SpaceDescription>();
 
-            foreach (SpaceReferenceDescription spaceReferenceDescription in tenantDescription.spaceReferences)
+            if (parentDescription.spaceReferences != null)
+            {
+                referenceSpaces.Add(parentDescription);
+            }
+            else
+            {
+                foreach (SpaceDescription childDescription in parentDescription.spaces)
+                {
+                    referenceSpaces.AddRange(FindAllReferenceSpaces(childDescription));
+                }
+            }
+
+            return referenceSpaces;
+        }
+
+        public static void LoadReferenceProvisionings(SpaceDescription spaceDescription)
+        {
+            var referenceSpaces = new List<SpaceDescription>();
+
+            foreach (SpaceReferenceDescription spaceReferenceDescription in spaceDescription.spaceReferences)
             {
                 if (String.IsNullOrEmpty(spaceReferenceDescription.filename))
                 {
-                    throw new Exception($"Brand filename expected.");
+                    throw new Exception($"SpaceReference filename expected.");
                 }
 
-                var brandSpace = LoadBrandProvisioning(spaceReferenceDescription.filename);
+                var referenceSpace = LoadReferenceProvisioning(spaceReferenceDescription.filename);
 
-                brandSpaces.Add(brandSpace);
+                referenceSpaces.Add(referenceSpace);
             }
 
-            tenantDescription.spaces = brandSpaces;
+            spaceDescription.spaces = referenceSpaces;
         }
 
-        public static SpaceDescription LoadBrandProvisioning(string brandFilename)
+        public static SpaceDescription LoadReferenceProvisioning(string referenceFilename)
         {
             var yamlDeserializer = new Deserializer();
-            string content = File.ReadAllText(Path.Combine("Resources", brandFilename));
+            string content = File.ReadAllText(Path.Combine("Resources", referenceFilename));
             return yamlDeserializer.Deserialize<SpaceDescription>(content);
         }
     }

@@ -18,7 +18,11 @@ namespace SmartHotel.IoT.Provisioning
 	// Following example from https://github.com/Azure-Samples/digital-twins-samples-csharp/tree/master/occupancy-quickstart
 	public class Program
 	{
-		private const string AadInstance = "https://login.microsoftonline.com/";
+        private const string BrandType = "HotelBrand";
+        private const string HotelType = "Hotel";
+        private const string FloorType = "Floor";
+
+        private const string AadInstance = "https://login.microsoftonline.com/";
 		private const string DigitalTwinsResourceId = "0b07f429-9f4b-4714-9392-cc5e8e80c8b0";
 
 		private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
@@ -79,9 +83,15 @@ namespace SmartHotel.IoT.Provisioning
 			HttpClient httpClient = await HttpClientHelper.GetHttpClientAsync( DigitalTwinsApiEndpoint, AadInstance, Tenant,
 				DigitalTwinsResourceId, ClientId, ClientSecret );
 
+            Console.WriteLine($"Loading the provisioning files...");
+
             ProvisioningDescription provisioningDescription = ProvisioningHelper.LoadSmartHotelProvisioning();
 
-			await CreateSpacesAsync( httpClient, provisioningDescription.spaces, Guid.Empty, Guid.Empty, userAadObjectIds );
+            Console.WriteLine($"Successfully loaded provisioning files.");
+
+            Console.WriteLine($"Creating spaces and endpoints...");
+
+            await CreateSpacesAsync( httpClient, provisioningDescription.spaces, Guid.Empty, Guid.Empty, userAadObjectIds );
 			await CreateEndpointsAsync( httpClient, provisioningDescription.endpoints );
 
 			if ( !string.IsNullOrEmpty( OutputFile ) )
@@ -123,59 +133,22 @@ namespace SmartHotel.IoT.Provisioning
 		}
 
 		private async Task CreateSpacesAsync( HttpClient httpClient, IList<SpaceDescription> spaceDescriptions,
-			Guid parentId, Guid keystoreId, UserAadObjectIdsDescription userAadObjectIds )
+			Guid parentId, Guid keystoreId, UserAadObjectIdsDescription userAadObjectIds, bool parallelize = false)
 		{
-			foreach ( SpaceDescription spaceDescription in spaceDescriptions )
-			{
-				Space spaceToCreate = spaceDescription.ToDigitalTwins( parentId );
-				Space existingSpace = await SpaceHelpers.GetUniqueSpaceAsync( httpClient, spaceToCreate.Name, parentId, JsonSerializerSettings );
-				var createdId = !string.IsNullOrWhiteSpace( existingSpace?.Id )
-					? Guid.Parse( existingSpace.Id )
-					: await CreateSpaceAsync( httpClient, spaceToCreate );
-
-				Console.WriteLine();
-
-				if ( createdId != Guid.Empty )
-				{
-					Guid keystoreIdToUseForChildren = keystoreId;
-					// Keystore creation must happen first to ensure that devices down the tree can get their SaS tokens from it
-					if ( !string.IsNullOrWhiteSpace( spaceDescription.keystoreName ) )
-					{
-						Guid createdKeystoreId = await CreateKeystoreAsync( httpClient, spaceDescription.keystoreName, createdId );
-						if ( createdKeystoreId != Guid.Empty )
-						{
-							keystoreIdToUseForChildren = createdKeystoreId;
-						}
-					}
-
-					// Resources must be created next to ensure that devices created down the tree will succeed
-					if ( spaceDescription.resources != null )
-					{
-						await CreateResourcesAsync( httpClient, spaceDescription.resources, createdId );
-					}
-
-					// Types must be created next to ensure that devices/sensors created down the tree will succeed
-					if ( spaceDescription.types != null )
-					{
-						await CreateTypesAsync( httpClient, spaceDescription.types, createdId );
-					}
-
-					if ( spaceDescription.devices != null )
-					{
-						await CreateDevicesAsync( httpClient, spaceDescription.devices, keystoreIdToUseForChildren, createdId );
-					}
-
-					if ( spaceDescription.users != null )
-					{
-						await CreateUserRoleAssignmentsAsync( httpClient, spaceDescription.users, createdId, userAadObjectIds );
-					}
-
-					if ( spaceDescription.spaces != null )
-					{
-						await CreateSpacesAsync( httpClient, spaceDescription.spaces, createdId, keystoreIdToUseForChildren, userAadObjectIds );
-					}
-				}
-			}
+            if (parallelize)
+            {
+                Parallel.ForEach(spaceDescriptions, async spaceDescription =>
+                {
+                    await CreateSpaceAsync(httpClient, spaceDescription, parentId, keystoreId, userAadObjectIds);
+                });
+            }
+            else
+            {
+                foreach (SpaceDescription spaceDescription in spaceDescriptions)
+                {
+                    await CreateSpaceAsync(httpClient, spaceDescription, parentId, keystoreId, userAadObjectIds);
+                }
+            }
 		}
 
         private async Task CreateSpaceAsync(HttpClient httpClient, SpaceDescription spaceDescription,
@@ -226,7 +199,15 @@ namespace SmartHotel.IoT.Provisioning
 
                 if (spaceDescription.spaces != null)
                 {
-                    await CreateSpacesAsync(httpClient, spaceDescription.spaces, createdId, keystoreIdToUseForChildren, userAadObjectIds);
+                    bool parallelize = false;
+
+                    //bool parallelize = spaceDescription.type == HotelType;
+
+                    //bool parallelize = spaceDescription.type == BrandType ||
+                    //    spaceDescription.type == HotelType ||
+                    //    spaceDescription.type == FloorType;
+
+                    await CreateSpacesAsync(httpClient, spaceDescription.spaces, createdId, keystoreIdToUseForChildren, userAadObjectIds, parallelize);
                 }
             }
         }

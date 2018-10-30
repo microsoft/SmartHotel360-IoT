@@ -1,7 +1,7 @@
 name: Brand 3
 description: SmartHotel360 Brand 3
 friendlyName: Brand 3
-type: Brand
+type: HotelBrand
 users:
 - Brand 3 Manager
 spaces:
