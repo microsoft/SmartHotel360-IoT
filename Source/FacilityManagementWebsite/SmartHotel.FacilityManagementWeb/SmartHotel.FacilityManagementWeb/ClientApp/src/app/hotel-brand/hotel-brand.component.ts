@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ISpace } from '../services/models/ISpace';
+import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-hotel-brand',
@@ -11,10 +11,12 @@ import { ISpace } from '../services/models/ISpace';
 })
 export class HotelBrandComponent implements OnInit {
 
-  constructor(private router: Router,
+  constructor(private navigationService: NavigationService,
     private route: ActivatedRoute,
     private facilityService: FacilityService) {
   }
+
+  breadcrumbsHtml: string;
 
   tenantId: string;
   hotelBrandName: string;
@@ -40,18 +42,11 @@ export class HotelBrandComponent implements OnInit {
   }
 
   returnToHome() {
-    this.router.navigate(['/', { tId: this.tenantId }]);
+    this.navigationService.returnToHome(this.tenantId);
   }
 
   chooseHotel(hotel) {
-    const navArgs = {
-      hbId: this.hotelBrandId, hbName: this.hotelBrandName,
-      hId: hotel.id, hIndex: this.hotels.indexOf(hotel)
-    };
-    if (this.tenantId) {
-      navArgs['tId'] = this.tenantId;
-    }
-    this.router.navigate(['/hotel', navArgs]);
+    this.navigationService.chooseHotel(this.tenantId, this.hotelBrandId, this.hotelBrandName, hotel.id, this.hotels.indexOf(hotel));
   }
 
   getHotelImage(idx) {

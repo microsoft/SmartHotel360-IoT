@@ -15,7 +15,9 @@ class InitializationCallbackContainer {
   public Callback: (requester: any) => void;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class FacilityService {
 
   private notInitializedError = new Error('FacilityService is not initialized. ' +

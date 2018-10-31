@@ -1,15 +1,4 @@
-<section>
-  <div class="header">
-    <div *ngIf="tenantId; else backNotSupported">
-      <span class="header-link header-link-active" (click)="returnToHome()">brands</span>
-      <span class="header-spacer">|</span>
-      <span class="header-link">{{hotelBrandName}}</span>
-    </div>
-    <ng-template #backNotSupported>
-        <span class="header-link">hotels</span>
-    </ng-template>
-  </div>
-</section>
+<app-breadcrumb [tenantId]="tenantId" [hotelBrandId]="hotelBrandId" [hotelBrandName]="hotelBrandName"></app-breadcrumb>
 
 <div class="hotels-top-row">
   <div class="hotels">

@@ -1,19 +1,6 @@
-<section>
-  <div class="header">
-    <span *ngIf="tenantId">
-      <span class="header-link header-link-active" (click)="returnToHome()">brands</span>
-      <span class="header-spacer">|</span>
-    </span>
-    <span *ngIf="hotelBrandId; else backNotSupported">
-      <span class="header-link header-link-active" (click)="returnToHotelBrand()">{{hotelBrandName}}</span>
-      <span class="header-spacer">|</span>
-      <span class="header-link">{{hotelName}}</span>
-    </span>
-    <ng-template #backNotSupported>
-      <span class="header-link">floors</span>
-    </ng-template>
-  </div>
-</section>
+<app-breadcrumb [tenantId]="tenantId" [hotelBrandId]="hotelBrandId" [hotelBrandName]="hotelBrandName" [hotelId]="hotelId"
+  [hotelIndex]="hotelIndex" [hotelName]="hotelName"></app-breadcrumb>
+
 <div class="floors-top-row">
   <div class="floors">
     <div *ngFor="let floor of floors; let i = index" class="floor" (click)="chooseFloor(floor)">

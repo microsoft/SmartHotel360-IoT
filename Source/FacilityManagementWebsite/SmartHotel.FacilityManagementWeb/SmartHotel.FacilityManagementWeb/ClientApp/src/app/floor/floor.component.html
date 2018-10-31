@@ -1,20 +1,5 @@
-<section>
-  <div class="header">
-    <div *ngIf="tenantId">
-      <span class="header-link header-link-active" (click)="returnToHome()">brands</span>
-      <span class="header-spacer">|</span>
-    </div>
-    <div *ngIf="hotelBrandId">
-      <span class="header-link header-link-active" (click)="returnToHotelBrand()">{{hotelBrandName}}</span>
-      <span class="header-spacer">|</span>
-    </div>
-    <div>
-      <span class="header-link header-link-active" (click)="returnToHotel()">{{hotelName}}</span>
-      <span class="header-spacer">|</span>
-      <span class="header-link">{{floorName}}</span>
-    </div>
-  </div>
-</section>
+<app-breadcrumb [tenantId]="tenantId" [hotelBrandId]="hotelBrandId" [hotelBrandName]="hotelBrandName" [hotelId]="hotelId"
+  [hotelIndex]="hotelIndex" [hotelName]="hotelName" [floorName]="floorName"></app-breadcrumb>
 
 <div class="rooms">
   <div *ngFor="let room of rooms" class="room">

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ISpace } from '../services/models/ISpace';
+import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ import { ISpace } from '../services/models/ISpace';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router,
+  constructor(private navigationService: NavigationService,
     private route: ActivatedRoute,
     private facilityService: FacilityService) {
   }
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   }
 
   chooseHotelBrand(hotelBrand: ISpace) {
-    this.router.navigate(['/hotelbrand', { tId: this.tenantId, hbId: hotelBrand.id }]);
+    this.navigationService.chooseHotelBrand(this.tenantId, hotelBrand.id);
   }
 
   getHotelBrandImage(idx) {

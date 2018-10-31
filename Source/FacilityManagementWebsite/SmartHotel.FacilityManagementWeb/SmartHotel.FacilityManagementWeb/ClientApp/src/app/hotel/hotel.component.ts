@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { ISpace } from '../services/models/ISpace';
+import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-hotel',
@@ -10,10 +10,12 @@ import { ISpace } from '../services/models/ISpace';
   styleUrls: ['./hotel.component.css']
 })
 export class HotelComponent implements OnInit {
-  constructor(private router: Router,
+  constructor(private navigationService: NavigationService,
     private route: ActivatedRoute,
     private facilityService: FacilityService) {
   }
+
+  breadcrumbsHtml: string;
 
   tenantId: string;
   hotelBrandId: string;
@@ -30,6 +32,7 @@ export class HotelComponent implements OnInit {
       this.hotelBrandName = params['hbName'];
       this.hotelId = params['hId'];
       this.hotelIndex = params['hIndex'];
+
       this.facilityService.executeWhenInitialized(this, this.loadFloors);
     });
   }
@@ -44,33 +47,16 @@ export class HotelComponent implements OnInit {
   }
 
   returnToHome() {
-    this.router.navigate(['/',
-      {
-        tId: this.tenantId
-      }]);
+    this.navigationService.returnToHome(this.tenantId);
   }
 
   returnToHotelBrand() {
-    this.router.navigate(['/hotelbrand',
-      {
-        tId: this.tenantId,
-        hbId: this.hotelBrandId
-      }]);
+    this.navigationService.chooseHotelBrand(this.tenantId, this.hotelBrandId);
   }
 
   chooseFloor(floor) {
-    const navArgs = {
-      hId: this.hotelId, hIndex: this.hotelIndex,
-      fId: floor.id
-    };
-    if (this.tenantId) {
-      navArgs['tId'] = this.tenantId;
-    }
-    if (this.hotelBrandId) {
-      navArgs['hbId'] = this.hotelBrandId;
-      navArgs['hbName'] = this.hotelBrandName;
-    }
-    this.router.navigate(['/floor', navArgs]);
+    this.navigationService
+      .chooseFloor(this.tenantId, this.hotelBrandId, this.hotelBrandName, this.hotelId, this.hotelIndex, this.hotelName, floor.id);
   }
 
   getFloorImage(idx) {

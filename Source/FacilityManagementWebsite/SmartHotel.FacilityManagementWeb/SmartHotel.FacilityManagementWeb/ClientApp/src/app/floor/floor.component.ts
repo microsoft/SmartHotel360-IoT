@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
 import { ILight, IThermostat, IMotion } from '../services/models/IDevice';
 import { ISensor } from '../services/models/ISensor';
@@ -8,7 +8,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { IDesired } from '../services/models/IDesired';
 import { ChangeContext, Options } from 'ng5-slider';
 import { ISpace } from '../services/models/ISpace';
-import { not } from '@angular/compiler/src/output/output_ast';
+import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-floor',
@@ -17,7 +17,7 @@ import { not } from '@angular/compiler/src/output/output_ast';
 })
 export class FloorComponent implements OnInit, OnDestroy {
 
-  constructor(private router: Router,
+  constructor(private navigationService: NavigationService,
     private route: ActivatedRoute,
     private facilityService: FacilityService,
     private spinnerService: Ng4LoadingSpinnerService) {
@@ -79,6 +79,7 @@ export class FloorComponent implements OnInit, OnDestroy {
       this.hotelBrandName = params['hbName'];
       this.hotelId = params['hId'];
       this.hotelIndex = params['hIndex'];
+      this.hotelName = params['hName'];
       this.floorId = params['fId'];
       this.facilityService.executeWhenInitialized(this, this.loadRooms);
     });
@@ -340,18 +341,14 @@ export class FloorComponent implements OnInit, OnDestroy {
   }
 
   returnToHome() {
-    this.router.navigate(['/', { tId: this.tenantId }]);
+    this.navigationService.returnToHome(this.tenantId);
   }
 
   returnToHotelBrand() {
-    this.router.navigate(['/hotelbrand',
-      {
-        tId: this.tenantId,
-        hbId: this.hotelBrandId
-      }]);
+    this.navigationService.chooseHotelBrand(this.tenantId, this.hotelBrandId);
   }
 
   returnToHotel() {
-    this.router.navigate(['/hotel', { id: this.hotelId, index: this.hotelIndex }]);
+    this.navigationService.chooseHotel(this.tenantId, this.hotelBrandId, this.hotelBrandName, this.hotelId, this.hotelIndex);
   }
 }
