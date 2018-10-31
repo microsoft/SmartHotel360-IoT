@@ -30,7 +30,7 @@ namespace ProvisioningGenerator
 
         private async Task OnExecuteAsync()
         {
-            //GenerateSampleDefinition("SampleSiteDefinition.json");
+            //GenerateSampleDefinition(DefinitionFilename);
 
             GenerateProvisioningFiles();
         }
@@ -264,22 +264,48 @@ namespace ProvisioningGenerator
             var hotelTypeH = new HotelType
             {
                 Name = "H",
-                TotalNumberFloors = 40,
-                NumberVipFloors = 10,
-                NumberRoomsPerRegularFloor = 73,
-                NumberRoomsPerVipFloor = 19
+                TotalNumberFloors = 10,
+                NumberVipFloors = 2,
+                NumberRoomsPerRegularFloor = 20,
+                NumberRoomsPerVipFloor = 10,
+                IncludeBallroom = true,
+                IncludeGym = true
             };
 
             var hotelTypeL = new HotelType
             {
                 Name = "L",
-                TotalNumberFloors = 25,
-                NumberVipFloors = 5,
-                NumberRoomsPerRegularFloor = 18,
-                NumberRoomsPerVipFloor = 8
+                TotalNumberFloors = 10,
+                NumberVipFloors = 2,
+                NumberRoomsPerRegularFloor = 15,
+                NumberRoomsPerVipFloor = 8,
+                IncludeBallroom = true,
+                IncludeGym = true
             };
 
-            var hotelTypes = new List<HotelType> { hotelTypeH, hotelTypeL };
+            var hotelTypeSH = new HotelType
+            {
+                Name = "SH",
+                TotalNumberFloors = 5,
+                NumberVipFloors = 1,
+                NumberRoomsPerRegularFloor = 10,
+                NumberRoomsPerVipFloor = 4,
+                IncludeBallroom = true,
+                IncludeGym = true
+            };
+
+            var hotelTypeSL = new HotelType
+            {
+                Name = "SL",
+                TotalNumberFloors = 5,
+                NumberVipFloors = 1,
+                NumberRoomsPerRegularFloor = 10,
+                NumberRoomsPerVipFloor = 4,
+                IncludeBallroom = true,
+                IncludeGym = true
+            };
+
+            var hotelTypes = new List<HotelType> { hotelTypeH, hotelTypeL, hotelTypeSH, hotelTypeSL };
 
             var brands = new List<Brand>();
 
@@ -287,30 +313,39 @@ namespace ProvisioningGenerator
             {
                 var hotels = new List<Hotel>();
 
-                for (int j = 0; j < 5; j++)
+                switch (i)
                 {
-                    var hotel = new Hotel
-                    {
-                        Name = $"Hotel H {j + 1}",
-                        Type = hotelTypeH.Name,
-                        RegularFloorEmployeeUser = (i == 0 && j == 0) ? "Employee" : null,
-                        AddDevices = (i == 0 && j == 0) || AllDevices
-                    };
-
-                    hotels.Add(hotel);
-                }
-
-                for (int j = 0; j < 5; j++)
-                {
-                    var hotel = new Hotel
-                    {
-                        Name = $"Hotel L {j + 1}",
-                        Type = hotelTypeL.Name,
-                        RegularFloorEmployeeUser = null,
-                        AddDevices = AllDevices
-                    };
-
-                    hotels.Add(hotel);
+                    case 0:
+                        {
+                            hotels.Add(CreateHotel(hotelTypeH, 1, "Employee", true));
+                            hotels.Add(CreateHotel(hotelTypeL, 1, null, AllDevices));
+                            hotels.Add(CreateHotel(hotelTypeSH, 1, null, AllDevices));
+                            hotels.Add(CreateHotel(hotelTypeSH, 2, null, AllDevices));
+                            hotels.Add(CreateHotel(hotelTypeSL, 1, null, AllDevices));
+                            hotels.Add(CreateHotel(hotelTypeSL, 2, null, AllDevices));
+                            break;
+                        }
+                    case 1:
+                        {
+                            hotels.Add(CreateHotel(hotelTypeSH, 1, null, AllDevices));
+                            hotels.Add(CreateHotel(hotelTypeSH, 2, null, AllDevices));
+                            hotels.Add(CreateHotel(hotelTypeSL, 1, null, AllDevices));
+                            break;
+                        }
+                    case 2:
+                        {
+                            hotels.Add(CreateHotel(hotelTypeSH, 1, null, AllDevices));
+                            hotels.Add(CreateHotel(hotelTypeSL, 1, null, AllDevices));
+                            hotels.Add(CreateHotel(hotelTypeSL, 2, null, AllDevices));
+                            break;
+                        }
+                    case 3:
+                        {
+                            hotels.Add(CreateHotel(hotelTypeSH, 1, null, AllDevices));
+                            hotels.Add(CreateHotel(hotelTypeSH, 2, null, AllDevices));
+                            hotels.Add(CreateHotel(hotelTypeSL, 1, null, AllDevices));
+                            break;
+                        }
                 }
 
                 var brand = new Brand
@@ -333,6 +368,17 @@ namespace ProvisioningGenerator
             {
                 definitionFile.Write(siteJson);
             }
+        }
+
+        private Hotel CreateHotel(HotelType hotelType, int hotelIndex, string regularFloorEmployeeUser, bool addDevices)
+        {
+            return new Hotel
+            {
+                Name = $"Hotel {hotelType.Name} {hotelIndex}",
+                Type = hotelType.Name,
+                RegularFloorEmployeeUser = regularFloorEmployeeUser,
+                AddDevices = addDevices
+            };
         }
     }
 }

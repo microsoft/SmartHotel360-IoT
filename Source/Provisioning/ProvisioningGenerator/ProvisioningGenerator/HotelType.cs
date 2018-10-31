@@ -13,5 +13,7 @@ namespace ProvisioningGenerator
         public int NumberVipFloors { get; set; }
         public int NumberRoomsPerRegularFloor { get; set; }
         public int NumberRoomsPerVipFloor { get; set; }
+        public bool IncludeGym { get; set; }
+        public bool IncludeBallroom { get; set; }
     }
 }
