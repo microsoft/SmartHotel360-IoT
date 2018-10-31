@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { IHotel } from '../services/models/IHotel';
 import { FacilityService } from '../services/facility.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { ISpace } from '../services/models/ISpace';
 
 @Component({
   selector: 'app-hotel',
@@ -10,53 +10,67 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
   styleUrls: ['./hotel.component.css']
 })
 export class HotelComponent implements OnInit {
-
-  @Input() hotelIndex: number;
-
   constructor(private router: Router,
     private route: ActivatedRoute,
-    private facilityService: FacilityService,
-    private spinnerService: Ng4LoadingSpinnerService) {
+    private facilityService: FacilityService) {
+  }
 
+  tenantId: string;
+  hotelBrandId: string;
+  hotelBrandName: string;
+  hotelName: string;
+  hotelId: string;
+  hotelIndex: number;
+  floors: ISpace[] = null;
+
+  ngOnInit() {
     this.route.params.subscribe(params => {
-      this.hotelId = params['id'];
-      this.hotelIndex = params['index'];
-      this.loadFloors();
+      this.tenantId = params['tId'];
+      this.hotelBrandId = params['hbId'];
+      this.hotelBrandName = params['hbName'];
+      this.hotelId = params['hId'];
+      this.hotelIndex = params['hIndex'];
+      this.facilityService.executeWhenInitialized(this, this.loadFloors);
     });
   }
 
-  floors = null;
-  hotelId;
-  hotel = null;
+  loadFloors(self: HotelComponent) {
+    if (self.hotelBrandId) {
+      const hotel = self.facilityService.getSpace(self.hotelBrandId, self.hotelId);
+      self.hotelName = hotel.name;
+    }
 
-  ngOnInit() {
-  }
-
-  loadFloors() {
-    this.spinnerService.show();
-    this.facilityService.getHotel().then((data: IHotel[]) => {
-      const hotels = data;
-
-      this.hotel = hotels.find(hotel => hotel.id === this.hotelId);
-      if (this.hotel != null) {
-        this.floors = this.hotel.floors.sort((a, b) => a.name < b.name ? -1 : 1);
-      }
-      this.spinnerService.hide();
-    },
-      (err) => {
-        console.log(err);
-        this.spinnerService.hide();
-      }
-    );
-
-  }
-
-  chooseFloor(floor) {
-    this.router.navigate(['/floor', { hotelId: this.hotelId, floorId: floor.id }]);
+    self.floors = self.facilityService.getChildSpaces(self.hotelId);
   }
 
   returnToHome() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/',
+      {
+        tId: this.tenantId
+      }]);
+  }
+
+  returnToHotelBrand() {
+    this.router.navigate(['/hotelbrand',
+      {
+        tId: this.tenantId,
+        hbId: this.hotelBrandId
+      }]);
+  }
+
+  chooseFloor(floor) {
+    const navArgs = {
+      hId: this.hotelId, hIndex: this.hotelIndex,
+      fId: floor.id
+    };
+    if (this.tenantId) {
+      navArgs['tId'] = this.tenantId;
+    }
+    if (this.hotelBrandId) {
+      navArgs['hbId'] = this.hotelBrandId;
+      navArgs['hbName'] = this.hotelBrandName;
+    }
+    this.router.navigate(['/floor', navArgs]);
   }
 
   getFloorImage(idx) {

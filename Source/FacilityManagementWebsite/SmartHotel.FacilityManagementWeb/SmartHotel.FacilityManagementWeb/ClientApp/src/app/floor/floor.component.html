@@ -1,11 +1,18 @@
 <section>
   <div class="header">
-    <span class="header-link header-link-active" (click)="returnToHome()">hotels</span>
-    <span class="header-spacer">|</span>
-    <span class="header-link header-link-active" (click)="returnToHotel()">{{ hotel?.name }}</span>
-    <span class="header-spacer">|</span>
-    <span class="header-link">{{ floor?.name }}</span>
-
+    <div *ngIf="tenantId">
+      <span class="header-link header-link-active" (click)="returnToHome()">brands</span>
+      <span class="header-spacer">|</span>
+    </div>
+    <div *ngIf="hotelBrandId">
+      <span class="header-link header-link-active" (click)="returnToHotelBrand()">{{hotelBrandName}}</span>
+      <span class="header-spacer">|</span>
+    </div>
+    <div>
+      <span class="header-link header-link-active" (click)="returnToHotel()">{{hotelName}}</span>
+      <span class="header-spacer">|</span>
+      <span class="header-link">{{floorName}}</span>
+    </div>
   </div>
 </section>
 
@@ -40,7 +47,8 @@
       unavailable
     </div>
     <div *ngIf="room.thermostat != null" class="room-temp-slider custom-slider">
-      <ng5-slider [(value)]="room.thermostat.desired" [options]="thermostatSliderOptions" (userChangeStart)="sliderChangeBegin()" (userChangeEnd)="sliderChangeEnd()" (userChange)="thermostatSliderValueChange(room, $event)"></ng5-slider>
+      <ng5-slider [(value)]="room.thermostat.desired" [options]="thermostatSliderOptions" (userChangeStart)="sliderChangeBegin()"
+        (userChangeEnd)="sliderChangeEnd()" (userChange)="thermostatSliderValueChange(room, $event)"></ng5-slider>
     </div>
     <div class="room-device room-light">lights</div>
     <div *ngIf="room.light != null" class="room-desired room-light">
@@ -53,7 +61,8 @@
       unavailable
     </div>
     <div *ngIf="room.light != null" class="room-light-slider custom-slider">
-      <ng5-slider [(value)]="room.light.desired" [options]="lightSliderOptions" (userChangeStart)="sliderChangeBegin()" (userChangeEnd)="sliderChangeEnd()" (userChange)="lightSliderValueChange(room, $event)"></ng5-slider>
+      <ng5-slider [(value)]="room.light.desired" [options]="lightSliderOptions" (userChangeStart)="sliderChangeBegin()"
+        (userChangeEnd)="sliderChangeEnd()" (userChange)="lightSliderValueChange(room, $event)"></ng5-slider>
     </div>
   </div>
 </div>

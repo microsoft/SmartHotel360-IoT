@@ -16,6 +16,7 @@ import { AuthenticationGuard } from './common/authentication-guard';
 import { FacilityService } from './services/facility.service';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { Ng5SliderModule } from 'ng5-slider';
+import { HotelBrandComponent } from './hotel-brand/hotel-brand.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { Ng5SliderModule } from 'ng5-slider';
     HotelComponent,
     FloorComponent,
     ErrorComponent,
-    LoginComponent
+    LoginComponent,
+    HotelBrandComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
-import { IHotel } from '../services/models/IHotel';
-import { AdalService } from 'adal-angular4';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { ISpace } from '../services/models/ISpace';
 
 @Component({
   selector: 'app-home',
@@ -13,32 +12,31 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 export class HomeComponent implements OnInit {
 
   constructor(private router: Router,
-    private facilityService: FacilityService,
-    private spinnerService: Ng4LoadingSpinnerService
-  ) { }
+    private route: ActivatedRoute,
+    private facilityService: FacilityService) {
+  }
 
-  hotels = null;
+  tenantId: string;
+  hotelBrands: ISpace[] = null;
 
   ngOnInit() {
-    this.loadHotels();
-  }
-
-
-  loadHotels() {
-    this.spinnerService.show();
-    this.facilityService.getHotel().then((data: IHotel[]) => {
-      this.hotels = data.sort((a, b) => a.name.localeCompare(b.name));
-      this.spinnerService.hide();
+    this.route.params.subscribe(params => {
+      this.tenantId = params['tId'];
+      this.facilityService.executeWhenInitialized(this, this.loadHotelBrands);
     });
-
   }
 
-  chooseHotel(hotel) {
-    this.router.navigate(['/hotel', { id: hotel.id, index: this.hotels.indexOf(hotel) }]);
+
+  loadHotelBrands(self: HomeComponent) {
+    self.hotelBrands = self.facilityService.getChildSpaces(self.tenantId);
   }
 
-  getHotelImage(idx) {
-    const index = idx >= 2 ? 1 : idx;
-    return 'url(/assets/images/h' + index + '.jpg)';
+  chooseHotelBrand(hotelBrand: ISpace) {
+    this.router.navigate(['/hotelbrand', { tId: this.tenantId, hbId: hotelBrand.id }]);
+  }
+
+  getHotelBrandImage(idx) {
+    const index = idx >= 3 ? 3 : idx;
+    return 'url(/assets/images/hb' + index + '.jpg)';
   }
 }

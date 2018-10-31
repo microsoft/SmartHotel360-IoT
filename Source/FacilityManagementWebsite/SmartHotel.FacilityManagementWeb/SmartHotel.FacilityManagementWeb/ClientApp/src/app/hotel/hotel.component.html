@@ -1,8 +1,17 @@
 <section>
   <div class="header">
-    <span class="header-link header-link-active" (click)="returnToHome()">hotels</span>
-    <span class="header-spacer">|</span>
-    <span class="header-link">{{hotel?.name}}</span>
+    <span *ngIf="tenantId">
+      <span class="header-link header-link-active" (click)="returnToHome()">brands</span>
+      <span class="header-spacer">|</span>
+    </span>
+    <span *ngIf="hotelBrandId; else backNotSupported">
+      <span class="header-link header-link-active" (click)="returnToHotelBrand()">{{hotelBrandName}}</span>
+      <span class="header-spacer">|</span>
+      <span class="header-link">{{hotelName}}</span>
+    </span>
+    <ng-template #backNotSupported>
+      <span class="header-link">floors</span>
+    </ng-template>
   </div>
 </section>
 <div class="floors-top-row">
@@ -15,7 +24,7 @@
     </div>
   </div>
 </div>
-<div class="floors-dashboard" *ngIf="hotel !== null">
+<div class="floors-dashboard" *ngIf="floors !== null">
   <div class="floors-dash-1"><img src="/assets/images/floor-dash-1.jpg" /></div>
   <div class="floors-dash-1"><img src="/assets/images/floor-dash-2.jpg" /></div>
   <div class="floors-dash-2"><img src="/assets/images/floor-dash-3.jpg" /></div>

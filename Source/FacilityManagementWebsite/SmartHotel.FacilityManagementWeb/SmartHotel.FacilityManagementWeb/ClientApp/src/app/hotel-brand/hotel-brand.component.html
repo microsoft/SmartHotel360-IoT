@@ -1,0 +1,30 @@
+<section>
+  <div class="header">
+    <div *ngIf="tenantId; else backNotSupported">
+      <span class="header-link header-link-active" (click)="returnToHome()">brands</span>
+      <span class="header-spacer">|</span>
+      <span class="header-link">{{hotelBrandName}}</span>
+    </div>
+    <ng-template #backNotSupported>
+        <span class="header-link">hotels</span>
+    </ng-template>
+  </div>
+</section>
+
+<div class="hotels-top-row">
+  <div class="hotels">
+    <div *ngFor="let hotel of hotels; let i = index" class="hotel" (click)="chooseHotel(hotel)">
+      <div class="hotel-image" [style.background-image]="getHotelImage(i)"></div>
+      <div class="hotel-button">
+        {{hotel.name}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hotels-dashboard" *ngIf="hotels !== null">
+  <div class="hotels-dash-1"><img src="/assets/images/hotel-dash-1.jpg" /></div>
+  <div class="hotels-dash-2"><img src="/assets/images/hotel-dash-2.jpg" /></div>
+  <div class="hotels-dash-2"><img src="/assets/images/hotel-dash-3.jpg" /></div>
+  <div class="hotels-dash-1"><img src="/assets/images/hotel-dash-4.jpg" /></div>
+</div>

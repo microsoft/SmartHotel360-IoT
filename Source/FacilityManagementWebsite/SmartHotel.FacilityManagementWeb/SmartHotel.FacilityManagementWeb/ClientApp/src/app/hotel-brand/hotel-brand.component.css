@@ -1,0 +1,80 @@
+section {
+  margin: 4px 64px 0px 26px;
+}
+
+.hotels-top-row {
+  width: 1920px;
+}
+
+.hotels {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -2px 0 -2px 21px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 420px;
+}
+
+.hotel {
+  width: 616px;
+  height: 416px;
+  cursor: pointer;
+  position: relative;
+  margin: 4px 5px 0 5px;
+}
+
+.hotel-image {
+  background-color: #d4d4d4;
+  height: 416px;
+}
+
+.hotel-button {
+  background-color: #bc4c1b;
+  padding-left: 14px;
+  padding-right: 14px;
+  text-align: left;
+  height: 45px;
+  width: 100%;
+  color: white;
+  font-size: 19px;
+  line-height: 46px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+}
+
+.hotel-button:hover {
+  cursor: pointer;
+  background-color: #f39f7b;
+  transition: background-color .35s ease-in;
+}
+
+
+.hotels-dashboard {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 398px 500px 500px 398px;
+  grid-column-gap: 24px;
+  margin-left: 26px;
+  margin-right: 26px;
+}
+
+.hotels-dash-1 {
+  width: 398px;
+  height: 416px;
+  background-color: Highlight;
+}
+
+.hotels-dash-2 {
+  width: 500px;
+  height: 416px;
+  background-color: cadetblue;
+}
+
+img {
+  height: 100%;
+}
+
+_:-ms-lang(x), .hotels-dashboard {
+  margin-top: 7px;
+}

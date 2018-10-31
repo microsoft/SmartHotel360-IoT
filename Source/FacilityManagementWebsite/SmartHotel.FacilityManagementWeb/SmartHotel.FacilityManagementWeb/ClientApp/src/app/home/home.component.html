@@ -1,23 +1,23 @@
 <section>
   <div class="header">
-    <span class="header-link">hotels</span>
+    <span class="header-link">brands</span>
   </div>
 </section>
 
-<div class="hotels-top-row">
-  <div class="hotels">
-    <div *ngFor="let hotel of hotels; let i = index" class="hotel" (click)="chooseHotel(hotel)">
-      <div class="hotel-image" [style.background-image]="getHotelImage(i)"></div>
-      <div class="hotel-button">
-        {{hotel.name}}
+<div class="hotelbrands-top-row">
+  <div class="hotelbrands">
+    <div *ngFor="let hotelBrand of hotelBrands; let i = index" class="hotelbrand" (click)="chooseHotelBrand(hotelBrand)">
+      <div class="hotelbrand-image" [style.background-image]="getHotelBrandImage(i)"></div>
+      <div class="hotelbrand-button">
+        {{hotelBrand.name}}
       </div>
     </div>
   </div>
 </div>
 
-<div class="hotels-dashboard" *ngIf="hotels !== null">
-  <div class="hotels-dash-1"><img src="/assets/images/hotel-dash-1.jpg" /></div>
-  <div class="hotels-dash-2"><img src="/assets/images/hotel-dash-2.jpg" /></div>
-  <div class="hotels-dash-2"><img src="/assets/images/hotel-dash-3.jpg" /></div>
-  <div class="hotels-dash-1"><img src="/assets/images/hotel-dash-4.jpg" /></div>
+<div class="hotelbrands-dashboard" *ngIf="hotelBrands !== null">
+  <div class="hotelbrands-dash-1"><img src="/assets/images/hotel-dash-1.jpg" /></div>
+  <div class="hotelbrands-dash-2"><img src="/assets/images/hotel-dash-2.jpg" /></div>
+  <div class="hotelbrands-dash-2"><img src="/assets/images/hotel-dash-3.jpg" /></div>
+  <div class="hotelbrands-dash-1"><img src="/assets/images/hotel-dash-4.jpg" /></div>
 </div>
