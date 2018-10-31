@@ -18,12 +18,14 @@ namespace SmartHotel.Services.FacilityManagement
 	public class TopologyClient : ITopologyClient
 	{
 		private readonly Dictionary<int, string> _typesById = new Dictionary<int, string>();
+		private const string TenantTypeName = "Tenant";
 		private const string HotelBrandTypeName = "HotelBrand";
 		private const string HotelTypeName = "Venue";
 		private const string FloorTypeName = "Floor";
 		private const string RoomTypeName = "Room";
 		private readonly Dictionary<string, int> _typeIdsByName = new Dictionary<string, int>( StringComparer.OrdinalIgnoreCase )
 		{
+			{TenantTypeName, int.MinValue},
 			{HotelBrandTypeName, int.MinValue},
 			{HotelTypeName, int.MinValue},
 			{FloorTypeName, int.MinValue},
@@ -37,7 +39,9 @@ namespace SmartHotel.Services.FacilityManagement
 
 		private readonly string SpacesFilter = "includes=Parent";
 		private readonly string DevicesFilter = "includes=Sensors";
-		private readonly string TypesFilter = "names=HotelBrand;Venue;Floor;Room&categories=SpaceType";
+
+		private readonly string TypesFilter =
+			$"names={TenantTypeName};{HotelBrandTypeName};{HotelTypeName};{FloorTypeName};{RoomTypeName}&categories=SpaceType";
 
 		private readonly IHttpClientFactory _clientFactory;
 		private readonly IConfiguration _config;
@@ -60,35 +64,50 @@ namespace SmartHotel.Services.FacilityManagement
 			await GetAndUpdateTypeIds( httpClient );
 
 			var response = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}?{SpacesFilter}" );
-			dynamic topology = JsonConvert.DeserializeObject( response );
+			var topology = JsonConvert.DeserializeObject<ICollection<DigitalTwinsSpace>>( response );
 
+			Space tenantSpace = null;
 			Space hotelBrandSpace = null;
 			Space hotelSpace = null;
 			Space floorSpace = null;
 
 			var spacesByParentId = new Dictionary<string, List<Space>>();
-			foreach ( var entry in topology )
+			foreach ( DigitalTwinsSpace dtSpace in topology )
 			{
-				if ( _typesById.TryGetValue( entry.typeId, out string typeName ) )
+				if ( _typesById.TryGetValue( dtSpace.typeId, out string typeName ) )
 				{
 					var space = new Space
 					{
-						Id = entry.id,
-						Name = entry.name,
+						Id = dtSpace.id,
+						Name = dtSpace.name,
+						FriendlyName = dtSpace.friendlyName,
 						Type = typeName,
-						TypeId = entry.typeId,
-						ParentSpaceId = entry.parent != null ? entry.parent.id : null
+						TypeId = dtSpace.typeId,
+						ParentSpaceId = dtSpace.parentSpaceId ?? string.Empty
 					};
 
-					if ( string.Equals( HotelBrandTypeName, typeName, StringComparison.OrdinalIgnoreCase ) )
+					if ( tenantSpace == null && TenantTypeName.Equals( typeName, StringComparison.OrdinalIgnoreCase ) )
+					{
+						tenantSpace = space;
+					}
+					else if ( tenantSpace == null
+							 && hotelBrandSpace == null
+							 && HotelBrandTypeName.Equals( typeName, StringComparison.OrdinalIgnoreCase ) )
 					{
 						hotelBrandSpace = space;
 					}
-					else if ( string.Equals( HotelTypeName, typeName, StringComparison.OrdinalIgnoreCase ) )
+					else if ( tenantSpace == null
+							 && hotelBrandSpace == null
+							 && hotelSpace == null
+							 && HotelTypeName.Equals( typeName, StringComparison.OrdinalIgnoreCase ) )
 					{
 						hotelSpace = space;
 					}
-					else if ( string.Equals( FloorTypeName, typeName, StringComparison.OrdinalIgnoreCase ) )
+					else if ( tenantSpace == null
+							  && hotelBrandSpace == null
+							  && hotelSpace == null
+							  && floorSpace == null
+							  && FloorTypeName.Equals( typeName, StringComparison.OrdinalIgnoreCase ) )
 					{
 						floorSpace = space;
 					}
@@ -104,70 +123,86 @@ namespace SmartHotel.Services.FacilityManagement
 			}
 
 			var hierarchicalSpaces = new List<Space>();
-			Space highestLevelSpace = GetHighestLevelSpace( hotelBrandSpace, hotelSpace, floorSpace );
+			Space highestLevelSpace = GetHighestLevelSpace( tenantSpace, hotelBrandSpace, hotelSpace, floorSpace );
 			if ( highestLevelSpace != null )
 			{
 				string highestLevelParentSpaceId = highestLevelSpace.ParentSpaceId;
 				hierarchicalSpaces.AddRange( spacesByParentId[highestLevelParentSpaceId] );
-				ICollection<Space> roomSpaces = BuildSpaceHierarchyAndReturnRoomSpaces( hierarchicalSpaces, spacesByParentId );
-				IDictionary<string, Space> roomSpacesById = roomSpaces.ToDictionary( s => s.Id );
+				BuildSpaceHierarchyAndReturnRoomSpaces( hierarchicalSpaces, spacesByParentId );
+				//ICollection<Space> roomSpaces = 
+				//IDictionary<string, Space> roomSpacesById = roomSpaces.ToDictionary( s => s.Id );
 
 				// Devices
-				var deviceResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{DevicesPath}?{DevicesFilter}" );
-				dynamic devices = JsonConvert.DeserializeObject( deviceResponse );
+				//var deviceResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{DevicesPath}?{DevicesFilter}" );
+				//dynamic devices = JsonConvert.DeserializeObject( deviceResponse );
 
-				foreach ( var deviceEntry in devices )
-				{
-					Device device = new Device();
-					device.Id = deviceEntry.id;
-					device.Name = deviceEntry.name;
-					device.HardwareId = deviceEntry.hardwareId;
-					device.SpaceId = deviceEntry.spaceId;
+				//foreach ( var deviceEntry in devices )
+				//{
+				//	Device device = new Device();
+				//	device.Id = deviceEntry.id;
+				//	device.Name = deviceEntry.name;
+				//	device.HardwareId = deviceEntry.hardwareId;
+				//	device.SpaceId = deviceEntry.spaceId;
 
-					foreach ( var sensorEntry in deviceEntry.sensors )
-					{
-						Sensor sensor = new Sensor();
-						sensor.Id = sensorEntry.id;
-						sensor.SpaceId = sensorEntry.spaceId;
-						sensor.DataTypeId = sensorEntry.dataTypeId;
-						sensor.DeviceId = sensorEntry.deviceId;
+				//	foreach ( var sensorEntry in deviceEntry.sensors )
+				//	{
+				//		Sensor sensor = new Sensor();
+				//		sensor.Id = sensorEntry.id;
+				//		sensor.SpaceId = sensorEntry.spaceId;
+				//		sensor.DataTypeId = sensorEntry.dataTypeId;
+				//		sensor.DeviceId = sensorEntry.deviceId;
 
-						device.Sensors.Add( sensor );
-					}
+				//		device.Sensors.Add( sensor );
+				//	}
 
-					if ( roomSpacesById.TryGetValue( device.SpaceId, out Space roomSpace ) )
-					{
-						roomSpace.Devices.Add( device );
-					}
-				}
+				//	if ( roomSpacesById.TryGetValue( device.SpaceId, out Space roomSpace ) )
+				//	{
+				//		roomSpace.Devices.Add( device );
+				//	}
+				//}
+			}
+
+			if ( hierarchicalSpaces.Count == 1 && !FloorTypeName.Equals( hierarchicalSpaces[0].Type, StringComparison.OrdinalIgnoreCase ) )
+			{
+				// If there is only one root space, then ensuring we only send the child spaces to the client so it knows
+				// to start showing those children.
+				// TODO: remove the .Where statement. This is only there because of current testing
+				hierarchicalSpaces = hierarchicalSpaces[0].ChildSpaces
+					.Where( s => !TenantTypeName.Equals( s.Type, StringComparison.OrdinalIgnoreCase ) ).ToList();
 			}
 
 			return hierarchicalSpaces;
 		}
 
-		private static ICollection<Space> BuildSpaceHierarchyAndReturnRoomSpaces( List<Space> hierarchicalSpaces, Dictionary<string, List<Space>> allSpacesByParentId )
+		private static void BuildSpaceHierarchyAndReturnRoomSpaces( List<Space> hierarchicalSpaces, Dictionary<string, List<Space>> allSpacesByParentId )
 		{
-			var roomSpaces = new List<Space>();
+			//var roomSpaces = new List<Space>();
 			foreach ( Space parentSpace in hierarchicalSpaces )
 			{
 				if ( allSpacesByParentId.TryGetValue( parentSpace.Id, out List<Space> childSpaces ) )
 				{
 					parentSpace.ChildSpaces.AddRange( childSpaces );
-					ICollection<Space> result = BuildSpaceHierarchyAndReturnRoomSpaces( childSpaces, allSpacesByParentId );
-					roomSpaces.AddRange( result );
+					//ICollection<Space> result = 
+					BuildSpaceHierarchyAndReturnRoomSpaces( childSpaces, allSpacesByParentId );
+					//roomSpaces.AddRange( result );
 				}
 
-				if ( string.Equals( RoomTypeName, parentSpace.Type, StringComparison.OrdinalIgnoreCase ) )
-				{
-					roomSpaces.Add( parentSpace );
-				}
+				//if ( string.Equals( RoomTypeName, parentSpace.Type, StringComparison.OrdinalIgnoreCase ) )
+				//{
+				//	roomSpaces.Add( parentSpace );
+				//}
 			}
 
-			return roomSpaces;
+			//return roomSpaces;
 		}
 
-		private Space GetHighestLevelSpace( Space hotelBrandSpace, Space hotelSpace, Space floorSpace )
+		private Space GetHighestLevelSpace( Space tenantSpace, Space hotelBrandSpace, Space hotelSpace, Space floorSpace )
 		{
+			if ( tenantSpace != null )
+			{
+				return tenantSpace;
+			}
+
 			if ( hotelBrandSpace != null )
 			{
 				return hotelBrandSpace;
