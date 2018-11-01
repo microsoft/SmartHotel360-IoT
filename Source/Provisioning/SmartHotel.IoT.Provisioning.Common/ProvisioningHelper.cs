@@ -9,18 +9,20 @@ namespace SmartHotel.IoT.Provisioning.Common
 {
     public static class ProvisioningHelper
     {
-	    public static ProvisioningDescription LoadSmartHotelProvisioning()
+	    public static ProvisioningDescription LoadSmartHotelProvisioning(string provisioningFilepath)
 	    {
 		    var yamlDeserializer = new Deserializer();
-		    string content = File.ReadAllText( Path.Combine( "Resources", "SmartHotel_Site_Provisioning.yaml" ) );
+		    string content = File.ReadAllText(provisioningFilepath);
 		    var provisioningDescription = yamlDeserializer.Deserialize<ProvisioningDescription>( content );
+
+            string directoryPath = Path.GetDirectoryName(provisioningFilepath);
 
             foreach (SpaceDescription rootDescription in provisioningDescription.spaces)
             {
                 var referenceSpaces = FindAllReferenceSpaces(rootDescription);
                 foreach (var referenceSpace in referenceSpaces)
                 {
-                    LoadReferenceProvisionings(referenceSpace);
+                    LoadReferenceProvisionings(referenceSpace, directoryPath);
                 }
             }
 
@@ -46,7 +48,7 @@ namespace SmartHotel.IoT.Provisioning.Common
             return referenceSpaces;
         }
 
-        public static void LoadReferenceProvisionings(SpaceDescription spaceDescription)
+        public static void LoadReferenceProvisionings(SpaceDescription spaceDescription, string directoryPath)
         {
             var referenceSpaces = new List<SpaceDescription>();
 
@@ -57,7 +59,9 @@ namespace SmartHotel.IoT.Provisioning.Common
                     throw new Exception($"SpaceReference filename expected.");
                 }
 
-                var referenceSpace = LoadReferenceProvisioning(spaceReferenceDescription.filename);
+                string filepath = Path.Combine(directoryPath, spaceReferenceDescription.filename);
+
+                var referenceSpace = LoadReferenceProvisioning(filepath);
 
                 referenceSpaces.Add(referenceSpace);
             }

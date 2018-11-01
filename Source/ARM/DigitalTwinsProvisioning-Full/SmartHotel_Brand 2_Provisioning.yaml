@@ -1,0 +1,655 @@
+name: Brand 2
+description: SmartHotel360 Brand 2
+friendlyName: Brand 2
+type: HotelBrand
+users:
+- Brand 2 Manager
+spaces:
+- name: Hotel SH 1
+  description: SmartHotel360 hotel Hotel SH 1
+  friendlyName: Hotel SH 1
+  type: Hotel
+  users:
+  - Hotel SH 1 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    spaces:
+    - name: QueenRoom 101
+      description: QueenRoom 101
+      friendlyName: QueenRoom 101
+      type: QueenRoom
+    - name: QueenRoom 102
+      description: QueenRoom 102
+      friendlyName: QueenRoom 102
+      type: QueenRoom
+    - name: QueenRoom 103
+      description: QueenRoom 103
+      friendlyName: QueenRoom 103
+      type: QueenRoom
+    - name: QueenRoom 104
+      description: QueenRoom 104
+      friendlyName: QueenRoom 104
+      type: QueenRoom
+    - name: KingRoom 105
+      description: KingRoom 105
+      friendlyName: KingRoom 105
+      type: KingRoom
+    - name: KingRoom 106
+      description: KingRoom 106
+      friendlyName: KingRoom 106
+      type: KingRoom
+    - name: KingRoom 107
+      description: KingRoom 107
+      friendlyName: KingRoom 107
+      type: KingRoom
+    - name: KingRoom 108
+      description: KingRoom 108
+      friendlyName: KingRoom 108
+      type: KingRoom
+    - name: Suite 109
+      description: Suite 109
+      friendlyName: Suite 109
+      type: Suite
+    - name: Suite 110
+      description: Suite 110
+      friendlyName: Suite 110
+      type: Suite
+    - name: Gym 111
+      description: Gym 111
+      friendlyName: Gym 111
+      type: Gym
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    spaces:
+    - name: QueenRoom 201
+      description: QueenRoom 201
+      friendlyName: QueenRoom 201
+      type: QueenRoom
+    - name: QueenRoom 202
+      description: QueenRoom 202
+      friendlyName: QueenRoom 202
+      type: QueenRoom
+    - name: QueenRoom 203
+      description: QueenRoom 203
+      friendlyName: QueenRoom 203
+      type: QueenRoom
+    - name: QueenRoom 204
+      description: QueenRoom 204
+      friendlyName: QueenRoom 204
+      type: QueenRoom
+    - name: KingRoom 205
+      description: KingRoom 205
+      friendlyName: KingRoom 205
+      type: KingRoom
+    - name: KingRoom 206
+      description: KingRoom 206
+      friendlyName: KingRoom 206
+      type: KingRoom
+    - name: KingRoom 207
+      description: KingRoom 207
+      friendlyName: KingRoom 207
+      type: KingRoom
+    - name: KingRoom 208
+      description: KingRoom 208
+      friendlyName: KingRoom 208
+      type: KingRoom
+    - name: Suite 209
+      description: Suite 209
+      friendlyName: Suite 209
+      type: Suite
+    - name: Suite 210
+      description: Suite 210
+      friendlyName: Suite 210
+      type: Suite
+    - name: Ballroom 211
+      description: Ballroom 211
+      friendlyName: Ballroom 211
+      type: Ballroom
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    spaces:
+    - name: QueenRoom 301
+      description: QueenRoom 301
+      friendlyName: QueenRoom 301
+      type: QueenRoom
+    - name: QueenRoom 302
+      description: QueenRoom 302
+      friendlyName: QueenRoom 302
+      type: QueenRoom
+    - name: QueenRoom 303
+      description: QueenRoom 303
+      friendlyName: QueenRoom 303
+      type: QueenRoom
+    - name: QueenRoom 304
+      description: QueenRoom 304
+      friendlyName: QueenRoom 304
+      type: QueenRoom
+    - name: KingRoom 305
+      description: KingRoom 305
+      friendlyName: KingRoom 305
+      type: KingRoom
+    - name: KingRoom 306
+      description: KingRoom 306
+      friendlyName: KingRoom 306
+      type: KingRoom
+    - name: KingRoom 307
+      description: KingRoom 307
+      friendlyName: KingRoom 307
+      type: KingRoom
+    - name: KingRoom 308
+      description: KingRoom 308
+      friendlyName: KingRoom 308
+      type: KingRoom
+    - name: Suite 309
+      description: Suite 309
+      friendlyName: Suite 309
+      type: Suite
+    - name: Suite 310
+      description: Suite 310
+      friendlyName: Suite 310
+      type: Suite
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    spaces:
+    - name: QueenRoom 401
+      description: QueenRoom 401
+      friendlyName: QueenRoom 401
+      type: QueenRoom
+    - name: QueenRoom 402
+      description: QueenRoom 402
+      friendlyName: QueenRoom 402
+      type: QueenRoom
+    - name: QueenRoom 403
+      description: QueenRoom 403
+      friendlyName: QueenRoom 403
+      type: QueenRoom
+    - name: QueenRoom 404
+      description: QueenRoom 404
+      friendlyName: QueenRoom 404
+      type: QueenRoom
+    - name: KingRoom 405
+      description: KingRoom 405
+      friendlyName: KingRoom 405
+      type: KingRoom
+    - name: KingRoom 406
+      description: KingRoom 406
+      friendlyName: KingRoom 406
+      type: KingRoom
+    - name: KingRoom 407
+      description: KingRoom 407
+      friendlyName: KingRoom 407
+      type: KingRoom
+    - name: KingRoom 408
+      description: KingRoom 408
+      friendlyName: KingRoom 408
+      type: KingRoom
+    - name: Suite 409
+      description: Suite 409
+      friendlyName: Suite 409
+      type: Suite
+    - name: Suite 410
+      description: Suite 410
+      friendlyName: Suite 410
+      type: Suite
+  - name: VIPFloor 05
+    description: VIPFloor 5
+    friendlyName: VIPFloor 5
+    type: VIPFloor
+    spaces:
+    - name: Suite 501
+      description: Suite 501
+      friendlyName: Suite 501
+      type: Suite
+    - name: Suite 502
+      description: Suite 502
+      friendlyName: Suite 502
+      type: Suite
+    - name: Suite 503
+      description: Suite 503
+      friendlyName: Suite 503
+      type: Suite
+    - name: VIPSuite 504
+      description: VIPSuite 504
+      friendlyName: VIPSuite 504
+      type: VIPSuite
+- name: Hotel SH 2
+  description: SmartHotel360 hotel Hotel SH 2
+  friendlyName: Hotel SH 2
+  type: Hotel
+  users:
+  - Hotel SH 2 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    spaces:
+    - name: QueenRoom 101
+      description: QueenRoom 101
+      friendlyName: QueenRoom 101
+      type: QueenRoom
+    - name: QueenRoom 102
+      description: QueenRoom 102
+      friendlyName: QueenRoom 102
+      type: QueenRoom
+    - name: QueenRoom 103
+      description: QueenRoom 103
+      friendlyName: QueenRoom 103
+      type: QueenRoom
+    - name: QueenRoom 104
+      description: QueenRoom 104
+      friendlyName: QueenRoom 104
+      type: QueenRoom
+    - name: KingRoom 105
+      description: KingRoom 105
+      friendlyName: KingRoom 105
+      type: KingRoom
+    - name: KingRoom 106
+      description: KingRoom 106
+      friendlyName: KingRoom 106
+      type: KingRoom
+    - name: KingRoom 107
+      description: KingRoom 107
+      friendlyName: KingRoom 107
+      type: KingRoom
+    - name: KingRoom 108
+      description: KingRoom 108
+      friendlyName: KingRoom 108
+      type: KingRoom
+    - name: Suite 109
+      description: Suite 109
+      friendlyName: Suite 109
+      type: Suite
+    - name: Suite 110
+      description: Suite 110
+      friendlyName: Suite 110
+      type: Suite
+    - name: Gym 111
+      description: Gym 111
+      friendlyName: Gym 111
+      type: Gym
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    spaces:
+    - name: QueenRoom 201
+      description: QueenRoom 201
+      friendlyName: QueenRoom 201
+      type: QueenRoom
+    - name: QueenRoom 202
+      description: QueenRoom 202
+      friendlyName: QueenRoom 202
+      type: QueenRoom
+    - name: QueenRoom 203
+      description: QueenRoom 203
+      friendlyName: QueenRoom 203
+      type: QueenRoom
+    - name: QueenRoom 204
+      description: QueenRoom 204
+      friendlyName: QueenRoom 204
+      type: QueenRoom
+    - name: KingRoom 205
+      description: KingRoom 205
+      friendlyName: KingRoom 205
+      type: KingRoom
+    - name: KingRoom 206
+      description: KingRoom 206
+      friendlyName: KingRoom 206
+      type: KingRoom
+    - name: KingRoom 207
+      description: KingRoom 207
+      friendlyName: KingRoom 207
+      type: KingRoom
+    - name: KingRoom 208
+      description: KingRoom 208
+      friendlyName: KingRoom 208
+      type: KingRoom
+    - name: Suite 209
+      description: Suite 209
+      friendlyName: Suite 209
+      type: Suite
+    - name: Suite 210
+      description: Suite 210
+      friendlyName: Suite 210
+      type: Suite
+    - name: Ballroom 211
+      description: Ballroom 211
+      friendlyName: Ballroom 211
+      type: Ballroom
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    spaces:
+    - name: QueenRoom 301
+      description: QueenRoom 301
+      friendlyName: QueenRoom 301
+      type: QueenRoom
+    - name: QueenRoom 302
+      description: QueenRoom 302
+      friendlyName: QueenRoom 302
+      type: QueenRoom
+    - name: QueenRoom 303
+      description: QueenRoom 303
+      friendlyName: QueenRoom 303
+      type: QueenRoom
+    - name: QueenRoom 304
+      description: QueenRoom 304
+      friendlyName: QueenRoom 304
+      type: QueenRoom
+    - name: KingRoom 305
+      description: KingRoom 305
+      friendlyName: KingRoom 305
+      type: KingRoom
+    - name: KingRoom 306
+      description: KingRoom 306
+      friendlyName: KingRoom 306
+      type: KingRoom
+    - name: KingRoom 307
+      description: KingRoom 307
+      friendlyName: KingRoom 307
+      type: KingRoom
+    - name: KingRoom 308
+      description: KingRoom 308
+      friendlyName: KingRoom 308
+      type: KingRoom
+    - name: Suite 309
+      description: Suite 309
+      friendlyName: Suite 309
+      type: Suite
+    - name: Suite 310
+      description: Suite 310
+      friendlyName: Suite 310
+      type: Suite
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    spaces:
+    - name: QueenRoom 401
+      description: QueenRoom 401
+      friendlyName: QueenRoom 401
+      type: QueenRoom
+    - name: QueenRoom 402
+      description: QueenRoom 402
+      friendlyName: QueenRoom 402
+      type: QueenRoom
+    - name: QueenRoom 403
+      description: QueenRoom 403
+      friendlyName: QueenRoom 403
+      type: QueenRoom
+    - name: QueenRoom 404
+      description: QueenRoom 404
+      friendlyName: QueenRoom 404
+      type: QueenRoom
+    - name: KingRoom 405
+      description: KingRoom 405
+      friendlyName: KingRoom 405
+      type: KingRoom
+    - name: KingRoom 406
+      description: KingRoom 406
+      friendlyName: KingRoom 406
+      type: KingRoom
+    - name: KingRoom 407
+      description: KingRoom 407
+      friendlyName: KingRoom 407
+      type: KingRoom
+    - name: KingRoom 408
+      description: KingRoom 408
+      friendlyName: KingRoom 408
+      type: KingRoom
+    - name: Suite 409
+      description: Suite 409
+      friendlyName: Suite 409
+      type: Suite
+    - name: Suite 410
+      description: Suite 410
+      friendlyName: Suite 410
+      type: Suite
+  - name: VIPFloor 05
+    description: VIPFloor 5
+    friendlyName: VIPFloor 5
+    type: VIPFloor
+    spaces:
+    - name: Suite 501
+      description: Suite 501
+      friendlyName: Suite 501
+      type: Suite
+    - name: Suite 502
+      description: Suite 502
+      friendlyName: Suite 502
+      type: Suite
+    - name: Suite 503
+      description: Suite 503
+      friendlyName: Suite 503
+      type: Suite
+    - name: VIPSuite 504
+      description: VIPSuite 504
+      friendlyName: VIPSuite 504
+      type: VIPSuite
+- name: Hotel SL 1
+  description: SmartHotel360 hotel Hotel SL 1
+  friendlyName: Hotel SL 1
+  type: Hotel
+  users:
+  - Hotel SL 1 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    spaces:
+    - name: QueenRoom 101
+      description: QueenRoom 101
+      friendlyName: QueenRoom 101
+      type: QueenRoom
+    - name: QueenRoom 102
+      description: QueenRoom 102
+      friendlyName: QueenRoom 102
+      type: QueenRoom
+    - name: QueenRoom 103
+      description: QueenRoom 103
+      friendlyName: QueenRoom 103
+      type: QueenRoom
+    - name: QueenRoom 104
+      description: QueenRoom 104
+      friendlyName: QueenRoom 104
+      type: QueenRoom
+    - name: KingRoom 105
+      description: KingRoom 105
+      friendlyName: KingRoom 105
+      type: KingRoom
+    - name: KingRoom 106
+      description: KingRoom 106
+      friendlyName: KingRoom 106
+      type: KingRoom
+    - name: KingRoom 107
+      description: KingRoom 107
+      friendlyName: KingRoom 107
+      type: KingRoom
+    - name: KingRoom 108
+      description: KingRoom 108
+      friendlyName: KingRoom 108
+      type: KingRoom
+    - name: Suite 109
+      description: Suite 109
+      friendlyName: Suite 109
+      type: Suite
+    - name: Suite 110
+      description: Suite 110
+      friendlyName: Suite 110
+      type: Suite
+    - name: Gym 111
+      description: Gym 111
+      friendlyName: Gym 111
+      type: Gym
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    spaces:
+    - name: QueenRoom 201
+      description: QueenRoom 201
+      friendlyName: QueenRoom 201
+      type: QueenRoom
+    - name: QueenRoom 202
+      description: QueenRoom 202
+      friendlyName: QueenRoom 202
+      type: QueenRoom
+    - name: QueenRoom 203
+      description: QueenRoom 203
+      friendlyName: QueenRoom 203
+      type: QueenRoom
+    - name: QueenRoom 204
+      description: QueenRoom 204
+      friendlyName: QueenRoom 204
+      type: QueenRoom
+    - name: KingRoom 205
+      description: KingRoom 205
+      friendlyName: KingRoom 205
+      type: KingRoom
+    - name: KingRoom 206
+      description: KingRoom 206
+      friendlyName: KingRoom 206
+      type: KingRoom
+    - name: KingRoom 207
+      description: KingRoom 207
+      friendlyName: KingRoom 207
+      type: KingRoom
+    - name: KingRoom 208
+      description: KingRoom 208
+      friendlyName: KingRoom 208
+      type: KingRoom
+    - name: Suite 209
+      description: Suite 209
+      friendlyName: Suite 209
+      type: Suite
+    - name: Suite 210
+      description: Suite 210
+      friendlyName: Suite 210
+      type: Suite
+    - name: Ballroom 211
+      description: Ballroom 211
+      friendlyName: Ballroom 211
+      type: Ballroom
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    spaces:
+    - name: QueenRoom 301
+      description: QueenRoom 301
+      friendlyName: QueenRoom 301
+      type: QueenRoom
+    - name: QueenRoom 302
+      description: QueenRoom 302
+      friendlyName: QueenRoom 302
+      type: QueenRoom
+    - name: QueenRoom 303
+      description: QueenRoom 303
+      friendlyName: QueenRoom 303
+      type: QueenRoom
+    - name: QueenRoom 304
+      description: QueenRoom 304
+      friendlyName: QueenRoom 304
+      type: QueenRoom
+    - name: KingRoom 305
+      description: KingRoom 305
+      friendlyName: KingRoom 305
+      type: KingRoom
+    - name: KingRoom 306
+      description: KingRoom 306
+      friendlyName: KingRoom 306
+      type: KingRoom
+    - name: KingRoom 307
+      description: KingRoom 307
+      friendlyName: KingRoom 307
+      type: KingRoom
+    - name: KingRoom 308
+      description: KingRoom 308
+      friendlyName: KingRoom 308
+      type: KingRoom
+    - name: Suite 309
+      description: Suite 309
+      friendlyName: Suite 309
+      type: Suite
+    - name: Suite 310
+      description: Suite 310
+      friendlyName: Suite 310
+      type: Suite
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    spaces:
+    - name: QueenRoom 401
+      description: QueenRoom 401
+      friendlyName: QueenRoom 401
+      type: QueenRoom
+    - name: QueenRoom 402
+      description: QueenRoom 402
+      friendlyName: QueenRoom 402
+      type: QueenRoom
+    - name: QueenRoom 403
+      description: QueenRoom 403
+      friendlyName: QueenRoom 403
+      type: QueenRoom
+    - name: QueenRoom 404
+      description: QueenRoom 404
+      friendlyName: QueenRoom 404
+      type: QueenRoom
+    - name: KingRoom 405
+      description: KingRoom 405
+      friendlyName: KingRoom 405
+      type: KingRoom
+    - name: KingRoom 406
+      description: KingRoom 406
+      friendlyName: KingRoom 406
+      type: KingRoom
+    - name: KingRoom 407
+      description: KingRoom 407
+      friendlyName: KingRoom 407
+      type: KingRoom
+    - name: KingRoom 408
+      description: KingRoom 408
+      friendlyName: KingRoom 408
+      type: KingRoom
+    - name: Suite 409
+      description: Suite 409
+      friendlyName: Suite 409
+      type: Suite
+    - name: Suite 410
+      description: Suite 410
+      friendlyName: Suite 410
+      type: Suite
+  - name: VIPFloor 05
+    description: VIPFloor 5
+    friendlyName: VIPFloor 5
+    type: VIPFloor
+    spaces:
+    - name: Suite 501
+      description: Suite 501
+      friendlyName: Suite 501
+      type: Suite
+    - name: Suite 502
+      description: Suite 502
+      friendlyName: Suite 502
+      type: Suite
+    - name: Suite 503
+      description: Suite 503
+      friendlyName: Suite 503
+      type: Suite
+    - name: VIPSuite 504
+      description: VIPSuite 504
+      friendlyName: VIPSuite 504
+      type: VIPSuite

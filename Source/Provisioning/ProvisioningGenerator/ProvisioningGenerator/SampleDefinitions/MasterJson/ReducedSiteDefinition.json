@@ -1,0 +1,152 @@
+{
+  "HotelTypes": [
+    {
+      "Name": "H",
+      "TotalNumberFloors": 10,
+      "NumberVipFloors": 2,
+      "NumberRoomsPerRegularFloor": 20,
+      "NumberRoomsPerVipFloor": 10,
+      "IncludeGym": true,
+      "IncludeBallroom": true
+    },
+    {
+      "Name": "L",
+      "TotalNumberFloors": 10,
+      "NumberVipFloors": 2,
+      "NumberRoomsPerRegularFloor": 15,
+      "NumberRoomsPerVipFloor": 8,
+      "IncludeGym": true,
+      "IncludeBallroom": true
+    },
+    {
+      "Name": "SH",
+      "TotalNumberFloors": 5,
+      "NumberVipFloors": 1,
+      "NumberRoomsPerRegularFloor": 10,
+      "NumberRoomsPerVipFloor": 4,
+      "IncludeGym": true,
+      "IncludeBallroom": true
+    },
+    {
+      "Name": "SL",
+      "TotalNumberFloors": 5,
+      "NumberVipFloors": 1,
+      "NumberRoomsPerRegularFloor": 10,
+      "NumberRoomsPerVipFloor": 4,
+      "IncludeGym": true,
+      "IncludeBallroom": true
+    }
+  ],
+  "Brands": [
+    {
+      "Name": "Brand 1",
+      "Hotels": [
+        {
+          "Name": "Hotel H 1",
+          "Type": "H",
+          "RegularFloorEmployeeUser": "Employee",
+          "AddDevices": true
+        },
+        {
+          "Name": "Hotel L 1",
+          "Type": "L",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        },
+        {
+          "Name": "Hotel SH 1",
+          "Type": "SH",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        },
+        {
+          "Name": "Hotel SH 2",
+          "Type": "SH",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        },
+        {
+          "Name": "Hotel SL 1",
+          "Type": "SL",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        },
+        {
+          "Name": "Hotel SL 2",
+          "Type": "SL",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        }
+      ]
+    },
+    {
+      "Name": "Brand 2",
+      "Hotels": [
+        {
+          "Name": "Hotel SH 1",
+          "Type": "SH",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        },
+        {
+          "Name": "Hotel SH 2",
+          "Type": "SH",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        },
+        {
+          "Name": "Hotel SL 1",
+          "Type": "SL",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        }
+      ]
+    },
+    {
+      "Name": "Brand 3",
+      "Hotels": [
+        {
+          "Name": "Hotel SH 1",
+          "Type": "SH",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        },
+        {
+          "Name": "Hotel SL 1",
+          "Type": "SL",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        },
+        {
+          "Name": "Hotel SL 2",
+          "Type": "SL",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        }
+      ]
+    },
+    {
+      "Name": "Brand 4",
+      "Hotels": [
+        {
+          "Name": "Hotel SH 1",
+          "Type": "SH",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        },
+        {
+          "Name": "Hotel SH 2",
+          "Type": "SH",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        },
+        {
+          "Name": "Hotel SL 1",
+          "Type": "SL",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        }
+      ]
+    }
+  ]
+}

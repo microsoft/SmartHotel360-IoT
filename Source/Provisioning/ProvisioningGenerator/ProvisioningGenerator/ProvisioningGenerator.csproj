@@ -64,9 +64,23 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="SampleDefinitions\DigitalTwinsProvisioning-Full\SmartHotel_Brand 1_Provisioning.yaml" />
+    <None Include="SampleDefinitions\DigitalTwinsProvisioning-Full\SmartHotel_Brand 2_Provisioning.yaml" />
+    <None Include="SampleDefinitions\DigitalTwinsProvisioning-Full\SmartHotel_Brand 3_Provisioning.yaml" />
+    <None Include="SampleDefinitions\DigitalTwinsProvisioning-Full\SmartHotel_Brand 4_Provisioning.yaml" />
+    <None Include="SampleDefinitions\DigitalTwinsProvisioning-Full\SmartHotel_Site_Provisioning.yaml" />
+    <None Include="SampleDefinitions\MasterJson\FullSiteDefinition.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SampleDefinitions\MasterJson\ReducedSiteDefinition.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SampleDefinitions\DigitalTwinsProvisioning-Demo\SmartHotel_Brand 1_Provisioning.yaml" />
+    <None Include="SampleDefinitions\DigitalTwinsProvisioning-Demo\SmartHotel_Brand 2_Provisioning.yaml" />
+    <None Include="SampleDefinitions\DigitalTwinsProvisioning-Demo\SmartHotel_Brand 3_Provisioning.yaml" />
+    <None Include="SampleDefinitions\DigitalTwinsProvisioning-Demo\SmartHotel_Brand 4_Provisioning.yaml" />
+    <None Include="SampleDefinitions\DigitalTwinsProvisioning-Demo\SmartHotel_Site_Provisioning.yaml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SampleDefinition\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,5193 @@
+name: Brand 1
+description: SmartHotel360 Brand 1
+friendlyName: Brand 1
+type: HotelBrand
+users:
+- Brand 1 Manager
+spaces:
+- name: Hotel H 1
+  description: SmartHotel360 hotel Hotel H 1
+  friendlyName: Hotel H 1
+  type: Hotel
+  users:
+  - Hotel H 1 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    users:
+    - Hotel H 1 Employee
+    spaces:
+    - name: QueenRoom 101
+      description: QueenRoom 101
+      friendlyName: QueenRoom 101
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_101_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_101_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_101_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 102
+      description: QueenRoom 102
+      friendlyName: QueenRoom 102
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_102_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_102_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_102_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 103
+      description: QueenRoom 103
+      friendlyName: QueenRoom 103
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_103_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_103_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_103_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 104
+      description: QueenRoom 104
+      friendlyName: QueenRoom 104
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_104_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_104_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_104_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 105
+      description: QueenRoom 105
+      friendlyName: QueenRoom 105
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_105_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_105_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_105_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 106
+      description: QueenRoom 106
+      friendlyName: QueenRoom 106
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_106_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_106_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_106_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 107
+      description: QueenRoom 107
+      friendlyName: QueenRoom 107
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_107_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_107_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_107_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 108
+      description: KingRoom 108
+      friendlyName: KingRoom 108
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_108_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_108_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_108_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 109
+      description: KingRoom 109
+      friendlyName: KingRoom 109
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_109_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_109_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_109_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 110
+      description: KingRoom 110
+      friendlyName: KingRoom 110
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_110_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_110_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_110_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 111
+      description: KingRoom 111
+      friendlyName: KingRoom 111
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_111_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_111_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_111_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 112
+      description: KingRoom 112
+      friendlyName: KingRoom 112
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_112_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_112_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_112_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 113
+      description: KingRoom 113
+      friendlyName: KingRoom 113
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_113_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_113_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_113_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 114
+      description: KingRoom 114
+      friendlyName: KingRoom 114
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_114_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_114_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_114_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 115
+      description: Suite 115
+      friendlyName: Suite 115
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_115_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_115_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_115_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 116
+      description: Suite 116
+      friendlyName: Suite 116
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_116_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_116_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_116_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 117
+      description: Suite 117
+      friendlyName: Suite 117
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_117_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_117_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_117_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 118
+      description: Suite 118
+      friendlyName: Suite 118
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_118_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_118_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_118_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 119
+      description: Suite 119
+      friendlyName: Suite 119
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_119_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_119_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_119_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 120
+      description: Suite 120
+      friendlyName: Suite 120
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_120_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_120_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_120_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Gym 121
+      description: Gym 121
+      friendlyName: Gym 121
+      type: Gym
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_121_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_121_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_121_L
+        sensors:
+        - dataType: Light
+          type: Classic
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    users:
+    - Hotel H 1 Employee
+    spaces:
+    - name: QueenRoom 201
+      description: QueenRoom 201
+      friendlyName: QueenRoom 201
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_201_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_201_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_201_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 202
+      description: QueenRoom 202
+      friendlyName: QueenRoom 202
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_202_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_202_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_202_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 203
+      description: QueenRoom 203
+      friendlyName: QueenRoom 203
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_203_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_203_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_203_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 204
+      description: QueenRoom 204
+      friendlyName: QueenRoom 204
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_204_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_204_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_204_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 205
+      description: QueenRoom 205
+      friendlyName: QueenRoom 205
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_205_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_205_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_205_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 206
+      description: QueenRoom 206
+      friendlyName: QueenRoom 206
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_206_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_206_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_206_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 207
+      description: QueenRoom 207
+      friendlyName: QueenRoom 207
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_207_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_207_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_207_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 208
+      description: KingRoom 208
+      friendlyName: KingRoom 208
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_208_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_208_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_208_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 209
+      description: KingRoom 209
+      friendlyName: KingRoom 209
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_209_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_209_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_209_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 210
+      description: KingRoom 210
+      friendlyName: KingRoom 210
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_210_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_210_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_210_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 211
+      description: KingRoom 211
+      friendlyName: KingRoom 211
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_211_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_211_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_211_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 212
+      description: KingRoom 212
+      friendlyName: KingRoom 212
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_212_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_212_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_212_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 213
+      description: KingRoom 213
+      friendlyName: KingRoom 213
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_213_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_213_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_213_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 214
+      description: KingRoom 214
+      friendlyName: KingRoom 214
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_214_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_214_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_214_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 215
+      description: Suite 215
+      friendlyName: Suite 215
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_215_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_215_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_215_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 216
+      description: Suite 216
+      friendlyName: Suite 216
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_216_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_216_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_216_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 217
+      description: Suite 217
+      friendlyName: Suite 217
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_217_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_217_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_217_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 218
+      description: Suite 218
+      friendlyName: Suite 218
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_218_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_218_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_218_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 219
+      description: Suite 219
+      friendlyName: Suite 219
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_219_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_219_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_219_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 220
+      description: Suite 220
+      friendlyName: Suite 220
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_220_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_220_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_220_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Ballroom 221
+      description: Ballroom 221
+      friendlyName: Ballroom 221
+      type: Ballroom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_221_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_221_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_221_L
+        sensors:
+        - dataType: Light
+          type: Classic
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    users:
+    - Hotel H 1 Employee
+    spaces:
+    - name: QueenRoom 301
+      description: QueenRoom 301
+      friendlyName: QueenRoom 301
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_301_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_301_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_301_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 302
+      description: QueenRoom 302
+      friendlyName: QueenRoom 302
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_302_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_302_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_302_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 303
+      description: QueenRoom 303
+      friendlyName: QueenRoom 303
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_303_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_303_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_303_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 304
+      description: QueenRoom 304
+      friendlyName: QueenRoom 304
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_304_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_304_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_304_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 305
+      description: QueenRoom 305
+      friendlyName: QueenRoom 305
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_305_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_305_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_305_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 306
+      description: QueenRoom 306
+      friendlyName: QueenRoom 306
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_306_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_306_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_306_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 307
+      description: QueenRoom 307
+      friendlyName: QueenRoom 307
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_307_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_307_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_307_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 308
+      description: KingRoom 308
+      friendlyName: KingRoom 308
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_308_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_308_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_308_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 309
+      description: KingRoom 309
+      friendlyName: KingRoom 309
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_309_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_309_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_309_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 310
+      description: KingRoom 310
+      friendlyName: KingRoom 310
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_310_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_310_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_310_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 311
+      description: KingRoom 311
+      friendlyName: KingRoom 311
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_311_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_311_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_311_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 312
+      description: KingRoom 312
+      friendlyName: KingRoom 312
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_312_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_312_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_312_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 313
+      description: KingRoom 313
+      friendlyName: KingRoom 313
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_313_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_313_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_313_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 314
+      description: KingRoom 314
+      friendlyName: KingRoom 314
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_314_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_314_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_314_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 315
+      description: Suite 315
+      friendlyName: Suite 315
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_315_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_315_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_315_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 316
+      description: Suite 316
+      friendlyName: Suite 316
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_316_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_316_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_316_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 317
+      description: Suite 317
+      friendlyName: Suite 317
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_317_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_317_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_317_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 318
+      description: Suite 318
+      friendlyName: Suite 318
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_318_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_318_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_318_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 319
+      description: Suite 319
+      friendlyName: Suite 319
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_319_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_319_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_319_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 320
+      description: Suite 320
+      friendlyName: Suite 320
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_320_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_320_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_320_L
+        sensors:
+        - dataType: Light
+          type: Classic
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    users:
+    - Hotel H 1 Employee
+    spaces:
+    - name: QueenRoom 401
+      description: QueenRoom 401
+      friendlyName: QueenRoom 401
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_401_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_401_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_401_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 402
+      description: QueenRoom 402
+      friendlyName: QueenRoom 402
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_402_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_402_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_402_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 403
+      description: QueenRoom 403
+      friendlyName: QueenRoom 403
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_403_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_403_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_403_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 404
+      description: QueenRoom 404
+      friendlyName: QueenRoom 404
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_404_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_404_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_404_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 405
+      description: QueenRoom 405
+      friendlyName: QueenRoom 405
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_405_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_405_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_405_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 406
+      description: QueenRoom 406
+      friendlyName: QueenRoom 406
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_406_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_406_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_406_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 407
+      description: QueenRoom 407
+      friendlyName: QueenRoom 407
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_407_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_407_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_407_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 408
+      description: KingRoom 408
+      friendlyName: KingRoom 408
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_408_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_408_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_408_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 409
+      description: KingRoom 409
+      friendlyName: KingRoom 409
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_409_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_409_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_409_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 410
+      description: KingRoom 410
+      friendlyName: KingRoom 410
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_410_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_410_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_410_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 411
+      description: KingRoom 411
+      friendlyName: KingRoom 411
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_411_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_411_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_411_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 412
+      description: KingRoom 412
+      friendlyName: KingRoom 412
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_412_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_412_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_412_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 413
+      description: KingRoom 413
+      friendlyName: KingRoom 413
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_413_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_413_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_413_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 414
+      description: KingRoom 414
+      friendlyName: KingRoom 414
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_414_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_414_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_414_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 415
+      description: Suite 415
+      friendlyName: Suite 415
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_415_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_415_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_415_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 416
+      description: Suite 416
+      friendlyName: Suite 416
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_416_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_416_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_416_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 417
+      description: Suite 417
+      friendlyName: Suite 417
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_417_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_417_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_417_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 418
+      description: Suite 418
+      friendlyName: Suite 418
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_418_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_418_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_418_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 419
+      description: Suite 419
+      friendlyName: Suite 419
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_419_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_419_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_419_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 420
+      description: Suite 420
+      friendlyName: Suite 420
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_420_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_420_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_420_L
+        sensors:
+        - dataType: Light
+          type: Classic
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    users:
+    - Hotel H 1 Employee
+    spaces:
+    - name: QueenRoom 501
+      description: QueenRoom 501
+      friendlyName: QueenRoom 501
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_501_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_501_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_501_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 502
+      description: QueenRoom 502
+      friendlyName: QueenRoom 502
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_502_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_502_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_502_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 503
+      description: QueenRoom 503
+      friendlyName: QueenRoom 503
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_503_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_503_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_503_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 504
+      description: QueenRoom 504
+      friendlyName: QueenRoom 504
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_504_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_504_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_504_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 505
+      description: QueenRoom 505
+      friendlyName: QueenRoom 505
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_505_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_505_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_505_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 506
+      description: QueenRoom 506
+      friendlyName: QueenRoom 506
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_506_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_506_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_506_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 507
+      description: QueenRoom 507
+      friendlyName: QueenRoom 507
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_507_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_507_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_507_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 508
+      description: KingRoom 508
+      friendlyName: KingRoom 508
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_508_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_508_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_508_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 509
+      description: KingRoom 509
+      friendlyName: KingRoom 509
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_509_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_509_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_509_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 510
+      description: KingRoom 510
+      friendlyName: KingRoom 510
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_510_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_510_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_510_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 511
+      description: KingRoom 511
+      friendlyName: KingRoom 511
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_511_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_511_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_511_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 512
+      description: KingRoom 512
+      friendlyName: KingRoom 512
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_512_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_512_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_512_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 513
+      description: KingRoom 513
+      friendlyName: KingRoom 513
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_513_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_513_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_513_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 514
+      description: KingRoom 514
+      friendlyName: KingRoom 514
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_514_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_514_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_514_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 515
+      description: Suite 515
+      friendlyName: Suite 515
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_515_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_515_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_515_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 516
+      description: Suite 516
+      friendlyName: Suite 516
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_516_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_516_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_516_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 517
+      description: Suite 517
+      friendlyName: Suite 517
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_517_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_517_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_517_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 518
+      description: Suite 518
+      friendlyName: Suite 518
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_518_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_518_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_518_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 519
+      description: Suite 519
+      friendlyName: Suite 519
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_519_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_519_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_519_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 520
+      description: Suite 520
+      friendlyName: Suite 520
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_520_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_520_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_520_L
+        sensors:
+        - dataType: Light
+          type: Classic
+  - name: Floor 06
+    description: Floor 6
+    friendlyName: Floor 6
+    type: Floor
+    users:
+    - Hotel H 1 Employee
+    spaces:
+    - name: QueenRoom 601
+      description: QueenRoom 601
+      friendlyName: QueenRoom 601
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_601_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_601_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_601_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 602
+      description: QueenRoom 602
+      friendlyName: QueenRoom 602
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_602_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_602_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_602_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 603
+      description: QueenRoom 603
+      friendlyName: QueenRoom 603
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_603_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_603_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_603_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 604
+      description: QueenRoom 604
+      friendlyName: QueenRoom 604
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_604_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_604_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_604_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 605
+      description: QueenRoom 605
+      friendlyName: QueenRoom 605
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_605_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_605_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_605_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 606
+      description: QueenRoom 606
+      friendlyName: QueenRoom 606
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_606_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_606_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_606_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 607
+      description: QueenRoom 607
+      friendlyName: QueenRoom 607
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_607_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_607_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_607_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 608
+      description: KingRoom 608
+      friendlyName: KingRoom 608
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_608_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_608_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_608_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 609
+      description: KingRoom 609
+      friendlyName: KingRoom 609
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_609_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_609_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_609_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 610
+      description: KingRoom 610
+      friendlyName: KingRoom 610
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_610_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_610_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_610_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 611
+      description: KingRoom 611
+      friendlyName: KingRoom 611
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_611_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_611_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_611_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 612
+      description: KingRoom 612
+      friendlyName: KingRoom 612
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_612_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_612_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_612_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 613
+      description: KingRoom 613
+      friendlyName: KingRoom 613
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_613_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_613_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_613_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 614
+      description: KingRoom 614
+      friendlyName: KingRoom 614
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_614_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_614_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_614_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 615
+      description: Suite 615
+      friendlyName: Suite 615
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_615_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_615_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_615_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 616
+      description: Suite 616
+      friendlyName: Suite 616
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_616_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_616_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_616_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 617
+      description: Suite 617
+      friendlyName: Suite 617
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_617_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_617_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_617_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 618
+      description: Suite 618
+      friendlyName: Suite 618
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_618_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_618_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_618_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 619
+      description: Suite 619
+      friendlyName: Suite 619
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_619_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_619_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_619_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 620
+      description: Suite 620
+      friendlyName: Suite 620
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_620_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_620_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_620_L
+        sensors:
+        - dataType: Light
+          type: Classic
+  - name: Floor 07
+    description: Floor 7
+    friendlyName: Floor 7
+    type: Floor
+    users:
+    - Hotel H 1 Employee
+    spaces:
+    - name: QueenRoom 701
+      description: QueenRoom 701
+      friendlyName: QueenRoom 701
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_701_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_701_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_701_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 702
+      description: QueenRoom 702
+      friendlyName: QueenRoom 702
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_702_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_702_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_702_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 703
+      description: QueenRoom 703
+      friendlyName: QueenRoom 703
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_703_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_703_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_703_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 704
+      description: QueenRoom 704
+      friendlyName: QueenRoom 704
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_704_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_704_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_704_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 705
+      description: QueenRoom 705
+      friendlyName: QueenRoom 705
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_705_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_705_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_705_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 706
+      description: QueenRoom 706
+      friendlyName: QueenRoom 706
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_706_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_706_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_706_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 707
+      description: QueenRoom 707
+      friendlyName: QueenRoom 707
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_707_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_707_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_707_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 708
+      description: KingRoom 708
+      friendlyName: KingRoom 708
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_708_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_708_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_708_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 709
+      description: KingRoom 709
+      friendlyName: KingRoom 709
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_709_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_709_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_709_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 710
+      description: KingRoom 710
+      friendlyName: KingRoom 710
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_710_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_710_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_710_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 711
+      description: KingRoom 711
+      friendlyName: KingRoom 711
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_711_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_711_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_711_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 712
+      description: KingRoom 712
+      friendlyName: KingRoom 712
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_712_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_712_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_712_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 713
+      description: KingRoom 713
+      friendlyName: KingRoom 713
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_713_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_713_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_713_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 714
+      description: KingRoom 714
+      friendlyName: KingRoom 714
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_714_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_714_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_714_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 715
+      description: Suite 715
+      friendlyName: Suite 715
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_715_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_715_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_715_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 716
+      description: Suite 716
+      friendlyName: Suite 716
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_716_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_716_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_716_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 717
+      description: Suite 717
+      friendlyName: Suite 717
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_717_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_717_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_717_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 718
+      description: Suite 718
+      friendlyName: Suite 718
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_718_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_718_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_718_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 719
+      description: Suite 719
+      friendlyName: Suite 719
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_719_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_719_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_719_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 720
+      description: Suite 720
+      friendlyName: Suite 720
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_720_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_720_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_720_L
+        sensors:
+        - dataType: Light
+          type: Classic
+  - name: Floor 08
+    description: Floor 8
+    friendlyName: Floor 8
+    type: Floor
+    users:
+    - Hotel H 1 Employee
+    spaces:
+    - name: QueenRoom 801
+      description: QueenRoom 801
+      friendlyName: QueenRoom 801
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_801_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_801_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_801_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 802
+      description: QueenRoom 802
+      friendlyName: QueenRoom 802
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_802_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_802_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_802_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 803
+      description: QueenRoom 803
+      friendlyName: QueenRoom 803
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_803_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_803_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_803_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 804
+      description: QueenRoom 804
+      friendlyName: QueenRoom 804
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_804_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_804_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_804_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 805
+      description: QueenRoom 805
+      friendlyName: QueenRoom 805
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_805_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_805_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_805_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 806
+      description: QueenRoom 806
+      friendlyName: QueenRoom 806
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_806_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_806_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_806_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: QueenRoom 807
+      description: QueenRoom 807
+      friendlyName: QueenRoom 807
+      type: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_807_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_807_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_807_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 808
+      description: KingRoom 808
+      friendlyName: KingRoom 808
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_808_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_808_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_808_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 809
+      description: KingRoom 809
+      friendlyName: KingRoom 809
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_809_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_809_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_809_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 810
+      description: KingRoom 810
+      friendlyName: KingRoom 810
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_810_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_810_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_810_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 811
+      description: KingRoom 811
+      friendlyName: KingRoom 811
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_811_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_811_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_811_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 812
+      description: KingRoom 812
+      friendlyName: KingRoom 812
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_812_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_812_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_812_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 813
+      description: KingRoom 813
+      friendlyName: KingRoom 813
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_813_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_813_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_813_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: KingRoom 814
+      description: KingRoom 814
+      friendlyName: KingRoom 814
+      type: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_814_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_814_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_814_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 815
+      description: Suite 815
+      friendlyName: Suite 815
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_815_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_815_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_815_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 816
+      description: Suite 816
+      friendlyName: Suite 816
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_816_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_816_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_816_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 817
+      description: Suite 817
+      friendlyName: Suite 817
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_817_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_817_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_817_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 818
+      description: Suite 818
+      friendlyName: Suite 818
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_818_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_818_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_818_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 819
+      description: Suite 819
+      friendlyName: Suite 819
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_819_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_819_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_819_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 820
+      description: Suite 820
+      friendlyName: Suite 820
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_820_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_820_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_820_L
+        sensors:
+        - dataType: Light
+          type: Classic
+  - name: VIPFloor 09
+    description: VIPFloor 9
+    friendlyName: VIPFloor 9
+    type: VIPFloor
+    spaces:
+    - name: Suite 901
+      description: Suite 901
+      friendlyName: Suite 901
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_901_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_901_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_901_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 902
+      description: Suite 902
+      friendlyName: Suite 902
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_902_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_902_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_902_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 903
+      description: Suite 903
+      friendlyName: Suite 903
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_903_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_903_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_903_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 904
+      description: Suite 904
+      friendlyName: Suite 904
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_904_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_904_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_904_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 905
+      description: Suite 905
+      friendlyName: Suite 905
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_905_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_905_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_905_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: VIPSuite 906
+      description: VIPSuite 906
+      friendlyName: VIPSuite 906
+      type: VIPSuite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_906_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_906_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_906_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: VIPSuite 907
+      description: VIPSuite 907
+      friendlyName: VIPSuite 907
+      type: VIPSuite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_907_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_907_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_907_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: VIPSuite 908
+      description: VIPSuite 908
+      friendlyName: VIPSuite 908
+      type: VIPSuite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_908_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_908_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_908_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: VIPSuite 909
+      description: VIPSuite 909
+      friendlyName: VIPSuite 909
+      type: VIPSuite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_909_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_909_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_909_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: VIPSuite 910
+      description: VIPSuite 910
+      friendlyName: VIPSuite 910
+      type: VIPSuite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_910_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_910_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_910_L
+        sensors:
+        - dataType: Light
+          type: Classic
+  - name: VIPFloor 10
+    description: VIPFloor 10
+    friendlyName: VIPFloor 10
+    type: VIPFloor
+    spaces:
+    - name: Suite 1001
+      description: Suite 1001
+      friendlyName: Suite 1001
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_1001_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_1001_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_1001_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 1002
+      description: Suite 1002
+      friendlyName: Suite 1002
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_1002_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_1002_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_1002_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 1003
+      description: Suite 1003
+      friendlyName: Suite 1003
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_1003_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_1003_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_1003_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 1004
+      description: Suite 1004
+      friendlyName: Suite 1004
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_1004_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_1004_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_1004_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Suite 1005
+      description: Suite 1005
+      friendlyName: Suite 1005
+      type: Suite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_1005_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_1005_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_1005_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: VIPSuite 1006
+      description: VIPSuite 1006
+      friendlyName: VIPSuite 1006
+      type: VIPSuite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_1006_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_1006_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_1006_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: VIPSuite 1007
+      description: VIPSuite 1007
+      friendlyName: VIPSuite 1007
+      type: VIPSuite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_1007_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_1007_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_1007_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: VIPSuite 1008
+      description: VIPSuite 1008
+      friendlyName: VIPSuite 1008
+      type: VIPSuite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_1008_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_1008_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_1008_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: VIPSuite 1009
+      description: VIPSuite 1009
+      friendlyName: VIPSuite 1009
+      type: VIPSuite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_1009_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_1009_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_1009_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: VIPSuite 1010
+      description: VIPSuite 1010
+      friendlyName: VIPSuite 1010
+      type: VIPSuite
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 1_Hotel H 1_1010_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 1_Hotel H 1_1010_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 1_Hotel H 1_1010_L
+        sensors:
+        - dataType: Light
+          type: Classic
+- name: Hotel L 1
+  description: SmartHotel360 hotel Hotel L 1
+  friendlyName: Hotel L 1
+  type: Hotel
+  users:
+  - Hotel L 1 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    spaces:
+    - name: QueenRoom 101
+      description: QueenRoom 101
+      friendlyName: QueenRoom 101
+      type: QueenRoom
+    - name: QueenRoom 102
+      description: QueenRoom 102
+      friendlyName: QueenRoom 102
+      type: QueenRoom
+    - name: QueenRoom 103
+      description: QueenRoom 103
+      friendlyName: QueenRoom 103
+      type: QueenRoom
+    - name: QueenRoom 104
+      description: QueenRoom 104
+      friendlyName: QueenRoom 104
+      type: QueenRoom
+    - name: QueenRoom 105
+      description: QueenRoom 105
+      friendlyName: QueenRoom 105
+      type: QueenRoom
+    - name: KingRoom 106
+      description: KingRoom 106
+      friendlyName: KingRoom 106
+      type: KingRoom
+    - name: KingRoom 107
+      description: KingRoom 107
+      friendlyName: KingRoom 107
+      type: KingRoom
+    - name: KingRoom 108
+      description: KingRoom 108
+      friendlyName: KingRoom 108
+      type: KingRoom
+    - name: KingRoom 109
+      description: KingRoom 109
+      friendlyName: KingRoom 109
+      type: KingRoom
+    - name: KingRoom 110
+      description: KingRoom 110
+      friendlyName: KingRoom 110
+      type: KingRoom
+    - name: Suite 111
+      description: Suite 111
+      friendlyName: Suite 111
+      type: Suite
+    - name: Suite 112
+      description: Suite 112
+      friendlyName: Suite 112
+      type: Suite
+    - name: Suite 113
+      description: Suite 113
+      friendlyName: Suite 113
+      type: Suite
+    - name: Suite 114
+      description: Suite 114
+      friendlyName: Suite 114
+      type: Suite
+    - name: Suite 115
+      description: Suite 115
+      friendlyName: Suite 115
+      type: Suite
+    - name: Gym 116
+      description: Gym 116
+      friendlyName: Gym 116
+      type: Gym
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    spaces:
+    - name: QueenRoom 201
+      description: QueenRoom 201
+      friendlyName: QueenRoom 201
+      type: QueenRoom
+    - name: QueenRoom 202
+      description: QueenRoom 202
+      friendlyName: QueenRoom 202
+      type: QueenRoom
+    - name: QueenRoom 203
+      description: QueenRoom 203
+      friendlyName: QueenRoom 203
+      type: QueenRoom
+    - name: QueenRoom 204
+      description: QueenRoom 204
+      friendlyName: QueenRoom 204
+      type: QueenRoom
+    - name: QueenRoom 205
+      description: QueenRoom 205
+      friendlyName: QueenRoom 205
+      type: QueenRoom
+    - name: KingRoom 206
+      description: KingRoom 206
+      friendlyName: KingRoom 206
+      type: KingRoom
+    - name: KingRoom 207
+      description: KingRoom 207
+      friendlyName: KingRoom 207
+      type: KingRoom
+    - name: KingRoom 208
+      description: KingRoom 208
+      friendlyName: KingRoom 208
+      type: KingRoom
+    - name: KingRoom 209
+      description: KingRoom 209
+      friendlyName: KingRoom 209
+      type: KingRoom
+    - name: KingRoom 210
+      description: KingRoom 210
+      friendlyName: KingRoom 210
+      type: KingRoom
+    - name: Suite 211
+      description: Suite 211
+      friendlyName: Suite 211
+      type: Suite
+    - name: Suite 212
+      description: Suite 212
+      friendlyName: Suite 212
+      type: Suite
+    - name: Suite 213
+      description: Suite 213
+      friendlyName: Suite 213
+      type: Suite
+    - name: Suite 214
+      description: Suite 214
+      friendlyName: Suite 214
+      type: Suite
+    - name: Suite 215
+      description: Suite 215
+      friendlyName: Suite 215
+      type: Suite
+    - name: Ballroom 216
+      description: Ballroom 216
+      friendlyName: Ballroom 216
+      type: Ballroom
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    spaces:
+    - name: QueenRoom 301
+      description: QueenRoom 301
+      friendlyName: QueenRoom 301
+      type: QueenRoom
+    - name: QueenRoom 302
+      description: QueenRoom 302
+      friendlyName: QueenRoom 302
+      type: QueenRoom
+    - name: QueenRoom 303
+      description: QueenRoom 303
+      friendlyName: QueenRoom 303
+      type: QueenRoom
+    - name: QueenRoom 304
+      description: QueenRoom 304
+      friendlyName: QueenRoom 304
+      type: QueenRoom
+    - name: QueenRoom 305
+      description: QueenRoom 305
+      friendlyName: QueenRoom 305
+      type: QueenRoom
+    - name: KingRoom 306
+      description: KingRoom 306
+      friendlyName: KingRoom 306
+      type: KingRoom
+    - name: KingRoom 307
+      description: KingRoom 307
+      friendlyName: KingRoom 307
+      type: KingRoom
+    - name: KingRoom 308
+      description: KingRoom 308
+      friendlyName: KingRoom 308
+      type: KingRoom
+    - name: KingRoom 309
+      description: KingRoom 309
+      friendlyName: KingRoom 309
+      type: KingRoom
+    - name: KingRoom 310
+      description: KingRoom 310
+      friendlyName: KingRoom 310
+      type: KingRoom
+    - name: Suite 311
+      description: Suite 311
+      friendlyName: Suite 311
+      type: Suite
+    - name: Suite 312
+      description: Suite 312
+      friendlyName: Suite 312
+      type: Suite
+    - name: Suite 313
+      description: Suite 313
+      friendlyName: Suite 313
+      type: Suite
+    - name: Suite 314
+      description: Suite 314
+      friendlyName: Suite 314
+      type: Suite
+    - name: Suite 315
+      description: Suite 315
+      friendlyName: Suite 315
+      type: Suite
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    spaces:
+    - name: QueenRoom 401
+      description: QueenRoom 401
+      friendlyName: QueenRoom 401
+      type: QueenRoom
+    - name: QueenRoom 402
+      description: QueenRoom 402
+      friendlyName: QueenRoom 402
+      type: QueenRoom
+    - name: QueenRoom 403
+      description: QueenRoom 403
+      friendlyName: QueenRoom 403
+      type: QueenRoom
+    - name: QueenRoom 404
+      description: QueenRoom 404
+      friendlyName: QueenRoom 404
+      type: QueenRoom
+    - name: QueenRoom 405
+      description: QueenRoom 405
+      friendlyName: QueenRoom 405
+      type: QueenRoom
+    - name: KingRoom 406
+      description: KingRoom 406
+      friendlyName: KingRoom 406
+      type: KingRoom
+    - name: KingRoom 407
+      description: KingRoom 407
+      friendlyName: KingRoom 407
+      type: KingRoom
+    - name: KingRoom 408
+      description: KingRoom 408
+      friendlyName: KingRoom 408
+      type: KingRoom
+    - name: KingRoom 409
+      description: KingRoom 409
+      friendlyName: KingRoom 409
+      type: KingRoom
+    - name: KingRoom 410
+      description: KingRoom 410
+      friendlyName: KingRoom 410
+      type: KingRoom
+    - name: Suite 411
+      description: Suite 411
+      friendlyName: Suite 411
+      type: Suite
+    - name: Suite 412
+      description: Suite 412
+      friendlyName: Suite 412
+      type: Suite
+    - name: Suite 413
+      description: Suite 413
+      friendlyName: Suite 413
+      type: Suite
+    - name: Suite 414
+      description: Suite 414
+      friendlyName: Suite 414
+      type: Suite
+    - name: Suite 415
+      description: Suite 415
+      friendlyName: Suite 415
+      type: Suite
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    spaces:
+    - name: QueenRoom 501
+      description: QueenRoom 501
+      friendlyName: QueenRoom 501
+      type: QueenRoom
+    - name: QueenRoom 502
+      description: QueenRoom 502
+      friendlyName: QueenRoom 502
+      type: QueenRoom
+    - name: QueenRoom 503
+      description: QueenRoom 503
+      friendlyName: QueenRoom 503
+      type: QueenRoom
+    - name: QueenRoom 504
+      description: QueenRoom 504
+      friendlyName: QueenRoom 504
+      type: QueenRoom
+    - name: QueenRoom 505
+      description: QueenRoom 505
+      friendlyName: QueenRoom 505
+      type: QueenRoom
+    - name: KingRoom 506
+      description: KingRoom 506
+      friendlyName: KingRoom 506
+      type: KingRoom
+    - name: KingRoom 507
+      description: KingRoom 507
+      friendlyName: KingRoom 507
+      type: KingRoom
+    - name: KingRoom 508
+      description: KingRoom 508
+      friendlyName: KingRoom 508
+      type: KingRoom
+    - name: KingRoom 509
+      description: KingRoom 509
+      friendlyName: KingRoom 509
+      type: KingRoom
+    - name: KingRoom 510
+      description: KingRoom 510
+      friendlyName: KingRoom 510
+      type: KingRoom
+    - name: Suite 511
+      description: Suite 511
+      friendlyName: Suite 511
+      type: Suite
+    - name: Suite 512
+      description: Suite 512
+      friendlyName: Suite 512
+      type: Suite
+    - name: Suite 513
+      description: Suite 513
+      friendlyName: Suite 513
+      type: Suite
+    - name: Suite 514
+      description: Suite 514
+      friendlyName: Suite 514
+      type: Suite
+    - name: Suite 515
+      description: Suite 515
+      friendlyName: Suite 515
+      type: Suite
+  - name: Floor 06
+    description: Floor 6
+    friendlyName: Floor 6
+    type: Floor
+    spaces:
+    - name: QueenRoom 601
+      description: QueenRoom 601
+      friendlyName: QueenRoom 601
+      type: QueenRoom
+    - name: QueenRoom 602
+      description: QueenRoom 602
+      friendlyName: QueenRoom 602
+      type: QueenRoom
+    - name: QueenRoom 603
+      description: QueenRoom 603
+      friendlyName: QueenRoom 603
+      type: QueenRoom
+    - name: QueenRoom 604
+      description: QueenRoom 604
+      friendlyName: QueenRoom 604
+      type: QueenRoom
+    - name: QueenRoom 605
+      description: QueenRoom 605
+      friendlyName: QueenRoom 605
+      type: QueenRoom
+    - name: KingRoom 606
+      description: KingRoom 606
+      friendlyName: KingRoom 606
+      type: KingRoom
+    - name: KingRoom 607
+      description: KingRoom 607
+      friendlyName: KingRoom 607
+      type: KingRoom
+    - name: KingRoom 608
+      description: KingRoom 608
+      friendlyName: KingRoom 608
+      type: KingRoom
+    - name: KingRoom 609
+      description: KingRoom 609
+      friendlyName: KingRoom 609
+      type: KingRoom
+    - name: KingRoom 610
+      description: KingRoom 610
+      friendlyName: KingRoom 610
+      type: KingRoom
+    - name: Suite 611
+      description: Suite 611
+      friendlyName: Suite 611
+      type: Suite
+    - name: Suite 612
+      description: Suite 612
+      friendlyName: Suite 612
+      type: Suite
+    - name: Suite 613
+      description: Suite 613
+      friendlyName: Suite 613
+      type: Suite
+    - name: Suite 614
+      description: Suite 614
+      friendlyName: Suite 614
+      type: Suite
+    - name: Suite 615
+      description: Suite 615
+      friendlyName: Suite 615
+      type: Suite
+  - name: Floor 07
+    description: Floor 7
+    friendlyName: Floor 7
+    type: Floor
+    spaces:
+    - name: QueenRoom 701
+      description: QueenRoom 701
+      friendlyName: QueenRoom 701
+      type: QueenRoom
+    - name: QueenRoom 702
+      description: QueenRoom 702
+      friendlyName: QueenRoom 702
+      type: QueenRoom
+    - name: QueenRoom 703
+      description: QueenRoom 703
+      friendlyName: QueenRoom 703
+      type: QueenRoom
+    - name: QueenRoom 704
+      description: QueenRoom 704
+      friendlyName: QueenRoom 704
+      type: QueenRoom
+    - name: QueenRoom 705
+      description: QueenRoom 705
+      friendlyName: QueenRoom 705
+      type: QueenRoom
+    - name: KingRoom 706
+      description: KingRoom 706
+      friendlyName: KingRoom 706
+      type: KingRoom
+    - name: KingRoom 707
+      description: KingRoom 707
+      friendlyName: KingRoom 707
+      type: KingRoom
+    - name: KingRoom 708
+      description: KingRoom 708
+      friendlyName: KingRoom 708
+      type: KingRoom
+    - name: KingRoom 709
+      description: KingRoom 709
+      friendlyName: KingRoom 709
+      type: KingRoom
+    - name: KingRoom 710
+      description: KingRoom 710
+      friendlyName: KingRoom 710
+      type: KingRoom
+    - name: Suite 711
+      description: Suite 711
+      friendlyName: Suite 711
+      type: Suite
+    - name: Suite 712
+      description: Suite 712
+      friendlyName: Suite 712
+      type: Suite
+    - name: Suite 713
+      description: Suite 713
+      friendlyName: Suite 713
+      type: Suite
+    - name: Suite 714
+      description: Suite 714
+      friendlyName: Suite 714
+      type: Suite
+    - name: Suite 715
+      description: Suite 715
+      friendlyName: Suite 715
+      type: Suite
+  - name: Floor 08
+    description: Floor 8
+    friendlyName: Floor 8
+    type: Floor
+    spaces:
+    - name: QueenRoom 801
+      description: QueenRoom 801
+      friendlyName: QueenRoom 801
+      type: QueenRoom
+    - name: QueenRoom 802
+      description: QueenRoom 802
+      friendlyName: QueenRoom 802
+      type: QueenRoom
+    - name: QueenRoom 803
+      description: QueenRoom 803
+      friendlyName: QueenRoom 803
+      type: QueenRoom
+    - name: QueenRoom 804
+      description: QueenRoom 804
+      friendlyName: QueenRoom 804
+      type: QueenRoom
+    - name: QueenRoom 805
+      description: QueenRoom 805
+      friendlyName: QueenRoom 805
+      type: QueenRoom
+    - name: KingRoom 806
+      description: KingRoom 806
+      friendlyName: KingRoom 806
+      type: KingRoom
+    - name: KingRoom 807
+      description: KingRoom 807
+      friendlyName: KingRoom 807
+      type: KingRoom
+    - name: KingRoom 808
+      description: KingRoom 808
+      friendlyName: KingRoom 808
+      type: KingRoom
+    - name: KingRoom 809
+      description: KingRoom 809
+      friendlyName: KingRoom 809
+      type: KingRoom
+    - name: KingRoom 810
+      description: KingRoom 810
+      friendlyName: KingRoom 810
+      type: KingRoom
+    - name: Suite 811
+      description: Suite 811
+      friendlyName: Suite 811
+      type: Suite
+    - name: Suite 812
+      description: Suite 812
+      friendlyName: Suite 812
+      type: Suite
+    - name: Suite 813
+      description: Suite 813
+      friendlyName: Suite 813
+      type: Suite
+    - name: Suite 814
+      description: Suite 814
+      friendlyName: Suite 814
+      type: Suite
+    - name: Suite 815
+      description: Suite 815
+      friendlyName: Suite 815
+      type: Suite
+  - name: VIPFloor 09
+    description: VIPFloor 9
+    friendlyName: VIPFloor 9
+    type: VIPFloor
+    spaces:
+    - name: Suite 901
+      description: Suite 901
+      friendlyName: Suite 901
+      type: Suite
+    - name: Suite 902
+      description: Suite 902
+      friendlyName: Suite 902
+      type: Suite
+    - name: Suite 903
+      description: Suite 903
+      friendlyName: Suite 903
+      type: Suite
+    - name: Suite 904
+      description: Suite 904
+      friendlyName: Suite 904
+      type: Suite
+    - name: VIPSuite 905
+      description: VIPSuite 905
+      friendlyName: VIPSuite 905
+      type: VIPSuite
+    - name: VIPSuite 906
+      description: VIPSuite 906
+      friendlyName: VIPSuite 906
+      type: VIPSuite
+    - name: VIPSuite 907
+      description: VIPSuite 907
+      friendlyName: VIPSuite 907
+      type: VIPSuite
+    - name: VIPSuite 908
+      description: VIPSuite 908
+      friendlyName: VIPSuite 908
+      type: VIPSuite
+  - name: VIPFloor 10
+    description: VIPFloor 10
+    friendlyName: VIPFloor 10
+    type: VIPFloor
+    spaces:
+    - name: Suite 1001
+      description: Suite 1001
+      friendlyName: Suite 1001
+      type: Suite
+    - name: Suite 1002
+      description: Suite 1002
+      friendlyName: Suite 1002
+      type: Suite
+    - name: Suite 1003
+      description: Suite 1003
+      friendlyName: Suite 1003
+      type: Suite
+    - name: Suite 1004
+      description: Suite 1004
+      friendlyName: Suite 1004
+      type: Suite
+    - name: VIPSuite 1005
+      description: VIPSuite 1005
+      friendlyName: VIPSuite 1005
+      type: VIPSuite
+    - name: VIPSuite 1006
+      description: VIPSuite 1006
+      friendlyName: VIPSuite 1006
+      type: VIPSuite
+    - name: VIPSuite 1007
+      description: VIPSuite 1007
+      friendlyName: VIPSuite 1007
+      type: VIPSuite
+    - name: VIPSuite 1008
+      description: VIPSuite 1008
+      friendlyName: VIPSuite 1008
+      type: VIPSuite
+- name: Hotel SH 1
+  description: SmartHotel360 hotel Hotel SH 1
+  friendlyName: Hotel SH 1
+  type: Hotel
+  users:
+  - Hotel SH 1 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    spaces:
+    - name: QueenRoom 101
+      description: QueenRoom 101
+      friendlyName: QueenRoom 101
+      type: QueenRoom
+    - name: QueenRoom 102
+      description: QueenRoom 102
+      friendlyName: QueenRoom 102
+      type: QueenRoom
+    - name: QueenRoom 103
+      description: QueenRoom 103
+      friendlyName: QueenRoom 103
+      type: QueenRoom
+    - name: QueenRoom 104
+      description: QueenRoom 104
+      friendlyName: QueenRoom 104
+      type: QueenRoom
+    - name: KingRoom 105
+      description: KingRoom 105
+      friendlyName: KingRoom 105
+      type: KingRoom
+    - name: KingRoom 106
+      description: KingRoom 106
+      friendlyName: KingRoom 106
+      type: KingRoom
+    - name: KingRoom 107
+      description: KingRoom 107
+      friendlyName: KingRoom 107
+      type: KingRoom
+    - name: KingRoom 108
+      description: KingRoom 108
+      friendlyName: KingRoom 108
+      type: KingRoom
+    - name: Suite 109
+      description: Suite 109
+      friendlyName: Suite 109
+      type: Suite
+    - name: Suite 110
+      description: Suite 110
+      friendlyName: Suite 110
+      type: Suite
+    - name: Gym 111
+      description: Gym 111
+      friendlyName: Gym 111
+      type: Gym
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    spaces:
+    - name: QueenRoom 201
+      description: QueenRoom 201
+      friendlyName: QueenRoom 201
+      type: QueenRoom
+    - name: QueenRoom 202
+      description: QueenRoom 202
+      friendlyName: QueenRoom 202
+      type: QueenRoom
+    - name: QueenRoom 203
+      description: QueenRoom 203
+      friendlyName: QueenRoom 203
+      type: QueenRoom
+    - name: QueenRoom 204
+      description: QueenRoom 204
+      friendlyName: QueenRoom 204
+      type: QueenRoom
+    - name: KingRoom 205
+      description: KingRoom 205
+      friendlyName: KingRoom 205
+      type: KingRoom
+    - name: KingRoom 206
+      description: KingRoom 206
+      friendlyName: KingRoom 206
+      type: KingRoom
+    - name: KingRoom 207
+      description: KingRoom 207
+      friendlyName: KingRoom 207
+      type: KingRoom
+    - name: KingRoom 208
+      description: KingRoom 208
+      friendlyName: KingRoom 208
+      type: KingRoom
+    - name: Suite 209
+      description: Suite 209
+      friendlyName: Suite 209
+      type: Suite
+    - name: Suite 210
+      description: Suite 210
+      friendlyName: Suite 210
+      type: Suite
+    - name: Ballroom 211
+      description: Ballroom 211
+      friendlyName: Ballroom 211
+      type: Ballroom
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    spaces:
+    - name: QueenRoom 301
+      description: QueenRoom 301
+      friendlyName: QueenRoom 301
+      type: QueenRoom
+    - name: QueenRoom 302
+      description: QueenRoom 302
+      friendlyName: QueenRoom 302
+      type: QueenRoom
+    - name: QueenRoom 303
+      description: QueenRoom 303
+      friendlyName: QueenRoom 303
+      type: QueenRoom
+    - name: QueenRoom 304
+      description: QueenRoom 304
+      friendlyName: QueenRoom 304
+      type: QueenRoom
+    - name: KingRoom 305
+      description: KingRoom 305
+      friendlyName: KingRoom 305
+      type: KingRoom
+    - name: KingRoom 306
+      description: KingRoom 306
+      friendlyName: KingRoom 306
+      type: KingRoom
+    - name: KingRoom 307
+      description: KingRoom 307
+      friendlyName: KingRoom 307
+      type: KingRoom
+    - name: KingRoom 308
+      description: KingRoom 308
+      friendlyName: KingRoom 308
+      type: KingRoom
+    - name: Suite 309
+      description: Suite 309
+      friendlyName: Suite 309
+      type: Suite
+    - name: Suite 310
+      description: Suite 310
+      friendlyName: Suite 310
+      type: Suite
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    spaces:
+    - name: QueenRoom 401
+      description: QueenRoom 401
+      friendlyName: QueenRoom 401
+      type: QueenRoom
+    - name: QueenRoom 402
+      description: QueenRoom 402
+      friendlyName: QueenRoom 402
+      type: QueenRoom
+    - name: QueenRoom 403
+      description: QueenRoom 403
+      friendlyName: QueenRoom 403
+      type: QueenRoom
+    - name: QueenRoom 404
+      description: QueenRoom 404
+      friendlyName: QueenRoom 404
+      type: QueenRoom
+    - name: KingRoom 405
+      description: KingRoom 405
+      friendlyName: KingRoom 405
+      type: KingRoom
+    - name: KingRoom 406
+      description: KingRoom 406
+      friendlyName: KingRoom 406
+      type: KingRoom
+    - name: KingRoom 407
+      description: KingRoom 407
+      friendlyName: KingRoom 407
+      type: KingRoom
+    - name: KingRoom 408
+      description: KingRoom 408
+      friendlyName: KingRoom 408
+      type: KingRoom
+    - name: Suite 409
+      description: Suite 409
+      friendlyName: Suite 409
+      type: Suite
+    - name: Suite 410
+      description: Suite 410
+      friendlyName: Suite 410
+      type: Suite
+  - name: VIPFloor 05
+    description: VIPFloor 5
+    friendlyName: VIPFloor 5
+    type: VIPFloor
+    spaces:
+    - name: Suite 501
+      description: Suite 501
+      friendlyName: Suite 501
+      type: Suite
+    - name: Suite 502
+      description: Suite 502
+      friendlyName: Suite 502
+      type: Suite
+    - name: Suite 503
+      description: Suite 503
+      friendlyName: Suite 503
+      type: Suite
+    - name: VIPSuite 504
+      description: VIPSuite 504
+      friendlyName: VIPSuite 504
+      type: VIPSuite
+- name: Hotel SH 2
+  description: SmartHotel360 hotel Hotel SH 2
+  friendlyName: Hotel SH 2
+  type: Hotel
+  users:
+  - Hotel SH 2 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    spaces:
+    - name: QueenRoom 101
+      description: QueenRoom 101
+      friendlyName: QueenRoom 101
+      type: QueenRoom
+    - name: QueenRoom 102
+      description: QueenRoom 102
+      friendlyName: QueenRoom 102
+      type: QueenRoom
+    - name: QueenRoom 103
+      description: QueenRoom 103
+      friendlyName: QueenRoom 103
+      type: QueenRoom
+    - name: QueenRoom 104
+      description: QueenRoom 104
+      friendlyName: QueenRoom 104
+      type: QueenRoom
+    - name: KingRoom 105
+      description: KingRoom 105
+      friendlyName: KingRoom 105
+      type: KingRoom
+    - name: KingRoom 106
+      description: KingRoom 106
+      friendlyName: KingRoom 106
+      type: KingRoom
+    - name: KingRoom 107
+      description: KingRoom 107
+      friendlyName: KingRoom 107
+      type: KingRoom
+    - name: KingRoom 108
+      description: KingRoom 108
+      friendlyName: KingRoom 108
+      type: KingRoom
+    - name: Suite 109
+      description: Suite 109
+      friendlyName: Suite 109
+      type: Suite
+    - name: Suite 110
+      description: Suite 110
+      friendlyName: Suite 110
+      type: Suite
+    - name: Gym 111
+      description: Gym 111
+      friendlyName: Gym 111
+      type: Gym
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    spaces:
+    - name: QueenRoom 201
+      description: QueenRoom 201
+      friendlyName: QueenRoom 201
+      type: QueenRoom
+    - name: QueenRoom 202
+      description: QueenRoom 202
+      friendlyName: QueenRoom 202
+      type: QueenRoom
+    - name: QueenRoom 203
+      description: QueenRoom 203
+      friendlyName: QueenRoom 203
+      type: QueenRoom
+    - name: QueenRoom 204
+      description: QueenRoom 204
+      friendlyName: QueenRoom 204
+      type: QueenRoom
+    - name: KingRoom 205
+      description: KingRoom 205
+      friendlyName: KingRoom 205
+      type: KingRoom
+    - name: KingRoom 206
+      description: KingRoom 206
+      friendlyName: KingRoom 206
+      type: KingRoom
+    - name: KingRoom 207
+      description: KingRoom 207
+      friendlyName: KingRoom 207
+      type: KingRoom
+    - name: KingRoom 208
+      description: KingRoom 208
+      friendlyName: KingRoom 208
+      type: KingRoom
+    - name: Suite 209
+      description: Suite 209
+      friendlyName: Suite 209
+      type: Suite
+    - name: Suite 210
+      description: Suite 210
+      friendlyName: Suite 210
+      type: Suite
+    - name: Ballroom 211
+      description: Ballroom 211
+      friendlyName: Ballroom 211
+      type: Ballroom
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    spaces:
+    - name: QueenRoom 301
+      description: QueenRoom 301
+      friendlyName: QueenRoom 301
+      type: QueenRoom
+    - name: QueenRoom 302
+      description: QueenRoom 302
+      friendlyName: QueenRoom 302
+      type: QueenRoom
+    - name: QueenRoom 303
+      description: QueenRoom 303
+      friendlyName: QueenRoom 303
+      type: QueenRoom
+    - name: QueenRoom 304
+      description: QueenRoom 304
+      friendlyName: QueenRoom 304
+      type: QueenRoom
+    - name: KingRoom 305
+      description: KingRoom 305
+      friendlyName: KingRoom 305
+      type: KingRoom
+    - name: KingRoom 306
+      description: KingRoom 306
+      friendlyName: KingRoom 306
+      type: KingRoom
+    - name: KingRoom 307
+      description: KingRoom 307
+      friendlyName: KingRoom 307
+      type: KingRoom
+    - name: KingRoom 308
+      description: KingRoom 308
+      friendlyName: KingRoom 308
+      type: KingRoom
+    - name: Suite 309
+      description: Suite 309
+      friendlyName: Suite 309
+      type: Suite
+    - name: Suite 310
+      description: Suite 310
+      friendlyName: Suite 310
+      type: Suite
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    spaces:
+    - name: QueenRoom 401
+      description: QueenRoom 401
+      friendlyName: QueenRoom 401
+      type: QueenRoom
+    - name: QueenRoom 402
+      description: QueenRoom 402
+      friendlyName: QueenRoom 402
+      type: QueenRoom
+    - name: QueenRoom 403
+      description: QueenRoom 403
+      friendlyName: QueenRoom 403
+      type: QueenRoom
+    - name: QueenRoom 404
+      description: QueenRoom 404
+      friendlyName: QueenRoom 404
+      type: QueenRoom
+    - name: KingRoom 405
+      description: KingRoom 405
+      friendlyName: KingRoom 405
+      type: KingRoom
+    - name: KingRoom 406
+      description: KingRoom 406
+      friendlyName: KingRoom 406
+      type: KingRoom
+    - name: KingRoom 407
+      description: KingRoom 407
+      friendlyName: KingRoom 407
+      type: KingRoom
+    - name: KingRoom 408
+      description: KingRoom 408
+      friendlyName: KingRoom 408
+      type: KingRoom
+    - name: Suite 409
+      description: Suite 409
+      friendlyName: Suite 409
+      type: Suite
+    - name: Suite 410
+      description: Suite 410
+      friendlyName: Suite 410
+      type: Suite
+  - name: VIPFloor 05
+    description: VIPFloor 5
+    friendlyName: VIPFloor 5
+    type: VIPFloor
+    spaces:
+    - name: Suite 501
+      description: Suite 501
+      friendlyName: Suite 501
+      type: Suite
+    - name: Suite 502
+      description: Suite 502
+      friendlyName: Suite 502
+      type: Suite
+    - name: Suite 503
+      description: Suite 503
+      friendlyName: Suite 503
+      type: Suite
+    - name: VIPSuite 504
+      description: VIPSuite 504
+      friendlyName: VIPSuite 504
+      type: VIPSuite
+- name: Hotel SL 1
+  description: SmartHotel360 hotel Hotel SL 1
+  friendlyName: Hotel SL 1
+  type: Hotel
+  users:
+  - Hotel SL 1 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    spaces:
+    - name: QueenRoom 101
+      description: QueenRoom 101
+      friendlyName: QueenRoom 101
+      type: QueenRoom
+    - name: QueenRoom 102
+      description: QueenRoom 102
+      friendlyName: QueenRoom 102
+      type: QueenRoom
+    - name: QueenRoom 103
+      description: QueenRoom 103
+      friendlyName: QueenRoom 103
+      type: QueenRoom
+    - name: QueenRoom 104
+      description: QueenRoom 104
+      friendlyName: QueenRoom 104
+      type: QueenRoom
+    - name: KingRoom 105
+      description: KingRoom 105
+      friendlyName: KingRoom 105
+      type: KingRoom
+    - name: KingRoom 106
+      description: KingRoom 106
+      friendlyName: KingRoom 106
+      type: KingRoom
+    - name: KingRoom 107
+      description: KingRoom 107
+      friendlyName: KingRoom 107
+      type: KingRoom
+    - name: KingRoom 108
+      description: KingRoom 108
+      friendlyName: KingRoom 108
+      type: KingRoom
+    - name: Suite 109
+      description: Suite 109
+      friendlyName: Suite 109
+      type: Suite
+    - name: Suite 110
+      description: Suite 110
+      friendlyName: Suite 110
+      type: Suite
+    - name: Gym 111
+      description: Gym 111
+      friendlyName: Gym 111
+      type: Gym
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    spaces:
+    - name: QueenRoom 201
+      description: QueenRoom 201
+      friendlyName: QueenRoom 201
+      type: QueenRoom
+    - name: QueenRoom 202
+      description: QueenRoom 202
+      friendlyName: QueenRoom 202
+      type: QueenRoom
+    - name: QueenRoom 203
+      description: QueenRoom 203
+      friendlyName: QueenRoom 203
+      type: QueenRoom
+    - name: QueenRoom 204
+      description: QueenRoom 204
+      friendlyName: QueenRoom 204
+      type: QueenRoom
+    - name: KingRoom 205
+      description: KingRoom 205
+      friendlyName: KingRoom 205
+      type: KingRoom
+    - name: KingRoom 206
+      description: KingRoom 206
+      friendlyName: KingRoom 206
+      type: KingRoom
+    - name: KingRoom 207
+      description: KingRoom 207
+      friendlyName: KingRoom 207
+      type: KingRoom
+    - name: KingRoom 208
+      description: KingRoom 208
+      friendlyName: KingRoom 208
+      type: KingRoom
+    - name: Suite 209
+      description: Suite 209
+      friendlyName: Suite 209
+      type: Suite
+    - name: Suite 210
+      description: Suite 210
+      friendlyName: Suite 210
+      type: Suite
+    - name: Ballroom 211
+      description: Ballroom 211
+      friendlyName: Ballroom 211
+      type: Ballroom
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    spaces:
+    - name: QueenRoom 301
+      description: QueenRoom 301
+      friendlyName: QueenRoom 301
+      type: QueenRoom
+    - name: QueenRoom 302
+      description: QueenRoom 302
+      friendlyName: QueenRoom 302
+      type: QueenRoom
+    - name: QueenRoom 303
+      description: QueenRoom 303
+      friendlyName: QueenRoom 303
+      type: QueenRoom
+    - name: QueenRoom 304
+      description: QueenRoom 304
+      friendlyName: QueenRoom 304
+      type: QueenRoom
+    - name: KingRoom 305
+      description: KingRoom 305
+      friendlyName: KingRoom 305
+      type: KingRoom
+    - name: KingRoom 306
+      description: KingRoom 306
+      friendlyName: KingRoom 306
+      type: KingRoom
+    - name: KingRoom 307
+      description: KingRoom 307
+      friendlyName: KingRoom 307
+      type: KingRoom
+    - name: KingRoom 308
+      description: KingRoom 308
+      friendlyName: KingRoom 308
+      type: KingRoom
+    - name: Suite 309
+      description: Suite 309
+      friendlyName: Suite 309
+      type: Suite
+    - name: Suite 310
+      description: Suite 310
+      friendlyName: Suite 310
+      type: Suite
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    spaces:
+    - name: QueenRoom 401
+      description: QueenRoom 401
+      friendlyName: QueenRoom 401
+      type: QueenRoom
+    - name: QueenRoom 402
+      description: QueenRoom 402
+      friendlyName: QueenRoom 402
+      type: QueenRoom
+    - name: QueenRoom 403
+      description: QueenRoom 403
+      friendlyName: QueenRoom 403
+      type: QueenRoom
+    - name: QueenRoom 404
+      description: QueenRoom 404
+      friendlyName: QueenRoom 404
+      type: QueenRoom
+    - name: KingRoom 405
+      description: KingRoom 405
+      friendlyName: KingRoom 405
+      type: KingRoom
+    - name: KingRoom 406
+      description: KingRoom 406
+      friendlyName: KingRoom 406
+      type: KingRoom
+    - name: KingRoom 407
+      description: KingRoom 407
+      friendlyName: KingRoom 407
+      type: KingRoom
+    - name: KingRoom 408
+      description: KingRoom 408
+      friendlyName: KingRoom 408
+      type: KingRoom
+    - name: Suite 409
+      description: Suite 409
+      friendlyName: Suite 409
+      type: Suite
+    - name: Suite 410
+      description: Suite 410
+      friendlyName: Suite 410
+      type: Suite
+  - name: VIPFloor 05
+    description: VIPFloor 5
+    friendlyName: VIPFloor 5
+    type: VIPFloor
+    spaces:
+    - name: Suite 501
+      description: Suite 501
+      friendlyName: Suite 501
+      type: Suite
+    - name: Suite 502
+      description: Suite 502
+      friendlyName: Suite 502
+      type: Suite
+    - name: Suite 503
+      description: Suite 503
+      friendlyName: Suite 503
+      type: Suite
+    - name: VIPSuite 504
+      description: VIPSuite 504
+      friendlyName: VIPSuite 504
+      type: VIPSuite
+- name: Hotel SL 2
+  description: SmartHotel360 hotel Hotel SL 2
+  friendlyName: Hotel SL 2
+  type: Hotel
+  users:
+  - Hotel SL 2 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    spaces:
+    - name: QueenRoom 101
+      description: QueenRoom 101
+      friendlyName: QueenRoom 101
+      type: QueenRoom
+    - name: QueenRoom 102
+      description: QueenRoom 102
+      friendlyName: QueenRoom 102
+      type: QueenRoom
+    - name: QueenRoom 103
+      description: QueenRoom 103
+      friendlyName: QueenRoom 103
+      type: QueenRoom
+    - name: QueenRoom 104
+      description: QueenRoom 104
+      friendlyName: QueenRoom 104
+      type: QueenRoom
+    - name: KingRoom 105
+      description: KingRoom 105
+      friendlyName: KingRoom 105
+      type: KingRoom
+    - name: KingRoom 106
+      description: KingRoom 106
+      friendlyName: KingRoom 106
+      type: KingRoom
+    - name: KingRoom 107
+      description: KingRoom 107
+      friendlyName: KingRoom 107
+      type: KingRoom
+    - name: KingRoom 108
+      description: KingRoom 108
+      friendlyName: KingRoom 108
+      type: KingRoom
+    - name: Suite 109
+      description: Suite 109
+      friendlyName: Suite 109
+      type: Suite
+    - name: Suite 110
+      description: Suite 110
+      friendlyName: Suite 110
+      type: Suite
+    - name: Gym 111
+      description: Gym 111
+      friendlyName: Gym 111
+      type: Gym
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    spaces:
+    - name: QueenRoom 201
+      description: QueenRoom 201
+      friendlyName: QueenRoom 201
+      type: QueenRoom
+    - name: QueenRoom 202
+      description: QueenRoom 202
+      friendlyName: QueenRoom 202
+      type: QueenRoom
+    - name: QueenRoom 203
+      description: QueenRoom 203
+      friendlyName: QueenRoom 203
+      type: QueenRoom
+    - name: QueenRoom 204
+      description: QueenRoom 204
+      friendlyName: QueenRoom 204
+      type: QueenRoom
+    - name: KingRoom 205
+      description: KingRoom 205
+      friendlyName: KingRoom 205
+      type: KingRoom
+    - name: KingRoom 206
+      description: KingRoom 206
+      friendlyName: KingRoom 206
+      type: KingRoom
+    - name: KingRoom 207
+      description: KingRoom 207
+      friendlyName: KingRoom 207
+      type: KingRoom
+    - name: KingRoom 208
+      description: KingRoom 208
+      friendlyName: KingRoom 208
+      type: KingRoom
+    - name: Suite 209
+      description: Suite 209
+      friendlyName: Suite 209
+      type: Suite
+    - name: Suite 210
+      description: Suite 210
+      friendlyName: Suite 210
+      type: Suite
+    - name: Ballroom 211
+      description: Ballroom 211
+      friendlyName: Ballroom 211
+      type: Ballroom
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    spaces:
+    - name: QueenRoom 301
+      description: QueenRoom 301
+      friendlyName: QueenRoom 301
+      type: QueenRoom
+    - name: QueenRoom 302
+      description: QueenRoom 302
+      friendlyName: QueenRoom 302
+      type: QueenRoom
+    - name: QueenRoom 303
+      description: QueenRoom 303
+      friendlyName: QueenRoom 303
+      type: QueenRoom
+    - name: QueenRoom 304
+      description: QueenRoom 304
+      friendlyName: QueenRoom 304
+      type: QueenRoom
+    - name: KingRoom 305
+      description: KingRoom 305
+      friendlyName: KingRoom 305
+      type: KingRoom
+    - name: KingRoom 306
+      description: KingRoom 306
+      friendlyName: KingRoom 306
+      type: KingRoom
+    - name: KingRoom 307
+      description: KingRoom 307
+      friendlyName: KingRoom 307
+      type: KingRoom
+    - name: KingRoom 308
+      description: KingRoom 308
+      friendlyName: KingRoom 308
+      type: KingRoom
+    - name: Suite 309
+      description: Suite 309
+      friendlyName: Suite 309
+      type: Suite
+    - name: Suite 310
+      description: Suite 310
+      friendlyName: Suite 310
+      type: Suite
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    spaces:
+    - name: QueenRoom 401
+      description: QueenRoom 401
+      friendlyName: QueenRoom 401
+      type: QueenRoom
+    - name: QueenRoom 402
+      description: QueenRoom 402
+      friendlyName: QueenRoom 402
+      type: QueenRoom
+    - name: QueenRoom 403
+      description: QueenRoom 403
+      friendlyName: QueenRoom 403
+      type: QueenRoom
+    - name: QueenRoom 404
+      description: QueenRoom 404
+      friendlyName: QueenRoom 404
+      type: QueenRoom
+    - name: KingRoom 405
+      description: KingRoom 405
+      friendlyName: KingRoom 405
+      type: KingRoom
+    - name: KingRoom 406
+      description: KingRoom 406
+      friendlyName: KingRoom 406
+      type: KingRoom
+    - name: KingRoom 407
+      description: KingRoom 407
+      friendlyName: KingRoom 407
+      type: KingRoom
+    - name: KingRoom 408
+      description: KingRoom 408
+      friendlyName: KingRoom 408
+      type: KingRoom
+    - name: Suite 409
+      description: Suite 409
+      friendlyName: Suite 409
+      type: Suite
+    - name: Suite 410
+      description: Suite 410
+      friendlyName: Suite 410
+      type: Suite
+  - name: VIPFloor 05
+    description: VIPFloor 5
+    friendlyName: VIPFloor 5
+    type: VIPFloor
+    spaces:
+    - name: Suite 501
+      description: Suite 501
+      friendlyName: Suite 501
+      type: Suite
+    - name: Suite 502
+      description: Suite 502
+      friendlyName: Suite 502
+      type: Suite
+    - name: Suite 503
+      description: Suite 503
+      friendlyName: Suite 503
+      type: Suite
+    - name: VIPSuite 504
+      description: VIPSuite 504
+      friendlyName: VIPSuite 504
+      type: VIPSuite

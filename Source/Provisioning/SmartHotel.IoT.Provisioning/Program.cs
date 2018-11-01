@@ -62,9 +62,14 @@ namespace SmartHotel.IoT.Provisioning
         public string EventHubName { get; }
 
 		[Option( "-oids|--UserObjectIdsFile", Description = "Json file containing the Azure AD Object IDs for each user" )]
-		public string UserObjectIdsFile { get; } = Path.Combine( "Resources", "UserAADObjectIds.json" );
+        [Required]
+		public string UserObjectIdsFile { get; }
 
-		[Option( "-o|--output", Description = "Name of the file to save provisioning data to.  This is used by SmartHotel.IoT.ProvisioningDevices to configure device settings" )]
+        [Option("-dtpf|--DigitalTwinsProvisioningFile", Description = "Yaml file containing the tenant definition for Digital Twins provisioning")]
+        [Required]
+        public string DigitalTwinsProvisioningFile { get; }
+
+        [Option( "-o|--output", Description = "Name of the file to save provisioning data to.  This is used by SmartHotel.IoT.ProvisioningDevices to configure device settings" )]
 		public string OutputFile { get; }
 
 		private async Task OnExecuteAsync()
@@ -85,7 +90,7 @@ namespace SmartHotel.IoT.Provisioning
 
             Console.WriteLine($"Loading the provisioning files...");
 
-            ProvisioningDescription provisioningDescription = ProvisioningHelper.LoadSmartHotelProvisioning();
+            ProvisioningDescription provisioningDescription = ProvisioningHelper.LoadSmartHotelProvisioning(DigitalTwinsProvisioningFile);
 
             Console.WriteLine($"Successfully loaded provisioning files.");
 
@@ -110,8 +115,7 @@ namespace SmartHotel.IoT.Provisioning
 			IReadOnlyCollection<Endpoint> existingEndpoints = await EndpointHelpers.GetEndpointsAsync( httpClient, JsonSerializerSettings );
 			foreach ( EndpointDescription endpointDescription in endpointDescriptions )
 			{
-				if ( existingEndpoints.Any( e => e.Type == endpointDescription.type
-												 && e.Path == EventHubName
+                if ( existingEndpoints.Any( e => e.Type == endpointDescription.type
 												 && e.EventTypes.Intersect( endpointDescription.eventTypes ).Any() ) )
 				{
 					// Assuming that if endpoing matching Type, Path, and EventTypes already exists then its connection strings are already correct

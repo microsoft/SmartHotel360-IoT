@@ -15,12 +15,10 @@ namespace ProvisioningGenerator
         public static async Task<int> Main(string[] args) => await CommandLineApplication.ExecuteAsync<Program>(args);
 
         [Option("-op|--outputPrefix", Description = "Prefix of the output filenames")]
-        [Required]
-        public string OutputFilePrefix { get; private set; }
+        public string OutputFilePrefix { get; } = "SmartHotel";
 
-        [Option("-df|--definitionFilename", Description = "Filename of json brand definition")]
-        [Required]
-        public string DefinitionFilename { get; }
+        [Option("-df|--definitionFilepath", Description = "Filepath of json brand definition")]
+        public string DefinitionFilepath { get; } = Path.Combine("SampleDefinitions", "MasterJson", "ReducedSiteDefinition.json");
 
         [Option("-st|--subTenantName", Description = "Create a sub-Tenant with the given name")]
         public string SubTenantName { get; }
@@ -37,13 +35,13 @@ namespace ProvisioningGenerator
 
         private void GenerateProvisioningFiles()
         {
-            if (!File.Exists(DefinitionFilename))
+            if (!File.Exists(DefinitionFilepath))
             {
-                Console.WriteLine($"Definition file not found: {DefinitionFilename}");
+                Console.WriteLine($"Definition file not found: {DefinitionFilepath}");
                 return;
             }
 
-            using (StreamReader definitionFile = new StreamReader(DefinitionFilename))
+            using (StreamReader definitionFile = new StreamReader(DefinitionFilepath))
             {
                 string siteJson = definitionFile.ReadToEnd();
 

@@ -7,12 +7,12 @@ spaces:
   description: This is the root node for the SmartHotel360 IoT Demo
   friendlyName: SmartHotel 360 Tenant
   type: Tenant
+  keystoreName: SmartHotel360 Keystore
   spaces:
-  - name: SmartHotel 360 Tenant - Test05
-    description: This is the root node for the SmartHotel360 IoT Demo
-    friendlyName: SmartHotel 360 Tenant
+  - name: FullTest
+    description: This is the root node for the FullTest sub Tenant
+    friendlyName: FullTest
     type: Tenant
-    keystoreName: SmartHotel360 Keystore
     types:
     - name: Classic
       category: SensorType
@@ -20,6 +20,20 @@ spaces:
       category: SpaceType
     - name: Hotel
       category: SpaceType
+    - name: VIPFloor
+      category: SpaceSubtype
+    - name: QueenRoom
+      category: SpaceSubtype
+    - name: KingRoom
+      category: SpaceSubtype
+    - name: Suite
+      category: SpaceSubtype
+    - name: VIPSuite
+      category: SpaceSubtype
+    - name: Ballroom
+      category: SpaceSubtype
+    - name: Gym
+      category: SpaceSubtype
     users:
     - Manager
     spaceReferences:
