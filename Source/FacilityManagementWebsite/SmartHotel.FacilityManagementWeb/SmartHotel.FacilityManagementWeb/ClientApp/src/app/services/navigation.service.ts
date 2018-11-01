@@ -8,6 +8,17 @@ import { ISpace } from './models/ISpace';
 export class NavigationService {
   constructor(private router: Router) { }
 
+  public navigateToTopSpaces(spaces: ISpace[]) {
+    const firstSpace = spaces[0];
+    if (firstSpace.type.toLowerCase() === 'hotelbrand') {
+      this.returnToHome(firstSpace.parentSpaceId);
+    } else if (firstSpace.type.toLowerCase() === 'venue') {
+      this.chooseHotelBrand(undefined, firstSpace.parentSpaceId);
+    } else if (firstSpace.type.toLowerCase() === 'floor') {
+      this.chooseHotel(undefined, undefined, undefined, firstSpace.parentSpaceId, spaces.indexOf(firstSpace));
+    }
+  }
+
   public returnToHome(tenantId: string) {
     const navArgs = this.createNavArgs(tenantId);
     this.router.navigate(['/', navArgs]);

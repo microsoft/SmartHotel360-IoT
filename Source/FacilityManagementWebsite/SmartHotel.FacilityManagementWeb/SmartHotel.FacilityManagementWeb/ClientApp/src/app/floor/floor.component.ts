@@ -4,11 +4,11 @@ import { FacilityService } from '../services/facility.service';
 import { ILight, IThermostat, IMotion } from '../services/models/IDevice';
 import { ISensor } from '../services/models/ISensor';
 import { environment } from '../../environments/environment';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { IDesired } from '../services/models/IDesired';
 import { ChangeContext, Options } from 'ng5-slider';
 import { ISpace } from '../services/models/ISpace';
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
+import { BusyService } from '../services/busy.service';
 
 @Component({
   selector: 'app-floor',
@@ -19,7 +19,7 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
     private facilityService: FacilityService,
-    private spinnerService: Ng4LoadingSpinnerService) {
+    private busyService: BusyService) {
     this.roomsById = new Map<string, ISpace>();
     this.desiredDataByRoomId = new Map<string, IDesired[]>();
     this.sensorDataByRoomId = new Map<string, ISensor[]>();
@@ -93,17 +93,22 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   loadRooms(self: FloorComponent) {
 
-    const floor = self.facilityService.getSpace(self.hotelId, self.floorId);
-    if (!floor) {
-      self.breadcrumbs.returnToHotel();
-      return;
-    }
-    self.floorName = floor.name;
+    try {
+      self.busyService.busy();
+      const floor = self.facilityService.getSpace(self.hotelId, self.floorId);
+      if (!floor) {
+        self.breadcrumbs.returnToHotel();
+        return;
+      }
+      self.floorName = floor.name;
 
-    self.rooms = self.facilityService.getChildSpaces(self.floorId);
-    self.rooms.forEach(room => self.roomsById.set(room.id, room));
-    self.loadDesiredData();
-    self.setupTimer();
+      self.rooms = self.facilityService.getChildSpaces(self.floorId);
+      self.rooms.forEach(room => self.roomsById.set(room.id, room));
+      self.loadDesiredData();
+      self.setupTimer();
+    } finally {
+      self.busyService.idle();
+    }
   }
 
   setupTimer() {
@@ -160,7 +165,6 @@ export class FloorComponent implements OnInit, OnDestroy {
 
           sensorDataForRoom.push(s);
         });
-        this.spinnerService.hide();
       });
     }
   }

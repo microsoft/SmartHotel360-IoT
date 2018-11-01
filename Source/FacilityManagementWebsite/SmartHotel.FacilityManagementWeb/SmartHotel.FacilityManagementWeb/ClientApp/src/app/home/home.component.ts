@@ -28,7 +28,12 @@ export class HomeComponent implements OnInit {
 
 
   loadHotelBrands(self: HomeComponent) {
-    self.hotelBrands = self.facilityService.getChildSpaces(self.tenantId);
+    const hotelBrands = self.facilityService.getChildSpaces(self.tenantId);
+    if (!hotelBrands) {
+      self.navigationService.navigateToTopSpaces(self.facilityService.getSpaces());
+      return;
+    }
+    self.hotelBrands = hotelBrands;
   }
 
   chooseHotelBrand(hotelBrand: ISpace) {

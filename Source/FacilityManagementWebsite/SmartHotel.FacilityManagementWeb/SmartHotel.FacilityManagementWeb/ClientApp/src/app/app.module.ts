@@ -13,8 +13,7 @@ import { HotelComponent } from './hotel/hotel.component';
 import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationGuard } from './common/authentication-guard';
-import { FacilityService } from './services/facility.service';
-import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { Ng5SliderModule } from 'ng5-slider';
 import { HotelBrandComponent } from './hotel-brand/hotel-brand.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
@@ -36,7 +35,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    Ng4LoadingSpinnerModule.forRoot(),
+    NgxSpinnerModule,
     Ng5SliderModule
   ],
   providers: [

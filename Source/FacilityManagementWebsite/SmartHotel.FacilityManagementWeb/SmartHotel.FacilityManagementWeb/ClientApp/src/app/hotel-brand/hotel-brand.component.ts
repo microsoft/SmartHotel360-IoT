@@ -43,7 +43,12 @@ export class HotelBrandComponent implements OnInit {
       self.hotelBrandName = hotelBrand.name;
     }
 
-    self.hotels = self.facilityService.getChildSpaces(self.hotelBrandId);
+    const hotels = self.facilityService.getChildSpaces(self.hotelBrandId);
+    if (!hotels) {
+      self.navigationService.navigateToTopSpaces(self.facilityService.getSpaces());
+      return;
+    }
+    self.hotels = hotels;
   }
 
   chooseHotel(hotel) {

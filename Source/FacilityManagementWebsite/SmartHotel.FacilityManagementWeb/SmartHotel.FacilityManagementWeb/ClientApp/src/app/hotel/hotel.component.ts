@@ -48,7 +48,12 @@ export class HotelComponent implements OnInit {
       self.hotelName = hotel.name;
     }
 
-    self.floors = self.facilityService.getChildSpaces(self.hotelId);
+    const floors = self.facilityService.getChildSpaces(self.hotelId);
+    if (!floors) {
+      self.navigationService.navigateToTopSpaces(self.facilityService.getSpaces());
+      return;
+    }
+    self.floors = floors;
   }
 
   chooseFloor(floor) {
