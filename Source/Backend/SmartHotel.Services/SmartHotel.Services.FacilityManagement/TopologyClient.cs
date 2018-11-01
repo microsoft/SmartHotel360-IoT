@@ -34,11 +34,9 @@ namespace SmartHotel.Services.FacilityManagement
 		private readonly string ApiPath = "api/v1.0/";
 
 		private readonly string SpacesPath = "spaces";
-		private readonly string DevicesPath = "devices";
 		private readonly string TypesPath = "types";
 
-		private readonly string SpacesFilter = "includes=Parent";
-		private readonly string DevicesFilter = "includes=Sensors";
+		private readonly string SpacesFilter = "";
 
 		private readonly string TypesFilter =
 			$"names={TenantTypeName};{HotelBrandTypeName};{HotelTypeName};{FloorTypeName};{RoomTypeName}&categories=SpaceType";
@@ -129,37 +127,6 @@ namespace SmartHotel.Services.FacilityManagement
 				string highestLevelParentSpaceId = highestLevelSpace.ParentSpaceId;
 				hierarchicalSpaces.AddRange( spacesByParentId[highestLevelParentSpaceId] );
 				BuildSpaceHierarchyAndReturnRoomSpaces( hierarchicalSpaces, spacesByParentId );
-				//ICollection<Space> roomSpaces = 
-				//IDictionary<string, Space> roomSpacesById = roomSpaces.ToDictionary( s => s.Id );
-
-				// Devices
-				//var deviceResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{DevicesPath}?{DevicesFilter}" );
-				//dynamic devices = JsonConvert.DeserializeObject( deviceResponse );
-
-				//foreach ( var deviceEntry in devices )
-				//{
-				//	Device device = new Device();
-				//	device.Id = deviceEntry.id;
-				//	device.Name = deviceEntry.name;
-				//	device.HardwareId = deviceEntry.hardwareId;
-				//	device.SpaceId = deviceEntry.spaceId;
-
-				//	foreach ( var sensorEntry in deviceEntry.sensors )
-				//	{
-				//		Sensor sensor = new Sensor();
-				//		sensor.Id = sensorEntry.id;
-				//		sensor.SpaceId = sensorEntry.spaceId;
-				//		sensor.DataTypeId = sensorEntry.dataTypeId;
-				//		sensor.DeviceId = sensorEntry.deviceId;
-
-				//		device.Sensors.Add( sensor );
-				//	}
-
-				//	if ( roomSpacesById.TryGetValue( device.SpaceId, out Space roomSpace ) )
-				//	{
-				//		roomSpace.Devices.Add( device );
-				//	}
-				//}
 			}
 
 			if ( hierarchicalSpaces.Count == 1 && !FloorTypeName.Equals( hierarchicalSpaces[0].Type, StringComparison.OrdinalIgnoreCase ) )
@@ -182,18 +149,9 @@ namespace SmartHotel.Services.FacilityManagement
 				if ( allSpacesByParentId.TryGetValue( parentSpace.Id, out List<Space> childSpaces ) )
 				{
 					parentSpace.ChildSpaces.AddRange( childSpaces );
-					//ICollection<Space> result = 
 					BuildSpaceHierarchyAndReturnRoomSpaces( childSpaces, allSpacesByParentId );
-					//roomSpaces.AddRange( result );
 				}
-
-				//if ( string.Equals( RoomTypeName, parentSpace.Type, StringComparison.OrdinalIgnoreCase ) )
-				//{
-				//	roomSpaces.Add( parentSpace );
-				//}
 			}
-
-			//return roomSpaces;
 		}
 
 		private Space GetHighestLevelSpace( Space tenantSpace, Space hotelBrandSpace, Space hotelSpace, Space floorSpace )
