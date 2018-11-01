@@ -10,12 +10,12 @@ export class BusyService {
   constructor(private spinnerService: NgxSpinnerService) { }
 
   public busy() {
-    this.busyRequestCount = this.busyRequestCount + 1;
+    this.busyRequestCount++;
     this.spinnerService.show();
   }
 
   public idle() {
-    this.busyRequestCount = this.busyRequestCount - 1;
+    this.busyRequestCount--;
     if (this.busyRequestCount <= 0) {
       this.busyRequestCount = 0;
       this.spinnerService.hide();
