@@ -133,10 +133,13 @@ namespace SmartHotel.Services.FacilityManagement
 			{
 				// If there is only one root space, then ensuring we only send the child spaces to the client so it knows
 				// to start showing those children.
-				// TODO: remove the .Where statement. This is only there because of current testing
-				hierarchicalSpaces = hierarchicalSpaces[0].ChildSpaces
-					.Where( s => !TenantTypeName.Equals( s.Type, StringComparison.OrdinalIgnoreCase ) ).ToList();
+				hierarchicalSpaces = hierarchicalSpaces[0].ChildSpaces;
 			}
+
+			// TODO: remove this line statement. This is only there because of current testing
+			hierarchicalSpaces = hierarchicalSpaces.Where( s => !TenantTypeName.Equals( s.Type, StringComparison.OrdinalIgnoreCase ) )
+				.ToList();
+
 
 			return hierarchicalSpaces;
 		}
