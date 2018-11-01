@@ -101,6 +101,20 @@ namespace ProvisioningGenerator
                     outputFile.WriteLine("    category: SpaceType");
                     outputFile.WriteLine("  - name: Hotel");
                     outputFile.WriteLine("    category: SpaceType");
+                    outputFile.WriteLine("  - name: VIPFloor");
+                    outputFile.WriteLine("    category: SpaceSubtype");
+                    outputFile.WriteLine("  - name: QueenRoom");
+                    outputFile.WriteLine("    category: SpaceSubtype");
+                    outputFile.WriteLine("  - name: KingRoom");
+                    outputFile.WriteLine("    category: SpaceSubtype");
+                    outputFile.WriteLine("  - name: Suite");
+                    outputFile.WriteLine("    category: SpaceSubtype");
+                    outputFile.WriteLine("  - name: VIPSuite");
+                    outputFile.WriteLine("    category: SpaceSubtype");
+                    outputFile.WriteLine("  - name: Ballroom");
+                    outputFile.WriteLine("    category: SpaceSubtype");
+                    outputFile.WriteLine("  - name: Gym");
+                    outputFile.WriteLine("    category: SpaceSubtype");
                     outputFile.WriteLine("  users:");
                     outputFile.WriteLine("  - Manager");
                     outputFile.WriteLine("  spaceReferences:");
@@ -121,6 +135,20 @@ namespace ProvisioningGenerator
                     outputFile.WriteLine($"      category: SpaceType");
                     outputFile.WriteLine($"    - name: Hotel");
                     outputFile.WriteLine($"      category: SpaceType");
+                    outputFile.WriteLine($"    - name: VIPFloor");
+                    outputFile.WriteLine($"      category: SpaceSubtype");
+                    outputFile.WriteLine($"    - name: QueenRoom");
+                    outputFile.WriteLine($"      category: SpaceSubtype");
+                    outputFile.WriteLine($"    - name: KingRoom");
+                    outputFile.WriteLine($"      category: SpaceSubtype");
+                    outputFile.WriteLine($"    - name: Suite");
+                    outputFile.WriteLine($"      category: SpaceSubtype");
+                    outputFile.WriteLine($"    - name: VIPSuite");
+                    outputFile.WriteLine($"      category: SpaceSubtype");
+                    outputFile.WriteLine($"    - name: Ballroom");
+                    outputFile.WriteLine($"      category: SpaceSubtype");
+                    outputFile.WriteLine($"    - name: Gym");
+                    outputFile.WriteLine($"      category: SpaceSubtype");
                     outputFile.WriteLine($"    users:");
                     outputFile.WriteLine($"    - Manager");
                     outputFile.WriteLine($"    spaceReferences:");
@@ -204,23 +232,37 @@ namespace ProvisioningGenerator
                         // Create the rooms
                         for (int j = 0; j < hotelType.NumberRoomsPerRegularFloor; j++)
                         {
-                            CreateRoom(outputFile, 100 * (i + 1) + j + 1, brandHotelPrefix, hotel.AddDevices);
+                            string roomType = GetRoomType(j, hotelType.NumberRoomsPerRegularFloor, false);
+                            CreateRoom(outputFile, 100 * (i + 1) + j + 1, brandHotelPrefix, roomType, hotel.AddDevices);
+                        }
+
+                        if (i == 0 && hotelType.IncludeGym)
+                        {
+                            CreateRoom(outputFile, 100 * (i + 1) + hotelType.NumberRoomsPerRegularFloor + 1,
+                                brandHotelPrefix, "Gym", hotel.AddDevices);
+                        }
+
+                        if (i == 1 && hotelType.IncludeBallroom)
+                        {
+                            CreateRoom(outputFile, 100 * (i + 1) + hotelType.NumberRoomsPerRegularFloor + 1,
+                                brandHotelPrefix, "Ballroom", hotel.AddDevices);
                         }
                     }
 
                     // Create the VIP floors
                     for (int i = numberRegularFloors; i < hotelType.TotalNumberFloors; i++)
                     {
-                        outputFile.WriteLine($"  - name: Floor {i + 1:D02}");
-                        outputFile.WriteLine($"    description: Floor {i + 1}");
-                        outputFile.WriteLine($"    friendlyName: Floor {i + 1}");
-                        outputFile.WriteLine($"    type: Floor");
+                        outputFile.WriteLine($"  - name: VIPFloor {i + 1:D02}");
+                        outputFile.WriteLine($"    description: VIPFloor {i + 1}");
+                        outputFile.WriteLine($"    friendlyName: VIPFloor {i + 1}");
+                        outputFile.WriteLine($"    type: VIPFloor");
                         outputFile.WriteLine($"    spaces:");
 
                         // Create the rooms
                         for (int j = 0; j < hotelType.NumberRoomsPerVipFloor; j++)
                         {
-                            CreateRoom(outputFile, 100 * (i + 1) + j + 1, brandHotelPrefix, hotel.AddDevices);
+                            string roomType = GetRoomType(j, hotelType.NumberRoomsPerRegularFloor, true);
+                            CreateRoom(outputFile, 100 * (i + 1) + j + 1, brandHotelPrefix, roomType, hotel.AddDevices);
                         }
                     }
                 }
@@ -231,12 +273,44 @@ namespace ProvisioningGenerator
             return true;
         }
 
-        private void CreateRoom(StreamWriter outputFile, int roomNumber, string brandHotelPrefix, bool addDevices)
+        private string GetRoomType(int roomIndex, int numberRoomsOnFloor, bool isVipFloor)
         {
-            outputFile.WriteLine($"    - name: Room {roomNumber}");
-            outputFile.WriteLine($"      description: Room {roomNumber}");
-            outputFile.WriteLine($"      friendlyName: Room {roomNumber}");
-            outputFile.WriteLine($"      type: Room");
+            if (isVipFloor)
+            {
+                int oneQuarter = (int)Math.Ceiling((double)numberRoomsOnFloor / 4.0D);
+                if (roomIndex < oneQuarter)
+                {
+                    return "Suite";
+                }
+                else
+                {
+                    return "VIPSuite";
+                }
+            }
+            else
+            {
+                int oneThird = (int)Math.Ceiling((double)numberRoomsOnFloor / 3.0D);
+                if (roomIndex < oneThird)
+                {
+                    return "QueenRoom";
+                }
+                else if (roomIndex < 2 * oneThird)
+                {
+                    return "KingRoom";
+                }
+                else
+                {
+                    return "Suite";
+                }
+            }
+        }
+
+        private void CreateRoom(StreamWriter outputFile, int roomNumber, string brandHotelPrefix, string roomType, bool addDevices)
+        {
+            outputFile.WriteLine($"    - name: {roomType} {roomNumber}");
+            outputFile.WriteLine($"      description: {roomType} {roomNumber}");
+            outputFile.WriteLine($"      friendlyName: {roomType} {roomNumber}");
+            outputFile.WriteLine($"      type: {roomType}");
 
             if (addDevices)
             {
