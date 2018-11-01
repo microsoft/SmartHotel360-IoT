@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
 import { ILight, IThermostat, IMotion } from '../services/models/IDevice';
@@ -8,7 +8,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { IDesired } from '../services/models/IDesired';
 import { ChangeContext, Options } from 'ng5-slider';
 import { ISpace } from '../services/models/ISpace';
-import { NavigationService } from '../services/navigation.service';
+import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-floor',
@@ -17,8 +17,7 @@ import { NavigationService } from '../services/navigation.service';
 })
 export class FloorComponent implements OnInit, OnDestroy {
 
-  constructor(private navigationService: NavigationService,
-    private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
     private facilityService: FacilityService,
     private spinnerService: Ng4LoadingSpinnerService) {
     this.roomsById = new Map<string, ISpace>();
@@ -26,23 +25,24 @@ export class FloorComponent implements OnInit, OnDestroy {
     this.sensorDataByRoomId = new Map<string, ISensor[]>();
   }
 
-  tenantId: string;
-  hotelBrandId: string;
-  hotelBrandName: string;
-  hotelName: string;
-  hotelId: string;
-  hotelIndex: number;
-  floorId: string;
-  floorName: string;
+  @ViewChild('breadcumbs') private breadcrumbs: BreadcrumbComponent;
+  public tenantId: string;
+  public hotelBrandId: string;
+  public hotelBrandName: string;
+  public hotelName: string;
+  private hotelId: string;
+  public hotelIndex: number;
+  private floorId: string;
+  public floorName: string;
 
-  rooms: ISpace[] = null;
-  roomsById: Map<string, ISpace>;
-  desiredDataByRoomId: Map<string, IDesired[]>;
-  sensorDataByRoomId: Map<string, ISensor[]>;
-  sensorInterval;
-  theromstatSliderTimeout;
-  lightSliderTimeout;
-  isUpdatingSliders = false;
+  private rooms: ISpace[] = null;
+  private roomsById: Map<string, ISpace>;
+  private desiredDataByRoomId: Map<string, IDesired[]>;
+  private sensorDataByRoomId: Map<string, ISensor[]>;
+  private sensorInterval;
+  private theromstatSliderTimeout;
+  private lightSliderTimeout;
+  private isUpdatingSliders = false;
 
   thermostatSliderOptions: Options = {
     showTicks: false,
@@ -94,6 +94,10 @@ export class FloorComponent implements OnInit, OnDestroy {
   loadRooms(self: FloorComponent) {
 
     const floor = self.facilityService.getSpace(self.hotelId, self.floorId);
+    if (!floor) {
+      self.breadcrumbs.returnToHotel();
+      return;
+    }
     self.floorName = floor.name;
 
     self.rooms = self.facilityService.getChildSpaces(self.floorId);
@@ -338,17 +342,5 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   sliderChangeEnd() {
     this.isUpdatingSliders = false;
-  }
-
-  returnToHome() {
-    this.navigationService.returnToHome(this.tenantId);
-  }
-
-  returnToHotelBrand() {
-    this.navigationService.chooseHotelBrand(this.tenantId, this.hotelBrandId);
-  }
-
-  returnToHotel() {
-    this.navigationService.chooseHotel(this.tenantId, this.hotelBrandId, this.hotelBrandName, this.hotelId, this.hotelIndex);
   }
 }

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
 import { ISpace } from '../services/models/ISpace';
 import { NavigationService } from '../services/navigation.service';
+import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-hotel',
@@ -15,15 +16,15 @@ export class HotelComponent implements OnInit {
     private facilityService: FacilityService) {
   }
 
-  breadcrumbsHtml: string;
+  @ViewChild('breadcumbs') private breadcrumbs: BreadcrumbComponent;
 
-  tenantId: string;
-  hotelBrandId: string;
-  hotelBrandName: string;
-  hotelName: string;
-  hotelId: string;
-  hotelIndex: number;
-  floors: ISpace[] = null;
+  public tenantId: string;
+  public hotelBrandId: string;
+  public hotelBrandName: string;
+  public hotelName: string;
+  public hotelId: string;
+  public hotelIndex: number;
+  public floors: ISpace[] = null;
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -40,18 +41,14 @@ export class HotelComponent implements OnInit {
   loadFloors(self: HotelComponent) {
     if (self.hotelBrandId) {
       const hotel = self.facilityService.getSpace(self.hotelBrandId, self.hotelId);
+      if (!hotel) {
+        self.breadcrumbs.returnToHotelBrand();
+        return;
+      }
       self.hotelName = hotel.name;
     }
 
     self.floors = self.facilityService.getChildSpaces(self.hotelId);
-  }
-
-  returnToHome() {
-    this.navigationService.returnToHome(this.tenantId);
-  }
-
-  returnToHotelBrand() {
-    this.navigationService.chooseHotelBrand(this.tenantId, this.hotelBrandId);
   }
 
   chooseFloor(floor) {

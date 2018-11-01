@@ -185,7 +185,7 @@ export class FacilityService {
         if (callbackContainer.Requester.constructor && callbackContainer.Requester.constructor.name) {
           requesterName = callbackContainer.Requester.constructor.name;
         }
-        console.error(`[ResultsDataProvider] Failure executing initialization callback for requester: ${requesterName} `);
+        console.error(`[FacilityService] Failure executing initialization callback for requester: ${requesterName} `);
       }
     });
   }

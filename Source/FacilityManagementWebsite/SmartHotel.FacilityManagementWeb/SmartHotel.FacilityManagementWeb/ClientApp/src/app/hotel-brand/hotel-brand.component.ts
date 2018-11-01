@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
 import { ISpace } from '../services/models/ISpace';
 import { NavigationService } from '../services/navigation.service';
+import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-hotel-brand',
@@ -16,12 +17,12 @@ export class HotelBrandComponent implements OnInit {
     private facilityService: FacilityService) {
   }
 
-  breadcrumbsHtml: string;
+  @ViewChild('breadcumbs') private breadcrumbs: BreadcrumbComponent;
 
-  tenantId: string;
-  hotelBrandName: string;
-  hotelBrandId: string;
-  hotels: ISpace[] = null;
+  public tenantId: string;
+  public hotelBrandName: string;
+  public hotelBrandId: string;
+  public hotels: ISpace[] = null;
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -35,14 +36,14 @@ export class HotelBrandComponent implements OnInit {
   loadHotels(self: HotelBrandComponent) {
     if (self.tenantId) {
       const hotelBrand = self.facilityService.getSpace(self.tenantId, self.hotelBrandId);
+      if (!hotelBrand) {
+        self.breadcrumbs.returnToHome();
+        return;
+      }
       self.hotelBrandName = hotelBrand.name;
     }
 
     self.hotels = self.facilityService.getChildSpaces(self.hotelBrandId);
-  }
-
-  returnToHome() {
-    this.navigationService.returnToHome(this.tenantId);
   }
 
   chooseHotel(hotel) {
