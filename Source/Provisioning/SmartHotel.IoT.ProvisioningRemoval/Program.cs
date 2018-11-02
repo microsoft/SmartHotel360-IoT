@@ -46,12 +46,16 @@ namespace SmartHotel.IoT.ProvisioningRemoval
 		[Option( "-re|--RemoveEndpoints", Description = "Flag to indicate if Endpoints should be removed" )]
 		public bool RemoveEndpoints { get; }
 
-		private async Task OnExecuteAsync()
+        [Option("-dtpf|--DigitalTwinsProvisioningFile", Description = "Yaml file containing the tenant definition for Digital Twins provisioning")]
+        [Required]
+        public string DigitalTwinsProvisioningFile { get; }
+
+        private async Task OnExecuteAsync()
 		{
 			HttpClient httpClient = await HttpClientHelper.GetHttpClientAsync( DigitalTwinsApiEndpoint, AadInstance, Tenant,
 				DigitalTwinsResourceId, ClientId, ClientSecret );
 
-			ProvisioningDescription provisioningDescription = ProvisioningHelper.LoadSmartHotelProvisioning();
+			ProvisioningDescription provisioningDescription = ProvisioningHelper.LoadSmartHotelProvisioning(DigitalTwinsProvisioningFile);
 
 			await RemoveAllExistingDevicesAsync( httpClient, provisioningDescription );
 
