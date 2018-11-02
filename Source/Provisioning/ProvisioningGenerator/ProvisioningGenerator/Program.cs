@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using SmartHotel.IoT.Provisioning.Common;
 using SmartHotel.IoT.Provisioning.Common.Models;
 using YamlDotNet.Serialization;
 
@@ -31,6 +32,11 @@ namespace ProvisioningGenerator
 			//GenerateSampleDefinition(DefinitionFilename);
 
 			GenerateProvisioningFiles();
+
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine( "Press Enter to continue..." );
+			Console.ReadLine();
 		}
 
 		private void GenerateProvisioningFiles()
@@ -46,16 +52,14 @@ namespace ProvisioningGenerator
 
 			if ( !GenerateSiteProvisioningFile( site.Brands ) )
 			{
+				Console.WriteLine( "Site provisioning file not written, skipping brand file generation." );
 				return;
 			}
 
 			for ( int i = 0; i < site.Brands.Count; i++ )
 			{
 				Brand brand = site.Brands[i];
-				if ( !GenerateBrandProvisioningFile( brand, i + 1, site.HotelTypes ) )
-				{
-					return;
-				}
+				GenerateBrandProvisioningFile( brand, i + 1, site.HotelTypes );
 			}
 		}
 
@@ -63,9 +67,14 @@ namespace ProvisioningGenerator
 		{
 			string siteFilename = $"{OutputFilePrefix}_Site_Provisioning.yaml";
 
+			bool overwrite = false;
 			if ( File.Exists( siteFilename ) )
 			{
-				Console.WriteLine( $"Error: A file with the requested output name already exists: {siteFilename}" );
+				overwrite = Prompt.GetYesNo( $"A site provisioning file already exists, would you like to overwrite it and any brand provisioning files that already exist? ({siteFilename})", false );
+			}
+
+			if ( !overwrite )
+			{
 				return false;
 			}
 
@@ -132,15 +141,9 @@ namespace ProvisioningGenerator
 			return $"{OutputFilePrefix}_{brand.Name}_Provisioning.yaml";
 		}
 
-		private bool GenerateBrandProvisioningFile( Brand brand, int brandNumber, List<HotelType> hotelTypes )
+		private void GenerateBrandProvisioningFile( Brand brand, int brandNumber, List<HotelType> hotelTypes )
 		{
 			string brandFilename = GetBrandProvisioningFilename( brand );
-
-			if ( File.Exists( brandFilename ) )
-			{
-				Console.WriteLine( $"Error: A file with the requested output name already exists: {brandFilename}" );
-				return false;
-			}
 
 			var brandSpaceDescription = new SpaceDescription
 			{
@@ -169,9 +172,10 @@ namespace ProvisioningGenerator
 				HotelType hotelType = hotelTypes.First( t => t.Name == hotel.Type );
 				int numberRegularFloors = hotelType.TotalNumberFloors - hotelType.NumberVipFloors;
 
-				// Create the regular floors
-				for ( int floorIndex = 0; floorIndex < numberRegularFloors; floorIndex++ )
+				// Create the floors
+				for ( int floorIndex = 0; floorIndex < hotelType.TotalNumberFloors; floorIndex++ )
 				{
+					bool isVipFloor = floorIndex >= numberRegularFloors;
 					var floorSpaceDescription = new SpaceDescription
 					{
 						name = $"Floor {floorIndex + 1:D02}",
@@ -179,16 +183,21 @@ namespace ProvisioningGenerator
 						friendlyName = $"Floor {floorIndex + 1}",
 						type = "Floor"
 					};
+					if ( isVipFloor )
+					{
+						floorSpaceDescription.subType = "VIP";
+					}
 
-					if ( !string.IsNullOrEmpty( hotel.RegularFloorEmployeeUser ) )
+					if ( !isVipFloor && !string.IsNullOrEmpty( hotel.RegularFloorEmployeeUser ) )
 					{
 						floorSpaceDescription.users.Add( $"Hotel {hotelIndex + 1} {hotel.RegularFloorEmployeeUser}" );
 					}
 
+					int numberOfRooms = isVipFloor ? hotelType.NumberRoomsPerVipFloor : hotelType.NumberRoomsPerRegularFloor;
 					// Create the rooms
-					for ( int roomIndex = 0; roomIndex < hotelType.NumberRoomsPerRegularFloor; roomIndex++ )
+					for ( int roomIndex = 0; roomIndex < numberOfRooms; roomIndex++ )
 					{
-						string roomType = GetRoomType( roomIndex, hotelType.NumberRoomsPerRegularFloor, false );
+						string roomType = GetRoomType( roomIndex, numberOfRooms, isVipFloor );
 						SpaceDescription roomSpaceDescription = CreateRoom( 100 * ( floorIndex + 1 ) + roomIndex + 1, brandHotelPrefix,
 							roomType, hotel.AddDevices );
 						floorSpaceDescription.spaces.Add( roomSpaceDescription );
@@ -196,43 +205,26 @@ namespace ProvisioningGenerator
 
 					if ( floorIndex == 0 && hotelType.IncludeGym )
 					{
-						SpaceDescription roomSpaceDescription = CreateRoom( 100 * ( floorIndex + 1 ) + hotelType.NumberRoomsPerRegularFloor + 1,
+						SpaceDescription roomSpaceDescription = CreateRoom( 100 * ( floorIndex + 1 ) + numberOfRooms + 1,
 							brandHotelPrefix, "Gym", hotel.AddDevices );
 						floorSpaceDescription.spaces.Add( roomSpaceDescription );
 					}
 
 					if ( floorIndex == 1 && hotelType.IncludeBallroom )
 					{
-						SpaceDescription roomSpaceDescription = CreateRoom( 100 * ( floorIndex + 1 ) + hotelType.NumberRoomsPerRegularFloor + 1,
+						SpaceDescription roomSpaceDescription = CreateRoom( 100 * ( floorIndex + 1 ) + numberOfRooms + 1,
 							brandHotelPrefix, "Ballroom", hotel.AddDevices );
 						floorSpaceDescription.spaces.Add( roomSpaceDescription );
 					}
 				}
-
-				//TODO: Create the VIP Floor related spaces and devices
-				// Create the VIP floors
-				//for ( int i = numberRegularFloors; i < hotelType.TotalNumberFloors; i++ )
-				//{
-				//	outputFile.WriteLine( $"  - name: VIPFloor {i + 1:D02}" );
-				//	outputFile.WriteLine( $"    description: VIPFloor {i + 1}" );
-				//	outputFile.WriteLine( $"    friendlyName: VIPFloor {i + 1}" );
-				//	outputFile.WriteLine( $"    type: VIPFloor" );
-				//	outputFile.WriteLine( $"    spaces:" );
-
-				//	// Create the rooms
-				//	for ( int j = 0; j < hotelType.NumberRoomsPerVipFloor; j++ )
-				//	{
-				//		string roomType = GetRoomType( j, hotelType.NumberRoomsPerRegularFloor, true );
-				//		CreateRoom( outputFile, 100 * ( i + 1 ) + j + 1, brandHotelPrefix, roomType, hotel.AddDevices );
-				//	}
-				//}
 			}
 
-			//TODO: serialize and save out the brand file
+			var yamlSerializer = new SerializerBuilder()
+				.Build();
+			string serializedProvisioningDescription = yamlSerializer.Serialize( brandSpaceDescription );
+			File.WriteAllText( brandFilename, serializedProvisioningDescription );
 
 			Console.WriteLine( $"Successfully created brand provisioning file: {brandFilename}" );
-
-			return true;
 		}
 
 		private string GetRoomType( int roomIndex, int numberRoomsOnFloor, bool isVipFloor )
