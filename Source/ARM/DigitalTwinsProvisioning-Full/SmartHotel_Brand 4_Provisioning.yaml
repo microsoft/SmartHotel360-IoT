@@ -3,653 +3,2003 @@ description: SmartHotel360 Brand 4
 friendlyName: Brand 4
 type: HotelBrand
 users:
-- Brand 4 Manager
+- Hotel Brand 4 Manager
 spaces:
 - name: Hotel SH 1
-  description: SmartHotel360 hotel Hotel SH 1
+  description: SmartHotel360 Hotel SH 1
   friendlyName: Hotel SH 1
   type: Hotel
   users:
-  - Hotel SH 1 Manager
+  - Hotel 1 Manager
   spaces:
   - name: Floor 01
     description: Floor 1
     friendlyName: Floor 1
     type: Floor
     spaces:
-    - name: QueenRoom 101
-      description: QueenRoom 101
-      friendlyName: QueenRoom 101
-      type: QueenRoom
-    - name: QueenRoom 102
-      description: QueenRoom 102
-      friendlyName: QueenRoom 102
-      type: QueenRoom
-    - name: QueenRoom 103
-      description: QueenRoom 103
-      friendlyName: QueenRoom 103
-      type: QueenRoom
-    - name: QueenRoom 104
-      description: QueenRoom 104
-      friendlyName: QueenRoom 104
-      type: QueenRoom
-    - name: KingRoom 105
-      description: KingRoom 105
-      friendlyName: KingRoom 105
-      type: KingRoom
-    - name: KingRoom 106
-      description: KingRoom 106
-      friendlyName: KingRoom 106
-      type: KingRoom
-    - name: KingRoom 107
-      description: KingRoom 107
-      friendlyName: KingRoom 107
-      type: KingRoom
-    - name: KingRoom 108
-      description: KingRoom 108
-      friendlyName: KingRoom 108
-      type: KingRoom
-    - name: Suite 109
-      description: Suite 109
-      friendlyName: Suite 109
-      type: Suite
-    - name: Suite 110
-      description: Suite 110
-      friendlyName: Suite 110
-      type: Suite
-    - name: Gym 111
-      description: Gym 111
-      friendlyName: Gym 111
-      type: Gym
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_101_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_101_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_101_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_102_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_102_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_102_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_103_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_103_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_103_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_104_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_104_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_104_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_105_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_105_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_105_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_106_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_106_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_106_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_107_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_107_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_107_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_108_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_108_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_108_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_109_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_109_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_109_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_110_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_110_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_110_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_111_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_111_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_111_L
+        sensors:
+        - dataType: Light
+          type: Classic
   - name: Floor 02
     description: Floor 2
     friendlyName: Floor 2
     type: Floor
     spaces:
-    - name: QueenRoom 201
-      description: QueenRoom 201
-      friendlyName: QueenRoom 201
-      type: QueenRoom
-    - name: QueenRoom 202
-      description: QueenRoom 202
-      friendlyName: QueenRoom 202
-      type: QueenRoom
-    - name: QueenRoom 203
-      description: QueenRoom 203
-      friendlyName: QueenRoom 203
-      type: QueenRoom
-    - name: QueenRoom 204
-      description: QueenRoom 204
-      friendlyName: QueenRoom 204
-      type: QueenRoom
-    - name: KingRoom 205
-      description: KingRoom 205
-      friendlyName: KingRoom 205
-      type: KingRoom
-    - name: KingRoom 206
-      description: KingRoom 206
-      friendlyName: KingRoom 206
-      type: KingRoom
-    - name: KingRoom 207
-      description: KingRoom 207
-      friendlyName: KingRoom 207
-      type: KingRoom
-    - name: KingRoom 208
-      description: KingRoom 208
-      friendlyName: KingRoom 208
-      type: KingRoom
-    - name: Suite 209
-      description: Suite 209
-      friendlyName: Suite 209
-      type: Suite
-    - name: Suite 210
-      description: Suite 210
-      friendlyName: Suite 210
-      type: Suite
-    - name: Ballroom 211
-      description: Ballroom 211
-      friendlyName: Ballroom 211
-      type: Ballroom
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_201_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_201_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_201_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_202_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_202_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_202_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_203_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_203_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_203_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_204_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_204_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_204_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_205_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_205_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_205_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_206_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_206_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_206_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_207_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_207_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_207_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_208_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_208_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_208_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_209_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_209_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_209_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_210_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_210_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_210_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_211_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_211_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_211_L
+        sensors:
+        - dataType: Light
+          type: Classic
   - name: Floor 03
     description: Floor 3
     friendlyName: Floor 3
     type: Floor
     spaces:
-    - name: QueenRoom 301
-      description: QueenRoom 301
-      friendlyName: QueenRoom 301
-      type: QueenRoom
-    - name: QueenRoom 302
-      description: QueenRoom 302
-      friendlyName: QueenRoom 302
-      type: QueenRoom
-    - name: QueenRoom 303
-      description: QueenRoom 303
-      friendlyName: QueenRoom 303
-      type: QueenRoom
-    - name: QueenRoom 304
-      description: QueenRoom 304
-      friendlyName: QueenRoom 304
-      type: QueenRoom
-    - name: KingRoom 305
-      description: KingRoom 305
-      friendlyName: KingRoom 305
-      type: KingRoom
-    - name: KingRoom 306
-      description: KingRoom 306
-      friendlyName: KingRoom 306
-      type: KingRoom
-    - name: KingRoom 307
-      description: KingRoom 307
-      friendlyName: KingRoom 307
-      type: KingRoom
-    - name: KingRoom 308
-      description: KingRoom 308
-      friendlyName: KingRoom 308
-      type: KingRoom
-    - name: Suite 309
-      description: Suite 309
-      friendlyName: Suite 309
-      type: Suite
-    - name: Suite 310
-      description: Suite 310
-      friendlyName: Suite 310
-      type: Suite
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_301_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_301_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_301_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_302_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_302_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_302_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_303_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_303_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_303_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_304_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_304_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_304_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_305_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_305_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_305_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_306_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_306_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_306_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_307_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_307_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_307_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_308_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_308_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_308_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_309_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_309_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_309_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_310_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_310_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_310_L
+        sensors:
+        - dataType: Light
+          type: Classic
   - name: Floor 04
     description: Floor 4
     friendlyName: Floor 4
     type: Floor
     spaces:
-    - name: QueenRoom 401
-      description: QueenRoom 401
-      friendlyName: QueenRoom 401
-      type: QueenRoom
-    - name: QueenRoom 402
-      description: QueenRoom 402
-      friendlyName: QueenRoom 402
-      type: QueenRoom
-    - name: QueenRoom 403
-      description: QueenRoom 403
-      friendlyName: QueenRoom 403
-      type: QueenRoom
-    - name: QueenRoom 404
-      description: QueenRoom 404
-      friendlyName: QueenRoom 404
-      type: QueenRoom
-    - name: KingRoom 405
-      description: KingRoom 405
-      friendlyName: KingRoom 405
-      type: KingRoom
-    - name: KingRoom 406
-      description: KingRoom 406
-      friendlyName: KingRoom 406
-      type: KingRoom
-    - name: KingRoom 407
-      description: KingRoom 407
-      friendlyName: KingRoom 407
-      type: KingRoom
-    - name: KingRoom 408
-      description: KingRoom 408
-      friendlyName: KingRoom 408
-      type: KingRoom
-    - name: Suite 409
-      description: Suite 409
-      friendlyName: Suite 409
-      type: Suite
-    - name: Suite 410
-      description: Suite 410
-      friendlyName: Suite 410
-      type: Suite
-  - name: VIPFloor 05
-    description: VIPFloor 5
-    friendlyName: VIPFloor 5
-    type: VIPFloor
-    spaces:
-    - name: Suite 501
-      description: Suite 501
-      friendlyName: Suite 501
-      type: Suite
-    - name: Suite 502
-      description: Suite 502
-      friendlyName: Suite 502
-      type: Suite
-    - name: Suite 503
-      description: Suite 503
-      friendlyName: Suite 503
-      type: Suite
-    - name: VIPSuite 504
-      description: VIPSuite 504
-      friendlyName: VIPSuite 504
-      type: VIPSuite
-- name: Hotel SH 2
-  description: SmartHotel360 hotel Hotel SH 2
-  friendlyName: Hotel SH 2
-  type: Hotel
-  users:
-  - Hotel SH 2 Manager
-  spaces:
-  - name: Floor 01
-    description: Floor 1
-    friendlyName: Floor 1
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_401_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_401_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_401_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_402_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_402_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_402_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_403_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_403_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_403_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_404_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_404_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_404_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_405_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_405_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_405_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_406_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_406_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_406_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_407_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_407_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_407_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_408_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_408_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_408_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_409_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_409_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_409_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_410_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_410_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_410_L
+        sensors:
+        - dataType: Light
+          type: Classic
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
     type: Floor
+    subType: VIPFloor
     spaces:
-    - name: QueenRoom 101
-      description: QueenRoom 101
-      friendlyName: QueenRoom 101
-      type: QueenRoom
-    - name: QueenRoom 102
-      description: QueenRoom 102
-      friendlyName: QueenRoom 102
-      type: QueenRoom
-    - name: QueenRoom 103
-      description: QueenRoom 103
-      friendlyName: QueenRoom 103
-      type: QueenRoom
-    - name: QueenRoom 104
-      description: QueenRoom 104
-      friendlyName: QueenRoom 104
-      type: QueenRoom
-    - name: KingRoom 105
-      description: KingRoom 105
-      friendlyName: KingRoom 105
-      type: KingRoom
-    - name: KingRoom 106
-      description: KingRoom 106
-      friendlyName: KingRoom 106
-      type: KingRoom
-    - name: KingRoom 107
-      description: KingRoom 107
-      friendlyName: KingRoom 107
-      type: KingRoom
-    - name: KingRoom 108
-      description: KingRoom 108
-      friendlyName: KingRoom 108
-      type: KingRoom
-    - name: Suite 109
-      description: Suite 109
-      friendlyName: Suite 109
-      type: Suite
-    - name: Suite 110
-      description: Suite 110
-      friendlyName: Suite 110
-      type: Suite
-    - name: Gym 111
-      description: Gym 111
-      friendlyName: Gym 111
-      type: Gym
-  - name: Floor 02
-    description: Floor 2
-    friendlyName: Floor 2
-    type: Floor
-    spaces:
-    - name: QueenRoom 201
-      description: QueenRoom 201
-      friendlyName: QueenRoom 201
-      type: QueenRoom
-    - name: QueenRoom 202
-      description: QueenRoom 202
-      friendlyName: QueenRoom 202
-      type: QueenRoom
-    - name: QueenRoom 203
-      description: QueenRoom 203
-      friendlyName: QueenRoom 203
-      type: QueenRoom
-    - name: QueenRoom 204
-      description: QueenRoom 204
-      friendlyName: QueenRoom 204
-      type: QueenRoom
-    - name: KingRoom 205
-      description: KingRoom 205
-      friendlyName: KingRoom 205
-      type: KingRoom
-    - name: KingRoom 206
-      description: KingRoom 206
-      friendlyName: KingRoom 206
-      type: KingRoom
-    - name: KingRoom 207
-      description: KingRoom 207
-      friendlyName: KingRoom 207
-      type: KingRoom
-    - name: KingRoom 208
-      description: KingRoom 208
-      friendlyName: KingRoom 208
-      type: KingRoom
-    - name: Suite 209
-      description: Suite 209
-      friendlyName: Suite 209
-      type: Suite
-    - name: Suite 210
-      description: Suite 210
-      friendlyName: Suite 210
-      type: Suite
-    - name: Ballroom 211
-      description: Ballroom 211
-      friendlyName: Ballroom 211
-      type: Ballroom
-  - name: Floor 03
-    description: Floor 3
-    friendlyName: Floor 3
-    type: Floor
-    spaces:
-    - name: QueenRoom 301
-      description: QueenRoom 301
-      friendlyName: QueenRoom 301
-      type: QueenRoom
-    - name: QueenRoom 302
-      description: QueenRoom 302
-      friendlyName: QueenRoom 302
-      type: QueenRoom
-    - name: QueenRoom 303
-      description: QueenRoom 303
-      friendlyName: QueenRoom 303
-      type: QueenRoom
-    - name: QueenRoom 304
-      description: QueenRoom 304
-      friendlyName: QueenRoom 304
-      type: QueenRoom
-    - name: KingRoom 305
-      description: KingRoom 305
-      friendlyName: KingRoom 305
-      type: KingRoom
-    - name: KingRoom 306
-      description: KingRoom 306
-      friendlyName: KingRoom 306
-      type: KingRoom
-    - name: KingRoom 307
-      description: KingRoom 307
-      friendlyName: KingRoom 307
-      type: KingRoom
-    - name: KingRoom 308
-      description: KingRoom 308
-      friendlyName: KingRoom 308
-      type: KingRoom
-    - name: Suite 309
-      description: Suite 309
-      friendlyName: Suite 309
-      type: Suite
-    - name: Suite 310
-      description: Suite 310
-      friendlyName: Suite 310
-      type: Suite
-  - name: Floor 04
-    description: Floor 4
-    friendlyName: Floor 4
-    type: Floor
-    spaces:
-    - name: QueenRoom 401
-      description: QueenRoom 401
-      friendlyName: QueenRoom 401
-      type: QueenRoom
-    - name: QueenRoom 402
-      description: QueenRoom 402
-      friendlyName: QueenRoom 402
-      type: QueenRoom
-    - name: QueenRoom 403
-      description: QueenRoom 403
-      friendlyName: QueenRoom 403
-      type: QueenRoom
-    - name: QueenRoom 404
-      description: QueenRoom 404
-      friendlyName: QueenRoom 404
-      type: QueenRoom
-    - name: KingRoom 405
-      description: KingRoom 405
-      friendlyName: KingRoom 405
-      type: KingRoom
-    - name: KingRoom 406
-      description: KingRoom 406
-      friendlyName: KingRoom 406
-      type: KingRoom
-    - name: KingRoom 407
-      description: KingRoom 407
-      friendlyName: KingRoom 407
-      type: KingRoom
-    - name: KingRoom 408
-      description: KingRoom 408
-      friendlyName: KingRoom 408
-      type: KingRoom
-    - name: Suite 409
-      description: Suite 409
-      friendlyName: Suite 409
-      type: Suite
-    - name: Suite 410
-      description: Suite 410
-      friendlyName: Suite 410
-      type: Suite
-  - name: VIPFloor 05
-    description: VIPFloor 5
-    friendlyName: VIPFloor 5
-    type: VIPFloor
-    spaces:
-    - name: Suite 501
-      description: Suite 501
-      friendlyName: Suite 501
-      type: Suite
-    - name: Suite 502
-      description: Suite 502
-      friendlyName: Suite 502
-      type: Suite
-    - name: Suite 503
-      description: Suite 503
-      friendlyName: Suite 503
-      type: Suite
-    - name: VIPSuite 504
-      description: VIPSuite 504
-      friendlyName: VIPSuite 504
-      type: VIPSuite
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_501_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_501_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_501_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_502_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_502_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_502_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_503_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_503_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_503_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SH 1_504_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SH 1_504_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SH 1_504_L
+        sensors:
+        - dataType: Light
+          type: Classic
 - name: Hotel SL 1
-  description: SmartHotel360 hotel Hotel SL 1
+  description: SmartHotel360 Hotel SL 1
   friendlyName: Hotel SL 1
   type: Hotel
   users:
-  - Hotel SL 1 Manager
+  - Hotel 2 Manager
   spaces:
   - name: Floor 01
     description: Floor 1
     friendlyName: Floor 1
     type: Floor
     spaces:
-    - name: QueenRoom 101
-      description: QueenRoom 101
-      friendlyName: QueenRoom 101
-      type: QueenRoom
-    - name: QueenRoom 102
-      description: QueenRoom 102
-      friendlyName: QueenRoom 102
-      type: QueenRoom
-    - name: QueenRoom 103
-      description: QueenRoom 103
-      friendlyName: QueenRoom 103
-      type: QueenRoom
-    - name: QueenRoom 104
-      description: QueenRoom 104
-      friendlyName: QueenRoom 104
-      type: QueenRoom
-    - name: KingRoom 105
-      description: KingRoom 105
-      friendlyName: KingRoom 105
-      type: KingRoom
-    - name: KingRoom 106
-      description: KingRoom 106
-      friendlyName: KingRoom 106
-      type: KingRoom
-    - name: KingRoom 107
-      description: KingRoom 107
-      friendlyName: KingRoom 107
-      type: KingRoom
-    - name: KingRoom 108
-      description: KingRoom 108
-      friendlyName: KingRoom 108
-      type: KingRoom
-    - name: Suite 109
-      description: Suite 109
-      friendlyName: Suite 109
-      type: Suite
-    - name: Suite 110
-      description: Suite 110
-      friendlyName: Suite 110
-      type: Suite
-    - name: Gym 111
-      description: Gym 111
-      friendlyName: Gym 111
-      type: Gym
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_101_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_101_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_101_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_102_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_102_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_102_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_103_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_103_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_103_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_104_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_104_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_104_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_105_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_105_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_105_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_106_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_106_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_106_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_107_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_107_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_107_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_108_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_108_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_108_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_109_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_109_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_109_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_110_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_110_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_110_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_111_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_111_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_111_L
+        sensors:
+        - dataType: Light
+          type: Classic
   - name: Floor 02
     description: Floor 2
     friendlyName: Floor 2
     type: Floor
     spaces:
-    - name: QueenRoom 201
-      description: QueenRoom 201
-      friendlyName: QueenRoom 201
-      type: QueenRoom
-    - name: QueenRoom 202
-      description: QueenRoom 202
-      friendlyName: QueenRoom 202
-      type: QueenRoom
-    - name: QueenRoom 203
-      description: QueenRoom 203
-      friendlyName: QueenRoom 203
-      type: QueenRoom
-    - name: QueenRoom 204
-      description: QueenRoom 204
-      friendlyName: QueenRoom 204
-      type: QueenRoom
-    - name: KingRoom 205
-      description: KingRoom 205
-      friendlyName: KingRoom 205
-      type: KingRoom
-    - name: KingRoom 206
-      description: KingRoom 206
-      friendlyName: KingRoom 206
-      type: KingRoom
-    - name: KingRoom 207
-      description: KingRoom 207
-      friendlyName: KingRoom 207
-      type: KingRoom
-    - name: KingRoom 208
-      description: KingRoom 208
-      friendlyName: KingRoom 208
-      type: KingRoom
-    - name: Suite 209
-      description: Suite 209
-      friendlyName: Suite 209
-      type: Suite
-    - name: Suite 210
-      description: Suite 210
-      friendlyName: Suite 210
-      type: Suite
-    - name: Ballroom 211
-      description: Ballroom 211
-      friendlyName: Ballroom 211
-      type: Ballroom
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_201_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_201_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_201_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_202_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_202_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_202_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_203_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_203_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_203_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_204_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_204_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_204_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_205_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_205_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_205_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_206_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_206_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_206_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_207_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_207_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_207_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_208_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_208_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_208_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_209_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_209_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_209_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_210_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_210_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_210_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_211_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_211_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_211_L
+        sensors:
+        - dataType: Light
+          type: Classic
   - name: Floor 03
     description: Floor 3
     friendlyName: Floor 3
     type: Floor
     spaces:
-    - name: QueenRoom 301
-      description: QueenRoom 301
-      friendlyName: QueenRoom 301
-      type: QueenRoom
-    - name: QueenRoom 302
-      description: QueenRoom 302
-      friendlyName: QueenRoom 302
-      type: QueenRoom
-    - name: QueenRoom 303
-      description: QueenRoom 303
-      friendlyName: QueenRoom 303
-      type: QueenRoom
-    - name: QueenRoom 304
-      description: QueenRoom 304
-      friendlyName: QueenRoom 304
-      type: QueenRoom
-    - name: KingRoom 305
-      description: KingRoom 305
-      friendlyName: KingRoom 305
-      type: KingRoom
-    - name: KingRoom 306
-      description: KingRoom 306
-      friendlyName: KingRoom 306
-      type: KingRoom
-    - name: KingRoom 307
-      description: KingRoom 307
-      friendlyName: KingRoom 307
-      type: KingRoom
-    - name: KingRoom 308
-      description: KingRoom 308
-      friendlyName: KingRoom 308
-      type: KingRoom
-    - name: Suite 309
-      description: Suite 309
-      friendlyName: Suite 309
-      type: Suite
-    - name: Suite 310
-      description: Suite 310
-      friendlyName: Suite 310
-      type: Suite
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_301_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_301_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_301_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_302_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_302_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_302_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_303_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_303_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_303_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_304_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_304_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_304_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_305_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_305_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_305_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_306_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_306_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_306_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_307_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_307_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_307_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_308_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_308_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_308_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_309_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_309_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_309_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_310_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_310_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_310_L
+        sensors:
+        - dataType: Light
+          type: Classic
   - name: Floor 04
     description: Floor 4
     friendlyName: Floor 4
     type: Floor
     spaces:
-    - name: QueenRoom 401
-      description: QueenRoom 401
-      friendlyName: QueenRoom 401
-      type: QueenRoom
-    - name: QueenRoom 402
-      description: QueenRoom 402
-      friendlyName: QueenRoom 402
-      type: QueenRoom
-    - name: QueenRoom 403
-      description: QueenRoom 403
-      friendlyName: QueenRoom 403
-      type: QueenRoom
-    - name: QueenRoom 404
-      description: QueenRoom 404
-      friendlyName: QueenRoom 404
-      type: QueenRoom
-    - name: KingRoom 405
-      description: KingRoom 405
-      friendlyName: KingRoom 405
-      type: KingRoom
-    - name: KingRoom 406
-      description: KingRoom 406
-      friendlyName: KingRoom 406
-      type: KingRoom
-    - name: KingRoom 407
-      description: KingRoom 407
-      friendlyName: KingRoom 407
-      type: KingRoom
-    - name: KingRoom 408
-      description: KingRoom 408
-      friendlyName: KingRoom 408
-      type: KingRoom
-    - name: Suite 409
-      description: Suite 409
-      friendlyName: Suite 409
-      type: Suite
-    - name: Suite 410
-      description: Suite 410
-      friendlyName: Suite 410
-      type: Suite
-  - name: VIPFloor 05
-    description: VIPFloor 5
-    friendlyName: VIPFloor 5
-    type: VIPFloor
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_401_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_401_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_401_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_402_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_402_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_402_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_403_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_403_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_403_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_404_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_404_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_404_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_405_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_405_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_405_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_406_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_406_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_406_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_407_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_407_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_407_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_408_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_408_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_408_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_409_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_409_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_409_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_410_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_410_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_410_L
+        sensors:
+        - dataType: Light
+          type: Classic
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    subType: VIPFloor
     spaces:
-    - name: Suite 501
-      description: Suite 501
-      friendlyName: Suite 501
-      type: Suite
-    - name: Suite 502
-      description: Suite 502
-      friendlyName: Suite 502
-      type: Suite
-    - name: Suite 503
-      description: Suite 503
-      friendlyName: Suite 503
-      type: Suite
-    - name: VIPSuite 504
-      description: VIPSuite 504
-      friendlyName: VIPSuite 504
-      type: VIPSuite
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_501_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_501_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_501_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_502_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_502_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_502_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_503_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_503_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_503_L
+        sensors:
+        - dataType: Light
+          type: Classic
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Thermostat
+        hardwareId: Brand 4_Hotel SL 1_504_T
+        sensors:
+        - dataType: Temperature
+          type: Classic
+      - name: Motion
+        hardwareId: Brand 4_Hotel SL 1_504_M
+        sensors:
+        - dataType: Motion
+          type: Classic
+      - name: Light
+        hardwareId: Brand 4_Hotel SL 1_504_L
+        sensors:
+        - dataType: Light
+          type: Classic

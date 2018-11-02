@@ -21,21 +21,21 @@ spaces:
     - name: Hotel
       category: SpaceType
     - name: VIPFloor
-      category: SpaceSubtype
+      category: SpaceSubType
     - name: QueenRoom
-      category: SpaceSubtype
+      category: SpaceSubType
     - name: KingRoom
-      category: SpaceSubtype
-    - name: Suite
-      category: SpaceSubtype
-    - name: VIPSuite
-      category: SpaceSubtype
-    - name: Ballroom
-      category: SpaceSubtype
-    - name: Gym
-      category: SpaceSubtype
+      category: SpaceSubType
+    - name: SuiteRoom
+      category: SpaceSubType
+    - name: VIPSuiteRoom
+      category: SpaceSubType
+    - name: ConferenceRoom
+      category: SpaceSubType
+    - name: GymRoom
+      category: SpaceSubType
     users:
-    - Manager
+    - Head Of Operations
     spaceReferences:
     - filename: SmartHotel_Brand 1_Provisioning.yaml
     - filename: SmartHotel_Brand 2_Provisioning.yaml

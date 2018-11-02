@@ -79,14 +79,14 @@
     "System.ComponentModel.Annotations/4.4.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9u9RA7adeZVCX5Jd0iJHNcZThjCdv7YbyC3ouznQQLCIjOFLSFkZZdGPGH1pUmyGLwrcBYnigT76JZu2blzQAA==",
+      "sha512": "sha512-ToiYqSCioqhtspq2O/jYKtyTC/T0uwWHBTYlzCi6PRbSSHArN1IaRWeHffDamvms5sye5FDUWCfNZgubQpNRsA==",
       "path": "system.componentmodel.annotations/4.4.1",
       "hashPath": "system.componentmodel.annotations.4.4.1.nupkg.sha512"
     },
     "YamlDotNet/5.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-dOf4ofiMv5CISFgebsspyi/Wr/95X9I5VqXaIcrDrB5VmOKLLs8mOtyhUyZbi38HMaBPc9NsXLsdZCB81a3ulw==",
+      "sha512": "sha512-3tltCmC64lW/Ml3lrTn6BkiHht2EDlOXpoD8odb+gg2mgDi+/zK3zW21zXD67FHxk7lJC1fKjCMYgnHgk8YloA==",
       "path": "yamldotnet/5.0.1",
       "hashPath": "yamldotnet.5.0.1.nupkg.sha512"
     },

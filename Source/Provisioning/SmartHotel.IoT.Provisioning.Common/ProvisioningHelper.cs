@@ -7,73 +7,129 @@ using YamlDotNet.Serialization;
 
 namespace SmartHotel.IoT.Provisioning.Common
 {
-    public static class ProvisioningHelper
-    {
-	    public static ProvisioningDescription LoadSmartHotelProvisioning(string provisioningFilepath)
-	    {
-		    var yamlDeserializer = new Deserializer();
-		    string content = File.ReadAllText(provisioningFilepath);
-		    var provisioningDescription = yamlDeserializer.Deserialize<ProvisioningDescription>( content );
+	public static class ProvisioningHelper
+	{
+		public static ProvisioningDescription LoadSmartHotelProvisioning( string provisioningFilepath )
+		{
+			var yamlDeserializer = new Deserializer();
+			string content = File.ReadAllText( provisioningFilepath );
+			var provisioningDescription = yamlDeserializer.Deserialize<ProvisioningDescription>( content );
 
-            string directoryPath = Path.GetDirectoryName(provisioningFilepath);
+			string directoryPath = Path.GetDirectoryName( provisioningFilepath );
 
-            foreach (SpaceDescription rootDescription in provisioningDescription.spaces)
-            {
-                var referenceSpaces = FindAllReferenceSpaces(rootDescription);
-                foreach (var referenceSpace in referenceSpaces)
-                {
-                    LoadReferenceProvisionings(referenceSpace, directoryPath);
-                }
-            }
+			foreach ( SpaceDescription rootDescription in provisioningDescription.spaces )
+			{
+				var referenceSpaces = FindAllReferenceSpaces( rootDescription );
+				foreach ( var referenceSpace in referenceSpaces )
+				{
+					LoadReferenceProvisionings( referenceSpace, directoryPath );
+				}
+			}
 
-            return provisioningDescription;
-	    }
+			OutputTotalNumberOfSpaces( provisioningDescription );
 
-        private static IEnumerable<SpaceDescription> FindAllReferenceSpaces(SpaceDescription parentDescription)
-        {
-            List<SpaceDescription> referenceSpaces = new List<SpaceDescription>();
+			return provisioningDescription;
+		}
 
-            if (parentDescription.spaceReferences != null)
-            {
-                referenceSpaces.Add(parentDescription);
-            }
-            else
-            {
-                foreach (SpaceDescription childDescription in parentDescription.spaces)
-                {
-                    referenceSpaces.AddRange(FindAllReferenceSpaces(childDescription));
-                }
-            }
+		private static IEnumerable<SpaceDescription> FindAllReferenceSpaces( SpaceDescription parentDescription )
+		{
+			List<SpaceDescription> referenceSpaces = new List<SpaceDescription>();
 
-            return referenceSpaces;
-        }
+			if ( parentDescription.spaceReferences != null )
+			{
+				referenceSpaces.Add( parentDescription );
+			}
+			else
+			{
+				foreach ( SpaceDescription childDescription in parentDescription.spaces )
+				{
+					referenceSpaces.AddRange( FindAllReferenceSpaces( childDescription ) );
+				}
+			}
 
-        public static void LoadReferenceProvisionings(SpaceDescription spaceDescription, string directoryPath)
-        {
-            var referenceSpaces = new List<SpaceDescription>();
+			return referenceSpaces;
+		}
 
-            foreach (SpaceReferenceDescription spaceReferenceDescription in spaceDescription.spaceReferences)
-            {
-                if (String.IsNullOrEmpty(spaceReferenceDescription.filename))
-                {
-                    throw new Exception($"SpaceReference filename expected.");
-                }
+		private static void LoadReferenceProvisionings( SpaceDescription spaceDescription, string directoryPath )
+		{
+			var referenceSpaces = new List<SpaceDescription>();
 
-                string filepath = Path.Combine(directoryPath, spaceReferenceDescription.filename);
+			foreach ( SpaceReferenceDescription spaceReferenceDescription in spaceDescription.spaceReferences )
+			{
+				if ( String.IsNullOrEmpty( spaceReferenceDescription.filename ) )
+				{
+					throw new Exception( $"SpaceReference filename expected." );
+				}
 
-                var referenceSpace = LoadReferenceProvisioning(filepath);
+				string filepath = Path.Combine( directoryPath, spaceReferenceDescription.filename );
 
-                referenceSpaces.Add(referenceSpace);
-            }
+				var referenceSpace = LoadReferenceProvisioning( filepath );
 
-            spaceDescription.spaces = referenceSpaces;
-        }
+				referenceSpaces.Add( referenceSpace );
+			}
 
-        public static SpaceDescription LoadReferenceProvisioning(string referenceFilename)
-        {
-            var yamlDeserializer = new Deserializer();
-            string content = File.ReadAllText(Path.Combine("Resources", referenceFilename));
-            return yamlDeserializer.Deserialize<SpaceDescription>(content);
-        }
-    }
+			spaceDescription.spaces = referenceSpaces;
+		}
+
+		private static SpaceDescription LoadReferenceProvisioning( string referenceFilename )
+		{
+			var yamlDeserializer = new Deserializer();
+			string content = File.ReadAllText( Path.Combine( "Resources", referenceFilename ) );
+			return yamlDeserializer.Deserialize<SpaceDescription>( content );
+		}
+
+		private static void OutputTotalNumberOfSpaces( ProvisioningDescription provisioningDescription )
+		{
+			int numberOfSpaces = provisioningDescription.spaces.Count;
+			foreach ( SpaceDescription space in provisioningDescription.spaces )
+			{
+				numberOfSpaces += GetTotalNumberOfChildSpaces( space );
+			}
+
+			if ( numberOfSpaces > 995 )
+			{
+				string warningMessage;
+				if ( numberOfSpaces < 1000 )
+				{
+					warningMessage = "This is extremely close to the API's 1,000 object limit of the" +
+									 " Digital Twins public preview and may result in the demo not working.";
+				}
+				else
+				{
+					warningMessage = "This is OVER the API's 1,000 object limit of the" +
+									 " Digital Twins public preview and WILL result in the demo not working.";
+				}
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine( $"Loaded {numberOfSpaces} spaces to provision." +
+								   $"{Environment.NewLine}{warningMessage}{Environment.NewLine}We recommend shrinking the topology size" );
+				Console.ResetColor();
+			}
+			else
+			{
+				Console.WriteLine( $"Loaded {numberOfSpaces} spaces to provision." );
+			}
+		}
+
+		private static int GetTotalNumberOfChildSpaces( SpaceDescription spaceDescription )
+		{
+			if ( spaceDescription.spaces == null )
+			{
+				return 0;
+			}
+
+			int numberOfChildSpaces = spaceDescription.spaces.Count;
+			foreach ( SpaceDescription childSpace in spaceDescription.spaces )
+			{
+				int childSpacesCount = GetTotalNumberOfChildSpaces( childSpace );
+				if ( childSpacesCount > 0 )
+				{
+					// Uncomment this line to see how each "level" of spaces stacks up
+					// Console.WriteLine( $"{childSpace.name}: {childSpacesCount} child spaces" );
+				}
+				numberOfChildSpaces += childSpacesCount;
+			}
+
+			return numberOfChildSpaces;
+		}
+	}
 }

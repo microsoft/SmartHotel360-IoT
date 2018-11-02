@@ -172,7 +172,11 @@ namespace SmartHotel.IoT.Provisioning
                 // Keystore creation must happen first to ensure that devices down the tree can get their SaS tokens from it
                 if (!string.IsNullOrWhiteSpace(spaceDescription.keystoreName))
                 {
-                    Guid createdKeystoreId = await CreateKeystoreAsync(httpClient, spaceDescription.keystoreName, createdId);
+	                Keystore existingKeystore = await KeyStoresHelper.GetUniqueKeystoreAsync(httpClient,
+		                spaceDescription.keystoreName, createdId, JsonSerializerSettings);
+	                Guid createdKeystoreId = !string.IsNullOrWhiteSpace(existingKeystore?.Id)
+		                ? Guid.Parse(existingKeystore.Id)
+		                : await CreateKeystoreAsync(httpClient, spaceDescription.keystoreName, createdId);
                     if (createdKeystoreId != Guid.Empty)
                     {
                         keystoreIdToUseForChildren = createdKeystoreId;

@@ -14,6 +14,6 @@ namespace ProvisioningGenerator
         public int NumberRoomsPerRegularFloor { get; set; }
         public int NumberRoomsPerVipFloor { get; set; }
         public bool IncludeGym { get; set; }
-        public bool IncludeBallroom { get; set; }
+        public bool IncludeConferenceRoom { get; set; }
     }
 }

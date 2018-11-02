@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using SmartHotel.IoT.Provisioning.Common;
 using SmartHotel.IoT.Provisioning.Common.Models;
 using YamlDotNet.Serialization;
 
@@ -67,19 +66,19 @@ namespace ProvisioningGenerator
 		{
 			string siteFilename = $"{OutputFilePrefix}_Site_Provisioning.yaml";
 
-			bool overwrite = false;
 			if ( File.Exists( siteFilename ) )
 			{
-				overwrite = Prompt.GetYesNo( $"A site provisioning file already exists, would you like to overwrite it and any brand provisioning files that already exist? ({siteFilename})", false );
-			}
-
-			if ( !overwrite )
-			{
-				return false;
+				var overwrite = Prompt.GetYesNo( "A site provisioning file already exists," +
+												" would you like to overwrite it and any brand provisioning" +
+												 $" files that already exist? ({siteFilename})", false );
+				if ( !overwrite )
+				{
+					return false;
+				}
 			}
 
 			var p = new ProvisioningDescription();
-			p.endpoints.Add( new EndpointDescription { type = "EventHub", eventTypes = new List<string> { "DeviceMessage" } } );
+			p.AddEndpoint( new EndpointDescription { type = "EventHub", eventTypes = new List<string> { "DeviceMessage" } } );
 			var tenantSpace = new SpaceDescription
 			{
 				name = "SmartHotel 360 Tenant",
@@ -89,7 +88,7 @@ namespace ProvisioningGenerator
 				keystoreName = "SmartHotel360 Keystore"
 			};
 			SpaceDescription desiredTenantSpace = tenantSpace;
-			p.spaces.Add( tenantSpace );
+			p.AddSpace( tenantSpace );
 
 			if ( !string.IsNullOrWhiteSpace( SubTenantName ) )
 			{
@@ -100,31 +99,31 @@ namespace ProvisioningGenerator
 					friendlyName = SubTenantName,
 					type = "Tenant"
 				};
-				tenantSpace.spaces.Add( subtenantSpace );
+				tenantSpace.AddSpace( subtenantSpace );
 				desiredTenantSpace = subtenantSpace;
 			}
 			else
 			{
-				tenantSpace.resources.Add( new ResourceDescription { type = "IoTHub" } );
+				tenantSpace.AddResource( new ResourceDescription { type = "IoTHub" } );
 			}
 
-			desiredTenantSpace.types.Add( new TypeDescription { name = "Classic", category = "SensorType" } );
-			desiredTenantSpace.types.Add( new TypeDescription { name = "HotelBrand", category = "SpaceType" } );
-			desiredTenantSpace.types.Add( new TypeDescription { name = "Hotel", category = "SpaceType" } );
-			desiredTenantSpace.types.Add( new TypeDescription { name = "VIP", category = "SpaceSubType" } );
-			desiredTenantSpace.types.Add( new TypeDescription { name = "Queen", category = "SpaceSubType" } );
-			desiredTenantSpace.types.Add( new TypeDescription { name = "King", category = "SpaceSubType" } );
-			desiredTenantSpace.types.Add( new TypeDescription { name = "Suite", category = "SpaceSubType" } );
-			desiredTenantSpace.types.Add( new TypeDescription { name = "VIPSuite", category = "SpaceSubType" } );
-			desiredTenantSpace.types.Add( new TypeDescription { name = "Ballroom", category = "SpaceSubType" } );
-			desiredTenantSpace.types.Add( new TypeDescription { name = "Gym", category = "SpaceSubType" } );
+			desiredTenantSpace.AddType( new TypeDescription { name = "Classic", category = "SensorType" } );
+			desiredTenantSpace.AddType( new TypeDescription { name = "HotelBrand", category = "SpaceType" } );
+			desiredTenantSpace.AddType( new TypeDescription { name = "Hotel", category = "SpaceType" } );
+			desiredTenantSpace.AddType( new TypeDescription { name = "VIPFloor", category = "SpaceSubType" } );
+			desiredTenantSpace.AddType( new TypeDescription { name = "QueenRoom", category = "SpaceSubType" } );
+			desiredTenantSpace.AddType( new TypeDescription { name = "KingRoom", category = "SpaceSubType" } );
+			desiredTenantSpace.AddType( new TypeDescription { name = "SuiteRoom", category = "SpaceSubType" } );
+			desiredTenantSpace.AddType( new TypeDescription { name = "VIPSuiteRoom", category = "SpaceSubType" } );
+			desiredTenantSpace.AddType( new TypeDescription { name = "ConferenceRoom", category = "SpaceSubType" } );
+			desiredTenantSpace.AddType( new TypeDescription { name = "GymRoom", category = "SpaceSubType" } );
 
-			desiredTenantSpace.users.Add( "Head Of Operations" );
+			desiredTenantSpace.AddUser( "Head Of Operations" );
 
 			foreach ( Brand brand in brands )
 			{
 				string brandFilename = GetBrandProvisioningFilename( brand );
-				desiredTenantSpace.spaceReferences.Add( new SpaceReferenceDescription { filename = brandFilename } );
+				desiredTenantSpace.AddSpaceReference( new SpaceReferenceDescription { filename = brandFilename } );
 			}
 
 			var yamlSerializer = new Serializer();
@@ -152,7 +151,7 @@ namespace ProvisioningGenerator
 				friendlyName = brand.Name,
 				type = "HotelBrand"
 			};
-			brandSpaceDescription.users.Add( $"Hotel Brand {brandNumber} Manager" );
+			brandSpaceDescription.AddUser( $"Hotel Brand {brandNumber} Manager" );
 
 			// Create the hotels
 			for ( int hotelIndex = 0; hotelIndex < brand.Hotels.Count; hotelIndex++ )
@@ -165,7 +164,7 @@ namespace ProvisioningGenerator
 					friendlyName = hotel.Name,
 					type = "Hotel"
 				};
-				hotelSpaceDescription.users.Add( $"Hotel {hotelIndex + 1} Manager" );
+				hotelSpaceDescription.AddUser( $"Hotel {hotelIndex + 1} Manager" );
 
 				string brandHotelPrefix = $"{brand.Name}_{hotel.Name}_";
 
@@ -185,12 +184,12 @@ namespace ProvisioningGenerator
 					};
 					if ( isVipFloor )
 					{
-						floorSpaceDescription.subType = "VIP";
+						floorSpaceDescription.subType = "VIPFloor";
 					}
 
 					if ( !isVipFloor && !string.IsNullOrEmpty( hotel.RegularFloorEmployeeUser ) )
 					{
-						floorSpaceDescription.users.Add( $"Hotel {hotelIndex + 1} {hotel.RegularFloorEmployeeUser}" );
+						floorSpaceDescription.AddUser( $"Hotel {hotelIndex + 1} {hotel.RegularFloorEmployeeUser}" );
 					}
 
 					int numberOfRooms = isVipFloor ? hotelType.NumberRoomsPerVipFloor : hotelType.NumberRoomsPerRegularFloor;
@@ -200,23 +199,27 @@ namespace ProvisioningGenerator
 						string roomType = GetRoomType( roomIndex, numberOfRooms, isVipFloor );
 						SpaceDescription roomSpaceDescription = CreateRoom( 100 * ( floorIndex + 1 ) + roomIndex + 1, brandHotelPrefix,
 							roomType, hotel.AddDevices );
-						floorSpaceDescription.spaces.Add( roomSpaceDescription );
+						floorSpaceDescription.AddSpace( roomSpaceDescription );
 					}
 
 					if ( floorIndex == 0 && hotelType.IncludeGym )
 					{
 						SpaceDescription roomSpaceDescription = CreateRoom( 100 * ( floorIndex + 1 ) + numberOfRooms + 1,
-							brandHotelPrefix, "Gym", hotel.AddDevices );
-						floorSpaceDescription.spaces.Add( roomSpaceDescription );
+							brandHotelPrefix, "GymRoom", hotel.AddDevices );
+						floorSpaceDescription.AddSpace( roomSpaceDescription );
 					}
 
-					if ( floorIndex == 1 && hotelType.IncludeBallroom )
+					if ( floorIndex == 1 && hotelType.IncludeConferenceRoom )
 					{
 						SpaceDescription roomSpaceDescription = CreateRoom( 100 * ( floorIndex + 1 ) + numberOfRooms + 1,
-							brandHotelPrefix, "Ballroom", hotel.AddDevices );
-						floorSpaceDescription.spaces.Add( roomSpaceDescription );
+							brandHotelPrefix, "ConferenceRoom", hotel.AddDevices );
+						floorSpaceDescription.AddSpace( roomSpaceDescription );
 					}
+
+					hotelSpaceDescription.AddSpace( floorSpaceDescription );
 				}
+
+				brandSpaceDescription.AddSpace( hotelSpaceDescription );
 			}
 
 			var yamlSerializer = new SerializerBuilder()
@@ -234,11 +237,11 @@ namespace ProvisioningGenerator
 				int oneQuarter = (int)Math.Ceiling( (double)numberRoomsOnFloor / 4.0D );
 				if ( roomIndex < oneQuarter )
 				{
-					return "Suite";
+					return "SuiteRoom";
 				}
 				else
 				{
-					return "VIPSuite";
+					return "VIPSuiteRoom";
 				}
 			}
 			else
@@ -246,15 +249,15 @@ namespace ProvisioningGenerator
 				int oneThird = (int)Math.Ceiling( (double)numberRoomsOnFloor / 3.0D );
 				if ( roomIndex < oneThird )
 				{
-					return "Queen";
+					return "QueenRoom";
 				}
 				else if ( roomIndex < 2 * oneThird )
 				{
-					return "King";
+					return "KingRoom";
 				}
 				else
 				{
-					return "Suite";
+					return "SuiteRoom";
 				}
 			}
 		}
@@ -277,24 +280,24 @@ namespace ProvisioningGenerator
 					name = "Thermostat",
 					hardwareId = $"{brandHotelPrefix}{roomNumber}_T",
 				};
-				thermostatDevice.sensors.Add( new SensorDescription { dataType = "Temperature", type = "Classic" } );
-				roomSpaceDescription.devices.Add( thermostatDevice );
+				thermostatDevice.AddSensor( new SensorDescription { dataType = "Temperature", type = "Classic" } );
+				roomSpaceDescription.AddDevice( thermostatDevice );
 
 				var motionDevice = new DeviceDescription
 				{
 					name = "Motion",
 					hardwareId = $"{brandHotelPrefix}{roomNumber}_M",
 				};
-				motionDevice.sensors.Add( new SensorDescription { dataType = "Motion", type = "Classic" } );
-				roomSpaceDescription.devices.Add( motionDevice );
+				motionDevice.AddSensor( new SensorDescription { dataType = "Motion", type = "Classic" } );
+				roomSpaceDescription.AddDevice( motionDevice );
 
 				var lightsDevice = new DeviceDescription
 				{
 					name = "Light",
 					hardwareId = $"{brandHotelPrefix}{roomNumber}_L",
 				};
-				lightsDevice.sensors.Add( new SensorDescription { dataType = "Light", type = "Classic" } );
-				roomSpaceDescription.devices.Add( lightsDevice );
+				lightsDevice.AddSensor( new SensorDescription { dataType = "Light", type = "Classic" } );
+				roomSpaceDescription.AddDevice( lightsDevice );
 			}
 
 			return roomSpaceDescription;
@@ -309,7 +312,7 @@ namespace ProvisioningGenerator
 				NumberVipFloors = 2,
 				NumberRoomsPerRegularFloor = 20,
 				NumberRoomsPerVipFloor = 10,
-				IncludeBallroom = true,
+				IncludeConferenceRoom = true,
 				IncludeGym = true
 			};
 
@@ -320,7 +323,7 @@ namespace ProvisioningGenerator
 				NumberVipFloors = 2,
 				NumberRoomsPerRegularFloor = 15,
 				NumberRoomsPerVipFloor = 8,
-				IncludeBallroom = true,
+				IncludeConferenceRoom = true,
 				IncludeGym = true
 			};
 
@@ -331,7 +334,7 @@ namespace ProvisioningGenerator
 				NumberVipFloors = 1,
 				NumberRoomsPerRegularFloor = 10,
 				NumberRoomsPerVipFloor = 4,
-				IncludeBallroom = true,
+				IncludeConferenceRoom = true,
 				IncludeGym = true
 			};
 
@@ -342,7 +345,7 @@ namespace ProvisioningGenerator
 				NumberVipFloors = 1,
 				NumberRoomsPerRegularFloor = 10,
 				NumberRoomsPerVipFloor = 4,
-				IncludeBallroom = true,
+				IncludeConferenceRoom = true,
 				IncludeGym = true
 			};
 

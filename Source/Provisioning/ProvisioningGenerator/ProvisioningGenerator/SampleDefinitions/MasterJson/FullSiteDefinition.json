@@ -7,7 +7,7 @@
       "NumberRoomsPerRegularFloor": 20,
       "NumberRoomsPerVipFloor": 10,
       "IncludeGym": true,
-      "IncludeBallroom": true
+      "IncludeConferenceRoom": true
     },
     {
       "Name": "L",
@@ -16,7 +16,7 @@
       "NumberRoomsPerRegularFloor": 15,
       "NumberRoomsPerVipFloor": 8,
       "IncludeGym": true,
-      "IncludeBallroom": true
+      "IncludeConferenceRoom": true
     },
     {
       "Name": "SH",
@@ -25,7 +25,7 @@
       "NumberRoomsPerRegularFloor": 10,
       "NumberRoomsPerVipFloor": 4,
       "IncludeGym": true,
-      "IncludeBallroom": true
+      "IncludeConferenceRoom": true
     },
     {
       "Name": "SL",
@@ -34,7 +34,7 @@
       "NumberRoomsPerRegularFloor": 10,
       "NumberRoomsPerVipFloor": 4,
       "IncludeGym": true,
-      "IncludeBallroom": true
+      "IncludeConferenceRoom": true
     }
   ],
   "Brands": [
@@ -130,12 +130,6 @@
       "Hotels": [
         {
           "Name": "Hotel SH 1",
-          "Type": "SH",
-          "RegularFloorEmployeeUser": null,
-          "AddDevices": true
-        },
-        {
-          "Name": "Hotel SH 2",
           "Type": "SH",
           "RegularFloorEmployeeUser": null,
           "AddDevices": true
