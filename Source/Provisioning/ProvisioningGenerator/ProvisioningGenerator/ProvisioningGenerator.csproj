@@ -84,6 +84,11 @@
     <None Include="SampleDefinitions\DigitalTwinsProvisioning-Demo\SmartHotel_Brand 4_Provisioning.yaml" />
     <None Include="SampleDefinitions\DigitalTwinsProvisioning-Demo\SmartHotel_Site_Provisioning.yaml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\SmartHotel.IoT.Provisioning.Common\SmartHotel.IoT.Provisioning.Common.csproj">
+      <Project>{1eade877-ad37-491c-bbed-59489f322223}</Project>
+      <Name>SmartHotel.IoT.Provisioning.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
