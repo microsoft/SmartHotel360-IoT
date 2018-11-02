@@ -6,10 +6,21 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 {
     public class SpaceDescription
     {
+		public SpaceDescription()
+		{
+			spaceReferences = new List<SpaceReferenceDescription>();
+			spaces = new List<SpaceDescription>();
+			devices = new List<DeviceDescription>();
+			resources = new List<ResourceDescription>();
+			types = new List<TypeDescription>();
+			users = new List<string>();
+		}
+
 		public string name { get; set; }
 		public string description { get; set; }
 		public string friendlyName { get; set; }
 		public string type { get; set; }
+		public string subType { get; set; }
 	    public string keystoreName { get; set; }
         public IList<SpaceReferenceDescription> spaceReferences { get; set; }
         public IList<SpaceDescription> spaces { get; set; }

@@ -7,6 +7,11 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 {
     public class DeviceDescription
     {
+		public DeviceDescription()
+		{
+			sensors = new List<SensorDescription>();
+		}
+
 		public string name { get; set; }
 		public string hardwareId { get; set; }
 	    public IList<SensorDescription> sensors { get; set; }
