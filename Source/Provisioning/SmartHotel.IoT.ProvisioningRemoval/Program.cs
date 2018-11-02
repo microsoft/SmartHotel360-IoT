@@ -80,7 +80,7 @@ namespace SmartHotel.IoT.ProvisioningRemoval
 		{
 
 			IDictionary<string, List<DeviceDescription>> deviceDictionary = provisioningDescription.spaces.GetAllDeviceDescriptions();
-            IEnumerable<DeviceDescription> allDefinedDevices = deviceDictionary.Values.SelectMany(v => v);
+            ICollection<DeviceDescription> allDefinedDevices = deviceDictionary.Values.SelectMany(v => v).ToArray();
 			IReadOnlyCollection<Device> existingDevices = await allDefinedDevices.GetExistingDevicesAsync( httpClient );
 
 			if ( existingDevices == null || !existingDevices.Any() )
