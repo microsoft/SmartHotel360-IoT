@@ -8,36 +8,33 @@ spaces:
   friendlyName: SmartHotel 360 Tenant
   type: Tenant
   keystoreName: SmartHotel360 Keystore
-  spaces:
-  - name: DemoTest
-    description: This is the root node for the DemoTest sub Tenant
-    friendlyName: DemoTest
-    type: Tenant
-    types:
-    - name: Classic
-      category: SensorType
-    - name: HotelBrand
-      category: SpaceType
-    - name: Hotel
-      category: SpaceType
-    - name: VIPFloor
-      category: SpaceSubType
-    - name: QueenRoom
-      category: SpaceSubType
-    - name: KingRoom
-      category: SpaceSubType
-    - name: SuiteRoom
-      category: SpaceSubType
-    - name: VIPSuiteRoom
-      category: SpaceSubType
-    - name: ConferenceRoom
-      category: SpaceSubType
-    - name: GymRoom
-      category: SpaceSubType
-    users:
-    - Head Of Operations
-    spaceReferences:
-    - filename: SmartHotel_Brand 1_Provisioning.yaml
-    - filename: SmartHotel_Brand 2_Provisioning.yaml
-    - filename: SmartHotel_Brand 3_Provisioning.yaml
-    - filename: SmartHotel_Brand 4_Provisioning.yaml
+  types:
+  - name: Classic
+    category: SensorType
+  - name: HotelBrand
+    category: SpaceType
+  - name: Hotel
+    category: SpaceType
+  - name: VIPFloor
+    category: SpaceSubType
+  - name: QueenRoom
+    category: SpaceSubType
+  - name: KingRoom
+    category: SpaceSubType
+  - name: SuiteRoom
+    category: SpaceSubType
+  - name: VIPSuiteRoom
+    category: SpaceSubType
+  - name: ConferenceRoom
+    category: SpaceSubType
+  - name: GymRoom
+    category: SpaceSubType
+  users:
+  - Head Of Operations
+  resources:
+  - type: IoTHub
+  spaceReferences:
+  - filename: SmartHotel_Brand 1_Provisioning.yaml
+  - filename: SmartHotel_Brand 2_Provisioning.yaml
+  - filename: SmartHotel_Brand 3_Provisioning.yaml
+  - filename: SmartHotel_Brand 4_Provisioning.yaml
