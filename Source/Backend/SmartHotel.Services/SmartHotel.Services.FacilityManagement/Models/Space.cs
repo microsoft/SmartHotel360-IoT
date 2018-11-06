@@ -24,6 +24,8 @@ namespace SmartHotel.Services.FacilityManagement.Models
 		[DataMember]
 		public int TypeId { get; set; }
 		[DataMember]
+		public List<Property> Properties { get; set; }
+		[DataMember]
 		public List<Space> ChildSpaces { get; set; }
 	}
 }

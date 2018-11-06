@@ -40,7 +40,7 @@ export class HotelBrandComponent implements OnInit {
         self.breadcrumbs.returnToHome();
         return;
       }
-      self.hotelBrandName = hotelBrand.name;
+      self.hotelBrandName = hotelBrand.friendlyName;
     }
 
     const hotels = self.facilityService.getChildSpaces(self.hotelBrandId);

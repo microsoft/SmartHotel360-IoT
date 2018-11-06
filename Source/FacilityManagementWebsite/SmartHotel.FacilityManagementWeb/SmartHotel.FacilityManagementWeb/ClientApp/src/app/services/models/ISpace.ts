@@ -1,4 +1,5 @@
 import { IThermostat, IMotion, ILight } from './IDevice';
+import { IProperty } from './IProperty';
 
 export interface ISpace {
   id: string;
@@ -8,6 +9,7 @@ export interface ISpace {
   type: string;
   typeId: number;
   childSpaces: ISpace[];
+  properties: IProperty[];
   thermostat?: IThermostat;
   motion?: IMotion;
   light?: ILight;

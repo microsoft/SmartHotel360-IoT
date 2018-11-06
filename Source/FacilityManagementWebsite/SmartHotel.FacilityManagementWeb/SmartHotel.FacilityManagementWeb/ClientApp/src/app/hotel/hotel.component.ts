@@ -45,7 +45,7 @@ export class HotelComponent implements OnInit {
         self.breadcrumbs.returnToHotelBrand();
         return;
       }
-      self.hotelName = hotel.name;
+      self.hotelName = hotel.friendlyName;
     }
 
     const floors = self.facilityService.getChildSpaces(self.hotelId);

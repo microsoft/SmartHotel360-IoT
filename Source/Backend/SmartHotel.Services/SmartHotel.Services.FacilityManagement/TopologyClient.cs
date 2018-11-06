@@ -28,7 +28,8 @@ namespace SmartHotel.Services.FacilityManagement
 		private readonly string SpacesPath = "spaces";
 		private readonly string TypesPath = "types";
 
-		private readonly string SpacesFilter = "";
+		private const string FirstFourLevelsSpacesFilter = "maxlevel=4&minlevel=1&includes=Properties";
+		private const string FifthLevelSpacesFilter = "maxlevel=5&minlevel=5";
 
 		private readonly string TypesFilter =
 			$"names={TenantTypeName};{HotelBrandTypeName};{HotelTypeName};{FloorTypeName};{RoomTypeName}&categories=SpaceType";
@@ -53,8 +54,12 @@ namespace SmartHotel.Services.FacilityManagement
 
 			await GetAndUpdateTypeIds( httpClient );
 
-			var response = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}?{SpacesFilter}" );
-			var topology = JsonConvert.DeserializeObject<ICollection<DigitalTwinsSpace>>( response );
+			var firstFourLevelsResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}?{FirstFourLevelsSpacesFilter}" );
+			var topology = JsonConvert.DeserializeObject<ICollection<DigitalTwinsSpace>>( firstFourLevelsResponse );
+
+			var fifthLevelResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}?{FifthLevelSpacesFilter}" );
+			var fithLevelTopology = JsonConvert.DeserializeObject<ICollection<DigitalTwinsSpace>>( fifthLevelResponse );
+			topology = topology.Union( fithLevelTopology ).ToArray();
 
 			Space tenantSpace = null;
 			Space hotelBrandSpace = null;
@@ -73,7 +78,8 @@ namespace SmartHotel.Services.FacilityManagement
 						FriendlyName = dtSpace.friendlyName,
 						Type = typeName,
 						TypeId = dtSpace.typeId,
-						ParentSpaceId = dtSpace.parentSpaceId ?? string.Empty
+						ParentSpaceId = dtSpace.parentSpaceId ?? string.Empty,
+						Properties = dtSpace.properties?.ToList()
 					};
 
 					if ( tenantSpace == null && TenantTypeName.Equals( typeName, StringComparison.OrdinalIgnoreCase ) )
@@ -178,6 +184,7 @@ namespace SmartHotel.Services.FacilityManagement
 			foreach ( DigitalTwinsType type in types )
 			{
 				_typesById[type.id] = type.name;
+				//_typeIdsByName[type.name] = type.id;
 			}
 		}
 

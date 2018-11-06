@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SmartHotel.Services.FacilityManagement.Models
 {
@@ -13,5 +9,6 @@ namespace SmartHotel.Services.FacilityManagement.Models
 		public string friendlyName { get; set; }
 		public int typeId { get; set; }
 		public string parentSpaceId { get; set; }
+		public IEnumerable<Property> properties { get; set; }
 	}
 }

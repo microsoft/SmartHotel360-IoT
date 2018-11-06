@@ -30,12 +30,13 @@ export class FloorComponent implements OnInit, OnDestroy {
   public hotelBrandId: string;
   public hotelBrandName: string;
   public hotelName: string;
-  private hotelId: string;
+  public hotelId: string;
   public hotelIndex: number;
   private floorId: string;
   public floorName: string;
 
   public rooms: ISpace[] = null;
+  private deviceIdPrefix = '';
   private roomsById: Map<string, ISpace>;
   private desiredDataByRoomId: Map<string, IDesired[]>;
   private sensorDataByRoomId: Map<string, ISensor[]>;
@@ -100,7 +101,11 @@ export class FloorComponent implements OnInit, OnDestroy {
         self.breadcrumbs.returnToHotel();
         return;
       }
-      self.floorName = floor.name;
+      self.floorName = floor.friendlyName;
+      const deviceIdPrefixProperty = floor.properties.find(p => p.name === 'DeviceIdPrefix');
+      if (deviceIdPrefixProperty) {
+        self.deviceIdPrefix = deviceIdPrefixProperty.value;
+      }
 
       self.rooms = self.facilityService.getChildSpaces(self.floorId);
       self.rooms.forEach(room => self.roomsById.set(room.id, room));
@@ -237,7 +242,8 @@ export class FloorComponent implements OnInit, OnDestroy {
   }
 
   thermostatSliderValueChange(room: ISpace, changeContext: ChangeContext) {
-    console.log(`${room.name} thermostat desired changed: ${changeContext.value}`);
+    const self = this;
+    console.log(`${room.friendlyName} thermostat desired changed: ${changeContext.value}`);
 
     if (this.theromstatSliderTimeout) {
       clearTimeout(this.theromstatSliderTimeout);
@@ -282,16 +288,15 @@ export class FloorComponent implements OnInit, OnDestroy {
         sensorId: d.sensorId,
         desiredValue: d.desiredValue,
         methodName: 'SetDesiredTemperature',
-        // TODO: Need to figure out new way to build the deviceId. Since now there can be devices in all the hotels.
-        //  Needs brand + Hotel + Room to be unique
-        deviceId: `${room.name.charAt(0).toUpperCase() + room.name.slice(1).replace(' ', '')}Thermostat`
+        deviceId: `${self.deviceIdPrefix}${room.name.charAt(0).toUpperCase() + room.name.slice(1).replace(' ', '')}Thermostat`
       };
       this.facilityService.setDesiredData(request);
     }, 250, desired);
   }
 
   lightSliderValueChange(room: ISpace, changeContext: ChangeContext) {
-    console.log(`${room.name} light desired changed: ${changeContext.value}`);
+    const self = this;
+    console.log(`${room.friendlyName} light desired changed: ${changeContext.value}`);
 
     if (this.lightSliderTimeout) {
       clearTimeout(this.lightSliderTimeout);
@@ -338,7 +343,7 @@ export class FloorComponent implements OnInit, OnDestroy {
         methodName: 'SetDesiredAmbientLight',
         // TODO: Need to figure out new way to build the deviceId. Since now there can be devices in all the hotels.
         //  Needs brand + Hotel + Room to be unique
-        deviceId: `${room.name.charAt(0).toUpperCase() + room.name.slice(1).replace(' ', '')}Light`
+        deviceId: `${self.deviceIdPrefix}${room.name.charAt(0).toUpperCase() + room.name.slice(1).replace(' ', '')}Light`
       };
       this.facilityService.setDesiredData(request);
     }, 250, desired);
