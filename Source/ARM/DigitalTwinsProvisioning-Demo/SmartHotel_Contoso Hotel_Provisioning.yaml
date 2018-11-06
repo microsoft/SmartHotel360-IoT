@@ -16,6 +16,9 @@ spaces:
     description: Floor 1
     friendlyName: Floor 1
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite1_
     spaces:
     - name: Room 101
       description: Room 101
@@ -76,6 +79,9 @@ spaces:
     description: Floor 2
     friendlyName: Floor 2
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite1_
     spaces:
     - name: Room 201
       description: Room 201
@@ -136,6 +142,9 @@ spaces:
     description: Floor 3
     friendlyName: Floor 3
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite1_
     spaces:
     - name: Room 301
       description: Room 301
@@ -191,6 +200,9 @@ spaces:
     description: Floor 4
     friendlyName: Floor 4
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite1_
     spaces:
     - name: Room 401
       description: Room 401
@@ -247,6 +259,9 @@ spaces:
     friendlyName: Floor 5
     type: Floor
     subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite1_
     spaces:
     - name: Room 501
       description: Room 501
@@ -279,6 +294,9 @@ spaces:
     description: Floor 1
     friendlyName: Floor 1
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium1_
     spaces:
     - name: Room 101
       description: Room 101
@@ -339,6 +357,9 @@ spaces:
     description: Floor 2
     friendlyName: Floor 2
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium1_
     spaces:
     - name: Room 201
       description: Room 201
@@ -399,6 +420,9 @@ spaces:
     description: Floor 3
     friendlyName: Floor 3
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium1_
     spaces:
     - name: Room 301
       description: Room 301
@@ -454,6 +478,9 @@ spaces:
     description: Floor 4
     friendlyName: Floor 4
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium1_
     spaces:
     - name: Room 401
       description: Room 401
@@ -510,6 +537,9 @@ spaces:
     friendlyName: Floor 5
     type: Floor
     subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium1_
     spaces:
     - name: Room 501
       description: Room 501
@@ -542,6 +572,9 @@ spaces:
     description: Floor 1
     friendlyName: Floor 1
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite2_
     spaces:
     - name: Room 101
       description: Room 101
@@ -602,6 +635,9 @@ spaces:
     description: Floor 2
     friendlyName: Floor 2
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite2_
     spaces:
     - name: Room 201
       description: Room 201
@@ -662,6 +698,9 @@ spaces:
     description: Floor 3
     friendlyName: Floor 3
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite2_
     spaces:
     - name: Room 301
       description: Room 301
@@ -717,6 +756,9 @@ spaces:
     description: Floor 4
     friendlyName: Floor 4
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite2_
     spaces:
     - name: Room 401
       description: Room 401
@@ -773,6 +815,9 @@ spaces:
     friendlyName: Floor 5
     type: Floor
     subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite2_
     spaces:
     - name: Room 501
       description: Room 501
@@ -805,6 +850,9 @@ spaces:
     description: Floor 1
     friendlyName: Floor 1
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite3_
     spaces:
     - name: Room 101
       description: Room 101
@@ -865,6 +913,9 @@ spaces:
     description: Floor 2
     friendlyName: Floor 2
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite3_
     spaces:
     - name: Room 201
       description: Room 201
@@ -925,6 +976,9 @@ spaces:
     description: Floor 3
     friendlyName: Floor 3
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite3_
     spaces:
     - name: Room 301
       description: Room 301
@@ -980,6 +1034,9 @@ spaces:
     description: Floor 4
     friendlyName: Floor 4
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite3_
     spaces:
     - name: Room 401
       description: Room 401
@@ -1036,6 +1093,9 @@ spaces:
     friendlyName: Floor 5
     type: Floor
     subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite3_
     spaces:
     - name: Room 501
       description: Room 501
@@ -1068,6 +1128,9 @@ spaces:
     description: Floor 1
     friendlyName: Floor 1
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium2_
     spaces:
     - name: Room 101
       description: Room 101
@@ -1128,6 +1191,9 @@ spaces:
     description: Floor 2
     friendlyName: Floor 2
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium2_
     spaces:
     - name: Room 201
       description: Room 201
@@ -1188,6 +1254,9 @@ spaces:
     description: Floor 3
     friendlyName: Floor 3
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium2_
     spaces:
     - name: Room 301
       description: Room 301
@@ -1243,6 +1312,9 @@ spaces:
     description: Floor 4
     friendlyName: Floor 4
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium2_
     spaces:
     - name: Room 401
       description: Room 401
@@ -1299,6 +1371,9 @@ spaces:
     friendlyName: Floor 5
     type: Floor
     subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium2_
     spaces:
     - name: Room 501
       description: Room 501
@@ -1331,6 +1406,9 @@ spaces:
     description: Floor 1
     friendlyName: Floor 1
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium3_
     spaces:
     - name: Room 101
       description: Room 101
@@ -1391,6 +1469,9 @@ spaces:
     description: Floor 2
     friendlyName: Floor 2
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium3_
     spaces:
     - name: Room 201
       description: Room 201
@@ -1451,6 +1532,9 @@ spaces:
     description: Floor 3
     friendlyName: Floor 3
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium3_
     spaces:
     - name: Room 301
       description: Room 301
@@ -1506,6 +1590,9 @@ spaces:
     description: Floor 4
     friendlyName: Floor 4
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium3_
     spaces:
     - name: Room 401
       description: Room 401
@@ -1562,6 +1649,9 @@ spaces:
     friendlyName: Floor 5
     type: Floor
     subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium3_
     spaces:
     - name: Room 501
       description: Room 501
@@ -1594,6 +1684,9 @@ spaces:
     description: Floor 1
     friendlyName: Floor 1
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium4_
     spaces:
     - name: Room 101
       description: Room 101
@@ -1654,6 +1747,9 @@ spaces:
     description: Floor 2
     friendlyName: Floor 2
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium4_
     spaces:
     - name: Room 201
       description: Room 201
@@ -1714,6 +1810,9 @@ spaces:
     description: Floor 3
     friendlyName: Floor 3
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium4_
     spaces:
     - name: Room 301
       description: Room 301
@@ -1769,6 +1868,9 @@ spaces:
     description: Floor 4
     friendlyName: Floor 4
     type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium4_
     spaces:
     - name: Room 401
       description: Room 401
@@ -1825,6 +1927,9 @@ spaces:
     friendlyName: Floor 5
     type: Floor
     subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium4_
     spaces:
     - name: Room 501
       description: Room 501

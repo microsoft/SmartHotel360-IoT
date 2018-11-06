@@ -166,7 +166,7 @@ namespace ProvisioningGenerator
 				};
 				hotelSpaceDescription.AddUser( $"Hotel {hotelIndex + 1} Manager" );
 
-				string brandHotelPrefix = $"{brand.Name}_{hotel.Name}_";
+				string brandHotelPrefix = $"{brand.Name}_{hotel.Name}_".Replace( " ", string.Empty );
 
 				HotelType hotelType = hotelTypes.First( t => t.Name == hotel.Type );
 				int numberRegularFloors = hotelType.TotalNumberFloors - hotelType.NumberVipFloors;
@@ -182,6 +182,12 @@ namespace ProvisioningGenerator
 						friendlyName = $"Floor {floorIndex + 1}",
 						type = "Floor"
 					};
+					floorSpaceDescription.AddProperty( new PropertyDescription
+					{
+						name = "DeviceIdPrefix",
+						value = brandHotelPrefix
+					} );
+
 					if ( isVipFloor )
 					{
 						floorSpaceDescription.subType = "VIPFloor";

@@ -19,9 +19,9 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 		public string subType { get; set; }
 		[YamlMember( Order = 6 )]
 		public string keystoreName { get; set; }
-		[YamlMember( Order = 12 )]
+		[YamlMember( Order = 13 )]
 		public IList<SpaceReferenceDescription> spaceReferences { get; set; }
-		[YamlMember( Order = 11 )]
+		[YamlMember( Order = 12 )]
 		public IList<SpaceDescription> spaces { get; set; }
 		[YamlMember( Order = 10 )]
 		public IList<DeviceDescription> devices { get; set; }
@@ -31,6 +31,8 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 		public IList<TypeDescription> types { get; set; }
 		[YamlMember( Order = 8 )]
 		public IList<string> users { get; set; }
+		[YamlMember( Order = 11 )]
+		public IList<PropertyDescription> properties { get; set; }
 
 		public Space ToDigitalTwins( Guid parentId )
 		{
@@ -103,6 +105,16 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 			}
 
 			users.Add( user );
+		}
+
+		public void AddProperty( PropertyDescription propertyDescription )
+		{
+			if ( properties == null )
+			{
+				properties = new List<PropertyDescription>();
+			}
+
+			properties.Add( propertyDescription );
 		}
 	}
 }
