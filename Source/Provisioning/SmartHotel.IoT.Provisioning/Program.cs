@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using McMaster.Extensions.CommandLineUtils;
@@ -97,7 +96,7 @@ namespace SmartHotel.IoT.Provisioning
 			await CreateSpacesAsync( httpClient, provisioningDescription.spaces, Guid.Empty, Guid.Empty, userAadObjectIds );
 			Console.WriteLine();
 			Console.WriteLine();
-			Console.WriteLine($"Created {spacesCreatedCount} spaces...");
+			Console.WriteLine( $"Created {spacesCreatedCount} spaces..." );
 			Console.WriteLine();
 			Console.WriteLine();
 
@@ -207,6 +206,16 @@ namespace SmartHotel.IoT.Provisioning
 				if ( spaceDescription.users != null )
 				{
 					await CreateUserRoleAssignmentsAsync( httpClient, spaceDescription.users, createdId, userAadObjectIds );
+				}
+
+				if ( spaceDescription.propertyKeys != null )
+				{
+					await CreatePropertyKeysAsync( httpClient, spaceDescription.propertyKeys, createdId );
+				}
+
+				if ( spaceDescription.properties != null )
+				{
+					await CreatePropertiesAsync( httpClient, spaceDescription.properties, createdId );
 				}
 
 				if ( spaceDescription.spaces != null )
@@ -423,8 +432,45 @@ namespace SmartHotel.IoT.Provisioning
 
 					Console.WriteLine( $"Creating RoleAssignment: {JsonConvert.SerializeObject( roleAssignment, Formatting.Indented, JsonSerializerSettings )}" );
 					var request = HttpMethod.Post.CreateRequest( "roleassignments", JsonConvert.SerializeObject( roleAssignment, JsonSerializerSettings ) );
-					await httpClient.SendAsync( request );
+					var response = await httpClient.SendAsync( request );
+					Console.WriteLine( response.IsSuccessStatusCode ? "succeeded..." : "failed..." );
 				}
+			}
+		}
+
+		private async Task CreatePropertyKeysAsync( HttpClient httpClient, IList<PropertyKeyDescription> propertyKeys, Guid spaceId )
+		{
+			if ( spaceId == Guid.Empty )
+			{
+				throw new ArgumentException( $"PropertyKey must have a {nameof( spaceId )}" );
+			}
+
+			foreach ( PropertyKeyDescription propertyKeyDescription in propertyKeys )
+			{
+				PropertyKey propertyKey = propertyKeyDescription.ToDigitalTwins( spaceId );
+
+				Console.WriteLine( $"Creating PropertyKey for Space {spaceId}: {JsonConvert.SerializeObject( propertyKey, Formatting.Indented, JsonSerializerSettings )}" );
+				var request = HttpMethod.Post.CreateRequest( "propertykeys", JsonConvert.SerializeObject( propertyKey, JsonSerializerSettings ) );
+				var response = await httpClient.SendAsync( request );
+				Console.WriteLine( response.IsSuccessStatusCode ? "succeeded..." : "failed..." );
+			}
+		}
+
+		private async Task CreatePropertiesAsync( HttpClient httpClient, IList<PropertyDescription> properties, Guid spaceId )
+		{
+			if ( spaceId == Guid.Empty )
+			{
+				throw new ArgumentException( $"Property must have a {nameof( spaceId )}" );
+			}
+
+			foreach ( PropertyDescription propertyDescription in properties )
+			{
+				Property property = propertyDescription.ToDigitalTwins();
+
+				Console.WriteLine( $"Creating Property for Space {spaceId}: {JsonConvert.SerializeObject( property, Formatting.Indented, JsonSerializerSettings )}" );
+				var request = HttpMethod.Post.CreateRequest( $"spaces/{spaceId}/properties", JsonConvert.SerializeObject( property, JsonSerializerSettings ) );
+				var response = await httpClient.SendAsync( request );
+				Console.WriteLine( response.IsSuccessStatusCode ? "succeeded..." : "failed..." );
 			}
 		}
 
