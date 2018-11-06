@@ -20,17 +20,9 @@ namespace SmartHotel.Services.FacilityManagement
 		private readonly Dictionary<int, string> _typesById = new Dictionary<int, string>();
 		private const string TenantTypeName = "Tenant";
 		private const string HotelBrandTypeName = "HotelBrand";
-		private const string HotelTypeName = "Venue";
+		private const string HotelTypeName = "Hotel";
 		private const string FloorTypeName = "Floor";
 		private const string RoomTypeName = "Room";
-		private readonly Dictionary<string, int> _typeIdsByName = new Dictionary<string, int>( StringComparer.OrdinalIgnoreCase )
-		{
-			{TenantTypeName, int.MinValue},
-			{HotelBrandTypeName, int.MinValue},
-			{HotelTypeName, int.MinValue},
-			{FloorTypeName, int.MinValue},
-			{RoomTypeName, int.MinValue},
-		};
 		private readonly string ApiPath = "api/v1.0/";
 
 		private readonly string SpacesPath = "spaces";
@@ -136,10 +128,6 @@ namespace SmartHotel.Services.FacilityManagement
 				hierarchicalSpaces = hierarchicalSpaces[0].ChildSpaces;
 			}
 
-			// TODO: remove this line statement. This is only there because of current testing
-			hierarchicalSpaces = hierarchicalSpaces.Where( s => !TenantTypeName.Equals( s.Type, StringComparison.OrdinalIgnoreCase ) )
-				.ToList();
-
 
 			return hierarchicalSpaces;
 		}
@@ -190,13 +178,6 @@ namespace SmartHotel.Services.FacilityManagement
 			foreach ( DigitalTwinsType type in types )
 			{
 				_typesById[type.id] = type.name;
-				_typeIdsByName[type.name] = type.id;
-			}
-
-			var typesMissingId = _typeIdsByName.Where( kvp => int.MinValue.Equals( kvp.Value ) ).ToArray();
-			if ( typesMissingId.Length > 0 )
-			{
-				throw new NotSupportedException( $"Missing the following type Ids: {string.Join( ", ", typesMissingId )}" );
 			}
 		}
 
