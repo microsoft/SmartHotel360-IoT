@@ -118,6 +118,15 @@ namespace ProvisioningGenerator
 			desiredTenantSpace.AddType( new TypeDescription { name = "ConferenceRoom", category = "SpaceSubType" } );
 			desiredTenantSpace.AddType( new TypeDescription { name = "GymRoom", category = "SpaceSubType" } );
 
+			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
+			{
+				name = PropertyKeyDescription.DeviceIdPrefixName,
+				primitiveDataType = "string",
+				description = "Prefix used in sending Device Method calls to the IoT Hub.",
+				min = "1",
+				max = "250" // NOTE: since a value is required just setting this to a high value, no other reason.
+			} );
+
 			desiredTenantSpace.AddUser( "Head Of Operations" );
 
 			foreach ( Brand brand in brands )
@@ -184,7 +193,7 @@ namespace ProvisioningGenerator
 					};
 					floorSpaceDescription.AddProperty( new PropertyDescription
 					{
-						name = "DeviceIdPrefix",
+						name = PropertyKeyDescription.DeviceIdPrefixName,
 						value = brandHotelPrefix
 					} );
 

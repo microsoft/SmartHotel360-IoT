@@ -32,6 +32,8 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 		[YamlMember( Order = 8 )]
 		public IList<string> users { get; set; }
 		[YamlMember( Order = 11 )]
+		public IList<PropertyKeyDescription> propertyKeys { get; set; }
+		[YamlMember( Order = 11 )]
 		public IList<PropertyDescription> properties { get; set; }
 
 		public Space ToDigitalTwins( Guid parentId )
@@ -105,6 +107,16 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 			}
 
 			users.Add( user );
+		}
+
+		public void AddPropertyKey( PropertyKeyDescription propertyKeyDescription )
+		{
+			if ( propertyKeys == null )
+			{
+				propertyKeys = new List<PropertyKeyDescription>();
+			}
+
+			propertyKeys.Add( propertyKeyDescription );
 		}
 
 		public void AddProperty( PropertyDescription propertyDescription )
