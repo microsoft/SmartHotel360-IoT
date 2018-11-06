@@ -34,7 +34,5 @@ spaces:
   resources:
   - type: IoTHub
   spaceReferences:
-  - filename: SmartHotel_Brand 1_Provisioning.yaml
-  - filename: SmartHotel_Brand 2_Provisioning.yaml
-  - filename: SmartHotel_Brand 3_Provisioning.yaml
-  - filename: SmartHotel_Brand 4_Provisioning.yaml
+  - filename: SmartHotel_SmartHotel360_Provisioning.yaml
+  - filename: SmartHotel_Contoso Hotel_Provisioning.yaml
