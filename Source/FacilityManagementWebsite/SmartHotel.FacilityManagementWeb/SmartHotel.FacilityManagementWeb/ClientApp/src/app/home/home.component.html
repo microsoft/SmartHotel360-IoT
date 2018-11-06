@@ -5,7 +5,7 @@
     <div *ngFor="let hotelBrand of hotelBrands; let i = index" class="hotelbrand" (click)="chooseHotelBrand(hotelBrand)">
       <div class="hotelbrand-image" [style.background-image]="getHotelBrandImage(i)"></div>
       <div class="hotelbrand-button">
-        {{hotelBrand.name}}
+        {{hotelBrand.friendlyName}}
       </div>
     </div>
   </div>

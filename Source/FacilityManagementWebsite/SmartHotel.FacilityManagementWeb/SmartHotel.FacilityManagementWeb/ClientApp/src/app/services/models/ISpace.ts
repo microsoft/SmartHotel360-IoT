@@ -4,6 +4,7 @@ export interface ISpace {
   id: string;
   parentSpaceId: string;
   name: string;
+  friendlyName: string;
   type: string;
   typeId: number;
   childSpaces: ISpace[];

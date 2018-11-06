@@ -35,7 +35,7 @@ export class FloorComponent implements OnInit, OnDestroy {
   private floorId: string;
   public floorName: string;
 
-  private rooms: ISpace[] = null;
+  public rooms: ISpace[] = null;
   private roomsById: Map<string, ISpace>;
   private desiredDataByRoomId: Map<string, IDesired[]>;
   private sensorDataByRoomId: Map<string, ISensor[]>;
@@ -282,6 +282,8 @@ export class FloorComponent implements OnInit, OnDestroy {
         sensorId: d.sensorId,
         desiredValue: d.desiredValue,
         methodName: 'SetDesiredTemperature',
+        // TODO: Need to figure out new way to build the deviceId. Since now there can be devices in all the hotels.
+        //  Needs brand + Hotel + Room to be unique
         deviceId: `${room.name.charAt(0).toUpperCase() + room.name.slice(1).replace(' ', '')}Thermostat`
       };
       this.facilityService.setDesiredData(request);
@@ -334,6 +336,8 @@ export class FloorComponent implements OnInit, OnDestroy {
         sensorId: d.sensorId,
         desiredValue: d.desiredValue,
         methodName: 'SetDesiredAmbientLight',
+        // TODO: Need to figure out new way to build the deviceId. Since now there can be devices in all the hotels.
+        //  Needs brand + Hotel + Room to be unique
         deviceId: `${room.name.charAt(0).toUpperCase() + room.name.slice(1).replace(' ', '')}Light`
       };
       this.facilityService.setDesiredData(request);
