@@ -46,16 +46,20 @@ namespace SmartHotel.IoT.ProvisioningRemoval
 		[Option( "-re|--RemoveEndpoints", Description = "Flag to indicate if Endpoints should be removed" )]
 		public bool RemoveEndpoints { get; }
 
-        [Option("-dtpf|--DigitalTwinsProvisioningFile", Description = "Yaml file containing the tenant definition for Digital Twins provisioning")]
-        [Required]
-        public string DigitalTwinsProvisioningFile { get; }
+		[Option( "-dtpf|--DigitalTwinsProvisioningFile", Description = "Yaml file containing the tenant definition for Digital Twins provisioning" )]
+		[Required]
+		public string DigitalTwinsProvisioningFile { get; }
 
-        private async Task OnExecuteAsync()
+		private async Task OnExecuteAsync()
 		{
 			HttpClient httpClient = await HttpClientHelper.GetHttpClientAsync( DigitalTwinsApiEndpoint, AadInstance, Tenant,
 				DigitalTwinsResourceId, ClientId, ClientSecret );
 
-			ProvisioningDescription provisioningDescription = ProvisioningHelper.LoadSmartHotelProvisioning(DigitalTwinsProvisioningFile);
+			Console.WriteLine( "Loading the provisioning files..." );
+
+			ProvisioningDescription provisioningDescription = ProvisioningHelper.LoadSmartHotelProvisioning( DigitalTwinsProvisioningFile );
+
+			Console.WriteLine( "Successfully loaded provisioning files." );
 
 			await RemoveAllExistingDevicesAsync( httpClient, provisioningDescription );
 
@@ -80,7 +84,7 @@ namespace SmartHotel.IoT.ProvisioningRemoval
 		{
 
 			IDictionary<string, List<DeviceDescription>> deviceDictionary = provisioningDescription.spaces.GetAllDeviceDescriptions();
-            ICollection<DeviceDescription> allDefinedDevices = deviceDictionary.Values.SelectMany(v => v).ToArray();
+			ICollection<DeviceDescription> allDefinedDevices = deviceDictionary.Values.SelectMany( v => v ).ToArray();
 			IReadOnlyCollection<Device> existingDevices = await allDefinedDevices.GetExistingDevicesAsync( httpClient );
 
 			if ( existingDevices == null || !existingDevices.Any() )
@@ -160,11 +164,11 @@ namespace SmartHotel.IoT.ProvisioningRemoval
 				Task processingTasks = Task.WhenAny( Task.WhenAll( statusVerificationTasks ), Task.Delay( TimeSpan.FromMinutes( 10 ) ) );
 
 				ConsoleSpinner spinner = new ConsoleSpinner();
-				while (!processingTasks.IsCompleted)
+				while ( !processingTasks.IsCompleted )
 				{
 					Console.CursorVisible = false;
 					spinner.Turn();
-					await Task.Delay(250);
+					await Task.Delay( 250 );
 				}
 
 				if ( statusVerificationTasks.Any( t => t.Status != TaskStatus.RanToCompletion ) )
