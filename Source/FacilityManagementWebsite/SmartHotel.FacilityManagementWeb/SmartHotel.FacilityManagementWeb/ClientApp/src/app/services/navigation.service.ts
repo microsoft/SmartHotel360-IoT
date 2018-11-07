@@ -12,7 +12,7 @@ export class NavigationService {
     const firstSpace = spaces[0];
     if (firstSpace.type.toLowerCase() === 'hotelbrand') {
       this.returnToHome(firstSpace.parentSpaceId);
-    } else if (firstSpace.type.toLowerCase() === 'venue') {
+    } else if (firstSpace.type.toLowerCase() === 'hotel') {
       this.chooseHotelBrand(undefined, firstSpace.parentSpaceId);
     } else if (firstSpace.type.toLowerCase() === 'floor') {
       this.chooseHotel(undefined, undefined, undefined, firstSpace.parentSpaceId, spaces.indexOf(firstSpace));
