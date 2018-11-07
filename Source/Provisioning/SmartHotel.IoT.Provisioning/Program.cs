@@ -18,7 +18,7 @@ namespace SmartHotel.IoT.Provisioning
 	// Following example from https://github.com/Azure-Samples/digital-twins-samples-csharp/tree/master/occupancy-quickstart
 	public class Program
 	{
-		private static int spacesCreatedCount = 0;
+		private static int _spacesCreatedCount = 0;
 		private const string AadInstance = "https://login.microsoftonline.com/";
 		private const string DigitalTwinsResourceId = "0b07f429-9f4b-4714-9392-cc5e8e80c8b0";
 
@@ -96,7 +96,7 @@ namespace SmartHotel.IoT.Provisioning
 			await CreateSpacesAsync( httpClient, provisioningDescription.spaces, Guid.Empty, Guid.Empty, userAadObjectIds );
 			Console.WriteLine();
 			Console.WriteLine();
-			Console.WriteLine( $"Created {spacesCreatedCount} spaces..." );
+			Console.WriteLine( $"Created {_spacesCreatedCount} spaces..." );
 			Console.WriteLine();
 			Console.WriteLine();
 
@@ -241,7 +241,7 @@ namespace SmartHotel.IoT.Provisioning
 			var id = await response.GetIdAsync();
 			if ( Guid.Empty != id )
 			{
-				Interlocked.Increment( ref spacesCreatedCount );
+				Interlocked.Increment( ref _spacesCreatedCount );
 			}
 			return id;
 		}
