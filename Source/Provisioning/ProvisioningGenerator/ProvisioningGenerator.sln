@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProvisioningGenerator", "Pr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.IoT.Provisioning.Common", "..\SmartHotel.IoT.Provisioning.Common\SmartHotel.IoT.Provisioning.Common.csproj", "{1EADE877-AD37-491C-BBED-59489F322223}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.IoT.ProvisioningGenerator", "SmartHotel.IoT.ProvisioningGenerator\SmartHotel.IoT.ProvisioningGenerator.csproj", "{639DBE9A-26B4-4A24-B708-9656E697183C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1EADE877-AD37-491C-BBED-59489F322223}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EADE877-AD37-491C-BBED-59489F322223}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EADE877-AD37-491C-BBED-59489F322223}.Release|Any CPU.Build.0 = Release|Any CPU
+		{639DBE9A-26B4-4A24-B708-9656E697183C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{639DBE9A-26B4-4A24-B708-9656E697183C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{639DBE9A-26B4-4A24-B708-9656E697183C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{639DBE9A-26B4-4A24-B708-9656E697183C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
