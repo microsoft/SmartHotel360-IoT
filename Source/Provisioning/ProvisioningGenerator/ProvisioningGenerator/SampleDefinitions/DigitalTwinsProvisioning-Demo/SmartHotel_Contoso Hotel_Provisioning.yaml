@@ -1,0 +1,1953 @@
+name: Contoso Hotel
+description: SmartHotel360 Contoso Hotel
+friendlyName: Contoso Hotel
+type: HotelBrand
+users:
+- Hotel Brand 2 Manager
+spaces:
+- name: Contoso Elite 1
+  description: SmartHotel360 Contoso Elite 1
+  friendlyName: Contoso Elite 1
+  type: Hotel
+  users:
+  - Hotel 1 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite1_
+    spaces:
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite1_
+    spaces:
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite1_
+    spaces:
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite1_
+    spaces:
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite1_
+    spaces:
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom
+- name: Contoso Premium 1
+  description: SmartHotel360 Contoso Premium 1
+  friendlyName: Contoso Premium 1
+  type: Hotel
+  users:
+  - Hotel 2 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium1_
+    spaces:
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium1_
+    spaces:
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium1_
+    spaces:
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium1_
+    spaces:
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium1_
+    spaces:
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom
+- name: Contoso Elite 2
+  description: SmartHotel360 Contoso Elite 2
+  friendlyName: Contoso Elite 2
+  type: Hotel
+  users:
+  - Hotel 3 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite2_
+    spaces:
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite2_
+    spaces:
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite2_
+    spaces:
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite2_
+    spaces:
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite2_
+    spaces:
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom
+- name: Contoso Elite 3
+  description: SmartHotel360 Contoso Elite 3
+  friendlyName: Contoso Elite 3
+  type: Hotel
+  users:
+  - Hotel 4 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite3_
+    spaces:
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite3_
+    spaces:
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite3_
+    spaces:
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite3_
+    spaces:
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoElite3_
+    spaces:
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom
+- name: Contoso Premium 2
+  description: SmartHotel360 Contoso Premium 2
+  friendlyName: Contoso Premium 2
+  type: Hotel
+  users:
+  - Hotel 5 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium2_
+    spaces:
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium2_
+    spaces:
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium2_
+    spaces:
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium2_
+    spaces:
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium2_
+    spaces:
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom
+- name: Contoso Premium 3
+  description: SmartHotel360 Contoso Premium 3
+  friendlyName: Contoso Premium 3
+  type: Hotel
+  users:
+  - Hotel 6 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium3_
+    spaces:
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium3_
+    spaces:
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium3_
+    spaces:
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium3_
+    spaces:
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium3_
+    spaces:
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom
+- name: Contoso Premium 4
+  description: SmartHotel360 Contoso Premium 4
+  friendlyName: Contoso Premium 4
+  type: Hotel
+  users:
+  - Hotel 7 Manager
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium4_
+    spaces:
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium4_
+    spaces:
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium4_
+    spaces:
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium4_
+    spaces:
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel_ContosoPremium4_
+    spaces:
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom

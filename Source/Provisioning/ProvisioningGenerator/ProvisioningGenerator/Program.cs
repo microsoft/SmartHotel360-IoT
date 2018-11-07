@@ -118,6 +118,15 @@ namespace ProvisioningGenerator
 			desiredTenantSpace.AddType( new TypeDescription { name = "ConferenceRoom", category = "SpaceSubType" } );
 			desiredTenantSpace.AddType( new TypeDescription { name = "GymRoom", category = "SpaceSubType" } );
 
+			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
+			{
+				name = PropertyKeyDescription.DeviceIdPrefixName,
+				primitiveDataType = "string",
+				description = "Prefix used in sending Device Method calls to the IoT Hub.",
+				min = "1",
+				max = "250" // NOTE: since a value is required just setting this to a high value, no other reason.
+			} );
+
 			desiredTenantSpace.AddUser( "Head Of Operations" );
 
 			foreach ( Brand brand in brands )
@@ -166,7 +175,7 @@ namespace ProvisioningGenerator
 				};
 				hotelSpaceDescription.AddUser( $"Hotel {hotelIndex + 1} Manager" );
 
-				string brandHotelPrefix = $"{brand.Name}_{hotel.Name}_";
+				string brandHotelPrefix = $"{brand.Name}_{hotel.Name}_".Replace( " ", string.Empty );
 
 				HotelType hotelType = hotelTypes.First( t => t.Name == hotel.Type );
 				int numberRegularFloors = hotelType.TotalNumberFloors - hotelType.NumberVipFloors;
@@ -182,6 +191,12 @@ namespace ProvisioningGenerator
 						friendlyName = $"Floor {floorIndex + 1}",
 						type = "Floor"
 					};
+					floorSpaceDescription.AddProperty( new PropertyDescription
+					{
+						name = PropertyKeyDescription.DeviceIdPrefixName,
+						value = brandHotelPrefix
+					} );
+
 					if ( isVipFloor )
 					{
 						floorSpaceDescription.subType = "VIPFloor";

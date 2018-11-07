@@ -1,0 +1,39 @@
+<section>
+  <div class="header">
+    <div *ngIf="tenantId; else homeNotSupported">
+      <span class="header-link" [class.header-link-active]="hotelBrandName" (click)="returnToHome()">brands</span>
+      <span *ngIf="hotelBrandName">
+        <span class="header-spacer">|</span>
+        <span class="header-link" [class.header-link-active]="hotelName" (click)="returnToHotelBrand()">{{hotelBrandName}}</span>
+        <span *ngIf="hotelName">
+          <span class="header-spacer">|</span>
+          <span class="header-link" [class.header-link-active]="floorName" (click)="returnToHotel()">{{hotelName}}</span>
+          <span *ngIf="floorName">
+            <span class="header-spacer">|</span>
+            <span class="header-link">{{floorName}}</span>
+          </span>
+        </span>
+      </span>
+    </div>
+    <ng-template #homeNotSupported>
+      <span *ngIf="hotelBrandId; else hotelNotSupported">
+        <span class="header-link" [class.header-link-active]="hotelName" (click)="returnToHotelBrand()">hotels</span>
+        <span *ngIf="hotelName">
+          <span class="header-spacer">|</span>
+          <span class="header-link" [class.header-link-active]="floorName" (click)="returnToHotel()">{{hotelName}}</span>
+          <span *ngIf="floorName">
+            <span class="header-spacer">|</span>
+            <span class="header-link">{{floorName}}</span>
+          </span>
+        </span>
+      </span>
+    </ng-template>
+    <ng-template #hotelNotSupported>
+      <span class="header-link" [class.header-link-active]="floorName" (click)="returnToHotel()">floors</span>
+      <span *ngIf="floorName">
+        <span class="header-spacer">|</span>
+        <span class="header-link">{{floorName}}</span>
+      </span>
+    </ng-template>
+  </div>
+</section>

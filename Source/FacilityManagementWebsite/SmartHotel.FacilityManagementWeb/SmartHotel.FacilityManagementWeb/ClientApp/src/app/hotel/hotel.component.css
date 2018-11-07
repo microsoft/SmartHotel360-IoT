@@ -33,7 +33,7 @@ section {
   padding-left: 14px;
   padding-right: 14px;
   text-align: left;
-  height: 45px;
+  height: 47px;
   width: 100%;
   color: white;
   font-size: 19px;
@@ -72,4 +72,4 @@ section {
 
 _:-ms-lang(x), .floors-dashboard {
   margin-top: 7px;
-} 
+}

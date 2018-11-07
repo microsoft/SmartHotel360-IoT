@@ -39,7 +39,7 @@ namespace SmartHotel.IoT.Provisioning.Common
 			{
 				referenceSpaces.Add( parentDescription );
 			}
-			else
+			else if(parentDescription.spaces != null)
 			{
 				foreach ( SpaceDescription childDescription in parentDescription.spaces )
 				{

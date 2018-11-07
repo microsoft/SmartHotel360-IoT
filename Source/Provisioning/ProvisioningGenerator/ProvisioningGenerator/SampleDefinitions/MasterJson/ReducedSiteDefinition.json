@@ -39,63 +39,46 @@
   ],
   "Brands": [
     {
-      "Name": "Brand 1",
+      "Name": "SmartHotel360",
       "Hotels": [
         {
-          "Name": "Hotel H 1",
+          "Name": "SH360 Elite 1",
           "Type": "H",
           "RegularFloorEmployeeUser": "Employee",
           "AddDevices": true
         },
         {
-          "Name": "Hotel L 1",
+          "Name": "SH360 Premium 1",
           "Type": "L",
           "RegularFloorEmployeeUser": null,
           "AddDevices": false
         },
         {
-          "Name": "Hotel SH 1",
+          "Name": "SH360 Elite 2",
           "Type": "SH",
           "RegularFloorEmployeeUser": null,
           "AddDevices": false
         },
         {
-          "Name": "Hotel SH 2",
+          "Name": "SH360 Elite 3",
           "Type": "SH",
           "RegularFloorEmployeeUser": null,
           "AddDevices": false
         },
         {
-          "Name": "Hotel SL 1",
+          "Name": "SH360 Elite 4",
           "Type": "SL",
           "RegularFloorEmployeeUser": null,
           "AddDevices": false
         },
         {
-          "Name": "Hotel SL 2",
+          "Name": "SH360 Premium 2",
           "Type": "SL",
           "RegularFloorEmployeeUser": null,
           "AddDevices": false
-        }
-      ]
-    },
-    {
-      "Name": "Brand 2",
-      "Hotels": [
-        {
-          "Name": "Hotel SH 1",
-          "Type": "SH",
-          "RegularFloorEmployeeUser": null,
-          "AddDevices": false
         },
         {
-          "Name": "Hotel SH 2",
-          "Type": "SH",
-          "RegularFloorEmployeeUser": null,
-          "AddDevices": false
-        },
-        {
-          "Name": "Hotel SL 1",
+          "Name": "SH360 Premium 3",
           "Type": "SL",
           "RegularFloorEmployeeUser": null,
           "AddDevices": false
@@ -103,40 +86,47 @@
       ]
     },
     {
-      "Name": "Brand 3",
+      "Name": "Contoso Hotel",
       "Hotels": [
         {
-          "Name": "Hotel SH 1",
+          "Name": "Contoso Elite 1",
           "Type": "SH",
           "RegularFloorEmployeeUser": null,
           "AddDevices": false
         },
         {
-          "Name": "Hotel SL 1",
-          "Type": "SL",
-          "RegularFloorEmployeeUser": null,
-          "AddDevices": false
-        },
-        {
-          "Name": "Hotel SL 2",
-          "Type": "SL",
-          "RegularFloorEmployeeUser": null,
-          "AddDevices": false
-        }
-      ]
-    },
-    {
-      "Name": "Brand 4",
-      "Hotels": [
-        {
-          "Name": "Hotel SH 1",
+          "Name": "Contoso Premium 1",
           "Type": "SH",
           "RegularFloorEmployeeUser": null,
           "AddDevices": false
         },
         {
-          "Name": "Hotel SL 1",
+          "Name": "Contoso Elite 2",
           "Type": "SL",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        },
+        {
+          "Name": "Contoso Elite 3",
+          "Type": "SH",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        },
+        {
+          "Name": "Contoso Premium 2",
+          "Type": "SL",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        },
+        {
+          "Name": "Contoso Premium 3",
+          "Type": "SL",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": false
+        },
+        {
+          "Name": "Contoso Premium 4",
+          "Type": "SH",
           "RegularFloorEmployeeUser": null,
           "AddDevices": false
         }

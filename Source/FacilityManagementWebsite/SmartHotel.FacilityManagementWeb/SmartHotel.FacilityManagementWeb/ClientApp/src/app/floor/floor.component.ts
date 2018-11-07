@@ -1,15 +1,14 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
-import { IHotel } from '../services/models/IHotel';
-import { IFloor } from '../services/models/IFloor';
-import { IRoom } from '../services/models/IRoom';
 import { ILight, IThermostat, IMotion } from '../services/models/IDevice';
 import { ISensor } from '../services/models/ISensor';
 import { environment } from '../../environments/environment';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { IDesired } from '../services/models/IDesired';
 import { ChangeContext, Options } from 'ng5-slider';
+import { ISpace } from '../services/models/ISpace';
+import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
+import { BusyService } from '../services/busy.service';
 
 @Component({
   selector: 'app-floor',
@@ -18,31 +17,33 @@ import { ChangeContext, Options } from 'ng5-slider';
 })
 export class FloorComponent implements OnInit, OnDestroy {
 
-  constructor(private router: Router,
-    private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
     private facilityService: FacilityService,
-    private spinnerService: Ng4LoadingSpinnerService) {
-
-    this.route.params.subscribe(params => {
-      this.hotelId = params['hotelId'];
-      this.floorId = params['floorId'];
-
-      this.loadRooms();
-    });
+    private busyService: BusyService) {
+    this.roomsById = new Map<string, ISpace>();
+    this.desiredDataByRoomId = new Map<string, IDesired[]>();
+    this.sensorDataByRoomId = new Map<string, ISensor[]>();
   }
 
-  hotelId;
-  hotelIndex: number;
-  hotel: IHotel = null;
-  floorId;
-  floor: IFloor = null;
-  rooms: IRoom[] = null;
-  desiredData: IDesired[] = [];
-  sensorData: ISensor[] = [];
-  sensorInterval;
-  theromstatSliderTimeout;
-  lightSliderTimeout;
-  isUpdatingSliders = false;
+  @ViewChild('breadcumbs') private breadcrumbs: BreadcrumbComponent;
+  public tenantId: string;
+  public hotelBrandId: string;
+  public hotelBrandName: string;
+  public hotelName: string;
+  public hotelId: string;
+  public hotelIndex: number;
+  private floorId: string;
+  public floorName: string;
+
+  public rooms: ISpace[] = null;
+  private deviceIdPrefix = '';
+  private roomsById: Map<string, ISpace>;
+  private desiredDataByRoomId: Map<string, IDesired[]>;
+  private sensorDataByRoomId: Map<string, ISensor[]>;
+  private sensorInterval;
+  private theromstatSliderTimeout;
+  private lightSliderTimeout;
+  private isUpdatingSliders = false;
 
   thermostatSliderOptions: Options = {
     showTicks: false,
@@ -73,7 +74,16 @@ export class FloorComponent implements OnInit, OnDestroy {
   };
 
   ngOnInit() {
-
+    this.route.params.subscribe(params => {
+      this.tenantId = params['tId'];
+      this.hotelBrandId = params['hbId'];
+      this.hotelBrandName = params['hbName'];
+      this.hotelId = params['hId'];
+      this.hotelIndex = params['hIndex'];
+      this.hotelName = params['hName'];
+      this.floorId = params['fId'];
+      this.facilityService.executeWhenInitialized(this, this.loadRooms);
+    });
   }
 
   ngOnDestroy() {
@@ -82,25 +92,28 @@ export class FloorComponent implements OnInit, OnDestroy {
     }
   }
 
-  loadRooms() {
-    this.spinnerService.show();
+  loadRooms(self: FloorComponent) {
 
-    this.facilityService.getHotel().then((data: IHotel[]) => {
-      const hotels = data.sort((a, b) => a.name.localeCompare(b.name));
-      this.hotel = hotels.find(hotel => hotel.id === this.hotelId);
-      this.hotelIndex = data.indexOf(this.hotel);
-
-      if (this.hotel != null) {
-        this.floor = this.hotel.floors.find(floor => floor.id === this.floorId);
-
-        if (this.floor != null) {
-          this.rooms = this.floor.rooms.sort((a, b) => a.name < b.name ? -1 : 1);
-          this.loadDesiredData();
-          this.setupTimer();
-        }
+    try {
+      self.busyService.busy();
+      const floor = self.facilityService.getSpace(self.hotelId, self.floorId);
+      if (!floor) {
+        self.breadcrumbs.returnToHotel();
+        return;
       }
-    });
+      self.floorName = floor.friendlyName;
+      const deviceIdPrefixProperty = floor.properties.find(p => p.name === 'DeviceIdPrefix');
+      if (deviceIdPrefixProperty) {
+        self.deviceIdPrefix = deviceIdPrefixProperty.value;
+      }
 
+      self.rooms = self.facilityService.getChildSpaces(self.floorId);
+      self.rooms.forEach(room => self.roomsById.set(room.id, room));
+      self.loadDesiredData();
+      self.setupTimer();
+    } finally {
+      self.busyService.idle();
+    }
   }
 
   setupTimer() {
@@ -112,11 +125,18 @@ export class FloorComponent implements OnInit, OnDestroy {
       return;
     }
 
-    if (this.floor != null && this.floor.rooms != null) {
-
-      this.facilityService.getDesiredData(this.floor).then((desired: IDesired[]) => {
+    if (this.rooms != null) {
+      this.facilityService.getDesiredData(this.rooms).then((desired: IDesired[]) => {
         if (desired != null && desired.length > 0) {
-          this.desiredData = desired;
+          desired.forEach(d => {
+            let desiredDataForRoom = this.desiredDataByRoomId.get(d.roomId);
+            if (!desiredDataForRoom) {
+              desiredDataForRoom = [];
+              this.desiredDataByRoomId.set(d.roomId, desiredDataForRoom);
+            }
+
+            desiredDataForRoom.push(d);
+          });
         }
         this.loadSensorData();
       });
@@ -124,9 +144,8 @@ export class FloorComponent implements OnInit, OnDestroy {
   }
 
   loadSensorData() {
-    if (this.floor != null && this.floor.rooms != null) {
-
-      this.facilityService.getSensorData(this.floor).then((sensors: ISensor[]) => {
+    if (this.rooms != null) {
+      this.facilityService.getSensorData(this.rooms).then((sensors: ISensor[]) => {
         if (sensors != null && sensors.length > 0) {
           sensors.forEach(sensor => {
             switch (sensor.sensorDataType) {
@@ -142,8 +161,15 @@ export class FloorComponent implements OnInit, OnDestroy {
             }
           });
         }
-        this.sensorData = sensors;
-        this.spinnerService.hide();
+        sensors.forEach(s => {
+          let sensorDataForRoom = this.sensorDataByRoomId.get(s.roomId);
+          if (!sensorDataForRoom) {
+            sensorDataForRoom = [];
+            this.sensorDataByRoomId.set(s.roomId, sensorDataForRoom);
+          }
+
+          sensorDataForRoom.push(s);
+        });
       });
     }
   }
@@ -155,7 +181,7 @@ export class FloorComponent implements OnInit, OnDestroy {
     const light: ILight = actual == null ? null :
       { desired: desired * 100.0, actual: actual * 100.0 };
 
-    const room = this.floor.rooms.find(r => r.id === sensor.roomId);
+    const room = this.roomsById.get(sensor.roomId);
 
     if (room != null) {
       room.light = light;
@@ -169,7 +195,7 @@ export class FloorComponent implements OnInit, OnDestroy {
     const temp: IThermostat = actual == null ? null :
       { desired: desired, actual: actual };
 
-    const room = this.floor.rooms.find(r => r.id === sensor.roomId);
+    const room = this.roomsById.get(sensor.roomId);
 
     if (room != null) {
       room.thermostat = temp;
@@ -180,7 +206,7 @@ export class FloorComponent implements OnInit, OnDestroy {
   setMotionReading(sensor: ISensor) {
 
     const motion: IMotion = { isMotion: sensor.sensorReading.toLowerCase() === 'true' };
-    const room = this.floor.rooms.find(r => r.id === sensor.roomId);
+    const room = this.roomsById.get(sensor.roomId);
 
     if (room != null) {
       room.motion = motion;
@@ -202,8 +228,11 @@ export class FloorComponent implements OnInit, OnDestroy {
     try {
       let desired: IDesired = null;
 
-      if (this.desiredData !== null) {
-        desired = this.desiredData.find((d) => d.roomId === sensor.roomId && d.sensorId === sensor.sensorId);
+      if (this.desiredDataByRoomId !== null) {
+        const desiredDatas = this.desiredDataByRoomId.get(sensor.roomId);
+        if (desiredDatas) {
+          desired = desiredDatas.find((d) => d.sensorId === sensor.sensorId);
+        }
       }
 
       return JSON.parse(desired ? desired.desiredValue : sensor.sensorReading);
@@ -212,20 +241,30 @@ export class FloorComponent implements OnInit, OnDestroy {
     return null;
   }
 
-  thermostatSliderValueChange(room: IRoom, changeContext: ChangeContext) {
-    console.log(`${room.name} thermostat desired changed: ${changeContext.value}`);
+  thermostatSliderValueChange(room: ISpace, changeContext: ChangeContext) {
+    const self = this;
+    console.log(`${room.friendlyName} thermostat desired changed: ${changeContext.value}`);
 
     if (this.theromstatSliderTimeout) {
       clearTimeout(this.theromstatSliderTimeout);
     }
 
-    const sensor = this.sensorData.find(s => s.roomId === room.id && s.sensorDataType === 'Temperature');
+    const sensors = this.sensorDataByRoomId.get(room.id);
+    if (!sensors) {
+      return;
+    }
+
+    const sensor = sensors.find(s => s.sensorDataType === 'Temperature');
 
     if (!sensor) {
       return;
     }
 
-    let desired: IDesired = this.desiredData.find((d) => d.roomId === room.id && d.sensorId === sensor.sensorId);
+    const desiredDatas = this.desiredDataByRoomId.get(room.id);
+    let desired: IDesired;
+    if (desiredDatas) {
+      desired = desiredDatas.find((d) => d.sensorId === sensor.sensorId);
+    }
 
     if (!desired) {
       desired = {
@@ -234,7 +273,11 @@ export class FloorComponent implements OnInit, OnDestroy {
         desiredValue: room.thermostat.desired.toString()
       };
 
-      this.desiredData.push(desired);
+      if (desiredDatas) {
+        desiredDatas.push(desired);
+      } else {
+        this.desiredDataByRoomId.set(room.id, [desired]);
+      }
     } else {
       desired.desiredValue = room.thermostat.desired.toString();
     }
@@ -245,37 +288,51 @@ export class FloorComponent implements OnInit, OnDestroy {
         sensorId: d.sensorId,
         desiredValue: d.desiredValue,
         methodName: 'SetDesiredTemperature',
-        deviceId: `${room.name.charAt(0).toUpperCase() + room.name.slice(1).replace(' ', '')}Thermostat`
+        deviceId: `${self.deviceIdPrefix}${room.name.charAt(0).toUpperCase() + room.name.slice(1).replace(' ', '')}Thermostat`
       };
       this.facilityService.setDesiredData(request);
     }, 250, desired);
   }
 
-  lightSliderValueChange(room: IRoom, changeContext: ChangeContext) {
-    console.log(`${room.name} light desired changed: ${changeContext.value}`);
+  lightSliderValueChange(room: ISpace, changeContext: ChangeContext) {
+    const self = this;
+    console.log(`${room.friendlyName} light desired changed: ${changeContext.value}`);
 
     if (this.lightSliderTimeout) {
       clearTimeout(this.lightSliderTimeout);
     }
 
-    const sensor = this.sensorData.find(s => s.roomId === room.id && s.sensorDataType === 'Light');
+    const sensors = this.sensorDataByRoomId.get(room.id);
+    if (!sensors) {
+      return;
+    }
+
+    const sensor = sensors.find(s => s.sensorDataType === 'Light');
 
     if (!sensor) {
       return;
     }
 
-    let desired: IDesired = this.desiredData.find((d) => d.roomId === room.id && d.sensorId === sensor.sensorId);
+    const desiredDatas = this.desiredDataByRoomId.get(room.id);
+    let desired: IDesired;
+    if (desiredDatas) {
+      desired = desiredDatas.find((d) => d.sensorId === sensor.sensorId);
+    }
 
+    const desiredValue = (room.light.desired / 100.0).toString();
     if (!desired) {
       desired = {
         roomId: room.id,
         sensorId: sensor.sensorId,
-        desiredValue: (room.light.desired / 100.0).toString()
+        desiredValue: desiredValue
       };
-
-      this.desiredData.push(desired);
+      if (desiredDatas) {
+        desiredDatas.push(desired);
+      } else {
+        this.desiredDataByRoomId.set(room.id, [desired]);
+      }
     } else {
-      desired.desiredValue = (room.light.desired / 100.0).toString();
+      desired.desiredValue = desiredValue;
     }
 
     this.lightSliderTimeout = setTimeout((d) => {
@@ -284,7 +341,9 @@ export class FloorComponent implements OnInit, OnDestroy {
         sensorId: d.sensorId,
         desiredValue: d.desiredValue,
         methodName: 'SetDesiredAmbientLight',
-        deviceId: `${room.name.charAt(0).toUpperCase() + room.name.slice(1).replace(' ', '')}Light`
+        // TODO: Need to figure out new way to build the deviceId. Since now there can be devices in all the hotels.
+        //  Needs brand + Hotel + Room to be unique
+        deviceId: `${self.deviceIdPrefix}${room.name.charAt(0).toUpperCase() + room.name.slice(1).replace(' ', '')}Light`
       };
       this.facilityService.setDesiredData(request);
     }, 250, desired);
@@ -296,13 +355,5 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   sliderChangeEnd() {
     this.isUpdatingSliders = false;
-  }
-
-  returnToHome() {
-    this.router.navigate(['/']);
-  }
-
-  returnToHotel() {
-    this.router.navigate(['/hotel', { id: this.hotelId, index: this.hotelIndex }]);
   }
 }

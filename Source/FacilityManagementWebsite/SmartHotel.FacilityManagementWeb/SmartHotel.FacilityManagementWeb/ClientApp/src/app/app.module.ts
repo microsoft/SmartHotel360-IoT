@@ -13,9 +13,10 @@ import { HotelComponent } from './hotel/hotel.component';
 import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationGuard } from './common/authentication-guard';
-import { FacilityService } from './services/facility.service';
-import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { Ng5SliderModule } from 'ng5-slider';
+import { HotelBrandComponent } from './hotel-brand/hotel-brand.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +26,16 @@ import { Ng5SliderModule } from 'ng5-slider';
     HotelComponent,
     FloorComponent,
     ErrorComponent,
-    LoginComponent
+    LoginComponent,
+    HotelBrandComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    Ng4LoadingSpinnerModule.forRoot(),
+    NgxSpinnerModule,
     Ng5SliderModule
   ],
   providers: [
@@ -42,8 +45,7 @@ import { Ng5SliderModule } from 'ng5-slider';
       provide: HTTP_INTERCEPTORS,
       useClass: AdalInterceptor,
       multi: true
-    },
-    FacilityService
+    }
   ],
   bootstrap: [AppComponent]
 })

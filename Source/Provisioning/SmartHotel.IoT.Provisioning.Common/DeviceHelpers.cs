@@ -18,26 +18,26 @@ namespace SmartHotel.IoT.Provisioning.Common
 			{
 				if ( spaceDescription.devices != null )
 				{
-                    var spaceName = spaceDescription.name.Replace(" ", string.Empty).ToLower();
+					var spaceName = spaceDescription.name.Replace( " ", string.Empty ).ToLower();
 
-                    if (!devices.ContainsKey(spaceName))
-                        devices.Add(spaceName, new List<DeviceDescription>());
+					if ( !devices.ContainsKey( spaceName ) )
+						devices.Add( spaceName, new List<DeviceDescription>() );
 
 					devices[spaceName].AddRange( spaceDescription.devices );
 				}
 
 				if ( spaceDescription.spaces != null )
 				{
-                    var children = GetAllDeviceDescriptions(spaceDescription.spaces);
+					var children = GetAllDeviceDescriptions( spaceDescription.spaces );
 
-                    foreach (var pair in children)
-                    {
-                        if (!devices.ContainsKey(pair.Key))
-                            devices.Add(pair.Key, new List<DeviceDescription>());
+					foreach ( var pair in children )
+					{
+						if ( !devices.ContainsKey( pair.Key ) )
+							devices.Add( pair.Key, new List<DeviceDescription>() );
 
-                        devices[pair.Key].AddRange(pair.Value);
-                    }
-                }
+						devices[pair.Key].AddRange( pair.Value );
+					}
+				}
 			}
 
 			return devices;
@@ -67,34 +67,36 @@ namespace SmartHotel.IoT.Provisioning.Common
 		}
 
 		public static async Task<IReadOnlyCollection<Device>> GetExistingDevicesAsync(
-			this IEnumerable<DeviceDescription> deviceDescriptions, HttpClient httpClient )
+			this ICollection<DeviceDescription> deviceDescriptions, HttpClient httpClient )
 		{
-            var existingDevices = new List<Device>();
+			var existingDevices = new List<Device>();
 
-            for (int i = 0; i < deviceDescriptions.Count(); i += 10)
-            {
-                var nextDeviceDescriptions = deviceDescriptions.Skip(i * 10).Take(10);
-                if (nextDeviceDescriptions != null && nextDeviceDescriptions.Any())
-                {
-                    var filter = $"hardwareIds={string.Join(";", nextDeviceDescriptions.Select(d => d.hardwareId))}";
+			int itemsPerGroup = 10;
+			int numberOfGroups = (int)Math.Ceiling( deviceDescriptions.Count / (double)itemsPerGroup );
+			for ( int i = 0; i < numberOfGroups; i++ )
+			{
+				var nextDeviceDescriptions = deviceDescriptions.Skip( i * itemsPerGroup ).Take( itemsPerGroup ).ToArray();
+				if ( nextDeviceDescriptions.Any() )
+				{
+					var filter = $"hardwareIds={string.Join( ";", nextDeviceDescriptions.Select( d => d.hardwareId ) )}";
 
-                    var request = HttpMethod.Get.CreateRequest($"devices?{filter}");
-                    var response = await httpClient.SendAsync(request);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var content = await response.Content.ReadAsStringAsync();
-                        var nextExistingDevices = JsonConvert.DeserializeObject<IReadOnlyCollection<Device>>(content);
-                        if (nextExistingDevices.Any())
-                        {
-                            existingDevices.AddRange(nextExistingDevices);
-                        }
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-            }
+					var request = HttpMethod.Get.CreateRequest( $"devices?{filter}" );
+					var response = await httpClient.SendAsync( request );
+					if ( response.IsSuccessStatusCode )
+					{
+						var content = await response.Content.ReadAsStringAsync();
+						var nextExistingDevices = JsonConvert.DeserializeObject<IReadOnlyCollection<Device>>( content );
+						if ( nextExistingDevices.Any() )
+						{
+							existingDevices.AddRange( nextExistingDevices );
+						}
+					}
+					else
+					{
+						return null;
+					}
+				}
+			}
 
 			return existingDevices;
 		}
