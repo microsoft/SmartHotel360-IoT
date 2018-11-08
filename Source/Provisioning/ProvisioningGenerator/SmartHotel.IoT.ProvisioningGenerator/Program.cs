@@ -175,7 +175,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 				};
 				hotelSpaceDescription.AddUser( $"Hotel {hotelIndex + 1} Manager" );
 
-				string brandHotelPrefix = $"{brand.Name}_{hotel.Name}_".Replace( " ", string.Empty );
+				string brandHotelPrefix = $"{brand.Name}-{hotel.Name}-".Replace( " ", string.Empty );
 
 				HotelType hotelType = hotelTypes.First( t => t.Name == hotel.Type );
 				int numberRegularFloors = hotelType.TotalNumberFloors - hotelType.NumberVipFloors;

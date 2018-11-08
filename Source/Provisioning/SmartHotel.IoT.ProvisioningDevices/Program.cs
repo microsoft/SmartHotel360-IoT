@@ -181,13 +181,14 @@ namespace SmartHotel.IoT.ProvisioningDevices
 										 {
 											 Dictionary<string, string> iotConnectionStrings = iotHubConnectionStrings[room];
 
-											 if ( iotConnectionStrings.ContainsKey( typeSetting.value.ToLower() ) )
+											 string deviceType = DeviceHelpers.GetDeviceType( typeSetting.value );
+											 if ( iotConnectionStrings.TryGetValue( deviceType, out string iotConnectionString ) )
 											 {
 												 var iotSetting = container.env.FirstOrDefault( s => s.name == IoTHubConnectionStringSetting );
 
 												 if ( iotSetting != null )
 												 {
-													 iotSetting.value = iotConnectionStrings[typeSetting.value.ToLower()];
+													 iotSetting.value = iotConnectionString;
 												 }
 											 }
 										 }
@@ -243,8 +244,11 @@ namespace SmartHotel.IoT.ProvisioningDevices
 							 env = new List<KubernetesEnvironmentSetting>()
 						 };
 						 container.env.Add( new KubernetesEnvironmentSetting { name = HardwareIdSetting, value = device.hardwareId } );
-						 container.env.Add( new KubernetesEnvironmentSetting { name = SensorTypeSetting, value = device.sensors.First().dataType } );
-						 container.env.Add( new KubernetesEnvironmentSetting { name = HardwareIdSetting, value = device.hardwareId } );
+						 if ( connectionStringsForThisSpace != null
+							  && connectionStringsForThisSpace.TryGetValue( device.name, out string iotHubConnectionString ) )
+						 {
+							 container.env.Add( new KubernetesEnvironmentSetting { name = IoTHubConnectionStringSetting, value = iotHubConnectionString } );
+						 }
 						 container.env.Add( new KubernetesEnvironmentSetting { name = DigitalTwinsManagementApiSetting, value = DigitalTwinsApiEndpoint } );
 						 container.env.Add( new KubernetesEnvironmentSetting
 						 {
@@ -252,16 +256,12 @@ namespace SmartHotel.IoT.ProvisioningDevices
 							 value = MessageInterval > 0 ? MessageInterval.ToString() : MessageIntervalDefault.ToString()
 						 } );
 						 container.env.Add( new KubernetesEnvironmentSetting { name = SasTokenSetting, value = device.SasToken } );
-						 if ( connectionStringsForThisSpace != null
-						   && connectionStringsForThisSpace.TryGetValue( device.name, out string iotHubConnectionString ) )
-						 {
-							 container.env.Add( new KubernetesEnvironmentSetting { name = IoTHubConnectionStringSetting, value = iotHubConnectionString } );
-						 }
+						 container.env.Add( new KubernetesEnvironmentSetting { name = SensorTypeSetting, value = device.sensors.First().dataType } );
 
 						 var template = new KubernetesTemplate
 						 {
-							 spec = new KubernetesSpec { containers = new List<KubernetesContainer> { container } },
-							 metadata = new KubernetesMetadata { labels = new KubernetesLabels { app = serviceKey, component = serviceKey } }
+							 metadata = new KubernetesMetadata { labels = new KubernetesLabels { app = serviceKey, component = serviceKey } },
+							 spec = new KubernetesSpec { containers = new List<KubernetesContainer> { container } }
 						 };
 						 var spec = new KubernetesSpec
 						 {
@@ -376,13 +376,14 @@ namespace SmartHotel.IoT.ProvisioningDevices
 								 {
 									 Dictionary<string, string> iotConnectionStrings = iotHubConnectionStrings[name];
 
-									 if ( iotConnectionStrings.ContainsKey( serviceType.value.ToLower() ) )
+									 string deviceType = DeviceHelpers.GetDeviceType( serviceType.value );
+									 if ( iotConnectionStrings.TryGetValue( deviceType, out string iotConnectionString ) )
 									 {
 										 var iotSetting = service.environment.FirstOrDefault( s => s.name == IoTHubConnectionStringSetting );
 
 										 if ( iotSetting != null )
 										 {
-											 iotSetting.value = iotConnectionStrings[serviceType.value.ToLower()];
+											 iotSetting.value = iotConnectionString;
 										 }
 									 }
 								 }

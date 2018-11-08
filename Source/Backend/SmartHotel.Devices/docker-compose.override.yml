@@ -1,7 +1,7 @@
 version: '3.4'
 
 services:
-  sh.d.light.smarthotel360_sh360elite1_room101:
+  sh.d.light.smarthotel360-sh360elite1-room101:
     environment:
       - HardwareId=
       - ManagementApiUrl=
@@ -10,7 +10,7 @@ services:
       - IoTHubDeviceConnectionString=
       - SensorDataType=Light
 
-  sh.d.thermostat.smarthotel360_sh360elite1_room101:
+  sh.d.thermostat.smarthotel360-sh360elite1-room101:
     environment:
       - HardwareId=
       - ManagementApiUrl=
@@ -19,7 +19,7 @@ services:
       - IoTHubDeviceConnectionString=
       - SensorDataType=Temperature
 
-  sh.d.motion.smarthotel360_sh360elite1_room101:
+  sh.d.motion.smarthotel360-sh360elite1-room101:
     environment:
       - HardwareId=
       - ManagementApiUrl=
