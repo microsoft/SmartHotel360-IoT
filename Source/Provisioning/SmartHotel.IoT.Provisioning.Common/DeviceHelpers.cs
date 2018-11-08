@@ -112,5 +112,20 @@ namespace SmartHotel.IoT.Provisioning.Common
 
 			return existingDevices;
 		}
+
+		public static string GetDeviceType(string dataType)
+		{
+			switch ( dataType.ToLower() )
+			{
+				case "temperature":
+					return "Thermostat";
+				case "light":
+					return "Light";
+				case "motion":
+					return "Motion";
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
+		}
 	}
 }

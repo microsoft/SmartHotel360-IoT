@@ -54,7 +54,8 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 			try
 			{
 				_retryPolicy = Policy.Handle<ThrottlingBacklogTimeoutException>()
-					.WaitAndRetry( 5, retryAttempt => TimeSpan.FromSeconds( 10 * retryAttempt ) );
+					.WaitAndRetry( 5, retryAttempt => TimeSpan.FromSeconds( 10 * retryAttempt ),
+						( ex, t ) => Console.WriteLine( $"Device action throttled, retrying in {t.TotalSeconds} seconds..." ) );
 
 				if ( RemoveDevices )
 				{
@@ -136,20 +137,10 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 					foreach ( DeviceDescription device in kvp.Value )
 					{
 						SensorDescription deviceSensor = device.sensors.First();
-						string deviceType;
-						switch ( deviceSensor.dataType.ToLower() )
+						string deviceType = DeviceHelpers.GetDeviceType( deviceSensor.dataType );
+						if ( "motion".Equals( deviceType, StringComparison.OrdinalIgnoreCase ) )
 						{
-							case "temperature":
-								deviceType = "Thermostat";
-								break;
-							case "light":
-								deviceType = "Light";
-								break;
-							case "motion":
-								// Don't sent Cloud to Device commands for motion
-								continue;
-							default:
-								throw new ArgumentOutOfRangeException();
+							continue;
 						}
 
 						string deviceId = $"{deviceIdPrefix}{deviceType}";
@@ -161,7 +152,7 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 						if ( !RemoveDevices )
 						{
 							string deviceConnectionString = _retryPolicy.Execute( () => ExecuteGetDeviceConnectionString( deviceId ) );
-							connectionStringByDeviceType[deviceSensor.dataType] = deviceConnectionString;
+							connectionStringByDeviceType[deviceType] = deviceConnectionString;
 						}
 					}
 				} );

@@ -1,13 +1,13 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: smarthotel.devices.light.room11
+  name: sh.d.light.smarthotel360_sh360elite1_room101
 spec:
   template:
     metadata:
       labels:
-        app: smarthotel.devices.light.room11
-        component: smarthotel.devices.light.room11
+        app: sh.d.light.smarthotel360_sh360elite1_room101
+        component: sh.d.light.smarthotel360_sh360elite1_room101
     spec:
       containers:
       - name: device-light
@@ -30,13 +30,13 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: smarthotel.devices.thermostat.room11
+  name: sh.d.thermostat.smarthotel360_sh360elite1_room101
 spec:
   template:
     metadata:
       labels:
-        app: smarthotel.devices.thermostat.room11
-        component: smarthotel.devices.thermostat.room11
+        app: sh.d.thermostat.smarthotel360_sh360elite1_room101
+        component: sh.d.thermostat.smarthotel360_sh360elite1_room101
     spec:
       containers:
       - name: device-thermostat
@@ -59,13 +59,13 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: smarthotel.devices.motion.room11
+  name: sh.d.motion.smarthotel360_sh360elite1_room101
 spec:
   template:
     metadata:
       labels:
-        app: smarthotel.devices.motion.room11
-        component: smarthotel.devices.motion.room11
+        app: sh.d.motion.smarthotel360_sh360elite1_room101
+        component: sh.d.motion.smarthotel360_sh360elite1_room101
     spec:
       containers:
       - name: device-motion
