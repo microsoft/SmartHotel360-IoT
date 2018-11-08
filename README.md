@@ -146,11 +146,11 @@ When the deployment script is complete, it will output a `userSettings.json` fil
     "iotHubConnectionString": "{connection string to the iot hub}",
     "cosmosDbConnectionString": "{connection string to the cosmos db}",
     "roomDevicesApiEndpoint":  "{room devices api endpoint - needed for running the Xamarin Mobile Clients}",
-    "room11SpaceId":  "{room 11 space id - needed for running the Xamarin Mobile Clients}"
+    "mobileRoomSpaceId":  "{space id of the room needed for running the Xamarin Mobile Clients}"
 }
 ```
 
-**NOTE:** If you are going to run the IoT Demo for the [Xamarin Mobile Apps](https://github.com/Microsoft/SmartHotel360-mobile-desktop-apps#iot-demo), then you will need the `roomDevicesApiEndpoint` and `room11SpaceId` values from the `userSettings.json` file.
+**NOTE:** If you are going to run the IoT Demo for the [Xamarin Mobile Apps](https://github.com/Microsoft/SmartHotel360-mobile-desktop-apps#iot-demo), then you will need the `roomDevicesApiEndpoint` and `mobileRoomSpaceId` values from the `userSettings.json` file.
 
 ## Success!
 To verify that everything is working correctly, open up the `facilityManagementWebsiteUri` (from the `userSettings.json` in the browser and log in with one of the two users created during the provisioning steps.
