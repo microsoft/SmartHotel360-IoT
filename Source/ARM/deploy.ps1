@@ -100,6 +100,7 @@ Reset-Console-Coloring
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $ErrorActionPreference = "Stop"
 $powershellEscape = '--%'
+$startTime = Get-Date
 
 # sign in
 Write-Host "Logging in...";
@@ -245,8 +246,8 @@ $iotProvisioningOutput = 'iot-device-connectionstring.json'
 Push-Location "../Provisioning/IoTHubDeviceProvisioningBits"
 $azFullPath = (Get-Command az).Path
 $iotHubDeviceProvisioningArgs = "-az `"$azFullPath`" -iot `"$iotHubName`" -dtpf `"$dtProvisionTemplateFullFilePath`" -o `"$iotProvisioningOutput`""
-dotnet SmartHotel.IoT.IoTHubDeviceProvisioning.dll $powershellEscape $iotProvisioningOutput
-if( -not (Test-Path $iotHubDeviceProvisioningArgs))
+dotnet SmartHotel.IoT.IoTHubDeviceProvisioning.dll $powershellEscape $iotHubDeviceProvisioningArgs
+if( -not (Test-Path $iotProvisioningOutput))
 {
     Write-Error "An error occurred while creating the IoT Hub devices. Please attempt to fix the issue and re-deploy."
     exit
@@ -546,8 +547,12 @@ $outfile = $path.ToString() + '/userSettings.json'
 
 $savedSettings | ConvertTo-Json | Out-File $outfile
 
+$endTime = Get-Date
+$totalTimeInMinutes = ($endTime - $startTime).TotalMinutes
+
 Write-Host
 Write-Host
 Write-Host 'Required settings have been saved to ' $outfile
 Write-Host
+Write-Host "Deployment took $totalTimeInMinutes"
 Write-Host
