@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SmartHotel.IoT.Provisioning.Common.Extensions;
 using SmartHotel.IoT.Provisioning.Common.Models;
 using SmartHotel.IoT.Provisioning.Common.Models.DigitalTwins;
 
@@ -11,31 +12,42 @@ namespace SmartHotel.IoT.Provisioning.Common
 {
 	public static class DeviceHelpers
 	{
-		public static IDictionary<string, List<DeviceDescription>> GetAllDeviceDescriptions( this IList<SpaceDescription> spaceDescriptions )
+		public static IDictionary<string, List<DeviceDescription>> GetAllDeviceDescriptionsByDeviceIdPrefix(
+			this IList<SpaceDescription> spaceDescriptions, string parentDeviceIdPrefix)
 		{
 			var devices = new Dictionary<string, List<DeviceDescription>>();
-			foreach ( SpaceDescription spaceDescription in spaceDescriptions )
+			foreach (SpaceDescription spaceDescription in spaceDescriptions)
 			{
-				if ( spaceDescription.devices != null )
+				if (spaceDescription.devices != null)
 				{
-					var spaceName = spaceDescription.name.Replace( " ", string.Empty ).ToLower();
+					var spaceName = spaceDescription.name.FirstLetterToUpperCase().Replace(" ", string.Empty);
+					string deviceIdPrefix = $"{parentDeviceIdPrefix}{spaceName}";
 
-					if ( !devices.ContainsKey( spaceName ) )
-						devices.Add( spaceName, new List<DeviceDescription>() );
+					if (!devices.ContainsKey(deviceIdPrefix))
+						devices.Add(deviceIdPrefix, new List<DeviceDescription>());
 
-					devices[spaceName].AddRange( spaceDescription.devices );
+					devices[deviceIdPrefix].AddRange(spaceDescription.devices);
 				}
 
-				if ( spaceDescription.spaces != null )
+				if (spaceDescription.spaces != null)
 				{
-					var children = GetAllDeviceDescriptions( spaceDescription.spaces );
-
-					foreach ( var pair in children )
+					string additionToParentDeviceIdPrefix = string.Empty;
+					PropertyDescription deviceIdPrefixProperty =
+						spaceDescription.properties?.FirstOrDefault( p => p.name == PropertyKeyDescription.DeviceIdPrefixName );
+					if ( deviceIdPrefixProperty != null )
 					{
-						if ( !devices.ContainsKey( pair.Key ) )
-							devices.Add( pair.Key, new List<DeviceDescription>() );
+						additionToParentDeviceIdPrefix = deviceIdPrefixProperty.value;
+					}
 
-						devices[pair.Key].AddRange( pair.Value );
+					var children = GetAllDeviceDescriptionsByDeviceIdPrefix(spaceDescription.spaces,
+						$"{parentDeviceIdPrefix}{additionToParentDeviceIdPrefix}");
+
+					foreach (var pair in children)
+					{
+						if (!devices.ContainsKey(pair.Key))
+							devices.Add(pair.Key, new List<DeviceDescription>());
+
+						devices[pair.Key].AddRange(pair.Value);
 					}
 				}
 			}

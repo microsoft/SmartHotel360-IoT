@@ -82,8 +82,8 @@ namespace SmartHotel.IoT.ProvisioningRemoval
 
 		private static async Task RemoveAllExistingDevicesAsync( HttpClient httpClient, ProvisioningDescription provisioningDescription )
 		{
-
-			IDictionary<string, List<DeviceDescription>> deviceDictionary = provisioningDescription.spaces.GetAllDeviceDescriptions();
+			IDictionary<string, List<DeviceDescription>> deviceDictionary =
+				provisioningDescription.spaces.GetAllDeviceDescriptionsByDeviceIdPrefix(string.Empty);
 			ICollection<DeviceDescription> allDefinedDevices = deviceDictionary.Values.SelectMany( v => v ).ToArray();
 			IReadOnlyCollection<Device> existingDevices = await allDefinedDevices.GetExistingDevicesAsync( httpClient );
 

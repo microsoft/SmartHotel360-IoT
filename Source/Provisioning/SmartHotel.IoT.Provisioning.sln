@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.IoT.Provisioning
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.IoT.ProvisioningDevices", "SmartHotel.IoT.ProvisioningDevices\SmartHotel.IoT.ProvisioningDevices.csproj", "{303DF08A-AA2B-4ED0-8EC5-0680950BEC32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.IoT.ProvisioningApis", "SmartHotel.IoT.ProvisioningApis\SmartHotel.IoT.ProvisioningApis.csproj", "{A0FE9E75-A55C-45CC-9EA5-1139393C113B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.IoT.ProvisioningApis", "SmartHotel.IoT.ProvisioningApis\SmartHotel.IoT.ProvisioningApis.csproj", "{A0FE9E75-A55C-45CC-9EA5-1139393C113B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.IoT.IoTHubDeviceProvisioning", "SmartHotel.IoT.IoTHubDeviceProvisioning\SmartHotel.IoT.IoTHubDeviceProvisioning.csproj", "{C91980F1-4456-47D1-A1D4-1FC2BFA04DE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{A0FE9E75-A55C-45CC-9EA5-1139393C113B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0FE9E75-A55C-45CC-9EA5-1139393C113B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0FE9E75-A55C-45CC-9EA5-1139393C113B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C91980F1-4456-47D1-A1D4-1FC2BFA04DE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C91980F1-4456-47D1-A1D4-1FC2BFA04DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C91980F1-4456-47D1-A1D4-1FC2BFA04DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C91980F1-4456-47D1-A1D4-1FC2BFA04DE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
