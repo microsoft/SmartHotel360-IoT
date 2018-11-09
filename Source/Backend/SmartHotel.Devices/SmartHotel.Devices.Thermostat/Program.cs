@@ -65,7 +65,7 @@ namespace SmartHotel.Devices.Thermostat
 
 			Console.WriteLine( $"Your hardware ID is: {hardwareId}" );
 
-			TimeSpan startupDelay = TimeSpan.FromSeconds(new Random().Next(1, 10));
+			TimeSpan startupDelay = TimeSpan.FromSeconds(new Random().NextDouble() * 2);
 			Console.WriteLine($"Waiting {startupDelay.TotalSeconds} seconds to startup...");
 			await Task.Delay(startupDelay, cts.Token);
 
@@ -75,7 +75,6 @@ namespace SmartHotel.Devices.Thermostat
 			if ( DeviceInfo == null )
 			{
 				Console.WriteLine( "ERROR: Could not retrieve device information." );
-				cts.Token.WaitHandle.WaitOne();
 				return;
 			}
 

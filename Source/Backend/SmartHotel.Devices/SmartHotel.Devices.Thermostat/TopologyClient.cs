@@ -22,7 +22,7 @@ namespace SmartHotel.Devices.Thermostat
 		public TopologyClient( string managementBaseUrl, string sasToken )
 		{
 			_retryPolicy = Policy.Handle<ManagementApiLimitReachedException>()
-				.WaitAndRetryAsync( 5, retryAttempt => TimeSpan.FromSeconds( 5 * retryAttempt ),
+				.WaitAndRetryAsync( 5, retryAttempt => TimeSpan.FromSeconds( Math.Pow( 3, retryAttempt ) ),
 					( ex, t ) => Console.WriteLine(
 						$"Digital Twins management api limit reached, retrying in {t.TotalSeconds} seconds..." ) );
 
