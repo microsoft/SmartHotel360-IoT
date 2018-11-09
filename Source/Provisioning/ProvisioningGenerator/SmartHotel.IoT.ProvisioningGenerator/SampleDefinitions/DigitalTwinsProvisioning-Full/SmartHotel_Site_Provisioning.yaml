@@ -37,8 +37,9 @@ spaces:
   - name: DeviceIdPrefix
     primitiveDataType: string
     description: Prefix used in sending Device Method calls to the IoT Hub.
-    min: 1
-    max: 250
+  - name: DisplayOrder
+    primitiveDataType: uint
+    description: Order to display spaces
   spaceReferences:
   - filename: SmartHotel_SmartHotel360_Provisioning.yaml
   - filename: SmartHotel_Contoso Hotel_Provisioning.yaml

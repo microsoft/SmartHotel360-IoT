@@ -6,6 +6,7 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 	public class PropertyKeyDescription
 	{
 		public const string DeviceIdPrefixName = "DeviceIdPrefix";
+		public const string DisplayOrder = "DisplayOrder";
 
 		public string name { get; set; }
 		public string primitiveDataType { get; set; }

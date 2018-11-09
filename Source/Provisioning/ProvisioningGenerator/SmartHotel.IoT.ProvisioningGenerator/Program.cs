@@ -122,9 +122,13 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			{
 				name = PropertyKeyDescription.DeviceIdPrefixName,
 				primitiveDataType = "string",
-				description = "Prefix used in sending Device Method calls to the IoT Hub.",
-				min = "1",
-				max = "250" // NOTE: since a value is required just setting this to a high value, no other reason.
+				description = "Prefix used in sending Device Method calls to the IoT Hub."
+			} );
+			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
+			{
+				name = PropertyKeyDescription.DisplayOrder,
+				primitiveDataType = "uint",
+				description = "Order to display spaces"
 			} );
 
 			desiredTenantSpace.AddUser( "Head Of Operations" );
@@ -161,6 +165,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 				type = "HotelBrand"
 			};
 			brandSpaceDescription.AddUser( $"Hotel Brand {brandNumber} Manager" );
+			brandSpaceDescription.AddProperty( new PropertyDescription { name = PropertyKeyDescription.DisplayOrder, value = brandNumber.ToString() } );
 
 			// Create the hotels
 			for ( int hotelIndex = 0; hotelIndex < brand.Hotels.Count; hotelIndex++ )
@@ -174,6 +179,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 					type = "Hotel"
 				};
 				hotelSpaceDescription.AddUser( $"Hotel {hotelIndex + 1} Manager" );
+				hotelSpaceDescription.AddProperty( new PropertyDescription { name = PropertyKeyDescription.DisplayOrder, value = hotelIndex.ToString() } );
 
 				string brandHotelPrefix = $"{brand.Name}-{hotel.Name}-".Replace( " ", string.Empty );
 

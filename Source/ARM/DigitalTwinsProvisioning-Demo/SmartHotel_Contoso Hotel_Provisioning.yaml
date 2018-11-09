@@ -4,6 +4,9 @@ friendlyName: Contoso Hotel
 type: HotelBrand
 users:
 - Hotel Brand 2 Manager
+properties:
+- name: DisplayOrder
+  value: 2
 spaces:
 - name: Contoso Elite 1
   description: SmartHotel360 Contoso Elite 1
@@ -11,6 +14,9 @@ spaces:
   type: Hotel
   users:
   - Hotel 1 Manager
+  properties:
+  - name: DisplayOrder
+    value: 0
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -289,6 +295,9 @@ spaces:
   type: Hotel
   users:
   - Hotel 2 Manager
+  properties:
+  - name: DisplayOrder
+    value: 1
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -567,6 +576,9 @@ spaces:
   type: Hotel
   users:
   - Hotel 3 Manager
+  properties:
+  - name: DisplayOrder
+    value: 2
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -845,6 +857,9 @@ spaces:
   type: Hotel
   users:
   - Hotel 4 Manager
+  properties:
+  - name: DisplayOrder
+    value: 3
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -1123,6 +1138,9 @@ spaces:
   type: Hotel
   users:
   - Hotel 5 Manager
+  properties:
+  - name: DisplayOrder
+    value: 4
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -1401,6 +1419,9 @@ spaces:
   type: Hotel
   users:
   - Hotel 6 Manager
+  properties:
+  - name: DisplayOrder
+    value: 5
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -1679,6 +1700,9 @@ spaces:
   type: Hotel
   users:
   - Hotel 7 Manager
+  properties:
+  - name: DisplayOrder
+    value: 6
   spaces:
   - name: Floor 01
     description: Floor 1
