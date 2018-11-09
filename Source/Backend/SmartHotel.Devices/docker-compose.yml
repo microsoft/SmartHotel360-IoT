@@ -2,19 +2,19 @@ version: '3.4'
 
 services:
   sh.d.light.smarthotel360-sh360elite1-room101:
-    image: smarthoteliot.azurecr.io/device-light:dev
+    image: needstobeset.azurecr.io/device-light:dev
     build:
       context: .
       dockerfile: SmartHotel.Devices.Light/Dockerfile
 
   sh.d.thermostat.smarthotel360-sh360elite1-room101:
-    image: smarthoteliot.azurecr.io/device-thermostat:dev
+    image: needstobeset.azurecr.io/device-thermostat:dev
     build:
       context: .
       dockerfile: SmartHotel.Devices.Thermostat/Dockerfile
 
   sh.d.motion.smarthotel360-sh360elite1-room101:
-    image: smarthoteliot.azurecr.io/device-motion:dev
+    image: needstobeset.azurecr.io/device-motion:dev
     build:
       context: .
       dockerfile: SmartHotel.Devices.Motion/Dockerfile

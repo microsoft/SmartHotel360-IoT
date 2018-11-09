@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: device-light
-        image: smarthoteliot.azurecr.io/device-light:public
+        image: needstobeset.azurecr.io/device-light:public
         imagePullPolicy: Always
         env:
         - name: HardwareId
@@ -40,7 +40,7 @@ spec:
     spec:
       containers:
       - name: device-thermostat
-        image: smarthoteliot.azurecr.io/device-thermostat:public
+        image: needstobeset.azurecr.io/device-thermostat:public
         imagePullPolicy: Always
         env:
         - name: HardwareId
@@ -69,7 +69,7 @@ spec:
     spec:
       containers:
       - name: device-motion
-        image: smarthoteliot.azurecr.io/device-motion:public
+        image: needstobeset.azurecr.io/device-motion:public
         imagePullPolicy: Always
         env:
         - name: HardwareId
