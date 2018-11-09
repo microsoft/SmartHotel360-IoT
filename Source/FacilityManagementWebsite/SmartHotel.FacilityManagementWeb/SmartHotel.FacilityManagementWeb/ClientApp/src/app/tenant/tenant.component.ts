@@ -5,11 +5,11 @@ import { ISpace } from '../services/models/ISpace';
 import { NavigationService } from '../services/navigation.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-tenant',
+  templateUrl: './tenant.component.html',
+  styleUrls: ['./tenant.component.css']
 })
-export class HomeComponent implements OnInit {
+export class TenantComponent implements OnInit {
 
   constructor(private navigationService: NavigationService,
     private route: ActivatedRoute,
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-  loadHotelBrands(self: HomeComponent) {
+  loadHotelBrands(self: TenantComponent) {
     const hotelBrands = self.facilityService.getChildSpaces(self.tenantId);
     if (!hotelBrands) {
       self.navigationService.navigateToTopSpaces(self.facilityService.getSpaces());

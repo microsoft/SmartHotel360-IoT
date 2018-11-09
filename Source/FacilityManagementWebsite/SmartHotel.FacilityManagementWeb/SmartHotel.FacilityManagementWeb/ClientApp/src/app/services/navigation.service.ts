@@ -21,7 +21,7 @@ export class NavigationService {
 
   public returnToHome(tenantId: string) {
     const navArgs = this.createNavArgs(tenantId);
-    this.router.navigate(['/', navArgs]);
+    this.router.navigate(['/tenant', navArgs]);
   }
 
   public chooseHotelBrand(tenantId: string, hotelBrandId: string) {

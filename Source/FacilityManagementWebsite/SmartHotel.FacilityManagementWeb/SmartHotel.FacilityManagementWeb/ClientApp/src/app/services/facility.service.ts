@@ -55,6 +55,12 @@ export class FacilityService {
     }
   }
 
+  public terminate() {
+    this.spaces = undefined;
+    this.spacesByParentId.clear();
+    this.isInitialized = false;
+  }
+
   public getSpaces(): ISpace[] {
     if (!this.isInitialized) {
       throw this.notInitializedError;

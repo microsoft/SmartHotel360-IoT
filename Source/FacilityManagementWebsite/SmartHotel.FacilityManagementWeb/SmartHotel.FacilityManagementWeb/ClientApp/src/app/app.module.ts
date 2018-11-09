@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
+import { TenantComponent } from './tenant/tenant.component';
 import { AdalService, AdalInterceptor } from 'adal-angular4';
 import { AppRoutingModule } from './app-routing.module';
 import { FloorComponent } from './floor/floor.component';
@@ -17,18 +17,20 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { Ng5SliderModule } from 'ng5-slider';
 import { HotelBrandComponent } from './hotel-brand/hotel-brand.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
+    TenantComponent,
     HotelComponent,
     FloorComponent,
     ErrorComponent,
     LoginComponent,
     HotelBrandComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

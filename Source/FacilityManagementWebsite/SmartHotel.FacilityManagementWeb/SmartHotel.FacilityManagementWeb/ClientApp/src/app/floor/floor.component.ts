@@ -94,26 +94,22 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   loadRooms(self: FloorComponent) {
 
-    try {
-      self.busyService.busy();
-      const floor = self.facilityService.getSpace(self.hotelId, self.floorId);
-      if (!floor) {
-        self.breadcrumbs.returnToHotel();
-        return;
-      }
-      self.floorName = floor.friendlyName;
-      const deviceIdPrefixProperty = floor.properties.find(p => p.name === 'DeviceIdPrefix');
-      if (deviceIdPrefixProperty) {
-        self.deviceIdPrefix = deviceIdPrefixProperty.value;
-      }
-
-      self.rooms = self.facilityService.getChildSpaces(self.floorId);
-      self.rooms.forEach(room => self.roomsById.set(room.id, room));
-      self.loadDesiredData();
-      self.setupTimer();
-    } finally {
-      self.busyService.idle();
+    self.busyService.busy();
+    const floor = self.facilityService.getSpace(self.hotelId, self.floorId);
+    if (!floor) {
+      self.breadcrumbs.returnToHotel();
+      return;
     }
+    self.floorName = floor.friendlyName;
+    const deviceIdPrefixProperty = floor.properties.find(p => p.name === 'DeviceIdPrefix');
+    if (deviceIdPrefixProperty) {
+      self.deviceIdPrefix = deviceIdPrefixProperty.value;
+    }
+
+    self.rooms = self.facilityService.getChildSpaces(self.floorId);
+    self.rooms.forEach(room => self.roomsById.set(room.id, room));
+    self.loadDesiredData();
+    self.setupTimer();
   }
 
   setupTimer() {
@@ -140,6 +136,7 @@ export class FloorComponent implements OnInit, OnDestroy {
         }
         this.loadSensorData();
       });
+      this.busyService.idle();
     }
   }
 
