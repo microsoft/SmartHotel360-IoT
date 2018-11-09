@@ -339,29 +339,16 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 
 			if ( addDevices )
 			{
-				var thermostatDevice = new DeviceDescription
+				var roomDevice = new DeviceDescription
 				{
-					name = "Thermostat",
-					hardwareId = $"{brandHotelPrefix}{roomNumber}_T",
+					name = "RoomDevice",
+					hardwareId = $"{brandHotelPrefix}{roomNumber}"
 				};
-				thermostatDevice.AddSensor( new SensorDescription { dataType = "Temperature", type = "Classic" } );
-				roomSpaceDescription.AddDevice( thermostatDevice );
+				roomDevice.AddSensor( new SensorDescription { dataType = "Temperature", type = "Classic" } );
+				roomDevice.AddSensor( new SensorDescription { dataType = "Motion", type = "Classic" } );
+				roomDevice.AddSensor( new SensorDescription { dataType = "Light", type = "Classic" } );
 
-				var motionDevice = new DeviceDescription
-				{
-					name = "Motion",
-					hardwareId = $"{brandHotelPrefix}{roomNumber}_M",
-				};
-				motionDevice.AddSensor( new SensorDescription { dataType = "Motion", type = "Classic" } );
-				roomSpaceDescription.AddDevice( motionDevice );
-
-				var lightsDevice = new DeviceDescription
-				{
-					name = "Light",
-					hardwareId = $"{brandHotelPrefix}{roomNumber}_L",
-				};
-				lightsDevice.AddSensor( new SensorDescription { dataType = "Light", type = "Classic" } );
-				roomSpaceDescription.AddDevice( lightsDevice );
+				roomSpaceDescription.AddDevice( roomDevice );
 			}
 
 			return roomSpaceDescription;

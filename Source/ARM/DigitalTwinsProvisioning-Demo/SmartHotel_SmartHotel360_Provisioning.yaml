@@ -44,19 +44,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-101_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-101
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-101_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-101_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 102
@@ -65,19 +59,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-102_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-102
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-102_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-102_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 103
@@ -86,19 +74,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-103_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-103
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-103_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-103_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 104
@@ -107,19 +89,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-104_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-104
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-104_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-104_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 105
@@ -128,19 +104,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-105_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-105
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-105_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-105_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 106
@@ -149,19 +119,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-106_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-106
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-106_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-106_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 107
@@ -170,19 +134,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-107_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-107
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-107_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-107_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 108
@@ -191,19 +149,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-108_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-108
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-108_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-108_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 109
@@ -212,19 +164,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-109_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-109
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-109_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-109_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 110
@@ -233,19 +179,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-110_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-110
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-110_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-110_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 111
@@ -254,19 +194,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-111_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-111
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-111_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-111_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 112
@@ -275,19 +209,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-112_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-112
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-112_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-112_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 113
@@ -296,19 +224,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-113_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-113
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-113_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-113_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 114
@@ -317,19 +239,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-114_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-114
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-114_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-114_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 115
@@ -338,19 +254,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-115_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-115
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-115_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-115_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 116
@@ -359,19 +269,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-116_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-116
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-116_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-116_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 117
@@ -380,19 +284,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-117_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-117
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-117_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-117_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 118
@@ -401,19 +299,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-118_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-118
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-118_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-118_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 119
@@ -422,19 +314,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-119_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-119
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-119_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-119_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 120
@@ -443,19 +329,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-120_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-120
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-120_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-120_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 121
@@ -464,19 +344,13 @@ spaces:
       type: Room
       subType: GymRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-121_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-121
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-121_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-121_L
-        sensors:
         - dataType: Light
           type: Classic
   - name: Floor 02
@@ -497,19 +371,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-201_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-201
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-201_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-201_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 202
@@ -518,19 +386,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-202_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-202
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-202_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-202_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 203
@@ -539,19 +401,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-203_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-203
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-203_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-203_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 204
@@ -560,19 +416,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-204_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-204
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-204_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-204_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 205
@@ -581,19 +431,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-205_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-205
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-205_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-205_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 206
@@ -602,19 +446,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-206_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-206
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-206_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-206_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 207
@@ -623,19 +461,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-207_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-207
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-207_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-207_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 208
@@ -644,19 +476,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-208_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-208
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-208_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-208_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 209
@@ -665,19 +491,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-209_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-209
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-209_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-209_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 210
@@ -686,19 +506,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-210_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-210
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-210_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-210_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 211
@@ -707,19 +521,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-211_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-211
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-211_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-211_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 212
@@ -728,19 +536,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-212_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-212
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-212_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-212_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 213
@@ -749,19 +551,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-213_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-213
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-213_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-213_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 214
@@ -770,19 +566,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-214_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-214
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-214_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-214_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 215
@@ -791,19 +581,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-215_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-215
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-215_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-215_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 216
@@ -812,19 +596,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-216_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-216
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-216_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-216_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 217
@@ -833,19 +611,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-217_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-217
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-217_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-217_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 218
@@ -854,19 +626,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-218_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-218
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-218_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-218_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 219
@@ -875,19 +641,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-219_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-219
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-219_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-219_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 220
@@ -896,19 +656,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-220_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-220
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-220_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-220_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 221
@@ -917,19 +671,13 @@ spaces:
       type: Room
       subType: ConferenceRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-221_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-221
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-221_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-221_L
-        sensors:
         - dataType: Light
           type: Classic
   - name: Floor 03
@@ -950,19 +698,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-301_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-301
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-301_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-301_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 302
@@ -971,19 +713,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-302_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-302
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-302_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-302_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 303
@@ -992,19 +728,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-303_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-303
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-303_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-303_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 304
@@ -1013,19 +743,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-304_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-304
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-304_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-304_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 305
@@ -1034,19 +758,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-305_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-305
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-305_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-305_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 306
@@ -1055,19 +773,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-306_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-306
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-306_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-306_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 307
@@ -1076,19 +788,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-307_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-307
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-307_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-307_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 308
@@ -1097,19 +803,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-308_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-308
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-308_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-308_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 309
@@ -1118,19 +818,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-309_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-309
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-309_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-309_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 310
@@ -1139,19 +833,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-310_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-310
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-310_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-310_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 311
@@ -1160,19 +848,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-311_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-311
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-311_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-311_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 312
@@ -1181,19 +863,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-312_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-312
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-312_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-312_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 313
@@ -1202,19 +878,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-313_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-313
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-313_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-313_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 314
@@ -1223,19 +893,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-314_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-314
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-314_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-314_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 315
@@ -1244,19 +908,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-315_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-315
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-315_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-315_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 316
@@ -1265,19 +923,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-316_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-316
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-316_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-316_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 317
@@ -1286,19 +938,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-317_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-317
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-317_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-317_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 318
@@ -1307,19 +953,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-318_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-318
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-318_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-318_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 319
@@ -1328,19 +968,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-319_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-319
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-319_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-319_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 320
@@ -1349,19 +983,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-320_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-320
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-320_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-320_L
-        sensors:
         - dataType: Light
           type: Classic
   - name: Floor 04
@@ -1382,19 +1010,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-401_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-401
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-401_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-401_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 402
@@ -1403,19 +1025,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-402_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-402
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-402_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-402_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 403
@@ -1424,19 +1040,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-403_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-403
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-403_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-403_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 404
@@ -1445,19 +1055,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-404_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-404
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-404_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-404_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 405
@@ -1466,19 +1070,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-405_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-405
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-405_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-405_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 406
@@ -1487,19 +1085,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-406_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-406
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-406_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-406_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 407
@@ -1508,19 +1100,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-407_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-407
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-407_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-407_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 408
@@ -1529,19 +1115,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-408_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-408
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-408_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-408_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 409
@@ -1550,19 +1130,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-409_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-409
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-409_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-409_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 410
@@ -1571,19 +1145,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-410_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-410
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-410_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-410_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 411
@@ -1592,19 +1160,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-411_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-411
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-411_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-411_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 412
@@ -1613,19 +1175,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-412_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-412
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-412_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-412_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 413
@@ -1634,19 +1190,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-413_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-413
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-413_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-413_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 414
@@ -1655,19 +1205,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-414_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-414
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-414_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-414_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 415
@@ -1676,19 +1220,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-415_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-415
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-415_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-415_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 416
@@ -1697,19 +1235,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-416_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-416
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-416_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-416_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 417
@@ -1718,19 +1250,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-417_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-417
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-417_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-417_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 418
@@ -1739,19 +1265,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-418_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-418
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-418_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-418_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 419
@@ -1760,19 +1280,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-419_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-419
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-419_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-419_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 420
@@ -1781,19 +1295,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-420_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-420
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-420_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-420_L
-        sensors:
         - dataType: Light
           type: Classic
   - name: Floor 05
@@ -1814,19 +1322,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-501_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-501
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-501_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-501_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 502
@@ -1835,19 +1337,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-502_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-502
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-502_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-502_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 503
@@ -1856,19 +1352,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-503_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-503
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-503_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-503_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 504
@@ -1877,19 +1367,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-504_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-504
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-504_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-504_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 505
@@ -1898,19 +1382,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-505_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-505
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-505_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-505_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 506
@@ -1919,19 +1397,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-506_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-506
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-506_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-506_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 507
@@ -1940,19 +1412,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-507_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-507
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-507_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-507_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 508
@@ -1961,19 +1427,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-508_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-508
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-508_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-508_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 509
@@ -1982,19 +1442,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-509_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-509
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-509_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-509_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 510
@@ -2003,19 +1457,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-510_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-510
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-510_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-510_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 511
@@ -2024,19 +1472,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-511_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-511
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-511_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-511_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 512
@@ -2045,19 +1487,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-512_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-512
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-512_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-512_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 513
@@ -2066,19 +1502,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-513_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-513
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-513_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-513_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 514
@@ -2087,19 +1517,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-514_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-514
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-514_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-514_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 515
@@ -2108,19 +1532,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-515_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-515
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-515_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-515_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 516
@@ -2129,19 +1547,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-516_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-516
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-516_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-516_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 517
@@ -2150,19 +1562,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-517_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-517
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-517_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-517_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 518
@@ -2171,19 +1577,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-518_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-518
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-518_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-518_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 519
@@ -2192,19 +1592,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-519_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-519
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-519_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-519_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 520
@@ -2213,19 +1607,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-520_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-520
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-520_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-520_L
-        sensors:
         - dataType: Light
           type: Classic
   - name: Floor 06
@@ -2246,19 +1634,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-601_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-601
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-601_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-601_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 602
@@ -2267,19 +1649,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-602_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-602
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-602_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-602_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 603
@@ -2288,19 +1664,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-603_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-603
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-603_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-603_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 604
@@ -2309,19 +1679,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-604_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-604
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-604_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-604_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 605
@@ -2330,19 +1694,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-605_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-605
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-605_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-605_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 606
@@ -2351,19 +1709,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-606_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-606
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-606_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-606_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 607
@@ -2372,19 +1724,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-607_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-607
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-607_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-607_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 608
@@ -2393,19 +1739,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-608_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-608
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-608_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-608_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 609
@@ -2414,19 +1754,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-609_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-609
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-609_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-609_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 610
@@ -2435,19 +1769,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-610_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-610
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-610_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-610_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 611
@@ -2456,19 +1784,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-611_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-611
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-611_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-611_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 612
@@ -2477,19 +1799,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-612_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-612
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-612_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-612_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 613
@@ -2498,19 +1814,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-613_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-613
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-613_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-613_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 614
@@ -2519,19 +1829,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-614_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-614
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-614_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-614_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 615
@@ -2540,19 +1844,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-615_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-615
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-615_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-615_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 616
@@ -2561,19 +1859,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-616_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-616
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-616_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-616_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 617
@@ -2582,19 +1874,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-617_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-617
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-617_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-617_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 618
@@ -2603,19 +1889,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-618_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-618
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-618_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-618_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 619
@@ -2624,19 +1904,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-619_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-619
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-619_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-619_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 620
@@ -2645,19 +1919,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-620_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-620
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-620_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-620_L
-        sensors:
         - dataType: Light
           type: Classic
   - name: Floor 07
@@ -2678,19 +1946,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-701_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-701
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-701_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-701_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 702
@@ -2699,19 +1961,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-702_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-702
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-702_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-702_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 703
@@ -2720,19 +1976,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-703_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-703
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-703_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-703_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 704
@@ -2741,19 +1991,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-704_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-704
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-704_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-704_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 705
@@ -2762,19 +2006,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-705_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-705
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-705_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-705_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 706
@@ -2783,19 +2021,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-706_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-706
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-706_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-706_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 707
@@ -2804,19 +2036,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-707_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-707
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-707_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-707_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 708
@@ -2825,19 +2051,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-708_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-708
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-708_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-708_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 709
@@ -2846,19 +2066,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-709_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-709
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-709_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-709_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 710
@@ -2867,19 +2081,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-710_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-710
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-710_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-710_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 711
@@ -2888,19 +2096,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-711_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-711
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-711_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-711_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 712
@@ -2909,19 +2111,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-712_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-712
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-712_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-712_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 713
@@ -2930,19 +2126,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-713_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-713
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-713_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-713_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 714
@@ -2951,19 +2141,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-714_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-714
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-714_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-714_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 715
@@ -2972,19 +2156,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-715_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-715
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-715_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-715_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 716
@@ -2993,19 +2171,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-716_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-716
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-716_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-716_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 717
@@ -3014,19 +2186,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-717_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-717
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-717_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-717_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 718
@@ -3035,19 +2201,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-718_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-718
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-718_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-718_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 719
@@ -3056,19 +2216,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-719_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-719
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-719_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-719_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 720
@@ -3077,19 +2231,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-720_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-720
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-720_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-720_L
-        sensors:
         - dataType: Light
           type: Classic
   - name: Floor 08
@@ -3110,19 +2258,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-801_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-801
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-801_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-801_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 802
@@ -3131,19 +2273,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-802_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-802
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-802_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-802_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 803
@@ -3152,19 +2288,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-803_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-803
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-803_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-803_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 804
@@ -3173,19 +2303,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-804_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-804
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-804_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-804_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 805
@@ -3194,19 +2318,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-805_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-805
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-805_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-805_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 806
@@ -3215,19 +2333,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-806_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-806
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-806_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-806_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 807
@@ -3236,19 +2348,13 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-807_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-807
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-807_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-807_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 808
@@ -3257,19 +2363,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-808_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-808
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-808_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-808_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 809
@@ -3278,19 +2378,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-809_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-809
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-809_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-809_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 810
@@ -3299,19 +2393,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-810_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-810
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-810_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-810_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 811
@@ -3320,19 +2408,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-811_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-811
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-811_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-811_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 812
@@ -3341,19 +2423,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-812_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-812
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-812_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-812_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 813
@@ -3362,19 +2438,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-813_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-813
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-813_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-813_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 814
@@ -3383,19 +2453,13 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-814_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-814
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-814_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-814_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 815
@@ -3404,19 +2468,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-815_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-815
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-815_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-815_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 816
@@ -3425,19 +2483,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-816_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-816
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-816_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-816_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 817
@@ -3446,19 +2498,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-817_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-817
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-817_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-817_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 818
@@ -3467,19 +2513,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-818_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-818
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-818_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-818_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 819
@@ -3488,19 +2528,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-819_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-819
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-819_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-819_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 820
@@ -3509,19 +2543,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-820_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-820
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-820_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-820_L
-        sensors:
         - dataType: Light
           type: Classic
   - name: Floor 09
@@ -3541,19 +2569,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-901_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-901
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-901_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-901_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 902
@@ -3562,19 +2584,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-902_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-902
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-902_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-902_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 903
@@ -3583,19 +2599,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-903_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-903
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-903_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-903_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 904
@@ -3604,19 +2614,13 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-904_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-904
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-904_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-904_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 905
@@ -3625,19 +2629,13 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-905_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-905
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-905_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-905_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 906
@@ -3646,19 +2644,13 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-906_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-906
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-906_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-906_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 907
@@ -3667,19 +2659,13 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-907_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-907
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-907_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-907_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 908
@@ -3688,19 +2674,13 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-908_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-908
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-908_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-908_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 909
@@ -3709,19 +2689,13 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-909_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-909
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-909_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-909_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 910
@@ -3730,19 +2704,13 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-910_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-910
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-910_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-910_L
-        sensors:
         - dataType: Light
           type: Classic
   - name: Floor 10
@@ -3762,19 +2730,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-1001_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-1001
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-1001_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-1001_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 1002
@@ -3783,19 +2745,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-1002_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-1002
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-1002_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-1002_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 1003
@@ -3804,19 +2760,13 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-1003_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-1003
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-1003_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-1003_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 1004
@@ -3825,19 +2775,13 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-1004_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-1004
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-1004_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-1004_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 1005
@@ -3846,19 +2790,13 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-1005_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-1005
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-1005_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-1005_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 1006
@@ -3867,19 +2805,13 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-1006_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-1006
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-1006_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-1006_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 1007
@@ -3888,19 +2820,13 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-1007_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-1007
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-1007_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-1007_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 1008
@@ -3909,19 +2835,13 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-1008_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-1008
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-1008_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-1008_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 1009
@@ -3930,19 +2850,13 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-1009_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-1009
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-1009_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-1009_L
-        sensors:
         - dataType: Light
           type: Classic
     - name: Room 1010
@@ -3951,19 +2865,13 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: Thermostat
-        hardwareId: SmartHotel360-SH360Elite1-1010_T
+      - name: RoomDevice
+        hardwareId: SmartHotel360-SH360Elite1-1010
         sensors:
         - dataType: Temperature
           type: Classic
-      - name: Motion
-        hardwareId: SmartHotel360-SH360Elite1-1010_M
-        sensors:
         - dataType: Motion
           type: Classic
-      - name: Light
-        hardwareId: SmartHotel360-SH360Elite1-1010_L
-        sensors:
         - dataType: Light
           type: Classic
 - name: SH360 Premium 1
