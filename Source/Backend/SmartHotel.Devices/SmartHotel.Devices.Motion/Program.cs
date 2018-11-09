@@ -70,6 +70,10 @@ namespace SmartHotel.Devices.Motion
 			var hardwareId = Configuration[HardwareIdSetting];
 			Console.WriteLine( $"Your hardware ID is: {hardwareId}" );
 
+			TimeSpan startupDelay = TimeSpan.FromSeconds(new Random().Next(1, 10));
+			Console.WriteLine($"Waiting {startupDelay.TotalSeconds} seconds to startup...");
+			await Task.Delay(startupDelay, cts.Token);
+
 			_motionTimer = new Timer( RandomizeMotionValue, null, 5000, _randomizationDelay );
 
 			var topologyClient = new TopologyClient( Configuration[ManagementApiUrlSetting], Configuration[SasTokenSetting] );

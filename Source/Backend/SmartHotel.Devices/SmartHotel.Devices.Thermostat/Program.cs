@@ -65,6 +65,10 @@ namespace SmartHotel.Devices.Thermostat
 
 			Console.WriteLine( $"Your hardware ID is: {hardwareId}" );
 
+			TimeSpan startupDelay = TimeSpan.FromSeconds(new Random().Next(1, 10));
+			Console.WriteLine($"Waiting {startupDelay.TotalSeconds} seconds to startup...");
+			await Task.Delay(startupDelay, cts.Token);
+
 			var topologyClient = new TopologyClient( Configuration[ManagementApiUrlSetting], Configuration[SasTokenSetting] );
 			DeviceInfo = topologyClient.GetDeviceForHardwareId( hardwareId ).Result;
 
