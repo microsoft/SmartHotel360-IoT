@@ -177,7 +177,7 @@ if(!$?)
 
 Write-Host
 Write-Host "Creating the AKS Cluster. This can take at least 15 minutes."
-$aksClusterCreationResult = az aks create --resource-group "$resourceGroupName" --name "$aksClusterName" --node-count 1 --service-principal "$aksServicePrincipalId" --client-secret "$aksServicePrincipalKey" --location "$aksClusterLocation" --generate-ssh-keys
+$aksClusterCreationResult = az aks create --resource-group "$resourceGroupName" --name "$aksClusterName" --node-count 7 --service-principal "$aksServicePrincipalId" --client-secret "$aksServicePrincipalKey" --location "$aksClusterLocation" --generate-ssh-keys
 Write-Host "Finished Creating the AKS Cluster"
 
 $EndTimeLocal = Get-Date
