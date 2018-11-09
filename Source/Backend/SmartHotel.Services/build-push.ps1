@@ -40,6 +40,7 @@ foreach ($api in $apis)
 	$imageFqdn = "$acrName.azurecr.io/$api-api"
     $devImage = $imageFqdn + ":dev"
     $publicImage = $imageFqdn + ":public"
+    Write-Host "Tagging $devImage as $publicImage"
 	docker tag $devImage $publicImage
 	Write-Host "Pushing $publicImage"
 	docker push $publicImage

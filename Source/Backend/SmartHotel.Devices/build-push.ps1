@@ -40,6 +40,7 @@ foreach ($device in $devices)
 	$imageFqdn = "$acrName.azurecr.io/device-$device"
     $devImage = $imageFqdn + ":dev"
     $publicImage = $imageFqdn + ":public"
+    Write-Host "Tagging $devImage as $publicImage"
 	docker tag $devImage $publicImage
 	Write-Host "Pushing $publicImage"
 	docker push $publicImage
