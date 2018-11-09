@@ -26,6 +26,8 @@ spec:
           value: 
         - name: SensorDataType
           value: Light
+        - name: StartupDelayInSeconds
+          value: "0"
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -55,6 +57,8 @@ spec:
           value: 
         - name: SensorDataType
           value: Temperature
+        - name: StartupDelayInSeconds
+          value: "0"
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -84,3 +88,5 @@ spec:
           value: 
         - name: SensorDataType
           value: Motion
+        - name: StartupDelayInSeconds
+          value: "0"

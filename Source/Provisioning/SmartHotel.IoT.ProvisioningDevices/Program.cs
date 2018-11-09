@@ -23,8 +23,10 @@ namespace SmartHotel.IoT.ProvisioningDevices
 		private static readonly string SasTokenSetting = "SasToken";
 		private static readonly string HardwareIdSetting = "HardwareId";
 		private static readonly string IoTHubConnectionStringSetting = "IoTHubDeviceConnectionString";
+		private static readonly string StartupDelayInSecondsSetting = "StartupDelayInSeconds";
 
 		private const int MessageIntervalDefault = 5000;
+		private const double DigitalTwinsApiCallLimiter = 75.0;
 
 		[Option( "-i|--Input", Description = "Output from the Provisioning App" )]
 		[Required]
@@ -225,60 +227,67 @@ namespace SmartHotel.IoT.ProvisioningDevices
 			IoTHubConnectionStrings iotHubConnectionStrings )
 		{
 			await Task.Run( () =>
-			 {
-				 foreach ( KeyValuePair<string, List<DeviceDescription>> provisioningEntry in provisioningData )
-				 {
-					 iotHubConnectionStrings.TryGetValue( provisioningEntry.Key,
-						 out CaseInsensitiveDictionary connectionStringsForThisSpace );
+			{
+				int deploymentCount = 0;
+				foreach ( KeyValuePair<string, List<DeviceDescription>> provisioningEntry in provisioningData )
+				{
+					iotHubConnectionStrings.TryGetValue( provisioningEntry.Key,
+						out CaseInsensitiveDictionary connectionStringsForThisSpace );
 
-					 foreach ( DeviceDescription device in provisioningEntry.Value )
-					 {
-						 string deviceType = device.name.ToLower();
-						 string serviceKey = $"sh.d.{deviceType}.{provisioningEntry.Key.ToLower()}";
+					foreach ( DeviceDescription device in provisioningEntry.Value )
+					{
+						deploymentCount++;
+						string deviceType = device.name.ToLower();
+						string serviceKey = $"sh.d.{deviceType}.{provisioningEntry.Key.ToLower()}";
 
-						 var container = new KubernetesContainer
-						 {
-							 name = $"device-{deviceType}",
-							 image = GetContainerImageName( deviceType ),
-							 imagePullPolicy = "Always",
-							 env = new List<KubernetesEnvironmentSetting>()
-						 };
-						 container.env.Add( new KubernetesEnvironmentSetting { name = HardwareIdSetting, value = device.hardwareId } );
-						 if ( connectionStringsForThisSpace != null
-							  && connectionStringsForThisSpace.TryGetValue( device.name, out string iotHubConnectionString ) )
-						 {
-							 container.env.Add( new KubernetesEnvironmentSetting { name = IoTHubConnectionStringSetting, value = iotHubConnectionString } );
-						 }
-						 container.env.Add( new KubernetesEnvironmentSetting { name = DigitalTwinsManagementApiSetting, value = DigitalTwinsApiEndpoint } );
-						 container.env.Add( new KubernetesEnvironmentSetting
-						 {
-							 name = MessageIntervalSetting,
-							 value = MessageInterval > 0 ? MessageInterval.ToString() : MessageIntervalDefault.ToString()
-						 } );
-						 container.env.Add( new KubernetesEnvironmentSetting { name = SasTokenSetting, value = device.SasToken } );
-						 container.env.Add( new KubernetesEnvironmentSetting { name = SensorTypeSetting, value = device.sensors.First().dataType } );
+						var container = new KubernetesContainer
+						{
+							name = $"device-{deviceType}",
+							image = GetContainerImageName( deviceType ),
+							imagePullPolicy = "Always",
+							env = new List<KubernetesEnvironmentSetting>()
+						};
+						container.env.Add( new KubernetesEnvironmentSetting { name = HardwareIdSetting, value = device.hardwareId } );
+						if ( connectionStringsForThisSpace != null
+							 && connectionStringsForThisSpace.TryGetValue( device.name, out string iotHubConnectionString ) )
+						{
+							container.env.Add( new KubernetesEnvironmentSetting { name = IoTHubConnectionStringSetting, value = iotHubConnectionString } );
+						}
+						container.env.Add( new KubernetesEnvironmentSetting { name = DigitalTwinsManagementApiSetting, value = DigitalTwinsApiEndpoint } );
+						container.env.Add( new KubernetesEnvironmentSetting
+						{
+							name = MessageIntervalSetting,
+							value = MessageInterval > 0 ? MessageInterval.ToString() : MessageIntervalDefault.ToString()
+						} );
+						container.env.Add( new KubernetesEnvironmentSetting { name = SasTokenSetting, value = device.SasToken } );
+						container.env.Add( new KubernetesEnvironmentSetting { name = SensorTypeSetting, value = device.sensors.First().dataType } );
+						container.env.Add(new KubernetesEnvironmentSetting
+						{
+							name = StartupDelayInSecondsSetting,
+							value = Math.Floor(deploymentCount / DigitalTwinsApiCallLimiter).ToString()
+						});
 
-						 var template = new KubernetesTemplate
-						 {
-							 metadata = new KubernetesMetadata { labels = new KubernetesLabels { app = serviceKey, component = serviceKey } },
-							 spec = new KubernetesSpec { containers = new List<KubernetesContainer> { container } }
-						 };
-						 var spec = new KubernetesSpec
-						 {
-							 template = template
-						 };
-						 var deployment = new KubernetesDeployment
-						 {
-							 apiVersion = "extensions/v1beta1",
-							 kind = "Deployment",
-							 metadata = new KubernetesMetadata { name = serviceKey },
-							 spec = spec
-						 };
+						var template = new KubernetesTemplate
+						{
+							metadata = new KubernetesMetadata { labels = new KubernetesLabels { app = serviceKey, component = serviceKey } },
+							spec = new KubernetesSpec { containers = new List<KubernetesContainer> { container } }
+						};
+						var spec = new KubernetesSpec
+						{
+							template = template
+						};
+						var deployment = new KubernetesDeployment
+						{
+							apiVersion = "extensions/v1beta1",
+							kind = "Deployment",
+							metadata = new KubernetesMetadata { name = serviceKey },
+							spec = spec
+						};
 
-						 outline.Deployments.Add( deployment );
-					 }
-				 }
-			 } );
+						outline.Deployments.Add( deployment );
+					}
+				}
+			} );
 		}
 
 		private async Task SaveKubernetesOutline( string path, KubernetesOutline outline )
@@ -414,41 +423,48 @@ namespace SmartHotel.IoT.ProvisioningDevices
 			IoTHubConnectionStrings iotHubConnectionStrings )
 		{
 			await Task.Run( () =>
-			 {
-				 foreach ( KeyValuePair<string, List<DeviceDescription>> provisioningEntry in provisioningData )
-				 {
-					 iotHubConnectionStrings.TryGetValue( provisioningEntry.Key,
-						 out CaseInsensitiveDictionary connectionStringsForThisSpace );
+			{
+				int serviceCount = 0;
+				foreach ( KeyValuePair<string, List<DeviceDescription>> provisioningEntry in provisioningData )
+				{
+					iotHubConnectionStrings.TryGetValue( provisioningEntry.Key,
+						out CaseInsensitiveDictionary connectionStringsForThisSpace );
 
-					 foreach ( DeviceDescription device in provisioningEntry.Value )
-					 {
-						 string deviceType = device.name.ToLower();
-						 string serviceKey = $"sh.d.{deviceType}.{provisioningEntry.Key.ToLower()}";
+					foreach ( DeviceDescription device in provisioningEntry.Value )
+					{
+						serviceCount++;
+						string deviceType = device.name.ToLower();
+						string serviceKey = $"sh.d.{deviceType}.{provisioningEntry.Key.ToLower()}";
 
-						 var service = new ServiceDescription
-						 {
-							 image = GetContainerImageName( deviceType ),
-							 environment = new List<EnvironmentSetting>()
-						 };
-						 service.environment.Add( new EnvironmentSetting { name = SensorTypeSetting, value = device.sensors.First().dataType } );
-						 service.environment.Add( new EnvironmentSetting { name = HardwareIdSetting, value = device.hardwareId } );
-						 service.environment.Add( new EnvironmentSetting { name = DigitalTwinsManagementApiSetting, value = DigitalTwinsApiEndpoint } );
-						 service.environment.Add( new EnvironmentSetting
-						 {
-							 name = MessageIntervalSetting,
-							 value = MessageInterval > 0 ? MessageInterval.ToString() : MessageIntervalDefault.ToString()
-						 } );
-						 service.environment.Add( new EnvironmentSetting { name = SasTokenSetting, value = device.SasToken } );
-						 if ( connectionStringsForThisSpace != null
-							&& connectionStringsForThisSpace.TryGetValue( device.name, out string iotHubConnectionString ) )
-						 {
-							 service.environment.Add( new EnvironmentSetting { name = IoTHubConnectionStringSetting, value = iotHubConnectionString } );
-						 }
+						var service = new ServiceDescription
+						{
+							image = GetContainerImageName( deviceType ),
+							environment = new List<EnvironmentSetting>()
+						};
+						service.environment.Add( new EnvironmentSetting { name = SensorTypeSetting, value = device.sensors.First().dataType } );
+						service.environment.Add( new EnvironmentSetting { name = HardwareIdSetting, value = device.hardwareId } );
+						service.environment.Add( new EnvironmentSetting { name = DigitalTwinsManagementApiSetting, value = DigitalTwinsApiEndpoint } );
+						service.environment.Add( new EnvironmentSetting
+						{
+							name = MessageIntervalSetting,
+							value = MessageInterval > 0 ? MessageInterval.ToString() : MessageIntervalDefault.ToString()
+						} );
+						service.environment.Add( new EnvironmentSetting { name = SasTokenSetting, value = device.SasToken } );
+						if ( connectionStringsForThisSpace != null
+						   && connectionStringsForThisSpace.TryGetValue( device.name, out string iotHubConnectionString ) )
+						{
+							service.environment.Add( new EnvironmentSetting { name = IoTHubConnectionStringSetting, value = iotHubConnectionString } );
+						}
+						service.environment.Add(new EnvironmentSetting
+						{
+							name = StartupDelayInSecondsSetting,
+							value = Math.Floor(serviceCount / DigitalTwinsApiCallLimiter).ToString()
+						});
 
-						 outline.services.Add( serviceKey, service );
-					 }
-				 }
-			 } );
+						outline.services.Add( serviceKey, service );
+					}
+				}
+			} );
 		}
 		#endregion
 

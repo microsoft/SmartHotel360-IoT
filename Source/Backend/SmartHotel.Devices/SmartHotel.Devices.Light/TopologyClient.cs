@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
@@ -22,11 +23,15 @@ namespace SmartHotel.Devices.Light
 		public TopologyClient( string managementBaseUrl, string sasToken )
 		{
 			_retryPolicy = Policy.Handle<ManagementApiLimitReachedException>()
-				.WaitAndRetryAsync( 5, retryAttempt => TimeSpan.FromSeconds( Math.Pow( 3, retryAttempt ) ),
+				.WaitAndRetryAsync( 5, retryAttempt => TimeSpan.FromSeconds( 3 * retryAttempt ),
 					( ex, t ) => Console.WriteLine(
 						$"Digital Twins management api limit reached, retrying in {t.TotalSeconds} seconds..." ) );
 
 			string protectedManagementBaseUrl = managementBaseUrl.EndsWith( '/' ) ? managementBaseUrl : $"{managementBaseUrl}/";
+			if ( !protectedManagementBaseUrl.EndsWith( ApiPath ) )
+			{
+				protectedManagementBaseUrl = $"{protectedManagementBaseUrl}{ApiPath}";
+			}
 			_httpClient.BaseAddress = new Uri( protectedManagementBaseUrl );
 			_httpClient.DefaultRequestHeaders.Add( "Authorization", sasToken );
 		}
@@ -49,7 +54,12 @@ namespace SmartHotel.Devices.Light
 					}
 					else
 					{
-						if ( response.StatusCode == System.Net.HttpStatusCode.NotFound )
+						string responseMessage = response.Content == null
+							? string.Empty
+							: await response.Content.ReadAsStringAsync();
+						if ( response.StatusCode == HttpStatusCode.TooManyRequests
+						     || ( !string.IsNullOrWhiteSpace( responseMessage )
+						          && responseMessage.Contains( "The request has been throttled", StringComparison.OrdinalIgnoreCase ) ) )
 						{
 							throw new ManagementApiLimitReachedException( $"Failed to get device for Hardware Id: {hardwareId}" );
 						}

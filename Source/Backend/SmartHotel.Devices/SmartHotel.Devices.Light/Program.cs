@@ -22,6 +22,7 @@ namespace SmartHotel.Devices.Light
 		private static readonly string HardwareIdSetting = "HardwareId";
 		private static readonly string MessageIntervalInMilliSecondsSetting = "MessageIntervalInMilliSeconds";
 		private static readonly string SensorDataTypeSetting = "SensorDataType";
+		private static readonly string StartupDelayInSecondsSetting = "StartupDelayInSeconds";
 
 		private static IConfiguration Configuration { get; set; }
 		private static Device DeviceInfo { get; set; }
@@ -55,17 +56,16 @@ namespace SmartHotel.Devices.Light
 			if ( !ValidateSettings() )
 			{
 				Console.WriteLine( "SmartLight - Your settings are invalid.  Please check your setting values and try again." );
-				cts.Token.WaitHandle.WaitOne();
-				return;
+				Environment.Exit(1);
 			}
 
 			var hardwareId = Configuration[HardwareIdSetting];
 
 			Console.WriteLine( $"Your hardware ID is: {hardwareId}" );
 
-			TimeSpan startupDelay = TimeSpan.FromSeconds(new Random().NextDouble() * 2);
-			Console.WriteLine($"Waiting {startupDelay.TotalSeconds} seconds to startup...");
-			await Task.Delay(startupDelay, cts.Token);
+			TimeSpan startupDelay = TimeSpan.FromSeconds( double.Parse( Configuration[StartupDelayInSecondsSetting] ) );
+			Console.WriteLine( $"Waiting {startupDelay.TotalSeconds} seconds to startup..." );
+			await Task.Delay( startupDelay, cts.Token );
 
 			var topologyClient = new TopologyClient( Configuration[ManagementApiUrlSetting], Configuration[SasTokenSetting] );
 			DeviceInfo = topologyClient.GetDeviceForHardwareId( hardwareId ).Result;
@@ -73,7 +73,7 @@ namespace SmartHotel.Devices.Light
 			if ( DeviceInfo == null )
 			{
 				Console.WriteLine( "ERROR: Could not retrieve device information." );
-				return;
+				Environment.Exit(2);
 			}
 
 			try
@@ -91,7 +91,7 @@ namespace SmartHotel.Devices.Light
 				if ( TopologyDeviceClient == null )
 				{
 					Console.WriteLine( "Failed to create DeviceClient!" );
-					cts.Token.WaitHandle.WaitOne();
+					Environment.Exit(3);
 				}
 				else
 				{
@@ -101,7 +101,7 @@ namespace SmartHotel.Devices.Light
 			catch ( Exception ex )
 			{
 				Console.WriteLine( "Error in sample: {0}", ex.Message );
-				cts.Token.WaitHandle.WaitOne();
+				Environment.Exit(99);
 			}
 		}
 
@@ -193,7 +193,8 @@ namespace SmartHotel.Devices.Light
 				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( HardwareIdSetting ).Value )
 				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( SasTokenSetting ).Value )
 				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( MessageIntervalInMilliSecondsSetting ).Value )
-				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( SensorDataTypeSetting ).Value );
+				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( SensorDataTypeSetting ).Value )
+				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( StartupDelayInSecondsSetting ).Value );
 		}
 	}
 }

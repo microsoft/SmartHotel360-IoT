@@ -9,6 +9,7 @@ services:
       - SasToken=
       - IoTHubDeviceConnectionString=
       - SensorDataType=Light
+      - StartupDelayInSeconds=0
 
   sh.d.thermostat.smarthotel360-sh360elite1-room101:
     environment:
@@ -18,6 +19,7 @@ services:
       - SasToken=
       - IoTHubDeviceConnectionString=
       - SensorDataType=Temperature
+      - StartupDelayInSeconds=0
 
   sh.d.motion.smarthotel360-sh360elite1-room101:
     environment:
@@ -27,3 +29,4 @@ services:
       - SasToken=
       - RandomizationDelay=60000
       - SensorDataType=Motion
+      - StartupDelayInSeconds=0
