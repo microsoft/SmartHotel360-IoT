@@ -45,8 +45,8 @@ namespace SmartHotel.Devices.Thermostat
 					 Device device = null;
 					 var serializer = new DataContractJsonSerializer( typeof( List<Device> ) );
 
-					 HttpResponseMessage response =
-					 await _httpClient.GetAsync( $"{DevicesPath}?hardwareIds={hardwareId}&{DevicesIncludeArgument}" );
+					 HttpResponseMessage response = await _httpClient.GetAsync( $"{DevicesPath}?hardwareIds={hardwareId}&{DevicesIncludeArgument}" );
+					 Console.WriteLine( $"Retrieving device information: {response.RequestMessage.RequestUri.AbsoluteUri}" );
 					 if ( response.IsSuccessStatusCode )
 					 {
 						 var devices = serializer.ReadObject( await response.Content.ReadAsStreamAsync() ) as List<Device>;

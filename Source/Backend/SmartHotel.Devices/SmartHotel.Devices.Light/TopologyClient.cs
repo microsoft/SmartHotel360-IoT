@@ -45,8 +45,8 @@ namespace SmartHotel.Devices.Light
 					Device device = null;
 					var serializer = new DataContractJsonSerializer( typeof( List<Device> ) );
 
-					HttpResponseMessage response =
-						await _httpClient.GetAsync( $"{ApiPath}{DevicesPath}?hardwareIds={hardwareId}&{DevicesIncludeArgument}" );
+					HttpResponseMessage response = await _httpClient.GetAsync( $"{DevicesPath}?hardwareIds={hardwareId}&{DevicesIncludeArgument}" );
+					Console.WriteLine( $"Retrieving device information: {response.RequestMessage.RequestUri.AbsoluteUri}" );
 					if ( response.IsSuccessStatusCode )
 					{
 						var devices = serializer.ReadObject( await response.Content.ReadAsStreamAsync() ) as List<Device>;
@@ -58,8 +58,8 @@ namespace SmartHotel.Devices.Light
 							? string.Empty
 							: await response.Content.ReadAsStringAsync();
 						if ( response.StatusCode == HttpStatusCode.TooManyRequests
-						     || ( !string.IsNullOrWhiteSpace( responseMessage )
-						          && responseMessage.Contains( "The request has been throttled", StringComparison.OrdinalIgnoreCase ) ) )
+							 || ( !string.IsNullOrWhiteSpace( responseMessage )
+								  && responseMessage.Contains( "The request has been throttled", StringComparison.OrdinalIgnoreCase ) ) )
 						{
 							throw new ManagementApiLimitReachedException( $"Failed to get device for Hardware Id: {hardwareId}" );
 						}
