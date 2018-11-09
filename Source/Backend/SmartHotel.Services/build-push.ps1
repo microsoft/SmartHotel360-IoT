@@ -29,7 +29,7 @@ az acr login -n $acrName
 Write-Host "------------------------------------------------------------"
 Write-Host "Building Docker images"
 Write-Host "------------------------------------------------------------"
-docker-compose build
+docker-compose build --no-cache
 
 Write-Host "------------------------------------------------------------"
 Write-Host "Pushing :public images to $acrName.azurecr.io..."
