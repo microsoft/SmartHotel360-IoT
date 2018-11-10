@@ -175,11 +175,30 @@ export class FacilityService {
       return;
     }
 
-    this.spacesByParentId.set(spaces[0].parentSpaceId, spaces.sort((a, b) => a.name.localeCompare(b.name)));
+    this.spacesByParentId.set(spaces[0].parentSpaceId, spaces.sort(this.getSpacesSortResult));
 
     spaces.forEach(space => {
       this.updateSpacesByParentIdMap(space.childSpaces);
     });
+  }
+
+  private getSpacesSortResult(a: ISpace, b: ISpace) {
+    if (a.properties && b.properties) {
+      const aDisplayOrderProperty = a.properties.find(p => p.name === 'DisplayOrder');
+      const bDisplayOrderProperty = b.properties.find(p => p.name === 'DisplayOrder');
+      if (aDisplayOrderProperty && bDisplayOrderProperty) {
+        const aDisplayOrder = +aDisplayOrderProperty.value;
+        const bDisplayOrder = +bDisplayOrderProperty.value;
+        if (aDisplayOrder > bDisplayOrder) {
+          return 1;
+        }
+        if (aDisplayOrder < bDisplayOrder) {
+          return -1;
+        }
+        return 0;
+      }
+    }
+    return a.name.localeCompare(b.name);
   }
 
   private onInitialized() {
