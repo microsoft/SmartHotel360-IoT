@@ -131,7 +131,6 @@ namespace SmartHotel.Services.FacilityManagement
 
 		private static void BuildSpaceHierarchyAndReturnRoomSpaces( List<Space> hierarchicalSpaces, Dictionary<string, List<Space>> allSpacesByParentId )
 		{
-			//var roomSpaces = new List<Space>();
 			foreach ( Space parentSpace in hierarchicalSpaces )
 			{
 				if ( allSpacesByParentId.TryGetValue( parentSpace.Id, out List<Space> childSpaces ) )
