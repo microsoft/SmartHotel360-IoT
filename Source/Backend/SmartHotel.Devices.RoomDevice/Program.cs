@@ -1,8 +1,7 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading;
@@ -20,21 +19,29 @@ namespace SmartHotel.Devices.RoomDevice
 		private static readonly string IoTHubDeviceConnectionStringSetting = "IoTHubDeviceConnectionString";
 		private static readonly string HardwareIdSetting = "HardwareId";
 		private static readonly string MessageIntervalInMilliSecondsSetting = "MessageIntervalInMilliSeconds";
-		// TODO: Create a collection containing the 3 sensor data types along w/ their current value and the last value sent
-		private static readonly string TemperatureSensorDataTypeSetting = "Temperature";
-		private static readonly string LightSensorDataTypeSetting = "Light";
-		private static readonly string MotionSensorDataTypeSetting = "Motion";
+
+		private static readonly ConcurrentDictionary<string, SensorInfo> SensorInfosByDataType =
+			new ConcurrentDictionary<string, SensorInfo>( StringComparer.OrdinalIgnoreCase );
 
 		private static IConfiguration Configuration { get; set; }
 		private static Device DeviceInfo { get; set; }
 		private static DeviceClient TopologyDeviceClient { get; set; }
 		private static DeviceClient HubDeviceClient { get; set; }
 
-		private static int _lastCurrentTemperatureSent = int.MinValue;
-		private static int _currentTemperature = 74;
+		private const string TemperatureDataType = "Temperature";
+		private const string LightDataType = "Light";
+		private const string MotionDataType = "Motion";
+
+		private static Timer _motionTimer;
+		private static Random _random = new Random();
+		private static int _randomizationDelay = 60000;
 
 		static async Task Main( string[] args )
 		{
+			SensorInfosByDataType[TemperatureDataType] = new SensorInfo<int>( 74, int.MinValue );
+			SensorInfosByDataType[LightDataType] = new SensorInfo<double>( 1.0, double.MinValue );
+			SensorInfosByDataType[MotionDataType] = new SensorInfo<bool?>( false, null );
+
 			var builder = new ConfigurationBuilder()
 				.SetBasePath( Directory.GetCurrentDirectory() )
 				.AddJsonFile( "appsettings.json", true )
@@ -48,6 +55,8 @@ namespace SmartHotel.Devices.RoomDevice
 			{
 				Console.CancelKeyPress += ( s, e ) =>
 				{
+					_motionTimer?.Dispose();
+
 					e.Cancel = true;
 					cts.Cancel();
 					Console.WriteLine( "Exiting..." );
@@ -79,6 +88,7 @@ namespace SmartHotel.Devices.RoomDevice
 				HubDeviceClient =
 					DeviceClient.CreateFromConnectionString( Configuration[IoTHubDeviceConnectionStringSetting], TransportType.Mqtt );
 				await HubDeviceClient.SetMethodHandlerAsync( "SetDesiredTemperature", SetDesiredTemperature, null );
+				await HubDeviceClient.SetMethodHandlerAsync( "SetDesiredAmbientLight", SetAmbientLight, null );
 
 				Console.WriteLine( "Connection to Digital Twins: " + DeviceInfo.ConnectionString );
 				TopologyDeviceClient = DeviceClient.CreateFromConnectionString( DeviceInfo.ConnectionString );
@@ -111,56 +121,71 @@ namespace SmartHotel.Devices.RoomDevice
 
 		private static async Task SimulateData( CancellationToken ct )
 		{
+			bool atLeastOneSensorMatchFound = false;
 			var serializer = new DataContractJsonSerializer( typeof( TelemetryMessage ) );
-
-			var sensor = DeviceInfo.Sensors.FirstOrDefault( x => ( x.DataType == Configuration[SensorDataTypeSetting] ) );
-			if ( sensor == null )
+			foreach ( Sensor sensor in DeviceInfo.Sensors )
 			{
-				throw new Exception( $"No preconfigured Sensor for DataType '{Configuration[SensorDataTypeSetting]}' found." );
+				if ( SensorInfosByDataType.ContainsKey( sensor.DataType ) )
+				{
+					atLeastOneSensorMatchFound = true;
+					break;
+				}
+			}
+
+			if ( !atLeastOneSensorMatchFound )
+			{
+				throw new Exception(
+					$"No preconfigured Sensor found for any of the following datatypes: {string.Join( ", ", SensorInfosByDataType.Keys )}" );
 			}
 
 			while ( true )
 			{
 				if ( ct.IsCancellationRequested ) break;
 
-				int newTemperature = _currentTemperature + _offsetModifier;
-
-				if ( newTemperature != _lastCurrentTemperatureSent )
+				foreach ( Sensor sensor in DeviceInfo.Sensors )
 				{
-					_lastCurrentTemperatureSent = newTemperature;
-					var telemetryMessage = new TelemetryMessage()
+					if ( !SensorInfosByDataType.TryGetValue( sensor.DataType, out SensorInfo sensorInfo ) )
 					{
-						SensorId = sensor.Id,
-						SensorReading = newTemperature.ToString( CultureInfo.InvariantCulture ),
-						EventTimestamp = DateTime.UtcNow.ToString( "o" ),
-						SensorType = sensor.Type,
-						SensorDataType = sensor.DataType,
-						SpaceId = sensor.SpaceId
-					};
-
-					try
-					{
-						List<Task> tasks = new List<Task>();
-
-						using ( var stream = new MemoryStream() )
-						{
-							serializer.WriteObject( stream, telemetryMessage );
-							var binaryMessage = stream.ToArray();
-							Message eventMessage = new Message( binaryMessage );
-							eventMessage.Properties.Add( "Sensor", "" );
-							eventMessage.Properties.Add( "MessageVersion", "1.0" );
-							eventMessage.Properties.Add( "x-ms-flighting-udf-execution-manually-enabled", "true" );
-							Console.WriteLine(
-								$"\t{DateTime.UtcNow.ToLocalTime()}> Sending message: {Encoding.ASCII.GetString( binaryMessage )}" );
-
-							tasks.Add( TopologyDeviceClient.SendEventAsync( eventMessage ) );
-						}
-
-						await Task.WhenAll( tasks );
+						continue;
 					}
-					catch ( Exception ex )
+
+					if ( sensorInfo.IsCurrentValueDifferent() )
 					{
-						Console.WriteLine( $"Error occurred in {nameof( SimulateData )}: {ex}" );
+						sensorInfo.UpdateLastValueSent( sensorInfo.CurrentValue );
+						var telemetryMessage = new TelemetryMessage()
+						{
+							SensorId = sensor.Id,
+							SensorReading = sensorInfo.CurrentValue.ToString(),
+							EventTimestamp = DateTime.UtcNow.ToString( "o" ),
+							SensorType = sensor.Type,
+							SensorDataType = sensor.DataType,
+							SpaceId = sensor.SpaceId
+						};
+
+						try
+						{
+							List<Task> tasks = new List<Task>();
+
+							using ( var stream = new MemoryStream() )
+							{
+								serializer.WriteObject( stream, telemetryMessage );
+								var binaryMessage = stream.ToArray();
+								Message eventMessage = new Message( binaryMessage );
+								eventMessage.Properties.Add( "Sensor", "" );
+								eventMessage.Properties.Add( "MessageVersion", "1.0" );
+								eventMessage.Properties.Add( "x-ms-flighting-udf-execution-manually-enabled", "true" );
+								Console.WriteLine(
+									$"\t{DateTime.UtcNow.ToLocalTime()}> Sending message: {Encoding.ASCII.GetString( binaryMessage )}" );
+
+								tasks.Add( TopologyDeviceClient.SendEventAsync( eventMessage ) );
+							}
+
+							await Task.WhenAll( tasks );
+						}
+						catch ( Exception ex )
+						{
+							Console.WriteLine( $"Error occurred in {nameof( SimulateData )}: {ex}" );
+						}
 					}
 				}
 
@@ -175,7 +200,8 @@ namespace SmartHotel.Devices.RoomDevice
 			// Check the payload is a single integer value
 			if ( int.TryParse( data, out int newDesiredTemperature ) )
 			{
-				Interlocked.Exchange( ref _currentTemperature, newDesiredTemperature );
+				SensorInfo sensorInfo = SensorInfosByDataType[TemperatureDataType];
+				sensorInfo.UpdateCurrentValue( newDesiredTemperature );
 				Console.ForegroundColor = ConsoleColor.Green;
 				Console.WriteLine( "Current Temperature set to {0}°", data );
 				Console.ResetColor();
@@ -190,6 +216,35 @@ namespace SmartHotel.Devices.RoomDevice
 				string result = "{\"result\":\"Invalid parameter\"}";
 				return Task.FromResult( new MethodResponse( Encoding.UTF8.GetBytes( result ), 400 ) );
 			}
+		}
+
+		private static Task<MethodResponse> SetAmbientLight( MethodRequest methodRequest, object userContext )
+		{
+			var data = Encoding.UTF8.GetString( methodRequest.Data );
+
+			// Check the payload is a double value
+			if ( double.TryParse( data, out double newAmbientLight ) )
+			{
+				SensorInfo sensorInfo = SensorInfosByDataType[LightDataType];
+				sensorInfo.UpdateCurrentValue( newAmbientLight );
+				Console.WriteLine( "Current Ambient Lighting set to {0} ({0:P})", newAmbientLight );
+				Console.ResetColor();
+
+				// Acknowlege the direct method call with a 200 success message
+				string result = "{\"result\":\"Executed direct method: " + methodRequest.Name + "\"}";
+				return Task.FromResult( new MethodResponse( Encoding.UTF8.GetBytes( result ), 200 ) );
+			}
+			else
+			{
+				// Acknowlege the direct method call with a 400 error message
+				string result = "{\"result\":\"Invalid parameter\"}";
+				return Task.FromResult( new MethodResponse( Encoding.UTF8.GetBytes( result ), 400 ) );
+			}
+		}
+
+		private static void RandomizeMotionValue( object state )
+		{
+			_motionDetected = Convert.ToBoolean( _random.Next( 0, 2 ) );
 		}
 	}
 }
