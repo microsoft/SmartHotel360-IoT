@@ -35,6 +35,9 @@
  .PARAMETER digitalTwinsProvisioningTemplateFilePath
     Optional, path to the template file used to provision the Digital Twins instance along with device related utilities.
 
+ .PARAMETER numberOfAksNodes
+    Optional, number of nodes to have in the Azure Kubernetes service.
+
  .PARAMETER templateFilePath
     Optional, path to the template file. Defaults to template.json.
 
@@ -79,6 +82,9 @@ param(
 
  [string]
  $digitalTwinsProvisioningTemplateFilePath = "DigitalTwinsProvisioning-Demo/SmartHotel_Site_Provisioning.yaml",
+
+ [int]
+ $numberOfAksNodes = 7,
 
  [string]
  $templateFilePath = "template.json",
@@ -177,7 +183,7 @@ if(!$?)
 
 Write-Host
 Write-Host "Creating the AKS Cluster. This can take at least 15 minutes."
-$aksClusterCreationResult = az aks create --resource-group "$resourceGroupName" --name "$aksClusterName" --node-count 7 --service-principal "$aksServicePrincipalId" --client-secret "$aksServicePrincipalKey" --location "$aksClusterLocation" --generate-ssh-keys
+$aksClusterCreationResult = az aks create --resource-group "$resourceGroupName" --name "$aksClusterName" --node-count $numberOfAksNodes --service-principal "$aksServicePrincipalId" --client-secret "$aksServicePrincipalKey" --location "$aksClusterLocation" --generate-ssh-keys
 Write-Host "Finished Creating the AKS Cluster"
 
 $EndTimeLocal = Get-Date
