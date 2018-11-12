@@ -8,6 +8,7 @@ export interface ISpace {
   friendlyName: string;
   type: string;
   typeId: number;
+  imagePath: string;
   childSpaces: ISpace[];
   properties: IProperty[];
   thermostat?: IThermostat;

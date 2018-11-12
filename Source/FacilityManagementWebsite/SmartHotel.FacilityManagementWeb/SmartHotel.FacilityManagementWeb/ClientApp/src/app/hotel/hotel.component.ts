@@ -61,8 +61,7 @@ export class HotelComponent implements OnInit {
       .chooseFloor(this.tenantId, this.hotelBrandId, this.hotelBrandName, this.hotelId, this.hotelIndex, this.hotelName, floor.id);
   }
 
-  getFloorImage(idx) {
-    const index = idx > 3 ? 3 : idx;
-    return 'url(/assets/images/h' + this.hotelIndex + 'f' + index + '.jpg)';
+  getFloorImage(floor: ISpace) {
+    return `url(${floor.imagePath})`;
   }
 }

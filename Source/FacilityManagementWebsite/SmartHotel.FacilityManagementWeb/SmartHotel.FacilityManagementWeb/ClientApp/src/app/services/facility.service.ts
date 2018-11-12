@@ -178,6 +178,12 @@ export class FacilityService {
     this.spacesByParentId.set(spaces[0].parentSpaceId, spaces.sort(this.getSpacesSortResult));
 
     spaces.forEach(space => {
+      if (space.properties) {
+        const imagePathProperty = space.properties.find(p => p.name === 'ImagePath');
+        if (imagePathProperty) {
+          space.imagePath = imagePathProperty.value;
+        }
+      }
       this.updateSpacesByParentIdMap(space.childSpaces);
     });
   }

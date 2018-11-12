@@ -40,8 +40,7 @@ export class TenantComponent implements OnInit {
     this.navigationService.chooseHotelBrand(this.tenantId, hotelBrand.id);
   }
 
-  getHotelBrandImage(idx) {
-    const index = idx >= 3 ? 3 : idx;
-    return 'url(/assets/images/hb' + index + '.jpg)';
+  getHotelBrandImage(hotelBrand: ISpace) {
+    return `url(${hotelBrand.imagePath})`;
   }
 }

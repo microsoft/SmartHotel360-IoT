@@ -55,9 +55,8 @@ export class HotelBrandComponent implements OnInit {
     this.navigationService.chooseHotel(this.tenantId, this.hotelBrandId, this.hotelBrandName, hotel.id, this.hotels.indexOf(hotel));
   }
 
-  getHotelImage(idx) {
-    const index = idx >= 2 ? 1 : idx;
-    return 'url(/assets/images/h' + index + '.jpg)';
+  getHotelImage(hotel: ISpace) {
+    return `url(${hotel.imagePath})`;
   }
 
 }
