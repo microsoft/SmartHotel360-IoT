@@ -9,6 +9,7 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 		public const string DisplayOrder = "DisplayOrder";
 		public const string MinTemperatureAlertThreshold = "MinTemperatureAlertThreshold";
 		public const string MaxTemperatureAlertThreshold = "MaxTemperatureAlertThreshold";
+		public const string ImagePath = "ImagePath";
 		
 		public string name { get; set; }
 		public string primitiveDataType { get; set; }

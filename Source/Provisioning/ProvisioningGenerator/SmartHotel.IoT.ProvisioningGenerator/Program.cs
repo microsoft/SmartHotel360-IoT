@@ -12,6 +12,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 {
 	class Program
 	{
+		private const string imageAssetsRootPath = "/assets/images/";
 		public static async Task<int> Main( string[] args ) => await CommandLineApplication.ExecuteAsync<Program>( args );
 
 		[Option( "-op|--outputPrefix", Description = "Prefix of the output filenames" )]
@@ -143,6 +144,12 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.Int,
 				description = "Alert if the temperature goes above this value."
 			} );
+			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
+			{
+				name = PropertyKeyDescription.ImagePath,
+				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.String,
+				description = "Path of the image to display for the space."
+			} );
 
 			desiredTenantSpace.AddUser( "Head Of Operations" );
 
@@ -179,6 +186,11 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			};
 			brandSpaceDescription.AddUser( $"Hotel Brand {brandNumber} Manager" );
 			brandSpaceDescription.AddProperty( new PropertyDescription { name = PropertyKeyDescription.DisplayOrder, value = brandNumber.ToString() } );
+			brandSpaceDescription.AddProperty(new PropertyDescription
+			{
+				name = PropertyKeyDescription.ImagePath,
+				value = $"{imageAssetsRootPath}brands/brand{brandNumber}.jpg"
+			});
 
 			// Create the hotels
 			for ( int hotelIndex = 0; hotelIndex < brand.Hotels.Count; hotelIndex++ )
@@ -199,6 +211,11 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 				{ name = PropertyKeyDescription.MinTemperatureAlertThreshold, value = hotelType.MinTempAlertThreshold.ToString() } );
 				hotelSpaceDescription.AddProperty( new PropertyDescription
 				{ name = PropertyKeyDescription.MaxTemperatureAlertThreshold, value = hotelType.MaxTempAlertThreshold.ToString() } );
+				hotelSpaceDescription.AddProperty(new PropertyDescription
+				{
+					name = PropertyKeyDescription.ImagePath,
+					value = $"{imageAssetsRootPath}hotels/{hotelType.Name.ToLower()}.jpg"
+				});
 
 				string brandHotelPrefix = $"{brand.Name}-{hotel.Name}-".Replace( " ", string.Empty );
 
@@ -220,11 +237,19 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 						name = PropertyKeyDescription.DeviceIdPrefixName,
 						value = brandHotelPrefix
 					} );
-
+					
+					string imagePathSuffix = string.Empty;
 					if ( isVipFloor )
 					{
+						imagePathSuffix = "vip";
 						floorSpaceDescription.subType = "VIPFloor";
 					}
+
+					floorSpaceDescription.AddProperty(new PropertyDescription
+					{
+						name = PropertyKeyDescription.ImagePath,
+						value = $"{imageAssetsRootPath}floors/{hotelType.Name.ToLower()}{imagePathSuffix}.jpg"
+					});
 
 					if ( !isVipFloor && !string.IsNullOrEmpty( hotel.RegularFloorEmployeeUser ) )
 					{
