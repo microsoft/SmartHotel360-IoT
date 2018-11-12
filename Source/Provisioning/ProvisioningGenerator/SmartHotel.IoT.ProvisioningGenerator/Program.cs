@@ -122,14 +122,26 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
 			{
 				name = PropertyKeyDescription.DeviceIdPrefixName,
-				primitiveDataType = "string",
+				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.String,
 				description = "Prefix used in sending Device Method calls to the IoT Hub."
 			} );
 			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
 			{
 				name = PropertyKeyDescription.DisplayOrder,
-				primitiveDataType = "uint",
+				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.UInt,
 				description = "Order to display spaces"
+			} );
+			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
+			{
+				name = PropertyKeyDescription.MinTemperatureAlertThreshold,
+				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.Int,
+				description = "Alert if the temperature goes below this value."
+			} );
+			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
+			{
+				name = PropertyKeyDescription.MaxTemperatureAlertThreshold,
+				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.Int,
+				description = "Alert if the temperature goes above this value."
 			} );
 
 			desiredTenantSpace.AddUser( "Head Of Operations" );
@@ -154,7 +166,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			return $"{OutputFilePrefix}_{brand.Name}_Provisioning.yaml";
 		}
 
-		private void GenerateBrandProvisioningFile( Brand brand, int brandNumber, List<HotelType> hotelTypes )
+		private void GenerateBrandProvisioningFile( Brand brand, int brandNumber, List<HotelType> hotelTypes, ref int globalHotelNumber )
 		{
 			string brandFilename = GetBrandProvisioningFilename( brand );
 
@@ -173,6 +185,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			{
 				globalHotelNumber++;
 				Hotel hotel = brand.Hotels[hotelIndex];
+				HotelType hotelType = hotelTypes.First( t => t.Name == hotel.Type );
 				var hotelSpaceDescription = new SpaceDescription
 				{
 					name = hotel.Name,
@@ -182,10 +195,13 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 				};
 				hotelSpaceDescription.AddUser( $"Hotel {globalHotelNumber} Manager" );
 				hotelSpaceDescription.AddProperty( new PropertyDescription { name = PropertyKeyDescription.DisplayOrder, value = hotelIndex.ToString() } );
+				hotelSpaceDescription.AddProperty( new PropertyDescription
+				{ name = PropertyKeyDescription.MinTemperatureAlertThreshold, value = hotelType.MinTempAlertThreshold.ToString() } );
+				hotelSpaceDescription.AddProperty( new PropertyDescription
+				{ name = PropertyKeyDescription.MaxTemperatureAlertThreshold, value = hotelType.MaxTempAlertThreshold.ToString() } );
 
 				string brandHotelPrefix = $"{brand.Name}-{hotel.Name}-".Replace( " ", string.Empty );
 
-				HotelType hotelType = hotelTypes.First( t => t.Name == hotel.Type );
 				int numberRegularFloors = hotelType.TotalNumberFloors - hotelType.NumberVipFloors;
 
 				// Create the floors

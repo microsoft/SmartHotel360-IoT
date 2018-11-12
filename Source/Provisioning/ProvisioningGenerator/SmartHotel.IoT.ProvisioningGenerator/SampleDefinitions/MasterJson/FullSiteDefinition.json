@@ -7,7 +7,9 @@
       "NumberRoomsPerRegularFloor": 20,
       "NumberRoomsPerVipFloor": 10,
       "IncludeGym": true,
-      "IncludeConferenceRoom": true
+      "IncludeConferenceRoom": true,
+      "MinTempAlertThreshold":  65,
+      "MaxTempAlertThreshold":  85
     },
     {
       "Name": "L",
@@ -16,7 +18,9 @@
       "NumberRoomsPerRegularFloor": 15,
       "NumberRoomsPerVipFloor": 8,
       "IncludeGym": true,
-      "IncludeConferenceRoom": true
+      "IncludeConferenceRoom": true,
+      "MinTempAlertThreshold":  65,
+      "MaxTempAlertThreshold":  85
     },
     {
       "Name": "SH",
@@ -25,7 +29,9 @@
       "NumberRoomsPerRegularFloor": 10,
       "NumberRoomsPerVipFloor": 4,
       "IncludeGym": true,
-      "IncludeConferenceRoom": true
+      "IncludeConferenceRoom": true,
+      "MinTempAlertThreshold":  65,
+      "MaxTempAlertThreshold":  85
     },
     {
       "Name": "SL",
@@ -34,7 +40,9 @@
       "NumberRoomsPerRegularFloor": 10,
       "NumberRoomsPerVipFloor": 4,
       "IncludeGym": true,
-      "IncludeConferenceRoom": true
+      "IncludeConferenceRoom": true,
+      "MinTempAlertThreshold":  65,
+      "MaxTempAlertThreshold":  85
     }
   ],
   "Brands": [

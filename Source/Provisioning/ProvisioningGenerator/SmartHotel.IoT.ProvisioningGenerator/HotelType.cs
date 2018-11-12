@@ -9,5 +9,7 @@
         public int NumberRoomsPerVipFloor { get; set; }
         public bool IncludeGym { get; set; }
         public bool IncludeConferenceRoom { get; set; }
-    }
+		public int MinTempAlertThreshold { get; set; }
+		public int MaxTempAlertThreshold { get; set; }
+	}
 }

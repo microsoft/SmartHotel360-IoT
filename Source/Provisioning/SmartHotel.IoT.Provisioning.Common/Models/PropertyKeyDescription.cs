@@ -7,7 +7,9 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 	{
 		public const string DeviceIdPrefixName = "DeviceIdPrefix";
 		public const string DisplayOrder = "DisplayOrder";
-
+		public const string MinTemperatureAlertThreshold = "MinTemperatureAlertThreshold";
+		public const string MaxTemperatureAlertThreshold = "MaxTemperatureAlertThreshold";
+		
 		public string name { get; set; }
 		public string primitiveDataType { get; set; }
 		public string description { get; set; }
@@ -27,6 +29,13 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 				Min = min,
 				Max = max
 			};
+		}
+
+		public class PrimitiveDataType
+		{
+			public const string String = "string";
+			public const string Int = "int";
+			public const string UInt = "uint";
 		}
 	}
 }
