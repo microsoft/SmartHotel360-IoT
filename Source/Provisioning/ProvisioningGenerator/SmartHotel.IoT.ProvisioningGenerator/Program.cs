@@ -55,10 +55,11 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 				return;
 			}
 
+			int globalHotelNumber = 0;
 			for ( int i = 0; i < site.Brands.Count; i++ )
 			{
 				Brand brand = site.Brands[i];
-				GenerateBrandProvisioningFile( brand, i + 1, site.HotelTypes );
+				GenerateBrandProvisioningFile( brand, i + 1, site.HotelTypes, ref globalHotelNumber );
 			}
 		}
 
@@ -170,6 +171,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			// Create the hotels
 			for ( int hotelIndex = 0; hotelIndex < brand.Hotels.Count; hotelIndex++ )
 			{
+				globalHotelNumber++;
 				Hotel hotel = brand.Hotels[hotelIndex];
 				var hotelSpaceDescription = new SpaceDescription
 				{
@@ -178,7 +180,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 					friendlyName = hotel.Name,
 					type = "Hotel"
 				};
-				hotelSpaceDescription.AddUser( $"Hotel {hotelIndex + 1} Manager" );
+				hotelSpaceDescription.AddUser( $"Hotel {globalHotelNumber} Manager" );
 				hotelSpaceDescription.AddProperty( new PropertyDescription { name = PropertyKeyDescription.DisplayOrder, value = hotelIndex.ToString() } );
 
 				string brandHotelPrefix = $"{brand.Name}-{hotel.Name}-".Replace( " ", string.Empty );
