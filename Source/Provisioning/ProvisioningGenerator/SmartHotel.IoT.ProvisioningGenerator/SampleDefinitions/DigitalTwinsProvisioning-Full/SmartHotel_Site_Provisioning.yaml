@@ -40,6 +40,15 @@ spaces:
   - name: DisplayOrder
     primitiveDataType: uint
     description: Order to display spaces
+  - name: MinTemperatureAlertThreshold
+    primitiveDataType: int
+    description: Alert if the temperature goes below this value.
+  - name: MaxTemperatureAlertThreshold
+    primitiveDataType: int
+    description: Alert if the temperature goes above this value.
+  - name: ImagePath
+    primitiveDataType: string
+    description: Path of the image to display for the space.
   spaceReferences:
   - filename: SmartHotel_SmartHotel360_Provisioning.yaml
   - filename: SmartHotel_Contoso Hotel_Provisioning.yaml

@@ -7,6 +7,8 @@ users:
 properties:
 - name: DisplayOrder
   value: 1
+- name: ImagePath
+  value: /assets/images/brands/brand1.jpg
 spaces:
 - name: SH360 Elite 1
   description: SmartHotel360 SH360 Elite 1
@@ -17,6 +19,12 @@ spaces:
   properties:
   - name: DisplayOrder
     value: 0
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/h.jpg
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -27,6 +35,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
+    - name: ImagePath
+      value: /assets/images/floors/h.jpg
     spaces:
     - name: Room 101
       description: Room 101
@@ -478,6 +488,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
+    - name: ImagePath
+      value: /assets/images/floors/h.jpg
     spaces:
     - name: Room 201
       description: Room 201
@@ -929,6 +941,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
+    - name: ImagePath
+      value: /assets/images/floors/h.jpg
     spaces:
     - name: Room 301
       description: Room 301
@@ -1359,6 +1373,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
+    - name: ImagePath
+      value: /assets/images/floors/h.jpg
     spaces:
     - name: Room 401
       description: Room 401
@@ -1789,6 +1805,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
+    - name: ImagePath
+      value: /assets/images/floors/h.jpg
     spaces:
     - name: Room 501
       description: Room 501
@@ -2219,6 +2237,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
+    - name: ImagePath
+      value: /assets/images/floors/h.jpg
     spaces:
     - name: Room 601
       description: Room 601
@@ -2649,6 +2669,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
+    - name: ImagePath
+      value: /assets/images/floors/h.jpg
     spaces:
     - name: Room 701
       description: Room 701
@@ -3079,6 +3101,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
+    - name: ImagePath
+      value: /assets/images/floors/h.jpg
     spaces:
     - name: Room 801
       description: Room 801
@@ -3508,6 +3532,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
+    - name: ImagePath
+      value: /assets/images/floors/hvip.jpg
     spaces:
     - name: Room 901
       description: Room 901
@@ -3727,6 +3753,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
+    - name: ImagePath
+      value: /assets/images/floors/hvip.jpg
     spaces:
     - name: Room 1001
       description: Room 1001
@@ -3947,6 +3975,12 @@ spaces:
   properties:
   - name: DisplayOrder
     value: 1
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/l.jpg
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -3955,6 +3989,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
+    - name: ImagePath
+      value: /assets/images/floors/l.jpg
     spaces:
     - name: Room 101
       description: Room 101
@@ -4299,6 +4335,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
+    - name: ImagePath
+      value: /assets/images/floors/l.jpg
     spaces:
     - name: Room 201
       description: Room 201
@@ -4643,6 +4681,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
+    - name: ImagePath
+      value: /assets/images/floors/l.jpg
     spaces:
     - name: Room 301
       description: Room 301
@@ -4966,6 +5006,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
+    - name: ImagePath
+      value: /assets/images/floors/l.jpg
     spaces:
     - name: Room 401
       description: Room 401
@@ -5289,6 +5331,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
+    - name: ImagePath
+      value: /assets/images/floors/l.jpg
     spaces:
     - name: Room 501
       description: Room 501
@@ -5612,6 +5656,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
+    - name: ImagePath
+      value: /assets/images/floors/l.jpg
     spaces:
     - name: Room 601
       description: Room 601
@@ -5935,6 +5981,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
+    - name: ImagePath
+      value: /assets/images/floors/l.jpg
     spaces:
     - name: Room 701
       description: Room 701
@@ -6258,6 +6306,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
+    - name: ImagePath
+      value: /assets/images/floors/l.jpg
     spaces:
     - name: Room 801
       description: Room 801
@@ -6582,6 +6632,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
+    - name: ImagePath
+      value: /assets/images/floors/lvip.jpg
     spaces:
     - name: Room 901
       description: Room 901
@@ -6759,6 +6811,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
+    - name: ImagePath
+      value: /assets/images/floors/lvip.jpg
     spaces:
     - name: Room 1001
       description: Room 1001
@@ -6937,6 +6991,12 @@ spaces:
   properties:
   - name: DisplayOrder
     value: 2
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sh.jpg
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -6945,6 +7005,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite2-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 101
       description: Room 101
@@ -7184,6 +7246,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite2-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 201
       description: Room 201
@@ -7423,6 +7487,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite2-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 301
       description: Room 301
@@ -7641,6 +7707,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite2-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 401
       description: Room 401
@@ -7860,6 +7928,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite2-
+    - name: ImagePath
+      value: /assets/images/floors/shvip.jpg
     spaces:
     - name: Room 501
       description: Room 501
@@ -7954,6 +8024,12 @@ spaces:
   properties:
   - name: DisplayOrder
     value: 3
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sh.jpg
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -7962,6 +8038,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite3-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 101
       description: Room 101
@@ -8201,6 +8279,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite3-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 201
       description: Room 201
@@ -8440,6 +8520,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite3-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 301
       description: Room 301
@@ -8658,6 +8740,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite3-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 401
       description: Room 401
@@ -8877,6 +8961,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite3-
+    - name: ImagePath
+      value: /assets/images/floors/shvip.jpg
     spaces:
     - name: Room 501
       description: Room 501
@@ -8971,6 +9057,12 @@ spaces:
   properties:
   - name: DisplayOrder
     value: 4
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sl.jpg
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -8979,6 +9071,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite4-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 101
       description: Room 101
@@ -9218,6 +9312,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite4-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 201
       description: Room 201
@@ -9457,6 +9553,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite4-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 301
       description: Room 301
@@ -9675,6 +9773,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite4-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 401
       description: Room 401
@@ -9894,6 +9994,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite4-
+    - name: ImagePath
+      value: /assets/images/floors/slvip.jpg
     spaces:
     - name: Room 501
       description: Room 501
@@ -9988,6 +10090,12 @@ spaces:
   properties:
   - name: DisplayOrder
     value: 5
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sl.jpg
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -9996,6 +10104,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 101
       description: Room 101
@@ -10235,6 +10345,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 201
       description: Room 201
@@ -10474,6 +10586,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 301
       description: Room 301
@@ -10692,6 +10806,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 401
       description: Room 401
@@ -10911,6 +11027,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium2-
+    - name: ImagePath
+      value: /assets/images/floors/slvip.jpg
     spaces:
     - name: Room 501
       description: Room 501
@@ -11005,6 +11123,12 @@ spaces:
   properties:
   - name: DisplayOrder
     value: 6
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sl.jpg
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -11013,6 +11137,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium3-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 101
       description: Room 101
@@ -11252,6 +11378,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium3-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 201
       description: Room 201
@@ -11491,6 +11619,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium3-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 301
       description: Room 301
@@ -11709,6 +11839,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium3-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 401
       description: Room 401
@@ -11928,6 +12060,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium3-
+    - name: ImagePath
+      value: /assets/images/floors/slvip.jpg
     spaces:
     - name: Room 501
       description: Room 501

@@ -7,16 +7,24 @@ users:
 properties:
 - name: DisplayOrder
   value: 2
+- name: ImagePath
+  value: /assets/images/brands/brand2.jpg
 spaces:
 - name: Contoso Elite 1
   description: SmartHotel360 Contoso Elite 1
   friendlyName: Contoso Elite 1
   type: Hotel
   users:
-  - Hotel 1 Manager
+  - Hotel 8 Manager
   properties:
   - name: DisplayOrder
     value: 0
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sh.jpg
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -25,6 +33,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 101
       description: Room 101
@@ -264,6 +274,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 201
       description: Room 201
@@ -503,6 +515,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 301
       description: Room 301
@@ -721,6 +735,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 401
       description: Room 401
@@ -940,6 +956,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite1-
+    - name: ImagePath
+      value: /assets/images/floors/shvip.jpg
     spaces:
     - name: Room 501
       description: Room 501
@@ -1030,10 +1048,16 @@ spaces:
   friendlyName: Contoso Premium 1
   type: Hotel
   users:
-  - Hotel 2 Manager
+  - Hotel 9 Manager
   properties:
   - name: DisplayOrder
     value: 1
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sh.jpg
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -1042,6 +1066,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 101
       description: Room 101
@@ -1281,6 +1307,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 201
       description: Room 201
@@ -1520,6 +1548,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 301
       description: Room 301
@@ -1738,6 +1768,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 401
       description: Room 401
@@ -1957,6 +1989,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium1-
+    - name: ImagePath
+      value: /assets/images/floors/shvip.jpg
     spaces:
     - name: Room 501
       description: Room 501
@@ -2047,10 +2081,16 @@ spaces:
   friendlyName: Contoso Elite 2
   type: Hotel
   users:
-  - Hotel 3 Manager
+  - Hotel 10 Manager
   properties:
   - name: DisplayOrder
     value: 2
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sl.jpg
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -2059,6 +2099,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 101
       description: Room 101
@@ -2298,6 +2340,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 201
       description: Room 201
@@ -2537,6 +2581,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 301
       description: Room 301
@@ -2755,6 +2801,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 401
       description: Room 401
@@ -2974,6 +3022,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite2-
+    - name: ImagePath
+      value: /assets/images/floors/slvip.jpg
     spaces:
     - name: Room 501
       description: Room 501
@@ -3064,10 +3114,16 @@ spaces:
   friendlyName: Contoso Elite 3
   type: Hotel
   users:
-  - Hotel 4 Manager
+  - Hotel 11 Manager
   properties:
   - name: DisplayOrder
     value: 3
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sh.jpg
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -3076,6 +3132,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite3-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 101
       description: Room 101
@@ -3315,6 +3373,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite3-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 201
       description: Room 201
@@ -3554,6 +3614,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite3-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 301
       description: Room 301
@@ -3772,6 +3834,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite3-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 401
       description: Room 401
@@ -3991,6 +4055,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite3-
+    - name: ImagePath
+      value: /assets/images/floors/shvip.jpg
     spaces:
     - name: Room 501
       description: Room 501
@@ -4081,10 +4147,16 @@ spaces:
   friendlyName: Contoso Premium 2
   type: Hotel
   users:
-  - Hotel 5 Manager
+  - Hotel 12 Manager
   properties:
   - name: DisplayOrder
     value: 4
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sl.jpg
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -4093,6 +4165,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 101
       description: Room 101
@@ -4332,6 +4406,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 201
       description: Room 201
@@ -4571,6 +4647,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 301
       description: Room 301
@@ -4789,6 +4867,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 401
       description: Room 401
@@ -5008,6 +5088,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium2-
+    - name: ImagePath
+      value: /assets/images/floors/slvip.jpg
     spaces:
     - name: Room 501
       description: Room 501
@@ -5098,10 +5180,16 @@ spaces:
   friendlyName: Contoso Premium 3
   type: Hotel
   users:
-  - Hotel 6 Manager
+  - Hotel 13 Manager
   properties:
   - name: DisplayOrder
     value: 5
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sl.jpg
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -5110,6 +5198,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium3-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 101
       description: Room 101
@@ -5349,6 +5439,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium3-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 201
       description: Room 201
@@ -5588,6 +5680,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium3-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 301
       description: Room 301
@@ -5806,6 +5900,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium3-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
     spaces:
     - name: Room 401
       description: Room 401
@@ -6025,6 +6121,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium3-
+    - name: ImagePath
+      value: /assets/images/floors/slvip.jpg
     spaces:
     - name: Room 501
       description: Room 501
@@ -6115,10 +6213,16 @@ spaces:
   friendlyName: Contoso Premium 4
   type: Hotel
   users:
-  - Hotel 7 Manager
+  - Hotel 14 Manager
   properties:
   - name: DisplayOrder
     value: 6
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sh.jpg
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -6127,6 +6231,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium4-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 101
       description: Room 101
@@ -6366,6 +6472,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium4-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 201
       description: Room 201
@@ -6605,6 +6713,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium4-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 301
       description: Room 301
@@ -6823,6 +6933,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium4-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
     spaces:
     - name: Room 401
       description: Room 401
@@ -7042,6 +7154,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium4-
+    - name: ImagePath
+      value: /assets/images/floors/shvip.jpg
     spaces:
     - name: Room 501
       description: Room 501
