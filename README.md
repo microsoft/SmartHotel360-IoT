@@ -95,18 +95,15 @@ You need to create users having access to your AAD. These can either be users cr
    3. **Hotel 1 Manager**: This user is able to view all the Floors under the first Hotel.
    4. **Hotel 1 Employee**: This user is able to view Non-VIP Floors under the first Hotel.
 * The following users are optional. They help provide more visibility into the Role Based Access Control (RBAC) functionality of Digital Twins.
-   1. **Hotel Brand 2 Manager**
-   2. **Hotel Brand 3 Manager**
-   3. **Hotel Brand 4 Manager**
-   4. **Hotel 2 Manager**
-   5. **Hotel 3 Manager**
-   6. **Hotel 4 Manager**
-   7. **Hotel 5 Manager**
-   8. **Hotel 6 Manager**
-   9. **Hotel 7 Manager**
-   10. **Hotel 8 Manager**
-   11. **Hotel 9 Manager**
-   12. **Hotel 10 Manager**
+   1. **Hotel 2 Manager**
+   2. **Hotel 3 Manager**
+   3. **Hotel 4 Manager**
+   4. **Hotel 5 Manager**
+   5. **Hotel 6 Manager**
+   6. **Hotel 7 Manager**
+   7. **Hotel 8 Manager**
+   8. **Hotel 9 Manager**
+   9. **Hotel 10 Manager**
 
 ## Provision resources in Azure
 In `Source/ARM/` folder of this repository is the deployment script to create and stand up all of the resources to run this demo in Azure. To execute the deployment script, run the following in a **Powershell** window:
