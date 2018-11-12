@@ -275,7 +275,7 @@ if( -not (Test-Path $provisioningOutput))
 }
 
 Copy-Item $provisioningOutput -Destination "../ProvisioningDevicesBits"
-$mobileRoomSpaceId = (Get-Content "$provisioningOutput" | Out-String | ConvertFrom-Json).SmartHotel360-SH360Elite1-Room101[0].SpaceId
+$mobileRoomSpaceId = (Get-Content "$provisioningOutput" | Out-String | ConvertFrom-Json).'SmartHotel360-SH360Elite1-Room101'[0].SpaceId
 Pop-Location
 
 #Update Devices and Services Docker/Kubernetes yaml
