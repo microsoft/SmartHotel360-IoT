@@ -10,11 +10,14 @@ namespace SmartHotel.Services.SensorDataFunction
 	public static class SensorDataFunctionApp
 	{
 		[FunctionName( "SensorDataFunction" )]
-        public static void Run([EventHubTrigger("smarthotel-iot-eventhub", Connection = "EventHubConnectionString")]string myEventHubMessage, TraceWriter log)
+		public static void Run( [EventHubTrigger( "smarthotel-iot-eventhub", Connection = "EventHubConnectionString" )]string myEventHubMessage, TraceWriter log )
 		{
-			dynamic telemetry = JsonConvert.DeserializeObject( myEventHubMessage );
-
-			log.Info( $"EventHub Trigger received telemetry: {telemetry}" );
+			log.Info(string.Empty);
+			log.Info(string.Empty);
+			log.Info( $"EventHub Trigger received telemetry: {myEventHubMessage}" );
+			log.Info(string.Empty);
+			log.Info(string.Empty);
+			var telemetry = JsonConvert.DeserializeObject<TelemetryMessage>( myEventHubMessage );
 
 			string sensorId = telemetry.SensorId;
 
@@ -22,7 +25,7 @@ namespace SmartHotel.Services.SensorDataFunction
 
 			var db = client.GetDatabase( "DeviceData" );
 			var coll = db.GetCollection<DeviceSensorData>( "SensorData" );
-			
+
 			var document = coll.Find( new BsonDocument( "sensorId", sensorId ) ).FirstOrDefault();
 
 			if ( document != null )
