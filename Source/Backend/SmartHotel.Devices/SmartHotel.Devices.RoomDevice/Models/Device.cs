@@ -4,7 +4,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace SmartHotel.Devices.Thermostat.Models
+namespace SmartHotel.Devices.RoomDevice.Models
 {
     [DataContract(Name = "device")]
     public class Device

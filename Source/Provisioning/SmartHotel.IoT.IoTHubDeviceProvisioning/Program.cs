@@ -95,7 +95,7 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 					Console.WriteLine();
 					Console.WriteLine();
 
-					IDictionary<string, IDictionary<string, string>> deviceConnectionStringsByPrefixAndDataType = CreateIoTHubDevicesAndGetConnectionStrings( allDevices );
+					IDictionary<string, string> deviceConnectionStringsByPrefix = CreateIoTHubDevicesAndGetConnectionStrings( allDevices );
 
 					sw.Stop();
 
@@ -107,7 +107,7 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 					{
 						await File.WriteAllTextAsync( OutputFile,
 							JsonConvert.SerializeObject(
-								new SortedDictionary<string, IDictionary<string, string>>( deviceConnectionStringsByPrefixAndDataType ) ) );
+								new SortedDictionary<string, string>( deviceConnectionStringsByPrefix ) ) );
 					}
 				}
 
@@ -121,39 +121,24 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 			}
 		}
 
-		private IDictionary<string, IDictionary<string, string>> CreateIoTHubDevicesAndGetConnectionStrings( IDictionary<string, List<DeviceDescription>> allDevices )
+		private IDictionary<string, string> CreateIoTHubDevicesAndGetConnectionStrings( IDictionary<string, List<DeviceDescription>> allDevices )
 		{
-			var result = new ConcurrentDictionary<string, IDictionary<string, string>>();
+			var result = new ConcurrentDictionary<string, string>();
 			Parallel.ForEach( allDevices,
 				kvp =>
 				{
 					string deviceIdPrefix = kvp.Key;
-					if ( !result.TryGetValue( deviceIdPrefix, out IDictionary<string, string> connectionStringByDeviceType ) )
+
+					string deviceId = $"{deviceIdPrefix}";
+
+					Console.WriteLine( $"{_actionMessage} device: {deviceId}" );
+
+					_retryPolicy.Execute( () => ExecuteIoTHubAction( deviceId ) );
+
+					if ( !RemoveDevices )
 					{
-						connectionStringByDeviceType = new ConcurrentDictionary<string, string>();
-						result[deviceIdPrefix] = connectionStringByDeviceType;
-					}
-
-					foreach ( DeviceDescription device in kvp.Value )
-					{
-						SensorDescription deviceSensor = device.sensors.First();
-						string deviceType = DeviceHelpers.GetDeviceType( deviceSensor.dataType );
-						if ( "motion".Equals( deviceType, StringComparison.OrdinalIgnoreCase ) )
-						{
-							continue;
-						}
-
-						string deviceId = $"{deviceIdPrefix}{deviceType}";
-
-						Console.WriteLine( $"{_actionMessage} device: {deviceId}" );
-
-						_retryPolicy.Execute( () => ExecuteIoTHubAction( deviceId ) );
-
-						if ( !RemoveDevices )
-						{
-							string deviceConnectionString = _retryPolicy.Execute( () => ExecuteGetDeviceConnectionString( deviceId ) );
-							connectionStringByDeviceType[deviceType] = deviceConnectionString;
-						}
+						string deviceConnectionString = _retryPolicy.Execute( () => ExecuteGetDeviceConnectionString( deviceId ) );
+						result[deviceIdPrefix] = deviceConnectionString;
 					}
 				} );
 

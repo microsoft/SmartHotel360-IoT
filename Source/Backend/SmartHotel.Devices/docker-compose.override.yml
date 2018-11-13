@@ -1,32 +1,12 @@
 version: '3.4'
 
 services:
-  sh.d.light.smarthotel360-sh360elite1-room101:
+  sh.d.smarthotel360-sh360elite1-room101:
     environment:
       - HardwareId=
       - ManagementApiUrl=
       - MessageIntervalInMilliSeconds=5000
       - SasToken=
       - IoTHubDeviceConnectionString=
-      - SensorDataType=Light
       - StartupDelayInSeconds=0
-
-  sh.d.thermostat.smarthotel360-sh360elite1-room101:
-    environment:
-      - HardwareId=
-      - ManagementApiUrl=
-      - MessageIntervalInMilliSeconds=5000
-      - SasToken=
-      - IoTHubDeviceConnectionString=
-      - SensorDataType=Temperature
-      - StartupDelayInSeconds=0
-
-  sh.d.motion.smarthotel360-sh360elite1-room101:
-    environment:
-      - HardwareId=
-      - ManagementApiUrl=
-      - MessageIntervalInMilliSeconds=5000
-      - SasToken=
       - RandomizationDelay=60000
-      - SensorDataType=Motion
-      - StartupDelayInSeconds=0

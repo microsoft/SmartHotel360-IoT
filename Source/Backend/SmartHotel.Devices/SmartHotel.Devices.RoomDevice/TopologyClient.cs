@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
 using Polly;
 using Polly.Retry;
-using SmartHotel.Devices.Light.Models;
+using SmartHotel.Devices.RoomDevice.Models;
 
-namespace SmartHotel.Devices.Light
+namespace SmartHotel.Devices.RoomDevice
 {
 	class TopologyClient
 	{

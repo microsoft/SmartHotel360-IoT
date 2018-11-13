@@ -34,7 +34,7 @@ docker-compose build --no-cache
 Write-Host "------------------------------------------------------------"
 Write-Host "Pushing :public images to $acrName.azurecr.io..."
 Write-Host "------------------------------------------------------------"
-$devices = @("light", "thermostat", "motion")
+$devices = @("room")
 foreach ($device in $devices)
 {
 	$imageFqdn = "$acrName.azurecr.io/device-$device"
