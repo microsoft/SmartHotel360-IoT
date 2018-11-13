@@ -34,14 +34,14 @@ namespace SmartHotel.Devices.RoomDevice
 		private const string MotionDataType = "Motion";
 
 		private static Timer _motionTimer;
-		private static readonly Random _random = new Random();
+		private static readonly Random Random = new Random();
 		private static int _randomizationDelay = 60000;
 
 		static async Task Main( string[] args )
 		{
-			SensorInfosByDataType[TemperatureDataType] = new SensorInfo<int>( 74, int.MinValue );
-			SensorInfosByDataType[LightDataType] = new SensorInfo<double>( 1.0, double.MinValue );
-			SensorInfosByDataType[MotionDataType] = new SensorInfo<bool?>( false, null );
+			SensorInfosByDataType[TemperatureDataType] = new SensorInfo( 74, int.MinValue );
+			SensorInfosByDataType[LightDataType] = new SensorInfo( 1.0, double.MinValue );
+			SensorInfosByDataType[MotionDataType] = new SensorInfo( false, null );
 
 			var builder = new ConfigurationBuilder()
 				.SetBasePath( Directory.GetCurrentDirectory() )
@@ -133,6 +133,10 @@ namespace SmartHotel.Devices.RoomDevice
 					$"No preconfigured Sensor found for any of the following datatypes: {string.Join( ", ", SensorInfosByDataType.Keys )}" );
 			}
 
+			Console.WriteLine();
+			Console.WriteLine("Beginning to simulate data...");
+			Console.WriteLine();
+
 			while ( true )
 			{
 				if ( ct.IsCancellationRequested ) break;
@@ -144,14 +148,14 @@ namespace SmartHotel.Devices.RoomDevice
 						continue;
 					}
 					
-					// TODO: Need to get the comparison to NOT be utilizing object equals
 					if ( sensorInfo.IsCurrentValueDifferent() )
 					{
-						sensorInfo.UpdateLastValueSent( sensorInfo.CurrentValue );
+						sensorInfo.UpdateLastValueSentWithCurrentValue();
+						var currentValue = sensorInfo.GetCurrentValue();
 						var telemetryMessage = new TelemetryMessage()
 						{
 							SensorId = sensor.Id,
-							SensorReading = sensorInfo.CurrentValue.ToString(),
+							SensorReading = currentValue.ToString(),
 							EventTimestamp = DateTime.UtcNow.ToString( "o" ),
 							SensorType = sensor.Type,
 							SensorDataType = sensor.DataType,
@@ -240,7 +244,7 @@ namespace SmartHotel.Devices.RoomDevice
 
 		private static void RandomizeMotionValue( object state )
 		{
-			bool motionDetected = Convert.ToBoolean( _random.Next( 0, 2 ) );
+			bool motionDetected = Convert.ToBoolean( Random.Next( 0, 2 ) );
 			SensorInfo sensorInfo = SensorInfosByDataType[MotionDataType];
 			sensorInfo.UpdateCurrentValue( motionDetected );
 		}

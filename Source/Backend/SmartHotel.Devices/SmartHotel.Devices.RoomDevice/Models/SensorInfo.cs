@@ -2,43 +2,35 @@
 
 namespace SmartHotel.Devices.RoomDevice.Models
 {
-	public abstract class SensorInfo
+	public class SensorInfo
 	{
-		public object CurrentValue { get; }
-		public object LastValueSent { get; }
-		public abstract bool IsCurrentValueDifferent();
-		public abstract void UpdateCurrentValue( object newCurrentValue );
-		public abstract void UpdateLastValueSent( object newLastValueSent );
-	}
-
-	public class SensorInfo<T> : SensorInfo
-	{
-		public SensorInfo(T currentValue, T lastValueSent)
+		public SensorInfo(object currentValue, object lastValueSent)
 		{
 			_currentValue = currentValue;
 			_lastValueSent = lastValueSent;
 		}
 
 		private object _currentValue;
-
-		public new T CurrentValue => (T)_currentValue;
-
 		private object _lastValueSent;
-		public new T LastValueSent => (T)_lastValueSent;
 
-		public override bool IsCurrentValueDifferent()
+		public bool IsCurrentValueDifferent()
 		{
-			return Equals( CurrentValue, LastValueSent );
+			return !Equals( _currentValue, _lastValueSent );
 		}
 
-		public override void UpdateCurrentValue( object newCurrentValue )
+		public object GetCurrentValue()
+		{
+			return _currentValue;
+		}
+
+		public void UpdateLastValueSentWithCurrentValue()
+		{
+			Interlocked.Exchange( ref _lastValueSent, _currentValue );
+		}
+
+		public void UpdateCurrentValue( object newCurrentValue )
 		{
 			Interlocked.Exchange( ref _currentValue, newCurrentValue );
-		}
-
-		public override void UpdateLastValueSent( object newLastValueSent )
-		{
-			Interlocked.Exchange( ref _lastValueSent, newLastValueSent );
 		}
 	}
 }
