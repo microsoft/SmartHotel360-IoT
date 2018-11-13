@@ -143,7 +143,8 @@ namespace SmartHotel.Devices.RoomDevice
 					{
 						continue;
 					}
-
+					
+					// TODO: Need to get the comparison to NOT be utilizing object equals
 					if ( sensorInfo.IsCurrentValueDifferent() )
 					{
 						sensorInfo.UpdateLastValueSent( sensorInfo.CurrentValue );
