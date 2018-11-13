@@ -39,6 +39,7 @@ namespace SmartHotel.Services.SensorDataFunction
 				sensorData.SensorReading = telemetry.SensorReading;
 				sensorData.EventTimestamp = telemetry.EventTimestamp;
 				sensorData.SensorDataType = telemetry.SensorDataType;
+				sensorData.IoTHubDeviceId = telemetry.IoTHubDeviceId;
 
 				coll.InsertOne( sensorData );
 			}

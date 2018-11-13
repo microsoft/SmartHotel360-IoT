@@ -28,6 +28,8 @@ namespace SmartHotel.Devices.RoomDevice
 		private static Device DeviceInfo { get; set; }
 		private static DeviceClient TopologyDeviceClient { get; set; }
 		private static DeviceClient HubDeviceClient { get; set; }
+		private static string IoTHubDeviceId { get; set; }
+
 
 		private const string TemperatureDataType = "Temperature";
 		private const string LightDataType = "Light";
@@ -91,6 +93,7 @@ namespace SmartHotel.Devices.RoomDevice
 
 				HubDeviceClient =
 					DeviceClient.CreateFromConnectionString( Configuration[IoTHubDeviceConnectionStringSetting], TransportType.Mqtt );
+				IoTHubDeviceId = IotHubConnectionStringBuilder.Create(Configuration[IoTHubDeviceConnectionStringSetting]).DeviceId;
 				await HubDeviceClient.SetMethodHandlerAsync( "SetDesiredTemperature", SetDesiredTemperature, null );
 				await HubDeviceClient.SetMethodHandlerAsync( "SetDesiredAmbientLight", SetAmbientLight, null );
 
@@ -159,7 +162,8 @@ namespace SmartHotel.Devices.RoomDevice
 							EventTimestamp = DateTime.UtcNow.ToString( "o" ),
 							SensorType = sensor.Type,
 							SensorDataType = sensor.DataType,
-							SpaceId = sensor.SpaceId
+							SpaceId = sensor.SpaceId,
+							IoTHubDeviceId = IoTHubDeviceId
 						};
 
 						try

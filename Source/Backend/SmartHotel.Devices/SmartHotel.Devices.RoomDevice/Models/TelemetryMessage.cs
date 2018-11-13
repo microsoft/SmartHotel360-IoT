@@ -5,22 +5,24 @@ using System.Runtime.Serialization;
 
 namespace SmartHotel.Devices.RoomDevice.Models
 {
-    [DataContract(Name = "TelemetryMessage")]
-    public class TelemetryMessage
-    {
-        [DataMember(Name = "SensorId")]
-        public string SensorId { get; set; }
-        [DataMember(Name = "SpaceId")]
-        public string SpaceId { get; set; }
-        [DataMember(Name = "SensorReading")]
-        public string SensorReading { get; set; }
-        [DataMember(Name = "EventTimestamp")]
-        public string EventTimestamp { get; set; }
-        [DataMember(Name = "SensorType")]
-        public string SensorType { get; set; }
-        [DataMember(Name = "SensorDataType")]
-        public string SensorDataType { get; set; }
-        [DataMember(Name = "MessageType")]
-        public readonly string MessageType = "sensor";
-    }
+	[DataContract( Name = "TelemetryMessage" )]
+	public class TelemetryMessage
+	{
+		[DataMember( Name = "SensorId" )]
+		public string SensorId { get; set; }
+		[DataMember( Name = "SpaceId" )]
+		public string SpaceId { get; set; }
+		[DataMember( Name = "SensorReading" )]
+		public string SensorReading { get; set; }
+		[DataMember( Name = "EventTimestamp" )]
+		public string EventTimestamp { get; set; }
+		[DataMember( Name = "SensorType" )]
+		public string SensorType { get; set; }
+		[DataMember( Name = "SensorDataType" )]
+		public string SensorDataType { get; set; }
+		[DataMember( Name = "MessageType" )]
+		public readonly string MessageType = "sensor";
+		[DataMember( Name = "IoTHubDeviceId" )]
+		public string IoTHubDeviceId { get; set; }
+	}
 }

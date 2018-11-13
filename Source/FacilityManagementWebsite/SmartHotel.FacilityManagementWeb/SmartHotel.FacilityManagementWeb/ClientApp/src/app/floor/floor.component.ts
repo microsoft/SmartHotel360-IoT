@@ -36,7 +36,6 @@ export class FloorComponent implements OnInit, OnDestroy {
   public floorName: string;
 
   public rooms: ISpace[] = null;
-  private deviceIdPrefix = '';
   private roomsById: Map<string, ISpace>;
   private desiredDataByRoomId: Map<string, IDesired[]>;
   private sensorDataByRoomId: Map<string, ISensor[]>;
@@ -101,11 +100,6 @@ export class FloorComponent implements OnInit, OnDestroy {
       return;
     }
     self.floorName = floor.friendlyName;
-    const deviceIdPrefixProperty = floor.properties.find(p => p.name === 'DeviceIdPrefix');
-    if (deviceIdPrefixProperty) {
-      self.deviceIdPrefix = deviceIdPrefixProperty.value;
-    }
-
     self.rooms = self.facilityService.getChildSpaces(self.floorId);
     self.rooms.forEach(room => self.roomsById.set(room.id, room));
     self.loadDesiredData();
@@ -279,13 +273,13 @@ export class FloorComponent implements OnInit, OnDestroy {
       desired.desiredValue = room.thermostat.desired.toString();
     }
 
-    this.theromstatSliderTimeout = setTimeout((d) => {
+    this.theromstatSliderTimeout = setTimeout((d: IDesired) => {
       const request = {
         roomId: d.roomId,
         sensorId: d.sensorId,
         desiredValue: d.desiredValue,
         methodName: 'SetDesiredTemperature',
-        deviceId: `${self.deviceIdPrefix}${room.name.charAt(0).toUpperCase() + room.name.slice(1).replace(' ', '')}Thermostat`
+        deviceId: sensor.iotHubDeviceId
       };
       this.facilityService.setDesiredData(request);
     }, 250, desired);
@@ -332,15 +326,13 @@ export class FloorComponent implements OnInit, OnDestroy {
       desired.desiredValue = desiredValue;
     }
 
-    this.lightSliderTimeout = setTimeout((d) => {
+    this.lightSliderTimeout = setTimeout((d: IDesired) => {
       const request = {
         roomId: d.roomId,
         sensorId: d.sensorId,
         desiredValue: d.desiredValue,
         methodName: 'SetDesiredAmbientLight',
-        // TODO: Need to figure out new way to build the deviceId. Since now there can be devices in all the hotels.
-        //  Needs brand + Hotel + Room to be unique
-        deviceId: `${self.deviceIdPrefix}${room.name.charAt(0).toUpperCase() + room.name.slice(1).replace(' ', '')}Light`
+        deviceId: sensor.iotHubDeviceId
       };
       this.facilityService.setDesiredData(request);
     }, 250, desired);

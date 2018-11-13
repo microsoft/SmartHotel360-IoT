@@ -21,11 +21,9 @@ namespace SmartHotel.Services.FacilityManagement
 		private const string HotelBrandTypeName = "HotelBrand";
 		private const string HotelTypeName = "Hotel";
 		private const string FloorTypeName = "Floor";
-		private const string RoomTypeName = "Room";
 		private readonly string ApiPath = "api/v1.0/";
 
 		private readonly string SpacesPath = "spaces";
-		private readonly string TypesPath = "types";
 
 		private const string FirstFourLevelsSpacesFilter = "maxlevel=4&minlevel=1&includes=Properties,Types";
 		private const string FifthLevelSpacesFilter = "maxlevel=5&minlevel=5&includes=Types";
