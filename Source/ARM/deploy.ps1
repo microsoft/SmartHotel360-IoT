@@ -29,6 +29,15 @@
  .PARAMETER aksServicePrincipalKey
     The key from the Azure Active directory Service Principal created for the Azure Kubernetes Service to use.
 
+ .PARAMETER userAzureObjectIdsFilePath
+    Optional, path to the file containing the Azure Object Ids for the various users that need RBAC (Role Based Access Control) permissions in Digital Twins.
+
+ .PARAMETER digitalTwinsProvisioningTemplateFilePath
+    Optional, path to the template file used to provision the Digital Twins instance along with device related utilities.
+
+ .PARAMETER numberOfAksNodes
+    Optional, number of nodes to have in the Azure Kubernetes service.
+
  .PARAMETER templateFilePath
     Optional, path to the template file. Defaults to template.json.
 
@@ -69,6 +78,15 @@ param(
  $aksServicePrincipalKey,
 
  [string]
+ $userAzureObjectIdsFilePath = "UserAADObjectIds.json",
+
+ [string]
+ $digitalTwinsProvisioningTemplateFilePath = "DigitalTwinsProvisioning-Demo/SmartHotel_Site_Provisioning.yaml",
+
+ [int]
+ $numberOfAksNodes = 7,
+
+ [string]
  $templateFilePath = "template.json",
 
  [string]
@@ -88,6 +106,7 @@ Reset-Console-Coloring
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $ErrorActionPreference = "Stop"
 $powershellEscape = '--%'
+$startTime = Get-Date
 
 # sign in
 Write-Host "Logging in...";
@@ -164,7 +183,7 @@ if(!$?)
 
 Write-Host
 Write-Host "Creating the AKS Cluster. This can take at least 15 minutes."
-$aksClusterCreationResult = az aks create --resource-group "$resourceGroupName" --name "$aksClusterName" --node-count 1 --service-principal "$aksServicePrincipalId" --client-secret "$aksServicePrincipalKey" --location "$aksClusterLocation" --generate-ssh-keys
+$aksClusterCreationResult = az aks create --resource-group "$resourceGroupName" --name "$aksClusterName" --node-count $numberOfAksNodes --service-principal "$aksServicePrincipalId" --client-secret "$aksServicePrincipalKey" --location "$aksClusterLocation" --generate-ssh-keys
 Write-Host "Finished Creating the AKS Cluster"
 
 $EndTimeLocal = Get-Date
@@ -219,12 +238,29 @@ catch
 Write-Host
 Write-Host
 
+$dtProvisionTemplateFullFilePath = (Resolve-Path $digitalTwinsProvisioningTemplateFilePath).Path
+$userAzureObjectIdsFullFilePath = (Resolve-Path $userAzureObjectIdsFilePath).Path
+
 #Provision IoT Devices
 Write-Host
 Write-Host
+
 Write-Host "Provisioning IoT Devices..."
 
-Invoke-Expression "./iot-provisioning.ps1 -iothub $iotHubName"
+$iotProvisioningOutput = 'iot-device-connectionstring.json'
+
+Push-Location "../Provisioning/IoTHubDeviceProvisioningBits"
+$azFullPath = (Get-Command az).Path
+$iotHubDeviceProvisioningArgs = "-az `"$azFullPath`" -iot `"$iotHubName`" -dtpf `"$dtProvisionTemplateFullFilePath`" -o `"$iotProvisioningOutput`""
+dotnet SmartHotel.IoT.IoTHubDeviceProvisioning.dll $powershellEscape $iotHubDeviceProvisioningArgs
+if( -not (Test-Path $iotProvisioningOutput))
+{
+    Write-Error "An error occurred while creating the IoT Hub devices. Please attempt to fix the issue and re-deploy."
+    exit
+}
+
+Copy-Item $iotProvisioningOutput -Destination "../ProvisioningDevicesBits"
+Pop-Location
 
 $eventHubConsumerConnnection = $outputs.eventHubConsumerConnnection.value
 $eventHubProducerConnnection = $outputs.eventHubProducerConnnection.value
@@ -232,16 +268,11 @@ $eventHubProducerSecondaryConnnection = $outputs.eventHubProducerSecondaryConnne
 $eventHubName = $outputs.eventHubName.value
 
 $provisioningOutput = 'ProvisioningOutput.json'
-$iotProvisioningOutput = 'iot-device-connectionstring.json'
-
-Copy-Item $iotProvisioningOutput -Destination "../Provisioning/ProvisioningDevicesBits/"
-
-#Update Devices and Services Docker/Kubernetes yaml
 
 Write-Host "Provisioning Digital Twins Topology..."
 
 Push-Location "../Provisioning/ProvisioningBits/"
-$dtProvisioningArgs = "-t `"$tenantId`" -ci `"$clientId`" -cs `"$clientSecret`" -dt `"$dtApiEndpoint`" -ehcs `"$eventHubProducerConnnection`" -ehscs `"$eventHubProducerSecondaryConnnection`" -ehn `"$eventHubName`" -o `"$provisioningOutput`""
+$dtProvisioningArgs = "-t `"$tenantId`" -ci `"$clientId`" -cs `"$clientSecret`" -dt `"$dtApiEndpoint`" -ehcs `"$eventHubProducerConnnection`" -ehscs `"$eventHubProducerSecondaryConnnection`" -ehn `"$eventHubName`" -oids `"$userAzureObjectIdsFullFilePath`" -dtpf `"$dtProvisionTemplateFullFilePath`" -o `"$provisioningOutput`""
 dotnet SmartHotel.IoT.Provisioning.dll $powershellEscape $dtProvisioningArgs
 if( -not (Test-Path $provisioningOutput))
 {
@@ -250,8 +281,10 @@ if( -not (Test-Path $provisioningOutput))
 }
 
 Copy-Item $provisioningOutput -Destination "../ProvisioningDevicesBits"
-$room11SpaceId = (Get-Content "$provisioningOutput" | Out-String | ConvertFrom-Json).room11[0].SpaceId
+$mobileRoomSpaceId = (Get-Content "$provisioningOutput" | Out-String | ConvertFrom-Json).'SmartHotel360-SH360Elite1-Room101'[0].SpaceId
 Pop-Location
+
+#Update Devices and Services Docker/Kubernetes yaml
 
 Write-Host "Provisioning Device sample applications..."
 
@@ -512,16 +545,20 @@ $savedSettings = [PSCustomObject]@{
     iotHubConnectionString = $iotHubServiceConnectionString
     cosmosDbConnectionString = $cosmosDbConnectionString
     roomDevicesApiEndpoint = "http://$roomDevicesApiUri/api"
-    room11SpaceId = $room11SpaceId 
+    mobileRoomSpaceId = $mobileRoomSpaceId 
 };
 
 $path = Get-Location
-$outfile = $path.ToString() + '\userSettings.json'
+$outfile = $path.ToString() + '/userSettings.json'
 
 $savedSettings | ConvertTo-Json | Out-File $outfile
+
+$endTime = Get-Date
+$totalTimeInMinutes = ($endTime - $startTime).TotalMinutes
 
 Write-Host
 Write-Host
 Write-Host 'Required settings have been saved to ' $outfile
 Write-Host
+Write-Host "Deployment took $totalTimeInMinutes"
 Write-Host

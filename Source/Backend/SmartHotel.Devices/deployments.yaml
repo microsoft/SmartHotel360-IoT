@@ -1,17 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: smarthotel.devices.light.room11
+  name: sh.d.light.smarthotel360-sh360elite1-room101
 spec:
   template:
     metadata:
       labels:
-        app: smarthotel.devices.light.room11
-        component: smarthotel.devices.light.room11
+        app: sh.d.light.smarthotel360-sh360elite1-room101
+        component: sh.d.light.smarthotel360-sh360elite1-room101
     spec:
       containers:
       - name: device-light
-        image: smarthoteliot.azurecr.io/device-light:public
+        image: needstobeset.azurecr.io/device-light:public
         imagePullPolicy: Always
         env:
         - name: HardwareId
@@ -26,21 +26,23 @@ spec:
           value: 
         - name: SensorDataType
           value: Light
+        - name: StartupDelayInSeconds
+          value: "0"
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: smarthotel.devices.thermostat.room11
+  name: sh.d.thermostat.smarthotel360-sh360elite1-room101
 spec:
   template:
     metadata:
       labels:
-        app: smarthotel.devices.thermostat.room11
-        component: smarthotel.devices.thermostat.room11
+        app: sh.d.thermostat.smarthotel360-sh360elite1-room101
+        component: sh.d.thermostat.smarthotel360-sh360elite1-room101
     spec:
       containers:
       - name: device-thermostat
-        image: smarthoteliot.azurecr.io/device-thermostat:public
+        image: needstobeset.azurecr.io/device-thermostat:public
         imagePullPolicy: Always
         env:
         - name: HardwareId
@@ -55,21 +57,23 @@ spec:
           value: 
         - name: SensorDataType
           value: Temperature
+        - name: StartupDelayInSeconds
+          value: "0"
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: smarthotel.devices.motion.room11
+  name: sh.d.motion.smarthotel360-sh360elite1-room101
 spec:
   template:
     metadata:
       labels:
-        app: smarthotel.devices.motion.room11
-        component: smarthotel.devices.motion.room11
+        app: sh.d.motion.smarthotel360-sh360elite1-room101
+        component: sh.d.motion.smarthotel360-sh360elite1-room101
     spec:
       containers:
       - name: device-motion
-        image: smarthoteliot.azurecr.io/device-motion:public
+        image: needstobeset.azurecr.io/device-motion:public
         imagePullPolicy: Always
         env:
         - name: HardwareId
@@ -84,3 +88,5 @@ spec:
           value: 
         - name: SensorDataType
           value: Motion
+        - name: StartupDelayInSeconds
+          value: "0"

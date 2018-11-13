@@ -55,6 +55,12 @@ export class FacilityService {
     }
   }
 
+  public terminate() {
+    this.spaces = undefined;
+    this.spacesByParentId.clear();
+    this.isInitialized = false;
+  }
+
   public getSpaces(): ISpace[] {
     if (!this.isInitialized) {
       throw this.notInitializedError;
@@ -169,11 +175,36 @@ export class FacilityService {
       return;
     }
 
-    this.spacesByParentId.set(spaces[0].parentSpaceId, spaces.sort((a, b) => a.name.localeCompare(b.name)));
+    this.spacesByParentId.set(spaces[0].parentSpaceId, spaces.sort(this.getSpacesSortResult));
 
     spaces.forEach(space => {
+      if (space.properties) {
+        const imagePathProperty = space.properties.find(p => p.name === 'ImagePath');
+        if (imagePathProperty) {
+          space.imagePath = imagePathProperty.value;
+        }
+      }
       this.updateSpacesByParentIdMap(space.childSpaces);
     });
+  }
+
+  private getSpacesSortResult(a: ISpace, b: ISpace) {
+    if (a.properties && b.properties) {
+      const aDisplayOrderProperty = a.properties.find(p => p.name === 'DisplayOrder');
+      const bDisplayOrderProperty = b.properties.find(p => p.name === 'DisplayOrder');
+      if (aDisplayOrderProperty && bDisplayOrderProperty) {
+        const aDisplayOrder = +aDisplayOrderProperty.value;
+        const bDisplayOrder = +bDisplayOrderProperty.value;
+        if (aDisplayOrder > bDisplayOrder) {
+          return 1;
+        }
+        if (aDisplayOrder < bDisplayOrder) {
+          return -1;
+        }
+        return 0;
+      }
+    }
+    return a.name.localeCompare(b.name);
   }
 
   private onInitialized() {

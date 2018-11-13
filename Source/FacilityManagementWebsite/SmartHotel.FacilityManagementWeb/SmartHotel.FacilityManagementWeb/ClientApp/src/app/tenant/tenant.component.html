@@ -1,0 +1,19 @@
+<app-breadcrumb [tenantId]="tenantId"></app-breadcrumb>
+
+<div class="hotelbrands-top-row">
+  <div class="hotelbrands">
+    <div *ngFor="let hotelBrand of hotelBrands; let i = index" class="hotelbrand" (click)="chooseHotelBrand(hotelBrand)">
+      <div class="hotelbrand-image" [style.background-image]="getHotelBrandImage(hotelBrand)"></div>
+      <div class="hotelbrand-button">
+        {{hotelBrand.friendlyName}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hotelbrands-dashboard" *ngIf="hotelBrands !== null">
+  <div class="hotelbrands-dash-1"><img src="/assets/images/hotel-dash-1.jpg" /></div>
+  <div class="hotelbrands-dash-2"><img src="/assets/images/hotel-dash-2.jpg" /></div>
+  <div class="hotelbrands-dash-2"><img src="/assets/images/hotel-dash-3.jpg" /></div>
+  <div class="hotelbrands-dash-1"><img src="/assets/images/hotel-dash-4.jpg" /></div>
+</div>

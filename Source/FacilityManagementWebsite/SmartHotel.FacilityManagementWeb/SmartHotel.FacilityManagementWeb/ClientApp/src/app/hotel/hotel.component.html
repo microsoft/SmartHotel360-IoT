@@ -4,7 +4,7 @@
 <div class="floors-top-row">
   <div class="floors">
     <div *ngFor="let floor of floors; let i = index" class="floor" (click)="chooseFloor(floor)">
-      <div class="floor-image" [style.background-image]="getFloorImage(i)"></div>
+      <div class="floor-image" [style.background-image]="getFloorImage(floor)"></div>
       <div class="floor-button">
         {{floor.friendlyName}}
       </div>

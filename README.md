@@ -95,18 +95,15 @@ You need to create users having access to your AAD. These can either be users cr
    3. **Hotel 1 Manager**: This user is able to view all the Floors under the first Hotel.
    4. **Hotel 1 Employee**: This user is able to view Non-VIP Floors under the first Hotel.
 * The following users are optional. They help provide more visibility into the Role Based Access Control (RBAC) functionality of Digital Twins.
-   1. **Hotel Brand 2 Manager**
-   2. **Hotel Brand 3 Manager**
-   3. **Hotel Brand 4 Manager**
-   4. **Hotel 2 Manager**
-   5. **Hotel 3 Manager**
-   6. **Hotel 4 Manager**
-   7. **Hotel 5 Manager**
-   8. **Hotel 6 Manager**
-   9. **Hotel 7 Manager**
-   10. **Hotel 8 Manager**
-   11. **Hotel 9 Manager**
-   12. **Hotel 10 Manager**
+   1. **Hotel 2 Manager**
+   2. **Hotel 3 Manager**
+   3. **Hotel 4 Manager**
+   4. **Hotel 5 Manager**
+   5. **Hotel 6 Manager**
+   6. **Hotel 7 Manager**
+   7. **Hotel 8 Manager**
+   8. **Hotel 9 Manager**
+   9. **Hotel 10 Manager**
 
 ## Provision resources in Azure
 In `Source/ARM/` folder of this repository is the deployment script to create and stand up all of the resources to run this demo in Azure. To execute the deployment script, run the following in a **Powershell** window:
@@ -129,6 +126,8 @@ The following information parameters are required for the deployment script:
 
 There is a collection of parameters that are used by the deployment script that determine properties like resource location, pricing tiers, and naming. If you wish to modify any of these parameters you can edit the values in [parameters.json](./arm/parameters.json).
 
+**NOTE: In order to support the number of virtual devices required for the demo in the Kubernetes cluster, it will deploy 7 nodes. Please be aware that this can be a large cost.**
+
 ## User Settings
 When the deployment script is complete, it will output a `userSettings.json` file with information needed for the rest of the deployment.
 
@@ -146,11 +145,11 @@ When the deployment script is complete, it will output a `userSettings.json` fil
     "iotHubConnectionString": "{connection string to the iot hub}",
     "cosmosDbConnectionString": "{connection string to the cosmos db}",
     "roomDevicesApiEndpoint":  "{room devices api endpoint - needed for running the Xamarin Mobile Clients}",
-    "room11SpaceId":  "{room 11 space id - needed for running the Xamarin Mobile Clients}"
+    "mobileRoomSpaceId":  "{space id of the room needed for running the Xamarin Mobile Clients}"
 }
 ```
 
-**NOTE:** If you are going to run the IoT Demo for the [Xamarin Mobile Apps](https://github.com/Microsoft/SmartHotel360-mobile-desktop-apps#iot-demo), then you will need the `roomDevicesApiEndpoint` and `room11SpaceId` values from the `userSettings.json` file.
+**NOTE:** If you are going to run the IoT Demo for the [Xamarin Mobile Apps](https://github.com/Microsoft/SmartHotel360-mobile-desktop-apps#iot-demo), then you will need the `roomDevicesApiEndpoint` and `mobileRoomSpaceId` values from the `userSettings.json` file.
 
 ## Success!
 To verify that everything is working correctly, open up the `facilityManagementWebsiteUri` (from the `userSettings.json` in the browser and log in with one of the two users created during the provisioning steps.
