@@ -19,9 +19,9 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 		public string subType { get; set; }
 		[YamlMember( Order = 6 )]
 		public string keystoreName { get; set; }
-		[YamlMember( Order = 13 )]
+		[YamlMember( Order = 17 )]
 		public IList<SpaceReferenceDescription> spaceReferences { get; set; }
-		[YamlMember( Order = 12 )]
+		[YamlMember( Order = 16 )]
 		public IList<SpaceDescription> spaces { get; set; }
 		[YamlMember( Order = 10 )]
 		public IList<DeviceDescription> devices { get; set; }
@@ -33,8 +33,14 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 		public IList<string> users { get; set; }
 		[YamlMember( Order = 11 )]
 		public IList<PropertyKeyDescription> propertyKeys { get; set; }
-		[YamlMember( Order = 11 )]
+		[YamlMember( Order = 12 )]
 		public IList<PropertyDescription> properties { get; set; }
+		[YamlMember( Order = 13 )]
+		public IList<MatcherDescription> matchers { get; set; }
+		[YamlMember( Order = 14 )]
+		public IList<UserDefinedFunctionDescription> userDefinedFunctions { get; set; }
+		[YamlMember( Order = 15 )]
+		public IList<RoleAssignmentDescription> roleAssignments { get; set; }
 
 		public Space ToDigitalTwins( Guid parentId )
 		{
@@ -127,6 +133,36 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 			}
 
 			properties.Add( propertyDescription );
+		}
+
+		public void AddMatcher( MatcherDescription matcherDescription )
+		{
+			if ( matchers == null )
+			{
+				matchers = new List<MatcherDescription>();
+			}
+
+			matchers.Add( matcherDescription );
+		}
+
+		public void AddUserDefinedFunction( UserDefinedFunctionDescription userDefinedFunctionDescription )
+		{
+			if ( userDefinedFunctions == null )
+			{
+				userDefinedFunctions = new List<UserDefinedFunctionDescription>();
+			}
+
+			userDefinedFunctions.Add( userDefinedFunctionDescription );
+		}
+
+		public void AddRoleAssignment( RoleAssignmentDescription roleAssignmentDescription )
+		{
+			if ( roleAssignments == null )
+			{
+				roleAssignments = new List<RoleAssignmentDescription>();
+			}
+
+			roleAssignments.Add( roleAssignmentDescription );
 		}
 	}
 }
