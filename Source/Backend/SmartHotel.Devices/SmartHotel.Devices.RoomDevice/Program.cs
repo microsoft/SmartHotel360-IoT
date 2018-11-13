@@ -19,7 +19,6 @@ namespace SmartHotel.Devices.RoomDevice
 		private static readonly string IoTHubDeviceConnectionStringSetting = "IoTHubDeviceConnectionString";
 		private static readonly string HardwareIdSetting = "HardwareId";
 		private static readonly string MessageIntervalInMilliSecondsSetting = "MessageIntervalInMilliSeconds";
-		private static readonly string RandomizationDelaySetting = "RandomizationDelay";
 		private static readonly string StartupDelayInSecondsSetting = "StartupDelayInSeconds";
 
 		private static readonly ConcurrentDictionary<string, SensorInfo> SensorInfosByDataType =
