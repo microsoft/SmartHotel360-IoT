@@ -44,7 +44,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-101
         sensors:
         - dataType: Temperature
@@ -59,7 +59,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-102
         sensors:
         - dataType: Temperature
@@ -74,7 +74,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-103
         sensors:
         - dataType: Temperature
@@ -89,7 +89,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-104
         sensors:
         - dataType: Temperature
@@ -104,7 +104,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-105
         sensors:
         - dataType: Temperature
@@ -119,7 +119,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-106
         sensors:
         - dataType: Temperature
@@ -134,7 +134,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-107
         sensors:
         - dataType: Temperature
@@ -149,7 +149,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-108
         sensors:
         - dataType: Temperature
@@ -164,7 +164,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-109
         sensors:
         - dataType: Temperature
@@ -179,7 +179,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-110
         sensors:
         - dataType: Temperature
@@ -194,7 +194,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-111
         sensors:
         - dataType: Temperature
@@ -209,7 +209,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-112
         sensors:
         - dataType: Temperature
@@ -224,7 +224,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-113
         sensors:
         - dataType: Temperature
@@ -239,7 +239,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-114
         sensors:
         - dataType: Temperature
@@ -254,7 +254,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-115
         sensors:
         - dataType: Temperature
@@ -269,7 +269,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-116
         sensors:
         - dataType: Temperature
@@ -284,7 +284,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-117
         sensors:
         - dataType: Temperature
@@ -299,7 +299,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-118
         sensors:
         - dataType: Temperature
@@ -314,7 +314,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-119
         sensors:
         - dataType: Temperature
@@ -329,7 +329,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-120
         sensors:
         - dataType: Temperature
@@ -344,7 +344,7 @@ spaces:
       type: Room
       subType: GymRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-121
         sensors:
         - dataType: Temperature
@@ -371,7 +371,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-201
         sensors:
         - dataType: Temperature
@@ -386,7 +386,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-202
         sensors:
         - dataType: Temperature
@@ -401,7 +401,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-203
         sensors:
         - dataType: Temperature
@@ -416,7 +416,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-204
         sensors:
         - dataType: Temperature
@@ -431,7 +431,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-205
         sensors:
         - dataType: Temperature
@@ -446,7 +446,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-206
         sensors:
         - dataType: Temperature
@@ -461,7 +461,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-207
         sensors:
         - dataType: Temperature
@@ -476,7 +476,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-208
         sensors:
         - dataType: Temperature
@@ -491,7 +491,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-209
         sensors:
         - dataType: Temperature
@@ -506,7 +506,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-210
         sensors:
         - dataType: Temperature
@@ -521,7 +521,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-211
         sensors:
         - dataType: Temperature
@@ -536,7 +536,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-212
         sensors:
         - dataType: Temperature
@@ -551,7 +551,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-213
         sensors:
         - dataType: Temperature
@@ -566,7 +566,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-214
         sensors:
         - dataType: Temperature
@@ -581,7 +581,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-215
         sensors:
         - dataType: Temperature
@@ -596,7 +596,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-216
         sensors:
         - dataType: Temperature
@@ -611,7 +611,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-217
         sensors:
         - dataType: Temperature
@@ -626,7 +626,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-218
         sensors:
         - dataType: Temperature
@@ -641,7 +641,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-219
         sensors:
         - dataType: Temperature
@@ -656,7 +656,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-220
         sensors:
         - dataType: Temperature
@@ -671,7 +671,7 @@ spaces:
       type: Room
       subType: ConferenceRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-221
         sensors:
         - dataType: Temperature
@@ -698,7 +698,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-301
         sensors:
         - dataType: Temperature
@@ -713,7 +713,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-302
         sensors:
         - dataType: Temperature
@@ -728,7 +728,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-303
         sensors:
         - dataType: Temperature
@@ -743,7 +743,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-304
         sensors:
         - dataType: Temperature
@@ -758,7 +758,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-305
         sensors:
         - dataType: Temperature
@@ -773,7 +773,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-306
         sensors:
         - dataType: Temperature
@@ -788,7 +788,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-307
         sensors:
         - dataType: Temperature
@@ -803,7 +803,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-308
         sensors:
         - dataType: Temperature
@@ -818,7 +818,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-309
         sensors:
         - dataType: Temperature
@@ -833,7 +833,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-310
         sensors:
         - dataType: Temperature
@@ -848,7 +848,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-311
         sensors:
         - dataType: Temperature
@@ -863,7 +863,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-312
         sensors:
         - dataType: Temperature
@@ -878,7 +878,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-313
         sensors:
         - dataType: Temperature
@@ -893,7 +893,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-314
         sensors:
         - dataType: Temperature
@@ -908,7 +908,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-315
         sensors:
         - dataType: Temperature
@@ -923,7 +923,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-316
         sensors:
         - dataType: Temperature
@@ -938,7 +938,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-317
         sensors:
         - dataType: Temperature
@@ -953,7 +953,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-318
         sensors:
         - dataType: Temperature
@@ -968,7 +968,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-319
         sensors:
         - dataType: Temperature
@@ -983,7 +983,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-320
         sensors:
         - dataType: Temperature
@@ -1010,7 +1010,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-401
         sensors:
         - dataType: Temperature
@@ -1025,7 +1025,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-402
         sensors:
         - dataType: Temperature
@@ -1040,7 +1040,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-403
         sensors:
         - dataType: Temperature
@@ -1055,7 +1055,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-404
         sensors:
         - dataType: Temperature
@@ -1070,7 +1070,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-405
         sensors:
         - dataType: Temperature
@@ -1085,7 +1085,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-406
         sensors:
         - dataType: Temperature
@@ -1100,7 +1100,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-407
         sensors:
         - dataType: Temperature
@@ -1115,7 +1115,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-408
         sensors:
         - dataType: Temperature
@@ -1130,7 +1130,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-409
         sensors:
         - dataType: Temperature
@@ -1145,7 +1145,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-410
         sensors:
         - dataType: Temperature
@@ -1160,7 +1160,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-411
         sensors:
         - dataType: Temperature
@@ -1175,7 +1175,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-412
         sensors:
         - dataType: Temperature
@@ -1190,7 +1190,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-413
         sensors:
         - dataType: Temperature
@@ -1205,7 +1205,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-414
         sensors:
         - dataType: Temperature
@@ -1220,7 +1220,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-415
         sensors:
         - dataType: Temperature
@@ -1235,7 +1235,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-416
         sensors:
         - dataType: Temperature
@@ -1250,7 +1250,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-417
         sensors:
         - dataType: Temperature
@@ -1265,7 +1265,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-418
         sensors:
         - dataType: Temperature
@@ -1280,7 +1280,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-419
         sensors:
         - dataType: Temperature
@@ -1295,7 +1295,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-420
         sensors:
         - dataType: Temperature
@@ -1322,7 +1322,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-501
         sensors:
         - dataType: Temperature
@@ -1337,7 +1337,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-502
         sensors:
         - dataType: Temperature
@@ -1352,7 +1352,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-503
         sensors:
         - dataType: Temperature
@@ -1367,7 +1367,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-504
         sensors:
         - dataType: Temperature
@@ -1382,7 +1382,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-505
         sensors:
         - dataType: Temperature
@@ -1397,7 +1397,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-506
         sensors:
         - dataType: Temperature
@@ -1412,7 +1412,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-507
         sensors:
         - dataType: Temperature
@@ -1427,7 +1427,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-508
         sensors:
         - dataType: Temperature
@@ -1442,7 +1442,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-509
         sensors:
         - dataType: Temperature
@@ -1457,7 +1457,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-510
         sensors:
         - dataType: Temperature
@@ -1472,7 +1472,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-511
         sensors:
         - dataType: Temperature
@@ -1487,7 +1487,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-512
         sensors:
         - dataType: Temperature
@@ -1502,7 +1502,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-513
         sensors:
         - dataType: Temperature
@@ -1517,7 +1517,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-514
         sensors:
         - dataType: Temperature
@@ -1532,7 +1532,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-515
         sensors:
         - dataType: Temperature
@@ -1547,7 +1547,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-516
         sensors:
         - dataType: Temperature
@@ -1562,7 +1562,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-517
         sensors:
         - dataType: Temperature
@@ -1577,7 +1577,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-518
         sensors:
         - dataType: Temperature
@@ -1592,7 +1592,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-519
         sensors:
         - dataType: Temperature
@@ -1607,7 +1607,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-520
         sensors:
         - dataType: Temperature
@@ -1634,7 +1634,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-601
         sensors:
         - dataType: Temperature
@@ -1649,7 +1649,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-602
         sensors:
         - dataType: Temperature
@@ -1664,7 +1664,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-603
         sensors:
         - dataType: Temperature
@@ -1679,7 +1679,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-604
         sensors:
         - dataType: Temperature
@@ -1694,7 +1694,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-605
         sensors:
         - dataType: Temperature
@@ -1709,7 +1709,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-606
         sensors:
         - dataType: Temperature
@@ -1724,7 +1724,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-607
         sensors:
         - dataType: Temperature
@@ -1739,7 +1739,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-608
         sensors:
         - dataType: Temperature
@@ -1754,7 +1754,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-609
         sensors:
         - dataType: Temperature
@@ -1769,7 +1769,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-610
         sensors:
         - dataType: Temperature
@@ -1784,7 +1784,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-611
         sensors:
         - dataType: Temperature
@@ -1799,7 +1799,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-612
         sensors:
         - dataType: Temperature
@@ -1814,7 +1814,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-613
         sensors:
         - dataType: Temperature
@@ -1829,7 +1829,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-614
         sensors:
         - dataType: Temperature
@@ -1844,7 +1844,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-615
         sensors:
         - dataType: Temperature
@@ -1859,7 +1859,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-616
         sensors:
         - dataType: Temperature
@@ -1874,7 +1874,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-617
         sensors:
         - dataType: Temperature
@@ -1889,7 +1889,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-618
         sensors:
         - dataType: Temperature
@@ -1904,7 +1904,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-619
         sensors:
         - dataType: Temperature
@@ -1919,7 +1919,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-620
         sensors:
         - dataType: Temperature
@@ -1946,7 +1946,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-701
         sensors:
         - dataType: Temperature
@@ -1961,7 +1961,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-702
         sensors:
         - dataType: Temperature
@@ -1976,7 +1976,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-703
         sensors:
         - dataType: Temperature
@@ -1991,7 +1991,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-704
         sensors:
         - dataType: Temperature
@@ -2006,7 +2006,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-705
         sensors:
         - dataType: Temperature
@@ -2021,7 +2021,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-706
         sensors:
         - dataType: Temperature
@@ -2036,7 +2036,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-707
         sensors:
         - dataType: Temperature
@@ -2051,7 +2051,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-708
         sensors:
         - dataType: Temperature
@@ -2066,7 +2066,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-709
         sensors:
         - dataType: Temperature
@@ -2081,7 +2081,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-710
         sensors:
         - dataType: Temperature
@@ -2096,7 +2096,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-711
         sensors:
         - dataType: Temperature
@@ -2111,7 +2111,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-712
         sensors:
         - dataType: Temperature
@@ -2126,7 +2126,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-713
         sensors:
         - dataType: Temperature
@@ -2141,7 +2141,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-714
         sensors:
         - dataType: Temperature
@@ -2156,7 +2156,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-715
         sensors:
         - dataType: Temperature
@@ -2171,7 +2171,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-716
         sensors:
         - dataType: Temperature
@@ -2186,7 +2186,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-717
         sensors:
         - dataType: Temperature
@@ -2201,7 +2201,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-718
         sensors:
         - dataType: Temperature
@@ -2216,7 +2216,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-719
         sensors:
         - dataType: Temperature
@@ -2231,7 +2231,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-720
         sensors:
         - dataType: Temperature
@@ -2258,7 +2258,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-801
         sensors:
         - dataType: Temperature
@@ -2273,7 +2273,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-802
         sensors:
         - dataType: Temperature
@@ -2288,7 +2288,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-803
         sensors:
         - dataType: Temperature
@@ -2303,7 +2303,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-804
         sensors:
         - dataType: Temperature
@@ -2318,7 +2318,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-805
         sensors:
         - dataType: Temperature
@@ -2333,7 +2333,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-806
         sensors:
         - dataType: Temperature
@@ -2348,7 +2348,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-807
         sensors:
         - dataType: Temperature
@@ -2363,7 +2363,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-808
         sensors:
         - dataType: Temperature
@@ -2378,7 +2378,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-809
         sensors:
         - dataType: Temperature
@@ -2393,7 +2393,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-810
         sensors:
         - dataType: Temperature
@@ -2408,7 +2408,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-811
         sensors:
         - dataType: Temperature
@@ -2423,7 +2423,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-812
         sensors:
         - dataType: Temperature
@@ -2438,7 +2438,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-813
         sensors:
         - dataType: Temperature
@@ -2453,7 +2453,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-814
         sensors:
         - dataType: Temperature
@@ -2468,7 +2468,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-815
         sensors:
         - dataType: Temperature
@@ -2483,7 +2483,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-816
         sensors:
         - dataType: Temperature
@@ -2498,7 +2498,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-817
         sensors:
         - dataType: Temperature
@@ -2513,7 +2513,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-818
         sensors:
         - dataType: Temperature
@@ -2528,7 +2528,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-819
         sensors:
         - dataType: Temperature
@@ -2543,7 +2543,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-820
         sensors:
         - dataType: Temperature
@@ -2569,7 +2569,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-901
         sensors:
         - dataType: Temperature
@@ -2584,7 +2584,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-902
         sensors:
         - dataType: Temperature
@@ -2599,7 +2599,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-903
         sensors:
         - dataType: Temperature
@@ -2614,7 +2614,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-904
         sensors:
         - dataType: Temperature
@@ -2629,7 +2629,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-905
         sensors:
         - dataType: Temperature
@@ -2644,7 +2644,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-906
         sensors:
         - dataType: Temperature
@@ -2659,7 +2659,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-907
         sensors:
         - dataType: Temperature
@@ -2674,7 +2674,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-908
         sensors:
         - dataType: Temperature
@@ -2689,7 +2689,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-909
         sensors:
         - dataType: Temperature
@@ -2704,7 +2704,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-910
         sensors:
         - dataType: Temperature
@@ -2730,7 +2730,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-1001
         sensors:
         - dataType: Temperature
@@ -2745,7 +2745,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-1002
         sensors:
         - dataType: Temperature
@@ -2760,7 +2760,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-1003
         sensors:
         - dataType: Temperature
@@ -2775,7 +2775,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-1004
         sensors:
         - dataType: Temperature
@@ -2790,7 +2790,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-1005
         sensors:
         - dataType: Temperature
@@ -2805,7 +2805,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-1006
         sensors:
         - dataType: Temperature
@@ -2820,7 +2820,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-1007
         sensors:
         - dataType: Temperature
@@ -2835,7 +2835,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-1008
         sensors:
         - dataType: Temperature
@@ -2850,7 +2850,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-1009
         sensors:
         - dataType: Temperature
@@ -2865,7 +2865,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: SmartHotel360-SH360Elite1-1010
         sensors:
         - dataType: Temperature

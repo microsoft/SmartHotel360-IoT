@@ -42,7 +42,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-101
         sensors:
         - dataType: Temperature
@@ -57,7 +57,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-102
         sensors:
         - dataType: Temperature
@@ -72,7 +72,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-103
         sensors:
         - dataType: Temperature
@@ -87,7 +87,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-104
         sensors:
         - dataType: Temperature
@@ -102,7 +102,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-105
         sensors:
         - dataType: Temperature
@@ -117,7 +117,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-106
         sensors:
         - dataType: Temperature
@@ -132,7 +132,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-107
         sensors:
         - dataType: Temperature
@@ -147,7 +147,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-108
         sensors:
         - dataType: Temperature
@@ -162,7 +162,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-109
         sensors:
         - dataType: Temperature
@@ -177,7 +177,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-110
         sensors:
         - dataType: Temperature
@@ -192,7 +192,7 @@ spaces:
       type: Room
       subType: GymRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-111
         sensors:
         - dataType: Temperature
@@ -217,7 +217,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-201
         sensors:
         - dataType: Temperature
@@ -232,7 +232,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-202
         sensors:
         - dataType: Temperature
@@ -247,7 +247,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-203
         sensors:
         - dataType: Temperature
@@ -262,7 +262,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-204
         sensors:
         - dataType: Temperature
@@ -277,7 +277,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-205
         sensors:
         - dataType: Temperature
@@ -292,7 +292,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-206
         sensors:
         - dataType: Temperature
@@ -307,7 +307,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-207
         sensors:
         - dataType: Temperature
@@ -322,7 +322,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-208
         sensors:
         - dataType: Temperature
@@ -337,7 +337,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-209
         sensors:
         - dataType: Temperature
@@ -352,7 +352,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-210
         sensors:
         - dataType: Temperature
@@ -367,7 +367,7 @@ spaces:
       type: Room
       subType: ConferenceRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-211
         sensors:
         - dataType: Temperature
@@ -392,7 +392,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-301
         sensors:
         - dataType: Temperature
@@ -407,7 +407,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-302
         sensors:
         - dataType: Temperature
@@ -422,7 +422,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-303
         sensors:
         - dataType: Temperature
@@ -437,7 +437,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-304
         sensors:
         - dataType: Temperature
@@ -452,7 +452,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-305
         sensors:
         - dataType: Temperature
@@ -467,7 +467,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-306
         sensors:
         - dataType: Temperature
@@ -482,7 +482,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-307
         sensors:
         - dataType: Temperature
@@ -497,7 +497,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-308
         sensors:
         - dataType: Temperature
@@ -512,7 +512,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-309
         sensors:
         - dataType: Temperature
@@ -527,7 +527,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-310
         sensors:
         - dataType: Temperature
@@ -552,7 +552,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-401
         sensors:
         - dataType: Temperature
@@ -567,7 +567,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-402
         sensors:
         - dataType: Temperature
@@ -582,7 +582,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-403
         sensors:
         - dataType: Temperature
@@ -597,7 +597,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-404
         sensors:
         - dataType: Temperature
@@ -612,7 +612,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-405
         sensors:
         - dataType: Temperature
@@ -627,7 +627,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-406
         sensors:
         - dataType: Temperature
@@ -642,7 +642,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-407
         sensors:
         - dataType: Temperature
@@ -657,7 +657,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-408
         sensors:
         - dataType: Temperature
@@ -672,7 +672,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-409
         sensors:
         - dataType: Temperature
@@ -687,7 +687,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-410
         sensors:
         - dataType: Temperature
@@ -713,7 +713,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-501
         sensors:
         - dataType: Temperature
@@ -728,7 +728,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-502
         sensors:
         - dataType: Temperature
@@ -743,7 +743,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-503
         sensors:
         - dataType: Temperature
@@ -758,7 +758,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite1-504
         sensors:
         - dataType: Temperature
@@ -799,7 +799,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-101
         sensors:
         - dataType: Temperature
@@ -814,7 +814,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-102
         sensors:
         - dataType: Temperature
@@ -829,7 +829,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-103
         sensors:
         - dataType: Temperature
@@ -844,7 +844,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-104
         sensors:
         - dataType: Temperature
@@ -859,7 +859,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-105
         sensors:
         - dataType: Temperature
@@ -874,7 +874,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-106
         sensors:
         - dataType: Temperature
@@ -889,7 +889,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-107
         sensors:
         - dataType: Temperature
@@ -904,7 +904,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-108
         sensors:
         - dataType: Temperature
@@ -919,7 +919,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-109
         sensors:
         - dataType: Temperature
@@ -934,7 +934,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-110
         sensors:
         - dataType: Temperature
@@ -949,7 +949,7 @@ spaces:
       type: Room
       subType: GymRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-111
         sensors:
         - dataType: Temperature
@@ -974,7 +974,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-201
         sensors:
         - dataType: Temperature
@@ -989,7 +989,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-202
         sensors:
         - dataType: Temperature
@@ -1004,7 +1004,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-203
         sensors:
         - dataType: Temperature
@@ -1019,7 +1019,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-204
         sensors:
         - dataType: Temperature
@@ -1034,7 +1034,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-205
         sensors:
         - dataType: Temperature
@@ -1049,7 +1049,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-206
         sensors:
         - dataType: Temperature
@@ -1064,7 +1064,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-207
         sensors:
         - dataType: Temperature
@@ -1079,7 +1079,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-208
         sensors:
         - dataType: Temperature
@@ -1094,7 +1094,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-209
         sensors:
         - dataType: Temperature
@@ -1109,7 +1109,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-210
         sensors:
         - dataType: Temperature
@@ -1124,7 +1124,7 @@ spaces:
       type: Room
       subType: ConferenceRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-211
         sensors:
         - dataType: Temperature
@@ -1149,7 +1149,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-301
         sensors:
         - dataType: Temperature
@@ -1164,7 +1164,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-302
         sensors:
         - dataType: Temperature
@@ -1179,7 +1179,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-303
         sensors:
         - dataType: Temperature
@@ -1194,7 +1194,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-304
         sensors:
         - dataType: Temperature
@@ -1209,7 +1209,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-305
         sensors:
         - dataType: Temperature
@@ -1224,7 +1224,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-306
         sensors:
         - dataType: Temperature
@@ -1239,7 +1239,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-307
         sensors:
         - dataType: Temperature
@@ -1254,7 +1254,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-308
         sensors:
         - dataType: Temperature
@@ -1269,7 +1269,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-309
         sensors:
         - dataType: Temperature
@@ -1284,7 +1284,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-310
         sensors:
         - dataType: Temperature
@@ -1309,7 +1309,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-401
         sensors:
         - dataType: Temperature
@@ -1324,7 +1324,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-402
         sensors:
         - dataType: Temperature
@@ -1339,7 +1339,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-403
         sensors:
         - dataType: Temperature
@@ -1354,7 +1354,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-404
         sensors:
         - dataType: Temperature
@@ -1369,7 +1369,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-405
         sensors:
         - dataType: Temperature
@@ -1384,7 +1384,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-406
         sensors:
         - dataType: Temperature
@@ -1399,7 +1399,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-407
         sensors:
         - dataType: Temperature
@@ -1414,7 +1414,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-408
         sensors:
         - dataType: Temperature
@@ -1429,7 +1429,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-409
         sensors:
         - dataType: Temperature
@@ -1444,7 +1444,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-410
         sensors:
         - dataType: Temperature
@@ -1470,7 +1470,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-501
         sensors:
         - dataType: Temperature
@@ -1485,7 +1485,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-502
         sensors:
         - dataType: Temperature
@@ -1500,7 +1500,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-503
         sensors:
         - dataType: Temperature
@@ -1515,7 +1515,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-504
         sensors:
         - dataType: Temperature
@@ -1556,7 +1556,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-101
         sensors:
         - dataType: Temperature
@@ -1571,7 +1571,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-102
         sensors:
         - dataType: Temperature
@@ -1586,7 +1586,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-103
         sensors:
         - dataType: Temperature
@@ -1601,7 +1601,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-104
         sensors:
         - dataType: Temperature
@@ -1616,7 +1616,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-105
         sensors:
         - dataType: Temperature
@@ -1631,7 +1631,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-106
         sensors:
         - dataType: Temperature
@@ -1646,7 +1646,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-107
         sensors:
         - dataType: Temperature
@@ -1661,7 +1661,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-108
         sensors:
         - dataType: Temperature
@@ -1676,7 +1676,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-109
         sensors:
         - dataType: Temperature
@@ -1691,7 +1691,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-110
         sensors:
         - dataType: Temperature
@@ -1706,7 +1706,7 @@ spaces:
       type: Room
       subType: GymRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-111
         sensors:
         - dataType: Temperature
@@ -1731,7 +1731,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-201
         sensors:
         - dataType: Temperature
@@ -1746,7 +1746,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-202
         sensors:
         - dataType: Temperature
@@ -1761,7 +1761,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-203
         sensors:
         - dataType: Temperature
@@ -1776,7 +1776,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-204
         sensors:
         - dataType: Temperature
@@ -1791,7 +1791,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-205
         sensors:
         - dataType: Temperature
@@ -1806,7 +1806,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-206
         sensors:
         - dataType: Temperature
@@ -1821,7 +1821,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-207
         sensors:
         - dataType: Temperature
@@ -1836,7 +1836,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-208
         sensors:
         - dataType: Temperature
@@ -1851,7 +1851,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-209
         sensors:
         - dataType: Temperature
@@ -1866,7 +1866,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-210
         sensors:
         - dataType: Temperature
@@ -1881,7 +1881,7 @@ spaces:
       type: Room
       subType: ConferenceRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-211
         sensors:
         - dataType: Temperature
@@ -1906,7 +1906,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-301
         sensors:
         - dataType: Temperature
@@ -1921,7 +1921,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-302
         sensors:
         - dataType: Temperature
@@ -1936,7 +1936,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-303
         sensors:
         - dataType: Temperature
@@ -1951,7 +1951,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-304
         sensors:
         - dataType: Temperature
@@ -1966,7 +1966,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-305
         sensors:
         - dataType: Temperature
@@ -1981,7 +1981,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-306
         sensors:
         - dataType: Temperature
@@ -1996,7 +1996,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-307
         sensors:
         - dataType: Temperature
@@ -2011,7 +2011,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-308
         sensors:
         - dataType: Temperature
@@ -2026,7 +2026,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-309
         sensors:
         - dataType: Temperature
@@ -2041,7 +2041,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-310
         sensors:
         - dataType: Temperature
@@ -2066,7 +2066,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-401
         sensors:
         - dataType: Temperature
@@ -2081,7 +2081,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-402
         sensors:
         - dataType: Temperature
@@ -2096,7 +2096,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-403
         sensors:
         - dataType: Temperature
@@ -2111,7 +2111,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-404
         sensors:
         - dataType: Temperature
@@ -2126,7 +2126,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-405
         sensors:
         - dataType: Temperature
@@ -2141,7 +2141,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-406
         sensors:
         - dataType: Temperature
@@ -2156,7 +2156,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-407
         sensors:
         - dataType: Temperature
@@ -2171,7 +2171,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-408
         sensors:
         - dataType: Temperature
@@ -2186,7 +2186,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-409
         sensors:
         - dataType: Temperature
@@ -2201,7 +2201,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-410
         sensors:
         - dataType: Temperature
@@ -2227,7 +2227,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-501
         sensors:
         - dataType: Temperature
@@ -2242,7 +2242,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-502
         sensors:
         - dataType: Temperature
@@ -2257,7 +2257,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-503
         sensors:
         - dataType: Temperature
@@ -2272,7 +2272,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite2-504
         sensors:
         - dataType: Temperature
@@ -2313,7 +2313,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-101
         sensors:
         - dataType: Temperature
@@ -2328,7 +2328,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-102
         sensors:
         - dataType: Temperature
@@ -2343,7 +2343,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-103
         sensors:
         - dataType: Temperature
@@ -2358,7 +2358,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-104
         sensors:
         - dataType: Temperature
@@ -2373,7 +2373,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-105
         sensors:
         - dataType: Temperature
@@ -2388,7 +2388,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-106
         sensors:
         - dataType: Temperature
@@ -2403,7 +2403,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-107
         sensors:
         - dataType: Temperature
@@ -2418,7 +2418,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-108
         sensors:
         - dataType: Temperature
@@ -2433,7 +2433,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-109
         sensors:
         - dataType: Temperature
@@ -2448,7 +2448,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-110
         sensors:
         - dataType: Temperature
@@ -2463,7 +2463,7 @@ spaces:
       type: Room
       subType: GymRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-111
         sensors:
         - dataType: Temperature
@@ -2488,7 +2488,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-201
         sensors:
         - dataType: Temperature
@@ -2503,7 +2503,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-202
         sensors:
         - dataType: Temperature
@@ -2518,7 +2518,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-203
         sensors:
         - dataType: Temperature
@@ -2533,7 +2533,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-204
         sensors:
         - dataType: Temperature
@@ -2548,7 +2548,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-205
         sensors:
         - dataType: Temperature
@@ -2563,7 +2563,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-206
         sensors:
         - dataType: Temperature
@@ -2578,7 +2578,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-207
         sensors:
         - dataType: Temperature
@@ -2593,7 +2593,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-208
         sensors:
         - dataType: Temperature
@@ -2608,7 +2608,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-209
         sensors:
         - dataType: Temperature
@@ -2623,7 +2623,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-210
         sensors:
         - dataType: Temperature
@@ -2638,7 +2638,7 @@ spaces:
       type: Room
       subType: ConferenceRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-211
         sensors:
         - dataType: Temperature
@@ -2663,7 +2663,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-301
         sensors:
         - dataType: Temperature
@@ -2678,7 +2678,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-302
         sensors:
         - dataType: Temperature
@@ -2693,7 +2693,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-303
         sensors:
         - dataType: Temperature
@@ -2708,7 +2708,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-304
         sensors:
         - dataType: Temperature
@@ -2723,7 +2723,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-305
         sensors:
         - dataType: Temperature
@@ -2738,7 +2738,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-306
         sensors:
         - dataType: Temperature
@@ -2753,7 +2753,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-307
         sensors:
         - dataType: Temperature
@@ -2768,7 +2768,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-308
         sensors:
         - dataType: Temperature
@@ -2783,7 +2783,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-309
         sensors:
         - dataType: Temperature
@@ -2798,7 +2798,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-310
         sensors:
         - dataType: Temperature
@@ -2823,7 +2823,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-401
         sensors:
         - dataType: Temperature
@@ -2838,7 +2838,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-402
         sensors:
         - dataType: Temperature
@@ -2853,7 +2853,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-403
         sensors:
         - dataType: Temperature
@@ -2868,7 +2868,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-404
         sensors:
         - dataType: Temperature
@@ -2883,7 +2883,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-405
         sensors:
         - dataType: Temperature
@@ -2898,7 +2898,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-406
         sensors:
         - dataType: Temperature
@@ -2913,7 +2913,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-407
         sensors:
         - dataType: Temperature
@@ -2928,7 +2928,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-408
         sensors:
         - dataType: Temperature
@@ -2943,7 +2943,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-409
         sensors:
         - dataType: Temperature
@@ -2958,7 +2958,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-410
         sensors:
         - dataType: Temperature
@@ -2984,7 +2984,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-501
         sensors:
         - dataType: Temperature
@@ -2999,7 +2999,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-502
         sensors:
         - dataType: Temperature
@@ -3014,7 +3014,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-503
         sensors:
         - dataType: Temperature
@@ -3029,7 +3029,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoElite3-504
         sensors:
         - dataType: Temperature
@@ -3070,7 +3070,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-101
         sensors:
         - dataType: Temperature
@@ -3085,7 +3085,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-102
         sensors:
         - dataType: Temperature
@@ -3100,7 +3100,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-103
         sensors:
         - dataType: Temperature
@@ -3115,7 +3115,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-104
         sensors:
         - dataType: Temperature
@@ -3130,7 +3130,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-105
         sensors:
         - dataType: Temperature
@@ -3145,7 +3145,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-106
         sensors:
         - dataType: Temperature
@@ -3160,7 +3160,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-107
         sensors:
         - dataType: Temperature
@@ -3175,7 +3175,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-108
         sensors:
         - dataType: Temperature
@@ -3190,7 +3190,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-109
         sensors:
         - dataType: Temperature
@@ -3205,7 +3205,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-110
         sensors:
         - dataType: Temperature
@@ -3220,7 +3220,7 @@ spaces:
       type: Room
       subType: GymRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-111
         sensors:
         - dataType: Temperature
@@ -3245,7 +3245,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-201
         sensors:
         - dataType: Temperature
@@ -3260,7 +3260,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-202
         sensors:
         - dataType: Temperature
@@ -3275,7 +3275,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-203
         sensors:
         - dataType: Temperature
@@ -3290,7 +3290,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-204
         sensors:
         - dataType: Temperature
@@ -3305,7 +3305,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-205
         sensors:
         - dataType: Temperature
@@ -3320,7 +3320,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-206
         sensors:
         - dataType: Temperature
@@ -3335,7 +3335,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-207
         sensors:
         - dataType: Temperature
@@ -3350,7 +3350,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-208
         sensors:
         - dataType: Temperature
@@ -3365,7 +3365,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-209
         sensors:
         - dataType: Temperature
@@ -3380,7 +3380,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-210
         sensors:
         - dataType: Temperature
@@ -3395,7 +3395,7 @@ spaces:
       type: Room
       subType: ConferenceRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-211
         sensors:
         - dataType: Temperature
@@ -3420,7 +3420,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-301
         sensors:
         - dataType: Temperature
@@ -3435,7 +3435,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-302
         sensors:
         - dataType: Temperature
@@ -3450,7 +3450,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-303
         sensors:
         - dataType: Temperature
@@ -3465,7 +3465,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-304
         sensors:
         - dataType: Temperature
@@ -3480,7 +3480,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-305
         sensors:
         - dataType: Temperature
@@ -3495,7 +3495,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-306
         sensors:
         - dataType: Temperature
@@ -3510,7 +3510,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-307
         sensors:
         - dataType: Temperature
@@ -3525,7 +3525,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-308
         sensors:
         - dataType: Temperature
@@ -3540,7 +3540,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-309
         sensors:
         - dataType: Temperature
@@ -3555,7 +3555,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-310
         sensors:
         - dataType: Temperature
@@ -3580,7 +3580,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-401
         sensors:
         - dataType: Temperature
@@ -3595,7 +3595,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-402
         sensors:
         - dataType: Temperature
@@ -3610,7 +3610,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-403
         sensors:
         - dataType: Temperature
@@ -3625,7 +3625,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-404
         sensors:
         - dataType: Temperature
@@ -3640,7 +3640,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-405
         sensors:
         - dataType: Temperature
@@ -3655,7 +3655,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-406
         sensors:
         - dataType: Temperature
@@ -3670,7 +3670,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-407
         sensors:
         - dataType: Temperature
@@ -3685,7 +3685,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-408
         sensors:
         - dataType: Temperature
@@ -3700,7 +3700,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-409
         sensors:
         - dataType: Temperature
@@ -3715,7 +3715,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-410
         sensors:
         - dataType: Temperature
@@ -3741,7 +3741,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-501
         sensors:
         - dataType: Temperature
@@ -3756,7 +3756,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-502
         sensors:
         - dataType: Temperature
@@ -3771,7 +3771,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-503
         sensors:
         - dataType: Temperature
@@ -3786,7 +3786,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-504
         sensors:
         - dataType: Temperature
@@ -3827,7 +3827,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-101
         sensors:
         - dataType: Temperature
@@ -3842,7 +3842,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-102
         sensors:
         - dataType: Temperature
@@ -3857,7 +3857,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-103
         sensors:
         - dataType: Temperature
@@ -3872,7 +3872,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-104
         sensors:
         - dataType: Temperature
@@ -3887,7 +3887,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-105
         sensors:
         - dataType: Temperature
@@ -3902,7 +3902,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-106
         sensors:
         - dataType: Temperature
@@ -3917,7 +3917,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-107
         sensors:
         - dataType: Temperature
@@ -3932,7 +3932,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-108
         sensors:
         - dataType: Temperature
@@ -3947,7 +3947,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-109
         sensors:
         - dataType: Temperature
@@ -3962,7 +3962,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-110
         sensors:
         - dataType: Temperature
@@ -3977,7 +3977,7 @@ spaces:
       type: Room
       subType: GymRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-111
         sensors:
         - dataType: Temperature
@@ -4002,7 +4002,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-201
         sensors:
         - dataType: Temperature
@@ -4017,7 +4017,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-202
         sensors:
         - dataType: Temperature
@@ -4032,7 +4032,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-203
         sensors:
         - dataType: Temperature
@@ -4047,7 +4047,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-204
         sensors:
         - dataType: Temperature
@@ -4062,7 +4062,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-205
         sensors:
         - dataType: Temperature
@@ -4077,7 +4077,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-206
         sensors:
         - dataType: Temperature
@@ -4092,7 +4092,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-207
         sensors:
         - dataType: Temperature
@@ -4107,7 +4107,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-208
         sensors:
         - dataType: Temperature
@@ -4122,7 +4122,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-209
         sensors:
         - dataType: Temperature
@@ -4137,7 +4137,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-210
         sensors:
         - dataType: Temperature
@@ -4152,7 +4152,7 @@ spaces:
       type: Room
       subType: ConferenceRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-211
         sensors:
         - dataType: Temperature
@@ -4177,7 +4177,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-301
         sensors:
         - dataType: Temperature
@@ -4192,7 +4192,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-302
         sensors:
         - dataType: Temperature
@@ -4207,7 +4207,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-303
         sensors:
         - dataType: Temperature
@@ -4222,7 +4222,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-304
         sensors:
         - dataType: Temperature
@@ -4237,7 +4237,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-305
         sensors:
         - dataType: Temperature
@@ -4252,7 +4252,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-306
         sensors:
         - dataType: Temperature
@@ -4267,7 +4267,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-307
         sensors:
         - dataType: Temperature
@@ -4282,7 +4282,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-308
         sensors:
         - dataType: Temperature
@@ -4297,7 +4297,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-309
         sensors:
         - dataType: Temperature
@@ -4312,7 +4312,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-310
         sensors:
         - dataType: Temperature
@@ -4337,7 +4337,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-401
         sensors:
         - dataType: Temperature
@@ -4352,7 +4352,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-402
         sensors:
         - dataType: Temperature
@@ -4367,7 +4367,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-403
         sensors:
         - dataType: Temperature
@@ -4382,7 +4382,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-404
         sensors:
         - dataType: Temperature
@@ -4397,7 +4397,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-405
         sensors:
         - dataType: Temperature
@@ -4412,7 +4412,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-406
         sensors:
         - dataType: Temperature
@@ -4427,7 +4427,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-407
         sensors:
         - dataType: Temperature
@@ -4442,7 +4442,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-408
         sensors:
         - dataType: Temperature
@@ -4457,7 +4457,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-409
         sensors:
         - dataType: Temperature
@@ -4472,7 +4472,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-410
         sensors:
         - dataType: Temperature
@@ -4498,7 +4498,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-501
         sensors:
         - dataType: Temperature
@@ -4513,7 +4513,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-502
         sensors:
         - dataType: Temperature
@@ -4528,7 +4528,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-503
         sensors:
         - dataType: Temperature
@@ -4543,7 +4543,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-504
         sensors:
         - dataType: Temperature
@@ -4584,7 +4584,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-101
         sensors:
         - dataType: Temperature
@@ -4599,7 +4599,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-102
         sensors:
         - dataType: Temperature
@@ -4614,7 +4614,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-103
         sensors:
         - dataType: Temperature
@@ -4629,7 +4629,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-104
         sensors:
         - dataType: Temperature
@@ -4644,7 +4644,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-105
         sensors:
         - dataType: Temperature
@@ -4659,7 +4659,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-106
         sensors:
         - dataType: Temperature
@@ -4674,7 +4674,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-107
         sensors:
         - dataType: Temperature
@@ -4689,7 +4689,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-108
         sensors:
         - dataType: Temperature
@@ -4704,7 +4704,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-109
         sensors:
         - dataType: Temperature
@@ -4719,7 +4719,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-110
         sensors:
         - dataType: Temperature
@@ -4734,7 +4734,7 @@ spaces:
       type: Room
       subType: GymRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-111
         sensors:
         - dataType: Temperature
@@ -4759,7 +4759,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-201
         sensors:
         - dataType: Temperature
@@ -4774,7 +4774,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-202
         sensors:
         - dataType: Temperature
@@ -4789,7 +4789,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-203
         sensors:
         - dataType: Temperature
@@ -4804,7 +4804,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-204
         sensors:
         - dataType: Temperature
@@ -4819,7 +4819,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-205
         sensors:
         - dataType: Temperature
@@ -4834,7 +4834,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-206
         sensors:
         - dataType: Temperature
@@ -4849,7 +4849,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-207
         sensors:
         - dataType: Temperature
@@ -4864,7 +4864,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-208
         sensors:
         - dataType: Temperature
@@ -4879,7 +4879,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-209
         sensors:
         - dataType: Temperature
@@ -4894,7 +4894,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-210
         sensors:
         - dataType: Temperature
@@ -4909,7 +4909,7 @@ spaces:
       type: Room
       subType: ConferenceRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-211
         sensors:
         - dataType: Temperature
@@ -4934,7 +4934,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-301
         sensors:
         - dataType: Temperature
@@ -4949,7 +4949,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-302
         sensors:
         - dataType: Temperature
@@ -4964,7 +4964,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-303
         sensors:
         - dataType: Temperature
@@ -4979,7 +4979,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-304
         sensors:
         - dataType: Temperature
@@ -4994,7 +4994,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-305
         sensors:
         - dataType: Temperature
@@ -5009,7 +5009,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-306
         sensors:
         - dataType: Temperature
@@ -5024,7 +5024,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-307
         sensors:
         - dataType: Temperature
@@ -5039,7 +5039,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-308
         sensors:
         - dataType: Temperature
@@ -5054,7 +5054,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-309
         sensors:
         - dataType: Temperature
@@ -5069,7 +5069,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-310
         sensors:
         - dataType: Temperature
@@ -5094,7 +5094,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-401
         sensors:
         - dataType: Temperature
@@ -5109,7 +5109,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-402
         sensors:
         - dataType: Temperature
@@ -5124,7 +5124,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-403
         sensors:
         - dataType: Temperature
@@ -5139,7 +5139,7 @@ spaces:
       type: Room
       subType: QueenRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-404
         sensors:
         - dataType: Temperature
@@ -5154,7 +5154,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-405
         sensors:
         - dataType: Temperature
@@ -5169,7 +5169,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-406
         sensors:
         - dataType: Temperature
@@ -5184,7 +5184,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-407
         sensors:
         - dataType: Temperature
@@ -5199,7 +5199,7 @@ spaces:
       type: Room
       subType: KingRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-408
         sensors:
         - dataType: Temperature
@@ -5214,7 +5214,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-409
         sensors:
         - dataType: Temperature
@@ -5229,7 +5229,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-410
         sensors:
         - dataType: Temperature
@@ -5255,7 +5255,7 @@ spaces:
       type: Room
       subType: SuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-501
         sensors:
         - dataType: Temperature
@@ -5270,7 +5270,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-502
         sensors:
         - dataType: Temperature
@@ -5285,7 +5285,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-503
         sensors:
         - dataType: Temperature
@@ -5300,7 +5300,7 @@ spaces:
       type: Room
       subType: VIPSuiteRoom
       devices:
-      - name: RoomDevice
+      - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-504
         sensors:
         - dataType: Temperature

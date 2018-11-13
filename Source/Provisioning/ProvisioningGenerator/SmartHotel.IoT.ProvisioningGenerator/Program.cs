@@ -341,7 +341,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			{
 				var roomDevice = new DeviceDescription
 				{
-					name = "RoomDevice",
+					name = "Room",
 					hardwareId = $"{brandHotelPrefix}{roomNumber}"
 				};
 				roomDevice.AddSensor( new SensorDescription { dataType = "Temperature", type = "Classic" } );

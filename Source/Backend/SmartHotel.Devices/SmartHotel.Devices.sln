@@ -3,12 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.Devices.Thermostat", "SmartHotel.Devices.Thermostat\SmartHotel.Devices.Thermostat.csproj", "{4C76BC20-68AA-4FFC-96A9-53F451889966}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.Devices.Motion", "SmartHotel.Devices.Motion\SmartHotel.Devices.Motion.csproj", "{D498B05E-1503-4773-9488-1C2A83ABB8B9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.Devices.Light", "SmartHotel.Devices.Light\SmartHotel.Devices.Light.csproj", "{80BDB799-F3D4-433F-A4C5-71AFF46B7DF9}"
-EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{7A8C1E30-7075-4B97-8E51-40B2429AC8C2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A3FEC2CC-6821-4487-A020-E7B133D40C1D}"
@@ -17,10 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CurrentImageVersion.txt = CurrentImageVersion.txt
 		deployments.demo.yaml = deployments.demo.yaml
 		deployments.yaml = deployments.yaml
-		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Devices.RoomDevice", "..\SmartHotel.Devices.RoomDevice\SmartHotel.Devices.RoomDevice.csproj", "{F854FA82-31F5-4FFD-BEA4-048BBEB08CAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHotel.Devices.RoomDevice", "SmartHotel.Devices.RoomDevice\SmartHotel.Devices.RoomDevice.csproj", "{3AA85E8F-3EE4-48FF-825A-ED5AF1AF5C10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,26 +21,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4C76BC20-68AA-4FFC-96A9-53F451889966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C76BC20-68AA-4FFC-96A9-53F451889966}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C76BC20-68AA-4FFC-96A9-53F451889966}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C76BC20-68AA-4FFC-96A9-53F451889966}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D498B05E-1503-4773-9488-1C2A83ABB8B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D498B05E-1503-4773-9488-1C2A83ABB8B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D498B05E-1503-4773-9488-1C2A83ABB8B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D498B05E-1503-4773-9488-1C2A83ABB8B9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80BDB799-F3D4-433F-A4C5-71AFF46B7DF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80BDB799-F3D4-433F-A4C5-71AFF46B7DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80BDB799-F3D4-433F-A4C5-71AFF46B7DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80BDB799-F3D4-433F-A4C5-71AFF46B7DF9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7A8C1E30-7075-4B97-8E51-40B2429AC8C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7A8C1E30-7075-4B97-8E51-40B2429AC8C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A8C1E30-7075-4B97-8E51-40B2429AC8C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A8C1E30-7075-4B97-8E51-40B2429AC8C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F854FA82-31F5-4FFD-BEA4-048BBEB08CAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F854FA82-31F5-4FFD-BEA4-048BBEB08CAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F854FA82-31F5-4FFD-BEA4-048BBEB08CAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F854FA82-31F5-4FFD-BEA4-048BBEB08CAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AA85E8F-3EE4-48FF-825A-ED5AF1AF5C10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AA85E8F-3EE4-48FF-825A-ED5AF1AF5C10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AA85E8F-3EE4-48FF-825A-ED5AF1AF5C10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AA85E8F-3EE4-48FF-825A-ED5AF1AF5C10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
