@@ -19,6 +19,8 @@ namespace SmartHotel.Devices.RoomDevice
 		private static readonly string IoTHubDeviceConnectionStringSetting = "IoTHubDeviceConnectionString";
 		private static readonly string HardwareIdSetting = "HardwareId";
 		private static readonly string MessageIntervalInMilliSecondsSetting = "MessageIntervalInMilliSeconds";
+		private static readonly string RandomizationDelaySetting = "RandomizationDelay";
+		private static readonly string StartupDelayInSecondsSetting = "StartupDelayInSeconds";
 
 		private static readonly ConcurrentDictionary<string, SensorInfo> SensorInfosByDataType =
 			new ConcurrentDictionary<string, SensorInfo>( StringComparer.OrdinalIgnoreCase );
@@ -33,7 +35,7 @@ namespace SmartHotel.Devices.RoomDevice
 		private const string MotionDataType = "Motion";
 
 		private static Timer _motionTimer;
-		private static Random _random = new Random();
+		private static readonly Random _random = new Random();
 		private static int _randomizationDelay = 60000;
 
 		static async Task Main( string[] args )
@@ -67,13 +69,17 @@ namespace SmartHotel.Devices.RoomDevice
 				if ( !ValidateSettings() )
 				{
 					Console.WriteLine( "RoomDevice - Your settings are invalid.  Please check your setting values and try again." );
-					cts.Token.WaitHandle.WaitOne();
-					return;
+					Environment.Exit( 1 );
 				}
 
 				var hardwareId = Configuration[HardwareIdSetting];
-
 				Console.WriteLine( $"Your hardware ID is: {hardwareId}" );
+
+				TimeSpan startupDelay = TimeSpan.FromSeconds( double.Parse( Configuration[StartupDelayInSecondsSetting] ) );
+				Console.WriteLine( $"Waiting {startupDelay.TotalSeconds} seconds to startup..." );
+				await Task.Delay( startupDelay, cts.Token );
+
+				_motionTimer = new Timer( RandomizeMotionValue, null, 5000, _randomizationDelay );
 
 				var topologyClient = new TopologyClient( Configuration[ManagementApiUrlSetting], Configuration[SasTokenSetting] );
 				DeviceInfo = topologyClient.GetDeviceForHardwareId( hardwareId ).Result;
@@ -81,8 +87,7 @@ namespace SmartHotel.Devices.RoomDevice
 				if ( DeviceInfo == null )
 				{
 					Console.WriteLine( "ERROR: Could not retrieve device information." );
-					cts.Token.WaitHandle.WaitOne();
-					return;
+					Environment.Exit( 2 );
 				}
 
 				HubDeviceClient =
@@ -96,7 +101,7 @@ namespace SmartHotel.Devices.RoomDevice
 				if ( TopologyDeviceClient == null )
 				{
 					Console.WriteLine( "Failed to create Digital Twins DeviceClient!" );
-					cts.Token.WaitHandle.WaitOne();
+					Environment.Exit( 3 );
 				}
 				else
 				{
@@ -106,17 +111,8 @@ namespace SmartHotel.Devices.RoomDevice
 			catch ( Exception ex )
 			{
 				Console.WriteLine( "Error in RoomDevice: {0}", ex.Message );
-				cts.Token.WaitHandle.WaitOne();
+				Environment.Exit( 99 );
 			}
-		}
-
-		private static bool ValidateSettings()
-		{
-			return !string.IsNullOrWhiteSpace( Configuration.GetSection( ManagementApiUrlSetting ).Value )
-				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( HardwareIdSetting ).Value )
-				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( SasTokenSetting ).Value )
-				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( MessageIntervalInMilliSecondsSetting ).Value )
-				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( IoTHubDeviceConnectionStringSetting ).Value );
 		}
 
 		private static async Task SimulateData( CancellationToken ct )
@@ -244,7 +240,19 @@ namespace SmartHotel.Devices.RoomDevice
 
 		private static void RandomizeMotionValue( object state )
 		{
-			_motionDetected = Convert.ToBoolean( _random.Next( 0, 2 ) );
+			bool motionDetected = Convert.ToBoolean( _random.Next( 0, 2 ) );
+			SensorInfo sensorInfo = SensorInfosByDataType[MotionDataType];
+			sensorInfo.UpdateCurrentValue( motionDetected );
+		}
+
+		private static bool ValidateSettings()
+		{
+			return !string.IsNullOrWhiteSpace( Configuration.GetSection( ManagementApiUrlSetting ).Value )
+				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( HardwareIdSetting ).Value )
+				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( SasTokenSetting ).Value )
+				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( MessageIntervalInMilliSecondsSetting ).Value )
+				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( IoTHubDeviceConnectionStringSetting ).Value )
+				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( StartupDelayInSecondsSetting ).Value );
 		}
 	}
 }
