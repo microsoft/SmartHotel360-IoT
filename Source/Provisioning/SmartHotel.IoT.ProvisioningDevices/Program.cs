@@ -19,7 +19,6 @@ namespace SmartHotel.IoT.ProvisioningDevices
 	{
 		private static readonly string DigitalTwinsManagementApiSetting = "ManagementApiUrl";
 		private static readonly string MessageIntervalSetting = "MessageIntervalInMilliSeconds";
-		private static readonly string SensorTypeSetting = "SensorDataType";
 		private static readonly string SasTokenSetting = "SasToken";
 		private static readonly string HardwareIdSetting = "HardwareId";
 		private static readonly string IoTHubConnectionStringSetting = "IoTHubDeviceConnectionString";
@@ -175,40 +174,30 @@ namespace SmartHotel.IoT.ProvisioningDevices
 									 var containerImage = FormatContainerImageName( container.image );
 									 container.image = containerImage;
 
-									 var typeSetting = container.env.FirstOrDefault( s => s.name == SensorTypeSetting );
-
-									 if ( typeSetting != null )
+									 if ( iotHubConnectionStrings.ContainsKey( room ) )
 									 {
-										 if ( iotHubConnectionStrings.ContainsKey( room ) )
+										 string connectionString = iotHubConnectionStrings[room];
+										 var iotSetting = container.env.FirstOrDefault( s => s.name == IoTHubConnectionStringSetting );
+
+										 if ( iotSetting != null )
 										 {
-											 Dictionary<string, string> iotConnectionStrings = iotHubConnectionStrings[room];
+											 iotSetting.value = connectionString;
+										 }
+									 }
 
-											 string deviceType = DeviceHelpers.GetDeviceType( typeSetting.value );
-											 if ( iotConnectionStrings.TryGetValue( deviceType, out string iotConnectionString ) )
-											 {
-												 var iotSetting = container.env.FirstOrDefault( s => s.name == IoTHubConnectionStringSetting );
-
-												 if ( iotSetting != null )
-												 {
-													 iotSetting.value = iotConnectionString;
-												 }
-											 }
+									 DeviceDescription device = provisioningData[room].FirstOrDefault();
+									 if ( device != null )
+									 {
+										 var sasTokenSetting = container.env.FirstOrDefault( e => e.name == SasTokenSetting );
+										 if ( sasTokenSetting != null )
+										 {
+											 sasTokenSetting.value = device.SasToken;
 										 }
 
-										 DeviceDescription device = provisioningData[room].FirstOrDefault( d => d.sensors.Any( s => s.dataType.ToLower() == typeSetting.value.ToLower() ) );
-										 if ( device != null )
+										 var hardwareIdSetting = container.env.FirstOrDefault( e => e.name == HardwareIdSetting );
+										 if ( hardwareIdSetting != null )
 										 {
-											 var sasTokenSetting = container.env.FirstOrDefault( e => e.name == SasTokenSetting );
-											 if ( sasTokenSetting != null )
-											 {
-												 sasTokenSetting.value = device.SasToken;
-											 }
-
-											 var hardwareIdSetting = container.env.FirstOrDefault( e => e.name == HardwareIdSetting );
-											 if ( hardwareIdSetting != null )
-											 {
-												 hardwareIdSetting.value = device.hardwareId;
-											 }
+											 hardwareIdSetting.value = device.hardwareId;
 										 }
 									 }
 								 }
@@ -232,7 +221,7 @@ namespace SmartHotel.IoT.ProvisioningDevices
 				foreach ( KeyValuePair<string, List<DeviceDescription>> provisioningEntry in provisioningData )
 				{
 					iotHubConnectionStrings.TryGetValue( provisioningEntry.Key,
-						out CaseInsensitiveDictionary connectionStringsForThisSpace );
+						out string iotHubConnectionString );
 
 					foreach ( DeviceDescription device in provisioningEntry.Value )
 					{
@@ -248,11 +237,7 @@ namespace SmartHotel.IoT.ProvisioningDevices
 							env = new List<KubernetesEnvironmentSetting>()
 						};
 						container.env.Add( new KubernetesEnvironmentSetting { name = HardwareIdSetting, value = device.hardwareId } );
-						if ( connectionStringsForThisSpace != null
-							 && connectionStringsForThisSpace.TryGetValue( device.name, out string iotHubConnectionString ) )
-						{
-							container.env.Add( new KubernetesEnvironmentSetting { name = IoTHubConnectionStringSetting, value = iotHubConnectionString } );
-						}
+						container.env.Add( new KubernetesEnvironmentSetting { name = IoTHubConnectionStringSetting, value = iotHubConnectionString } );
 						container.env.Add( new KubernetesEnvironmentSetting { name = DigitalTwinsManagementApiSetting, value = DigitalTwinsApiEndpoint } );
 						container.env.Add( new KubernetesEnvironmentSetting
 						{
@@ -260,12 +245,11 @@ namespace SmartHotel.IoT.ProvisioningDevices
 							value = MessageInterval > 0 ? MessageInterval.ToString() : MessageIntervalDefault.ToString()
 						} );
 						container.env.Add( new KubernetesEnvironmentSetting { name = SasTokenSetting, value = device.SasToken } );
-						container.env.Add( new KubernetesEnvironmentSetting { name = SensorTypeSetting, value = device.sensors.First().dataType } );
-						container.env.Add(new KubernetesEnvironmentSetting
+						container.env.Add( new KubernetesEnvironmentSetting
 						{
 							name = StartupDelayInSecondsSetting,
-							value = Math.Floor(deploymentCount / DigitalTwinsApiCallLimiter).ToString()
-						});
+							value = Math.Floor( deploymentCount / DigitalTwinsApiCallLimiter ).ToString()
+						} );
 
 						var template = new KubernetesTemplate
 						{
@@ -378,39 +362,30 @@ namespace SmartHotel.IoT.ProvisioningDevices
 
 						 if ( provisioningData.ContainsKey( name ) )
 						 {
-							 var serviceType = service.environment.FirstOrDefault( e => e.name == SensorTypeSetting );
-							 if ( serviceType != null )
+							 if ( iotHubConnectionStrings.ContainsKey( name ) )
 							 {
-								 if ( iotHubConnectionStrings.ContainsKey( name ) )
+								 string iotConnectionString = iotHubConnectionStrings[name];
+								 var iotSetting = service.environment.FirstOrDefault( s => s.name == IoTHubConnectionStringSetting );
+
+								 if ( iotSetting != null )
 								 {
-									 Dictionary<string, string> iotConnectionStrings = iotHubConnectionStrings[name];
+									 iotSetting.value = iotConnectionString;
+								 }
+							 }
 
-									 string deviceType = DeviceHelpers.GetDeviceType( serviceType.value );
-									 if ( iotConnectionStrings.TryGetValue( deviceType, out string iotConnectionString ) )
-									 {
-										 var iotSetting = service.environment.FirstOrDefault( s => s.name == IoTHubConnectionStringSetting );
-
-										 if ( iotSetting != null )
-										 {
-											 iotSetting.value = iotConnectionString;
-										 }
-									 }
+							 DeviceDescription device = provisioningData[name].FirstOrDefault();
+							 if ( device != null )
+							 {
+								 var sasTokenSetting = service.environment.FirstOrDefault( e => e.name == SasTokenSetting );
+								 if ( sasTokenSetting != null )
+								 {
+									 sasTokenSetting.value = device.SasToken;
 								 }
 
-								 DeviceDescription device = provisioningData[name].FirstOrDefault( d => d.sensors.Any( s => s.dataType.ToLower() == serviceType.value.ToLower() ) );
-								 if ( device != null )
+								 var hardwareIdSetting = service.environment.FirstOrDefault( e => e.name == HardwareIdSetting );
+								 if ( hardwareIdSetting != null )
 								 {
-									 var sasTokenSetting = service.environment.FirstOrDefault( e => e.name == SasTokenSetting );
-									 if ( sasTokenSetting != null )
-									 {
-										 sasTokenSetting.value = device.SasToken;
-									 }
-
-									 var hardwareIdSetting = service.environment.FirstOrDefault( e => e.name == HardwareIdSetting );
-									 if ( hardwareIdSetting != null )
-									 {
-										 hardwareIdSetting.value = device.hardwareId;
-									 }
+									 hardwareIdSetting.value = device.hardwareId;
 								 }
 							 }
 						 }
@@ -428,7 +403,7 @@ namespace SmartHotel.IoT.ProvisioningDevices
 				foreach ( KeyValuePair<string, List<DeviceDescription>> provisioningEntry in provisioningData )
 				{
 					iotHubConnectionStrings.TryGetValue( provisioningEntry.Key,
-						out CaseInsensitiveDictionary connectionStringsForThisSpace );
+						out string iotHubConnectionString );
 
 					foreach ( DeviceDescription device in provisioningEntry.Value )
 					{
@@ -441,7 +416,6 @@ namespace SmartHotel.IoT.ProvisioningDevices
 							image = GetContainerImageName( deviceType ),
 							environment = new List<EnvironmentSetting>()
 						};
-						service.environment.Add( new EnvironmentSetting { name = SensorTypeSetting, value = device.sensors.First().dataType } );
 						service.environment.Add( new EnvironmentSetting { name = HardwareIdSetting, value = device.hardwareId } );
 						service.environment.Add( new EnvironmentSetting { name = DigitalTwinsManagementApiSetting, value = DigitalTwinsApiEndpoint } );
 						service.environment.Add( new EnvironmentSetting
@@ -450,16 +424,12 @@ namespace SmartHotel.IoT.ProvisioningDevices
 							value = MessageInterval > 0 ? MessageInterval.ToString() : MessageIntervalDefault.ToString()
 						} );
 						service.environment.Add( new EnvironmentSetting { name = SasTokenSetting, value = device.SasToken } );
-						if ( connectionStringsForThisSpace != null
-						   && connectionStringsForThisSpace.TryGetValue( device.name, out string iotHubConnectionString ) )
-						{
-							service.environment.Add( new EnvironmentSetting { name = IoTHubConnectionStringSetting, value = iotHubConnectionString } );
-						}
-						service.environment.Add(new EnvironmentSetting
+						service.environment.Add( new EnvironmentSetting { name = IoTHubConnectionStringSetting, value = iotHubConnectionString } );
+						service.environment.Add( new EnvironmentSetting
 						{
 							name = StartupDelayInSecondsSetting,
-							value = Math.Floor(serviceCount / DigitalTwinsApiCallLimiter).ToString()
-						});
+							value = Math.Floor( serviceCount / DigitalTwinsApiCallLimiter ).ToString()
+						} );
 
 						outline.services.Add( serviceKey, service );
 					}
