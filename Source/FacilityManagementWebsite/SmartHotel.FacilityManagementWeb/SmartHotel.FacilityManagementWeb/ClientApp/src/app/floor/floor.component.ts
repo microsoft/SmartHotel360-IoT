@@ -21,8 +21,8 @@ export class FloorComponent implements OnInit, OnDestroy {
     private facilityService: FacilityService,
     private busyService: BusyService) {
     this.roomsById = new Map<string, ISpace>();
-    this.desiredDataByRoomId = new Map<string, IDesired[]>();
-    this.sensorDataByRoomId = new Map<string, ISensor[]>();
+    this.desiredDataByRoomIdThenSensorId = new Map<string, Map<string, IDesired>>();
+    this.sensorDataByRoomIdThenSensorId = new Map<string, Map<string, ISensor>>();
   }
 
   @ViewChild('breadcumbs') private breadcrumbs: BreadcrumbComponent;
@@ -37,8 +37,8 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   public rooms: ISpace[] = null;
   private roomsById: Map<string, ISpace>;
-  private desiredDataByRoomId: Map<string, IDesired[]>;
-  private sensorDataByRoomId: Map<string, ISensor[]>;
+  private desiredDataByRoomIdThenSensorId: Map<string, Map<string, IDesired>>;
+  private sensorDataByRoomIdThenSensorId: Map<string, Map<string, ISensor>>;
   private sensorInterval;
   private theromstatSliderTimeout;
   private lightSliderTimeout;
@@ -119,13 +119,13 @@ export class FloorComponent implements OnInit, OnDestroy {
       this.facilityService.getDesiredData(this.rooms).then((desired: IDesired[]) => {
         if (desired != null && desired.length > 0) {
           desired.forEach(d => {
-            let desiredDataForRoom = this.desiredDataByRoomId.get(d.roomId);
+            let desiredDataForRoom = this.desiredDataByRoomIdThenSensorId.get(d.roomId);
             if (!desiredDataForRoom) {
-              desiredDataForRoom = [];
-              this.desiredDataByRoomId.set(d.roomId, desiredDataForRoom);
+              desiredDataForRoom = new Map<string, IDesired>();
+              this.desiredDataByRoomIdThenSensorId.set(d.roomId, desiredDataForRoom);
             }
 
-            desiredDataForRoom.push(d);
+            desiredDataForRoom.set(d.sensorId, d);
           });
         }
         this.loadSensorData();
@@ -153,13 +153,13 @@ export class FloorComponent implements OnInit, OnDestroy {
           });
         }
         sensors.forEach(s => {
-          let sensorDataForRoom = this.sensorDataByRoomId.get(s.roomId);
+          let sensorDataForRoom = this.sensorDataByRoomIdThenSensorId.get(s.roomId);
           if (!sensorDataForRoom) {
-            sensorDataForRoom = [];
-            this.sensorDataByRoomId.set(s.roomId, sensorDataForRoom);
+            sensorDataForRoom = new Map<string, ISensor>();
+            this.sensorDataByRoomIdThenSensorId.set(s.roomId, sensorDataForRoom);
           }
 
-          sensorDataForRoom.push(s);
+          sensorDataForRoom.set(s.sensorId, s);
         });
       });
     }
@@ -219,10 +219,10 @@ export class FloorComponent implements OnInit, OnDestroy {
     try {
       let desired: IDesired = null;
 
-      if (this.desiredDataByRoomId !== null) {
-        const desiredDatas = this.desiredDataByRoomId.get(sensor.roomId);
+      if (this.desiredDataByRoomIdThenSensorId !== null) {
+        const desiredDatas = this.desiredDataByRoomIdThenSensorId.get(sensor.roomId);
         if (desiredDatas) {
-          desired = desiredDatas.find((d) => d.sensorId === sensor.sensorId);
+          desired = desiredDatas.get(sensor.sensorId);
         }
       }
 
@@ -240,21 +240,21 @@ export class FloorComponent implements OnInit, OnDestroy {
       clearTimeout(this.theromstatSliderTimeout);
     }
 
-    const sensors = this.sensorDataByRoomId.get(room.id);
+    const sensors = this.sensorDataByRoomIdThenSensorId.get(room.id);
     if (!sensors) {
       return;
     }
 
-    const sensor = sensors.find(s => s.sensorDataType === 'Temperature');
+    const sensor = Array.from(sensors.values()).find(s => s.sensorDataType === 'Temperature');
 
     if (!sensor) {
       return;
     }
 
-    const desiredDatas = this.desiredDataByRoomId.get(room.id);
+    const desiredDatas = this.desiredDataByRoomIdThenSensorId.get(room.id);
     let desired: IDesired;
     if (desiredDatas) {
-      desired = desiredDatas.find((d) => d.sensorId === sensor.sensorId);
+      desired = desiredDatas.get(sensor.sensorId);
     }
 
     if (!desired) {
@@ -265,9 +265,11 @@ export class FloorComponent implements OnInit, OnDestroy {
       };
 
       if (desiredDatas) {
-        desiredDatas.push(desired);
+        desiredDatas.set(desired.sensorId, desired);
       } else {
-        this.desiredDataByRoomId.set(room.id, [desired]);
+        const desiredDataForRoom = new Map<string, IDesired>();
+        desiredDataForRoom.set(desired.sensorId, desired);
+        this.desiredDataByRoomIdThenSensorId.set(room.id, desiredDataForRoom);
       }
     } else {
       desired.desiredValue = room.thermostat.desired.toString();
@@ -293,21 +295,21 @@ export class FloorComponent implements OnInit, OnDestroy {
       clearTimeout(this.lightSliderTimeout);
     }
 
-    const sensors = this.sensorDataByRoomId.get(room.id);
+    const sensors = this.sensorDataByRoomIdThenSensorId.get(room.id);
     if (!sensors) {
       return;
     }
 
-    const sensor = sensors.find(s => s.sensorDataType === 'Light');
+    const sensor = Array.from(sensors.values()).find(s => s.sensorDataType === 'Light');
 
     if (!sensor) {
       return;
     }
 
-    const desiredDatas = this.desiredDataByRoomId.get(room.id);
+    const desiredDatas = this.desiredDataByRoomIdThenSensorId.get(room.id);
     let desired: IDesired;
     if (desiredDatas) {
-      desired = desiredDatas.find((d) => d.sensorId === sensor.sensorId);
+      desired = desiredDatas.get(sensor.sensorId);
     }
 
     const desiredValue = (room.light.desired / 100.0).toString();
@@ -317,10 +319,13 @@ export class FloorComponent implements OnInit, OnDestroy {
         sensorId: sensor.sensorId,
         desiredValue: desiredValue
       };
+
       if (desiredDatas) {
-        desiredDatas.push(desired);
+        desiredDatas.set(desired.sensorId, desired);
       } else {
-        this.desiredDataByRoomId.set(room.id, [desired]);
+        const desiredDataForRoom = new Map<string, IDesired>();
+        desiredDataForRoom.set(desired.sensorId, desired);
+        this.desiredDataByRoomIdThenSensorId.set(room.id, desiredDataForRoom);
       }
     } else {
       desired.desiredValue = desiredValue;
