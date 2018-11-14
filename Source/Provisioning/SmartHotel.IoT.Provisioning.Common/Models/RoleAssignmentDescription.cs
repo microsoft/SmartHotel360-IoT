@@ -8,7 +8,7 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 		public string objectName { get; set; }
 		public string roleId { get; set; }
 
-		public RoleAssignment ToDigitalTwins( string objectId, string adTenantId, string spacePath )
+		public RoleAssignment ToDigitalTwins( string objectId, string spacePath, string adTenantId = null )
 		{
 			return new RoleAssignment
 			{

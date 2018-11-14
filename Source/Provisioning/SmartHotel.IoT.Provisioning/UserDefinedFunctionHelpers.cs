@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SmartHotel.IoT.Provisioning.Common;
 using SmartHotel.IoT.Provisioning.Common.Models;
 using SmartHotel.IoT.Provisioning.Common.Models.DigitalTwins;
 
@@ -16,7 +17,7 @@ namespace SmartHotel.IoT.Provisioning
 		public static async Task CreateOrPatchUserDefinedFunctionAsync( this UserDefinedFunctionDescription description,
 			HttpClient httpClient, string udfText, Guid spaceId, ICollection<Matcher> matchers )
 		{
-			UserDefinedFunction userDefinedFunction =
+			UserDefinedFunctionWithMatchers userDefinedFunction =
 				await FindUserDefinedFunctionAsync( httpClient, description.name, spaceId );
 
 			if ( userDefinedFunction != null )
@@ -37,18 +38,19 @@ namespace SmartHotel.IoT.Provisioning
 		/// Returns a user defined fucntion with same name and spaceId if there is exactly one.
 		/// Otherwise returns null.
 		/// </summary>
-		private static async Task<UserDefinedFunction> FindUserDefinedFunctionAsync( HttpClient httpClient, string name,
+		public static async Task<UserDefinedFunctionWithMatchers> FindUserDefinedFunctionAsync( HttpClient httpClient, string name,
 			Guid spaceId )
 		{
 			var filterNames = $"names={name}";
 			var filterSpaceId = $"&spaceIds={spaceId.ToString()}";
 			var filter = $"{filterNames}{filterSpaceId}";
 
-			var response = await httpClient.GetAsync( $"userdefinedfunctions?{filter}&includes=matchers" );
+			var request = HttpMethod.Get.CreateRequest($"userdefinedfunctions?{filter}&includes=matchers");
+			var response = await httpClient.SendAsync( request );
 			if ( response.IsSuccessStatusCode )
 			{
 				var content = await response.Content.ReadAsStringAsync();
-				var userDefinedFunctions = JsonConvert.DeserializeObject<IReadOnlyCollection<UserDefinedFunction>>( content );
+				var userDefinedFunctions = JsonConvert.DeserializeObject<IReadOnlyCollection<UserDefinedFunctionWithMatchers>>( content );
 				var userDefinedFunction = userDefinedFunctions.SingleOrDefault();
 				if ( userDefinedFunction != null )
 				{
