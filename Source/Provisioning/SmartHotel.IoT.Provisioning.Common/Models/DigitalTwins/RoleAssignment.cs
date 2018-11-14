@@ -4,7 +4,7 @@
 	{
 		public string RoleId { get; set; }
 		public string ObjectId { get; set; }
-		public string ObjectIdType => ObjectIdTypes.UserId;
+		public string ObjectIdType { get; set; }
 		public string Path { get; set; }
 		public string TenantId { get; set; }
 
