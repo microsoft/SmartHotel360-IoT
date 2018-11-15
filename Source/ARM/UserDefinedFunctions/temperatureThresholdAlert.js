@@ -21,7 +21,7 @@ function process(telemetry, executionContext) {
 
         // Get parent space
         var parentSpace = sensor.Space();
-        // setSpaceValue(parentSpace.Id, 'Test', null)
+        setSpaceValue(parentSpace.Id, 'Test', null)
         // getMinTempThreshold(parentSpace);
         // getMaxTempThreshold(parentSpace);
 
@@ -51,10 +51,10 @@ function process(telemetry, executionContext) {
 //     // let minTempAlertThresholdProperty;
 //     try {
 //         setSpaceValue(space.Id, 'Test', minTemperatureAlertThresholdPropertyName)
-//         minTempAlertThresholdProperty = getSpaceExtendedProperty(space.Id, minTemperatureAlertThresholdPropertyName);
+//         const minTempAlertThresholdProperty = getSpaceExtendedProperty(space.Id, minTemperatureAlertThresholdPropertyName);
 //         setSpaceValue(space.Id, 'Test', 'Hello-There')
-//     } catch (error) {
-//         setSpaceValue(space.Id, 'ErrorMinThresholdProperty', error);
+//     } catch (minTempThresholdError) {
+//         setSpaceValue(space.Id, 'ErrorMinThresholdProperty', minTempThresholdError);
 //     }
 //     // if (minTempAlertThresholdProperty) {
 //     //     const message = `${minTemperatureAlertThresholdPropertyName}: ${JSON.stringify(minTempAlertThresholdProperty)}`;
