@@ -42,7 +42,7 @@ function process(telemetry, executionContext) {
     }
 }
 
-// function getMinTempThreshold(space) {
+// async function getMinTempThreshold(space) {
 //     if (!space) {
 //         return;
 //     }
@@ -51,7 +51,7 @@ function process(telemetry, executionContext) {
 //     // let minTempAlertThresholdProperty;
 //     try {
 //         setSpaceValue(space.Id, 'Test', minTemperatureAlertThresholdPropertyName)
-//         const minTempAlertThresholdProperty = getSpaceExtendedProperty(space.Id, minTemperatureAlertThresholdPropertyName);
+//         const minTempAlertThresholdProperty = await getSpaceExtendedProperty(space.Id, minTemperatureAlertThresholdPropertyName);
 //         setSpaceValue(space.Id, 'Test', 'Hello-There')
 //     } catch (minTempThresholdError) {
 //         setSpaceValue(space.Id, 'ErrorMinThresholdProperty', minTempThresholdError);
