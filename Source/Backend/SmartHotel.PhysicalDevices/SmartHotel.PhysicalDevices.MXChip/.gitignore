@@ -1,0 +1,8 @@
+# Build folder
+.build/
+
+# VS Code files
+c_cpp_properties.json
+
+.azurecomponent/
+Device/.vscode/arduino.json
