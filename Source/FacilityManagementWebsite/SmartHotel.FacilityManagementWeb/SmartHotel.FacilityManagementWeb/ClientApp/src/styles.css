@@ -105,6 +105,14 @@ body {
   opacity: 0;
 }
 
+.bold {
+  font-weight: bold;
+}
+
+.hittest-hidden {
+  pointer-events: none;
+}
+
 img {
   border: 0;
   vertical-align: middle
