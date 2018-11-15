@@ -121,7 +121,17 @@ void setup()
   initSensors();
 
   Screen.print(2, " > IoT Hub");
+  Screen.print(3, "Connecting...");
+  DevKitMQTTClient_SetOption(OPTION_MINI_SOLUTION_NAME, "SmartHotelDevice");
+  DevKitMQTTClient_Init(true);
 
+  DevKitMQTTClient_SetSendConfirmationCallback(SendConfirmationCallback);
+  DevKitMQTTClient_SetDeviceMethodCallback(DeviceMethodCallback);
+  
+  Screen.print(3, "Connected");
+
+  Screen.print(2, " > Digital Twins");
+  Screen.print(3, "Connecting...");
   deviceInfo = getDTIoTHubDeviceInfo(DT_HARDWARE_ID, DT_SAS_TOKEN);
 
   temperatureSensor = getTemperatureSensorFromDevice(deviceInfo);
@@ -131,13 +141,7 @@ void setup()
   iotHubDeviceId = (char*)malloc(strlen(deviceName) + 1);
   sprintf(iotHubDeviceId, "%s", deviceName);
 
-
-  DevKitMQTTClient_SetOption(OPTION_MINI_SOLUTION_NAME, "SmartHotelDevice");
-  DevKitMQTTClient_Init(true);
-
-  DevKitMQTTClient_SetSendConfirmationCallback(SendConfirmationCallback);
-  DevKitMQTTClient_SetDeviceMethodCallback(DeviceMethodCallback);
-
+  Screen.print(3, "Connected");
 
   sprintf(functionUri, DEVICE_RELAY_FUNCTION_ENDPOINT);
 

@@ -59,4 +59,6 @@ bool createMotionSensorMessagePayload(const char* connectionString, SensorInfo* 
 
 bool sendPayloadToFunction(char *payload, char* functionUri);
 
+char* ensureStringEndsWithSlash(char* originalString);
+
 #endif /* UTILITY_H */

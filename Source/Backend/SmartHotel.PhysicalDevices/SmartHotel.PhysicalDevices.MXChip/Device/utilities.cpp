@@ -303,7 +303,7 @@ bool createMotionSensorMessagePayload(const char* connectionString, SensorInfo* 
 DeviceInfo* getDTIoTHubDeviceInfo(char* hardwareId, char* sasToken)
 {
     char azureFunctionUri[256];
-    sprintf(azureFunctionUri, "%sDevices?hardwareIds=%s&%s", DIGITAL_TWINS_MANAGEMENT_API_ENDPOINT, hardwareId, DEVICES_INCLUDE_ARGUMENT);
+    sprintf(azureFunctionUri, "%sDevices?hardwareIds=%s&%s", ensureStringEndsWithSlash(DIGITAL_TWINS_MANAGEMENT_API_ENDPOINT), hardwareId, DEVICES_INCLUDE_ARGUMENT);
 
     HTTPClient *httpClient = new HTTPClient(HTTP_GET, azureFunctionUri);
     httpClient->set_header("Authorization", sasToken);
@@ -407,4 +407,18 @@ bool sendPayloadToFunction(char *payload, char* functionUri)
     const Http_Response* result = httpClient->send(payload, strlen(payload));
 
     delete httpClient;
+}
+
+char* ensureStringEndsWithSlash(char* originalString)
+{
+    int length = strlen(originalString);
+    if(originalString[length - 1] == '/')
+    {
+        return originalString;
+    }
+    
+    char* correctedString = (char*)malloc(length + 1);
+    sprintf(correctedString, "%s/", originalString);
+
+    return correctedString;
 }

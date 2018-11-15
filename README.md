@@ -214,11 +214,11 @@ From a **Powershell/Command Prompt/Bash** window
 2. Select either the `SmartHotel.Services.FacilityManagement` or `SmartHotel.Services.FacilityManagement` project as the startup project
 3. Update the `appsettings.json` file.
    * SmartHotel.Services.FacilityManagement:
-     * ManagementApiUrl: `digitalTwinsManagementEndpoint` from the **userSettings.json** file from  the [User Settings](#User-Settings) section
-     * MongoDBConnectionString: `cosmosDbConnectionString` from the **userSettings.json** file from  the [User Settings](#User-Settings) section
+     * ManagementApiUrl: `digitalTwinsManagementEndpoint` from the **userSettings.json** file from the [User Settings](#User-Settings) section
+     * MongoDBConnectionString: `cosmosDbConnectionString` from the **userSettings.json** file from the [User Settings](#User-Settings) section
    * SmartHotel.Services.RoomDevicesApi:
-     * IoTHubConnectionString: `iotHubConnectionString` from the **userSettings.json** file from  the [User Settings](#User-Settings) section
-     * DatabaseConnectionString: `cosmosDbConnectionString` from the **userSettings.json** file from  the [User Settings](#User-Settings) section
+     * IoTHubConnectionString: `iotHubConnectionString` from the **userSettings.json** file from the [User Settings](#User-Settings) section
+     * DatabaseConnectionString: `cosmosDbConnectionString` from the **userSettings.json** file from the [User Settings](#User-Settings) section
 4. Run in debug mode.
 
 ## Website
@@ -249,7 +249,6 @@ The Website can be run locally at the same time as its Azure counterpart.
    * {apiEndpoint}: Must be updated to point to wherever your local Facility Management Api is running, but append `/api` (e.g. `http://localhost:3000/api`)
 4. Then run in debug mode.
 
-
 # Physical Devices
 
 //************TODO***************:
@@ -257,14 +256,37 @@ Document turning off the virtual device so that we can run the physical device w
 
 ## MXChip
 
-To set up an MXChip as one of our room devices, follow the instructions on the following page. Skip the instructions in the "Open IoT Workbench Examples" section. Instead, open the [SmartHotel.PhysicalDevices.MXChip](./Source/Backend/SmartHotel.PhysicalDevices/SmartHotel.PhysicalDevices.MXChip) folder in VS Code. Also note that in the "Provision Azure service" section, you should select your IoT hub and the device named in the "demoIoTHubDeviceId" attribute of your userSettings.json file discussed above. The instructions from the "Serial monitor usage" section and beyond can be ignored. Once the sketch code is successfully deployed to the MXChip, it will automatically run anytime it is powered.
-[Get Started with MXChip IoT DevKit](https://github.com/Microsoft/vscode-iot-workbench/blob/master/docs/iot-devkit/devkit-get-started.md)
+### MXChip Setup
+To set up an MXChip as one of our room devices, follow the instructions from [Get Started with MXChip IoT DevKit](https://github.com/Microsoft/vscode-iot-workbench/blob/master/docs/iot-devkit/devkit-get-started.md). **IMPORTANT** - make sure the device is **NOT** connected via USB when installing the `Arduino IDE` and `ST-Link driver`, otherwise you may need to repeat the process for VS Code to see the device.
+* Skip the instructions in the **Open IoT Workbench Examples** section. Instead, open the [Project workspace](./Source/Backend/SmartHotel.PhysicalDevices/SmartHotel.PhysicalDevices.MXChip/project.code-workspace) in VS Code.
+* Also, note that in the **Provision Azure service** section, you should select your IoT hub and the device named in the `demoIoTHubDeviceId` value from the [User Settings](#User-Settings) section.
+* The instructions from the **Serial monitor usage** section and beyond can be ignored.
+* Once the sketch code is successfully deployed to the MXChip, it will automatically run anytime it is powered.
 
-You may see a large number of warnings when the code is compiled (or uploaded). As long as you don't encounter an error, these can be ignored. You may get a fatal error stating that a header file (a .h file) could not be found. If so, simply try again. These errors seem to pop up accasionally for no apparent reason.
+### Compilation and Deployment
+You may see a large number of warnings when the code is compiled (or uploaded). As long as you don't encounter an error, these can be ignored.
+* **If you receive a fatal error stating that a header file (a .h file) could not be found simply try again. These errors seem to pop up accasionally for no apparent reason.**
 
-The MXChip has a built-in temperature sensor that is used to determine the current temperature. It also has an integrated magnetometer, which we're utlilizing to demonstrate the ability to detect the room occupancy. (The idea being that we could detect the opening and closing of a door with a magnet on it.) In order to toggle the occupancy status of the room, simply bring a strong magnet (a small rare-earth magnet works well) near the sensor at the bottom centor of the MXChip board. The last line on the display will toggle between "Vacant" and "Occupied" each time the magnet is brought near the sensor.
+### Demo
+For this demo we are utilizing a number of the built in sensors/components of the device.
 
-The MXChip will only send messages when there is a change in the sensor data, but minor fluctuations in temperature can result in frequent messages. If you wish to disable the sending of data entirely, you can use the Azure Portal to invoke the "StopDeviceFeed" method on the device. The last line of the MXChip's dispaly will then display "Idle", indicating that no data is being sent. To re-start the sending of sensor data, either reboot the MXChip, or invoke the "StartDeviceFeed" method.
+* Temperature
+  * The built-in temperature sensor is used to determine the current temperature.
+  * The current and desired temperature values are shown on the display.
+
+* Occupancy
+  * The integrated magnetometer, is being utilized to demonstrate the ability to detect the room occupancy. It is mimicking the idea that we could detect the opening and closing of a door with a magnet on it. In order to toggle the occupancy status of the room, simply bring a strong magnet (a small rare-earth magnet works well) near the sensor at the bottom centor of the MXChip board. The last line on the display will toggle between `Vacant` and `Occupied` each time the magnet is brought near the sensor.
+
+* Light
+  * The color of RGB LED indicates what the current setting of the room's light is.
+    * **0%-30%:** `Blue`
+    * **31%-65%:** `Green`
+    * **66%-100%:** `Red`
+  * The current and desired light percentage values are shown on the display.
+
+* The MXChip will only send messages when there is a change in the sensor data, but minor fluctuations in temperature can result in frequent messages.
+  * Stop Sending Messages - you can use the Azure Portal to invoke the `StopDeviceFeed` method on the device. The last line of the MXChip's display will then display `Idle`, indicating that no data is being sent.
+  * Start Sending Messages - either reboot the MXChip, or invoke the `StartDeviceFeed` method.
 
 # Contributing
 
