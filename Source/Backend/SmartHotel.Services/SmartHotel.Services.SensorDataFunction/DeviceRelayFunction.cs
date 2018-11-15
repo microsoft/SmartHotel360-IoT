@@ -1,18 +1,18 @@
 using System;
 using System.IO;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Microsoft.Azure.Devices.Client;
-using SmartHotel.Services.DeviceRelayFunction.Models;
 using System.Runtime.Serialization.Json;
 using System.Text;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Devices.Client;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using SmartHotel.Services.SensorDataFunction.Models;
 
-namespace SmartHotel.Services.DeviceRelayFunction
+namespace SmartHotel.Services.SensorDataFunction
 {
     public static class DeviceRelayFunction
     {

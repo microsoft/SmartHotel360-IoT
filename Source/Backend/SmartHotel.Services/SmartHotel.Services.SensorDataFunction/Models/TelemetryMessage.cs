@@ -4,7 +4,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace SmartHotel.Services.DeviceRelayFunction.Models
+namespace SmartHotel.Services.SensorDataFunction.Models
 {
     [DataContract(Name = "TelemetryMessage")]
     public class TelemetryMessage
