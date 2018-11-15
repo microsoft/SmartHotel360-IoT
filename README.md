@@ -137,6 +137,7 @@ When the deployment script is complete, it will output a `userSettings.json` fil
     "clientId":  "{client id}",
     "aadReplyUrl":  "{facility management web reply uri for ADAL}",
     "digitalTwinsManagementEndpoint": "{digital twins management endpoint}",
+    "digitalTwinsManagementApiEndpoint": "{digital twins management api endpoint}",
     "facilityManagementWebsiteUri": "url to the facility management website",
     "facilityManagementApiUri":  "{facility management api}",
     "facilityManagementApiEndpoint":  "{facility management api endpoint}",
@@ -145,7 +146,9 @@ When the deployment script is complete, it will output a `userSettings.json` fil
     "iotHubConnectionString": "{connection string to the iot hub}",
     "cosmosDbConnectionString": "{connection string to the cosmos db}",
     "roomDevicesApiEndpoint":  "{room devices api endpoint - needed for running the Xamarin Mobile Clients}",
-    "mobileRoomSpaceId":  "{space id of the room needed for running the Xamarin Mobile Clients}"
+    "demoRoomSpaceId":  "{space id of the room needed for running demos using the Xamarin Mobile Clients}",
+    "demoIoTHubDeviceId": "{IoT Hub device id of the needed for demoing a physical device}",
+    "DeviceRelayFunctionEndpoint": "{Uri of the device Azure Function}"
 }
 ```
 
@@ -245,6 +248,23 @@ The Website can be run locally at the same time as its Azure counterpart.
    * {apiUri}: Must be updated to point to wherever your local Facility Management Api is running (e.g. `http://localhost:3000`)
    * {apiEndpoint}: Must be updated to point to wherever your local Facility Management Api is running, but append `/api` (e.g. `http://localhost:3000/api`)
 4. Then run in debug mode.
+
+
+# Physical Devices
+
+//************TODO***************:
+Document turning off the virtual device so that we can run the physical device without conflict.
+
+## MXChip
+
+To set up an MXChip as one of our room devices, follow the instructions on the following page. Skip the instructions in the "Open IoT Workbench Examples" section. Instead, open the [SmartHotel.PhysicalDevices.MXChip](./Source/Backend/SmartHotel.PhysicalDevices/SmartHotel.PhysicalDevices.MXChip) folder in VS Code. Also note that in the "Provision Azure service" section, you should select your IoT hub and the device named in the "demoIoTHubDeviceId" attribute of your userSettings.json file discussed above. The instructions from the "Serial monitor usage" section and beyond can be ignored. Once the sketch code is successfully deployed to the MXChip, it will automatically run anytime it is powered.
+[Get Started with MXChip IoT DevKit](https://github.com/Microsoft/vscode-iot-workbench/blob/master/docs/iot-devkit/devkit-get-started.md)
+
+You may see a large number of warnings when the code is compiled (or uploaded). As long as you don't encounter an error, these can be ignored. You may get a fatal error stating that a header file (a .h file) could not be found. If so, simply try again. These errors seem to pop up accasionally for no apparent reason.
+
+The MXChip has a built-in temperature sensor that is used to determine the current temperature. It also has an integrated magnetometer, which we're utlilizing to demonstrate the ability to detect the room occupancy. (The idea being that we could detect the opening and closing of a door with a magnet on it.) In order to toggle the occupancy status of the room, simply bring a strong magnet (a small rare-earth magnet works well) near the sensor at the bottom centor of the MXChip board. The last line on the display will toggle between "Vacant" and "Occupied" each time the magnet is brought near the sensor.
+
+The MXChip will only send messages when there is a change in the sensor data, but minor fluctuations in temperature can result in frequent messages. If you wish to disable the sending of data entirely, you can use the Azure Portal to invoke the "StopDeviceFeed" method on the device. The last line of the MXChip's dispaly will then display "Idle", indicating that no data is being sent. To re-start the sending of sensor data, either reboot the MXChip, or invoke the "StartDeviceFeed" method.
 
 # Contributing
 

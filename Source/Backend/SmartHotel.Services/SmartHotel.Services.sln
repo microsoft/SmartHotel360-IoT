@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHotel.Services.DeviceRelayFunction", "SmartHotel.Services.DeviceRelayFunction\SmartHotel.Services.DeviceRelayFunction.csproj", "{55645A1D-B43C-4344-A1E0-A2C636DA822D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{E8111AD5-AD7D-48AF-AF32-3436BF1200E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8111AD5-AD7D-48AF-AF32-3436BF1200E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8111AD5-AD7D-48AF-AF32-3436BF1200E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55645A1D-B43C-4344-A1E0-A2C636DA822D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55645A1D-B43C-4344-A1E0-A2C636DA822D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55645A1D-B43C-4344-A1E0-A2C636DA822D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55645A1D-B43C-4344-A1E0-A2C636DA822D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
