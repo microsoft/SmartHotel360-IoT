@@ -84,7 +84,7 @@ param(
  $digitalTwinsProvisioningTemplateFilePath = "DigitalTwinsProvisioning-Demo/SmartHotel_Site_Provisioning.yaml",
 
  [int]
- $numberOfAksNodes = 7,
+ $numberOfAksNodes = 3,
 
  [string]
  $templateFilePath = "template.json",

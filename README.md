@@ -126,7 +126,7 @@ The following information parameters are required for the deployment script:
 
 There is a collection of parameters that are used by the deployment script that determine properties like resource location, pricing tiers, and naming. If you wish to modify any of these parameters you can edit the values in [parameters.json](./arm/parameters.json).
 
-**NOTE: In order to support the number of virtual devices required for the demo in the Kubernetes cluster, it will deploy 7 nodes. Please be aware that this can be a large cost.**
+**NOTE: In order to support the number of virtual devices required for the demo in the Kubernetes cluster, it will deploy 3 nodes. Please be aware that this can be a large cost.**
 
 ## User Settings
 When the deployment script is complete, it will output a `userSettings.json` file with information needed for the rest of the deployment.
