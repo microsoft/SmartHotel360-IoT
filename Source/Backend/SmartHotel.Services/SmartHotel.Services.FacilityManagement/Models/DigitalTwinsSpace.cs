@@ -13,5 +13,6 @@ namespace SmartHotel.Services.FacilityManagement.Models
 		public int subtypeId { get; set; }
 		public string parentSpaceId { get; set; }
 		public IEnumerable<Property> properties { get; set; }
+		public IEnumerable<Value> values { get; set; }
 	}
 }
