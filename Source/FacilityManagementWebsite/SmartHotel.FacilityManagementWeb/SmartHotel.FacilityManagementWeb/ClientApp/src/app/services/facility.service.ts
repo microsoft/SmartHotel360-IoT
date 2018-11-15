@@ -150,6 +150,27 @@ export class FacilityService {
     return promise;
   }
 
+  public async getTemperatureAlerts(): Promise<{ [spaceId: string]: string }> {
+    if (!this.isInitialized) {
+      throw this.notInitializedError;
+    }
+
+    const promise = new Promise<{ [spaceId: string]: string }>((resolve, reject) => {
+      this.adalSvc.acquireToken(`${environment.resourceId}`)
+        .toPromise()
+        .then(
+          token => {
+            this.http.get(this.getEndpoint('spaces/temperaturealerts'), { headers: { 'azure_token': token } }
+            ).toPromise().then((data: { [spaceId: string]: string }) => {
+              resolve(data);
+            });
+          }
+        );
+    });
+
+    return promise;
+  }
+
   public executeWhenInitialized(requester: any, callback: (requester: any) => void): boolean {
     if (this.isInitialized) {
       callback(requester);
