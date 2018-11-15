@@ -23,6 +23,11 @@ namespace SmartHotel.Services.FacilityManagement.Models
 		public string Type { get; set; }
 		[DataMember]
 		public int TypeId { get; set; }
+		
+		[DataMember]
+		public string Subtype { get; set; }
+		[DataMember]
+		public int SubtypeId { get; set; }
 		[DataMember]
 		public List<Property> Properties { get; set; }
 		[DataMember]

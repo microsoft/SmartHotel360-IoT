@@ -20,9 +20,17 @@ section {
 
 .room-header {
   grid-row: 1;
+  grid-column-start: 1;
+  grid-column-end: 4;
   color: #bc4c1b;
   font-size: 18px;
   font-weight: 300;
+}
+
+.room-subtype {
+  color: #bc4c1b;
+  font-size: 12px;
+  font-weight: 150;
 }
 
 .room-occupancy {

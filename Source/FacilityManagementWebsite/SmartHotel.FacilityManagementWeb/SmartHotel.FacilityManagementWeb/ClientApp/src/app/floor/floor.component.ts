@@ -350,4 +350,8 @@ export class FloorComponent implements OnInit, OnDestroy {
   sliderChangeEnd() {
     this.isUpdatingSliders = false;
   }
+
+  getFriendlyRoomType(room: ISpace) {
+    return room.subtype.replace('Room', '').replace('VIP', 'VIP ').replace('Conference', 'Conference Room');
+  }
 }

@@ -68,6 +68,8 @@ namespace SmartHotel.Services.FacilityManagement
 					FriendlyName = dtSpace.friendlyName,
 					Type = dtSpace.type,
 					TypeId = dtSpace.typeId,
+					Subtype = dtSpace.subtype,
+					SubtypeId = dtSpace.subtypeId,
 					ParentSpaceId = dtSpace.parentSpaceId ?? string.Empty,
 					Properties = dtSpace.properties?.ToList()
 				};

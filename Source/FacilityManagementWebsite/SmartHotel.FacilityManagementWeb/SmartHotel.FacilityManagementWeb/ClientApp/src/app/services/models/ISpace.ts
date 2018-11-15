@@ -8,6 +8,8 @@ export interface ISpace {
   friendlyName: string;
   type: string;
   typeId: number;
+  subtype: string;
+  subtypeId: number;
   imagePath: string;
   childSpaces: ISpace[];
   properties: IProperty[];

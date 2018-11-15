@@ -1,10 +1,13 @@
-<app-breadcrumb #breadcumbs [tenantId]="tenantId" [hotelBrandId]="hotelBrandId" [hotelBrandName]="hotelBrandName" [hotelId]="hotelId"
-  [hotelIndex]="hotelIndex" [hotelName]="hotelName" [floorName]="floorName"></app-breadcrumb>
+<app-breadcrumb #breadcumbs [tenantId]="tenantId" [hotelBrandId]="hotelBrandId" [hotelBrandName]="hotelBrandName"
+  [hotelId]="hotelId" [hotelIndex]="hotelIndex" [hotelName]="hotelName" [floorName]="floorName"></app-breadcrumb>
 
 <div class="rooms">
   <div *ngFor="let room of rooms" class="room">
     <div class="room-header">
       {{ room.friendlyName }}
+      <div class="room-subtype">
+        {{ getFriendlyRoomType(room) }}
+      </div>
     </div>
     <div class="room-device room-occupancy">
       occupied
