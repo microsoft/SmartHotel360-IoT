@@ -22,6 +22,7 @@ namespace SmartHotel.Services.FacilityManagement
 		private const string HotelBrandTypeName = "HotelBrand";
 		private const string HotelTypeName = "Hotel";
 		private const string FloorTypeName = "Floor";
+		private const string RoomTypeName = "Room";
 		private readonly string ApiPath = "api/v1.0/";
 
 		private readonly string SpacesPath = "spaces";
@@ -137,20 +138,53 @@ namespace SmartHotel.Services.FacilityManagement
 		{
 			HttpClient httpClient = CreateHttpClient();
 
+			var firstFourLevelsResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}" +
+																				 $"?{FirstFourLevelsSpacesFilter}&{IncludesFilter}={TypesIncludesFilter}" );
+			Dictionary<string, DigitalTwinsSpace> firstFourLevelsTopology = JsonConvert.DeserializeObject<ICollection<DigitalTwinsSpace>>( firstFourLevelsResponse )
+				.ToDictionary( dts => dts.id );
+
 			var fifthLevelResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}" +
-																			$"?{FifthLevelSpacesFilter}&{IncludesFilter}={ValuesIncludesFilter}" );
-			var fithLevelTopologyWithValues = JsonConvert.DeserializeObject<ICollection<DigitalTwinsSpace>>( fifthLevelResponse );
-			var spacesWithTemperatureAlerts = fithLevelTopologyWithValues
+																			$"?{FifthLevelSpacesFilter}&{IncludesFilter}={ValuesIncludesFilter},{TypesIncludesFilter}" );
+			var fifthLevelTopologyWithValues = JsonConvert.DeserializeObject<ICollection<DigitalTwinsSpace>>( fifthLevelResponse );
+			var spacesWithTemperatureAlerts = fifthLevelTopologyWithValues
 				.Where( dts => dts.values != null )
 				.Select( dts => new
 				{
-					dts.id,
+					dts,
 					value = dts.values.FirstOrDefault( v => "TemperatureAlert".Equals( v.type, StringComparison.OrdinalIgnoreCase ) )
 				} )
-				.Where(ta => ta.value != null)
-				.ToDictionary( dts => dts.id, dts => dts.value.value );
+				.Where( ta => ta.value != null )
+				.ToArray();
 
-			return spacesWithTemperatureAlerts;
+			Dictionary<string, string> alertMessagesByFriendlySpaceIds = new Dictionary<string, string>();
+			foreach ( var spaceWithAlert in spacesWithTemperatureAlerts )
+			{
+				string friendlyIdentifier = GetFriendlySpaceIdentifier( spaceWithAlert.dts, firstFourLevelsTopology );
+				alertMessagesByFriendlySpaceIds.Add( friendlyIdentifier, spaceWithAlert.value.value );
+			}
+
+			return alertMessagesByFriendlySpaceIds;
+		}
+
+		private string GetFriendlySpaceIdentifier( DigitalTwinsSpace space, Dictionary<string, DigitalTwinsSpace> firstFourLevelsTopology )
+		{
+			string identifier = string.Empty;
+			if ( IsTypeNeededForFriendlyIdentifier( space.type ) )
+			{
+				identifier = space.friendlyName;
+			}
+
+			if ( !string.IsNullOrWhiteSpace( space.parentSpaceId )
+				 && firstFourLevelsTopology.TryGetValue( space.parentSpaceId, out DigitalTwinsSpace parentSpace ) )
+			{
+				string parentIdentifier = GetFriendlySpaceIdentifier( parentSpace, firstFourLevelsTopology );
+				if ( !string.IsNullOrWhiteSpace( parentIdentifier ) )
+				{
+					identifier = string.IsNullOrWhiteSpace( identifier ) ? parentIdentifier : $"{parentIdentifier} -> {identifier}";
+				}
+			}
+
+			return identifier;
 		}
 
 		private static void BuildSpaceHierarchyAndReturnRoomSpaces( List<Space> hierarchicalSpaces, Dictionary<string, List<Space>> allSpacesByParentId )
@@ -210,6 +244,13 @@ namespace SmartHotel.Services.FacilityManagement
 			}
 
 			return content;
+		}
+
+		private bool IsTypeNeededForFriendlyIdentifier( string type )
+		{
+			return RoomTypeName.Equals( type, StringComparison.OrdinalIgnoreCase )
+				   || HotelTypeName.Equals( type, StringComparison.OrdinalIgnoreCase )
+				   || HotelBrandTypeName.Equals( type, StringComparison.OrdinalIgnoreCase );
 		}
 	}
 }

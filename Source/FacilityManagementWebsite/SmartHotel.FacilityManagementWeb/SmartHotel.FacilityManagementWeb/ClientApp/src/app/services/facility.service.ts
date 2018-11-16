@@ -164,14 +164,10 @@ export class FacilityService {
             this.http.get(this.getEndpoint('spaces/temperaturealerts'), { headers: { 'azure_token': token } }
             ).toPromise().then((data: { [spaceId: string]: string }) => {
               if (data !== undefined && data !== null) {
-                const temp: string[] = [];
                 const keys = Object.keys(data);
                 const tempAlerts: ITempAlert[] = [];
-                for (let i = 0; i < 100; i++) {
-                  keys.forEach(k => temp.push(k));
-                }
 
-                temp.forEach(k => tempAlerts.push({
+                keys.forEach(k => tempAlerts.push({
                   spaceFriendlyId: k,
                   alertMessage: data[k]
                 }));
