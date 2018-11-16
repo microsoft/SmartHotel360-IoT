@@ -21,5 +21,4 @@ export class SlidePanelComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

@@ -16,7 +16,8 @@ export class AppComponent implements OnInit, OnDestroy {
   private tempAlertsInterval;
 
   public temperatureAlerts: ITempAlert[];
-  public isOpen = false;
+  public hasAlerts = false;
+  public areAlertsOpen = false;
 
   constructor(private adalService: AdalService,
     private facilityService: FacilityService,
@@ -75,6 +76,10 @@ export class AppComponent implements OnInit, OnDestroy {
   private async loadTempAlerts() {
     const tempAlerts = await this.facilityService.getTemperatureAlerts();
     this.temperatureAlerts = tempAlerts;
-    this.isOpen = this.temperatureAlerts && this.temperatureAlerts.length > 0;
+    this.hasAlerts = this.temperatureAlerts && this.temperatureAlerts.length > 0;
+  }
+
+  public toggleAlertPanel() {
+    this.areAlertsOpen = !this.areAlertsOpen;
   }
 }
