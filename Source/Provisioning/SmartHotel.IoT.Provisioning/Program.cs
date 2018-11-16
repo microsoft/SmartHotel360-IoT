@@ -22,6 +22,8 @@ namespace SmartHotel.IoT.Provisioning
 		private const string AadInstance = "https://login.microsoftonline.com/";
 		private const string DigitalTwinsResourceId = "0b07f429-9f4b-4714-9392-cc5e8e80c8b0";
 
+		private string directoryContainingDigitalTwinsProvisioningFile;
+
 		private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
 		{
 			DefaultValueHandling = DefaultValueHandling.Ignore,
@@ -87,13 +89,18 @@ namespace SmartHotel.IoT.Provisioning
 				HttpClient httpClient = await HttpClientHelper.GetHttpClientAsync( DigitalTwinsApiEndpoint, AadInstance, Tenant,
 					DigitalTwinsResourceId, ClientId, ClientSecret );
 
+				string fullPathToDigitalTwinsProvisioningFile = Path.GetFullPath( DigitalTwinsProvisioningFile );
+				directoryContainingDigitalTwinsProvisioningFile = Path.GetDirectoryName( fullPathToDigitalTwinsProvisioningFile );
+
 				Console.WriteLine( "Loading the provisioning files..." );
 
-				ProvisioningDescription provisioningDescription = ProvisioningHelper.LoadSmartHotelProvisioning( DigitalTwinsProvisioningFile );
+				ProvisioningDescription provisioningDescription = ProvisioningHelper.LoadSmartHotelProvisioning( fullPathToDigitalTwinsProvisioningFile );
 
 				Console.WriteLine( "Successfully loaded provisioning files." );
 
 				Console.WriteLine( "Creating spaces and endpoints..." );
+
+
 
 				await CreateSpacesAsync( httpClient, provisioningDescription.spaces, Guid.Empty, Guid.Empty, userAadObjectIds );
 				Console.WriteLine();
@@ -149,21 +156,11 @@ namespace SmartHotel.IoT.Provisioning
 		}
 
 		private async Task CreateSpacesAsync( HttpClient httpClient, IList<SpaceDescription> spaceDescriptions,
-			Guid parentId, Guid keystoreId, UserAadObjectIdsDescription userAadObjectIds, bool parallelize = false )
+			Guid parentId, Guid keystoreId, UserAadObjectIdsDescription userAadObjectIds )
 		{
-			if ( parallelize )
+			foreach ( SpaceDescription spaceDescription in spaceDescriptions )
 			{
-				Parallel.ForEach( spaceDescriptions, async spaceDescription =>
-				 {
-					 await CreateSpaceAsync( httpClient, spaceDescription, parentId, keystoreId, userAadObjectIds );
-				 } );
-			}
-			else
-			{
-				foreach ( SpaceDescription spaceDescription in spaceDescriptions )
-				{
-					await CreateSpaceAsync( httpClient, spaceDescription, parentId, keystoreId, userAadObjectIds );
-				}
+				await CreateSpaceAsync( httpClient, spaceDescription, parentId, keystoreId, userAadObjectIds );
 			}
 		}
 
@@ -172,23 +169,23 @@ namespace SmartHotel.IoT.Provisioning
 		{
 			Space spaceToCreate = spaceDescription.ToDigitalTwins( parentId );
 			Space existingSpace = await SpaceHelpers.GetUniqueSpaceAsync( httpClient, spaceToCreate.Name, parentId, JsonSerializerSettings );
-			var createdId = !string.IsNullOrWhiteSpace( existingSpace?.Id )
+			var spaceId = !string.IsNullOrWhiteSpace( existingSpace?.Id )
 				? Guid.Parse( existingSpace.Id )
 				: await CreateSpaceAsync( httpClient, spaceToCreate );
 
 			Console.WriteLine();
 
-			if ( createdId != Guid.Empty )
+			if ( spaceId != Guid.Empty )
 			{
 				Guid keystoreIdToUseForChildren = keystoreId;
 				// Keystore creation must happen first to ensure that devices down the tree can get their SaS tokens from it
 				if ( !string.IsNullOrWhiteSpace( spaceDescription.keystoreName ) )
 				{
 					Keystore existingKeystore = await KeyStoresHelper.GetUniqueKeystoreAsync( httpClient,
-						spaceDescription.keystoreName, createdId, JsonSerializerSettings );
+						spaceDescription.keystoreName, spaceId, JsonSerializerSettings );
 					Guid createdKeystoreId = !string.IsNullOrWhiteSpace( existingKeystore?.Id )
 						? Guid.Parse( existingKeystore.Id )
-						: await CreateKeystoreAsync( httpClient, spaceDescription.keystoreName, createdId );
+						: await CreateKeystoreAsync( httpClient, spaceDescription.keystoreName, spaceId );
 					if ( createdKeystoreId != Guid.Empty )
 					{
 						keystoreIdToUseForChildren = createdKeystoreId;
@@ -198,46 +195,53 @@ namespace SmartHotel.IoT.Provisioning
 				// Resources must be created next to ensure that devices created down the tree will succeed
 				if ( spaceDescription.resources != null )
 				{
-					await CreateResourcesAsync( httpClient, spaceDescription.resources, createdId );
+					await CreateResourcesAsync( httpClient, spaceDescription.resources, spaceId );
 				}
 
 				// Types must be created next to ensure that devices/sensors created down the tree will succeed
 				if ( spaceDescription.types != null )
 				{
-					await CreateTypesAsync( httpClient, spaceDescription.types, createdId );
+					await CreateTypesAsync( httpClient, spaceDescription.types, spaceId );
 				}
 
 				if ( spaceDescription.devices != null )
 				{
-					await CreateDevicesAsync( httpClient, spaceDescription.devices, keystoreIdToUseForChildren, createdId );
+					await CreateDevicesAsync( httpClient, spaceDescription.devices, keystoreIdToUseForChildren, spaceId );
+				}
+
+				if ( spaceDescription.matchers != null )
+				{
+					await CreateMatchersAsync( httpClient, spaceDescription.matchers, spaceId );
+				}
+
+				if ( spaceDescription.userDefinedFunctions != null )
+				{
+					await CreateUserDefinedFunctionsAsync( httpClient, spaceDescription.userDefinedFunctions, spaceId );
+				}
+
+				if ( spaceDescription.roleAssignments != null )
+				{
+					await CreateRoleAssignmentsAsync( httpClient, spaceDescription.roleAssignments, spaceId );
 				}
 
 				if ( spaceDescription.users != null )
 				{
-					await CreateUserRoleAssignmentsAsync( httpClient, spaceDescription.users, createdId, userAadObjectIds );
+					await CreateUserRoleAssignmentsAsync( httpClient, spaceDescription.users, spaceId, userAadObjectIds );
 				}
 
 				if ( spaceDescription.propertyKeys != null )
 				{
-					await CreatePropertyKeysAsync( httpClient, spaceDescription.propertyKeys, createdId );
+					await CreatePropertyKeysAsync( httpClient, spaceDescription.propertyKeys, spaceId );
 				}
 
 				if ( spaceDescription.properties != null )
 				{
-					await CreatePropertiesAsync( httpClient, spaceDescription.properties, createdId );
+					await CreatePropertiesAsync( httpClient, spaceDescription.properties, spaceId );
 				}
 
 				if ( spaceDescription.spaces != null )
 				{
-					bool parallelize = false;
-
-					//bool parallelize = spaceDescription.type == HotelType;
-
-					//bool parallelize = spaceDescription.type == BrandType ||
-					//    spaceDescription.type == HotelType ||
-					//    spaceDescription.type == FloorType;
-
-					await CreateSpacesAsync( httpClient, spaceDescription.spaces, createdId, keystoreIdToUseForChildren, userAadObjectIds, parallelize );
+					await CreateSpacesAsync( httpClient, spaceDescription.spaces, spaceId, keystoreIdToUseForChildren, userAadObjectIds );
 				}
 			}
 		}
@@ -299,8 +303,15 @@ namespace SmartHotel.IoT.Provisioning
 				throw new ArgumentException( $"Resources must have a {nameof( spaceId )}" );
 			}
 
+			var space = await SpaceHelpers.GetSpaceAsync( httpClient, spaceId );
+			IReadOnlyCollection<Resource> existingResources = await space.GetExistingChildResourcesAsync( httpClient );
+
 			var resourceIds = new List<Guid>();
-			foreach ( ResourceDescription resourceDescription in resourceDescriptions )
+			var resourcesToCreate =
+				resourceDescriptions.Where( rd =>
+						 !existingResources.Any( er => er.Type.Equals( rd.type, StringComparison.OrdinalIgnoreCase ) ) )
+					.ToArray();
+			foreach ( ResourceDescription resourceDescription in resourcesToCreate )
 			{
 				Resource resource = resourceDescription.ToDigitalTwins( spaceId );
 				Guid createdId = await CreateResourceAsync( httpClient, resource );
@@ -342,13 +353,19 @@ namespace SmartHotel.IoT.Provisioning
 				throw new ArgumentException( $"Types must have a {nameof( spaceId )}" );
 			}
 
-			foreach ( TypeDescription typeDescription in typeDescriptions )
+			var space = await SpaceHelpers.GetSpaceAsync( httpClient, spaceId );
+			IReadOnlyCollection<Type> existingTypes = await space.GetExistingTypesAsync( httpClient );
+
+			var typesToCreate =
+				typeDescriptions.Where( td =>
+						 !existingTypes.Any( et =>
+							  et.Name.Equals( td.name, StringComparison.OrdinalIgnoreCase ) &&
+							  et.Category.Equals( td.category, StringComparison.OrdinalIgnoreCase ) ) )
+					.ToArray();
+			foreach ( TypeDescription typeDescription in typesToCreate )
 			{
 				Type type = typeDescription.ToDigitalTwins( spaceId );
-
-				Console.WriteLine( $"Creating Type: {JsonConvert.SerializeObject( type, Formatting.Indented, JsonSerializerSettings )}" );
-				var request = HttpMethod.Post.CreateRequest( "types", JsonConvert.SerializeObject( type, JsonSerializerSettings ) );
-				await httpClient.SendAsync( request );
+				await type.CreateTypeAsync( httpClient, JsonSerializerSettings );
 			}
 		}
 
@@ -411,6 +428,98 @@ namespace SmartHotel.IoT.Provisioning
 			return null;
 		}
 
+		private static async Task CreateMatchersAsync( HttpClient httpClient, IList<MatcherDescription> matchers, Guid spaceId )
+		{
+			if ( spaceId == Guid.Empty )
+			{
+				throw new ArgumentException( $"Matchers must have a {nameof( spaceId )}" );
+			}
+
+			var space = await SpaceHelpers.GetSpaceAsync( httpClient, spaceId );
+			IReadOnlyCollection<Matcher> existingMatchers = await space.GetExistingMatchersAsync( httpClient );
+
+			var matchersToCreate =
+				matchers.Where( md =>
+						!existingMatchers.Any( em => em.Name.Equals( md.name, StringComparison.OrdinalIgnoreCase ) ) )
+					.ToArray();
+			foreach ( MatcherDescription matcherDescription in matchersToCreate )
+			{
+				Matcher matcher = matcherDescription.ToDigitalTwins( spaceId );
+				await matcher.CreateMatcherAsync( httpClient, JsonSerializerSettings );
+			}
+		}
+
+		private async Task CreateUserDefinedFunctionsAsync( HttpClient httpClient, IList<UserDefinedFunctionDescription> userDefinedFunctions, Guid spaceId )
+		{
+			if ( spaceId == Guid.Empty )
+			{
+				throw new ArgumentException( $"UserDefinedFunctions must have a {nameof( spaceId )}" );
+			}
+
+			foreach ( UserDefinedFunctionDescription userDefinedFunctionDescription in userDefinedFunctions )
+			{
+				ICollection<Matcher> matchers = await MatcherHelpers.FindMatchersAsync( httpClient, userDefinedFunctionDescription.matcherNames, spaceId );
+
+				string scriptPath = userDefinedFunctionDescription.script;
+				if ( !Path.IsPathFullyQualified( scriptPath ) )
+				{
+					scriptPath = Path.Combine( directoryContainingDigitalTwinsProvisioningFile, scriptPath );
+				}
+
+				string udfText = await File.ReadAllTextAsync( scriptPath );
+				if ( String.IsNullOrWhiteSpace( udfText ) )
+				{
+					Console.WriteLine( $"Error creating user defined function: Couldn't read from {userDefinedFunctionDescription.script}" );
+				}
+				else
+				{
+					await userDefinedFunctionDescription.CreateOrPatchUserDefinedFunctionAsync( httpClient, udfText, spaceId,
+						matchers );
+				}
+			}
+		}
+
+		private async Task CreateRoleAssignmentsAsync( HttpClient httpClient, IList<RoleAssignmentDescription> roleAssignmentDescriptions, Guid spaceId )
+		{
+			if ( spaceId == Guid.Empty )
+			{
+				throw new ArgumentException( $"RoleAssignments must have a {nameof( spaceId )}" );
+			}
+
+			string spacePath = await SpaceHelpers.GetSpaceFullPathAsync( httpClient, spaceId );
+			foreach ( RoleAssignmentDescription roleAssignmentDescription in roleAssignmentDescriptions )
+			{
+				string objectId;
+				switch ( roleAssignmentDescription.objectIdType )
+				{
+					case RoleAssignment.ObjectIdTypes.UserDefinedFunctionId:
+						objectId = ( await UserDefinedFunctionHelpers.FindUserDefinedFunctionAsync( httpClient,
+							roleAssignmentDescription.objectName, spaceId ) )?.Id;
+						break;
+					default:
+						throw new ArgumentOutOfRangeException(
+							$"{nameof( RoleAssignment )} with {nameof( RoleAssignmentDescription.objectName )} must" +
+							$" have a known {nameof( RoleAssignmentDescription.objectIdType )}" +
+							$" but instead has {roleAssignmentDescription.objectIdType}" );
+				}
+
+				if ( objectId != null )
+				{
+					var roleAssignment = roleAssignmentDescription.ToDigitalTwins( objectId, spacePath );
+
+					var existingRoleAssignment = await roleAssignment.GetUniqueRoleAssignmentAsync( httpClient );
+					if ( existingRoleAssignment == null )
+					{
+						await roleAssignment.CreateRoleAssignmentAsync( httpClient, JsonSerializerSettings );
+					}
+					else
+					{
+						Console.WriteLine( $"{nameof( RoleAssignment )} already exists, so skipping creation." );
+					}
+				}
+			}
+		}
+
 		private async Task CreateUserRoleAssignmentsAsync( HttpClient httpClient, IList<string> users, Guid spaceId,
 			UserAadObjectIdsDescription userAadObjectIds )
 		{
@@ -423,7 +532,7 @@ namespace SmartHotel.IoT.Provisioning
 			{
 				if ( userAadObjectIds.TryGetValue( user, out string oid ) )
 				{
-					string spacePath = await GetSpaceFullPathAsync( httpClient, spaceId );
+					string spacePath = await SpaceHelpers.GetSpaceFullPathAsync( httpClient, spaceId );
 
 					if ( string.IsNullOrWhiteSpace( spacePath ) )
 					{
@@ -433,16 +542,22 @@ namespace SmartHotel.IoT.Provisioning
 
 					var roleAssignment = new RoleAssignment
 					{
-						RoleId = RoleAssignment.UserRoleId,
+						RoleId = RoleAssignment.RoleIds.User,
 						ObjectId = oid,
+						ObjectIdType = RoleAssignment.ObjectIdTypes.UserId,
 						TenantId = Tenant,
 						Path = spacePath
 					};
 
-					Console.WriteLine( $"Creating RoleAssignment: {JsonConvert.SerializeObject( roleAssignment, Formatting.Indented, JsonSerializerSettings )}" );
-					var request = HttpMethod.Post.CreateRequest( "roleassignments", JsonConvert.SerializeObject( roleAssignment, JsonSerializerSettings ) );
-					var response = await httpClient.SendAsync( request );
-					Console.WriteLine( response.IsSuccessStatusCode ? "succeeded..." : "failed..." );
+					var existingRoleAssignment = await roleAssignment.GetUniqueRoleAssignmentAsync( httpClient );
+					if ( existingRoleAssignment == null )
+					{
+						await roleAssignment.CreateRoleAssignmentAsync( httpClient, JsonSerializerSettings );
+					}
+					else
+					{
+						Console.WriteLine( $"{nameof( RoleAssignment )} already exists, so skipping creation." );
+					}
 				}
 			}
 		}
@@ -454,14 +569,18 @@ namespace SmartHotel.IoT.Provisioning
 				throw new ArgumentException( $"PropertyKey must have a {nameof( spaceId )}" );
 			}
 
-			foreach ( PropertyKeyDescription propertyKeyDescription in propertyKeys )
+			var space = await SpaceHelpers.GetSpaceAsync( httpClient, spaceId );
+			IReadOnlyCollection<PropertyKey> existingPropertyKeys = await space.GetExistingPropertyKeysAsync( httpClient );
+
+			var propertyKeysToCreate =
+				propertyKeys.Where( pkd =>
+						!existingPropertyKeys.Any( epk => epk.Name.Equals( pkd.name, StringComparison.OrdinalIgnoreCase ) ) )
+					.ToArray();
+
+			foreach ( PropertyKeyDescription propertyKeyDescription in propertyKeysToCreate )
 			{
 				PropertyKey propertyKey = propertyKeyDescription.ToDigitalTwins( spaceId );
-
-				Console.WriteLine( $"Creating PropertyKey for Space {spaceId}: {JsonConvert.SerializeObject( propertyKey, Formatting.Indented, JsonSerializerSettings )}" );
-				var request = HttpMethod.Post.CreateRequest( "propertykeys", JsonConvert.SerializeObject( propertyKey, JsonSerializerSettings ) );
-				var response = await httpClient.SendAsync( request );
-				Console.WriteLine( response.IsSuccessStatusCode ? "succeeded..." : "failed..." );
+				await propertyKey.CreatePropertyKeyAsync( spaceId, httpClient, JsonSerializerSettings );
 			}
 		}
 
@@ -472,34 +591,18 @@ namespace SmartHotel.IoT.Provisioning
 				throw new ArgumentException( $"Property must have a {nameof( spaceId )}" );
 			}
 
-			foreach ( PropertyDescription propertyDescription in properties )
+			Space space = await SpaceHelpers.GetSpaceAsync( httpClient, spaceId, "Properties" );
+
+			var propertiesToCreate =
+				properties.Where( pd =>
+						!space.Properties.Any( ep => ep.Name.Equals( pd.name, StringComparison.OrdinalIgnoreCase ) ) )
+					.ToArray();
+
+			foreach ( PropertyDescription propertyDescription in propertiesToCreate )
 			{
 				Property property = propertyDescription.ToDigitalTwins();
-
-				Console.WriteLine( $"Creating Property for Space {spaceId}: {JsonConvert.SerializeObject( property, Formatting.Indented, JsonSerializerSettings )}" );
-				var request = HttpMethod.Post.CreateRequest( $"spaces/{spaceId}/properties", JsonConvert.SerializeObject( property, JsonSerializerSettings ) );
-				var response = await httpClient.SendAsync( request );
-				Console.WriteLine( response.IsSuccessStatusCode ? "succeeded..." : "failed..." );
+				await property.CreatePropertyAsync( spaceId, httpClient, JsonSerializerSettings );
 			}
-		}
-
-		private static async Task<string> GetSpaceFullPathAsync( HttpClient httpClient, Guid spaceId )
-		{
-			if ( spaceId == Guid.Empty )
-			{
-				throw new ArgumentException( $"{nameof( GetSpaceFullPathAsync )} must have a {nameof( spaceId )}" );
-			}
-
-			var request = HttpMethod.Get.CreateRequest( $"spaces/{spaceId}?includes=fullpath" );
-			var response = await httpClient.SendAsync( request );
-			if ( response.IsSuccessStatusCode )
-			{
-				var content = await response.Content.ReadAsStringAsync();
-				var resource = JsonConvert.DeserializeObject<Space>( content );
-				return resource.SpacePaths.FirstOrDefault();
-			}
-
-			return null;
 		}
 	}
 }

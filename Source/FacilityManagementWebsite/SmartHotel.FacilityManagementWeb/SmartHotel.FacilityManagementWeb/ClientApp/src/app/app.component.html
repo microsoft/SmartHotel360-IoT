@@ -7,6 +7,26 @@
   <div class='row fixed-header'>
     <app-nav-menu></app-nav-menu>
   </div>
+  <div class="alert-button-open" *ngIf="hasAlerts && !areAlertsOpen" (click)="toggleAlertPanel()">
+    <img src="/assets/images/alert.png" class="alert-image" />
+  </div>
+  <app-slide-panel class="alert-panel" [class.hittest-hidden]="!areAlertsOpen" [isOpen]="areAlertsOpen">
+    <div class="alert-panel-content">
+      <span class="alert-panel-content-header">Temperature Alerts</span>
+      <ul class="alert-panel-alerts" *ngIf="hasAlerts; else noAlerts">
+        <li *ngFor="let tempAlert of temperatureAlerts" class="temp-alert">
+          <span class="bold">{{tempAlert.spaceFriendlyId}}: </span>
+          <span>{{tempAlert.alertMessage}}</span>
+        </li>
+      </ul>
+      <ng-template #noAlerts>
+        <span class="no-alerts-message">No Alerts</span>
+      </ng-template>
+      <div class="alert-button-close" (click)="toggleAlertPanel()">
+        X
+      </div>
+    </div>
+  </app-slide-panel>
   <!--https://github.com/Napster2210/ngx-spinner#ngxspinner-component-->
   <ngx-spinner size="large" type="square-jelly-box"></ngx-spinner>
 </div>

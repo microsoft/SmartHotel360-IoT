@@ -18,5 +18,6 @@ namespace SmartHotel.IoT.Provisioning.Common.Models.DigitalTwins
 		public string[] SpacePaths { get; set; }
 
 		public List<Space> Children { get; set; }
+		public Property[] Properties { get; set; }
 	}
 }

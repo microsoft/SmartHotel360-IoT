@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using McMaster.Extensions.CommandLineUtils;
 using Newtonsoft.Json;
 using SmartHotel.IoT.Provisioning.Common.Models;
+using SmartHotel.IoT.Provisioning.Common.Models.DigitalTwins;
 using YamlDotNet.Serialization;
 
 namespace SmartHotel.IoT.ProvisioningGenerator
@@ -153,6 +154,24 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 
 			desiredTenantSpace.AddUser( "Head Of Operations" );
 
+			var matcherTemperature = new MatcherDescription { name = "Matcher Temperature", dataTypeValue = "Temperature" };
+			desiredTenantSpace.AddMatcher( matcherTemperature );
+			var temperatureProcessor = new UserDefinedFunctionDescription
+			{
+				name = "Temperature Processor",
+				matcherNames = new List<string>(),
+				script = "../UserDefinedFunctions/temperatureThresholdAlert.js"
+			};
+			temperatureProcessor.matcherNames.Add( matcherTemperature.name );
+			desiredTenantSpace.AddUserDefinedFunction( temperatureProcessor );
+
+			desiredTenantSpace.AddRoleAssignment(new RoleAssignmentDescription
+			{
+				roleId = RoleAssignment.RoleIds.SpaceAdmin,
+				objectName = temperatureProcessor.name,
+				objectIdType = RoleAssignment.ObjectIdTypes.UserDefinedFunctionId
+			});
+
 			foreach ( Brand brand in brands )
 			{
 				string brandFilename = GetBrandProvisioningFilename( brand );
@@ -186,11 +205,11 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			};
 			brandSpaceDescription.AddUser( $"Hotel Brand {brandNumber} Manager" );
 			brandSpaceDescription.AddProperty( new PropertyDescription { name = PropertyKeyDescription.DisplayOrder, value = brandNumber.ToString() } );
-			brandSpaceDescription.AddProperty(new PropertyDescription
+			brandSpaceDescription.AddProperty( new PropertyDescription
 			{
 				name = PropertyKeyDescription.ImagePath,
 				value = $"{imageAssetsRootPath}brands/brand{brandNumber}.jpg"
-			});
+			} );
 
 			// Create the hotels
 			for ( int hotelIndex = 0; hotelIndex < brand.Hotels.Count; hotelIndex++ )
@@ -211,11 +230,11 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 				{ name = PropertyKeyDescription.MinTemperatureAlertThreshold, value = hotelType.MinTempAlertThreshold.ToString() } );
 				hotelSpaceDescription.AddProperty( new PropertyDescription
 				{ name = PropertyKeyDescription.MaxTemperatureAlertThreshold, value = hotelType.MaxTempAlertThreshold.ToString() } );
-				hotelSpaceDescription.AddProperty(new PropertyDescription
+				hotelSpaceDescription.AddProperty( new PropertyDescription
 				{
 					name = PropertyKeyDescription.ImagePath,
 					value = $"{imageAssetsRootPath}hotels/{hotelType.Name.ToLower()}.jpg"
-				});
+				} );
 
 				string brandHotelPrefix = $"{brand.Name}-{hotel.Name}-".Replace( " ", string.Empty );
 
@@ -237,7 +256,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 						name = PropertyKeyDescription.DeviceIdPrefixName,
 						value = brandHotelPrefix
 					} );
-					
+
 					string imagePathSuffix = string.Empty;
 					if ( isVipFloor )
 					{
@@ -245,11 +264,11 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 						floorSpaceDescription.subType = "VIPFloor";
 					}
 
-					floorSpaceDescription.AddProperty(new PropertyDescription
+					floorSpaceDescription.AddProperty( new PropertyDescription
 					{
 						name = PropertyKeyDescription.ImagePath,
 						value = $"{imageAssetsRootPath}floors/{hotelType.Name.ToLower()}{imagePathSuffix}.jpg"
-					});
+					} );
 
 					if ( !isVipFloor && !string.IsNullOrEmpty( hotel.RegularFloorEmployeeUser ) )
 					{

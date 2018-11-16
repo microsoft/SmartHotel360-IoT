@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AdalService } from 'adal-angular4';
 import { IDesired } from './models/IDesired';
 import { ISpace } from './models/ISpace';
+import { ITempAlert } from './models/ITempAlert';
 
 class InitializationCallbackContainer {
   constructor(requester: any, callback: (requester: any) => void) {
@@ -145,6 +146,38 @@ export class FacilityService {
           console.log(err);
           reject(err);
         });
+    });
+
+    return promise;
+  }
+
+  public async getTemperatureAlerts(): Promise<ITempAlert[]> {
+    if (!this.isInitialized) {
+      throw this.notInitializedError;
+    }
+
+    const promise = new Promise<ITempAlert[]>((resolve, reject) => {
+      this.adalSvc.acquireToken(`${environment.resourceId}`)
+        .toPromise()
+        .then(
+          token => {
+            this.http.get(this.getEndpoint('spaces/temperaturealerts'), { headers: { 'azure_token': token } }
+            ).toPromise().then((data: { [spaceId: string]: string }) => {
+              if (data !== undefined && data !== null) {
+                const keys = Object.keys(data);
+                const tempAlerts: ITempAlert[] = [];
+
+                keys.forEach(k => tempAlerts.push({
+                  spaceFriendlyId: k,
+                  alertMessage: data[k]
+                }));
+                resolve(tempAlerts);
+              } else {
+                resolve(null);
+              }
+            });
+          }
+        );
     });
 
     return promise;

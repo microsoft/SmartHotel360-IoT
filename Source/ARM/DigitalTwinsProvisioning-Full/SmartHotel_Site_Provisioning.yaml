@@ -49,6 +49,18 @@ spaces:
   - name: ImagePath
     primitiveDataType: string
     description: Path of the image to display for the space.
+  matchers:
+  - name: Matcher Temperature
+    dataTypeValue: Temperature
+  userDefinedFunctions:
+  - name: Temperature Processor
+    matcherNames:
+    - Matcher Temperature
+    script: ../UserDefinedFunctions/temperatureThresholdAlert.js
+  roleAssignments:
+  - objectIdType: UserDefinedFunctionId
+    objectName: Temperature Processor
+    roleId: 98e44ad7-28d4-4007-853b-b9968ad132d1
   spaceReferences:
   - filename: SmartHotel_SmartHotel360_Provisioning.yaml
   - filename: SmartHotel_Contoso Hotel_Provisioning.yaml

@@ -16,16 +16,24 @@ namespace SmartHotel.IoT.Provisioning.Common
 			var resources = new List<Resource>();
 			foreach ( Space space in spaces )
 			{
-				var request = HttpMethod.Get.CreateRequest( $"resources?spaceId={space.Id}&traverse=Down" );
-				var response = await httpClient.SendAsync( request );
-				if ( response.IsSuccessStatusCode )
-				{
-					var content = await response.Content.ReadAsStringAsync();
-					resources.AddRange( JsonConvert.DeserializeObject<IReadOnlyCollection<Resource>>( content ) );
-				}
+				resources.AddRange( await space.GetExistingChildResourcesAsync( httpClient ) );
 			}
 
 			return resources.AsReadOnly();
+		}
+
+		public static async Task<IReadOnlyCollection<Resource>> GetExistingChildResourcesAsync( this Space space,
+			HttpClient httpClient )
+		{
+			var request = HttpMethod.Get.CreateRequest( $"resources?spaceId={space.Id}&traverse=Down" );
+			var response = await httpClient.SendAsync( request );
+			if ( response.IsSuccessStatusCode )
+			{
+				var content = await response.Content.ReadAsStringAsync();
+				return JsonConvert.DeserializeObject<IReadOnlyCollection<Resource>>( content );
+			}
+
+			return new List<Resource>().AsReadOnly();
 		}
 
 		public static async Task<bool> DeleteResourceAsync( this Resource resource, HttpClient httpClient, JsonSerializerSettings jsonSerializerSettings )

@@ -18,6 +18,8 @@ import { Ng5SliderModule } from 'ng5-slider';
 import { HotelBrandComponent } from './hotel-brand/hotel-brand.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { LoadingComponent } from './loading/loading.component';
+import { SlidePanelComponent } from './slide-panel/slide-panel.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { LoadingComponent } from './loading/loading.component';
     LoginComponent,
     HotelBrandComponent,
     BreadcrumbComponent,
-    LoadingComponent
+    LoadingComponent,
+    SlidePanelComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,7 +41,8 @@ import { LoadingComponent } from './loading/loading.component';
     FormsModule,
     AppRoutingModule,
     NgxSpinnerModule,
-    Ng5SliderModule
+    Ng5SliderModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AdalService,

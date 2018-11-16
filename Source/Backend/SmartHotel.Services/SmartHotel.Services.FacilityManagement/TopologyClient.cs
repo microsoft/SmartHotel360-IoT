@@ -13,6 +13,7 @@ namespace SmartHotel.Services.FacilityManagement
 	{
 		string AccessToken { get; set; }
 		Task<ICollection<Space>> GetSpaces();
+		Task<Dictionary<string, string>> GetSpaceTemperatureAlerts();
 	}
 
 	public class TopologyClient : ITopologyClient
@@ -21,12 +22,17 @@ namespace SmartHotel.Services.FacilityManagement
 		private const string HotelBrandTypeName = "HotelBrand";
 		private const string HotelTypeName = "Hotel";
 		private const string FloorTypeName = "Floor";
+		private const string RoomTypeName = "Room";
 		private readonly string ApiPath = "api/v1.0/";
 
 		private readonly string SpacesPath = "spaces";
 
-		private const string FirstFourLevelsSpacesFilter = "maxlevel=4&minlevel=1&includes=Properties,Types";
-		private const string FifthLevelSpacesFilter = "maxlevel=5&minlevel=5&includes=Types";
+		private const string FirstFourLevelsSpacesFilter = "maxlevel=4&minlevel=1";
+		private const string FifthLevelSpacesFilter = "maxlevel=5&minlevel=5";
+		private const string IncludesFilter = "includes";
+		private const string PropertiesIncludesFilter = "Properties";
+		private const string TypesIncludesFilter = "Types";
+		private const string ValuesIncludesFilter = "Values";
 
 		private readonly IHttpClientFactory _clientFactory;
 		private readonly IConfiguration _config;
@@ -38,18 +44,17 @@ namespace SmartHotel.Services.FacilityManagement
 		}
 
 		public string AccessToken { get; set; }
+
 		public async Task<ICollection<Space>> GetSpaces()
 		{
-			var httpClient = _clientFactory.CreateClient();
-			string managementBaseUrl = _config["ManagementApiUrl"];
-			string protectedManagementBaseUrl = managementBaseUrl.EndsWith( '/' ) ? managementBaseUrl : $"{managementBaseUrl}/";
-			httpClient.BaseAddress = new Uri( protectedManagementBaseUrl );
-			httpClient.DefaultRequestHeaders.Add( "Authorization", $"Bearer {AccessToken}" );
+			HttpClient httpClient = CreateHttpClient();
 
-			var firstFourLevelsResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}?{FirstFourLevelsSpacesFilter}" );
+			var firstFourLevelsResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}" +
+				$"?{FirstFourLevelsSpacesFilter}&{IncludesFilter}={PropertiesIncludesFilter},{TypesIncludesFilter}" );
 			var topology = JsonConvert.DeserializeObject<ICollection<DigitalTwinsSpace>>( firstFourLevelsResponse );
 
-			var fifthLevelResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}?{FifthLevelSpacesFilter}" );
+			var fifthLevelResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}" +
+																			$"?{FifthLevelSpacesFilter}&{IncludesFilter}={TypesIncludesFilter}" );
 			var fithLevelTopology = JsonConvert.DeserializeObject<ICollection<DigitalTwinsSpace>>( fifthLevelResponse );
 			topology = topology.Union( fithLevelTopology ).ToArray();
 
@@ -129,6 +134,59 @@ namespace SmartHotel.Services.FacilityManagement
 			return hierarchicalSpaces;
 		}
 
+		public async Task<Dictionary<string, string>> GetSpaceTemperatureAlerts()
+		{
+			HttpClient httpClient = CreateHttpClient();
+
+			var firstFourLevelsResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}" +
+																				 $"?{FirstFourLevelsSpacesFilter}&{IncludesFilter}={TypesIncludesFilter}" );
+			Dictionary<string, DigitalTwinsSpace> firstFourLevelsTopology = JsonConvert.DeserializeObject<ICollection<DigitalTwinsSpace>>( firstFourLevelsResponse )
+				.ToDictionary( dts => dts.id );
+
+			var fifthLevelResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}" +
+																			$"?{FifthLevelSpacesFilter}&{IncludesFilter}={ValuesIncludesFilter},{TypesIncludesFilter}" );
+			var fifthLevelTopologyWithValues = JsonConvert.DeserializeObject<ICollection<DigitalTwinsSpace>>( fifthLevelResponse );
+			var spacesWithTemperatureAlerts = fifthLevelTopologyWithValues
+				.Where( dts => dts.values != null )
+				.Select( dts => new
+				{
+					dts,
+					value = dts.values.FirstOrDefault( v => "TemperatureAlert".Equals( v.type, StringComparison.OrdinalIgnoreCase ) )
+				} )
+				.Where( ta => ta.value != null )
+				.ToArray();
+
+			Dictionary<string, string> alertMessagesByFriendlySpaceIds = new Dictionary<string, string>();
+			foreach ( var spaceWithAlert in spacesWithTemperatureAlerts )
+			{
+				string friendlyIdentifier = GetFriendlySpaceIdentifier( spaceWithAlert.dts, firstFourLevelsTopology );
+				alertMessagesByFriendlySpaceIds.Add( friendlyIdentifier, spaceWithAlert.value.value );
+			}
+
+			return alertMessagesByFriendlySpaceIds;
+		}
+
+		private string GetFriendlySpaceIdentifier( DigitalTwinsSpace space, Dictionary<string, DigitalTwinsSpace> firstFourLevelsTopology )
+		{
+			string identifier = string.Empty;
+			if ( IsTypeNeededForFriendlyIdentifier( space.type ) )
+			{
+				identifier = space.friendlyName;
+			}
+
+			if ( !string.IsNullOrWhiteSpace( space.parentSpaceId )
+				 && firstFourLevelsTopology.TryGetValue( space.parentSpaceId, out DigitalTwinsSpace parentSpace ) )
+			{
+				string parentIdentifier = GetFriendlySpaceIdentifier( parentSpace, firstFourLevelsTopology );
+				if ( !string.IsNullOrWhiteSpace( parentIdentifier ) )
+				{
+					identifier = string.IsNullOrWhiteSpace( identifier ) ? parentIdentifier : $"{parentIdentifier} -> {identifier}";
+				}
+			}
+
+			return identifier;
+		}
+
 		private static void BuildSpaceHierarchyAndReturnRoomSpaces( List<Space> hierarchicalSpaces, Dictionary<string, List<Space>> allSpacesByParentId )
 		{
 			foreach ( Space parentSpace in hierarchicalSpaces )
@@ -166,6 +224,16 @@ namespace SmartHotel.Services.FacilityManagement
 			return null;
 		}
 
+		private HttpClient CreateHttpClient()
+		{
+			var httpClient = _clientFactory.CreateClient();
+			string managementBaseUrl = _config["ManagementApiUrl"];
+			string protectedManagementBaseUrl = managementBaseUrl.EndsWith( '/' ) ? managementBaseUrl : $"{managementBaseUrl}/";
+			httpClient.BaseAddress = new Uri( protectedManagementBaseUrl );
+			httpClient.DefaultRequestHeaders.Add( "Authorization", $"Bearer {AccessToken}" );
+			return httpClient;
+		}
+
 		private async Task<string> GetFromDigitalTwins( HttpClient httpClient, string requestUri )
 		{
 			HttpResponseMessage httpResponse = await httpClient.GetAsync( requestUri );
@@ -176,6 +244,13 @@ namespace SmartHotel.Services.FacilityManagement
 			}
 
 			return content;
+		}
+
+		private bool IsTypeNeededForFriendlyIdentifier( string type )
+		{
+			return RoomTypeName.Equals( type, StringComparison.OrdinalIgnoreCase )
+				   || HotelTypeName.Equals( type, StringComparison.OrdinalIgnoreCase )
+				   || HotelBrandTypeName.Equals( type, StringComparison.OrdinalIgnoreCase );
 		}
 	}
 }
