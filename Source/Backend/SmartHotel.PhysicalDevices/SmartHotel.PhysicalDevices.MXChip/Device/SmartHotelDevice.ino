@@ -143,8 +143,7 @@ void setup()
 
   Screen.print(3, "Connected");
 
-  sprintf(functionUri, DEVICE_RELAY_FUNCTION_ENDPOINT);
-
+  sprintf(functionUri, "%s?code=%s", DEVICE_RELAY_FUNCTION_ENDPOINT, DEVICE_RELAY_FUNCTION_KEY);
 
   sendIntervalInMs = SystemTickCounterRead();
 
