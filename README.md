@@ -106,7 +106,7 @@ You need to create users having access to your AAD. These can either be users cr
    9. **Hotel 10 Manager**
 
 ## Provision resources in Azure
-In `Source/ARM/` folder of this repository is the deployment script to create and stand up all of the resources to run this demo in Azure. To execute the deployment script, run the following in a **Powershell** window:
+In `/Source/ARM/` folder of this repository is the deployment script to create and stand up all of the resources to run this demo in Azure. To execute the deployment script, run the following in a **Powershell** window:
 
 ```powershell
 .\deploy.ps1 -subscriptionId {subscription id} -resourceGroupName {resource group name} -resourceGroupLocation {resource group location} -managerObjId {manager object id} -employeeObjId {employee object id} -clientId {app id} -clientSecret {app key} -clientServicePrincipalId {service principal id} -aksServicePrincipalId {AKS Service Principal App Id} -aksServicePrincipalKey {AKS Service Principal password}
@@ -133,20 +133,21 @@ When the deployment script is complete, it will output a `userSettings.json` fil
 
 ```json
 {
-    "tenantId":  "{tenant id}",
-    "clientId":  "{client id}",
-    "aadReplyUrl":  "{facility management web reply uri for ADAL}",
+    "tenantId": "{tenant id}",
+    "clientId": "{client id}",
+    "aadReplyUrl": "{facility management web reply uri for ADAL}",
     "digitalTwinsManagementEndpoint": "{digital twins management endpoint}",
     "digitalTwinsManagementApiEndpoint": "{digital twins management api endpoint}",
     "facilityManagementWebsiteUri": "url to the facility management website",
-    "facilityManagementApiUri":  "{facility management api}",
-    "facilityManagementApiEndpoint":  "{facility management api endpoint}",
+    "facilityManagementApiUri": "{facility management api}",
+    "facilityManagementApiEndpoint": "{facility management api endpoint}",
     "storageConnectionString": "{connection string to azure storage account}",
     "eventHubConsumerConnectionString": "{consumer connection string to the event hub}",
     "iotHubConnectionString": "{connection string to the iot hub}",
     "cosmosDbConnectionString": "{connection string to the cosmos db}",
-    "roomDevicesApiEndpoint":  "{room devices api endpoint - needed for running the Xamarin Mobile Clients}",
-    "demoRoomSpaceId":  "{space id of the room needed for running demos using the Xamarin Mobile Clients}",
+    "roomDevicesApiEndpoint": "{room devices api endpoint - needed for running the Xamarin Mobile Clients}",
+    "demoRoomSpaceId": "{space id of the room needed for running demos using the Xamarin Mobile Clients}",
+    "demoRoomKubernetesDeployment": "{name of the demo room kubernetes deployment}",
     "deviceRelayFunctionEndpoint": "{uri of the device azure function}",
     "deviceRelayFunctionKey": "{default key of the device azure function}"
 }
@@ -166,7 +167,7 @@ The Sensor Data function can run locally in Visual Studio. However, in order to 
 1. Log in to the [Azure Portal](https://portal.azure.com).
 2. Navigate to **Function Apps** and select the Azure Function that was created during [Setup](#Setup).
 3. Click the **Stop** button to disable the Azure Function.
-4. Open the `/backend/src/SmartHotel.Services/SmartHotel.Services.sln` solution in Visual Studio 2017
+4. Open the `/Source/Backend/SmartHotel.Services/SmartHotel.Services.sln` solution in Visual Studio 2017
 5. Set the `SmartHotel.Services.SensorDataFunction` project as the startup project
 6. Right-click the `SmartHotel.Services.SensorDataFunction` project in the **Solution Explorer**
 7. Add a new json file named: `local.settings.json` and set the contents to this:
@@ -192,11 +193,11 @@ While running the devices locally, we need to remove the instances that exist in
 
 1. `kubectl delete pods,deployments,replicasets --all` - this removes ALL pods from the cluster, including the Room Devices Api pod.
 2. If NOT running the Room Devices Api locally, then re-deploy that pod to the cluster:
-   * Change directory to `/backend/src/SmartHotel.Services`
+   * Change directory to `/Source/Backend/SmartHotel.Services`
    * `kubectl apply -f deployments.demo.yaml`
 
 To redeploy the devices to the cluster:
-* Change directory to `/backend/src/SmartHotel.Devices`
+* Change directory to `/Source/Backend/SmartHotel.Devices`
 * `kubectl apply -f deployments.demo.yaml`
 
 ## APIs
@@ -205,12 +206,12 @@ The Apis can be run locally at the same time as their Azure counterparts.
 ### Running via Docker
 From a **Powershell/Command Prompt/Bash** window
 
-1. Change directory to `/backend/src/SmartHotel.Services`
+1. Change directory to `/Source/Backend/SmartHotel.Services`
 2. `docker-compose build` - only required if you're making changes and want to see them.
 3. `docker-compose -f docker-compose.yml -f docker-compose.override.yml up`
 
 ## Running via Visual Studio
-1. Open the `/backend/src/SmartHotel.Services/SmartHotel.Services.sln` solution in Visual Studio 2017
+1. Open the `/Source/Backend/SmartHotel.Services/SmartHotel.Services.sln` solution in Visual Studio 2017
 2. Select either the `SmartHotel.Services.FacilityManagement` or `SmartHotel.Services.FacilityManagement` project as the startup project
 3. Update the `appsettings.json` file.
    * SmartHotel.Services.FacilityManagement:
@@ -224,7 +225,7 @@ From a **Powershell/Command Prompt/Bash** window
 ## Website
 The Website can be run locally at the same time as its Azure counterpart.
 
-1. Open the `/FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb.sln` solution in Visual Studio 2017
+1. Open the `/Source/FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb.sln` solution in Visual Studio 2017
 2. If you desire the website to connect to the Facility Management API in Azure, then run in debug mode.
 3. Otherwise, update the `environment.ts` and `environment.prod.ts` files under `/SmartHotel.FacilityManagementWeb/ClientApp/src/environments`:
 
@@ -251,8 +252,15 @@ The Website can be run locally at the same time as its Azure counterpart.
 
 # Physical Devices
 
-//************TODO***************:
-Document turning off the virtual device so that we can run the physical device without conflict.
+In order to run a physical device, we need to remove the virtual device that exists in the Kubernetes cluster, otherwise they will be sending conflicting messages to Digital Twins. Run the following steps from a **Powershell/Command Prompt/Bash** window:
+
+1. `kubectl delete deployments {deploymentname}`
+   * Replace `{deploymentname}` with the `demoRoomKubernetesDeployment` value from the [User Settings](#User-Settings) section - this removes the pod running the virtual device from the cluster.
+
+To redeploy the virtual device pod to the cluster when done with the physical device:
+1. Change directory to `/Source/Backend/SmartHotel.Devices`
+2. `kubectl apply -f deployments.demo.yaml`
+   * This will attempt to deploy all the virtual devices. Since we only removed the one deployment, it will show as created and the rest will show as unchanged.
 
 ## MXChip
 

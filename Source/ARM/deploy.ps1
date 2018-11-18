@@ -306,10 +306,13 @@ if( -not (Test-Path $provisioningOutput))
 }
 
 Copy-Item $provisioningOutput -Destination "../ProvisioningDevicesBits"
-$demoRoom = (Get-Content "$provisioningOutput" | Out-String | ConvertFrom-Json).'SmartHotel360-SH360Elite1-Room101'[0]
+$demoRoomName = 'SmartHotel360-SH360Elite1-Room101'
+$demoRoomNameLowercase = $demoRoomName.ToLower()
+$demoRoom = (Get-Content "$provisioningOutput" | Out-String | ConvertFrom-Json).$demoRoomName[0]
 $demoRoomSpaceId = $demoRoom.SpaceId
 $demoRoomDeviceHardwareId = $demoRoom.hardwareId
 $demoRoomDeviceSaSToken = $demoRoom.SasToken
+$demoRoomKubernetesDeploymentName = "sh.d.room.$demoRoomNameLowercase"
 Pop-Location
 
 #Update Devices and Services Docker/Kubernetes yaml
@@ -601,6 +604,7 @@ $savedSettings = [PSCustomObject]@{
     cosmosDbConnectionString = $cosmosDbConnectionString
     roomDevicesApiEndpoint = "http://$roomDevicesApiUri/api"
     demoRoomSpaceId = $demoRoomSpaceId
+    demoRoomKubernetesDeployment = $demoRoomKubernetesDeploymentName
     deviceRelayFunctionEndpoint = $deviceRelayFunctionEndpoint
     deviceRelayFunctionKey = $deviceRelayFunctionKey
 };
