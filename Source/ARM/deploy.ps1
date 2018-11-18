@@ -98,6 +98,7 @@ function Reset-Console-Coloring {
     $Host.UI.RawUI.ForegroundColor = 'White'
 }
 
+# https://markheath.net/post/managing-azure-function-keys
 function getKuduCreds([string]$appName, [string]$resourceGroup)
 {
     $user = az webapp deployment list-publishing-profiles -n $appName -g $resourceGroup `
