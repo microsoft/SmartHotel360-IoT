@@ -1,5 +1,7 @@
 using System;
 using System.IO;
+using System.Net;
+using System.Net.Http;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Devices.Client;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using SmartHotel.Services.SensorDataFunction.Models;
@@ -17,13 +20,13 @@ namespace SmartHotel.Services.SensorDataFunction
     public static class DeviceRelayFunction
     {
         [FunctionName("DeviceRelayFunction")]
-        public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest req,
+        public static async Task<HttpResponseMessage> Run(
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequestMessage req,
             ILogger log)
         {
             try
             {
-                string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+                string requestBody = await req.Content.ReadAsStringAsync();
 
                 var telemetryMessage = JsonConvert.DeserializeObject<TelemetryMessage>(requestBody);
 
@@ -33,8 +36,9 @@ namespace SmartHotel.Services.SensorDataFunction
 
                 if (topologyDeviceClient == null)
                 {
-                    log.LogError($"DeviceRelayFunction failed to create a TopologyDeviceClient.");
-                    return new StatusCodeResult(500);
+                    string error = $"DeviceRelayFunction failed to create a TopologyDeviceClient.";
+                    log.LogError(error);
+                    return req.CreateResponse(HttpStatusCode.InternalServerError, error);
                 }
 
                 telemetryMessage.ConnectionString = null;
@@ -57,11 +61,12 @@ namespace SmartHotel.Services.SensorDataFunction
             }
             catch (Exception ex)
             {
-                log.LogError($"DeviceRelayFunction failed: {ex}");
-                return new StatusCodeResult(500);
+                string error = $"DeviceRelayFunction failed: {ex}";
+                log.LogError(error);
+                return req.CreateResponse(HttpStatusCode.InternalServerError, error);
             }
 
-            return new OkResult();
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
     }
 }

@@ -7,3 +7,5 @@
 #define DIGITAL_TWINS_MANAGEMENT_API_ENDPOINT "{DigitalTwinsManagementApiEndpoint}"
 
 #define DEVICE_RELAY_FUNCTION_ENDPOINT "{DeviceRelayFunctionEndpoint}"
+
+#define DEVICE_RELAY_FUNCTION_KEY "{DeviceRelayFunctionKey}"

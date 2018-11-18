@@ -148,7 +148,8 @@ When the deployment script is complete, it will output a `userSettings.json` fil
     "roomDevicesApiEndpoint":  "{room devices api endpoint - needed for running the Xamarin Mobile Clients}",
     "demoRoomSpaceId":  "{space id of the room needed for running demos using the Xamarin Mobile Clients}",
     "demoIoTHubDeviceId": "{IoT Hub device id of the needed for demoing a physical device}",
-    "DeviceRelayFunctionEndpoint": "{Uri of the device Azure Function}"
+    "DeviceRelayFunctionEndpoint": "{Uri of the device Azure Function}",
+    "DeviceRelayFunctionKey": "{Default key of the device Azure Function}"
 }
 ```
 

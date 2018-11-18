@@ -7,6 +7,7 @@
 #include "RGB_LED.h"
 #include "Sensor.h"
 #include "http_client.h"
+#include "config.h"
 #include "utilities.h"
 
 #define RGB_LED_BRIGHTNESS 32
