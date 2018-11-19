@@ -515,7 +515,7 @@ $mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DTSasToken}","
 $mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DTHardwareId}","$demoRoomDeviceHardwareId")
 $mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DigitalTwinsManagementApiEndpoint}","$dtApiEndpoint")
 $mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DeviceRelayFunctionEndpoint}","$deviceRelayFunctionEndpoint")
-$mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DEVICE_RELAY_FUNCTION_KEY}","$deviceRelayFunctionKey")
+$mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DeviceRelayFunctionKey}","$deviceRelayFunctionKey")
 
 $mxDeviceConfigFileContent | Set-Content $fullMxDeviceConfigFilePath -Force
 
