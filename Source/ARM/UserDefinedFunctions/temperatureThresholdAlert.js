@@ -3,8 +3,8 @@ const noTempAlertMessage = 'Temperature is within desired norms.';
 const minTemperatureAlertThresholdPropertyName = 'MinTemperatureAlertThreshold';
 const maxTemperatureAlertThresholdPropertyName = 'MaxTemperatureAlertThreshold';
 
-const maxTemperatureThreshold = 85;
-const minTemperatureThreshold = 65;
+const maxTempThresholdFallback = 85;
+const minTempThresholdFallback = 65;
 
 function process(telemetry, executionContext) {
     try {
@@ -17,20 +17,26 @@ function process(telemetry, executionContext) {
 
         // Retrieve the sensor reading
         var temperatureValue = JSON.parse(telemetry.Message);
-        log(`TemperatureValue: ${temperatureValue}`);
 
         // Get parent space
         var parentSpace = sensor.Space();
-        setSpaceValue(parentSpace.Id, 'Test', null)
-        // getMinTempThreshold(parentSpace);
-        // getMaxTempThreshold(parentSpace);
 
-        if (temperatureValue > maxTemperatureThreshold) {
-            const highTempAlert = `${temperatureAlertValueDataType}: ${temperatureValue}° is above maximum threshold of ${maxTemperatureThreshold}°.`;
+        let minTempThreshold = getMinTempThreshold(parentSpace);
+        if (minTempThreshold === undefined) {
+            minTempThreshold = minTempThresholdFallback;
+        }
+
+        let maxTempThreshold = getMaxTempThreshold(parentSpace);
+        if (maxTempThreshold === undefined) {
+            maxTempThreshold = maxTempThresholdFallback;
+        }
+
+        if (temperatureValue > maxTempThreshold) {
+            const highTempAlert = `${temperatureAlertValueDataType}: ${temperatureValue}° is above maximum threshold of ${maxTempThreshold}°.`;
             setSpaceValue(parentSpace.Id, temperatureAlertValueDataType, highTempAlert);
 
-        } else if (temperatureValue < minTemperatureThreshold) {
-            const lowTempAlert = `${temperatureAlertValueDataType}: ${temperatureValue}° is below minimum threshold of ${minTemperatureThreshold}°.`;
+        } else if (temperatureValue < minTempThreshold) {
+            const lowTempAlert = `${temperatureAlertValueDataType}: ${temperatureValue}° is below minimum threshold of ${minTempThreshold}°.`;
             setSpaceValue(parentSpace.Id, temperatureAlertValueDataType, lowTempAlert);
 
         } else {
@@ -42,42 +48,60 @@ function process(telemetry, executionContext) {
     }
 }
 
-// async function getMinTempThreshold(space) {
-//     if (!space) {
-//         return;
-//     }
-//     setSpaceValue(space.Id, 'Test', 'Hello')
+function getMinTempThreshold(space) {
+    if (!space) {
+        return;
+    }
 
-//     // let minTempAlertThresholdProperty;
-//     try {
-//         setSpaceValue(space.Id, 'Test', minTemperatureAlertThresholdPropertyName)
-//         const minTempAlertThresholdProperty = await getSpaceExtendedProperty(space.Id, minTemperatureAlertThresholdPropertyName);
-//         setSpaceValue(space.Id, 'Test', 'Hello-There')
-//     } catch (minTempThresholdError) {
-//         setSpaceValue(space.Id, 'ErrorMinThresholdProperty', minTempThresholdError);
-//     }
-//     // if (minTempAlertThresholdProperty) {
-//     //     const message = `${minTemperatureAlertThresholdPropertyName}: ${JSON.stringify(minTempAlertThresholdProperty)}`;
-//     //     log(message)
-//     //     setSpaceValue(space.Id, 'MinThresholdPropery', message);
-//     // }
-//     // else {
-//     //     return getMinTempThreshold(space.Parent())
-//     // }
-// }
+    let minTempAlertThresholdProperty;
+    try {
+        minTempAlertThresholdProperty = getSpaceExtendedProperty(space.Id, minTemperatureAlertThresholdPropertyName);
+    } catch (error) {
+        // This will occur if the property does not exist on this space.
+    }
 
-// function getMaxTempThreshold(space) {
-//     if (!space) {
-//         return;
-//     }
+    if (minTempAlertThresholdProperty) {
+        return JSON.parse(minTempAlertThresholdProperty.Value);
+    }
+    else {
+        try {
+            const parentSpace = space.Parent();
+            if (parentSpace === undefined || parentSpace === null) {
+                return undefined;
+            }
+            return getMinTempThreshold()
+        } catch (error) {
+            // protecting against an error occurring when getting the parent space.
+            return undefined;
+        }
+    }
+}
 
-//     const maxTempAlertThresholdProperty = space.ExtendedProperty(maxTemperatureAlertThresholdPropertyName);
-//     if (maxTempAlertThresholdProperty) {
-//         const message = `${maxTemperatureAlertThresholdPropertyName}: ${JSON.stringify(maxTempAlertThresholdProperty)}`;
-//         log(message)
-//         setSpaceValue(space.Id, 'MaxThresholdPropery', message);
-//     }
-//     else {
-//         return getMaxTempThreshold(space.Parent())
-//     }
-// }
+function getMaxTempThreshold(space) {
+    if (!space) {
+        return;
+    }
+
+    let maxTempAlertThresholdProperty;
+    try {
+        maxTempAlertThresholdProperty = getSpaceExtendedProperty(space.Id, maxTemperatureAlertThresholdPropertyName);
+    } catch (error) {
+        // This will occur if the property does not exist on this space.
+    }
+
+    if (maxTempAlertThresholdProperty) {
+        return JSON.parse(maxTempAlertThresholdProperty.Value);
+    }
+    else {
+        try {
+            const parentSpace = space.Parent();
+            if (parentSpace === undefined || parentSpace === null) {
+                return undefined;
+            }
+            return getMaxTempThreshold()
+        } catch (error) {
+            // protecting against an error occurring when getting the parent space.
+            return undefined;
+        }
+    }
+}

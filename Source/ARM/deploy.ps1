@@ -98,6 +98,31 @@ function Reset-Console-Coloring {
     $Host.UI.RawUI.ForegroundColor = 'White'
 }
 
+# https://markheath.net/post/managing-azure-function-keys
+function getKuduCreds([string]$appName, [string]$resourceGroup)
+{
+    $user = az webapp deployment list-publishing-profiles -n $appName -g $resourceGroup `
+            --query "[?publishMethod=='MSDeploy'].userName" -o tsv
+
+    $pass = az webapp deployment list-publishing-profiles -n $appName -g $resourceGroup `
+            --query "[?publishMethod=='MSDeploy'].userPWD" -o tsv
+
+    $pair = "$($user):$($pass)"
+    $encodedCreds = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($pair))
+    return $encodedCreds
+}
+
+function getFunctionKey([string]$appName, [string]$functionName, [string]$encodedCreds)
+{
+    $jwt = Invoke-RestMethod -Uri "https://$appName.scm.azurewebsites.net/api/functions/admin/token" -Headers @{Authorization=("Basic {0}" -f $encodedCreds)} -Method GET
+
+    $keys = Invoke-RestMethod -Method GET -Headers @{Authorization=("Bearer {0}" -f $jwt)} `
+            -Uri "https://$appName.azurewebsites.net/admin/functions/$functionName/keys" 
+
+    $code = $keys.keys[0].value
+    return $code
+}
+
 #******************************************************************************
 # Script body
 # Execution begins here
@@ -281,7 +306,13 @@ if( -not (Test-Path $provisioningOutput))
 }
 
 Copy-Item $provisioningOutput -Destination "../ProvisioningDevicesBits"
-$mobileRoomSpaceId = (Get-Content "$provisioningOutput" | Out-String | ConvertFrom-Json).'SmartHotel360-SH360Elite1-Room101'[0].SpaceId
+$demoRoomName = 'SmartHotel360-SH360Elite1-Room101'
+$demoRoomNameLowercase = $demoRoomName.ToLower()
+$demoRoom = (Get-Content "$provisioningOutput" | Out-String | ConvertFrom-Json).$demoRoomName[0]
+$demoRoomSpaceId = $demoRoom.SpaceId
+$demoRoomDeviceHardwareId = $demoRoom.hardwareId
+$demoRoomDeviceSaSToken = $demoRoom.SasToken
+$demoRoomKubernetesDeploymentName = "sh.d.room.$demoRoomNameLowercase"
 Pop-Location
 
 #Update Devices and Services Docker/Kubernetes yaml
@@ -460,9 +491,36 @@ Remove-Item -Path $publishOutputFolder -Recurse -Force
 Write-Host "Publishing the Azure Function to Azure"
 az functionapp deployment source config-zip --resource-group $resourceGroupName --name $functionSiteName --src $deploymentZip
 
+$deviceRelayFunctionName = "DeviceRelayFunction"
+$encodedFunctionCreds = getKuduCreds -appName $functionSiteName -resourceGroup $resourceGroupName
+$deviceRelayFunctionKey = getFunctionKey -appName $functionSiteName -functionName $deviceRelayFunctionName -encodedCreds $encodedFunctionCreds
+
 Remove-Item -Path $deploymentZip -Recurse -Force
 Write-Host "Publishing completed"
 Pop-Location
+
+Write-Host
+Write-Host "Updating the MXChip Device's config.h to point to the deployed azure resources."
+Write-Host
+
+$deviceRelayFunctionEndpoint = "https://$functionSiteName.azurewebsites.net/api/$deviceRelayFunctionName"
+
+$mxChipDeviceConfigFile = "../Backend/SmartHotel.PhysicalDevices/SmartHotel.PhysicalDevices.MXChip/Device/config.h"
+$fullMxDeviceConfigFilePath = Resolve-Path "$mxChipDeviceConfigFile"
+
+Write-Host "Updating $fullMxDeviceConfigFilePath..."
+
+$mxDeviceConfigFileContent = Get-Content $fullMxDeviceConfigFilePath -raw
+$mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DTSasToken}","$demoRoomDeviceSaSToken")
+$mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DTHardwareId}","$demoRoomDeviceHardwareId")
+$mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DigitalTwinsManagementApiEndpoint}","$dtApiEndpoint")
+$mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DeviceRelayFunctionEndpoint}","$deviceRelayFunctionEndpoint")
+$mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DeviceRelayFunctionKey}","$deviceRelayFunctionKey")
+
+$mxDeviceConfigFileContent | Set-Content $fullMxDeviceConfigFilePath -Force
+
+Write-Host "Update complete."
+Write-Host
 
 Write-Host
 Write-Host
@@ -545,7 +603,10 @@ $savedSettings = [PSCustomObject]@{
     iotHubConnectionString = $iotHubServiceConnectionString
     cosmosDbConnectionString = $cosmosDbConnectionString
     roomDevicesApiEndpoint = "http://$roomDevicesApiUri/api"
-    mobileRoomSpaceId = $mobileRoomSpaceId 
+    demoRoomSpaceId = $demoRoomSpaceId
+    demoRoomKubernetesDeployment = $demoRoomKubernetesDeploymentName
+    deviceRelayFunctionEndpoint = $deviceRelayFunctionEndpoint
+    deviceRelayFunctionKey = $deviceRelayFunctionKey
 };
 
 $path = Get-Location

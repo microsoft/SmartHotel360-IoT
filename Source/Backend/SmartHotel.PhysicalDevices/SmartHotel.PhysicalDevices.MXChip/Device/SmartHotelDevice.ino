@@ -207,9 +207,10 @@ void loop()
     }
     else
     {
-      DevKitMQTTClient_Check();
       Screen.print(3, "Idle");
     }
+
+    DevKitMQTTClient_Check();
   }
   delay(1000);
 }
