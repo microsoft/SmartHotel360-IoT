@@ -64,7 +64,7 @@ Click settings --> Required Permissions
 * Select the API you'd like to use to get external data into Digital Twins (e.g. Microsoft Graph)
 * Select the permissions that your app needs to have in order to access the correct information
 * Select Save, and then click Add again
-* Select the "Azure Smart Spaces Service" API
+* Select the "Azure Digital Twins" API
 * Check the Read/Write Access delegated permissions box
 * Save, and select Grant Permissions
 
