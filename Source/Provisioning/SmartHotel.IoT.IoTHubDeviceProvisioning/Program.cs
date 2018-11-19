@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Polly;
 using Polly.Retry;
+using Polly.Wrap;
 using SmartHotel.IoT.IoTHubDeviceProvisioning.Extensions;
 using SmartHotel.IoT.Provisioning.Common;
 using SmartHotel.IoT.Provisioning.Common.Extensions;
@@ -23,7 +24,7 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 	{
 		private static string _actionMessage = "Creating";
 		private static string _actionMessagePastTense = "Created";
-		private RetryPolicy _retryPolicy;
+		private PolicyWrap _retryPolicy;
 		public static async Task<int> Main( string[] args ) => await CommandLineApplication.ExecuteAsync<Program>( args );
 
 		[Option( "-az|--AzureCliPath", Description = "Path to the Azure Cli." )]
@@ -53,9 +54,11 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 		{
 			try
 			{
-				_retryPolicy = Policy.Handle<ThrottlingBacklogTimeoutException>()
+				var timeoutPolicy = Policy.Timeout(TimeSpan.FromSeconds(20));
+				var retryPolicy = Policy.Handle<ThrottlingBacklogTimeoutException>()
 					.WaitAndRetry( 5, retryAttempt => TimeSpan.FromSeconds( 10 * retryAttempt ),
 						( ex, t ) => Console.WriteLine( $"Device action throttled, retrying in {t.TotalSeconds} seconds..." ) );
+				_retryPolicy = retryPolicy.Wrap(timeoutPolicy);
 
 				if ( RemoveDevices )
 				{
@@ -131,15 +134,18 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 
 					string deviceId = $"{deviceIdPrefix}";
 
-					Console.WriteLine( $"{_actionMessage} device: {deviceId}" );
+					Console.WriteLine( $"{_actionMessage} device: {deviceId}..." );
 
 					_retryPolicy.Execute( () => ExecuteIoTHubAction( deviceId ) );
 
 					if ( !RemoveDevices )
 					{
+						Console.WriteLine($"Retrieving connection string for {deviceId}...");
 						string deviceConnectionString = _retryPolicy.Execute( () => ExecuteGetDeviceConnectionString( deviceId ) );
 						result[deviceIdPrefix] = deviceConnectionString;
 					}
+
+					Console.WriteLine( $"Finished for device: {deviceId}" );
 				} );
 
 			return result;
