@@ -17,7 +17,6 @@ function process(telemetry, executionContext) {
 
         // Retrieve the sensor reading
         var temperatureValue = JSON.parse(telemetry.Message);
-        log(`TemperatureValue: ${temperatureValue}`);
 
         // Get parent space
         var parentSpace = sensor.Space();
