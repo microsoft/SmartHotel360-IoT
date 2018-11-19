@@ -23,6 +23,7 @@ app-nav-menu {
   bottom: 0;
   left: 25%;
   margin-top: 48px;
+  z-index: 1001;
 }
 
 .alert-panel-content {
