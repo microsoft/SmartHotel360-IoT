@@ -296,6 +296,11 @@ For this demo we are utilizing a number of the built in sensors/components of th
   * Stop Sending Messages - you can use the Azure Portal to invoke the `StopDeviceFeed` method on the device. The last line of the MXChip's display will then display `Idle`, indicating that no data is being sent.
   * Start Sending Messages - either reboot the MXChip, or invoke the `StartDeviceFeed` method.
 
+### MXChip Architecure
+Below is diagram showing how the MXChip integrates into the existing architecture. NOTE: The Iot Hub, Azure Function and Digital Twins are the same as displayed in the [main architecture diagram](#SmartHotel360---IoT-Demo).
+
+![IoT Demo MXChip Architecture Diagram](Documents/Images/MXChip-Architecture.png "IoT Demo MXChip Architecture Diagram")
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.microsoft.com.
