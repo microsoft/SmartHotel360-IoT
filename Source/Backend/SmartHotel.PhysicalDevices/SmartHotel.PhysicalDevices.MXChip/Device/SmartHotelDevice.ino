@@ -210,7 +210,7 @@ void loop()
       Screen.print(3, "Idle");
     }
 
-      DevKitMQTTClient_Check();
+    DevKitMQTTClient_Check();
   }
   delay(1000);
 }
