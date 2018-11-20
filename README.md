@@ -126,6 +126,17 @@ There is a collection of parameters that are used by the deployment script that 
 
 **NOTE: In order to support the number of virtual devices required for the demo in the Kubernetes cluster, it will deploy 3 nodes. Please be aware that this can be a large cost.**
 
+### Demo Provisioning Info
+This demo only creates active devices in 1 hotel (SmartHotel360 -> SH360 Elite 1) to reduce the deployment time as well as cost in Azure.
+
+If you want to have devices active in every hotel you will need to add the following parameters when executing the deployment script:
+* `{digitalTwinsProvisioningTemplateFilePath}`: This should be set to `"DigitalTwinsProvisioning-Full/SmartHotel_Site_Provisioning.yaml"`
+  * This template ensures that the Digital Twins provisioning and the IoT Hub device creation have devices in every single room.
+* `{numberOfAksNodes}`: This should be set to `10`
+  * The number of virtual devices running in the kubernetes cluster increases by 4 times for the full data, and therefore the number of nodes running all those pods needs to increase.
+
+**NOTE: The full deployment can take well over an hour.**
+
 ## User Settings
 When the deployment script is complete, it will output a `userSettings.json` file with information needed for the rest of the deployment.
 

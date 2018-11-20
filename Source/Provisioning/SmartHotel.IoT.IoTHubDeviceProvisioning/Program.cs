@@ -5,35 +5,37 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using McMaster.Extensions.CommandLineUtils;
+using Microsoft.Azure.Devices;
+using Microsoft.Azure.Devices.Common.Exceptions;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Polly;
-using Polly.Retry;
-using Polly.Wrap;
-using SmartHotel.IoT.IoTHubDeviceProvisioning.Extensions;
 using SmartHotel.IoT.Provisioning.Common;
-using SmartHotel.IoT.Provisioning.Common.Extensions;
 using SmartHotel.IoT.Provisioning.Common.Models;
 
 namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 {
 	class Program
 	{
+		private const string CreatedDevicesJsonFileName = "CreatedDevices.json";
 		private static string _actionMessage = "Creating";
 		private static string _actionMessagePastTense = "Created";
-		private RetryPolicy _retryPolicy;
+
+		private RegistryManager _registryManager;
+		private CloudBlobContainer _deviceExportContainer;
+		private IotHubConnectionStringBuilder _iotHubConnectionStringBuilder;
 		public static async Task<int> Main( string[] args ) => await CommandLineApplication.ExecuteAsync<Program>( args );
 
-		[Option( "-az|--AzureCliPath", Description = "Path to the Azure Cli." )]
+		[Option( "-iotr|--IoTHubRegistryConnectionString", Description = "Connection string used to make read/write calls on the IoT Hub Registry." )]
 		[Required]
-		public string AzureCliPath { get; }
+		public string IoTHubRegistryConnectionString { get; set; }
 
-		[Option( "-iot|--IoTHubName", Description = "Name of the IoT Hub to create devices in." )]
+		[Option( "-ascs|--AzureStorageConnectionString", Description = "Connection string to access Azure Storage account." )]
 		[Required]
-		public string IoTHubName { get; }
+		public string AzureStorageConnectionString { get; set; }
 
 		[Option( "-dtpf|--DigitalTwinsProvisioningFile", Description =
 			"Yaml file containing the tenant definition for Digital Twins provisioning" )]
@@ -44,8 +46,8 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 			"Name of the file to save provisioning data to.  This is used by SmartHotel.IoT.ProvisioningDevices to configure device settings" )]
 		public string OutputFile { get; } = "iot-device-connectionstring.json";
 
-		[Option( "-s|--SubscriptionId", Description = "Id of the Azure subscription to select. If specified \"az login\" will be executed first." )]
-		public string SubscriptionId { get; }
+		//[Option( "-s|--SubscriptionId", Description = "Id of the Azure subscription to select. If specified \"az login\" will be executed first." )]
+		//public string SubscriptionId { get; }
 
 		[Option( "-rd|--RemoveDevices", Description = "Whether devices should be removed or created." )]
 		public bool RemoveDevices { get; }
@@ -54,31 +56,14 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 		{
 			try
 			{
-				_retryPolicy = Policy.Handle<ThrottlingBacklogTimeoutException>()
-					.WaitAndRetry( 7, retryAttempt => TimeSpan.FromSeconds( 10 * retryAttempt ),
-						( ex, t ) => Console.WriteLine( $"Device action throttled, retrying in {t.TotalSeconds} seconds..." ) );
-
 				if ( RemoveDevices )
 				{
 					_actionMessage = "Removing";
 					_actionMessagePastTense = "Removed";
 				}
 
-				if ( !string.IsNullOrWhiteSpace( SubscriptionId ) )
-				{
-					Console.WriteLine( "Logging into Azure..." );
-					ProcessExecutionResult loginResult = AzureCliPath.ExecuteProcess( "login" );
-					if ( ErrorOccurred( loginResult ) )
-					{
-						return;
-					}
-
-					ProcessExecutionResult accountSetResult = AzureCliPath.ExecuteProcess( $"account set -s {SubscriptionId}" );
-					if ( ErrorOccurred( accountSetResult ) )
-					{
-						return;
-					}
-				}
+				_iotHubConnectionStringBuilder = IotHubConnectionStringBuilder.Create( IoTHubRegistryConnectionString );
+				_registryManager = RegistryManager.CreateFromConnectionString( IoTHubRegistryConnectionString );
 
 				Console.WriteLine( "Loading the provisioning files..." );
 
@@ -96,8 +81,7 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 					Console.WriteLine();
 					Console.WriteLine();
 
-					IDictionary<string, string> deviceConnectionStringsByPrefix = CreateIoTHubDevicesAndGetConnectionStrings( allDevices );
-
+					IDictionary<string, string> deviceConnectionStringsByPrefix = await CreateIoTHubDevicesAndGetConnectionStringsAsync( allDevices );
 					sw.Stop();
 
 					Console.WriteLine();
@@ -122,87 +106,168 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 			}
 		}
 
-		private IDictionary<string, string> CreateIoTHubDevicesAndGetConnectionStrings( IDictionary<string, List<DeviceDescription>> allDevices )
+		private async Task<IDictionary<string, string>> CreateIoTHubDevicesAndGetConnectionStringsAsync(
+			IDictionary<string, List<DeviceDescription>> allDevices )
 		{
 			var result = new ConcurrentDictionary<string, string>();
-			Parallel.ForEach( allDevices,
-				kvp =>
+
+			string[] deviceIds = allDevices.Keys.ToArray();
+
+			Console.WriteLine( $"{_actionMessage} devices..." );
+			if ( RemoveDevices )
+			{
+				await RemoveDevicesAsync( deviceIds );
+			}
+			else
+			{
+				const int maxDevicesPerCall = 100;
+				int numberOfCallsRequired = (int)Math.Ceiling( deviceIds.Length / (double)maxDevicesPerCall );
+				for ( int i = 0; i < numberOfCallsRequired; i++ )
 				{
-					string deviceIdPrefix = kvp.Key;
-
-					string deviceId = $"{deviceIdPrefix}";
-
-					Console.WriteLine( $"{_actionMessage} device: {deviceId}..." );
-
-					_retryPolicy.Execute( () => ExecuteIoTHubAction( deviceId ) );
-
-					if ( !RemoveDevices )
+					string[] deviceIdsForCall = deviceIds.Skip( i * maxDevicesPerCall ).Take( maxDevicesPerCall ).ToArray();
+					BulkRegistryOperationResult bulkCreationResult =
+						await _registryManager.AddDevices2Async( deviceIdsForCall.Select( id => new Device( id ) ) );
+					if ( !bulkCreationResult.IsSuccessful )
 					{
-						Console.WriteLine( $"Retrieving connection string for {deviceId}..." );
-						string deviceConnectionString = _retryPolicy.Execute( () => ExecuteGetDeviceConnectionString( deviceId ) );
-						result[deviceIdPrefix] = deviceConnectionString;
+						Console.WriteLine( "Failed creating devices..." );
+						foreach ( DeviceRegistryOperationError creationError in bulkCreationResult.Errors )
+						{
+							Console.WriteLine( $"Device {creationError.DeviceId}: {creationError.ErrorStatus}" );
+						}
+
+						throw new Exception();
+					}
+				}
+			}
+
+			Console.WriteLine( $"{_actionMessage} devices completed." );
+
+
+			if ( !RemoveDevices )
+			{
+				Console.WriteLine("Retrieving connection strings...");
+				await InitializeBlobContainerAsync();
+
+				string sasToken = _deviceExportContainer.GetSharedAccessSignature( new SharedAccessBlobPolicy(), "saspolicy" );
+
+				var containerSasUri = $"{_deviceExportContainer.Uri}{sasToken}";
+
+				var job = await _registryManager.ExportDevicesAsync( containerSasUri, false );
+
+				while ( true )
+				{
+					job = await _registryManager.GetJobAsync( job.JobId );
+
+					if ( job.Status == JobStatus.Completed
+						|| job.Status == JobStatus.Failed
+						|| job.Status == JobStatus.Cancelled )
+					{
+						// Job has finished executing
+
+						break;
 					}
 
-					Console.WriteLine( $"Finished for device: {deviceId}" );
-				} );
+					await Task.Delay( TimeSpan.FromSeconds( 5 ) );
+				}
+
+				var exportedDevices = new List<ExportImportDevice>();
+				var blob = _deviceExportContainer.GetBlobReference( "devices.txt" );
+				using ( var streamReader = new StreamReader( await blob.OpenReadAsync(), Encoding.UTF8 ) )
+				{
+					while ( streamReader.Peek() != -1 )
+					{
+						string line = await streamReader.ReadLineAsync();
+						var device = JsonConvert.DeserializeObject<ExportImportDevice>( line );
+						exportedDevices.Add( device );
+					}
+				}
+
+				await _deviceExportContainer.DeleteIfExistsAsync();
+
+				await File.WriteAllTextAsync( CreatedDevicesJsonFileName, JsonConvert.SerializeObject( exportedDevices ) );
+
+				foreach ( ExportImportDevice device in exportedDevices.OrderBy( d => d.Id ) )
+				{
+					result[device.Id] =
+						$"HostName={_iotHubConnectionStringBuilder.HostName};DeviceId={device.Id};SharedAccessKey={device.Authentication.SymmetricKey.PrimaryKey}";
+				}
+
+				Console.WriteLine("Retrieval complete.");
+			}
 
 			return result;
 		}
 
-
-		private void ExecuteIoTHubAction( string deviceId )
+		private async Task RemoveDevicesAsync( string[] deviceIds )
 		{
-			string iotHubAction = RemoveDevices ? "delete" : "create";
-
-			ProcessExecutionResult iotHubActionResult = AzureCliPath.ExecuteProcess( $"iot hub device-identity {iotHubAction} --hub-name {IoTHubName} --device-id {deviceId}" );
-			if ( ErrorOccurred( iotHubActionResult, false ) )
+			if ( File.Exists( CreatedDevicesJsonFileName ) )
 			{
-				string message = $"Failed {_actionMessage} device: {iotHubActionResult.Error}";
-				if ( iotHubActionResult.Error.Contains( "ThrottlingBacklogTimeout", StringComparison.OrdinalIgnoreCase ) )
+				var contents = await File.ReadAllTextAsync( CreatedDevicesJsonFileName );
+				var createdDevices = JsonConvert.DeserializeObject<List<ExportImportDevice>>( contents );
+				const int maxDevicesPerCall = 100;
+				int numberOfCallsRequired = (int)Math.Ceiling( deviceIds.Length / (double)maxDevicesPerCall );
+				for ( int i = 0; i < numberOfCallsRequired; i++ )
 				{
-					throw new ThrottlingBacklogTimeoutException( message );
-				}
+					string[] deviceIdsForCall = deviceIds.Skip( i * maxDevicesPerCall ).Take( maxDevicesPerCall ).ToArray();
+					BulkRegistryOperationResult bulkRemovalResult =
+						await _registryManager.RemoveDevices2Async( deviceIdsForCall.Select( id => new Device( id )
+						{
+							ETag = createdDevices.FirstOrDefault( d => d.Id == id )?.ETag
+						} ) );
+					if ( !bulkRemovalResult.IsSuccessful )
+					{
+						Console.WriteLine( "Failed removing devices..." );
+						foreach ( DeviceRegistryOperationError creationError in bulkRemovalResult.Errors )
+						{
+							Console.WriteLine( $"Device {creationError.DeviceId}: {creationError.ErrorStatus}" );
+						}
 
-				if ( iotHubActionResult.Error.Contains( "DeviceNotFound", StringComparison.OrdinalIgnoreCase ) )
-				{
-					Console.WriteLine( $"Unable to find device with id: {deviceId}" );
+						throw new Exception();
+					}
 				}
-				else
+			}
+			else
+			{
+				foreach ( var device in deviceIds.Select( id => new Device( id ) ) )
 				{
-					throw new Exception( message );
+					try
+					{
+						Console.WriteLine( $"{_actionMessage} device: {device.Id}" );
+						await _registryManager.RemoveDeviceAsync( device.Id );
+						Console.WriteLine( $"Finished for device: {device.Id}" );
+					}
+					catch ( DeviceNotFoundException )
+					{
+						Console.WriteLine( "Device not found, continuing" );
+					}
 				}
 			}
 		}
 
-		private string ExecuteGetDeviceConnectionString( string deviceId )
+		private async Task InitializeBlobContainerAsync()
 		{
-			ProcessExecutionResult connectionStringResult = AzureCliPath.ExecuteProcess(
-				$"iot hub device-identity show-connection-string --hub-name {IoTHubName} --device-id {deviceId}" );
-			if ( ErrorOccurred( connectionStringResult, false ) )
+			var storageAccount = CloudStorageAccount.Parse( AzureStorageConnectionString );
+			var client = storageAccount.CreateCloudBlobClient();
+			string iotDevicesContainerName = "iotdevices";
+			_deviceExportContainer = client.GetContainerReference( iotDevicesContainerName );
+			await _deviceExportContainer.CreateIfNotExistsAsync();
+
+			var permissions = new BlobContainerPermissions
 			{
-				string message = $"Failed getting device connection string: {connectionStringResult.Error}";
-				if ( connectionStringResult.Error.Contains( "ThrottlingBacklogTimeout", StringComparison.OrdinalIgnoreCase ) )
+				PublicAccess = BlobContainerPublicAccessType.Off
+			};
+
+			permissions.SharedAccessPolicies.Add(
+				"saspolicy",
+				new SharedAccessBlobPolicy()
 				{
-					throw new ThrottlingBacklogTimeoutException( message );
-				}
+					SharedAccessExpiryTime = DateTime.UtcNow.AddHours( 1 ),
+					Permissions = SharedAccessBlobPermissions.Write
+								  | SharedAccessBlobPermissions.Read
+								  | SharedAccessBlobPermissions.Delete
+				} );
 
-				throw new Exception( message );
-			}
-
-			string deviceConnectionString = JObject.Parse( connectionStringResult.Output ).Value<string>( "cs" );
-			return deviceConnectionString;
-		}
-
-		private bool ErrorOccurred( ProcessExecutionResult result, bool outputError = true )
-		{
-			if ( result.HasError && outputError )
-			{
-				Console.ForegroundColor = ConsoleColor.Red;
-				Console.WriteLine( result.Error );
-				Console.ResetColor();
-			}
-
-			return result.HasError;
+			await _deviceExportContainer.SetPermissionsAsync( permissions );
 		}
 	}
 }
