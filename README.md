@@ -116,8 +116,6 @@ The following information parameters are required for the deployment script:
 * `{subscription id}`: the Azure subscription id that has been used in this setup
 * `{resource group name}`: the resource group name to add the created resource, if it doesn't exist it will be created
 * `{resource group location}`: location for the resource group: (ie. 'westus2')
-* `{manager object id}`: object Id obtained when creating **Manager** user [above](#Create-IoT-Demo-users)
-* `{employee object id}`: object Id obtained when creating **Employee** user [above](#Create-IoT-Demo-users)
 * `{app id}`: app id obtained from [creating an AAD app](#Set-up-a-Service-Principal-and-register-an-Azure-Active-Directory-application)
 * `{app key}`: app key obtained from [creating an AAD app](#Set-up-a-Service-Principal-and-register-an-Azure-Active-Directory-application)
 * `{service principal id}`: service principal id from [above](#Obtain-the-service-principal-Id)
@@ -127,6 +125,17 @@ The following information parameters are required for the deployment script:
 There is a collection of parameters that are used by the deployment script that determine properties like resource location, pricing tiers, and naming. If you wish to modify any of these parameters you can edit the values in [parameters.json](./arm/parameters.json).
 
 **NOTE: In order to support the number of virtual devices required for the demo in the Kubernetes cluster, it will deploy 3 nodes. Please be aware that this can be a large cost.**
+
+### Demo Provisioning Info
+This demo only creates active devices in 1 hotel (SmartHotel360 -> SH360 Elite 1) to reduce the deployment time as well as cost in Azure.
+
+If you want to have devices active in every hotel you will need to add the following parameters when executing the deployment script:
+* `{digitalTwinsProvisioningTemplateFilePath}`: This should be set to `"DigitalTwinsProvisioning-Full/SmartHotel_Site_Provisioning.yaml"`
+  * This template ensures that the Digital Twins provisioning and the IoT Hub device creation have devices in every single room.
+* `{numberOfAksNodes}`: This should be set to `10`
+  * The number of virtual devices running in the kubernetes cluster increases by 4 times for the full data, and therefore the number of nodes running all those pods needs to increase.
+
+**NOTE: The full deployment can take well over an hour.**
 
 ## User Settings
 When the deployment script is complete, it will output a `userSettings.json` file with information needed for the rest of the deployment.
@@ -283,7 +292,7 @@ For this demo we are utilizing a number of the built in sensors/components of th
   * The current and desired temperature values are shown on the display.
 
 * Occupancy
-  * The integrated magnetometer, is being utilized to demonstrate the ability to detect the room occupancy. It is mimicking the idea that we could detect the opening and closing of a door with a magnet on it. In order to toggle the occupancy status of the room, simply bring a strong magnet (a small rare-earth magnet works well) near the sensor at the bottom centor of the MXChip board. The last line on the display will toggle between `Vacant` and `Occupied` each time the magnet is brought near the sensor.
+  * The integrated magnetometer, is being utilized to demonstrate the ability to detect the room occupancy. It is mimicking the idea that we could detect the opening and closing of a door with a magnet on it. In order to toggle the occupancy status of the room, simply bring a strong magnet (a small rare-earth magnet works well) near the sensor at the bottom center of the MXChip board. The last line on the display will toggle between `Vacant` and `Occupied` each time the magnet is brought near the sensor.
 
 * Light
   * The color of RGB LED indicates what the current setting of the room's light is.

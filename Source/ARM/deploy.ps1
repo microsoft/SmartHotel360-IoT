@@ -217,6 +217,7 @@ Write-Host
 
 $iotHubName = $outputs.iotHubName.value
 $iotHubServiceConnectionString = ((az iot hub show-connection-string -n $iotHubName --resource-group $resourceGroupName --policy-name service) | ConvertFrom-Json).cs
+$iotHubRegistryReadWriteConnectionString = ((az iot hub show-connection-string -n $iotHubName --resource-group $resourceGroupName --policy-name registryReadWrite) | ConvertFrom-Json).cs
 
 $cosmosDbName = $outputs.cosmosDbName.value
 $cosmosDbConnectionString = ((az cosmosdb list-connection-strings -n $cosmosDbName -g $resourceGroupName) | ConvertFrom-Json).connectionStrings[0].connectionString
@@ -266,6 +267,10 @@ Write-Host
 $dtProvisionTemplateFullFilePath = (Resolve-Path $digitalTwinsProvisioningTemplateFilePath).Path
 $userAzureObjectIdsFullFilePath = (Resolve-Path $userAzureObjectIdsFilePath).Path
 
+$storageAccountName = $outputs.storageAccountName.value
+
+$storageConnectionString = ((az storage account show-connection-string -g $resourceGroupName -n $storageAccountName) | ConvertFrom-Json).connectionString
+
 #Provision IoT Devices
 Write-Host
 Write-Host
@@ -275,8 +280,7 @@ Write-Host "Provisioning IoT Devices..."
 $iotProvisioningOutput = 'iot-device-connectionstring.json'
 
 Push-Location "../Provisioning/IoTHubDeviceProvisioningBits"
-$azFullPath = (Get-Command az).Path
-$iotHubDeviceProvisioningArgs = "-az `"$azFullPath`" -iot `"$iotHubName`" -dtpf `"$dtProvisionTemplateFullFilePath`" -o `"$iotProvisioningOutput`""
+$iotHubDeviceProvisioningArgs = "-iotr `"$iotHubRegistryReadWriteConnectionString`" -ascs `"$storageConnectionString`" -dtpf `"$dtProvisionTemplateFullFilePath`" -o `"$iotProvisioningOutput`""
 dotnet SmartHotel.IoT.IoTHubDeviceProvisioning.dll $powershellEscape $iotHubDeviceProvisioningArgs
 if( -not (Test-Path $iotProvisioningOutput))
 {
@@ -372,9 +376,6 @@ $facilityManagementApiName = $outputs.webapiName.value
 $facilityManagementApiDefaultHostName = ((az webapp show -g $resourceGroupName -n $facilityManagementApiName) | ConvertFrom-Json).defaultHostName
 $facilityManagementApiUri = "https://$facilityManagementApiDefaultHostName"
 $functionSiteName = $outputs.functionSiteName.value
-$storageAccountName = $outputs.storageAccountName.value
-
-$storageConnectionString = ((az storage account show-connection-string -g $resourceGroupName -n $storageAccountName) | ConvertFrom-Json).connectionString
 
 Write-Host
 Write-Host "Setting Facility Manangement Api App Settings"
