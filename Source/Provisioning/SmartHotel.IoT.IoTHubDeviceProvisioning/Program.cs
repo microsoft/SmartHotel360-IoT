@@ -55,7 +55,7 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 			try
 			{
 				_retryPolicy = Policy.Handle<ThrottlingBacklogTimeoutException>()
-					.WaitAndRetry( 5, retryAttempt => TimeSpan.FromSeconds( 10 * retryAttempt ),
+					.WaitAndRetry( 7, retryAttempt => TimeSpan.FromSeconds( 10 * retryAttempt ),
 						( ex, t ) => Console.WriteLine( $"Device action throttled, retrying in {t.TotalSeconds} seconds..." ) );
 
 				if ( RemoveDevices )
