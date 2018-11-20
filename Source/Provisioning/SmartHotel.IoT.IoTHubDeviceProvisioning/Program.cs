@@ -54,11 +54,11 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 		{
 			try
 			{
-				var timeoutPolicy = Policy.Timeout(TimeSpan.FromSeconds(20));
+				var timeoutPolicy = Policy.Timeout( TimeSpan.FromMinutes( 2 ) );
 				var retryPolicy = Policy.Handle<ThrottlingBacklogTimeoutException>()
 					.WaitAndRetry( 5, retryAttempt => TimeSpan.FromSeconds( 10 * retryAttempt ),
 						( ex, t ) => Console.WriteLine( $"Device action throttled, retrying in {t.TotalSeconds} seconds..." ) );
-				_retryPolicy = retryPolicy.Wrap(timeoutPolicy);
+				_retryPolicy = retryPolicy.Wrap( timeoutPolicy );
 
 				if ( RemoveDevices )
 				{
@@ -140,7 +140,7 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 
 					if ( !RemoveDevices )
 					{
-						Console.WriteLine($"Retrieving connection string for {deviceId}...");
+						Console.WriteLine( $"Retrieving connection string for {deviceId}..." );
 						string deviceConnectionString = _retryPolicy.Execute( () => ExecuteGetDeviceConnectionString( deviceId ) );
 						result[deviceIdPrefix] = deviceConnectionString;
 					}
