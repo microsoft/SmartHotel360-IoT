@@ -116,8 +116,6 @@ The following information parameters are required for the deployment script:
 * `{subscription id}`: the Azure subscription id that has been used in this setup
 * `{resource group name}`: the resource group name to add the created resource, if it doesn't exist it will be created
 * `{resource group location}`: location for the resource group: (ie. 'westus2')
-* `{manager object id}`: object Id obtained when creating **Manager** user [above](#Create-IoT-Demo-users)
-* `{employee object id}`: object Id obtained when creating **Employee** user [above](#Create-IoT-Demo-users)
 * `{app id}`: app id obtained from [creating an AAD app](#Set-up-a-Service-Principal-and-register-an-Azure-Active-Directory-application)
 * `{app key}`: app key obtained from [creating an AAD app](#Set-up-a-Service-Principal-and-register-an-Azure-Active-Directory-application)
 * `{service principal id}`: service principal id from [above](#Obtain-the-service-principal-Id)
