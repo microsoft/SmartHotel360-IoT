@@ -24,7 +24,7 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 	{
 		private static string _actionMessage = "Creating";
 		private static string _actionMessagePastTense = "Created";
-		private PolicyWrap _retryPolicy;
+		private RetryPolicy _retryPolicy;
 		public static async Task<int> Main( string[] args ) => await CommandLineApplication.ExecuteAsync<Program>( args );
 
 		[Option( "-az|--AzureCliPath", Description = "Path to the Azure Cli." )]
@@ -54,11 +54,9 @@ namespace SmartHotel.IoT.IoTHubDeviceProvisioning
 		{
 			try
 			{
-				var timeoutPolicy = Policy.Timeout( TimeSpan.FromMinutes( 2 ) );
-				var retryPolicy = Policy.Handle<ThrottlingBacklogTimeoutException>()
+				_retryPolicy = Policy.Handle<ThrottlingBacklogTimeoutException>()
 					.WaitAndRetry( 5, retryAttempt => TimeSpan.FromSeconds( 10 * retryAttempt ),
 						( ex, t ) => Console.WriteLine( $"Device action throttled, retrying in {t.TotalSeconds} seconds..." ) );
-				_retryPolicy = retryPolicy.Wrap( timeoutPolicy );
 
 				if ( RemoveDevices )
 				{
