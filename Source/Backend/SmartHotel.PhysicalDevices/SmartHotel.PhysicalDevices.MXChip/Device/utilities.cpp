@@ -57,6 +57,19 @@ void showSendConfirmation()
     digitalWrite(LED_USER, 0);
 }
 
+void updateOccupancyMessage()
+{
+    sprintf(outputString, "%s", lastRoomOccupied ? "Occupied" : "Vacant");
+    Screen.print(3, outputString);
+}
+
+void userASwitch()
+{
+    lastRoomOccupied = !lastRoomOccupied;
+
+    updateOccupancyMessage();
+}
+
 void initSensors()
 {
     i2c = new DevI2C(D14, D15);
@@ -70,6 +83,9 @@ void initSensors()
     lastRoomOccupied = false;
     lastRoomOccupiedSent = false;
 
+    // Initializing Button A
+    attachInterrupt(USER_BUTTON_A, userASwitch, RISING);
+
     // Initialize magnetometer
     magnetSensor = new LIS2MDLSensor(*i2c);
     magnetSensor->init(NULL);
@@ -78,7 +94,7 @@ void initSensors()
     magnetBaseX = magnetAxes[0];
     magnetBaseY = magnetAxes[1];
     magnetBaseZ = magnetAxes[2];
-  
+
     int count = 0;
     int delta = 10;
     char buffer[20];
@@ -132,6 +148,8 @@ bool readRoomOccupied()
     }
 
     lastMagnetStatus = magnetStatus;
+
+    updateOccupancyMessage();
 
     return lastRoomOccupied;
 }

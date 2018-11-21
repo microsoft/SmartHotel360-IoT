@@ -181,23 +181,29 @@ void loop()
         setDeviceLightLevel(lightLevel);
 
         bool roomOccupied = readRoomOccupied();
-
-        sprintf(outputString, "%s", roomOccupied ? "Occupied" : "Vacant");
-        Screen.print(3, outputString);
+        bool sendOccurred = false;
 
         if (createTemperatureSensorMessagePayload(deviceInfo->connectionString, temperatureSensor, iotHubDeviceId, tempFahrenheit, messagePayload, firstLoop))
         {
           sendPayloadToFunction(messagePayload, functionUri);
+          sendOccurred = true;
         }
 
         if (createLightSensorMessagePayload(deviceInfo->connectionString, lightSensor, iotHubDeviceId, lightLevel, messagePayload, firstLoop))
         {
           sendPayloadToFunction(messagePayload, functionUri);
+          sendOccurred = true;
         }
 
         if (createMotionSensorMessagePayload(deviceInfo->connectionString, motionSensor, iotHubDeviceId, roomOccupied, messagePayload, firstLoop))
         {
           sendPayloadToFunction(messagePayload, functionUri);
+          sendOccurred = true;
+        }
+
+        if(sendOccurred)
+        {
+          showSendConfirmation();
         }
 
         firstLoop = false;
