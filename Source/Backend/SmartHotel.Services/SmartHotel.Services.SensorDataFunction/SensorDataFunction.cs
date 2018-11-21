@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using MongoDB.Bson;
@@ -9,6 +10,8 @@ namespace SmartHotel.Services.SensorDataFunction
 {
 	public static class SensorDataFunctionApp
 	{
+		private static readonly Lazy<IMongoCollection<DeviceSensorData>> LazyCollection = new Lazy<IMongoCollection<DeviceSensorData>>(InitializeMongoCollection);
+		private static readonly IMongoCollection<DeviceSensorData> Collection = LazyCollection.Value;
 		[FunctionName( "SensorDataFunction" )]
 		public static void Run( [EventHubTrigger( "smarthotel-iot-eventhub", Connection = "EventHubConnectionString" )]string myEventHubMessage, TraceWriter log )
 		{
@@ -20,19 +23,14 @@ namespace SmartHotel.Services.SensorDataFunction
 			var telemetry = JsonConvert.DeserializeObject<TelemetryMessage>( myEventHubMessage );
 
 			string sensorId = telemetry.SensorId;
-
-			MongoClient client = new MongoClient( System.Environment.GetEnvironmentVariable( "CosmosDBConnectionString" ) );
-
-			var db = client.GetDatabase( "DeviceData" );
-			var coll = db.GetCollection<DeviceSensorData>( "SensorData" );
-
-			var document = coll.Find( new BsonDocument( "sensorId", sensorId ) ).FirstOrDefault();
+			
+			var document = Collection.Find( new BsonDocument( "sensorId", sensorId ) ).FirstOrDefault();
 
 			if ( document != null )
 			{
 				document.SensorReading = telemetry.SensorReading;
 				document.EventTimestamp = telemetry.EventTimestamp;
-				coll.ReplaceOne( new BsonDocument( "sensorId", sensorId ), document );
+				Collection.ReplaceOne( new BsonDocument( "sensorId", sensorId ), document );
 			}
 			else
 			{
@@ -44,8 +42,15 @@ namespace SmartHotel.Services.SensorDataFunction
 				sensorData.SensorDataType = telemetry.SensorDataType;
 				sensorData.IoTHubDeviceId = telemetry.IoTHubDeviceId;
 
-				coll.InsertOne( sensorData );
+				Collection.InsertOne( sensorData );
 			}
+		}
+
+		private static IMongoCollection<DeviceSensorData> InitializeMongoCollection()
+		{
+			var client = new MongoClient( System.Environment.GetEnvironmentVariable( "CosmosDBConnectionString" ) );
+			var db = client.GetDatabase( "DeviceData" );
+			return db.GetCollection<DeviceSensorData>( "SensorData" );
 		}
 	}
 }
