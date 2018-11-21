@@ -13,7 +13,7 @@ namespace SmartHotel.Services.FacilityManagement
 	{
 		string AccessToken { get; set; }
 		Task<ICollection<Space>> GetSpaces();
-		Task<Dictionary<string, string>> GetSpaceTemperatureAlerts();
+		Task<IDictionary<string, string>> GetSpaceTemperatureAlerts();
 	}
 
 	public class TopologyClient : ITopologyClient
@@ -134,7 +134,7 @@ namespace SmartHotel.Services.FacilityManagement
 			return hierarchicalSpaces;
 		}
 
-		public async Task<Dictionary<string, string>> GetSpaceTemperatureAlerts()
+		public async Task<IDictionary<string, string>> GetSpaceTemperatureAlerts()
 		{
 			HttpClient httpClient = CreateHttpClient();
 
@@ -156,7 +156,7 @@ namespace SmartHotel.Services.FacilityManagement
 				.Where( ta => ta.value != null )
 				.ToArray();
 
-			Dictionary<string, string> alertMessagesByFriendlySpaceIds = new Dictionary<string, string>();
+			SortedDictionary<string, string> alertMessagesByFriendlySpaceIds = new SortedDictionary<string, string>();
 			foreach ( var spaceWithAlert in spacesWithTemperatureAlerts )
 			{
 				string friendlyIdentifier = GetFriendlySpaceIdentifier( spaceWithAlert.dts, firstFourLevelsTopology );

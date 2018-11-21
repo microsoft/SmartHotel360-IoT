@@ -4,7 +4,7 @@ During **Connect(); 2017** event this year we presented beautiful app demos usin
 # SmartHotel360 Repos
 For this reference app scenario, we built several consumer and line-of-business apps and an Azure backend. You can find all SmartHotel360 repos in the following locations:
 
-* [SmartHotel360 ](https://github.com/Microsoft/SmartHotel360)
+* [SmartHotel360](https://github.com/Microsoft/SmartHotel360)
 * [IoT](https://github.com/Microsoft/SmartHotel360-IoT)
 * [Backend](https://github.com/Microsoft/SmartHotel360-Backend)
 * [Website](https://github.com/Microsoft/SmartHotel360-Website)
@@ -308,7 +308,7 @@ For this demo we are utilizing a number of the built in sensors/components of th
 ### MXChip Architecure
 Below is diagram showing how the MXChip integrates into the existing architecture. NOTE: The Iot Hub, Azure Function and Digital Twins are the same as displayed in the [main architecture diagram](#SmartHotel360---IoT-Demo).
 
-![IoT Demo MXChip Architecture Diagram](Documents/Images/MXChip-Architecture.png "IoT Demo MXChip Architecture Diagram")
+![IoT Demo MXChip Architecture Diagram](Documents/Images/MxChip-Architecture.png "IoT Demo MXChip Architecture Diagram")
 
 # Contributing
 
