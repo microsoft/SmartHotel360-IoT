@@ -293,6 +293,7 @@ For this demo we are utilizing a number of the built in sensors/components of th
 
 * Occupancy
   * The integrated magnetometer, is being utilized to demonstrate the ability to detect the room occupancy. It is mimicking the idea that we could detect the opening and closing of a door with a magnet on it. In order to toggle the occupancy status of the room, simply bring a strong magnet (a small rare-earth magnet works well) near the sensor at the bottom center of the MXChip board. The last line on the display will toggle between `Vacant` and `Occupied` each time the magnet is brought near the sensor.
+  * In case the magnetometer is not working properly, pressing and releasing button A will provide the same toggle effect.
 
 * Light
   * The color of RGB LED indicates what the current setting of the room's light is.
