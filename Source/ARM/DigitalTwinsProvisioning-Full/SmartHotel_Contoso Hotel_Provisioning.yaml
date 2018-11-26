@@ -1,0 +1,5311 @@
+name: Contoso Hotel
+description: SmartHotel360 Contoso Hotel
+friendlyName: Contoso Hotel
+type: HotelBrand
+users:
+- Hotel Brand 2 Manager
+properties:
+- name: DisplayOrder
+  value: 2
+- name: ImagePath
+  value: /assets/images/brands/brand2.jpg
+spaces:
+- name: Contoso Elite 1
+  description: SmartHotel360 Contoso Elite 1
+  friendlyName: Contoso Elite 1
+  type: Hotel
+  users:
+  - Hotel 8 Manager
+  properties:
+  - name: DisplayOrder
+    value: 0
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sh.jpg
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoElite1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-101
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-102
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-103
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-104
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-105
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-106
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-107
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-108
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-109
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-110
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-111
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoElite1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-201
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-202
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-203
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-204
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-205
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-206
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-207
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-208
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-209
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-210
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-211
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoElite1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-301
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-302
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-303
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-304
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-305
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-306
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-307
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-308
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-309
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-310
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoElite1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-401
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-402
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-403
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-404
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-405
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-406
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-407
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-408
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-409
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-410
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoElite1-
+    - name: ImagePath
+      value: /assets/images/floors/shvip.jpg
+    spaces:
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-501
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-502
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-503
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite1-504
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+- name: Contoso Premium 1
+  description: SmartHotel360 Contoso Premium 1
+  friendlyName: Contoso Premium 1
+  type: Hotel
+  users:
+  - Hotel 9 Manager
+  properties:
+  - name: DisplayOrder
+    value: 1
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sh.jpg
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-101
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-102
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-103
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-104
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-105
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-106
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-107
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-108
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-109
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-110
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-111
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-201
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-202
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-203
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-204
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-205
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-206
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-207
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-208
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-209
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-210
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-211
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-301
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-302
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-303
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-304
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-305
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-306
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-307
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-308
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-309
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-310
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium1-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-401
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-402
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-403
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-404
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-405
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-406
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-407
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-408
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-409
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-410
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium1-
+    - name: ImagePath
+      value: /assets/images/floors/shvip.jpg
+    spaces:
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-501
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-502
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-503
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium1-504
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+- name: Contoso Elite 2
+  description: SmartHotel360 Contoso Elite 2
+  friendlyName: Contoso Elite 2
+  type: Hotel
+  users:
+  - Hotel 10 Manager
+  properties:
+  - name: DisplayOrder
+    value: 2
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sl.jpg
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoElite2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
+    spaces:
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-101
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-102
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-103
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-104
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-105
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-106
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-107
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-108
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-109
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-110
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-111
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoElite2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
+    spaces:
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-201
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-202
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-203
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-204
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-205
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-206
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-207
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-208
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-209
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-210
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-211
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoElite2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
+    spaces:
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-301
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-302
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-303
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-304
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-305
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-306
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-307
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-308
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-309
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-310
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoElite2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
+    spaces:
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-401
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-402
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-403
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-404
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-405
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-406
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-407
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-408
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-409
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-410
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoElite2-
+    - name: ImagePath
+      value: /assets/images/floors/slvip.jpg
+    spaces:
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-501
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-502
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-503
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite2-504
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+- name: Contoso Elite 3
+  description: SmartHotel360 Contoso Elite 3
+  friendlyName: Contoso Elite 3
+  type: Hotel
+  users:
+  - Hotel 11 Manager
+  properties:
+  - name: DisplayOrder
+    value: 3
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sh.jpg
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoElite3-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-101
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-102
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-103
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-104
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-105
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-106
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-107
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-108
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-109
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-110
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-111
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoElite3-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-201
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-202
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-203
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-204
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-205
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-206
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-207
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-208
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-209
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-210
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-211
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoElite3-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-301
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-302
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-303
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-304
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-305
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-306
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-307
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-308
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-309
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-310
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoElite3-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-401
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-402
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-403
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-404
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-405
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-406
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-407
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-408
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-409
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-410
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoElite3-
+    - name: ImagePath
+      value: /assets/images/floors/shvip.jpg
+    spaces:
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-501
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-502
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-503
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoElite3-504
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+- name: Contoso Premium 2
+  description: SmartHotel360 Contoso Premium 2
+  friendlyName: Contoso Premium 2
+  type: Hotel
+  users:
+  - Hotel 12 Manager
+  properties:
+  - name: DisplayOrder
+    value: 4
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sl.jpg
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
+    spaces:
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-101
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-102
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-103
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-104
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-105
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-106
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-107
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-108
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-109
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-110
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-111
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
+    spaces:
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-201
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-202
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-203
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-204
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-205
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-206
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-207
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-208
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-209
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-210
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-211
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
+    spaces:
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-301
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-302
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-303
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-304
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-305
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-306
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-307
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-308
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-309
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-310
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium2-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
+    spaces:
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-401
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-402
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-403
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-404
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-405
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-406
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-407
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-408
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-409
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-410
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium2-
+    - name: ImagePath
+      value: /assets/images/floors/slvip.jpg
+    spaces:
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-501
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-502
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-503
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium2-504
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+- name: Contoso Premium 3
+  description: SmartHotel360 Contoso Premium 3
+  friendlyName: Contoso Premium 3
+  type: Hotel
+  users:
+  - Hotel 13 Manager
+  properties:
+  - name: DisplayOrder
+    value: 5
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sl.jpg
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium3-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
+    spaces:
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-101
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-102
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-103
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-104
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-105
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-106
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-107
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-108
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-109
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-110
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-111
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium3-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
+    spaces:
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-201
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-202
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-203
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-204
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-205
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-206
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-207
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-208
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-209
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-210
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-211
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium3-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
+    spaces:
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-301
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-302
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-303
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-304
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-305
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-306
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-307
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-308
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-309
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-310
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium3-
+    - name: ImagePath
+      value: /assets/images/floors/sl.jpg
+    spaces:
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-401
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-402
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-403
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-404
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-405
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-406
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-407
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-408
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-409
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-410
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium3-
+    - name: ImagePath
+      value: /assets/images/floors/slvip.jpg
+    spaces:
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-501
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-502
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-503
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium3-504
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+- name: Contoso Premium 4
+  description: SmartHotel360 Contoso Premium 4
+  friendlyName: Contoso Premium 4
+  type: Hotel
+  users:
+  - Hotel 14 Manager
+  properties:
+  - name: DisplayOrder
+    value: 6
+  - name: MinTemperatureAlertThreshold
+    value: 65
+  - name: MaxTemperatureAlertThreshold
+    value: 85
+  - name: ImagePath
+    value: /assets/images/hotels/sh.jpg
+  spaces:
+  - name: Floor 01
+    description: Floor 1
+    friendlyName: Floor 1
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium4-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 101
+      description: Room 101
+      friendlyName: Room 101
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-101
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 102
+      description: Room 102
+      friendlyName: Room 102
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-102
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 103
+      description: Room 103
+      friendlyName: Room 103
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-103
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 104
+      description: Room 104
+      friendlyName: Room 104
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-104
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 105
+      description: Room 105
+      friendlyName: Room 105
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-105
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 106
+      description: Room 106
+      friendlyName: Room 106
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-106
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 107
+      description: Room 107
+      friendlyName: Room 107
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-107
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 108
+      description: Room 108
+      friendlyName: Room 108
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-108
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 109
+      description: Room 109
+      friendlyName: Room 109
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-109
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 110
+      description: Room 110
+      friendlyName: Room 110
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-110
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 111
+      description: Room 111
+      friendlyName: Room 111
+      type: Room
+      subType: GymRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-111
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 02
+    description: Floor 2
+    friendlyName: Floor 2
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium4-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 201
+      description: Room 201
+      friendlyName: Room 201
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-201
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 202
+      description: Room 202
+      friendlyName: Room 202
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-202
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 203
+      description: Room 203
+      friendlyName: Room 203
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-203
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 204
+      description: Room 204
+      friendlyName: Room 204
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-204
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 205
+      description: Room 205
+      friendlyName: Room 205
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-205
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 206
+      description: Room 206
+      friendlyName: Room 206
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-206
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 207
+      description: Room 207
+      friendlyName: Room 207
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-207
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 208
+      description: Room 208
+      friendlyName: Room 208
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-208
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 209
+      description: Room 209
+      friendlyName: Room 209
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-209
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 210
+      description: Room 210
+      friendlyName: Room 210
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-210
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 211
+      description: Room 211
+      friendlyName: Room 211
+      type: Room
+      subType: ConferenceRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-211
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 03
+    description: Floor 3
+    friendlyName: Floor 3
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium4-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 301
+      description: Room 301
+      friendlyName: Room 301
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-301
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 302
+      description: Room 302
+      friendlyName: Room 302
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-302
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 303
+      description: Room 303
+      friendlyName: Room 303
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-303
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 304
+      description: Room 304
+      friendlyName: Room 304
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-304
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 305
+      description: Room 305
+      friendlyName: Room 305
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-305
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 306
+      description: Room 306
+      friendlyName: Room 306
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-306
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 307
+      description: Room 307
+      friendlyName: Room 307
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-307
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 308
+      description: Room 308
+      friendlyName: Room 308
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-308
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 309
+      description: Room 309
+      friendlyName: Room 309
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-309
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 310
+      description: Room 310
+      friendlyName: Room 310
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-310
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 04
+    description: Floor 4
+    friendlyName: Floor 4
+    type: Floor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium4-
+    - name: ImagePath
+      value: /assets/images/floors/sh.jpg
+    spaces:
+    - name: Room 401
+      description: Room 401
+      friendlyName: Room 401
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-401
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 402
+      description: Room 402
+      friendlyName: Room 402
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-402
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 403
+      description: Room 403
+      friendlyName: Room 403
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-403
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 404
+      description: Room 404
+      friendlyName: Room 404
+      type: Room
+      subType: QueenRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-404
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 405
+      description: Room 405
+      friendlyName: Room 405
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-405
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 406
+      description: Room 406
+      friendlyName: Room 406
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-406
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 407
+      description: Room 407
+      friendlyName: Room 407
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-407
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 408
+      description: Room 408
+      friendlyName: Room 408
+      type: Room
+      subType: KingRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-408
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 409
+      description: Room 409
+      friendlyName: Room 409
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-409
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 410
+      description: Room 410
+      friendlyName: Room 410
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-410
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+  - name: Floor 05
+    description: Floor 5
+    friendlyName: Floor 5
+    type: Floor
+    subType: VIPFloor
+    properties:
+    - name: DeviceIdPrefix
+      value: ContosoHotel-ContosoPremium4-
+    - name: ImagePath
+      value: /assets/images/floors/shvip.jpg
+    spaces:
+    - name: Room 501
+      description: Room 501
+      friendlyName: Room 501
+      type: Room
+      subType: SuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-501
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 502
+      description: Room 502
+      friendlyName: Room 502
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-502
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 503
+      description: Room 503
+      friendlyName: Room 503
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-503
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic
+    - name: Room 504
+      description: Room 504
+      friendlyName: Room 504
+      type: Room
+      subType: VIPSuiteRoom
+      devices:
+      - name: Room
+        hardwareId: ContosoHotel-ContosoPremium4-504
+        sensors:
+        - dataType: Temperature
+          type: Classic
+        - dataType: Motion
+          type: Classic
+        - dataType: Light
+          type: Classic

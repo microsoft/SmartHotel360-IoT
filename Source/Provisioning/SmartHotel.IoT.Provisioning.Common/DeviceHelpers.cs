@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SmartHotel.IoT.Provisioning.Common.Extensions;
 using SmartHotel.IoT.Provisioning.Common.Models;
 using SmartHotel.IoT.Provisioning.Common.Models.DigitalTwins;
 
@@ -11,33 +12,44 @@ namespace SmartHotel.IoT.Provisioning.Common
 {
 	public static class DeviceHelpers
 	{
-		public static IDictionary<string, List<DeviceDescription>> GetAllDeviceDescriptions( this IList<SpaceDescription> spaceDescriptions )
+		public static IDictionary<string, List<DeviceDescription>> GetAllDeviceDescriptionsByDeviceIdPrefix(
+			this IList<SpaceDescription> spaceDescriptions, string parentDeviceIdPrefix)
 		{
 			var devices = new Dictionary<string, List<DeviceDescription>>();
-			foreach ( SpaceDescription spaceDescription in spaceDescriptions )
+			foreach (SpaceDescription spaceDescription in spaceDescriptions)
 			{
-				if ( spaceDescription.devices != null )
+				if (spaceDescription.devices != null)
 				{
-                    var spaceName = spaceDescription.name.Replace(" ", string.Empty).ToLower();
+					var spaceName = spaceDescription.name.FirstLetterToUpperCase().Replace(" ", string.Empty);
+					string deviceIdPrefix = $"{parentDeviceIdPrefix}{spaceName}";
 
-                    if (!devices.ContainsKey(spaceName))
-                        devices.Add(spaceName, new List<DeviceDescription>());
+					if (!devices.ContainsKey(deviceIdPrefix))
+						devices.Add(deviceIdPrefix, new List<DeviceDescription>());
 
-					devices[spaceName].AddRange( spaceDescription.devices );
+					devices[deviceIdPrefix].AddRange(spaceDescription.devices);
 				}
 
-				if ( spaceDescription.spaces != null )
+				if (spaceDescription.spaces != null)
 				{
-                    var children = GetAllDeviceDescriptions(spaceDescription.spaces);
+					string additionToParentDeviceIdPrefix = string.Empty;
+					PropertyDescription deviceIdPrefixProperty =
+						spaceDescription.properties?.FirstOrDefault( p => p.name == PropertyKeyDescription.DeviceIdPrefixName );
+					if ( deviceIdPrefixProperty != null )
+					{
+						additionToParentDeviceIdPrefix = deviceIdPrefixProperty.value;
+					}
 
-                    foreach (var pair in children)
-                    {
-                        if (!devices.ContainsKey(pair.Key))
-                            devices.Add(pair.Key, new List<DeviceDescription>());
+					var children = GetAllDeviceDescriptionsByDeviceIdPrefix(spaceDescription.spaces,
+						$"{parentDeviceIdPrefix}{additionToParentDeviceIdPrefix}");
 
-                        devices[pair.Key].AddRange(pair.Value);
-                    }
-                }
+					foreach (var pair in children)
+					{
+						if (!devices.ContainsKey(pair.Key))
+							devices.Add(pair.Key, new List<DeviceDescription>());
+
+						devices[pair.Key].AddRange(pair.Value);
+					}
+				}
 			}
 
 			return devices;
@@ -67,20 +79,53 @@ namespace SmartHotel.IoT.Provisioning.Common
 		}
 
 		public static async Task<IReadOnlyCollection<Device>> GetExistingDevicesAsync(
-			this IEnumerable<DeviceDescription> deviceDescriptions, HttpClient httpClient )
+			this ICollection<DeviceDescription> deviceDescriptions, HttpClient httpClient )
 		{
-			var filter = $"hardwareIds={string.Join( ";", deviceDescriptions.Select( d => d.hardwareId ) )}";
+			var existingDevices = new List<Device>();
 
-			var request = HttpMethod.Get.CreateRequest( $"devices?{filter}" );
-			var response = await httpClient.SendAsync( request );
-			if ( response.IsSuccessStatusCode )
+			int itemsPerGroup = 10;
+			int numberOfGroups = (int)Math.Ceiling( deviceDescriptions.Count / (double)itemsPerGroup );
+			for ( int i = 0; i < numberOfGroups; i++ )
 			{
-				var content = await response.Content.ReadAsStringAsync();
-				var existingDevices = JsonConvert.DeserializeObject<IReadOnlyCollection<Device>>( content );
-				return existingDevices;
+				var nextDeviceDescriptions = deviceDescriptions.Skip( i * itemsPerGroup ).Take( itemsPerGroup ).ToArray();
+				if ( nextDeviceDescriptions.Any() )
+				{
+					var filter = $"hardwareIds={string.Join( ";", nextDeviceDescriptions.Select( d => d.hardwareId ) )}";
+
+					var request = HttpMethod.Get.CreateRequest( $"devices?{filter}" );
+					var response = await httpClient.SendAsync( request );
+					if ( response.IsSuccessStatusCode )
+					{
+						var content = await response.Content.ReadAsStringAsync();
+						var nextExistingDevices = JsonConvert.DeserializeObject<IReadOnlyCollection<Device>>( content );
+						if ( nextExistingDevices.Any() )
+						{
+							existingDevices.AddRange( nextExistingDevices );
+						}
+					}
+					else
+					{
+						return null;
+					}
+				}
 			}
 
-			return null;
+			return existingDevices;
+		}
+
+		public static string GetDeviceType(string dataType)
+		{
+			switch ( dataType.ToLower() )
+			{
+				case "temperature":
+					return "Thermostat";
+				case "light":
+					return "Light";
+				case "motion":
+					return "Motion";
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
 		}
 	}
 }

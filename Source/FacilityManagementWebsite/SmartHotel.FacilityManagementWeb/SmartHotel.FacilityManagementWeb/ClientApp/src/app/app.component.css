@@ -5,3 +5,85 @@ app-nav-menu {
   width: 100%;
 }
 
+.content {
+  margin-top: 48px;
+}
+
+.fixed-header {
+  position: absolute;
+  top: 0;
+  height: 48px;
+  z-index: 1000;
+}
+
+.alert-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 25%;
+  margin-top: 48px;
+  z-index: 1001;
+}
+
+.alert-panel-content {
+  margin: 15px;
+  padding: 0 0 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.alert-panel-content-header {
+  color: #bc4c1b;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.alert-panel-alerts {
+  overflow-y: auto;
+}
+
+.alert-button-open {
+  position: absolute;
+  top: 52px;
+  right: 36px;
+  border-style: solid;
+  border-color: #253748;
+  border-radius: 6px;
+  border-width: 1px;
+  width: 40px;
+  height: 26px;
+  background: white;
+  cursor: pointer;
+}
+
+.alert-button-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-style: solid;
+  border-color: #253748;
+  border-radius: 6px;
+  border-width: 1px;
+  width: 30px;
+  height: 30px;
+  background: white;
+  cursor: pointer;
+  color: #253748;
+  padding: 4px 0 0;
+  text-align: center;
+}
+
+.alert-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1px;
+  height: 90%;
+}
+
+.no-alerts-message {
+  margin-left: 10px;
+}

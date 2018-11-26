@@ -4,4 +4,5 @@ export interface ISensor {
   sensorDataType: string;
   sensorId: string;
   sensorReading: string;
+  iotHubDeviceId: string;
 }

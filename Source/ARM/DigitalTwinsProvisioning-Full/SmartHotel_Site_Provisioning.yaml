@@ -1,0 +1,66 @@
+endpoints:
+- type: EventHub
+  eventTypes:
+  - DeviceMessage
+spaces:
+- name: SmartHotel 360 Tenant
+  description: This is the root node for the SmartHotel360 IoT Demo
+  friendlyName: SmartHotel 360 Tenant
+  type: Tenant
+  keystoreName: SmartHotel360 Keystore
+  types:
+  - name: Classic
+    category: SensorType
+  - name: HotelBrand
+    category: SpaceType
+  - name: Hotel
+    category: SpaceType
+  - name: VIPFloor
+    category: SpaceSubType
+  - name: QueenRoom
+    category: SpaceSubType
+  - name: KingRoom
+    category: SpaceSubType
+  - name: SuiteRoom
+    category: SpaceSubType
+  - name: VIPSuiteRoom
+    category: SpaceSubType
+  - name: ConferenceRoom
+    category: SpaceSubType
+  - name: GymRoom
+    category: SpaceSubType
+  users:
+  - Head Of Operations
+  resources:
+  - type: IoTHub
+  propertyKeys:
+  - name: DeviceIdPrefix
+    primitiveDataType: string
+    description: Prefix used in sending Device Method calls to the IoT Hub.
+  - name: DisplayOrder
+    primitiveDataType: uint
+    description: Order to display spaces
+  - name: MinTemperatureAlertThreshold
+    primitiveDataType: int
+    description: Alert if the temperature goes below this value.
+  - name: MaxTemperatureAlertThreshold
+    primitiveDataType: int
+    description: Alert if the temperature goes above this value.
+  - name: ImagePath
+    primitiveDataType: string
+    description: Path of the image to display for the space.
+  matchers:
+  - name: Matcher Temperature
+    dataTypeValue: Temperature
+  userDefinedFunctions:
+  - name: Temperature Processor
+    matcherNames:
+    - Matcher Temperature
+    script: ../UserDefinedFunctions/temperatureThresholdAlert.js
+  roleAssignments:
+  - objectIdType: UserDefinedFunctionId
+    objectName: Temperature Processor
+    roleId: 98e44ad7-28d4-4007-853b-b9968ad132d1
+  spaceReferences:
+  - filename: SmartHotel_SmartHotel360_Provisioning.yaml
+  - filename: SmartHotel_Contoso Hotel_Provisioning.yaml

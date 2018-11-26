@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  overflow: hidden;
+}
+
+.slide-panel-container {
+  height: 100%;
+  width: 200%;
+  display: flex;
+}
+
+.slide-panel-container div {
+  flex: 1;
+}
+
+.contentArea {
+  background: white;
+  border-style: solid none solid solid;
+  border-color: #253748;
+  margin: 10px 0 10px 0;
+  border-radius: 10px 0 0 10px;
+  border-width: 1px;
+}

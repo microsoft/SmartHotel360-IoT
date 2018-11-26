@@ -3,12 +3,9 @@ section {
 }
 
 .rooms {
-  margin-top: 4px;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  margin-left: 26px;
-  margin-right: 26px;
+  margin: 0 0 0 14px;
 }
 
 .room {
@@ -18,15 +15,22 @@ section {
   grid-template-rows: 48px 32px 32px 32px 32px 32px 32px;
   background-color: #d4d4d4;
   padding: 16px;
-  margin-right: 32px;
-  margin-bottom: 32px;
+  margin: 4px 4px 8px 12px;
 }
 
 .room-header {
   grid-row: 1;
+  grid-column-start: 1;
+  grid-column-end: 4;
   color: #bc4c1b;
   font-size: 18px;
   font-weight: 300;
+}
+
+.room-subtype {
+  color: #bc4c1b;
+  font-size: 12px;
+  font-weight: 150;
 }
 
 .room-occupancy {

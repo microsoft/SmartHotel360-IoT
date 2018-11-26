@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { IHotel } from '../services/models/IHotel';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { ISpace } from '../services/models/ISpace';
+import { NavigationService } from '../services/navigation.service';
+import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-hotel',
@@ -10,57 +11,57 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
   styleUrls: ['./hotel.component.css']
 })
 export class HotelComponent implements OnInit {
-
-  @Input() hotelIndex: number;
-
-  constructor(private router: Router,
+  constructor(private navigationService: NavigationService,
     private route: ActivatedRoute,
-    private facilityService: FacilityService,
-    private spinnerService: Ng4LoadingSpinnerService) {
+    private facilityService: FacilityService) {
+  }
 
+  @ViewChild('breadcumbs') private breadcrumbs: BreadcrumbComponent;
+
+  public tenantId: string;
+  public hotelBrandId: string;
+  public hotelBrandName: string;
+  public hotelName: string;
+  public hotelId: string;
+  public hotelIndex: number;
+  public floors: ISpace[] = null;
+
+  ngOnInit() {
     this.route.params.subscribe(params => {
-      this.hotelId = params["id"];
-      this.hotelIndex = params["index"];
-      this.loadFloors();
+      this.tenantId = params['tId'];
+      this.hotelBrandId = params['hbId'];
+      this.hotelBrandName = params['hbName'];
+      this.hotelId = params['hId'];
+      this.hotelIndex = params['hIndex'];
+
+      this.facilityService.executeWhenInitialized(this, this.loadFloors);
     });
   }
 
-  floors = null;
-  hotelId;
-  hotel = null;
-
-  ngOnInit() {
-  }
-
-  loadFloors() {
-    this.spinnerService.show();
-    this.facilityService.getHotel().then((data: IHotel[]) => {
-      let hotels = data;
-
-      this.hotel = hotels.find(hotel => hotel.id == this.hotelId);
-      if (this.hotel != null) {
-        this.floors = this.hotel.floors.sort((a, b) => { return a.name < b.name ? -1 : 1; });
+  loadFloors(self: HotelComponent) {
+    if (self.hotelBrandId) {
+      const hotel = self.facilityService.getSpace(self.hotelBrandId, self.hotelId);
+      if (!hotel) {
+        self.breadcrumbs.returnToHotelBrand();
+        return;
       }
-      this.spinnerService.hide();
-    },
-      (err) => {
-        console.log(err);
-        this.spinnerService.hide();
-      }
-    );
+      self.hotelName = hotel.friendlyName;
+    }
 
+    const floors = self.facilityService.getChildSpaces(self.hotelId);
+    if (!floors) {
+      self.navigationService.navigateToTopSpaces(self.facilityService.getSpaces());
+      return;
+    }
+    self.floors = floors;
   }
 
   chooseFloor(floor) {
-    this.router.navigate(['/floor', { hotelId: this.hotelId, floorId: floor.id }]);
+    this.navigationService
+      .chooseFloor(this.tenantId, this.hotelBrandId, this.hotelBrandName, this.hotelId, this.hotelIndex, this.hotelName, floor.id);
   }
 
-  returnToHome() {
-    this.router.navigate(["/"]);
-  }
-
-  getFloorImage(idx) {
-    const index = idx > 3 ? 3 : idx;
-    return 'url(/assets/images/h' + this.hotelIndex + 'f' + index + '.jpg)';
+  getFloorImage(floor: ISpace) {
+    return `url(${floor.imagePath})`;
   }
 }

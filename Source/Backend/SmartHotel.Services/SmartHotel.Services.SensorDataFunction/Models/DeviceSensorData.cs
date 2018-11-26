@@ -26,5 +26,7 @@ namespace SmartHotel.Services.SensorDataFunction.Models
 	    [BsonElement("eventTimestamp")]
 	    [DataMember(Name = "eventTimestamp")]
 	    public DateTime EventTimestamp { get; set; }
+	    [DataMember( Name = "IoTHubDeviceId" )]
+	    public string IoTHubDeviceId { get; set; }
     }
 }

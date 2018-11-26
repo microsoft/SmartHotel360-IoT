@@ -1,0 +1,144 @@
+{
+  "HotelTypes": [
+    {
+      "Name": "H",
+      "TotalNumberFloors": 10,
+      "NumberVipFloors": 2,
+      "NumberRoomsPerRegularFloor": 20,
+      "NumberRoomsPerVipFloor": 10,
+      "IncludeGym": true,
+      "IncludeConferenceRoom": true,
+      "MinTempAlertThreshold":  65,
+      "MaxTempAlertThreshold":  85
+    },
+    {
+      "Name": "L",
+      "TotalNumberFloors": 10,
+      "NumberVipFloors": 2,
+      "NumberRoomsPerRegularFloor": 15,
+      "NumberRoomsPerVipFloor": 8,
+      "IncludeGym": true,
+      "IncludeConferenceRoom": true,
+      "MinTempAlertThreshold":  65,
+      "MaxTempAlertThreshold":  85
+    },
+    {
+      "Name": "SH",
+      "TotalNumberFloors": 5,
+      "NumberVipFloors": 1,
+      "NumberRoomsPerRegularFloor": 10,
+      "NumberRoomsPerVipFloor": 4,
+      "IncludeGym": true,
+      "IncludeConferenceRoom": true,
+      "MinTempAlertThreshold":  65,
+      "MaxTempAlertThreshold":  85
+    },
+    {
+      "Name": "SL",
+      "TotalNumberFloors": 5,
+      "NumberVipFloors": 1,
+      "NumberRoomsPerRegularFloor": 10,
+      "NumberRoomsPerVipFloor": 4,
+      "IncludeGym": true,
+      "IncludeConferenceRoom": true,
+      "MinTempAlertThreshold":  65,
+      "MaxTempAlertThreshold":  85
+    }
+  ],
+  "Brands": [
+    {
+      "Name": "SmartHotel360",
+      "Hotels": [
+        {
+          "Name": "SH360 Elite 1",
+          "Type": "H",
+          "RegularFloorEmployeeUser": "Employee",
+          "AddDevices": true
+        },
+        {
+          "Name": "SH360 Premium 1",
+          "Type": "L",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": true
+        },
+        {
+          "Name": "SH360 Elite 2",
+          "Type": "SH",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": true
+        },
+        {
+          "Name": "SH360 Elite 3",
+          "Type": "SH",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": true
+        },
+        {
+          "Name": "SH360 Elite 4",
+          "Type": "SL",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": true
+        },
+        {
+          "Name": "SH360 Premium 2",
+          "Type": "SL",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": true
+        },
+        {
+          "Name": "SH360 Premium 3",
+          "Type": "SL",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": true
+        }
+      ]
+    },
+    {
+      "Name": "Contoso Hotel",
+      "Hotels": [
+        {
+          "Name": "Contoso Elite 1",
+          "Type": "SH",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": true
+        },
+        {
+          "Name": "Contoso Premium 1",
+          "Type": "SH",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": true
+        },
+        {
+          "Name": "Contoso Elite 2",
+          "Type": "SL",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": true
+        },
+        {
+          "Name": "Contoso Elite 3",
+          "Type": "SH",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": true
+        },
+        {
+          "Name": "Contoso Premium 2",
+          "Type": "SL",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": true
+        },
+        {
+          "Name": "Contoso Premium 3",
+          "Type": "SL",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": true
+        },
+        {
+          "Name": "Contoso Premium 4",
+          "Type": "SH",
+          "RegularFloorEmployeeUser": null,
+          "AddDevices": true
+        }
+      ]
+    }
+  ]
+}

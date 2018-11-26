@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: roomdevices-api
-        image: smarthoteliot.azurecr.io/roomdevices-api:public
+        image: needstobeset.azurecr.io/roomdevices-api:public
         imagePullPolicy: Always
         env:
         - name: DatabaseConnectionString

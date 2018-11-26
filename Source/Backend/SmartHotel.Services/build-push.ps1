@@ -29,7 +29,7 @@ az acr login -n $acrName
 Write-Host "------------------------------------------------------------"
 Write-Host "Building Docker images"
 Write-Host "------------------------------------------------------------"
-docker-compose build
+docker-compose build --no-cache
 
 Write-Host "------------------------------------------------------------"
 Write-Host "Pushing :public images to $acrName.azurecr.io..."
@@ -40,6 +40,7 @@ foreach ($api in $apis)
 	$imageFqdn = "$acrName.azurecr.io/$api-api"
     $devImage = $imageFqdn + ":dev"
     $publicImage = $imageFqdn + ":public"
+    Write-Host "Tagging $devImage as $publicImage"
 	docker tag $devImage $publicImage
 	Write-Host "Pushing $publicImage"
 	docker push $publicImage

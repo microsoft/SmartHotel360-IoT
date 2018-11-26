@@ -18,7 +18,10 @@ namespace SmartHotel.IoT.Provisioning.Common
 		public static async Task<Guid> GetIdAsync( this HttpResponseMessage response )
 		{
 			if ( !response.IsSuccessStatusCode )
-				return Guid.Empty;
+			{
+				string responseMessage = await response.Content.ReadAsStringAsync();
+				throw new Exception( $"Http request failed: {responseMessage}" );
+			}
 			string content = await response.Content.ReadAsStringAsync();
 
 			// strip out the double quotes

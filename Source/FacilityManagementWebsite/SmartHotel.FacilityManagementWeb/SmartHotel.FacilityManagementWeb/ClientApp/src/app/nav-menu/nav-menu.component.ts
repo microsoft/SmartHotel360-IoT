@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AdalService } from 'adal-angular4';
+import { FacilityService } from '../services/facility.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-nav-menu',
@@ -8,14 +10,16 @@ import { AdalService } from 'adal-angular4';
 })
 export class NavMenuComponent {
 
-  constructor(private adalSvc: AdalService) { }
+  constructor(private adalSvc: AdalService,
+    private facilityService: FacilityService) { }
 
   login() {
     this.adalSvc.login();
   }
 
   logout() {
-    sessionStorage.clear();
+    sessionStorage.removeItem(AppComponent.LastLoginSessionStorageKey);
+    this.facilityService.terminate();
     this.adalSvc.logOut();
   }
 

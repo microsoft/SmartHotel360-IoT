@@ -1,75 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: smarthotel.devices.light.room11
+  name: sh.d.smarthotel360-sh360elite1-room101
 spec:
   template:
     metadata:
       labels:
-        app: smarthotel.devices.light.room11
-        component: smarthotel.devices.light.room11
+        app: sh.d.smarthotel360-sh360elite1-room101
+        component: sh.d.smarthotel360-sh360elite1-room101
     spec:
       containers:
-      - name: device-light
-        image: smarthoteliot.azurecr.io/device-light:public
-        imagePullPolicy: Always
-        env:
-        - name: HardwareId
-          value: 
-        - name: IoTHubDeviceConnectionString
-          value: 
-        - name: ManagementApiUrl
-          value: 
-        - name: MessageIntervalInMilliSeconds
-          value: "5000"
-        - name: SasToken
-          value: 
-        - name: SensorDataType
-          value: Light
----
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: smarthotel.devices.thermostat.room11
-spec:
-  template:
-    metadata:
-      labels:
-        app: smarthotel.devices.thermostat.room11
-        component: smarthotel.devices.thermostat.room11
-    spec:
-      containers:
-      - name: device-thermostat
-        image: smarthoteliot.azurecr.io/device-thermostat:public
-        imagePullPolicy: Always
-        env:
-        - name: HardwareId
-          value: 
-        - name: IoTHubDeviceConnectionString
-          value: 
-        - name: ManagementApiUrl
-          value: 
-        - name: MessageIntervalInMilliSeconds
-          value: "5000"
-        - name: SasToken
-          value: 
-        - name: SensorDataType
-          value: Temperature
----
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: smarthotel.devices.motion.room11
-spec:
-  template:
-    metadata:
-      labels:
-        app: smarthotel.devices.motion.room11
-        component: smarthotel.devices.motion.room11
-    spec:
-      containers:
-      - name: device-motion
-        image: smarthoteliot.azurecr.io/device-motion:public
+      - name: device-room
+        image: needstobeset.azurecr.io/device-room:public
         imagePullPolicy: Always
         env:
         - name: HardwareId
@@ -81,6 +23,6 @@ spec:
         - name: RandomizationDelay
           value: "60000"
         - name: SasToken
-          value: 
-        - name: SensorDataType
-          value: Motion
+          value:
+        - name: StartupDelayInSeconds
+          value: "0"

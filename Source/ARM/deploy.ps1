@@ -14,12 +14,6 @@
  .PARAMETER resourceGroupLocation
     Optional, a resource group location. If specified, will try to create a new resource group in this location. If not specified, assumes resource group is existing.
 
- .PARAMETER managerObjId
-    The Azure Object Id for the Manager user.
-
- .PARAMETER employeeObjId
-    The Azure Object Id for the Employee user.
-
  .PARAMETER clientId
     The Id of the Azure Active directory application.
 
@@ -34,6 +28,15 @@
 
  .PARAMETER aksServicePrincipalKey
     The key from the Azure Active directory Service Principal created for the Azure Kubernetes Service to use.
+
+ .PARAMETER userAzureObjectIdsFilePath
+    Optional, path to the file containing the Azure Object Ids for the various users that need RBAC (Role Based Access Control) permissions in Digital Twins.
+
+ .PARAMETER digitalTwinsProvisioningTemplateFilePath
+    Optional, path to the template file used to provision the Digital Twins instance along with device related utilities.
+
+ .PARAMETER numberOfAksNodes
+    Optional, number of nodes to have in the Azure Kubernetes service.
 
  .PARAMETER templateFilePath
     Optional, path to the template file. Defaults to template.json.
@@ -56,14 +59,6 @@ param(
 
  [Parameter(Mandatory=$True)]
  [string]
- $managerObjId,
-
- [Parameter(Mandatory=$True)]
- [string]
- $employeeObjId,
-
- [Parameter(Mandatory=$True)]
- [string]
  $clientId,
 
  [Parameter(Mandatory=$True)]
@@ -83,6 +78,15 @@ param(
  $aksServicePrincipalKey,
 
  [string]
+ $userAzureObjectIdsFilePath = "UserAADObjectIds.json",
+
+ [string]
+ $digitalTwinsProvisioningTemplateFilePath = "DigitalTwinsProvisioning-Demo/SmartHotel_Site_Provisioning.yaml",
+
+ [int]
+ $numberOfAksNodes = 3,
+
+ [string]
  $templateFilePath = "template.json",
 
  [string]
@@ -94,6 +98,31 @@ function Reset-Console-Coloring {
     $Host.UI.RawUI.ForegroundColor = 'White'
 }
 
+# https://markheath.net/post/managing-azure-function-keys
+function getKuduCreds([string]$appName, [string]$resourceGroup)
+{
+    $user = az webapp deployment list-publishing-profiles -n $appName -g $resourceGroup `
+            --query "[?publishMethod=='MSDeploy'].userName" -o tsv
+
+    $pass = az webapp deployment list-publishing-profiles -n $appName -g $resourceGroup `
+            --query "[?publishMethod=='MSDeploy'].userPWD" -o tsv
+
+    $pair = "$($user):$($pass)"
+    $encodedCreds = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($pair))
+    return $encodedCreds
+}
+
+function getFunctionKey([string]$appName, [string]$functionName, [string]$encodedCreds)
+{
+    $jwt = Invoke-RestMethod -Uri "https://$appName.scm.azurewebsites.net/api/functions/admin/token" -Headers @{Authorization=("Basic {0}" -f $encodedCreds)} -Method GET
+
+    $keys = Invoke-RestMethod -Method GET -Headers @{Authorization=("Bearer {0}" -f $jwt)} `
+            -Uri "https://$appName.azurewebsites.net/admin/functions/$functionName/keys" 
+
+    $code = $keys.keys[0].value
+    return $code
+}
+
 #******************************************************************************
 # Script body
 # Execution begins here
@@ -102,6 +131,7 @@ Reset-Console-Coloring
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $ErrorActionPreference = "Stop"
 $powershellEscape = '--%'
+$startTime = Get-Date
 
 # sign in
 Write-Host "Logging in...";
@@ -178,7 +208,7 @@ if(!$?)
 
 Write-Host
 Write-Host "Creating the AKS Cluster. This can take at least 15 minutes."
-$aksClusterCreationResult = az aks create --resource-group "$resourceGroupName" --name "$aksClusterName" --node-count 1 --service-principal "$aksServicePrincipalId" --client-secret "$aksServicePrincipalKey" --location "$aksClusterLocation" --generate-ssh-keys
+$aksClusterCreationResult = az aks create --resource-group "$resourceGroupName" --name "$aksClusterName" --node-count $numberOfAksNodes --service-principal "$aksServicePrincipalId" --client-secret "$aksServicePrincipalKey" --location "$aksClusterLocation" --generate-ssh-keys
 Write-Host "Finished Creating the AKS Cluster"
 
 $EndTimeLocal = Get-Date
@@ -187,6 +217,7 @@ Write-Host
 
 $iotHubName = $outputs.iotHubName.value
 $iotHubServiceConnectionString = ((az iot hub show-connection-string -n $iotHubName --resource-group $resourceGroupName --policy-name service) | ConvertFrom-Json).cs
+$iotHubRegistryReadWriteConnectionString = ((az iot hub show-connection-string -n $iotHubName --resource-group $resourceGroupName --policy-name registryReadWrite) | ConvertFrom-Json).cs
 
 $cosmosDbName = $outputs.cosmosDbName.value
 $cosmosDbConnectionString = ((az cosmosdb list-connection-strings -n $cosmosDbName -g $resourceGroupName) | ConvertFrom-Json).connectionStrings[0].connectionString
@@ -233,12 +264,32 @@ catch
 Write-Host
 Write-Host
 
+$dtProvisionTemplateFullFilePath = (Resolve-Path $digitalTwinsProvisioningTemplateFilePath).Path
+$userAzureObjectIdsFullFilePath = (Resolve-Path $userAzureObjectIdsFilePath).Path
+
+$storageAccountName = $outputs.storageAccountName.value
+
+$storageConnectionString = ((az storage account show-connection-string -g $resourceGroupName -n $storageAccountName) | ConvertFrom-Json).connectionString
+
 #Provision IoT Devices
 Write-Host
 Write-Host
+
 Write-Host "Provisioning IoT Devices..."
 
-Invoke-Expression "./iot-provisioning.ps1 -iothub $iotHubName"
+$iotProvisioningOutput = 'iot-device-connectionstring.json'
+
+Push-Location "../Provisioning/IoTHubDeviceProvisioningBits"
+$iotHubDeviceProvisioningArgs = "-iotr `"$iotHubRegistryReadWriteConnectionString`" -ascs `"$storageConnectionString`" -dtpf `"$dtProvisionTemplateFullFilePath`" -o `"$iotProvisioningOutput`""
+dotnet SmartHotel.IoT.IoTHubDeviceProvisioning.dll $powershellEscape $iotHubDeviceProvisioningArgs
+if( -not (Test-Path $iotProvisioningOutput))
+{
+    Write-Error "An error occurred while creating the IoT Hub devices. Please attempt to fix the issue and re-deploy."
+    exit
+}
+
+Copy-Item $iotProvisioningOutput -Destination "../ProvisioningDevicesBits"
+Pop-Location
 
 $eventHubConsumerConnnection = $outputs.eventHubConsumerConnnection.value
 $eventHubProducerConnnection = $outputs.eventHubProducerConnnection.value
@@ -246,45 +297,54 @@ $eventHubProducerSecondaryConnnection = $outputs.eventHubProducerSecondaryConnne
 $eventHubName = $outputs.eventHubName.value
 
 $provisioningOutput = 'ProvisioningOutput.json'
-$iotProvisioningOutput = 'iot-device-connectionstring.json'
-
-Copy-Item $iotProvisioningOutput -Destination "../Provisioning/ProvisioningDevicesBits/"
-
-#Update Devices and Services Docker/Kubernetes yaml
 
 Write-Host "Provisioning Digital Twins Topology..."
 
-pushd "../Provisioning/ProvisioningBits/"
-$dtProvisioningArgs = "-t `"$tenantId`" -ci `"$clientId`" -cs `"$clientSecret`" -dt `"$dtApiEndpoint`" -ehcs `"$eventHubProducerConnnection`" -ehscs `"$eventHubProducerSecondaryConnnection`" -ehn `"$eventHubName`" -moid `"$managerObjId`" -eoid `"$employeeObjId`" -o `"$provisioningOutput`""
+Push-Location "../Provisioning/ProvisioningBits/"
+$dtProvisioningArgs = "-t `"$tenantId`" -ci `"$clientId`" -cs `"$clientSecret`" -dt `"$dtApiEndpoint`" -ehcs `"$eventHubProducerConnnection`" -ehscs `"$eventHubProducerSecondaryConnnection`" -ehn `"$eventHubName`" -oids `"$userAzureObjectIdsFullFilePath`" -dtpf `"$dtProvisionTemplateFullFilePath`" -o `"$provisioningOutput`""
 dotnet SmartHotel.IoT.Provisioning.dll $powershellEscape $dtProvisioningArgs
+if( -not (Test-Path $provisioningOutput))
+{
+    Write-Error "An error occurred while provisioning Azure Digital Twins. Please attempt to fix the issue and re-deploy."
+    exit
+}
+
 Copy-Item $provisioningOutput -Destination "../ProvisioningDevicesBits"
-$room11SpaceId = (Get-Content "$provisioningOutput" | Out-String | ConvertFrom-Json).room11[0].SpaceId
-popd
+$demoRoomName = 'SmartHotel360-SH360Elite1-Room101'
+$demoRoomNameLowercase = $demoRoomName.ToLower()
+$demoRoom = (Get-Content "$provisioningOutput" | Out-String | ConvertFrom-Json).$demoRoomName[0]
+$demoRoomSpaceId = $demoRoom.SpaceId
+$demoRoomDeviceHardwareId = $demoRoom.hardwareId
+$demoRoomDeviceSaSToken = $demoRoom.SasToken
+$demoRoomKubernetesDeploymentName = "sh.d.room.$demoRoomNameLowercase"
+Pop-Location
+
+#Update Devices and Services Docker/Kubernetes yaml
 
 Write-Host "Provisioning Device sample applications..."
 
-pushd "../Provisioning/ProvisioningDevicesBits/"
+Push-Location "../Provisioning/ProvisioningDevicesBits/"
 $deviceProvisioningArgs = "-dt `"$dtManagementEndpoint`" -i $provisioningOutput -d `"../../Backend/SmartHotel.Devices/`" -cr `"$acrName`" -iot `"$iotProvisioningOutput`""
 dotnet SmartHotel.IoT.ProvisioningDevices.dll $powershellEscape $deviceProvisioningArgs
-popd
+Pop-Location
 
 Write-Host "Provisioning APIs..."
 
-pushd "../Provisioning/ProvisioningApisBits/"
+Push-Location "../Provisioning/ProvisioningApisBits/"
 $apiProvisioningArgs = "-dt `"$dtManagementEndpoint`" -d `"../../Backend/SmartHotel.Services/`" -cr `"$acrName`" -iot `"$iotHubServiceConnectionString`" -db `"$cosmosDbConnectionString`""
 dotnet SmartHotel.IoT.ProvisioningApis.dll $powershellEscape $apiProvisioningArgs
-popd
+Pop-Location
 
 #Build and publish devices and services containers
 Write-Host "Building and publishing device images..."
-pushd "../Backend/SmartHotel.Devices"
+Push-Location "../Backend/SmartHotel.Devices"
 ./build-push.ps1 -subscriptionId $subscriptionId -acrName $acrName
-popd
+Pop-Location
 
 Write-Host "Building and publishing service images..."
-pushd "../Backend/SmartHotel.Services"
+Push-Location "../Backend/SmartHotel.Services"
 ./build-push.ps1 -subscriptionId $subscriptionId -acrName $acrName
-popd
+Pop-Location
 
 az aks get-credentials --resource-group "$resourceGroupName" --name "$aksClusterName"
 
@@ -292,7 +352,7 @@ Write-Host
 Write-Host
 #Deploy service(s) to Kubernetes
 Write-Host "Deploying Services to Kubernetes..."
-pushd "../Backend/SmartHotel.Services"
+Push-Location "../Backend/SmartHotel.Services"
 kubectl apply -f deployments.demo.yaml
 
 #Wait for public IPs/Ports and save
@@ -310,15 +370,12 @@ while ($roomDevicesApiUri -eq "" -or $roomDevicesApiUri -eq $null)
     Catch {}
 }
 $roomDevicesApiUri = $roomDevicesApiUri + ":" + $kubeOutput.spec.ports.port
-popd
+Pop-Location
 
 $facilityManagementApiName = $outputs.webapiName.value
 $facilityManagementApiDefaultHostName = ((az webapp show -g $resourceGroupName -n $facilityManagementApiName) | ConvertFrom-Json).defaultHostName
 $facilityManagementApiUri = "https://$facilityManagementApiDefaultHostName"
 $functionSiteName = $outputs.functionSiteName.value
-$storageAccountName = $outputs.storageAccountName.value
-
-$storageConnectionString = ((az storage account show-connection-string -g $resourceGroupName -n $storageAccountName) | ConvertFrom-Json).connectionString
 
 Write-Host
 Write-Host "Setting Facility Manangement Api App Settings"
@@ -362,7 +419,7 @@ $publishOutputFolder = "./webapp"
 $facilityManagementWebsiteName = $outputs.websiteName.value
 $deploymentZip = "./SmartHotel.FacilityManagementWeb.Deployment.zip"
 Write-Host "Publishing the Facility Management website..."
-pushd "../FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb"
+Push-Location "../FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb"
 
 Write-Host "Running dotnet restore for the Website project"
 dotnet restore SmartHotel.FacilityManagementWeb.csproj
@@ -383,13 +440,13 @@ az webapp deployment source config-zip --resource-group $resourceGroupName --nam
 
 Remove-Item -Path $deploymentZip -Recurse -Force
 Write-Host "Publishing completed"
-popd
+Pop-Location
 
 # Publish the Web Api
 $publishOutputFolder = "./webapp"
 $deploymentZip = "./SmartHotel.Services.FacilityManagement.Deployment.zip"
 Write-Host "Publishing the Facility Management api..."
-pushd "../Backend/SmartHotel.Services/SmartHotel.Services.FacilityManagement"
+Push-Location "../Backend/SmartHotel.Services/SmartHotel.Services.FacilityManagement"
 
 Write-Host "Running dotnet restore for the Facility Management Api project"
 dotnet restore SmartHotel.Services.FacilityManagement.csproj
@@ -410,13 +467,13 @@ az webapp deployment source config-zip --resource-group $resourceGroupName --nam
 
 Remove-Item -Path $deploymentZip -Recurse -Force
 Write-Host "Publishing completed"
-popd
+Pop-Location
 
 # Publish the Function
 $publishOutputFolder = "./functionapp"
 $deploymentZip = "./SmartHotel.Services.SensorDataFunction.Deployment.zip"
 Write-Host "Publishing the Azure Function..."
-pushd "../Backend/SmartHotel.Services/SmartHotel.Services.SensorDataFunction"
+Push-Location "../Backend/SmartHotel.Services/SmartHotel.Services.SensorDataFunction"
 
 Write-Host "Running dotnet restore for the Azure Function project"
 dotnet restore SmartHotel.Services.SensorDataFunction.csproj
@@ -435,9 +492,36 @@ Remove-Item -Path $publishOutputFolder -Recurse -Force
 Write-Host "Publishing the Azure Function to Azure"
 az functionapp deployment source config-zip --resource-group $resourceGroupName --name $functionSiteName --src $deploymentZip
 
+$deviceRelayFunctionName = "DeviceRelayFunction"
+$encodedFunctionCreds = getKuduCreds -appName $functionSiteName -resourceGroup $resourceGroupName
+$deviceRelayFunctionKey = getFunctionKey -appName $functionSiteName -functionName $deviceRelayFunctionName -encodedCreds $encodedFunctionCreds
+
 Remove-Item -Path $deploymentZip -Recurse -Force
 Write-Host "Publishing completed"
-popd
+Pop-Location
+
+Write-Host
+Write-Host "Updating the MXChip Device's config.h to point to the deployed azure resources."
+Write-Host
+
+$deviceRelayFunctionEndpoint = "https://$functionSiteName.azurewebsites.net/api/$deviceRelayFunctionName"
+
+$mxChipDeviceConfigFile = "../Backend/SmartHotel.PhysicalDevices/SmartHotel.PhysicalDevices.MXChip/Device/config.h"
+$fullMxDeviceConfigFilePath = Resolve-Path "$mxChipDeviceConfigFile"
+
+Write-Host "Updating $fullMxDeviceConfigFilePath..."
+
+$mxDeviceConfigFileContent = Get-Content $fullMxDeviceConfigFilePath -raw
+$mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DTSasToken}","$demoRoomDeviceSaSToken")
+$mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DTHardwareId}","$demoRoomDeviceHardwareId")
+$mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DigitalTwinsManagementApiEndpoint}","$dtApiEndpoint")
+$mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DeviceRelayFunctionEndpoint}","$deviceRelayFunctionEndpoint")
+$mxDeviceConfigFileContent = $mxDeviceConfigFileContent.Replace("{DeviceRelayFunctionKey}","$deviceRelayFunctionKey")
+
+$mxDeviceConfigFileContent | Set-Content $fullMxDeviceConfigFilePath -Force
+
+Write-Host "Update complete."
+Write-Host
 
 Write-Host
 Write-Host
@@ -445,9 +529,9 @@ Write-Host
 Write-Host "Deploying Devices to Kubernetes..."
 Write-Host
 
-pushd "../Backend/SmartHotel.Devices"
+Push-Location "../Backend/SmartHotel.Devices"
 kubectl apply -f deployments.demo.yaml
-popd
+Pop-Location
 
 $facilityManagementWebsiteDefaultHostName = ((az webapp show -g $resourceGroupName -n $facilityManagementWebsiteName) | ConvertFrom-Json).defaultHostName
 $facilityManagementWebsiteUri = "https://$facilityManagementWebsiteDefaultHostName"
@@ -520,16 +604,23 @@ $savedSettings = [PSCustomObject]@{
     iotHubConnectionString = $iotHubServiceConnectionString
     cosmosDbConnectionString = $cosmosDbConnectionString
     roomDevicesApiEndpoint = "http://$roomDevicesApiUri/api"
-    room11SpaceId = $room11SpaceId 
+    demoRoomSpaceId = $demoRoomSpaceId
+    demoRoomKubernetesDeployment = $demoRoomKubernetesDeploymentName
+    deviceRelayFunctionEndpoint = $deviceRelayFunctionEndpoint
+    deviceRelayFunctionKey = $deviceRelayFunctionKey
 };
 
 $path = Get-Location
-$outfile = $path.ToString() + '\userSettings.json'
+$outfile = $path.ToString() + '/userSettings.json'
 
 $savedSettings | ConvertTo-Json | Out-File $outfile
+
+$endTime = Get-Date
+$totalTimeInMinutes = ($endTime - $startTime).TotalMinutes
 
 Write-Host
 Write-Host
 Write-Host 'Required settings have been saved to ' $outfile
 Write-Host
+Write-Host "Deployment took $totalTimeInMinutes"
 Write-Host
