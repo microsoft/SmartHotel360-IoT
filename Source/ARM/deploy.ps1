@@ -622,5 +622,5 @@ Write-Host
 Write-Host
 Write-Host 'Required settings have been saved to ' $outfile
 Write-Host
-Write-Host "Deployment took $totalTimeInMinutes"
+Write-Host "Deployment took $totalTimeInMinutes minutes"
 Write-Host
