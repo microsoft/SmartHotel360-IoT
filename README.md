@@ -18,6 +18,8 @@ Welcome to the SmartHotel360 IoT repository. Here you'll find everything you nee
 
 ![IoT Demo Architecture Diagram](Documents/Images/Architecture.png "IoT Demo Architecture")
 
+[![SmartHotel360 IoT Demo powered by Azure Digital Twins](https://img.youtube.com/vi/urcmaFVQnF4/0.jpg)](https://www.youtube.com/watch?v=urcmaFVQnF4)
+
 ## Getting Started
 
 SmartHotel360 uses a **microservice oriented** architecture implemented using containers. For the IoT Demo, there are various services developed in different technologies: .NET Core 2, Asp.Net Core 2, and Angular. These services use different Azure Resources like Digital Twins, App Services, Cosmos DB, Event Hubs, Azure Functions, and IoT Hubs to name a few. The step by step walkthrough for creating and provisioning the demo can be found next in the [Setup](#Setup) section.
