@@ -16,24 +16,26 @@ namespace SmartHotel.Devices.RoomDevice.Models
 		public const string LightDataType = "Light";
 		public const string MotionDataType = "Motion";
 
-		[DataMember( Name = "SensorId" )]
+		[DataMember]
+		public string DeviceId { get; set; }
+		[DataMember]
 		public string SensorId { get; set; }
-		[DataMember( Name = "SpaceId" )]
+		[DataMember]
 		public string SpaceId { get; set; }
-		[DataMember( Name = "SensorReading" )]
+		[DataMember]
 		public string SensorReading { get; set; }
-		[DataMember( Name = "EventTimestamp" )]
+		[DataMember]
 		public string EventTimestamp { get; set; }
-		[DataMember( Name = "SensorType" )]
+		[DataMember]
 		public string SensorType { get; set; }
-		[DataMember( Name = "SensorDataType" )]
+		[DataMember]
 		public string SensorDataType { get; set; }
-		[DataMember( Name = "MessageType" )]
+		[DataMember]
 		public readonly string MessageType = "sensor";
-		[DataMember( Name = "IoTHubDeviceId" )]
+		[DataMember]
 		public string IoTHubDeviceId { get; set; }
 
-		public static TelemetryMessage Create(string sensorId, string sensorType, string sensorDataType, object value,
+		public static TelemetryMessage Create(string deviceId, string sensorId, string sensorType, string sensorDataType, object value,
 			string spaceId, string ioTHubDeviceId)
 		{
 			TelemetryMessage telemetryMessage;
@@ -51,6 +53,8 @@ namespace SmartHotel.Devices.RoomDevice.Models
 				default:
 					throw new ArgumentOutOfRangeException(nameof(sensorDataType));
 			}
+
+			telemetryMessage.DeviceId = deviceId;
 			telemetryMessage.SensorId = sensorId;
 			telemetryMessage.EventTimestamp = DateTime.UtcNow.ToString("o");
 			telemetryMessage.SensorType = sensorType;

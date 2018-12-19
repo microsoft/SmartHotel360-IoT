@@ -150,7 +150,7 @@ namespace SmartHotel.Devices.RoomDevice
 					{
 						sensorInfo.UpdateLastValueSentWithCurrentValue();
 						var currentValue = sensorInfo.GetCurrentValue();
-						var telemetryMessage = TelemetryMessage.Create( sensor.Id, sensor.Type, sensor.DataType, currentValue,
+						var telemetryMessage = TelemetryMessage.Create( sensor.DeviceId, sensor.Id, sensor.Type, sensor.DataType, currentValue,
 							sensor.SpaceId, IoTHubDeviceId );
 
 						try
