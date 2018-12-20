@@ -249,12 +249,9 @@ char* getIotDeviceName()
     return getDeviceNameFromConnectionString(iotHubConnectionString);
 }
 
-void createSensorMessagePayload(const char* connectionString, SensorInfo* sensor, char* ioTHubDeviceId, char* value, char *payload)
+void createSensorMessagePayload(const char* connectionString, JSON_Value* root_value, JSON_Object* root_object, SensorInfo* sensor,
+    char* ioTHubDeviceId, char* value, char *payload)
 {
-    JSON_Value *root_value = json_value_init_object();
-    JSON_Object *root_object = json_value_get_object(root_value);
-    char* serialized_string = NULL;
-
     json_object_set_string(root_object, "SensorReading", value);
     json_object_set_string(root_object, "SensorId", sensor->id);
     json_object_set_string(root_object, "SensorType", sensor->type);
@@ -262,8 +259,9 @@ void createSensorMessagePayload(const char* connectionString, SensorInfo* sensor
     json_object_set_string(root_object, "SpaceId", sensor->spaceId);
     json_object_set_string(root_object, "IoTHubDeviceId", ioTHubDeviceId);
     json_object_set_string(root_object, "EventTimestamp", getUtcDateTimeNow());
-     json_object_set_string(root_object, "ConnectionString", connectionString);
+    json_object_set_string(root_object, "ConnectionString", connectionString);
    
+    char* serialized_string = NULL;
     serialized_string = json_serialize_to_string_pretty(root_value);
 
     snprintf(payload, MAX_UPLOAD_SIZE, "%s", serialized_string);
@@ -271,7 +269,8 @@ void createSensorMessagePayload(const char* connectionString, SensorInfo* sensor
     json_value_free(root_value);
 }
 
-bool createTemperatureSensorMessagePayload(const char* connectionString, SensorInfo* temperatureSensor, char* ioTHubDeviceId, float temperature, char *payload, bool forceSend)
+bool createTemperatureSensorMessagePayload(const char* connectionString, SensorInfo* temperatureSensor, char* ioTHubDeviceId, float temperature,
+    char *payload, bool forceSend)
 {
     if (temperature == lastTemperatureSent && !forceSend)
     {
@@ -282,7 +281,12 @@ bool createTemperatureSensorMessagePayload(const char* connectionString, SensorI
 
     sprintf(outputString, "%.1f", lastTemperatureSent);
 
-    createSensorMessagePayload(connectionString, temperatureSensor, ioTHubDeviceId, outputString, payload);
+    JSON_Value* root_value = json_value_init_object();
+    JSON_Object* root_object = json_value_get_object(root_value);
+
+    json_object_set_number(root_object, "Temperature", atof(outputString));
+
+    createSensorMessagePayload(connectionString, root_value, root_object, temperatureSensor, ioTHubDeviceId, outputString, payload);
 
     return true;
 }
@@ -298,7 +302,12 @@ bool createLightSensorMessagePayload(const char* connectionString, SensorInfo* l
 
     sprintf(outputString, "%.2f", (float)lastLightValueSent / 100.0f);
 
-    createSensorMessagePayload(connectionString, lightSensor, ioTHubDeviceId, outputString, payload);
+    JSON_Value* root_value = json_value_init_object();
+    JSON_Object* root_object = json_value_get_object(root_value);
+
+    json_object_set_number(root_object, "Light", atof(outputString));
+
+    createSensorMessagePayload(connectionString, root_value, root_object, lightSensor, ioTHubDeviceId, outputString, payload);
 
     return true;
 }
@@ -314,7 +323,12 @@ bool createMotionSensorMessagePayload(const char* connectionString, SensorInfo* 
 
     sprintf(outputString, "%s", lastRoomOccupiedSent ? "True" : "False");
 
-    createSensorMessagePayload(connectionString, motionSensor, ioTHubDeviceId, outputString, payload);
+    JSON_Value* root_value = json_value_init_object();
+    JSON_Object* root_object = json_value_get_object(root_value);
+
+    json_object_set_number(root_object, "Occupied", lastRoomOccupiedSent ? 1 : 0);
+
+    createSensorMessagePayload(connectionString, root_value, root_object, motionSensor, ioTHubDeviceId, outputString, payload);
 
     return true;
 }
