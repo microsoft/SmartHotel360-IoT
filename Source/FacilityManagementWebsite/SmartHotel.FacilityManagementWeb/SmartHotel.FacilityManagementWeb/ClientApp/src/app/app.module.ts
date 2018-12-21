@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -21,6 +21,14 @@ import { LoadingComponent } from './loading/loading.component';
 import { SlidePanelComponent } from './slide-panel/slide-panel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as AuthenticationContext from 'adal-angular/lib/adal';
+import { EnvironmentService } from './services/environment.service';
+
+const initializeApp = (environmentService: EnvironmentService) => {
+  return () => {
+    const loadEnvironmentPromise = environmentService.loadEnvironment();
+    return loadEnvironmentPromise;
+  };
+};
 
 @NgModule({
   declarations: [
@@ -52,6 +60,13 @@ import * as AuthenticationContext from 'adal-angular/lib/adal';
       provide: HTTP_INTERCEPTORS,
       useClass: AdalInterceptor,
       multi: true
+    },
+    EnvironmentService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      multi: true,
+      deps: [EnvironmentService]
     }
   ],
   bootstrap: [AppComponent]
