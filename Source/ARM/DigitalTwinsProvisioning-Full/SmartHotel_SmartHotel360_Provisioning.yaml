@@ -25,6 +25,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/h.jpg
+  - name: Latitude
+    value: 47.6168
+  - name: Longitude
+    value: -122.20507
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -327,25 +331,10 @@ spaces:
       description: Room 120
       friendlyName: Room 120
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Elite1-120
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 121
-      description: Room 121
-      friendlyName: Room 121
-      type: Room
       subType: GymRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Elite1-121
+        hardwareId: SmartHotel360-SH360Elite1-120
         sensors:
         - dataType: Temperature
           type: Classic
@@ -654,25 +643,10 @@ spaces:
       description: Room 220
       friendlyName: Room 220
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Elite1-220
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 221
-      description: Room 221
-      friendlyName: Room 221
-      type: Room
       subType: ConferenceRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Elite1-221
+        hardwareId: SmartHotel360-SH360Elite1-220
         sensors:
         - dataType: Temperature
           type: Classic
@@ -2889,6 +2863,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/l.jpg
+  - name: Latitude
+    value: 32.87578
+  - name: Longitude
+    value: -117.20701
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -3114,25 +3092,10 @@ spaces:
       description: Room 115
       friendlyName: Room 115
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Premium1-115
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 116
-      description: Room 116
-      friendlyName: Room 116
-      type: Room
       subType: GymRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Premium1-116
+        hardwareId: SmartHotel360-SH360Premium1-115
         sensors:
         - dataType: Temperature
           type: Classic
@@ -3364,25 +3327,10 @@ spaces:
       description: Room 215
       friendlyName: Room 215
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Premium1-215
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 216
-      description: Room 216
-      friendlyName: Room 216
-      type: Room
       subType: ConferenceRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Premium1-216
+        hardwareId: SmartHotel360-SH360Premium1-215
         sensors:
         - dataType: Temperature
           type: Classic
@@ -5077,6 +5025,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sh.jpg
+  - name: Latitude
+    value: 51.461514
+  - name: Longitude
+    value: -0.930454
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -5137,7 +5089,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite2-104
@@ -5182,7 +5134,7 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite2-107
@@ -5197,7 +5149,7 @@ spaces:
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite2-108
@@ -5227,25 +5179,10 @@ spaces:
       description: Room 110
       friendlyName: Room 110
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Elite2-110
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
-      type: Room
       subType: GymRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Elite2-111
+        hardwareId: SmartHotel360-SH360Elite2-110
         sensors:
         - dataType: Temperature
           type: Classic
@@ -5312,7 +5249,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite2-204
@@ -5357,7 +5294,7 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite2-207
@@ -5372,7 +5309,7 @@ spaces:
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite2-208
@@ -5402,25 +5339,10 @@ spaces:
       description: Room 210
       friendlyName: Room 210
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Elite2-210
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
-      type: Room
       subType: ConferenceRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Elite2-211
+        hardwareId: SmartHotel360-SH360Elite2-210
         sensors:
         - dataType: Temperature
           type: Classic
@@ -5834,6 +5756,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sh.jpg
+  - name: Latitude
+    value: 40.418301
+  - name: Longitude
+    value: -3.798159
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -5894,7 +5820,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite3-104
@@ -5939,7 +5865,7 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite3-107
@@ -5954,7 +5880,7 @@ spaces:
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite3-108
@@ -5984,25 +5910,10 @@ spaces:
       description: Room 110
       friendlyName: Room 110
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Elite3-110
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
-      type: Room
       subType: GymRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Elite3-111
+        hardwareId: SmartHotel360-SH360Elite3-110
         sensors:
         - dataType: Temperature
           type: Classic
@@ -6069,7 +5980,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite3-204
@@ -6114,7 +6025,7 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite3-207
@@ -6129,7 +6040,7 @@ spaces:
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite3-208
@@ -6159,25 +6070,10 @@ spaces:
       description: Room 210
       friendlyName: Room 210
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Elite3-210
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
-      type: Room
       subType: ConferenceRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Elite3-211
+        hardwareId: SmartHotel360-SH360Elite3-210
         sensors:
         - dataType: Temperature
           type: Classic
@@ -6591,6 +6487,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sl.jpg
+  - name: Latitude
+    value: 48.177382
+  - name: Longitude
+    value: 11.593678
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -6651,7 +6551,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite4-104
@@ -6696,7 +6596,7 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite4-107
@@ -6711,7 +6611,7 @@ spaces:
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite4-108
@@ -6741,25 +6641,10 @@ spaces:
       description: Room 110
       friendlyName: Room 110
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Elite4-110
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
-      type: Room
       subType: GymRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Elite4-111
+        hardwareId: SmartHotel360-SH360Elite4-110
         sensors:
         - dataType: Temperature
           type: Classic
@@ -6826,7 +6711,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite4-204
@@ -6871,7 +6756,7 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite4-207
@@ -6886,7 +6771,7 @@ spaces:
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Elite4-208
@@ -6916,25 +6801,10 @@ spaces:
       description: Room 210
       friendlyName: Room 210
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Elite4-210
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
-      type: Room
       subType: ConferenceRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Elite4-211
+        hardwareId: SmartHotel360-SH360Elite4-210
         sensors:
         - dataType: Temperature
           type: Classic
@@ -7348,6 +7218,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sl.jpg
+  - name: Latitude
+    value: 35.62666
+  - name: Longitude
+    value: 139.740525
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -7408,7 +7282,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Premium2-104
@@ -7453,7 +7327,7 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Premium2-107
@@ -7468,7 +7342,7 @@ spaces:
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Premium2-108
@@ -7498,25 +7372,10 @@ spaces:
       description: Room 110
       friendlyName: Room 110
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Premium2-110
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
-      type: Room
       subType: GymRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Premium2-111
+        hardwareId: SmartHotel360-SH360Premium2-110
         sensors:
         - dataType: Temperature
           type: Classic
@@ -7583,7 +7442,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Premium2-204
@@ -7628,7 +7487,7 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Premium2-207
@@ -7643,7 +7502,7 @@ spaces:
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Premium2-208
@@ -7673,25 +7532,10 @@ spaces:
       description: Room 210
       friendlyName: Room 210
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Premium2-210
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
-      type: Room
       subType: ConferenceRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Premium2-211
+        hardwareId: SmartHotel360-SH360Premium2-210
         sensors:
         - dataType: Temperature
           type: Classic
@@ -8105,6 +7949,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sl.jpg
+  - name: Latitude
+    value: 37.574767
+  - name: Longitude
+    value: 126.979306
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -8165,7 +8013,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Premium3-104
@@ -8210,7 +8058,7 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Premium3-107
@@ -8225,7 +8073,7 @@ spaces:
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Premium3-108
@@ -8255,25 +8103,10 @@ spaces:
       description: Room 110
       friendlyName: Room 110
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Premium3-110
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
-      type: Room
       subType: GymRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Premium3-111
+        hardwareId: SmartHotel360-SH360Premium3-110
         sensors:
         - dataType: Temperature
           type: Classic
@@ -8340,7 +8173,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Premium3-204
@@ -8385,7 +8218,7 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Premium3-207
@@ -8400,7 +8233,7 @@ spaces:
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: SmartHotel360-SH360Premium3-208
@@ -8430,25 +8263,10 @@ spaces:
       description: Room 210
       friendlyName: Room 210
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Premium3-210
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
-      type: Room
       subType: ConferenceRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Premium3-211
+        hardwareId: SmartHotel360-SH360Premium3-210
         sensors:
         - dataType: Temperature
           type: Classic
