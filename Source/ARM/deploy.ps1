@@ -385,12 +385,27 @@ $facilityManagementApiSettingsResults = az webapp config appsettings set -n $fac
 Write-Host
 Write-Host "Setting Azure Function App Settings"
 $functionSettings = "--settings CosmosDBConnectionString=`"$cosmosDbConnectionString`" EventHubConnectionString=`"$eventHubConsumerConnnection`" AzureWebJobsDashboard=`"$storageConnectionString`" AzureWebJobsStorage=`"$storageConnectionString`""
-$functionSettingsResults =az webapp config appsettings set -n $functionSiteName -g $resourceGroupName $powershellEscape $functionSettings
+$functionSettingsResults = az webapp config appsettings set -n $functionSiteName -g $resourceGroupName $powershellEscape $functionSettings
 
+$facilityManagementWebsiteName = $outputs.websiteName.value
 $facilityManagementApiEndpoint = "$facilityManagementApiUri/api"
 
+$adalEndpointsJson = @(
+    @{
+        url = "`"$facilityManagementApiUri`""
+        resourceId = "`"$clientId`""
+    }
+)
+
+$adalEndpointsString = ConvertTo-Json -InputObject $adalEndpointsJson -Compress
+
 Write-Host
-Write-Host "Updating Facility Management Website environment files to point to the deployed azure resources."
+Write-Host "Setting Facility Management Website App Settings"
+$websiteSettings = "--settings adalConfig__tenant=`"$tenantId`" adalConfig__clientId=`"$clientId`" adalConfig__endpointsString=`"$adalEndpointsString`" apiEndpoint=`"$facilityManagementApiEndpoint`""
+$websiteSettingsResults = az webapp config appsettings set -n $facilityManagementWebsiteName -g $resourceGroupName $powershellEscape $websiteSettings
+
+Write-Host
+Write-Host "Updating Facility Management Website environment files to point to the deployed azure resources when running locally."
 Write-Host
 
 $websiteEnvironmentsDirectory = "../FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb/ClientApp/src/environments"
@@ -416,7 +431,6 @@ foreach($filename in $environmentFileNames)
 
 # Publish the Website
 $publishOutputFolder = "./webapp"
-$facilityManagementWebsiteName = $outputs.websiteName.value
 $deploymentZip = "./SmartHotel.FacilityManagementWeb.Deployment.zip"
 Write-Host "Publishing the Facility Management website..."
 Push-Location "../FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb"
