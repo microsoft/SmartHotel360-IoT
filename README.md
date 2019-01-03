@@ -48,6 +48,8 @@ End-to-end setup takes about an hour provided you have all of the development en
 
  Follow these instructions to [create a service principal and register an Azure Active Directory application](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal?view=azure-cli-latest).
 
+* Choose `Web app / API` as the Application Type
+
 During the creation process you will need to take note of the following information:
 
 * Tenant Id
@@ -59,16 +61,16 @@ To obtain the service principal Id, open a **Powershell** window and follow thes
 1. `Login-AzureRmAccount -SubscriptionId {subcription id}`
 2. `Get-AzureRmADServicePrincipal -ApplicationId {app Id}`
 
+* If `AzureRM` is not installed you will receive errors saying that it needs to be installed. Run the following command in an Administrator Powershell: `Install-Module -Force AzureRM`
+
 ### Set permissions and security for the Application
 
 Click settings --> Required Permissions
-* Click Add on the top left
-* Select the API you'd like to use to get external data into Digital Twins (e.g. Microsoft Graph)
-* Select the permissions that your app needs to have in order to access the correct information
-* Select Save, and then click Add again
-* Select the "Azure Digital Twins" API
+* Click `Add` on the top left
+* Under select an API, type `Azure`, then choose `Azure Digital Twins (Azure Smart Spaces Service)`
 * Check the Read/Write Access delegated permissions box
-* Save, and select Grant Permissions
+* Save
+* Click `Grant Permissions` (right next to the Add button).
 
 ## Create a service principal for AKS Cluster
 To create a service principal for an AKS Cluster, open a **Powershell/Command Prompt/Bash** window and follow these steps:
@@ -111,7 +113,7 @@ You need to create users having access to your AAD. These can either be users cr
 In `/Source/ARM/` folder of this repository is the deployment script to create and stand up all of the resources to run this demo in Azure. To execute the deployment script, run the following in a **Powershell** window:
 
 ```powershell
-.\deploy.ps1 -subscriptionId {subscription id} -resourceGroupName {resource group name} -resourceGroupLocation {resource group location} -managerObjId {manager object id} -employeeObjId {employee object id} -clientId {app id} -clientSecret {app key} -clientServicePrincipalId {service principal id} -aksServicePrincipalId {AKS Service Principal App Id} -aksServicePrincipalKey {AKS Service Principal password}
+.\deploy.ps1 -subscriptionId {subscription id} -resourceGroupName {resource group name} -resourceGroupLocation {resource group location} -clientId {app id} -clientSecret {app key} -clientServicePrincipalId {service principal id} -aksServicePrincipalId {AKS Service Principal App Id} -aksServicePrincipalKey {AKS Service Principal password}
 ```
 
 The following information parameters are required for the deployment script:
@@ -165,6 +167,11 @@ When the deployment script is complete, it will output a `userSettings.json` fil
 ```
 
 **NOTE:** If you are going to run the IoT Demo for the [Xamarin Mobile Apps](https://github.com/Microsoft/SmartHotel360-mobile-desktop-apps#iot-demo), then you will need the `roomDevicesApiEndpoint` and `mobileRoomSpaceId` values from the `userSettings.json` file.
+
+**IMPORTANT: Anytime you re-run `deploy.ps1`, make sure to revert the following files first, otherwise they will not be updated properly:**
+* `Source/Backend/SmartHotel.PhysicalDevices/SmartHotel.PhysicalDevices.MXChip/Device/config.h`
+* `Source/FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb/ClientApp/src/environments/environment.ts`
+* `Source/FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb/ClientApp/src/environments/environment.prod.ts`
 
 ## Success!
 To verify that everything is working correctly, open up the `facilityManagementWebsiteUri` (from the `userSettings.json` in the browser and log in with one of the two users created during the provisioning steps.
