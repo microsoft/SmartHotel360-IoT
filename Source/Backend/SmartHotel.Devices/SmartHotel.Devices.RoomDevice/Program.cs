@@ -189,7 +189,7 @@ namespace SmartHotel.Devices.RoomDevice
 			var data = Encoding.UTF8.GetString( methodRequest.Data );
 
 			// Check the payload is a single integer value
-			if ( int.TryParse( data, out int newDesiredTemperature ) )
+			if ( double.TryParse( data, out double newDesiredTemperature ) )
 			{
 				SensorInfo sensorInfo = SensorInfosByDataType[TelemetryMessage.TemperatureDataType];
 				sensorInfo.UpdateCurrentValue( newDesiredTemperature );
