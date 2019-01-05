@@ -25,6 +25,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sh.jpg
+  - name: Latitude
+    value: 30.070911
+  - name: Longitude
+    value: 31.016627
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -85,7 +89,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite1-104
@@ -130,7 +134,7 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite1-107
@@ -145,7 +149,7 @@ spaces:
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite1-108
@@ -175,25 +179,10 @@ spaces:
       description: Room 110
       friendlyName: Room 110
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: ContosoHotel-ContosoElite1-110
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
-      type: Room
       subType: GymRoom
       devices:
       - name: Room
-        hardwareId: ContosoHotel-ContosoElite1-111
+        hardwareId: ContosoHotel-ContosoElite1-110
         sensors:
         - dataType: Temperature
           type: Classic
@@ -260,7 +249,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite1-204
@@ -305,7 +294,7 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite1-207
@@ -320,7 +309,7 @@ spaces:
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite1-208
@@ -350,25 +339,10 @@ spaces:
       description: Room 210
       friendlyName: Room 210
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: ContosoHotel-ContosoElite1-210
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
-      type: Room
       subType: ConferenceRoom
       devices:
       - name: Room
-        hardwareId: ContosoHotel-ContosoElite1-211
+        hardwareId: ContosoHotel-ContosoElite1-210
         sensors:
         - dataType: Temperature
           type: Classic
@@ -782,6 +756,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sh.jpg
+  - name: Latitude
+    value: -26.04631
+  - name: Longitude
+    value: 28.019991
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -842,7 +820,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-104
@@ -887,7 +865,7 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-107
@@ -902,7 +880,7 @@ spaces:
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-108
@@ -932,25 +910,10 @@ spaces:
       description: Room 110
       friendlyName: Room 110
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: ContosoHotel-ContosoPremium1-110
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
-      type: Room
       subType: GymRoom
       devices:
       - name: Room
-        hardwareId: ContosoHotel-ContosoPremium1-111
+        hardwareId: ContosoHotel-ContosoPremium1-110
         sensors:
         - dataType: Temperature
           type: Classic
@@ -1017,7 +980,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-204
@@ -1062,7 +1025,7 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-207
@@ -1077,7 +1040,7 @@ spaces:
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium1-208
@@ -1107,25 +1070,10 @@ spaces:
       description: Room 210
       friendlyName: Room 210
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: ContosoHotel-ContosoPremium1-210
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
-      type: Room
       subType: ConferenceRoom
       devices:
       - name: Room
-        hardwareId: ContosoHotel-ContosoPremium1-211
+        hardwareId: ContosoHotel-ContosoPremium1-210
         sensors:
         - dataType: Temperature
           type: Classic
@@ -1539,6 +1487,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sl.jpg
+  - name: Latitude
+    value: 19.366462
+  - name: Longitude
+    value: -99.264738
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -1599,7 +1551,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite2-104
@@ -1644,7 +1596,7 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite2-107
@@ -1659,7 +1611,7 @@ spaces:
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite2-108
@@ -1689,25 +1641,10 @@ spaces:
       description: Room 110
       friendlyName: Room 110
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: ContosoHotel-ContosoElite2-110
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
-      type: Room
       subType: GymRoom
       devices:
       - name: Room
-        hardwareId: ContosoHotel-ContosoElite2-111
+        hardwareId: ContosoHotel-ContosoElite2-110
         sensors:
         - dataType: Temperature
           type: Classic
@@ -1774,7 +1711,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite2-204
@@ -1819,7 +1756,7 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite2-207
@@ -1834,7 +1771,7 @@ spaces:
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite2-208
@@ -1864,25 +1801,10 @@ spaces:
       description: Room 210
       friendlyName: Room 210
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: ContosoHotel-ContosoElite2-210
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
-      type: Room
       subType: ConferenceRoom
       devices:
       - name: Room
-        hardwareId: ContosoHotel-ContosoElite2-211
+        hardwareId: ContosoHotel-ContosoElite2-210
         sensors:
         - dataType: Temperature
           type: Classic
@@ -2296,6 +2218,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sh.jpg
+  - name: Latitude
+    value: -23.609299
+  - name: Longitude
+    value: -46.697277
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -2356,7 +2282,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite3-104
@@ -2401,7 +2327,7 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite3-107
@@ -2416,7 +2342,7 @@ spaces:
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite3-108
@@ -2446,25 +2372,10 @@ spaces:
       description: Room 110
       friendlyName: Room 110
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: ContosoHotel-ContosoElite3-110
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
-      type: Room
       subType: GymRoom
       devices:
       - name: Room
-        hardwareId: ContosoHotel-ContosoElite3-111
+        hardwareId: ContosoHotel-ContosoElite3-110
         sensors:
         - dataType: Temperature
           type: Classic
@@ -2531,7 +2442,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite3-204
@@ -2576,7 +2487,7 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite3-207
@@ -2591,7 +2502,7 @@ spaces:
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoElite3-208
@@ -2621,25 +2532,10 @@ spaces:
       description: Room 210
       friendlyName: Room 210
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: ContosoHotel-ContosoElite3-210
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
-      type: Room
       subType: ConferenceRoom
       devices:
       - name: Room
-        hardwareId: ContosoHotel-ContosoElite3-211
+        hardwareId: ContosoHotel-ContosoElite3-210
         sensors:
         - dataType: Temperature
           type: Classic
@@ -3053,6 +2949,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sl.jpg
+  - name: Latitude
+    value: -33.796785
+  - name: Longitude
+    value: 151.138782
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -3113,7 +3013,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-104
@@ -3158,7 +3058,7 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-107
@@ -3173,7 +3073,7 @@ spaces:
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-108
@@ -3203,25 +3103,10 @@ spaces:
       description: Room 110
       friendlyName: Room 110
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: ContosoHotel-ContosoPremium2-110
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
-      type: Room
       subType: GymRoom
       devices:
       - name: Room
-        hardwareId: ContosoHotel-ContosoPremium2-111
+        hardwareId: ContosoHotel-ContosoPremium2-110
         sensors:
         - dataType: Temperature
           type: Classic
@@ -3288,7 +3173,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-204
@@ -3333,7 +3218,7 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-207
@@ -3348,7 +3233,7 @@ spaces:
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium2-208
@@ -3378,25 +3263,10 @@ spaces:
       description: Room 210
       friendlyName: Room 210
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: ContosoHotel-ContosoPremium2-210
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
-      type: Room
       subType: ConferenceRoom
       devices:
       - name: Room
-        hardwareId: ContosoHotel-ContosoPremium2-211
+        hardwareId: ContosoHotel-ContosoPremium2-210
         sensors:
         - dataType: Temperature
           type: Classic
@@ -3810,6 +3680,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sl.jpg
+  - name: Latitude
+    value: 40.756722
+  - name: Longitude
+    value: -73.990022
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -3870,7 +3744,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-104
@@ -3915,7 +3789,7 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-107
@@ -3930,7 +3804,7 @@ spaces:
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-108
@@ -3960,25 +3834,10 @@ spaces:
       description: Room 110
       friendlyName: Room 110
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: ContosoHotel-ContosoPremium3-110
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
-      type: Room
       subType: GymRoom
       devices:
       - name: Room
-        hardwareId: ContosoHotel-ContosoPremium3-111
+        hardwareId: ContosoHotel-ContosoPremium3-110
         sensors:
         - dataType: Temperature
           type: Classic
@@ -4045,7 +3904,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-204
@@ -4090,7 +3949,7 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-207
@@ -4105,7 +3964,7 @@ spaces:
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium3-208
@@ -4135,25 +3994,10 @@ spaces:
       description: Room 210
       friendlyName: Room 210
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: ContosoHotel-ContosoPremium3-210
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
-      type: Room
       subType: ConferenceRoom
       devices:
       - name: Room
-        hardwareId: ContosoHotel-ContosoPremium3-211
+        hardwareId: ContosoHotel-ContosoPremium3-210
         sensors:
         - dataType: Temperature
           type: Classic
@@ -4567,6 +4411,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sh.jpg
+  - name: Latitude
+    value: 48.833505
+  - name: Longitude
+    value: 2.266099
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -4627,7 +4475,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-104
@@ -4672,7 +4520,7 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-107
@@ -4687,7 +4535,7 @@ spaces:
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-108
@@ -4717,25 +4565,10 @@ spaces:
       description: Room 110
       friendlyName: Room 110
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: ContosoHotel-ContosoPremium4-110
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
-      type: Room
       subType: GymRoom
       devices:
       - name: Room
-        hardwareId: ContosoHotel-ContosoPremium4-111
+        hardwareId: ContosoHotel-ContosoPremium4-110
         sensors:
         - dataType: Temperature
           type: Classic
@@ -4802,7 +4635,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-204
@@ -4847,7 +4680,7 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-207
@@ -4862,7 +4695,7 @@ spaces:
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
       devices:
       - name: Room
         hardwareId: ContosoHotel-ContosoPremium4-208
@@ -4892,25 +4725,10 @@ spaces:
       description: Room 210
       friendlyName: Room 210
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: ContosoHotel-ContosoPremium4-210
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
-      type: Room
       subType: ConferenceRoom
       devices:
       - name: Room
-        hardwareId: ContosoHotel-ContosoPremium4-211
+        hardwareId: ContosoHotel-ContosoPremium4-210
         sensors:
         - dataType: Temperature
           type: Classic

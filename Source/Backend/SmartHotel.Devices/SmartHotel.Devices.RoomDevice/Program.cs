@@ -30,20 +30,15 @@ namespace SmartHotel.Devices.RoomDevice
 		private static DeviceClient HubDeviceClient { get; set; }
 		private static string IoTHubDeviceId { get; set; }
 
-
-		private const string TemperatureDataType = "Temperature";
-		private const string LightDataType = "Light";
-		private const string MotionDataType = "Motion";
-
 		private static Timer _motionTimer;
 		private static readonly Random Random = new Random();
 		private static int _randomizationDelay = 60000;
 
 		static async Task Main( string[] args )
 		{
-			SensorInfosByDataType[TemperatureDataType] = new SensorInfo( 74, int.MinValue );
-			SensorInfosByDataType[LightDataType] = new SensorInfo( 1.0, double.MinValue );
-			SensorInfosByDataType[MotionDataType] = new SensorInfo( false, null );
+			SensorInfosByDataType[TelemetryMessage.TemperatureDataType] = new SensorInfo( 74.0, double.MinValue );
+			SensorInfosByDataType[TelemetryMessage.LightDataType] = new SensorInfo( 1.0, double.MinValue );
+			SensorInfosByDataType[TelemetryMessage.MotionDataType] = new SensorInfo( false, null );
 
 			var builder = new ConfigurationBuilder()
 				.SetBasePath( Directory.GetCurrentDirectory() )
@@ -93,7 +88,7 @@ namespace SmartHotel.Devices.RoomDevice
 
 				HubDeviceClient =
 					DeviceClient.CreateFromConnectionString( Configuration[IoTHubDeviceConnectionStringSetting], TransportType.Mqtt );
-				IoTHubDeviceId = IotHubConnectionStringBuilder.Create(Configuration[IoTHubDeviceConnectionStringSetting]).DeviceId;
+				IoTHubDeviceId = IotHubConnectionStringBuilder.Create( Configuration[IoTHubDeviceConnectionStringSetting] ).DeviceId;
 				await HubDeviceClient.SetMethodHandlerAsync( "SetDesiredTemperature", SetDesiredTemperature, null );
 				await HubDeviceClient.SetMethodHandlerAsync( "SetDesiredAmbientLight", SetAmbientLight, null );
 
@@ -137,7 +132,7 @@ namespace SmartHotel.Devices.RoomDevice
 			}
 
 			Console.WriteLine();
-			Console.WriteLine("Beginning to simulate data...");
+			Console.WriteLine( "Beginning to simulate data..." );
 			Console.WriteLine();
 
 			while ( true )
@@ -150,21 +145,13 @@ namespace SmartHotel.Devices.RoomDevice
 					{
 						continue;
 					}
-					
+
 					if ( sensorInfo.IsCurrentValueDifferent() )
 					{
 						sensorInfo.UpdateLastValueSentWithCurrentValue();
 						var currentValue = sensorInfo.GetCurrentValue();
-						var telemetryMessage = new TelemetryMessage()
-						{
-							SensorId = sensor.Id,
-							SensorReading = currentValue.ToString(),
-							EventTimestamp = DateTime.UtcNow.ToString( "o" ),
-							SensorType = sensor.Type,
-							SensorDataType = sensor.DataType,
-							SpaceId = sensor.SpaceId,
-							IoTHubDeviceId = IoTHubDeviceId
-						};
+						var telemetryMessage = TelemetryMessage.Create( sensor.DeviceId, sensor.Id, sensor.Type, sensor.DataType, currentValue,
+							sensor.SpaceId, IoTHubDeviceId );
 
 						try
 						{
@@ -202,9 +189,9 @@ namespace SmartHotel.Devices.RoomDevice
 			var data = Encoding.UTF8.GetString( methodRequest.Data );
 
 			// Check the payload is a single integer value
-			if ( int.TryParse( data, out int newDesiredTemperature ) )
+			if ( double.TryParse( data, out double newDesiredTemperature ) )
 			{
-				SensorInfo sensorInfo = SensorInfosByDataType[TemperatureDataType];
+				SensorInfo sensorInfo = SensorInfosByDataType[TelemetryMessage.TemperatureDataType];
 				sensorInfo.UpdateCurrentValue( newDesiredTemperature );
 				Console.ForegroundColor = ConsoleColor.Green;
 				Console.WriteLine( "Current Temperature set to {0}°", data );
@@ -229,7 +216,7 @@ namespace SmartHotel.Devices.RoomDevice
 			// Check the payload is a double value
 			if ( double.TryParse( data, out double newAmbientLight ) )
 			{
-				SensorInfo sensorInfo = SensorInfosByDataType[LightDataType];
+				SensorInfo sensorInfo = SensorInfosByDataType[TelemetryMessage.LightDataType];
 				sensorInfo.UpdateCurrentValue( newAmbientLight );
 				Console.WriteLine( "Current Ambient Lighting set to {0} ({0:P})", newAmbientLight );
 				Console.ResetColor();
@@ -249,7 +236,7 @@ namespace SmartHotel.Devices.RoomDevice
 		private static void RandomizeMotionValue( object state )
 		{
 			bool motionDetected = Convert.ToBoolean( Random.Next( 0, 2 ) );
-			SensorInfo sensorInfo = SensorInfosByDataType[MotionDataType];
+			SensorInfo sensorInfo = SensorInfosByDataType[TelemetryMessage.MotionDataType];
 			sensorInfo.UpdateCurrentValue( motionDetected );
 		}
 

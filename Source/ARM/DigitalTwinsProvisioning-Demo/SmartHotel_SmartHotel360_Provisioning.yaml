@@ -25,6 +25,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/h.jpg
+  - name: Latitude
+    value: 47.6168
+  - name: Longitude
+    value: -122.20507
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -327,25 +331,10 @@ spaces:
       description: Room 120
       friendlyName: Room 120
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Elite1-120
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 121
-      description: Room 121
-      friendlyName: Room 121
-      type: Room
       subType: GymRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Elite1-121
+        hardwareId: SmartHotel360-SH360Elite1-120
         sensors:
         - dataType: Temperature
           type: Classic
@@ -654,25 +643,10 @@ spaces:
       description: Room 220
       friendlyName: Room 220
       type: Room
-      subType: SuiteRoom
-      devices:
-      - name: Room
-        hardwareId: SmartHotel360-SH360Elite1-220
-        sensors:
-        - dataType: Temperature
-          type: Classic
-        - dataType: Motion
-          type: Classic
-        - dataType: Light
-          type: Classic
-    - name: Room 221
-      description: Room 221
-      friendlyName: Room 221
-      type: Room
       subType: ConferenceRoom
       devices:
       - name: Room
-        hardwareId: SmartHotel360-SH360Elite1-221
+        hardwareId: SmartHotel360-SH360Elite1-220
         sensors:
         - dataType: Temperature
           type: Classic
@@ -2889,6 +2863,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/l.jpg
+  - name: Latitude
+    value: 32.87578
+  - name: Longitude
+    value: -117.20701
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -2974,11 +2952,6 @@ spaces:
       description: Room 115
       friendlyName: Room 115
       type: Room
-      subType: SuiteRoom
-    - name: Room 116
-      description: Room 116
-      friendlyName: Room 116
-      type: Room
       subType: GymRoom
   - name: Floor 02
     description: Floor 2
@@ -3063,11 +3036,6 @@ spaces:
     - name: Room 215
       description: Room 215
       friendlyName: Room 215
-      type: Room
-      subType: SuiteRoom
-    - name: Room 216
-      description: Room 216
-      friendlyName: Room 216
       type: Room
       subType: ConferenceRoom
   - name: Floor 03
@@ -3697,6 +3665,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sh.jpg
+  - name: Latitude
+    value: 51.461514
+  - name: Longitude
+    value: -0.930454
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -3727,7 +3699,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
     - name: Room 105
       description: Room 105
       friendlyName: Room 105
@@ -3742,12 +3714,12 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 108
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 109
       description: Room 109
       friendlyName: Room 109
@@ -3756,11 +3728,6 @@ spaces:
     - name: Room 110
       description: Room 110
       friendlyName: Room 110
-      type: Room
-      subType: SuiteRoom
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
       type: Room
       subType: GymRoom
   - name: Floor 02
@@ -3792,7 +3759,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
     - name: Room 205
       description: Room 205
       friendlyName: Room 205
@@ -3807,12 +3774,12 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 208
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 209
       description: Room 209
       friendlyName: Room 209
@@ -3821,11 +3788,6 @@ spaces:
     - name: Room 210
       description: Room 210
       friendlyName: Room 210
-      type: Room
-      subType: SuiteRoom
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
       type: Room
       subType: ConferenceRoom
   - name: Floor 03
@@ -3994,6 +3956,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sh.jpg
+  - name: Latitude
+    value: 40.418301
+  - name: Longitude
+    value: -3.798159
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -4024,7 +3990,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
     - name: Room 105
       description: Room 105
       friendlyName: Room 105
@@ -4039,12 +4005,12 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 108
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 109
       description: Room 109
       friendlyName: Room 109
@@ -4053,11 +4019,6 @@ spaces:
     - name: Room 110
       description: Room 110
       friendlyName: Room 110
-      type: Room
-      subType: SuiteRoom
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
       type: Room
       subType: GymRoom
   - name: Floor 02
@@ -4089,7 +4050,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
     - name: Room 205
       description: Room 205
       friendlyName: Room 205
@@ -4104,12 +4065,12 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 208
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 209
       description: Room 209
       friendlyName: Room 209
@@ -4118,11 +4079,6 @@ spaces:
     - name: Room 210
       description: Room 210
       friendlyName: Room 210
-      type: Room
-      subType: SuiteRoom
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
       type: Room
       subType: ConferenceRoom
   - name: Floor 03
@@ -4291,6 +4247,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sl.jpg
+  - name: Latitude
+    value: 48.177382
+  - name: Longitude
+    value: 11.593678
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -4321,7 +4281,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
     - name: Room 105
       description: Room 105
       friendlyName: Room 105
@@ -4336,12 +4296,12 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 108
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 109
       description: Room 109
       friendlyName: Room 109
@@ -4350,11 +4310,6 @@ spaces:
     - name: Room 110
       description: Room 110
       friendlyName: Room 110
-      type: Room
-      subType: SuiteRoom
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
       type: Room
       subType: GymRoom
   - name: Floor 02
@@ -4386,7 +4341,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
     - name: Room 205
       description: Room 205
       friendlyName: Room 205
@@ -4401,12 +4356,12 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 208
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 209
       description: Room 209
       friendlyName: Room 209
@@ -4415,11 +4370,6 @@ spaces:
     - name: Room 210
       description: Room 210
       friendlyName: Room 210
-      type: Room
-      subType: SuiteRoom
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
       type: Room
       subType: ConferenceRoom
   - name: Floor 03
@@ -4588,6 +4538,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sl.jpg
+  - name: Latitude
+    value: 35.62666
+  - name: Longitude
+    value: 139.740525
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -4618,7 +4572,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
     - name: Room 105
       description: Room 105
       friendlyName: Room 105
@@ -4633,12 +4587,12 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 108
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 109
       description: Room 109
       friendlyName: Room 109
@@ -4647,11 +4601,6 @@ spaces:
     - name: Room 110
       description: Room 110
       friendlyName: Room 110
-      type: Room
-      subType: SuiteRoom
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
       type: Room
       subType: GymRoom
   - name: Floor 02
@@ -4683,7 +4632,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
     - name: Room 205
       description: Room 205
       friendlyName: Room 205
@@ -4698,12 +4647,12 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 208
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 209
       description: Room 209
       friendlyName: Room 209
@@ -4712,11 +4661,6 @@ spaces:
     - name: Room 210
       description: Room 210
       friendlyName: Room 210
-      type: Room
-      subType: SuiteRoom
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
       type: Room
       subType: ConferenceRoom
   - name: Floor 03
@@ -4885,6 +4829,10 @@ spaces:
     value: 85
   - name: ImagePath
     value: /assets/images/hotels/sl.jpg
+  - name: Latitude
+    value: 37.574767
+  - name: Longitude
+    value: 126.979306
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -4915,7 +4863,7 @@ spaces:
       description: Room 104
       friendlyName: Room 104
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
     - name: Room 105
       description: Room 105
       friendlyName: Room 105
@@ -4930,12 +4878,12 @@ spaces:
       description: Room 107
       friendlyName: Room 107
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 108
       description: Room 108
       friendlyName: Room 108
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 109
       description: Room 109
       friendlyName: Room 109
@@ -4944,11 +4892,6 @@ spaces:
     - name: Room 110
       description: Room 110
       friendlyName: Room 110
-      type: Room
-      subType: SuiteRoom
-    - name: Room 111
-      description: Room 111
-      friendlyName: Room 111
       type: Room
       subType: GymRoom
   - name: Floor 02
@@ -4980,7 +4923,7 @@ spaces:
       description: Room 204
       friendlyName: Room 204
       type: Room
-      subType: QueenRoom
+      subType: KingRoom
     - name: Room 205
       description: Room 205
       friendlyName: Room 205
@@ -4995,12 +4938,12 @@ spaces:
       description: Room 207
       friendlyName: Room 207
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 208
       description: Room 208
       friendlyName: Room 208
       type: Room
-      subType: KingRoom
+      subType: SuiteRoom
     - name: Room 209
       description: Room 209
       friendlyName: Room 209
@@ -5009,11 +4952,6 @@ spaces:
     - name: Room 210
       description: Room 210
       friendlyName: Room 210
-      type: Room
-      subType: SuiteRoom
-    - name: Room 211
-      description: Room 211
-      friendlyName: Room 211
       type: Room
       subType: ConferenceRoom
   - name: Floor 03

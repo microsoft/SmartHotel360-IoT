@@ -151,6 +151,18 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.String,
 				description = "Path of the image to display for the space."
 			} );
+			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
+			{
+				name = PropertyKeyDescription.Latitude,
+				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.String,
+				description = "Geo Position"
+			} );
+			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
+			{
+				name = PropertyKeyDescription.Longitude,
+				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.String,
+				description = "Geo Position"
+			} );
 
 			desiredTenantSpace.AddUser( "Head Of Operations" );
 
@@ -165,12 +177,12 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			temperatureProcessor.matcherNames.Add( matcherTemperature.name );
 			desiredTenantSpace.AddUserDefinedFunction( temperatureProcessor );
 
-			desiredTenantSpace.AddRoleAssignment(new RoleAssignmentDescription
+			desiredTenantSpace.AddRoleAssignment( new RoleAssignmentDescription
 			{
 				roleId = RoleAssignment.RoleIds.SpaceAdmin,
 				objectName = temperatureProcessor.name,
 				objectIdType = RoleAssignment.ObjectIdTypes.UserDefinedFunctionId
-			});
+			} );
 
 			foreach ( Brand brand in brands )
 			{
@@ -225,16 +237,24 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 					type = "Hotel"
 				};
 				hotelSpaceDescription.AddUser( $"Hotel {globalHotelNumber} Manager" );
-				hotelSpaceDescription.AddProperty( new PropertyDescription { name = PropertyKeyDescription.DisplayOrder, value = hotelIndex.ToString() } );
+
+				hotelSpaceDescription.AddProperty( new PropertyDescription
+				{ name = PropertyKeyDescription.DisplayOrder, value = hotelIndex.ToString() } );
+
 				hotelSpaceDescription.AddProperty( new PropertyDescription
 				{ name = PropertyKeyDescription.MinTemperatureAlertThreshold, value = hotelType.MinTempAlertThreshold.ToString() } );
+
 				hotelSpaceDescription.AddProperty( new PropertyDescription
 				{ name = PropertyKeyDescription.MaxTemperatureAlertThreshold, value = hotelType.MaxTempAlertThreshold.ToString() } );
+
 				hotelSpaceDescription.AddProperty( new PropertyDescription
-				{
-					name = PropertyKeyDescription.ImagePath,
-					value = $"{imageAssetsRootPath}hotels/{hotelType.Name.ToLower()}.jpg"
-				} );
+				{ name = PropertyKeyDescription.ImagePath, value = $"{imageAssetsRootPath}hotels/{hotelType.Name.ToLower()}.jpg" } );
+
+				hotelSpaceDescription.AddProperty( new PropertyDescription
+				{ name = PropertyKeyDescription.Latitude, value = hotel.Latitude.ToString() } );
+
+				hotelSpaceDescription.AddProperty( new PropertyDescription
+				{ name = PropertyKeyDescription.Longitude, value = hotel.Longitude.ToString() } );
 
 				string brandHotelPrefix = $"{brand.Name}-{hotel.Name}-".Replace( " ", string.Empty );
 
@@ -275,7 +295,19 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 						floorSpaceDescription.AddUser( $"Hotel {hotelIndex + 1} {hotel.RegularFloorEmployeeUser}" );
 					}
 
+					bool includeGymForThisFloor = floorIndex == 0 && hotelType.IncludeGym;
+					bool includeConferenceRoomForThisFloor = floorIndex == 1 && hotelType.IncludeConferenceRoom;
+
 					int numberOfRooms = isVipFloor ? hotelType.NumberRoomsPerVipFloor : hotelType.NumberRoomsPerRegularFloor;
+					if ( includeGymForThisFloor )
+					{
+						numberOfRooms--;
+					}
+					if ( includeConferenceRoomForThisFloor )
+					{
+						numberOfRooms--;
+					}
+
 					// Create the rooms
 					for ( int roomIndex = 0; roomIndex < numberOfRooms; roomIndex++ )
 					{
@@ -285,14 +317,14 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 						floorSpaceDescription.AddSpace( roomSpaceDescription );
 					}
 
-					if ( floorIndex == 0 && hotelType.IncludeGym )
+					if ( includeGymForThisFloor )
 					{
 						SpaceDescription roomSpaceDescription = CreateRoom( 100 * ( floorIndex + 1 ) + numberOfRooms + 1,
 							brandHotelPrefix, "GymRoom", hotel.AddDevices );
 						floorSpaceDescription.AddSpace( roomSpaceDescription );
 					}
 
-					if ( floorIndex == 1 && hotelType.IncludeConferenceRoom )
+					if ( includeConferenceRoomForThisFloor )
 					{
 						SpaceDescription roomSpaceDescription = CreateRoom( 100 * ( floorIndex + 1 ) + numberOfRooms + 1,
 							brandHotelPrefix, "ConferenceRoom", hotel.AddDevices );

@@ -49,6 +49,12 @@ spaces:
   - name: ImagePath
     primitiveDataType: string
     description: Path of the image to display for the space.
+  - name: Latitude
+    primitiveDataType: string
+    description: Geo Position
+  - name: Longitude
+    primitiveDataType: string
+    description: Geo Position
   matchers:
   - name: Matcher Temperature
     dataTypeValue: Temperature
