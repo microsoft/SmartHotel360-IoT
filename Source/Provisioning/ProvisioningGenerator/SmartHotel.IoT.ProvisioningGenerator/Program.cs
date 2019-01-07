@@ -13,7 +13,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 {
 	class Program
 	{
-		private const string imageAssetsRootPath = "/assets/images/";
+		private const string ImageFolderRelativePath = "../Images";
 		public static async Task<int> Main( string[] args ) => await CommandLineApplication.ExecuteAsync<Program>( args );
 
 		[Option( "-op|--outputPrefix", Description = "Prefix of the output filenames" )]
@@ -147,9 +147,9 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			} );
 			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
 			{
-				name = PropertyKeyDescription.ImagePath,
+				name = PropertyKeyDescription.ImageBlobId,
 				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.String,
-				description = "Path of the image to display for the space."
+				description = "Id of the image blob for the space."
 			} );
 			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
 			{
@@ -217,11 +217,16 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			};
 			brandSpaceDescription.AddUser( $"Hotel Brand {brandNumber} Manager" );
 			brandSpaceDescription.AddProperty( new PropertyDescription { name = PropertyKeyDescription.DisplayOrder, value = brandNumber.ToString() } );
-			brandSpaceDescription.AddProperty( new PropertyDescription
+
+			brandSpaceDescription.AddBlob(new BlobDescription
 			{
-				name = PropertyKeyDescription.ImagePath,
-				value = $"{imageAssetsRootPath}brands/brand{brandNumber}.jpg"
-			} );
+				name = $"{brand.Name} Blob",
+				type = BlobDescription.FileBlobType,
+				subtype = BlobDescription.NoneBlobType,
+				description = "Brand image",
+				filepath = $"{ImageFolderRelativePath}/brands/brand{brandNumber}.jpg",
+				contentType = BlobDescription.JpegContentType
+			});
 
 			// Create the hotels
 			for ( int hotelIndex = 0; hotelIndex < brand.Hotels.Count; hotelIndex++ )
@@ -246,15 +251,22 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 
 				hotelSpaceDescription.AddProperty( new PropertyDescription
 				{ name = PropertyKeyDescription.MaxTemperatureAlertThreshold, value = hotelType.MaxTempAlertThreshold.ToString() } );
-
-				hotelSpaceDescription.AddProperty( new PropertyDescription
-				{ name = PropertyKeyDescription.ImagePath, value = $"{imageAssetsRootPath}hotels/{hotelType.Name.ToLower()}.jpg" } );
-
+				
 				hotelSpaceDescription.AddProperty( new PropertyDescription
 				{ name = PropertyKeyDescription.Latitude, value = hotel.Latitude.ToString() } );
 
 				hotelSpaceDescription.AddProperty( new PropertyDescription
 				{ name = PropertyKeyDescription.Longitude, value = hotel.Longitude.ToString() } );
+
+				hotelSpaceDescription.AddBlob(new BlobDescription
+				{
+					name = $"{brand.Name} {hotel.Name} Blob",
+					type = BlobDescription.FileBlobType,
+					subtype = BlobDescription.NoneBlobType,
+					description = "Hotel image",
+					filepath = $"{ImageFolderRelativePath}/hotels{hotelType.Name.ToLower()}.jpg",
+					contentType = BlobDescription.JpegContentType
+				});
 
 				string brandHotelPrefix = $"{brand.Name}-{hotel.Name}-".Replace( " ", string.Empty );
 
@@ -264,9 +276,10 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 				for ( int floorIndex = 0; floorIndex < hotelType.TotalNumberFloors; floorIndex++ )
 				{
 					bool isVipFloor = floorIndex >= numberRegularFloors;
+					string floorName = $"Floor {floorIndex + 1:D02}";
 					var floorSpaceDescription = new SpaceDescription
 					{
-						name = $"Floor {floorIndex + 1:D02}",
+						name = floorName,
 						description = $"Floor {floorIndex + 1}",
 						friendlyName = $"Floor {floorIndex + 1}",
 						type = "Floor"
@@ -284,11 +297,15 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 						floorSpaceDescription.subType = "VIPFloor";
 					}
 
-					floorSpaceDescription.AddProperty( new PropertyDescription
+					floorSpaceDescription.AddBlob(new BlobDescription
 					{
-						name = PropertyKeyDescription.ImagePath,
-						value = $"{imageAssetsRootPath}floors/{hotelType.Name.ToLower()}{imagePathSuffix}.jpg"
-					} );
+						name = $"{brand.Name} {hotel.Name} {floorName} Blob",
+						type = BlobDescription.FileBlobType,
+						subtype = BlobDescription.NoneBlobType,
+						description = "Floor image",
+						filepath = $"{ImageFolderRelativePath}/floors/{hotelType.Name.ToLower()}{imagePathSuffix}.jpg",
+						contentType = BlobDescription.JpegContentType
+					});
 
 					if ( !isVipFloor && !string.IsNullOrEmpty( hotel.RegularFloorEmployeeUser ) )
 					{
