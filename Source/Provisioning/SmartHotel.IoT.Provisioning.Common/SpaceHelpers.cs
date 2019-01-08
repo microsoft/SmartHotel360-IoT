@@ -69,7 +69,7 @@ namespace SmartHotel.IoT.Provisioning.Common
 			return null;
 		}
 
-		public static async Task CreatePropertyAsync( this Property property, Guid spaceId, HttpClient httpClient,
+		public static async Task CreateOrUpdatePropertyAsync( this Property property, Guid spaceId, HttpClient httpClient,
 			JsonSerializerSettings jsonSerializerSettings )
 		{
 			Console.WriteLine( $"Creating Property for Space {spaceId}: {JsonConvert.SerializeObject( property, Formatting.Indented, jsonSerializerSettings )}" );

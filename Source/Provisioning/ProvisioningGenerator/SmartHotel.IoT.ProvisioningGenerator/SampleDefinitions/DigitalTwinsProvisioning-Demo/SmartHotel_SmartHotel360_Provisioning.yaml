@@ -7,8 +7,8 @@ users:
 properties:
 - name: DisplayOrder
   value: 1
-blobs:
-- name: SmartHotel360 Blob
+blob:
+  name: SmartHotel360 Blob
   type: File
   subtype: None
   description: Brand image
@@ -32,8 +32,8 @@ spaces:
     value: 47.6168
   - name: Longitude
     value: -122.20507
-  blobs:
-  - name: SmartHotel360 SH360 Elite 1 Blob
+  blob:
+    name: SmartHotel360 SH360 Elite 1 Blob
     type: File
     subtype: None
     description: Hotel image
@@ -49,8 +49,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 1 Floor 01 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 1 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
@@ -366,8 +366,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 1 Floor 02 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 1 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
@@ -683,8 +683,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 1 Floor 03 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 1 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
@@ -1000,8 +1000,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 1 Floor 04 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 1 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
@@ -1317,8 +1317,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 1 Floor 05 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 1 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
@@ -1634,8 +1634,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 1 Floor 06 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 1 Floor 06 Blob
       type: File
       subtype: None
       description: Floor image
@@ -1951,8 +1951,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 1 Floor 07 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 1 Floor 07 Blob
       type: File
       subtype: None
       description: Floor image
@@ -2268,8 +2268,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 1 Floor 08 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 1 Floor 08 Blob
       type: File
       subtype: None
       description: Floor image
@@ -2584,8 +2584,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 1 Floor 09 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 1 Floor 09 Blob
       type: File
       subtype: None
       description: Floor image
@@ -2750,8 +2750,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 1 Floor 10 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 1 Floor 10 Blob
       type: File
       subtype: None
       description: Floor image
@@ -2925,8 +2925,8 @@ spaces:
     value: 32.87578
   - name: Longitude
     value: -117.20701
-  blobs:
-  - name: SmartHotel360 SH360 Premium 1 Blob
+  blob:
+    name: SmartHotel360 SH360 Premium 1 Blob
     type: File
     subtype: None
     description: Hotel image
@@ -2940,8 +2940,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 1 Floor 01 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 1 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3030,8 +3030,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 1 Floor 02 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 1 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3120,8 +3120,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 1 Floor 03 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 1 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3210,8 +3210,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 1 Floor 04 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 1 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3300,8 +3300,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 1 Floor 05 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 1 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3390,8 +3390,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 1 Floor 06 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 1 Floor 06 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3480,8 +3480,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 1 Floor 07 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 1 Floor 07 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3570,8 +3570,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 1 Floor 08 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 1 Floor 08 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3661,8 +3661,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 1 Floor 09 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 1 Floor 09 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3717,8 +3717,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 1 Floor 10 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 1 Floor 10 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3782,8 +3782,8 @@ spaces:
     value: 51.461514
   - name: Longitude
     value: -0.930454
-  blobs:
-  - name: SmartHotel360 SH360 Elite 2 Blob
+  blob:
+    name: SmartHotel360 SH360 Elite 2 Blob
     type: File
     subtype: None
     description: Hotel image
@@ -3797,8 +3797,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite2-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 2 Floor 01 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 2 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3862,8 +3862,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite2-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 2 Floor 02 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 2 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3927,8 +3927,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite2-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 2 Floor 03 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 2 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3992,8 +3992,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite2-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 2 Floor 04 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 2 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4058,8 +4058,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite2-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 2 Floor 05 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 2 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4103,8 +4103,8 @@ spaces:
     value: 40.418301
   - name: Longitude
     value: -3.798159
-  blobs:
-  - name: SmartHotel360 SH360 Elite 3 Blob
+  blob:
+    name: SmartHotel360 SH360 Elite 3 Blob
     type: File
     subtype: None
     description: Hotel image
@@ -4118,8 +4118,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite3-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 3 Floor 01 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 3 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4183,8 +4183,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite3-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 3 Floor 02 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 3 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4248,8 +4248,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite3-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 3 Floor 03 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 3 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4313,8 +4313,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite3-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 3 Floor 04 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 3 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4379,8 +4379,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite3-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 3 Floor 05 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 3 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4424,8 +4424,8 @@ spaces:
     value: 48.177382
   - name: Longitude
     value: 11.593678
-  blobs:
-  - name: SmartHotel360 SH360 Elite 4 Blob
+  blob:
+    name: SmartHotel360 SH360 Elite 4 Blob
     type: File
     subtype: None
     description: Hotel image
@@ -4439,8 +4439,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite4-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 4 Floor 01 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 4 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4504,8 +4504,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite4-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 4 Floor 02 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 4 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4569,8 +4569,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite4-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 4 Floor 03 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 4 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4634,8 +4634,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite4-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 4 Floor 04 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 4 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4700,8 +4700,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite4-
-    blobs:
-    - name: SmartHotel360 SH360 Elite 4 Floor 05 Blob
+    blob:
+      name: SmartHotel360 SH360 Elite 4 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4745,8 +4745,8 @@ spaces:
     value: 35.62666
   - name: Longitude
     value: 139.740525
-  blobs:
-  - name: SmartHotel360 SH360 Premium 2 Blob
+  blob:
+    name: SmartHotel360 SH360 Premium 2 Blob
     type: File
     subtype: None
     description: Hotel image
@@ -4760,8 +4760,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium2-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 2 Floor 01 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 2 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4825,8 +4825,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium2-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 2 Floor 02 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 2 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4890,8 +4890,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium2-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 2 Floor 03 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 2 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4955,8 +4955,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium2-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 2 Floor 04 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 2 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
@@ -5021,8 +5021,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium2-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 2 Floor 05 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 2 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
@@ -5066,8 +5066,8 @@ spaces:
     value: 37.574767
   - name: Longitude
     value: 126.979306
-  blobs:
-  - name: SmartHotel360 SH360 Premium 3 Blob
+  blob:
+    name: SmartHotel360 SH360 Premium 3 Blob
     type: File
     subtype: None
     description: Hotel image
@@ -5081,8 +5081,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium3-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 3 Floor 01 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 3 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
@@ -5146,8 +5146,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium3-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 3 Floor 02 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 3 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
@@ -5211,8 +5211,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium3-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 3 Floor 03 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 3 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
@@ -5276,8 +5276,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium3-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 3 Floor 04 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 3 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
@@ -5342,8 +5342,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium3-
-    blobs:
-    - name: SmartHotel360 SH360 Premium 3 Floor 05 Blob
+    blob:
+      name: SmartHotel360 SH360 Premium 3 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image

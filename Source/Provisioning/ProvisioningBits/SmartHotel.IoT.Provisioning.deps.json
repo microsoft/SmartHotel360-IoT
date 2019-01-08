@@ -371,14 +371,14 @@
     "McMaster.Extensions.CommandLineUtils/2.2.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4cNl0zV+QINlluLbpfSfZvqBLqlJ8wJz9LDBWP/oFUFK08T49MCv+wtU/1DJLEaGIaFK1fiQJIVFo17V516EUg==",
+      "sha512": "sha512-Zbdiiu616SDIlBGeBZj2U1UZU/mdlT5szgfw+P+DUS8qX9ebMQIOq8vQzxPgNSDsvNqlHIAMeP74d2PTg/O5dw==",
       "path": "mcmaster.extensions.commandlineutils/2.2.5",
       "hashPath": "mcmaster.extensions.commandlineutils.2.2.5.nupkg.sha512"
     },
     "Microsoft.IdentityModel.Clients.ActiveDirectory/3.19.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-DC/k/yfpKvYVUtnnSQaTLFi4bJrWUM//TiWYqb0XC1wSgitZv0IK1PjPzd9Zk9BwwnlBteXKH39JX/Adc2S4ZA==",
+      "sha512": "sha512-PRTE+0vg/e+wNFDBEPdZlDVVwopyOZtGnbg0B4ANxR0eeZKoEwfumBoAIO6iC91jRLMTpCfYXTArmn8BpyLIIg==",
       "path": "microsoft.identitymodel.clients.activedirectory/3.19.8",
       "hashPath": "microsoft.identitymodel.clients.activedirectory.3.19.8.nupkg.sha512"
     },

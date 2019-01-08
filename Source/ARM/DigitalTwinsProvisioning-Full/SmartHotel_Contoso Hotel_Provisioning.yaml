@@ -7,8 +7,8 @@ users:
 properties:
 - name: DisplayOrder
   value: 2
-blobs:
-- name: Contoso Hotel Blob
+blob:
+  name: Contoso Hotel Blob
   type: File
   subtype: None
   description: Brand image
@@ -32,8 +32,8 @@ spaces:
     value: 30.070911
   - name: Longitude
     value: 31.016627
-  blobs:
-  - name: Contoso Hotel Contoso Elite 1 Blob
+  blob:
+    name: Contoso Hotel Contoso Elite 1 Blob
     type: File
     subtype: None
     description: Hotel image
@@ -47,8 +47,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite1-
-    blobs:
-    - name: Contoso Hotel Contoso Elite 1 Floor 01 Blob
+    blob:
+      name: Contoso Hotel Contoso Elite 1 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
@@ -212,8 +212,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite1-
-    blobs:
-    - name: Contoso Hotel Contoso Elite 1 Floor 02 Blob
+    blob:
+      name: Contoso Hotel Contoso Elite 1 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
@@ -377,8 +377,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite1-
-    blobs:
-    - name: Contoso Hotel Contoso Elite 1 Floor 03 Blob
+    blob:
+      name: Contoso Hotel Contoso Elite 1 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
@@ -542,8 +542,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite1-
-    blobs:
-    - name: Contoso Hotel Contoso Elite 1 Floor 04 Blob
+    blob:
+      name: Contoso Hotel Contoso Elite 1 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
@@ -708,8 +708,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite1-
-    blobs:
-    - name: Contoso Hotel Contoso Elite 1 Floor 05 Blob
+    blob:
+      name: Contoso Hotel Contoso Elite 1 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
@@ -793,8 +793,8 @@ spaces:
     value: -26.04631
   - name: Longitude
     value: 28.019991
-  blobs:
-  - name: Contoso Hotel Contoso Premium 1 Blob
+  blob:
+    name: Contoso Hotel Contoso Premium 1 Blob
     type: File
     subtype: None
     description: Hotel image
@@ -808,8 +808,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium1-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 1 Floor 01 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 1 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
@@ -973,8 +973,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium1-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 1 Floor 02 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 1 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
@@ -1138,8 +1138,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium1-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 1 Floor 03 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 1 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
@@ -1303,8 +1303,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium1-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 1 Floor 04 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 1 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
@@ -1469,8 +1469,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium1-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 1 Floor 05 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 1 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
@@ -1554,8 +1554,8 @@ spaces:
     value: 19.366462
   - name: Longitude
     value: -99.264738
-  blobs:
-  - name: Contoso Hotel Contoso Elite 2 Blob
+  blob:
+    name: Contoso Hotel Contoso Elite 2 Blob
     type: File
     subtype: None
     description: Hotel image
@@ -1569,8 +1569,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite2-
-    blobs:
-    - name: Contoso Hotel Contoso Elite 2 Floor 01 Blob
+    blob:
+      name: Contoso Hotel Contoso Elite 2 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
@@ -1734,8 +1734,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite2-
-    blobs:
-    - name: Contoso Hotel Contoso Elite 2 Floor 02 Blob
+    blob:
+      name: Contoso Hotel Contoso Elite 2 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
@@ -1899,8 +1899,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite2-
-    blobs:
-    - name: Contoso Hotel Contoso Elite 2 Floor 03 Blob
+    blob:
+      name: Contoso Hotel Contoso Elite 2 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
@@ -2064,8 +2064,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite2-
-    blobs:
-    - name: Contoso Hotel Contoso Elite 2 Floor 04 Blob
+    blob:
+      name: Contoso Hotel Contoso Elite 2 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
@@ -2230,8 +2230,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite2-
-    blobs:
-    - name: Contoso Hotel Contoso Elite 2 Floor 05 Blob
+    blob:
+      name: Contoso Hotel Contoso Elite 2 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
@@ -2315,8 +2315,8 @@ spaces:
     value: -23.609299
   - name: Longitude
     value: -46.697277
-  blobs:
-  - name: Contoso Hotel Contoso Elite 3 Blob
+  blob:
+    name: Contoso Hotel Contoso Elite 3 Blob
     type: File
     subtype: None
     description: Hotel image
@@ -2330,8 +2330,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite3-
-    blobs:
-    - name: Contoso Hotel Contoso Elite 3 Floor 01 Blob
+    blob:
+      name: Contoso Hotel Contoso Elite 3 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
@@ -2495,8 +2495,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite3-
-    blobs:
-    - name: Contoso Hotel Contoso Elite 3 Floor 02 Blob
+    blob:
+      name: Contoso Hotel Contoso Elite 3 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
@@ -2660,8 +2660,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite3-
-    blobs:
-    - name: Contoso Hotel Contoso Elite 3 Floor 03 Blob
+    blob:
+      name: Contoso Hotel Contoso Elite 3 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
@@ -2825,8 +2825,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite3-
-    blobs:
-    - name: Contoso Hotel Contoso Elite 3 Floor 04 Blob
+    blob:
+      name: Contoso Hotel Contoso Elite 3 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
@@ -2991,8 +2991,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite3-
-    blobs:
-    - name: Contoso Hotel Contoso Elite 3 Floor 05 Blob
+    blob:
+      name: Contoso Hotel Contoso Elite 3 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3076,8 +3076,8 @@ spaces:
     value: -33.796785
   - name: Longitude
     value: 151.138782
-  blobs:
-  - name: Contoso Hotel Contoso Premium 2 Blob
+  blob:
+    name: Contoso Hotel Contoso Premium 2 Blob
     type: File
     subtype: None
     description: Hotel image
@@ -3091,8 +3091,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium2-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 2 Floor 01 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 2 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3256,8 +3256,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium2-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 2 Floor 02 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 2 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3421,8 +3421,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium2-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 2 Floor 03 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 2 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3586,8 +3586,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium2-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 2 Floor 04 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 2 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3752,8 +3752,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium2-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 2 Floor 05 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 2 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
@@ -3837,8 +3837,8 @@ spaces:
     value: 40.756722
   - name: Longitude
     value: -73.990022
-  blobs:
-  - name: Contoso Hotel Contoso Premium 3 Blob
+  blob:
+    name: Contoso Hotel Contoso Premium 3 Blob
     type: File
     subtype: None
     description: Hotel image
@@ -3852,8 +3852,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium3-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 3 Floor 01 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 3 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4017,8 +4017,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium3-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 3 Floor 02 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 3 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4182,8 +4182,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium3-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 3 Floor 03 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 3 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4347,8 +4347,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium3-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 3 Floor 04 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 3 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4513,8 +4513,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium3-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 3 Floor 05 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 3 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4598,8 +4598,8 @@ spaces:
     value: 48.833505
   - name: Longitude
     value: 2.266099
-  blobs:
-  - name: Contoso Hotel Contoso Premium 4 Blob
+  blob:
+    name: Contoso Hotel Contoso Premium 4 Blob
     type: File
     subtype: None
     description: Hotel image
@@ -4613,8 +4613,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium4-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 4 Floor 01 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 4 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4778,8 +4778,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium4-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 4 Floor 02 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 4 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
@@ -4943,8 +4943,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium4-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 4 Floor 03 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 4 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
@@ -5108,8 +5108,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium4-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 4 Floor 04 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 4 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
@@ -5274,8 +5274,8 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium4-
-    blobs:
-    - name: Contoso Hotel Contoso Premium 4 Floor 05 Blob
+    blob:
+      name: Contoso Hotel Contoso Premium 4 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image

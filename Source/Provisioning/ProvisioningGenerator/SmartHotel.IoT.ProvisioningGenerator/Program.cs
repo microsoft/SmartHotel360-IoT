@@ -19,14 +19,11 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 		[Option( "-op|--outputPrefix", Description = "Prefix of the output filenames" )]
 		public string OutputFilePrefix { get; } = "SmartHotel";
 
-		[Option( "-df|--definitionFilepath", Description = "Filepath of json brand definition" )]
-		public string DefinitionFilepath { get; } = Path.Combine( "SampleDefinitions", "MasterJson", "ReducedSiteDefinition.json" );
+		[Option( "-ddp|--definitionsDirectoryPath", Description = "Path to the directory containing .json definition files" )]
+		public string DefinitionsDirectoryPath { get; } = Path.Combine( "SampleDefinitions", "MasterJson" );
 
 		[Option( "-st|--subTenantName", Description = "Create a sub-Tenant with the given name" )]
 		public string SubTenantName { get; }
-
-		[Option( "-ad|--allDevices", Description = "Add devices to all rooms of all hotels" )]
-		public bool AllDevices { get; }
 
 		private async Task OnExecuteAsync()
 		{
@@ -42,32 +39,55 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 
 		private void GenerateProvisioningFiles()
 		{
-			if ( !File.Exists( DefinitionFilepath ) )
+			if ( !Directory.Exists( DefinitionsDirectoryPath ) )
 			{
-				Console.WriteLine( $"Definition file not found: {DefinitionFilepath}" );
+				Console.WriteLine( $"Definitions directory not found: {DefinitionsDirectoryPath}" );
 				return;
 			}
-
-			string siteJson = File.ReadAllText( DefinitionFilepath );
-			var site = JsonConvert.DeserializeObject<Site>( siteJson );
-
-			if ( !GenerateSiteProvisioningFile( site.Brands ) )
+			foreach ( string definitionFilePath in Directory.EnumerateFiles( DefinitionsDirectoryPath, "*.json" ) )
 			{
-				Console.WriteLine( "Site provisioning file not written, skipping brand file generation." );
-				return;
-			}
+				try
+				{
+					string siteJson = File.ReadAllText( definitionFilePath );
+					var site = JsonConvert.DeserializeObject<Site>( siteJson );
+					if ( site == null )
+					{
+						Console.WriteLine( $"Invalid definition file found in directory: {definitionFilePath}" );
+						continue;
+					}
 
-			int globalHotelNumber = 0;
-			for ( int i = 0; i < site.Brands.Count; i++ )
-			{
-				Brand brand = site.Brands[i];
-				GenerateBrandProvisioningFile( brand, i + 1, site.HotelTypes, ref globalHotelNumber );
+					Console.WriteLine( $"Generating template from {definitionFilePath}" );
+
+					if ( !Directory.Exists( site.OutputDirectory ) )
+					{
+						Directory.CreateDirectory( site.OutputDirectory );
+					}
+
+					if ( !GenerateSiteProvisioningFile( site.Brands, site.OutputDirectory ) )
+					{
+						Console.WriteLine( "Site provisioning file not written, skipping brand file generation." );
+						return;
+					}
+
+					int globalHotelNumber = 0;
+					for ( int i = 0; i < site.Brands.Count; i++ )
+					{
+						Brand brand = site.Brands[i];
+						GenerateBrandProvisioningFile( brand, i + 1, site.HotelTypes, site.OutputDirectory, ref globalHotelNumber );
+					}
+
+					Console.WriteLine();
+				}
+				catch ( Exception ex )
+				{
+					Console.WriteLine( $"Error occured processing definition file ({definitionFilePath}) - {ex}" );
+				}
 			}
 		}
 
-		private bool GenerateSiteProvisioningFile( List<Brand> brands )
+		private bool GenerateSiteProvisioningFile( List<Brand> brands, string outputDirectory )
 		{
-			string siteFilename = $"{OutputFilePrefix}_Site_Provisioning.yaml";
+			string siteFilename = Path.Combine( outputDirectory, $"{OutputFilePrefix}_Site_Provisioning.yaml" );
 
 			if ( File.Exists( siteFilename ) )
 			{
@@ -147,9 +167,9 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			} );
 			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
 			{
-				name = PropertyKeyDescription.ImageBlobId,
+				name = PropertyKeyDescription.ImagePath,
 				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.String,
-				description = "Id of the image blob for the space."
+				description = "Path of the image to display for the space."
 			} );
 			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
 			{
@@ -204,9 +224,10 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			return $"{OutputFilePrefix}_{brand.Name}_Provisioning.yaml";
 		}
 
-		private void GenerateBrandProvisioningFile( Brand brand, int brandNumber, List<HotelType> hotelTypes, ref int globalHotelNumber )
+		private void GenerateBrandProvisioningFile( Brand brand, int brandNumber, List<HotelType> hotelTypes,
+			string outputDirectory, ref int globalHotelNumber )
 		{
-			string brandFilename = GetBrandProvisioningFilename( brand );
+			string brandFilename = Path.Combine( outputDirectory, GetBrandProvisioningFilename( brand ) );
 
 			var brandSpaceDescription = new SpaceDescription
 			{
@@ -218,7 +239,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			brandSpaceDescription.AddUser( $"Hotel Brand {brandNumber} Manager" );
 			brandSpaceDescription.AddProperty( new PropertyDescription { name = PropertyKeyDescription.DisplayOrder, value = brandNumber.ToString() } );
 
-			brandSpaceDescription.AddBlob(new BlobDescription
+			brandSpaceDescription.blob = new BlobDescription
 			{
 				name = $"{brand.Name} Blob",
 				type = BlobDescription.FileBlobType,
@@ -226,7 +247,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 				description = "Brand image",
 				filepath = $"{ImageFolderRelativePath}/brands/brand{brandNumber}.jpg",
 				contentType = BlobDescription.JpegContentType
-			});
+			};
 
 			// Create the hotels
 			for ( int hotelIndex = 0; hotelIndex < brand.Hotels.Count; hotelIndex++ )
@@ -251,14 +272,14 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 
 				hotelSpaceDescription.AddProperty( new PropertyDescription
 				{ name = PropertyKeyDescription.MaxTemperatureAlertThreshold, value = hotelType.MaxTempAlertThreshold.ToString() } );
-				
+
 				hotelSpaceDescription.AddProperty( new PropertyDescription
 				{ name = PropertyKeyDescription.Latitude, value = hotel.Latitude.ToString() } );
 
 				hotelSpaceDescription.AddProperty( new PropertyDescription
 				{ name = PropertyKeyDescription.Longitude, value = hotel.Longitude.ToString() } );
 
-				hotelSpaceDescription.AddBlob(new BlobDescription
+				hotelSpaceDescription.blob = new BlobDescription
 				{
 					name = $"{brand.Name} {hotel.Name} Blob",
 					type = BlobDescription.FileBlobType,
@@ -266,7 +287,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 					description = "Hotel image",
 					filepath = $"{ImageFolderRelativePath}/hotels{hotelType.Name.ToLower()}.jpg",
 					contentType = BlobDescription.JpegContentType
-				});
+				};
 
 				string brandHotelPrefix = $"{brand.Name}-{hotel.Name}-".Replace( " ", string.Empty );
 
@@ -297,7 +318,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 						floorSpaceDescription.subType = "VIPFloor";
 					}
 
-					floorSpaceDescription.AddBlob(new BlobDescription
+					floorSpaceDescription.blob = new BlobDescription
 					{
 						name = $"{brand.Name} {hotel.Name} {floorName} Blob",
 						type = BlobDescription.FileBlobType,
@@ -305,7 +326,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 						description = "Floor image",
 						filepath = $"{ImageFolderRelativePath}/floors/{hotelType.Name.ToLower()}{imagePathSuffix}.jpg",
 						contentType = BlobDescription.JpegContentType
-					});
+					};
 
 					if ( !isVipFloor && !string.IsNullOrEmpty( hotel.RegularFloorEmployeeUser ) )
 					{
@@ -422,116 +443,117 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			return roomSpaceDescription;
 		}
 
-		private void GenerateSampleDefinition( string definitionFilename )
-		{
-			var hotelTypeH = new HotelType
-			{
-				Name = "H",
-				TotalNumberFloors = 10,
-				NumberVipFloors = 2,
-				NumberRoomsPerRegularFloor = 20,
-				NumberRoomsPerVipFloor = 10,
-				IncludeConferenceRoom = true,
-				IncludeGym = true
-			};
+		// This is NOT up to date with the latest definition files, just how they were created in the first place
+		//private void GenerateSampleDefinition( string definitionFilename )
+		//{
+		//	var hotelTypeH = new HotelType
+		//	{
+		//		Name = "H",
+		//		TotalNumberFloors = 10,
+		//		NumberVipFloors = 2,
+		//		NumberRoomsPerRegularFloor = 20,
+		//		NumberRoomsPerVipFloor = 10,
+		//		IncludeConferenceRoom = true,
+		//		IncludeGym = true
+		//	};
 
-			var hotelTypeL = new HotelType
-			{
-				Name = "L",
-				TotalNumberFloors = 10,
-				NumberVipFloors = 2,
-				NumberRoomsPerRegularFloor = 15,
-				NumberRoomsPerVipFloor = 8,
-				IncludeConferenceRoom = true,
-				IncludeGym = true
-			};
+		//	var hotelTypeL = new HotelType
+		//	{
+		//		Name = "L",
+		//		TotalNumberFloors = 10,
+		//		NumberVipFloors = 2,
+		//		NumberRoomsPerRegularFloor = 15,
+		//		NumberRoomsPerVipFloor = 8,
+		//		IncludeConferenceRoom = true,
+		//		IncludeGym = true
+		//	};
 
-			var hotelTypeSH = new HotelType
-			{
-				Name = "SH",
-				TotalNumberFloors = 5,
-				NumberVipFloors = 1,
-				NumberRoomsPerRegularFloor = 10,
-				NumberRoomsPerVipFloor = 4,
-				IncludeConferenceRoom = true,
-				IncludeGym = true
-			};
+		//	var hotelTypeSH = new HotelType
+		//	{
+		//		Name = "SH",
+		//		TotalNumberFloors = 5,
+		//		NumberVipFloors = 1,
+		//		NumberRoomsPerRegularFloor = 10,
+		//		NumberRoomsPerVipFloor = 4,
+		//		IncludeConferenceRoom = true,
+		//		IncludeGym = true
+		//	};
 
-			var hotelTypeSL = new HotelType
-			{
-				Name = "SL",
-				TotalNumberFloors = 5,
-				NumberVipFloors = 1,
-				NumberRoomsPerRegularFloor = 10,
-				NumberRoomsPerVipFloor = 4,
-				IncludeConferenceRoom = true,
-				IncludeGym = true
-			};
+		//	var hotelTypeSL = new HotelType
+		//	{
+		//		Name = "SL",
+		//		TotalNumberFloors = 5,
+		//		NumberVipFloors = 1,
+		//		NumberRoomsPerRegularFloor = 10,
+		//		NumberRoomsPerVipFloor = 4,
+		//		IncludeConferenceRoom = true,
+		//		IncludeGym = true
+		//	};
 
-			var hotelTypes = new List<HotelType> { hotelTypeH, hotelTypeL, hotelTypeSH, hotelTypeSL };
+		//	var hotelTypes = new List<HotelType> { hotelTypeH, hotelTypeL, hotelTypeSH, hotelTypeSL };
 
-			var brands = new List<Brand>();
+		//	var brands = new List<Brand>();
 
-			for ( int i = 0; i < 4; i++ )
-			{
-				var hotels = new List<Hotel>();
+		//	for ( int i = 0; i < 4; i++ )
+		//	{
+		//		var hotels = new List<Hotel>();
 
-				switch ( i )
-				{
-					case 0:
-						{
-							hotels.Add( CreateHotel( hotelTypeH, 1, "Employee", true ) );
-							hotels.Add( CreateHotel( hotelTypeL, 1, null, AllDevices ) );
-							hotels.Add( CreateHotel( hotelTypeSH, 1, null, AllDevices ) );
-							hotels.Add( CreateHotel( hotelTypeSH, 2, null, AllDevices ) );
-							hotels.Add( CreateHotel( hotelTypeSL, 1, null, AllDevices ) );
-							hotels.Add( CreateHotel( hotelTypeSL, 2, null, AllDevices ) );
-							break;
-						}
-					case 1:
-						{
-							hotels.Add( CreateHotel( hotelTypeSH, 1, null, AllDevices ) );
-							hotels.Add( CreateHotel( hotelTypeSH, 2, null, AllDevices ) );
-							hotels.Add( CreateHotel( hotelTypeSL, 1, null, AllDevices ) );
-							break;
-						}
-					case 2:
-						{
-							hotels.Add( CreateHotel( hotelTypeSH, 1, null, AllDevices ) );
-							hotels.Add( CreateHotel( hotelTypeSL, 1, null, AllDevices ) );
-							hotels.Add( CreateHotel( hotelTypeSL, 2, null, AllDevices ) );
-							break;
-						}
-					case 3:
-						{
-							hotels.Add( CreateHotel( hotelTypeSH, 1, null, AllDevices ) );
-							hotels.Add( CreateHotel( hotelTypeSH, 2, null, AllDevices ) );
-							hotels.Add( CreateHotel( hotelTypeSL, 1, null, AllDevices ) );
-							break;
-						}
-				}
+		//		switch ( i )
+		//		{
+		//			case 0:
+		//				{
+		//					hotels.Add( CreateHotel( hotelTypeH, 1, "Employee", true ) );
+		//					hotels.Add( CreateHotel( hotelTypeL, 1, null, AllDevices ) );
+		//					hotels.Add( CreateHotel( hotelTypeSH, 1, null, AllDevices ) );
+		//					hotels.Add( CreateHotel( hotelTypeSH, 2, null, AllDevices ) );
+		//					hotels.Add( CreateHotel( hotelTypeSL, 1, null, AllDevices ) );
+		//					hotels.Add( CreateHotel( hotelTypeSL, 2, null, AllDevices ) );
+		//					break;
+		//				}
+		//			case 1:
+		//				{
+		//					hotels.Add( CreateHotel( hotelTypeSH, 1, null, AllDevices ) );
+		//					hotels.Add( CreateHotel( hotelTypeSH, 2, null, AllDevices ) );
+		//					hotels.Add( CreateHotel( hotelTypeSL, 1, null, AllDevices ) );
+		//					break;
+		//				}
+		//			case 2:
+		//				{
+		//					hotels.Add( CreateHotel( hotelTypeSH, 1, null, AllDevices ) );
+		//					hotels.Add( CreateHotel( hotelTypeSL, 1, null, AllDevices ) );
+		//					hotels.Add( CreateHotel( hotelTypeSL, 2, null, AllDevices ) );
+		//					break;
+		//				}
+		//			case 3:
+		//				{
+		//					hotels.Add( CreateHotel( hotelTypeSH, 1, null, AllDevices ) );
+		//					hotels.Add( CreateHotel( hotelTypeSH, 2, null, AllDevices ) );
+		//					hotels.Add( CreateHotel( hotelTypeSL, 1, null, AllDevices ) );
+		//					break;
+		//				}
+		//		}
 
-				var brand = new Brand
-				{
-					Name = $"Brand {i + 1}",
-					Hotels = hotels
-				};
+		//		var brand = new Brand
+		//		{
+		//			Name = $"Brand {i + 1}",
+		//			Hotels = hotels
+		//		};
 
-				brands.Add( brand );
-			}
+		//		brands.Add( brand );
+		//	}
 
-			var site = new Site
-			{
-				HotelTypes = hotelTypes,
-				Brands = brands
-			};
+		//	var site = new Site
+		//	{
+		//		HotelTypes = hotelTypes,
+		//		Brands = brands
+		//	};
 
-			string siteJson = JsonConvert.SerializeObject( site, Formatting.Indented );
-			using ( StreamWriter definitionFile = new StreamWriter( definitionFilename ) )
-			{
-				definitionFile.Write( siteJson );
-			}
-		}
+		//	string siteJson = JsonConvert.SerializeObject( site, Formatting.Indented );
+		//	using ( StreamWriter definitionFile = new StreamWriter( definitionFilename ) )
+		//	{
+		//		definitionFile.Write( siteJson );
+		//	}
+		//}
 
 		private Hotel CreateHotel( HotelType hotelType, int hotelIndex, string regularFloorEmployeeUser, bool addDevices )
 		{

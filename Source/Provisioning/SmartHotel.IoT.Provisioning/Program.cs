@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using McMaster.Extensions.CommandLineUtils;
@@ -22,7 +24,7 @@ namespace SmartHotel.IoT.Provisioning
 		private const string AadInstance = "https://login.microsoftonline.com/";
 		private const string DigitalTwinsResourceId = "0b07f429-9f4b-4714-9392-cc5e8e80c8b0";
 
-		private string directoryContainingDigitalTwinsProvisioningFile;
+		private string _directoryContainingDigitalTwinsProvisioningFile;
 
 		private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
 		{
@@ -90,7 +92,7 @@ namespace SmartHotel.IoT.Provisioning
 					DigitalTwinsResourceId, ClientId, ClientSecret );
 
 				string fullPathToDigitalTwinsProvisioningFile = Path.GetFullPath( DigitalTwinsProvisioningFile );
-				directoryContainingDigitalTwinsProvisioningFile = Path.GetDirectoryName( fullPathToDigitalTwinsProvisioningFile );
+				_directoryContainingDigitalTwinsProvisioningFile = Path.GetDirectoryName( fullPathToDigitalTwinsProvisioningFile );
 
 				Console.WriteLine( "Loading the provisioning files..." );
 
@@ -237,6 +239,11 @@ namespace SmartHotel.IoT.Provisioning
 				if ( spaceDescription.properties != null )
 				{
 					await CreatePropertiesAsync( httpClient, spaceDescription.properties, spaceId );
+				}
+
+				if ( spaceDescription.blob != null )
+				{
+					await CreateBlobAsync( httpClient, spaceDescription.blob, spaceId );
 				}
 
 				if ( spaceDescription.spaces != null )
@@ -463,7 +470,7 @@ namespace SmartHotel.IoT.Provisioning
 				string scriptPath = userDefinedFunctionDescription.script;
 				if ( !Path.IsPathFullyQualified( scriptPath ) )
 				{
-					scriptPath = Path.Combine( directoryContainingDigitalTwinsProvisioningFile, scriptPath );
+					scriptPath = Path.Combine( _directoryContainingDigitalTwinsProvisioningFile, scriptPath );
 				}
 
 				string udfText = await File.ReadAllTextAsync( scriptPath );
@@ -601,7 +608,78 @@ namespace SmartHotel.IoT.Provisioning
 			foreach ( PropertyDescription propertyDescription in propertiesToCreate )
 			{
 				Property property = propertyDescription.ToDigitalTwins();
-				await property.CreatePropertyAsync( spaceId, httpClient, JsonSerializerSettings );
+				await property.CreateOrUpdatePropertyAsync( spaceId, httpClient, JsonSerializerSettings );
+			}
+		}
+
+		private async Task CreateBlobAsync( HttpClient httpClient, BlobDescription blobDescription, Guid spaceId )
+		{
+			if ( spaceId == Guid.Empty )
+			{
+				throw new ArgumentException( $"Blob must have a {nameof( spaceId )}" );
+			}
+
+			Space space = await SpaceHelpers.GetSpaceAsync( httpClient, spaceId, "Properties" );
+
+			Property imageBlobIdProperty = space.Properties.FirstOrDefault( p => p.Name == PropertyKeyDescription.ImageBlobId );
+
+			Metadata metadata = blobDescription.ToDigitalTwinsMetadata( spaceId );
+			var multipartContent = new MultipartFormDataContent( "USER_DEFINED_BOUNDARY" );
+			var metadataContent = new StringContent( JsonConvert.SerializeObject( metadata ), Encoding.UTF8, "application/json" );
+			metadataContent.Headers.ContentType = MediaTypeHeaderValue.Parse( "application/json; charset=utf-8" );
+			multipartContent.Add( metadataContent, "metadata" );
+
+			string blobContentFilePath = blobDescription.filepath;
+			if ( !Path.IsPathFullyQualified( blobContentFilePath ) )
+			{
+				blobContentFilePath = Path.Combine( _directoryContainingDigitalTwinsProvisioningFile, blobContentFilePath );
+			}
+
+			using ( FileStream s = File.OpenRead( blobContentFilePath ) )
+			{
+				var blobContent = new StreamContent( s );
+				blobContent.Headers.ContentType = MediaTypeHeaderValue.Parse( blobDescription.contentType );
+				multipartContent.Add( blobContent, "contents" );
+
+				HttpRequestMessage request;
+				if ( imageBlobIdProperty == null )
+				{
+					request = new HttpRequestMessage( HttpMethod.Post, "spaces/blobs" )
+					{
+						Content = multipartContent
+					};
+				}
+				else
+				{
+					request = new HttpRequestMessage( HttpMethod.Patch, $"spaces/blobs/{imageBlobIdProperty.Value}" )
+					{
+						Content = multipartContent
+					};
+				}
+
+				var response = await httpClient.SendAsync( request );
+				Guid blobId = await response.GetIdAsync();
+
+				if ( imageBlobIdProperty == null )
+				{
+					var uriBuilder = new UriBuilder( $"{httpClient.BaseAddress}spaces/blobs/{blobId}/contents/latest" );
+
+					var imagePathProperty = new Property
+					{
+						Name = PropertyKeyDescription.ImagePath,
+						Value = uriBuilder.Uri.ToString()
+					};
+
+					await imagePathProperty.CreateOrUpdatePropertyAsync( spaceId, httpClient, JsonSerializerSettings );
+
+					imageBlobIdProperty = new Property
+					{
+						Name = PropertyKeyDescription.ImageBlobId,
+						Value = blobId.ToString()
+					};
+
+					await imageBlobIdProperty.CreateOrUpdatePropertyAsync( spaceId, httpClient, JsonSerializerSettings );
+				}
 			}
 		}
 	}

@@ -1,4 +1,7 @@
-﻿namespace SmartHotel.IoT.Provisioning.Common.Models
+﻿using System;
+using SmartHotel.IoT.Provisioning.Common.Models.DigitalTwins;
+
+namespace SmartHotel.IoT.Provisioning.Common.Models
 {
     public class BlobDescription
     {
@@ -12,5 +15,17 @@
 		public string description { get; set; }
 		public string filepath { get; set; }
 		public string contentType { get; set; }
+
+		public Metadata ToDigitalTwinsMetadata(Guid spaceId)
+	    {
+		    return new Metadata
+		    {
+			    Name = name,
+			    Type = type,
+				SubType = subtype,
+				Description = description,
+				ParentId = spaceId.ToString()
+		    };
+	    }
 	}
 }
