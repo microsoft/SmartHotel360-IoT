@@ -37,7 +37,7 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotelsh.jpg
+    filepath: ../Images/hotels/h.jpg
     contentType: image/jpeg
   spaces:
   - name: Floor 01
@@ -2930,7 +2930,7 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotelsl.jpg
+    filepath: ../Images/hotels/l.jpg
     contentType: image/jpeg
   spaces:
   - name: Floor 01
@@ -5147,7 +5147,7 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotelssh.jpg
+    filepath: ../Images/hotels/sh.jpg
     contentType: image/jpeg
   spaces:
   - name: Floor 01
@@ -5908,7 +5908,7 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotelssh.jpg
+    filepath: ../Images/hotels/sh.jpg
     contentType: image/jpeg
   spaces:
   - name: Floor 01
@@ -6669,7 +6669,7 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotelssl.jpg
+    filepath: ../Images/hotels/sl.jpg
     contentType: image/jpeg
   spaces:
   - name: Floor 01
@@ -7430,7 +7430,7 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotelssl.jpg
+    filepath: ../Images/hotels/sl.jpg
     contentType: image/jpeg
   spaces:
   - name: Floor 01
@@ -8191,7 +8191,7 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotelssl.jpg
+    filepath: ../Images/hotels/sl.jpg
     contentType: image/jpeg
   spaces:
   - name: Floor 01

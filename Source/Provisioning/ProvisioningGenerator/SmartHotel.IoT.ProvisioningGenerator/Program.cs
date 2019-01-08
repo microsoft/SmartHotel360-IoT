@@ -285,7 +285,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 					type = BlobDescription.FileBlobType,
 					subtype = BlobDescription.NoneBlobType,
 					description = "Hotel image",
-					filepath = $"{ImageFolderRelativePath}/hotels{hotelType.Name.ToLower()}.jpg",
+					filepath = $"{ImageFolderRelativePath}/hotels/{hotelType.Name.ToLower()}.jpg",
 					contentType = BlobDescription.JpegContentType
 				};
 
