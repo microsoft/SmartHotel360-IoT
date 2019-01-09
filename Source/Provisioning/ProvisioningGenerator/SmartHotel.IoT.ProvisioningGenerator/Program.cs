@@ -173,6 +173,12 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			} );
 			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
 			{
+				name = PropertyKeyDescription.ImageBlobId,
+				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.String,
+				description = "Id of the image blob for the space."
+			} );
+			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
+			{
 				name = PropertyKeyDescription.Latitude,
 				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.String,
 				description = "Geo Position"
