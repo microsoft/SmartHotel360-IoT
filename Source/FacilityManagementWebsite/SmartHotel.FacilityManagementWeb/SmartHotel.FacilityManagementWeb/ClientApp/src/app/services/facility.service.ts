@@ -28,6 +28,7 @@ export class FacilityService {
   private spaces: ISpace[] = null;
   private spacesByParentId: Map<string, ISpace[]>;
   private callbacksToExecuteWhenInitialized: InitializationCallbackContainer[] = [];
+  private dtToken: string;
 
   constructor(
     private http: HttpClient,
@@ -41,6 +42,7 @@ export class FacilityService {
         .toPromise()
         .then(
           token => {
+            this.dtToken = token;
             this.http.get<ISpace[]>(this.getEndpoint('spaces'), { headers: { 'azure_token': token } }
             ).toPromise().then(data => {
               this.spaces = data;
@@ -68,6 +70,14 @@ export class FacilityService {
     }
 
     return this.spaces;
+  }
+
+  public getDigitalTwinsToken(): string {
+    if (!this.isInitialized) {
+      throw this.notInitializedError;
+    }
+
+    return this.dtToken;
   }
 
   public getSpace(parentSpaceId: string, spaceId: string): ISpace {

@@ -22,6 +22,7 @@ import { SlidePanelComponent } from './slide-panel/slide-panel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as AuthenticationContext from 'adal-angular/lib/adal';
 import { EnvironmentService } from './services/environment.service';
+import { SecurePipe } from './pipes/secure.pipe';
 
 const initializeApp = (environmentService: EnvironmentService) => {
   return () => {
@@ -42,7 +43,8 @@ const initializeApp = (environmentService: EnvironmentService) => {
     HotelBrandComponent,
     BreadcrumbComponent,
     LoadingComponent,
-    SlidePanelComponent
+    SlidePanelComponent,
+    SecurePipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

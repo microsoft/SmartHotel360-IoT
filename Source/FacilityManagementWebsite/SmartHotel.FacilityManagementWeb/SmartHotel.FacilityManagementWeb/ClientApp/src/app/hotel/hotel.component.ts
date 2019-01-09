@@ -62,6 +62,6 @@ export class HotelComponent implements OnInit {
   }
 
   getFloorImage(floor: ISpace) {
-    return `url(${floor.imagePath})`;
+    return floor.imagePath;
   }
 }

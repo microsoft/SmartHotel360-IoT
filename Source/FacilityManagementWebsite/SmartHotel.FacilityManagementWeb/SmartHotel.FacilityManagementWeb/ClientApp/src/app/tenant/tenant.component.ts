@@ -41,6 +41,6 @@ export class TenantComponent implements OnInit {
   }
 
   getHotelBrandImage(hotelBrand: ISpace) {
-    return `url(${hotelBrand.imagePath})`;
+    return hotelBrand.imagePath;
   }
 }
