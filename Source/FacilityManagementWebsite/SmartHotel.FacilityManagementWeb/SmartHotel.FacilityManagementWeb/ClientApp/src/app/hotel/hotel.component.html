@@ -1,10 +1,10 @@
-<app-breadcrumb #breadcumbs [tenantId]="tenantId" [hotelBrandId]="hotelBrandId" [hotelBrandName]="hotelBrandName" [hotelId]="hotelId"
-  [hotelIndex]="hotelIndex" [hotelName]="hotelName"></app-breadcrumb>
+<app-breadcrumb #breadcumbs [tenantId]="tenantId" [hotelBrandId]="hotelBrandId" [hotelBrandName]="hotelBrandName"
+  [hotelId]="hotelId" [hotelIndex]="hotelIndex" [hotelName]="hotelName"></app-breadcrumb>
 
 <div class="floors-top-row">
   <div class="floors">
     <div *ngFor="let floor of floors" class="floor" (click)="chooseFloor(floor)">
-      <div class="floor-image" [style.background-image]="getFloorImage(floor)"></div>
+      <img class="floor-image" [src]="getFloorImage(floor) | secure | async" />
       <div class="floor-button">
         {{floor.friendlyName}}
       </div>

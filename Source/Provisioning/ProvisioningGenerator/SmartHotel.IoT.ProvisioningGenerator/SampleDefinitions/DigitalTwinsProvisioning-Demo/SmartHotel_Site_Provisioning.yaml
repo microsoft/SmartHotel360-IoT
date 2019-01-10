@@ -49,6 +49,9 @@ spaces:
   - name: ImagePath
     primitiveDataType: string
     description: Path of the image to display for the space.
+  - name: ImageBlobId
+    primitiveDataType: string
+    description: Id of the image blob for the space.
   - name: Latitude
     primitiveDataType: string
     description: Geo Position

@@ -56,7 +56,7 @@ export class HotelBrandComponent implements OnInit {
   }
 
   getHotelImage(hotel: ISpace) {
-    return `url(${hotel.imagePath})`;
+    return hotel.imagePath;
   }
 
 }

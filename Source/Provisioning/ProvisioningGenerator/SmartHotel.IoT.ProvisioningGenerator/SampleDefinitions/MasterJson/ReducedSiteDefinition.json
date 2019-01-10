@@ -1,4 +1,5 @@
 {
+  "OutputDirectory": "DigitalTwinsProvisioning-Demo",
   "HotelTypes": [
     {
       "Name": "H",
@@ -8,8 +9,8 @@
       "NumberRoomsPerVipFloor": 10,
       "IncludeGym": true,
       "IncludeConferenceRoom": true,
-      "MinTempAlertThreshold":  65,
-      "MaxTempAlertThreshold":  85
+      "MinTempAlertThreshold": 65,
+      "MaxTempAlertThreshold": 85
     },
     {
       "Name": "L",
@@ -19,8 +20,8 @@
       "NumberRoomsPerVipFloor": 8,
       "IncludeGym": true,
       "IncludeConferenceRoom": true,
-      "MinTempAlertThreshold":  65,
-      "MaxTempAlertThreshold":  85
+      "MinTempAlertThreshold": 65,
+      "MaxTempAlertThreshold": 85
     },
     {
       "Name": "SH",
@@ -30,8 +31,8 @@
       "NumberRoomsPerVipFloor": 4,
       "IncludeGym": true,
       "IncludeConferenceRoom": true,
-      "MinTempAlertThreshold":  65,
-      "MaxTempAlertThreshold":  85
+      "MinTempAlertThreshold": 65,
+      "MaxTempAlertThreshold": 85
     },
     {
       "Name": "SL",
@@ -41,8 +42,8 @@
       "NumberRoomsPerVipFloor": 4,
       "IncludeGym": true,
       "IncludeConferenceRoom": true,
-      "MinTempAlertThreshold":  65,
-      "MaxTempAlertThreshold":  85
+      "MinTempAlertThreshold": 65,
+      "MaxTempAlertThreshold": 85
     }
   ],
   "Brands": [
@@ -50,12 +51,12 @@
       "Name": "SmartHotel360",
       "Hotels": [
         {
-            "Name": "SH360 Elite 1",
-            "Type": "H",
-            "RegularFloorEmployeeUser": "Employee",
-            "AddDevices": true,
-            "Latitude": 47.616800,
-            "Longitude": -122.205070
+          "Name": "SH360 Elite 1",
+          "Type": "H",
+          "RegularFloorEmployeeUser": "Employee",
+          "AddDevices": true,
+          "Latitude": 47.616800,
+          "Longitude": -122.205070
         },
         {
           "Name": "SH360 Premium 1",

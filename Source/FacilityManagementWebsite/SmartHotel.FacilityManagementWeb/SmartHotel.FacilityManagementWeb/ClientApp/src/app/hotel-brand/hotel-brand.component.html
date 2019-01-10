@@ -3,7 +3,7 @@
 <div class="hotels-top-row">
   <div class="hotels">
     <div *ngFor="let hotel of hotels" class="hotel" (click)="chooseHotel(hotel)">
-      <div class="hotel-image" [style.background-image]="getHotelImage(hotel)"></div>
+      <img class="hotel-image" [src]="getHotelImage(hotel) | secure | async" />
       <div class="hotel-button">
         {{hotel.friendlyName}}
       </div>

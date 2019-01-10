@@ -19,9 +19,9 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 		public string subType { get; set; }
 		[YamlMember( Order = 6 )]
 		public string keystoreName { get; set; }
-		[YamlMember( Order = 17 )]
+		[YamlMember( Order = 18 )]
 		public IList<SpaceReferenceDescription> spaceReferences { get; set; }
-		[YamlMember( Order = 16 )]
+		[YamlMember( Order = 17 )]
 		public IList<SpaceDescription> spaces { get; set; }
 		[YamlMember( Order = 10 )]
 		public IList<DeviceDescription> devices { get; set; }
@@ -41,6 +41,8 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 		public IList<UserDefinedFunctionDescription> userDefinedFunctions { get; set; }
 		[YamlMember( Order = 15 )]
 		public IList<RoleAssignmentDescription> roleAssignments { get; set; }
+		[YamlMember( Order = 16 )]
+		public BlobDescription blob { get; set; }
 
 		public Space ToDigitalTwins( Guid parentId )
 		{

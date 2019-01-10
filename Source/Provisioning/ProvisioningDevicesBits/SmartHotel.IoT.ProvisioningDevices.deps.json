@@ -65,7 +65,7 @@
     "McMaster.Extensions.CommandLineUtils/2.2.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4cNl0zV+QINlluLbpfSfZvqBLqlJ8wJz9LDBWP/oFUFK08T49MCv+wtU/1DJLEaGIaFK1fiQJIVFo17V516EUg==",
+      "sha512": "sha512-Zbdiiu616SDIlBGeBZj2U1UZU/mdlT5szgfw+P+DUS8qX9ebMQIOq8vQzxPgNSDsvNqlHIAMeP74d2PTg/O5dw==",
       "path": "mcmaster.extensions.commandlineutils/2.2.5",
       "hashPath": "mcmaster.extensions.commandlineutils.2.2.5.nupkg.sha512"
     },
