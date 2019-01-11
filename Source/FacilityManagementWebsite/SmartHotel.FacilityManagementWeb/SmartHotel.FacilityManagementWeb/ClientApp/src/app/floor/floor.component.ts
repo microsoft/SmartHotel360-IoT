@@ -9,6 +9,9 @@ import { ChangeContext, Options } from 'ng5-slider';
 import { ISpace } from '../services/models/ISpace';
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { BusyService } from '../services/busy.service';
+import { ISpaceAlert } from '../services/models/ISpaceAlert';
+import { Subscription } from 'rxjs';
+import { SubscriptionUtilities } from '../helpers/subscription-utilities';
 
 @Component({
   selector: 'app-floor',
@@ -16,6 +19,8 @@ import { BusyService } from '../services/busy.service';
   styleUrls: ['./floor.component.css']
 })
 export class FloorComponent implements OnInit, OnDestroy {
+
+  private subscriptions: Subscription[] = [];
 
   constructor(private route: ActivatedRoute,
     private facilityService: FacilityService,
@@ -89,6 +94,8 @@ export class FloorComponent implements OnInit, OnDestroy {
     if (this.sensorInterval != null) {
       clearInterval(this.sensorInterval);
     }
+
+    this.subscriptions.forEach(s => SubscriptionUtilities.tryUnsubscribe(s));
   }
 
   loadRooms(self: FloorComponent) {
@@ -104,6 +111,9 @@ export class FloorComponent implements OnInit, OnDestroy {
     self.rooms.forEach(room => self.roomsById.set(room.id, room));
     self.loadDesiredData();
     self.setupTimer();
+
+    self.subscriptions.push(self.facilityService.getTemperatureAlerts()
+      .subscribe(tempAlerts => self.temperatureAlertsUpdated(self.rooms, tempAlerts)));
   }
 
   setupTimer() {
@@ -353,5 +363,16 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   getFriendlyRoomType(room: ISpace) {
     return room.subtype.replace('Room', '').replace('VIP', 'VIP ').replace('Conference', 'Conference Room');
+  }
+
+  temperatureAlertsUpdated(spaces: ISpace[], spaceAlerts: ISpaceAlert[]) {
+    if (!spaces) {
+      return;
+    }
+    if (!spaceAlerts) {
+      spaces.forEach(space => space.hasAlert = false);
+    } else {
+      spaces.forEach(space => space.hasAlert = spaceAlerts.some(alert => alert.spaceId === space.id));
+    }
   }
 }

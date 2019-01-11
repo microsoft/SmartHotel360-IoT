@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
 import { ISpace } from '../services/models/ISpace';
 import { NavigationService } from '../services/navigation.service';
+import { Subscription } from 'rxjs';
+import { ISpaceAlert } from '../services/models/ISpaceAlert';
+import { SubscriptionUtilities } from '../helpers/subscription-utilities';
 
 @Component({
   selector: 'app-tenant',
   templateUrl: './tenant.component.html',
   styleUrls: ['./tenant.component.css']
 })
-export class TenantComponent implements OnInit {
+export class TenantComponent implements OnInit, OnDestroy {
+
+  private subscriptions: Subscription[] = [];
 
   constructor(private navigationService: NavigationService,
     private route: ActivatedRoute,
@@ -26,6 +31,9 @@ export class TenantComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => SubscriptionUtilities.tryUnsubscribe(s));
+  }
 
   loadHotelBrands(self: TenantComponent) {
     const hotelBrands = self.facilityService.getChildSpaces(self.tenantId);
@@ -34,6 +42,9 @@ export class TenantComponent implements OnInit {
       return;
     }
     self.hotelBrands = hotelBrands;
+
+    self.subscriptions.push(self.facilityService.getTemperatureAlerts()
+      .subscribe(tempAlerts => self.temperatureAlertsUpdated(self.hotelBrands, tempAlerts)));
   }
 
   chooseHotelBrand(hotelBrand: ISpace) {
@@ -42,5 +53,16 @@ export class TenantComponent implements OnInit {
 
   getHotelBrandImage(hotelBrand: ISpace) {
     return hotelBrand.imagePath;
+  }
+
+  temperatureAlertsUpdated(spaces: ISpace[], spaceAlerts: ISpaceAlert[]) {
+    if (!spaces) {
+      return;
+    }
+    if (!spaceAlerts) {
+      spaces.forEach(space => space.hasAlert = false);
+    } else {
+      spaces.forEach(space => space.hasAlert = spaceAlerts.some(alert => alert.ancestorSpaceIds.includes(space.id)));
+    }
   }
 }

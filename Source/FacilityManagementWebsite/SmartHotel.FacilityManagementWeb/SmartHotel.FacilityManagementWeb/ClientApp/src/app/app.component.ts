@@ -4,7 +4,6 @@ import { environment } from '../environments/environment';
 import { FacilityService } from './services/facility.service';
 import { NavigationService } from './services/navigation.service';
 import { BusyService } from './services/busy.service';
-import { ITempAlert } from './services/models/ITempAlert';
 
 @Component({
   selector: 'app-root',

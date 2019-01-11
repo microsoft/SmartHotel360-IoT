@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AdalService } from 'adal-angular4';
 import { IDesired } from './models/IDesired';
 import { ISpace } from './models/ISpace';
-import { ITempAlert } from './models/ITempAlert';
+import { ISpaceAlert } from './models/ISpaceAlert';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 class InitializationCallbackContainer {
@@ -30,8 +30,8 @@ export class FacilityService {
   private spacesByParentId: Map<string, ISpace[]>;
   private callbacksToExecuteWhenInitialized: InitializationCallbackContainer[] = [];
   private dtToken: string;
-  private temperatureAlertsSubject: BehaviorSubject<ITempAlert[]> = new BehaviorSubject<ITempAlert[]>(null);
-  private temperatureAlertsObservable: Observable<ITempAlert[]>;
+  private temperatureAlertsSubject: BehaviorSubject<ISpaceAlert[]> = new BehaviorSubject<ISpaceAlert[]>(null);
+  private temperatureAlertsObservable: Observable<ISpaceAlert[]>;
   private alertsTimerInterval;
 
   constructor(
@@ -166,7 +166,7 @@ export class FacilityService {
     return promise;
   }
 
-  public getTemperatureAlerts(): Observable<ITempAlert[]> {
+  public getTemperatureAlerts(): Observable<ISpaceAlert[]> {
     if (!this.isInitialized) {
       throw this.notInitializedError;
     }
@@ -236,16 +236,13 @@ export class FacilityService {
   private async loadAlerts() {
     await this.updateDtToken();
     const alerts = await this.http.get(this.getEndpoint('spaces/temperaturealerts'), { headers: { 'azure_token': this.dtToken } }
-    ).toPromise() as { [spaceId: string]: string };
+    ).toPromise() as { [spaceId: string]: ISpaceAlert };
 
     if (alerts !== undefined && alerts !== null) {
       const keys = Object.keys(alerts);
-      const tempAlerts: ITempAlert[] = [];
+      const tempAlerts: ISpaceAlert[] = [];
 
-      keys.forEach(k => tempAlerts.push({
-        spaceId: k,
-        alertMessage: alerts[k]
-      }));
+      keys.forEach(k => tempAlerts.push(alerts[k]));
       this.temperatureAlertsSubject.next(tempAlerts);
     } else {
       this.temperatureAlertsSubject.next(null);

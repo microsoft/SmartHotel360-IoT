@@ -16,4 +16,5 @@ export interface ISpace {
   thermostat?: IThermostat;
   motion?: IMotion;
   light?: ILight;
+  hasAlert: boolean;
 }
