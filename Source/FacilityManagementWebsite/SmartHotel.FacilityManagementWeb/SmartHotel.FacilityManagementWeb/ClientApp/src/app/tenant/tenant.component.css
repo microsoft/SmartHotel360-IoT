@@ -1,5 +1,5 @@
 section {
-  margin: 4px 64px 0px 26px;
+  margin: 4px 64px 0 26px;
 }
 
 .hotelbrands-top-row {
@@ -43,12 +43,18 @@ section {
   top: 0;
 }
 
+.alert-image {
+  position: absolute;
+  right: 5px;
+  top: 50px;
+  height: 26px;
+}
+
 .hotelbrand-button:hover {
   cursor: pointer;
   background-color: #f39f7b;
   transition: background-color .35s ease-in;
 }
-
 
 .hotelbrands-dashboard {
   margin-top: 14px;
@@ -75,6 +81,7 @@ img {
   height: 100%;
 }
 
-_:-ms-lang(x), .hotelbrands-dashboard {
+.hotelbrands-dashboard,
+_:-ms-lang(x) {
   margin-top: 7px;
 }

@@ -1,4 +1,4 @@
 export interface ITempAlert {
-  spaceFriendlyId: string;
+  spaceId: string;
   alertMessage: string;
 }
