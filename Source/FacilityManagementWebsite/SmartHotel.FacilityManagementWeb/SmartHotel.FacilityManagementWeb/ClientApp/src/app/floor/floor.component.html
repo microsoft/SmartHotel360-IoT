@@ -8,7 +8,7 @@
       <div class="room-subtype">
         {{ getFriendlyRoomType(room) }}
       </div>
-      <img src="/assets/images/alert.png" class="alert-image" *ngIf="room.hasAlert" />
+      <img src="/assets/images/alert.png" title="{{room.alertMessage}}" class="alert-image" *ngIf="room.hasAlert" />
     </div>
     <div class="room-device room-occupancy">
       occupied

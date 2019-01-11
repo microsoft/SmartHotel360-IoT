@@ -17,4 +17,5 @@ export interface ISpace {
   motion?: IMotion;
   light?: ILight;
   hasAlert: boolean;
+  alertMessage: string;
 }

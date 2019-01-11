@@ -370,9 +370,21 @@ export class FloorComponent implements OnInit, OnDestroy {
       return;
     }
     if (!spaceAlerts) {
-      spaces.forEach(space => space.hasAlert = false);
+      spaces.forEach(space => {
+        space.hasAlert = false;
+        space.alertMessage = null;
+      });
     } else {
-      spaces.forEach(space => space.hasAlert = spaceAlerts.some(alert => alert.spaceId === space.id));
+      spaces.forEach(space => {
+        const alertForSpace = spaceAlerts.find(alert => alert.spaceId === space.id);
+        if (alertForSpace) {
+          space.hasAlert = true;
+          space.alertMessage = alertForSpace.message;
+        } else {
+          space.hasAlert = false;
+          space.alertMessage = null;
+        }
+      });
     }
   }
 }
