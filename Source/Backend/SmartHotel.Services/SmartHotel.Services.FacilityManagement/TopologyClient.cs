@@ -13,7 +13,7 @@ namespace SmartHotel.Services.FacilityManagement
 	{
 		string AccessToken { get; set; }
 		Task<ICollection<Space>> GetSpaces();
-		Task<IDictionary<string, string>> GetRoomSpaceTemperatureAlerts();
+		Task<IDictionary<string, SpaceAlert>> GetRoomSpaceTemperatureAlerts();
 	}
 
 	public class TopologyClient : ITopologyClient
@@ -134,22 +134,32 @@ namespace SmartHotel.Services.FacilityManagement
 			return hierarchicalSpaces;
 		}
 
-		public async Task<IDictionary<string, string>> GetRoomSpaceTemperatureAlerts()
+		public async Task<IDictionary<string, SpaceAlert>> GetRoomSpaceTemperatureAlerts()
 		{
 			HttpClient httpClient = CreateHttpClient();
+
+			var firstFourLevelsResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}" +
+																				 $"?{FirstFourLevelsSpacesFilter}&{IncludesFilter}={TypesIncludesFilter}" );
+			Dictionary<string, DigitalTwinsSpace> firstFourLevelsTopology = JsonConvert.DeserializeObject<ICollection<DigitalTwinsSpace>>( firstFourLevelsResponse )
+				.ToDictionary( dts => dts.id );
 
 			var fifthLevelResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}" +
 																			$"?{FifthLevelSpacesFilter}&{IncludesFilter}={ValuesIncludesFilter},{TypesIncludesFilter}" );
 			var fifthLevelTopologyWithValues = JsonConvert.DeserializeObject<ICollection<DigitalTwinsSpace>>( fifthLevelResponse );
-			Dictionary<string, string> alertMessagesBySpaceId = fifthLevelTopologyWithValues
+			Dictionary<string, SpaceAlert> alertMessagesBySpaceId = fifthLevelTopologyWithValues
 				.Where( dts => dts.values != null )
 				.Select( dts => new
 				{
-					dts.id,
+					dts,
 					value = dts.values.FirstOrDefault( v => "TemperatureAlert".Equals( v.type, StringComparison.OrdinalIgnoreCase ) )
 				} )
 				.Where( ta => ta.value != null )
-				.ToDictionary( spaceIdWithAlert => spaceIdWithAlert.id, spaceIdWithAlert => spaceIdWithAlert.value.value );
+				.ToDictionary( spaceIdWithAlert => spaceIdWithAlert.dts.id, spaceIdWithAlert => new SpaceAlert
+				{
+					SpaceId = spaceIdWithAlert.dts.id,
+					Message = spaceIdWithAlert.value.value,
+					AncestorSpaceIds = GetAncestorSpaceIds( spaceIdWithAlert.dts, firstFourLevelsTopology )
+				} );
 
 			return alertMessagesBySpaceId;
 		}
@@ -213,11 +223,25 @@ namespace SmartHotel.Services.FacilityManagement
 			return content;
 		}
 
-		private bool IsTypeNeededForFriendlyIdentifier( string type )
+		private string[] GetAncestorSpaceIds( DigitalTwinsSpace childSpace, Dictionary<string, DigitalTwinsSpace> ancestorSpacesById )
 		{
-			return RoomTypeName.Equals( type, StringComparison.OrdinalIgnoreCase )
-				   || HotelTypeName.Equals( type, StringComparison.OrdinalIgnoreCase )
-				   || HotelBrandTypeName.Equals( type, StringComparison.OrdinalIgnoreCase );
+			var ancestorSpaceIds = new List<string>();
+
+			DigitalTwinsSpace nextSpace = childSpace;
+			while ( !string.IsNullOrWhiteSpace( nextSpace.parentSpaceId ) )
+			{
+				ancestorSpaceIds.Add( nextSpace.parentSpaceId );
+				if ( ancestorSpacesById.TryGetValue( nextSpace.parentSpaceId, out DigitalTwinsSpace parentSpace ) )
+				{
+					nextSpace = parentSpace;
+				}
+				else
+				{
+					break;
+				}
+			}
+
+			return ancestorSpaceIds.ToArray();
 		}
 	}
 }
