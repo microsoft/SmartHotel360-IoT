@@ -23,6 +23,7 @@ import { SlidePanelComponent } from './slide-panel/slide-panel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EnvironmentService } from './services/environment.service';
 import { SecurePipe } from './pipes/secure.pipe';
+import { MapComponent } from './map/map.component';
 
 const initializeApp = (environmentService: EnvironmentService) => {
   return () => {
@@ -44,7 +45,8 @@ const initializeApp = (environmentService: EnvironmentService) => {
     BreadcrumbComponent,
     LoadingComponent,
     SlidePanelComponent,
-    SecurePipe
+    SecurePipe,
+    MapComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
