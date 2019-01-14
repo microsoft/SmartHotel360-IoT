@@ -4,7 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AdalService } from 'adal-angular4';
 import { IDesired } from './models/IDesired';
 import { ISpace } from './models/ISpace';
-import { ITempAlert } from './models/ITempAlert';
+import { ISpaceAlert } from './models/ISpaceAlert';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 class InitializationCallbackContainer {
   constructor(requester: any, callback: (requester: any) => void) {
@@ -29,29 +30,31 @@ export class FacilityService {
   private spacesByParentId: Map<string, ISpace[]>;
   private callbacksToExecuteWhenInitialized: InitializationCallbackContainer[] = [];
   private dtToken: string;
+  private temperatureAlertsSubject: BehaviorSubject<ISpaceAlert[]> = new BehaviorSubject<ISpaceAlert[]>(null);
+  private temperatureAlertsObservable: Observable<ISpaceAlert[]>;
+  private alertsTimerInterval;
 
   constructor(
     private http: HttpClient,
     private adalSvc: AdalService) {
     this.spacesByParentId = new Map<string, ISpace[]>();
+
+    this.temperatureAlertsObservable = this.temperatureAlertsSubject.asObservable();
   }
 
   public async initialize() {
     try {
-      await this.adalSvc.acquireToken(`${environment.resourceId}`)
-        .toPromise()
-        .then(
-          token => {
-            this.dtToken = token;
-            this.http.get<ISpace[]>(this.getEndpoint('spaces'), { headers: { 'azure_token': token } }
-            ).toPromise().then(data => {
-              this.spaces = data;
-              this.updateSpacesByParentIdMap(this.spaces);
-              this.isInitialized = true;
-              this.onInitialized();
-            });
-          }
-        );
+      await this.updateDtToken()
+        .then(() => {
+          this.http.get<ISpace[]>(this.getEndpoint('spaces'), { headers: { 'azure_token': this.dtToken } }
+          ).toPromise().then(data => {
+            this.spaces = data;
+            this.updateSpacesByParentIdMap(this.spaces);
+            this.startAlertsTimer();
+            this.isInitialized = true;
+            this.onInitialized();
+          });
+        });
     } catch (error) {
       console.error('Failed to initialize and load spaces.');
       console.error(error);
@@ -61,6 +64,8 @@ export class FacilityService {
   public terminate() {
     this.spaces = undefined;
     this.spacesByParentId.clear();
+    this.temperatureAlertsSubject.next(null);
+    clearInterval(this.alertsTimerInterval);
     this.isInitialized = false;
   }
 
@@ -161,37 +166,47 @@ export class FacilityService {
     return promise;
   }
 
-  public async getTemperatureAlerts(): Promise<ITempAlert[]> {
+  public getTemperatureAlerts(): Observable<ISpaceAlert[]> {
     if (!this.isInitialized) {
       throw this.notInitializedError;
     }
 
-    const promise = new Promise<ITempAlert[]>((resolve, reject) => {
-      this.adalSvc.acquireToken(`${environment.resourceId}`)
-        .toPromise()
-        .then(
-          token => {
-            this.http.get(this.getEndpoint('spaces/temperaturealerts'), { headers: { 'azure_token': token } }
-            ).toPromise().then((data: { [spaceId: string]: string }) => {
-              if (data !== undefined && data !== null) {
-                const keys = Object.keys(data);
-                const tempAlerts: ITempAlert[] = [];
-
-                keys.forEach(k => tempAlerts.push({
-                  spaceFriendlyId: k,
-                  alertMessage: data[k]
-                }));
-                resolve(tempAlerts);
-              } else {
-                resolve(null);
-              }
-            });
-          }
-        );
-    });
-
-    return promise;
+    return this.temperatureAlertsObservable;
   }
+
+  // public async getTemperatureAlerts(): Promise<ITempAlert[]> {
+  //   if (!this.isInitialized) {
+  //     throw this.notInitializedError;
+  //   }
+
+  //   const promise = new Promise<ITempAlert[]>((resolve, reject) => {
+  //     this.adalSvc.acquireToken(`${environment.resourceId}`)
+  //       .toPromise()
+  //       .then(
+  //         token => {
+  //           this.http.get(this.getEndpoint('spaces/temperaturealerts'), { headers: { 'azure_token': token } }
+  //           ).toPromise().then((data: { [spaceId: string]: string }) => {
+  //             if (data !== undefined && data !== null) {
+  //               const keys = Object.keys(data);
+  //               const tempAlerts: ITempAlert[] = [];
+
+  //               keys.forEach(k => tempAlerts.push({
+  //                 spaceFriendlyId: k,
+  //                 alertMessage: data[k]
+  //               }));
+  //               resolve(tempAlerts);
+  //             } else {
+  //               resolve(null);
+  //             }
+  //           });
+  //         }
+  //       );
+  //   });
+
+  //   return promise;
+  // }
+
+
 
   public executeWhenInitialized(requester: any, callback: (requester: any) => void): boolean {
     if (this.isInitialized) {
@@ -201,6 +216,37 @@ export class FacilityService {
 
     this.callbacksToExecuteWhenInitialized.push(new InitializationCallbackContainer(requester, callback));
     return false;
+  }
+
+  private async updateDtToken(): Promise<void> {
+    await this.adalSvc.acquireToken(`${environment.resourceId}`)
+      .toPromise()
+      .then(token => {
+        this.dtToken = token;
+      });
+  }
+
+  private startAlertsTimer() {
+    this.loadAlerts()
+      .then(() => {
+        this.alertsTimerInterval = setInterval(this.loadAlerts.bind(this), environment.sensorDataTimer);
+      });
+  }
+
+  private async loadAlerts() {
+    await this.updateDtToken();
+    const alerts = await this.http.get(this.getEndpoint('spaces/temperaturealerts'), { headers: { 'azure_token': this.dtToken } }
+    ).toPromise() as { [spaceId: string]: ISpaceAlert };
+
+    if (alerts !== undefined && alerts !== null) {
+      const keys = Object.keys(alerts);
+      const tempAlerts: ISpaceAlert[] = [];
+
+      keys.forEach(k => tempAlerts.push(alerts[k]));
+      this.temperatureAlertsSubject.next(tempAlerts);
+    } else {
+      this.temperatureAlertsSubject.next(null);
+    }
   }
 
   private getEndpoint(path: string): string {

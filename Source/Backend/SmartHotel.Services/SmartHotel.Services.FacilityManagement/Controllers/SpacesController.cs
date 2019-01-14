@@ -40,7 +40,7 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 
 			try
 			{
-				var spacesWithTemperatureAlerts = await _client.GetSpaceTemperatureAlerts();
+				var spacesWithTemperatureAlerts = await _client.GetRoomSpaceTemperatureAlerts();
 
 				return Ok( spacesWithTemperatureAlerts );
 			}

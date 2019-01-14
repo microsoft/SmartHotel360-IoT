@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import * as AuthenticationContext from 'adal-angular/lib/adal';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -20,7 +21,6 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { LoadingComponent } from './loading/loading.component';
 import { SlidePanelComponent } from './slide-panel/slide-panel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import * as AuthenticationContext from 'adal-angular/lib/adal';
 import { EnvironmentService } from './services/environment.service';
 import { SecurePipe } from './pipes/secure.pipe';
 

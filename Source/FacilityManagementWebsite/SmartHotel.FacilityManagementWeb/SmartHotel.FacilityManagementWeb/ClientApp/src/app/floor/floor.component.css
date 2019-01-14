@@ -25,12 +25,20 @@ section {
   color: #bc4c1b;
   font-size: 18px;
   font-weight: 300;
+  position: relative;
 }
 
 .room-subtype {
   color: #bc4c1b;
   font-size: 12px;
   font-weight: 150;
+}
+
+.alert-image {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 26px;
 }
 
 .room-occupancy {

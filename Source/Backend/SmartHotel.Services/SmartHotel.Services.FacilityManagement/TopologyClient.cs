@@ -13,7 +13,7 @@ namespace SmartHotel.Services.FacilityManagement
 	{
 		string AccessToken { get; set; }
 		Task<ICollection<Space>> GetSpaces();
-		Task<IDictionary<string, string>> GetSpaceTemperatureAlerts();
+		Task<IDictionary<string, SpaceAlert>> GetRoomSpaceTemperatureAlerts();
 	}
 
 	public class TopologyClient : ITopologyClient
@@ -134,7 +134,7 @@ namespace SmartHotel.Services.FacilityManagement
 			return hierarchicalSpaces;
 		}
 
-		public async Task<IDictionary<string, string>> GetSpaceTemperatureAlerts()
+		public async Task<IDictionary<string, SpaceAlert>> GetRoomSpaceTemperatureAlerts()
 		{
 			HttpClient httpClient = CreateHttpClient();
 
@@ -146,7 +146,7 @@ namespace SmartHotel.Services.FacilityManagement
 			var fifthLevelResponse = await GetFromDigitalTwins( httpClient, $"{ApiPath}{SpacesPath}" +
 																			$"?{FifthLevelSpacesFilter}&{IncludesFilter}={ValuesIncludesFilter},{TypesIncludesFilter}" );
 			var fifthLevelTopologyWithValues = JsonConvert.DeserializeObject<ICollection<DigitalTwinsSpace>>( fifthLevelResponse );
-			var spacesWithTemperatureAlerts = fifthLevelTopologyWithValues
+			Dictionary<string, SpaceAlert> alertMessagesBySpaceId = fifthLevelTopologyWithValues
 				.Where( dts => dts.values != null )
 				.Select( dts => new
 				{
@@ -154,37 +154,14 @@ namespace SmartHotel.Services.FacilityManagement
 					value = dts.values.FirstOrDefault( v => "TemperatureAlert".Equals( v.type, StringComparison.OrdinalIgnoreCase ) )
 				} )
 				.Where( ta => ta.value != null )
-				.ToArray();
-
-			SortedDictionary<string, string> alertMessagesByFriendlySpaceIds = new SortedDictionary<string, string>();
-			foreach ( var spaceWithAlert in spacesWithTemperatureAlerts )
-			{
-				string friendlyIdentifier = GetFriendlySpaceIdentifier( spaceWithAlert.dts, firstFourLevelsTopology );
-				alertMessagesByFriendlySpaceIds.Add( friendlyIdentifier, spaceWithAlert.value.value );
-			}
-
-			return alertMessagesByFriendlySpaceIds;
-		}
-
-		private string GetFriendlySpaceIdentifier( DigitalTwinsSpace space, Dictionary<string, DigitalTwinsSpace> firstFourLevelsTopology )
-		{
-			string identifier = string.Empty;
-			if ( IsTypeNeededForFriendlyIdentifier( space.type ) )
-			{
-				identifier = space.friendlyName;
-			}
-
-			if ( !string.IsNullOrWhiteSpace( space.parentSpaceId )
-				 && firstFourLevelsTopology.TryGetValue( space.parentSpaceId, out DigitalTwinsSpace parentSpace ) )
-			{
-				string parentIdentifier = GetFriendlySpaceIdentifier( parentSpace, firstFourLevelsTopology );
-				if ( !string.IsNullOrWhiteSpace( parentIdentifier ) )
+				.ToDictionary( spaceIdWithAlert => spaceIdWithAlert.dts.id, spaceIdWithAlert => new SpaceAlert
 				{
-					identifier = string.IsNullOrWhiteSpace( identifier ) ? parentIdentifier : $"{parentIdentifier} -> {identifier}";
-				}
-			}
+					SpaceId = spaceIdWithAlert.dts.id,
+					Message = spaceIdWithAlert.value.value,
+					AncestorSpaceIds = GetAncestorSpaceIds( spaceIdWithAlert.dts, firstFourLevelsTopology )
+				} );
 
-			return identifier;
+			return alertMessagesBySpaceId;
 		}
 
 		private static void BuildSpaceHierarchyAndReturnRoomSpaces( List<Space> hierarchicalSpaces, Dictionary<string, List<Space>> allSpacesByParentId )
@@ -246,11 +223,25 @@ namespace SmartHotel.Services.FacilityManagement
 			return content;
 		}
 
-		private bool IsTypeNeededForFriendlyIdentifier( string type )
+		private string[] GetAncestorSpaceIds( DigitalTwinsSpace childSpace, Dictionary<string, DigitalTwinsSpace> ancestorSpacesById )
 		{
-			return RoomTypeName.Equals( type, StringComparison.OrdinalIgnoreCase )
-				   || HotelTypeName.Equals( type, StringComparison.OrdinalIgnoreCase )
-				   || HotelBrandTypeName.Equals( type, StringComparison.OrdinalIgnoreCase );
+			var ancestorSpaceIds = new List<string>();
+
+			DigitalTwinsSpace nextSpace = childSpace;
+			while ( !string.IsNullOrWhiteSpace( nextSpace.parentSpaceId ) )
+			{
+				ancestorSpaceIds.Add( nextSpace.parentSpaceId );
+				if ( ancestorSpacesById.TryGetValue( nextSpace.parentSpaceId, out DigitalTwinsSpace parentSpace ) )
+				{
+					nextSpace = parentSpace;
+				}
+				else
+				{
+					break;
+				}
+			}
+
+			return ancestorSpaceIds.ToArray();
 		}
 	}
 }

@@ -16,7 +16,7 @@ app-nav-menu {
   z-index: 1000;
 }
 
-.alert-panel {
+/* .alert-panel {
   position: absolute;
   top: 0;
   right: 0;
@@ -86,4 +86,4 @@ app-nav-menu {
 
 .no-alerts-message {
   margin-left: 10px;
-}
+} */

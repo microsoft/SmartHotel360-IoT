@@ -43,6 +43,13 @@ section {
   top: 0;
 }
 
+.alert-image {
+  position: absolute;
+  right: 5px;
+  top: 50px;
+  height: 26px;
+}
+
 .floor-button:hover {
   cursor: pointer;
   background-color: #f39f7b;

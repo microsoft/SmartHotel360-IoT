@@ -4,20 +4,14 @@ import { environment } from '../environments/environment';
 import { FacilityService } from './services/facility.service';
 import { NavigationService } from './services/navigation.service';
 import { BusyService } from './services/busy.service';
-import { ITempAlert } from './services/models/ITempAlert';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit {
   public static readonly LastLoginSessionStorageKey: string = 'FacilityService_LastLogin';
-  private tempAlertsInterval;
-
-  public temperatureAlerts: ITempAlert[];
-  public hasAlerts = false;
-  public areAlertsOpen = false;
 
   constructor(private adalService: AdalService,
     private facilityService: FacilityService,
@@ -48,12 +42,6 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  public ngOnDestroy() {
-    if (this.tempAlertsInterval) {
-      clearInterval(this.tempAlertsInterval);
-    }
-  }
-
   private navigateToDesiredRoute(self: AppComponent) {
     try {
       const spaces = self.facilityService.getSpaces();
@@ -61,25 +49,9 @@ export class AppComponent implements OnInit, OnDestroy {
         if (location.pathname.indexOf(';') < 0) {
           self.navigationService.navigateToTopSpaces(spaces);
         }
-        self.setupTimer();
       }
     } finally {
       self.busyService.idle();
     }
-  }
-
-  private setupTimer() {
-    this.loadTempAlerts();
-    this.tempAlertsInterval = setInterval(this.loadTempAlerts.bind(this), environment.sensorDataTimer);
-  }
-
-  private async loadTempAlerts() {
-    const tempAlerts = await this.facilityService.getTemperatureAlerts();
-    this.temperatureAlerts = tempAlerts;
-    this.hasAlerts = this.temperatureAlerts && this.temperatureAlerts.length > 0;
-  }
-
-  public toggleAlertPanel() {
-    this.areAlertsOpen = !this.areAlertsOpen;
   }
 }

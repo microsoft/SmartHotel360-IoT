@@ -1,16 +1,21 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
 import { ISpace } from '../services/models/ISpace';
 import { NavigationService } from '../services/navigation.service';
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
+import { ISpaceAlert } from '../services/models/ISpaceAlert';
+import { Subscription } from 'rxjs';
+import { SubscriptionUtilities } from '../helpers/subscription-utilities';
 
 @Component({
   selector: 'app-hotel-brand',
   templateUrl: './hotel-brand.component.html',
   styleUrls: ['./hotel-brand.component.css']
 })
-export class HotelBrandComponent implements OnInit {
+export class HotelBrandComponent implements OnInit, OnDestroy {
+
+  private subscriptions: Subscription[] = [];
 
   constructor(private navigationService: NavigationService,
     private route: ActivatedRoute,
@@ -32,6 +37,9 @@ export class HotelBrandComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => SubscriptionUtilities.tryUnsubscribe(s));
+  }
 
   loadHotels(self: HotelBrandComponent) {
     if (self.tenantId) {
@@ -49,9 +57,12 @@ export class HotelBrandComponent implements OnInit {
       return;
     }
     self.hotels = hotels;
+
+    self.subscriptions.push(self.facilityService.getTemperatureAlerts()
+      .subscribe(tempAlerts => self.temperatureAlertsUpdated(self.hotels, tempAlerts)));
   }
 
-  chooseHotel(hotel) {
+  chooseHotel(hotel: ISpace) {
     this.navigationService.chooseHotel(this.tenantId, this.hotelBrandId, this.hotelBrandName, hotel.id, this.hotels.indexOf(hotel));
   }
 
@@ -59,4 +70,14 @@ export class HotelBrandComponent implements OnInit {
     return hotel.imagePath;
   }
 
+  temperatureAlertsUpdated(spaces: ISpace[], spaceAlerts: ISpaceAlert[]) {
+    if (!spaces) {
+      return;
+    }
+    if (!spaceAlerts) {
+      spaces.forEach(space => space.hasAlert = false);
+    } else {
+      spaces.forEach(space => space.hasAlert = spaceAlerts.some(alert => alert.ancestorSpaceIds.includes(space.id)));
+    }
+  }
 }
