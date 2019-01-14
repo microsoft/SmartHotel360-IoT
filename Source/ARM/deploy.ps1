@@ -617,6 +617,7 @@ $savedSettings = [PSCustomObject]@{
     eventHubConsumerConnectionString = $eventHubConsumerConnnection
     iotHubConnectionString = $iotHubServiceConnectionString
     cosmosDbConnectionString = $cosmosDbConnectionString
+    azureMapsKey = "NEED TO UPDATE WITH REAL VALUE"
     roomDevicesApiEndpoint = "http://$roomDevicesApiUri/api"
     demoRoomSpaceId = $demoRoomSpaceId
     demoRoomKubernetesDeployment = $demoRoomKubernetesDeploymentName
