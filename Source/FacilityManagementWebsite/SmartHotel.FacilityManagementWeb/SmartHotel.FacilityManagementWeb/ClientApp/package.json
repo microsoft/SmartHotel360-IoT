@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
+    "postinstall": "node src/copy-manual-node_modules.js",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "adal-angular4": "3.0.16",
-    "azure-maps-control": "^1.3.9",
+    "azure-maps-control": "1.3.9",
     "core-js": "^2.5.4",
     "ng5-slider": "^1.1.3",
     "ngx-spinner": "^6.1.2",
