@@ -1,3 +1,5 @@
+import { ISpace } from '../services/models/ISpace';
+
 export interface IPushpinLocation {
   name: string;
   parentName: string;
