@@ -272,12 +272,6 @@ export class FacilityService {
         if (imagePathProperty) {
           space.imagePath = imagePathProperty.value;
         }
-
-        const longitudeProperty = space.properties.find(p => p.name === 'Longitude');
-        const latitudeProperty = space.properties.find(p => p.name === 'Latitude');
-        if (longitudeProperty && latitudeProperty) {
-          space.geoLocation = [+longitudeProperty.value, +latitudeProperty.value];
-        }
       }
       this.updateSpacesByParentIdMap(space.childSpaces);
     });

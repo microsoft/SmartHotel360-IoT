@@ -6,6 +6,7 @@ import { NavigationService } from '../services/navigation.service';
 import { Subscription } from 'rxjs';
 import { ISpaceAlert } from '../services/models/ISpaceAlert';
 import { SubscriptionUtilities } from '../helpers/subscription-utilities';
+import { IPushpinLocation, getPushpinLocation } from '../map/IPushPinLocation';
 
 @Component({
   selector: 'app-tenant',
@@ -23,7 +24,7 @@ export class TenantComponent implements OnInit, OnDestroy {
 
   public tenantId: string;
   public hotelBrands: ISpace[] = null;
-  public hotelGeoLocations: [number, number][] = [];
+  public hotelGeoLocations: IPushpinLocation[] = [];
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -49,8 +50,9 @@ export class TenantComponent implements OnInit, OnDestroy {
 
     self.hotelBrands.forEach(brand => {
       brand.childSpaces.forEach(hotel => {
-        if (hotel.geoLocation) {
-          self.hotelGeoLocations.push(hotel.geoLocation);
+        const pushpinLocation = getPushpinLocation(hotel, brand.friendlyName);
+        if (pushpinLocation) {
+          self.hotelGeoLocations.push(pushpinLocation);
         }
       });
     });

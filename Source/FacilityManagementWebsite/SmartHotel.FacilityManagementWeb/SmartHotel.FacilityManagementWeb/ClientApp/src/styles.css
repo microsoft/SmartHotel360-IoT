@@ -122,3 +122,22 @@ img {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+/* CSS styles used by custom popup template */
+.customInfobox {
+  max-width: 200px;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.customInfobox .name {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: -5px;
+}
+
+.customInfobox .parentName {
+  font-size: 10px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
