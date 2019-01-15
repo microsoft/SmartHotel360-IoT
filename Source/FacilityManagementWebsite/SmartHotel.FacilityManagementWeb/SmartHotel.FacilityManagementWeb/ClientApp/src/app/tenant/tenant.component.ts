@@ -21,8 +21,9 @@ export class TenantComponent implements OnInit, OnDestroy {
     private facilityService: FacilityService) {
   }
 
-  tenantId: string;
-  hotelBrands: ISpace[] = null;
+  public tenantId: string;
+  public hotelBrands: ISpace[] = null;
+  public hotelGeoLocations: [number, number][] = [];
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -45,6 +46,14 @@ export class TenantComponent implements OnInit, OnDestroy {
 
     self.subscriptions.push(self.facilityService.getTemperatureAlerts()
       .subscribe(tempAlerts => self.temperatureAlertsUpdated(self.hotelBrands, tempAlerts)));
+
+    self.hotelBrands.forEach(brand => {
+      brand.childSpaces.forEach(hotel => {
+        if (hotel.geoLocation) {
+          self.hotelGeoLocations.push(hotel.geoLocation);
+        }
+      });
+    });
   }
 
   chooseHotelBrand(hotelBrand: ISpace) {

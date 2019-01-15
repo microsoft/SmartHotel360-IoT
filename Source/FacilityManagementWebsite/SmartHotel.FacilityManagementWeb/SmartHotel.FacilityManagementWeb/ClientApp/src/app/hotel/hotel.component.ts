@@ -31,6 +31,7 @@ export class HotelComponent implements OnInit, OnDestroy {
   public hotelId: string;
   public hotelIndex: number;
   public floors: ISpace[] = null;
+  public hotelGeoLocations: [number, number][] = [];
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -56,6 +57,9 @@ export class HotelComponent implements OnInit, OnDestroy {
         return;
       }
       self.hotelName = hotel.friendlyName;
+      if (hotel.geoLocation) {
+        self.hotelGeoLocations.push(hotel.geoLocation)
+      }
     }
 
     const floors = self.facilityService.getChildSpaces(self.hotelId);

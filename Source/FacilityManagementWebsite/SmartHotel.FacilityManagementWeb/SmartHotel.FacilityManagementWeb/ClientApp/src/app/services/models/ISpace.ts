@@ -16,6 +16,7 @@ export interface ISpace {
   thermostat?: IThermostat;
   motion?: IMotion;
   light?: ILight;
+  geoLocation: [number, number];
   hasAlert: boolean;
   alertMessage: string;
 }
