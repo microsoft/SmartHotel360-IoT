@@ -139,5 +139,9 @@ img {
 .customInfobox .parentName {
   font-size: 10px;
   font-weight: bold;
-  margin-bottom: 2px;
+  margin-bottom: -5px;
+}
+
+.customInfobox .geoLocation {
+  margin-top: 4px;
 }

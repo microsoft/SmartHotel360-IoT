@@ -20,7 +20,8 @@ export class MapComponent implements OnInit, OnDestroy, OnChanges {
   private pushPinsDataSource: any;
   private pushpinInputDiffer: IterableDiffer<IPushpinLocation>;
 
-  private popupTemplate = '<div class="customInfobox"><div class="name">{name}</div>{parentInfo}{geoLocation}</div>';
+  private popupTemplate = '<div class="customInfobox"><div class="name">{name}</div>'
+    + '{parentInfo}<div class="geoLocation">{geoLocation}</div></div>';
   private popupParentInfoTemplate = '<div class="parentName">({parentName})</div>';
   private popup: any;
 
