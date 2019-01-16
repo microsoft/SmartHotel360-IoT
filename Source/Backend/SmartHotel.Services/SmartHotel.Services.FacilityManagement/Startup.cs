@@ -69,7 +69,7 @@ namespace SmartHotel.Services.FacilityManagement
 					 }
 					 else
 					 {
-						 config.Filters.Add( new SimpleFlowAuthorizationFilter( null ) );
+						 config.Filters.Add( new SimpleFlowAuthorizationFilter( simpleAuthOptions ) );
 					 }
 				 } ).SetCompatibilityVersion( CompatibilityVersion.Version_2_1 )
 				.AddJsonOptions( o =>
