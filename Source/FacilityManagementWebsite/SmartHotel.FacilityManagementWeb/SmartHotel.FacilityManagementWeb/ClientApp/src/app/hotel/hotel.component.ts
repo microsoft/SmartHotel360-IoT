@@ -7,6 +7,7 @@ import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { SubscriptionUtilities } from '../helpers/subscription-utilities';
 import { Subscription } from 'rxjs';
 import { ISpaceAlert } from '../services/models/ISpaceAlert';
+import { IPushpinLocation, getPushpinLocation } from '../map/IPushPinLocation';
 
 @Component({
   selector: 'app-hotel',
@@ -31,6 +32,7 @@ export class HotelComponent implements OnInit, OnDestroy {
   public hotelId: string;
   public hotelIndex: number;
   public floors: ISpace[] = null;
+  public hotelGeoLocations: IPushpinLocation[] = [];
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -56,6 +58,10 @@ export class HotelComponent implements OnInit, OnDestroy {
         return;
       }
       self.hotelName = hotel.friendlyName;
+      const pushpinLocation = getPushpinLocation(hotel);
+      if (pushpinLocation) {
+        self.hotelGeoLocations.push(pushpinLocation);
+      }
     }
 
     const floors = self.facilityService.getChildSpaces(self.hotelId);

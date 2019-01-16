@@ -1,5 +1,6 @@
 import { IThermostat, IMotion, ILight } from './IDevice';
 import { IProperty } from './IProperty';
+import { IPushpinLocation } from 'src/app/map/IPushPinLocation';
 
 export interface ISpace {
   id: string;

@@ -389,6 +389,7 @@ $functionSettingsResults = az webapp config appsettings set -n $functionSiteName
 
 $facilityManagementWebsiteName = $outputs.websiteName.value
 $facilityManagementApiEndpoint = "$facilityManagementApiUri/api"
+$azureMapsKey = "TODO Real Value Here"
 
 $adalEndpointsJson = @(
     @{
@@ -401,7 +402,7 @@ $adalEndpointsString = ConvertTo-Json -InputObject $adalEndpointsJson -Compress
 
 Write-Host
 Write-Host "Setting Facility Management Website App Settings"
-$websiteSettings = "--settings adalConfig__tenant=`"$tenantId`" adalConfig__clientId=`"$clientId`" adalConfig__endpointsString=`"$adalEndpointsString`" apiEndpoint=`"$facilityManagementApiEndpoint`""
+$websiteSettings = "--settings adalConfig__tenant=`"$tenantId`" adalConfig__clientId=`"$clientId`" adalConfig__endpointsString=`"$adalEndpointsString`" apiEndpoint=`"$facilityManagementApiEndpoint`" azureMapsKey=`"$azureMapsKey`""
 $websiteSettingsResults = az webapp config appsettings set -n $facilityManagementWebsiteName -g $resourceGroupName $powershellEscape $websiteSettings
 
 Write-Host
@@ -422,6 +423,7 @@ foreach($filename in $environmentFileNames)
     $fileContent = $fileContent.Replace("{clientId}","$clientId")
     $fileContent = $fileContent.Replace("{apiUri}","$facilityManagementApiUri")
     $fileContent = $fileContent.Replace("{apiEndpoint}","$facilityManagementApiEndpoint")
+    $fileContent = $fileContent.Replace("{azureMapsKey}","$azureMapsKey")
     
     $fileContent | Set-Content $fullFilePath -Force
 
@@ -617,6 +619,7 @@ $savedSettings = [PSCustomObject]@{
     eventHubConsumerConnectionString = $eventHubConsumerConnnection
     iotHubConnectionString = $iotHubServiceConnectionString
     cosmosDbConnectionString = $cosmosDbConnectionString
+    azureMapsKey = $azureMapsKey
     roomDevicesApiEndpoint = "http://$roomDevicesApiUri/api"
     demoRoomSpaceId = $demoRoomSpaceId
     demoRoomKubernetesDeployment = $demoRoomKubernetesDeploymentName

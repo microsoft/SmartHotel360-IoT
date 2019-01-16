@@ -27,6 +27,7 @@ export class EnvironmentService {
           environment.adalConfig.endpoints[endpoint.url] = endpoint.resourceId;
         });
         environment.apiEndpoint = environmentVariables['apiEndpoint'];
+        environment.azureMapsKey = environmentVariables['azureMapsKey'];
       });
   }
 }

@@ -158,6 +158,7 @@ When the deployment script is complete, it will output a `userSettings.json` fil
     "eventHubConsumerConnectionString": "{consumer connection string to the event hub}",
     "iotHubConnectionString": "{connection string to the iot hub}",
     "cosmosDbConnectionString": "{connection string to the cosmos db}",
+    "azureMapsKey": "{auth key to connect to the Azure Maps resource}",
     "roomDevicesApiEndpoint": "{room devices api endpoint - needed for running the Xamarin Mobile Clients}",
     "demoRoomSpaceId": "{space id of the room needed for running demos using the Xamarin Mobile Clients}",
     "demoRoomKubernetesDeployment": "{name of the demo room kubernetes deployment}",

@@ -7,6 +7,7 @@ import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { ISpaceAlert } from '../services/models/ISpaceAlert';
 import { Subscription } from 'rxjs';
 import { SubscriptionUtilities } from '../helpers/subscription-utilities';
+import { IPushpinLocation, getPushpinLocation } from '../map/IPushPinLocation';
 
 @Component({
   selector: 'app-hotel-brand',
@@ -28,6 +29,7 @@ export class HotelBrandComponent implements OnInit, OnDestroy {
   public hotelBrandName: string;
   public hotelBrandId: string;
   public hotels: ISpace[] = null;
+  public hotelGeoLocations: IPushpinLocation[] = [];
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -60,6 +62,13 @@ export class HotelBrandComponent implements OnInit, OnDestroy {
 
     self.subscriptions.push(self.facilityService.getTemperatureAlerts()
       .subscribe(tempAlerts => self.temperatureAlertsUpdated(self.hotels, tempAlerts)));
+
+    self.hotels.forEach(hotel => {
+      const pushpinLocation = getPushpinLocation(hotel);
+      if (pushpinLocation) {
+        self.hotelGeoLocations.push(pushpinLocation);
+      }
+    });
   }
 
   chooseHotel(hotel: ISpace) {
