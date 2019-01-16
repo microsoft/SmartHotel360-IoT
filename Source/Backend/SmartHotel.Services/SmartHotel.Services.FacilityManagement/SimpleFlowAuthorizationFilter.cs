@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Primitives;
@@ -8,22 +10,25 @@ namespace SmartHotel.Services.FacilityManagement
 {
 	public class SimpleFlowAuthorizationFilter : IAuthorizationFilter
 	{
-		private readonly string _apiKey;
+		private readonly string _encodedUserNamePassword;
 
-		public const string ApiKeyHeader = "X-API-KEY";
+		public const string AuthorizationHeader = "Authorization";
 
 		public SimpleFlowAuthorizationFilter( SimpleAuthOptions simpleAuthOptions )
 		{
-			_apiKey = simpleAuthOptions.ApiKey;
+			var plainTextBytes = Encoding.UTF8.GetBytes($"{simpleAuthOptions.Username}:{simpleAuthOptions.Password}");
+			_encodedUserNamePassword = Convert.ToBase64String(plainTextBytes);
 		}
 
 		public void OnAuthorization( AuthorizationFilterContext context )
 		{
-			StringValues apiKey = context.HttpContext.Request.Headers[ApiKeyHeader];
+			StringValues authorizationHeaders = context.HttpContext.Request.Headers[AuthorizationHeader];
 
-			if ( apiKey.Any() )
+			string authHeader = authorizationHeaders.FirstOrDefault();
+			if ( !string.IsNullOrWhiteSpace( authHeader ) && authHeader.StartsWith( "Basic " ) )
 			{
-				if ( apiKey[0] != _apiKey )
+				var encodedUsernamePassword = authHeader.Split(' ', 2, StringSplitOptions.RemoveEmptyEntries)[1]?.Trim();
+				if ( encodedUsernamePassword != _encodedUserNamePassword )
 				{
 					context.Result = new UnauthorizedResult();
 				}

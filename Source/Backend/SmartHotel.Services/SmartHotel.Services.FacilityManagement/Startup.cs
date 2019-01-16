@@ -61,10 +61,10 @@ namespace SmartHotel.Services.FacilityManagement
 				 {
 					 if ( authFlow.UseAdalAuthFlow )
 					 {
-						// Adding ADAL authentication
-						var policy = new AuthorizationPolicyBuilder()
-							 .RequireAuthenticatedUser()
-							 .Build();
+						 // Adding ADAL authentication
+						 var policy = new AuthorizationPolicyBuilder()
+							  .RequireAuthenticatedUser()
+							  .Build();
 						 config.Filters.Add( new AuthorizeFilter( policy ) );
 					 }
 					 else
@@ -97,13 +97,7 @@ namespace SmartHotel.Services.FacilityManagement
 				 if ( !authFlow.UseAdalAuthFlow )
 				 {
 					 const string securityDefinitionName = "ApiKeyAuth";
-					 c.AddSecurityDefinition( securityDefinitionName,
-						 new ApiKeyScheme
-						 {
-							 Name = SimpleFlowAuthorizationFilter.ApiKeyHeader,
-							 In = "header",
-							 Description = "Api Key Authentication"
-						 } );
+					 c.AddSecurityDefinition( securityDefinitionName, new BasicAuthScheme() );
 					 c.AddSecurityRequirement( new Dictionary<string, IEnumerable<string>>
 					 {
 						 { securityDefinitionName, Enumerable.Empty<string>() }
