@@ -12,9 +12,9 @@ namespace SmartHotel.Services.FacilityManagement
 
 		public const string ApiKeyHeader = "X-API-KEY";
 
-		public SimpleFlowAuthorizationFilter( AuthFlow authFlow )
+		public SimpleFlowAuthorizationFilter( SimpleAuthOptions simpleAuthOptions )
 		{
-			_apiKey = authFlow.SimpleAuthApiKey;
+			_apiKey = simpleAuthOptions.ApiKey;
 		}
 
 		public void OnAuthorization( AuthorizationFilterContext context )

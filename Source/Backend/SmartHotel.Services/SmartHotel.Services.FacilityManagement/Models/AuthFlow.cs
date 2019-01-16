@@ -2,9 +2,11 @@
 {
 	public class AuthFlow
 	{
-		public bool UseAdalAuthFlow => string.IsNullOrWhiteSpace( SimpleAuthApiKey ) ||
-									   string.IsNullOrWhiteSpace( SimpleAuthClientSecret );
-		public string SimpleAuthApiKey { get; set; }
-		public string SimpleAuthClientSecret { get; set; }
+		public bool UseAdalAuthFlow => SimpleAuthOptions == null
+									   || string.IsNullOrWhiteSpace( SimpleAuthOptions.ApiKey )
+									   || string.IsNullOrWhiteSpace( SimpleAuthOptions.ApplicationId )
+									   || string.IsNullOrWhiteSpace( SimpleAuthOptions.ApplicationSecret )
+									   || string.IsNullOrWhiteSpace( SimpleAuthOptions.TenantId );
+		public SimpleAuthOptions SimpleAuthOptions { get; set; }
 	}
 }

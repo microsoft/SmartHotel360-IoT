@@ -33,14 +33,15 @@ namespace SmartHotel.Services.FacilityManagement
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices( IServiceCollection services )
 		{
-			var authFlow = new AuthFlow();
-			authFlow.SimpleAuthApiKey = Configuration["ApiAuthKey"];
-			authFlow.SimpleAuthClientSecret = Configuration["ClientSecret"];
-			services.AddSingleton( typeof( AuthFlow ), authFlow );
-
 			services.Configure<AzureAdOptions>( options => Configuration.Bind( "AzureAd", options ) );
+			services.Configure<SimpleAuthOptions>( options => Configuration.Bind( "SimpleAuth", options ) );
 			ServiceProvider serviceProvider = services.BuildServiceProvider();
 			AzureAdOptions azureAdOptions = serviceProvider.GetRequiredService<IOptions<AzureAdOptions>>().Value;
+
+			SimpleAuthOptions simpleAuthOptions = serviceProvider.GetRequiredService<IOptions<SimpleAuthOptions>>().Value;
+			var authFlow = new AuthFlow();
+			authFlow.SimpleAuthOptions = simpleAuthOptions;
+			services.AddSingleton( typeof( AuthFlow ), authFlow );
 
 			if ( authFlow.UseAdalAuthFlow )
 			{
@@ -57,20 +58,25 @@ namespace SmartHotel.Services.FacilityManagement
 			}
 
 			services.AddMvc( config =>
-			 {
-				 if ( authFlow.UseAdalAuthFlow )
 				 {
-					 // Adding ADAL authentication
-					 var policy = new AuthorizationPolicyBuilder()
-						 .RequireAuthenticatedUser()
-						 .Build();
-					 config.Filters.Add( new AuthorizeFilter( policy ) );
-				 }
-				 else
+					 if ( authFlow.UseAdalAuthFlow )
+					 {
+						// Adding ADAL authentication
+						var policy = new AuthorizationPolicyBuilder()
+							 .RequireAuthenticatedUser()
+							 .Build();
+						 config.Filters.Add( new AuthorizeFilter( policy ) );
+					 }
+					 else
+					 {
+						 config.Filters.Add( new SimpleFlowAuthorizationFilter( null ) );
+					 }
+				 } ).SetCompatibilityVersion( CompatibilityVersion.Version_2_1 )
+				.AddJsonOptions( o =>
 				 {
-					 config.Filters.Add( new SimpleFlowAuthorizationFilter( authFlow ) );
-				 }
-			 } ).SetCompatibilityVersion( CompatibilityVersion.Version_2_1 );
+					 o.SerializerSettings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore;
+					 o.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+				 } );
 
 			services.AddSwaggerGen( c =>
 			 {

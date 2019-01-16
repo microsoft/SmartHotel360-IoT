@@ -170,6 +170,10 @@ namespace SmartHotel.Services.FacilityManagement
 			{
 				if ( allSpacesByParentId.TryGetValue( parentSpace.Id, out List<Space> childSpaces ) )
 				{
+					if (parentSpace.ChildSpaces == null)
+					{
+						parentSpace.ChildSpaces = new List<Space>();
+					}
 					parentSpace.ChildSpaces.AddRange( childSpaces );
 					BuildSpaceHierarchyAndReturnRoomSpaces( childSpaces, allSpacesByParentId );
 				}

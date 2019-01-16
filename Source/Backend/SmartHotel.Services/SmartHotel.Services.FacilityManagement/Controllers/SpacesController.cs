@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using SmartHotel.Services.FacilityManagement.Models;
 
 namespace SmartHotel.Services.FacilityManagement.Controllers
@@ -12,11 +13,13 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 	{
 		private readonly ITopologyClient _client;
 		private readonly AuthFlow _authFlow;
+		private readonly SimpleAuthOptions _simpleAuthOptions;
 
-		public SpacesController( ITopologyClient client, AuthFlow authFlow )
+		public SpacesController( ITopologyClient client, AuthFlow authFlow, IOptions<SimpleAuthOptions> simpleAuthOptions )
 		{
 			_client = client;
 			_authFlow = authFlow;
+			_simpleAuthOptions = simpleAuthOptions.Value;
 		}
 
 		// GET: api/spaces
@@ -25,7 +28,7 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 		{
 			try
 			{
-				UpdateAccessToken();
+				await UpdateAccessTokenAsync();
 
 				var hotels = await _client.GetSpaces();
 
@@ -42,7 +45,7 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 		{
 			try
 			{
-				UpdateAccessToken();
+				await UpdateAccessTokenAsync();
 
 				var spacesWithTemperatureAlerts = await _client.GetRoomSpaceTemperatureAlerts();
 
@@ -54,7 +57,7 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 			}
 		}
 
-		private void UpdateAccessToken()
+		private async Task UpdateAccessTokenAsync()
 		{
 			string accessToken;
 			if ( _authFlow.UseAdalAuthFlow )
@@ -63,8 +66,10 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 			}
 			else
 			{
-				//TODO: Get the Digital Twins access token for the AAD Application
-				accessToken = string.Empty;
+				var authContext = new AuthenticationContext( $"{_simpleAuthOptions.Authority}{_simpleAuthOptions.TenantId}" );
+				AuthenticationResult result = await authContext.AcquireTokenAsync( "0b07f429-9f4b-4714-9392-cc5e8e80c8b0",
+					new ClientCredential( _simpleAuthOptions.ApplicationId, _simpleAuthOptions.ApplicationSecret ) );
+				accessToken = result.AccessToken;
 			}
 
 			_client.AccessToken = accessToken;
