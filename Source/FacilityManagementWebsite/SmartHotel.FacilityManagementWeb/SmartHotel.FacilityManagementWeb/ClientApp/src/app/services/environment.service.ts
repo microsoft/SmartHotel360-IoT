@@ -28,6 +28,16 @@ export class EnvironmentService {
         });
         environment.apiEndpoint = environmentVariables['apiEndpoint'];
         environment.azureMapsKey = environmentVariables['azureMapsKey'];
+
+        environment.simpleAuth.username = environmentVariables['simpleAuth__username'];
+        environment.simpleAuth.password = environmentVariables['simpleAuth__password'];
+        environment.simpleAuth.apiKey = environmentVariables['simpleAuth__apiKey'];
       });
   }
+}
+
+export interface SimpleAuth {
+  username?: string;
+  password?: string;
+  apiKey?: string;
 }
