@@ -29,5 +29,7 @@ namespace SmartHotel.Services.FacilityManagement.Models
 		public List<Space> ChildSpaces { get; set; }
 		[DataMember]
 		public List<Value> Values { get; set; }
+		[DataMember]
+		public List<Device> Devices { get; set; }
 	}
 }
