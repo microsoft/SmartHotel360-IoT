@@ -1,5 +1,3 @@
-import { SimpleAuth } from 'src/app/services/environment.service';
-
 export const environment = {
   production: true,
   version: 'Production',
@@ -14,9 +12,5 @@ export const environment = {
   apiEndpoint: '{apiEndpoint}',
   resourceId: '0b07f429-9f4b-4714-9392-cc5e8e80c8b0',
   azureMapsKey: '{azureMapsKey}',
-  simpleAuth: {
-    username: undefined,
-    password: undefined,
-    apiKey: undefined
-  } as SimpleAuth
+  useSimpleAuth: false
 };

@@ -15,7 +15,7 @@ namespace SmartHotel.FacilityManagementWeb.Controllers
 		private readonly AdalConfig _adalConfig;
 
 		private static readonly string[] DesiredEnvironmentVariableKeys = { "apiEndpoint", "azureMapsKey" };
-		private static readonly string[] OptionalEnvironmentVariableKeys = { "simpleAuth__username", "simpleAuth__password", "simpleAuth__apiKey" };
+		private static readonly string[] OptionalEnvironmentVariableKeys = { "useSimpleAuth" };
 
 		public EnvironmentController( IConfiguration config, IOptions<AdalConfig> adalConfig )
 		{

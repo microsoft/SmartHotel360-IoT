@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import * as AuthenticationContext from 'adal-angular/lib/adal';
 
@@ -51,7 +51,7 @@ const initializeApp = (environmentService: EnvironmentService) => {
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     NgxSpinnerModule,
     Ng5SliderModule,

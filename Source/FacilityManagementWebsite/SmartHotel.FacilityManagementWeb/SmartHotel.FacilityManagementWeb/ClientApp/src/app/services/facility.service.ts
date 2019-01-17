@@ -61,6 +61,10 @@ export class FacilityService {
     }
   }
 
+  public simpleAuthLogin(username: string, password: string) {
+    return this.http.post(this.getEndpoint('auth'), { username, password });
+  }
+
   public terminate() {
     this.spaces = undefined;
     this.spacesByParentId.clear();
