@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   public submitted = false;
   public loginForm: FormGroup;
   public authenticating = false;
+  public invalidAuth = false;
 
   ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -54,7 +55,7 @@ export class LoginComponent implements OnInit {
       if (this.loginForm.invalid) {
         return;
       }
-
+      this.invalidAuth = false;
       this.authenticating = true;
       const username = this.f.username.value;
       const password = this.f.password.value;
@@ -72,6 +73,7 @@ export class LoginComponent implements OnInit {
             this.busyService.idle();
             sessionStorage.removeItem(AppComponent.BasicAuthDataSessionStorageKey);
             this.authenticating = false;
+            this.invalidAuth = true;
           });
     } else {
       this.adalSvc.login();
