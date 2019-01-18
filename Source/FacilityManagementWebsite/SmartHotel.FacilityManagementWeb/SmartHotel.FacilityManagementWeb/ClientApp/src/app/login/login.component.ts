@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     private facilityService: FacilityService,
     private busyService: BusyService) { }
 
-  public useSimpleAuth = false;
+  public useBasicAuth = false;
   public submitted = false;
   public loginForm: FormGroup;
   public authenticating = false;
@@ -34,9 +34,9 @@ export class LoginComponent implements OnInit {
     if (this.adalSvc.userInfo.authenticated) {
       this.router.navigate([this.returnUrl]);
     } else {
-      this.useSimpleAuth = environment.useSimpleAuth;
+      this.useBasicAuth = environment.useBasicAuth;
 
-      if (this.useSimpleAuth) {
+      if (this.useBasicAuth) {
         this.loginForm = this.formBuilder.group({
           username: ['', Validators.required],
           password: ['', Validators.required]
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   login() {
-    if (this.useSimpleAuth) {
+    if (this.useBasicAuth) {
       this.submitted = true;
       if (this.loginForm.invalid) {
         return;

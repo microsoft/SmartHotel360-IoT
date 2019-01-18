@@ -1,6 +1,6 @@
 ﻿namespace SmartHotel.Services.FacilityManagement.Models
 {
-	public class SimpleAuthOptions
+	public class BasicAuthOptions
 	{
 		public string Authority { get; set; }
 		public string TenantId { get; set; }

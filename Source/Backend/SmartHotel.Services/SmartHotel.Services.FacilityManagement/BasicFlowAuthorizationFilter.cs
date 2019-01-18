@@ -8,15 +8,15 @@ using SmartHotel.Services.FacilityManagement.Models;
 
 namespace SmartHotel.Services.FacilityManagement
 {
-	public class SimpleFlowAuthorizationFilter : IAuthorizationFilter
+	public class BasicFlowAuthorizationFilter : IAuthorizationFilter
 	{
 		private readonly string _encodedUserNamePassword;
 
 		public const string AuthorizationHeader = "Authorization";
 
-		public SimpleFlowAuthorizationFilter( SimpleAuthOptions simpleAuthOptions )
+		public BasicFlowAuthorizationFilter( BasicAuthOptions basicAuthOptions )
 		{
-			var plainTextBytes = Encoding.UTF8.GetBytes($"{simpleAuthOptions.Username}:{simpleAuthOptions.Password}");
+			var plainTextBytes = Encoding.UTF8.GetBytes($"{basicAuthOptions.Username}:{basicAuthOptions.Password}");
 			_encodedUserNamePassword = Convert.ToBase64String(plainTextBytes);
 		}
 

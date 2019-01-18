@@ -220,7 +220,7 @@ export class FacilityService {
   }
 
   private async updateDtToken(): Promise<void> {
-    if (environment.useSimpleAuth) {
+    if (environment.useBasicAuth) {
       return Promise.resolve();
     }
     await this.adalSvc.acquireToken(`${environment.resourceId}`)

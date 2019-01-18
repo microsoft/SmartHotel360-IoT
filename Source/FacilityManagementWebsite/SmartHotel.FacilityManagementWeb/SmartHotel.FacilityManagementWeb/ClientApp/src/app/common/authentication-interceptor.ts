@@ -6,7 +6,7 @@ import { AppComponent } from '../app.component';
 
 export class AuthenticationInterceptor extends AdalInterceptor {
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (environment.useSimpleAuth) {
+    if (environment.useBasicAuth) {
       if (!req.headers.has('Authorization')) {
         const basicAuthData = sessionStorage.getItem(AppComponent.BasicAuthDataSessionStorageKey);
         if (basicAuthData) {

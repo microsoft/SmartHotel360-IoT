@@ -11,11 +11,11 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 	[ApiController]
 	public class AuthController : ControllerBase
 	{
-		private readonly SimpleAuthOptions _simpleAuthOptions;
+		private readonly BasicAuthOptions _basicAuthOptions;
 
-		public AuthController( IOptions<SimpleAuthOptions> simpleAuthOptions )
+		public AuthController( IOptions<BasicAuthOptions> basicAuthOptions )
 		{
-			_simpleAuthOptions = simpleAuthOptions.Value;
+			_basicAuthOptions = basicAuthOptions.Value;
 		}
 
 		[HttpGet("[action]")]
@@ -23,9 +23,9 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 		{
 			try
 			{
-				var authContext = new AuthenticationContext( $"{_simpleAuthOptions.Authority}{_simpleAuthOptions.TenantId}" );
+				var authContext = new AuthenticationContext( $"{_basicAuthOptions.Authority}{_basicAuthOptions.TenantId}" );
 				AuthenticationResult result = await authContext.AcquireTokenAsync( "0b07f429-9f4b-4714-9392-cc5e8e80c8b0",
-					new ClientCredential( _simpleAuthOptions.ApplicationId, _simpleAuthOptions.ApplicationSecret ) );
+					new ClientCredential( _basicAuthOptions.ApplicationId, _basicAuthOptions.ApplicationSecret ) );
 
 				return Ok( result.AccessToken );
 			}

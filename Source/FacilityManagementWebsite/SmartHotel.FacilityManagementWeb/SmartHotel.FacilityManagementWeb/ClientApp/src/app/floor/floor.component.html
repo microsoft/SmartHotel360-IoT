@@ -35,7 +35,7 @@
     <div *ngIf="room.thermostat == null" class="room-temp room-unavailable">
       unavailable
     </div>
-    <div *ngIf="room.thermostat != null && !useSimpleAuth" class="room-temp-slider custom-slider">
+    <div *ngIf="room.thermostat != null && !useBasicAuth" class="room-temp-slider custom-slider">
       <ng5-slider [(value)]="room.thermostat.desired" [options]="thermostatSliderOptions" (userChangeStart)="sliderChangeBegin()"
         (userChangeEnd)="sliderChangeEnd()" (userChange)="thermostatSliderValueChange(room, $event)"></ng5-slider>
     </div>
@@ -49,7 +49,7 @@
     <div *ngIf="room.light == null" class="room-light room-unavailable">
       unavailable
     </div>
-    <div *ngIf="room.light != null && !useSimpleAuth" class="room-light-slider custom-slider">
+    <div *ngIf="room.light != null && !useBasicAuth" class="room-light-slider custom-slider">
       <ng5-slider [(value)]="room.light.desired" [options]="lightSliderOptions" (userChangeStart)="sliderChangeBegin()"
         (userChangeEnd)="sliderChangeEnd()" (userChange)="lightSliderValueChange(room, $event)"></ng5-slider>
     </div>

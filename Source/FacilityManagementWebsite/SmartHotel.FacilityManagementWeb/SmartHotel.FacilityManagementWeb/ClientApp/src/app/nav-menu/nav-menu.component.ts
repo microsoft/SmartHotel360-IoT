@@ -16,10 +16,10 @@ export class NavMenuComponent implements OnInit {
     private facilityService: FacilityService,
     private router: Router) { }
 
-  public useSimpleAuth: boolean;
+  public useBasicAuth: boolean;
 
   ngOnInit() {
-    this.useSimpleAuth = environment.useSimpleAuth;
+    this.useBasicAuth = environment.useBasicAuth;
   }
 
   login() {
@@ -30,7 +30,7 @@ export class NavMenuComponent implements OnInit {
     sessionStorage.removeItem(AppComponent.LastLoginSessionStorageKey);
     sessionStorage.removeItem(AppComponent.BasicAuthDataSessionStorageKey);
     this.facilityService.terminate();
-    if (this.useSimpleAuth) {
+    if (this.useBasicAuth) {
       this.adalSvc.userInfo.authenticated = false;
       this.router.navigate(['/login']);
     } else {
@@ -43,7 +43,7 @@ export class NavMenuComponent implements OnInit {
   }
 
   get userName(): string {
-    if (environment.useSimpleAuth) {
+    if (environment.useBasicAuth) {
       return 'Head of Operations SmartHotel';
     }
     return this.adalSvc.userInfo.profile.name;

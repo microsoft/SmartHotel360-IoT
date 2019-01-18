@@ -49,7 +49,7 @@ export class FloorComponent implements OnInit, OnDestroy {
   private lightSliderTimeout;
   private isUpdatingSliders = false;
 
-  get useSimpleAuth() { return environment.useSimpleAuth; }
+  get useBasicAuth() { return environment.useBasicAuth; }
 
   thermostatSliderOptions: Options = {
     showTicks: false,

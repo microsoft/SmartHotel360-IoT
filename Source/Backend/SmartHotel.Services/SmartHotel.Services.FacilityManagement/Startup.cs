@@ -35,13 +35,13 @@ namespace SmartHotel.Services.FacilityManagement
 		public void ConfigureServices( IServiceCollection services )
 		{
 			services.Configure<AzureAdOptions>( options => Configuration.Bind( "AzureAd", options ) );
-			services.Configure<SimpleAuthOptions>( options => Configuration.Bind( "SimpleAuth", options ) );
+			services.Configure<BasicAuthOptions>( options => Configuration.Bind( "BasicAuth", options ) );
 			ServiceProvider serviceProvider = services.BuildServiceProvider();
 			AzureAdOptions azureAdOptions = serviceProvider.GetRequiredService<IOptions<AzureAdOptions>>().Value;
 
-			SimpleAuthOptions simpleAuthOptions = serviceProvider.GetRequiredService<IOptions<SimpleAuthOptions>>().Value;
+			BasicAuthOptions basicAuthOptions = serviceProvider.GetRequiredService<IOptions<BasicAuthOptions>>().Value;
 			var authFlow = new AuthFlow();
-			authFlow.SimpleAuthOptions = simpleAuthOptions;
+			authFlow.BasicAuthOptions = basicAuthOptions;
 			services.AddSingleton( typeof( AuthFlow ), authFlow );
 
 			if ( authFlow.UseAdalAuthFlow )
@@ -70,7 +70,7 @@ namespace SmartHotel.Services.FacilityManagement
 					 }
 					 else
 					 {
-						 config.Filters.Add( new SimpleFlowAuthorizationFilter( simpleAuthOptions ) );
+						 config.Filters.Add( new BasicFlowAuthorizationFilter( basicAuthOptions ) );
 					 }
 				 } ).SetCompatibilityVersion( CompatibilityVersion.Version_2_1 )
 				.AddJsonOptions( o =>

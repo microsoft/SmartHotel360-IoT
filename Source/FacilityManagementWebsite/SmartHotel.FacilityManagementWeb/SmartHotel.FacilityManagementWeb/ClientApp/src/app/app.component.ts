@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   public async ngOnInit() {
-    if (environment.useSimpleAuth) {
+    if (environment.useBasicAuth) {
       this.facilityService.executeWhenInitialized(this, this.navigateToDesiredRoute);
     } else {
       this.adalService.handleWindowCallback();

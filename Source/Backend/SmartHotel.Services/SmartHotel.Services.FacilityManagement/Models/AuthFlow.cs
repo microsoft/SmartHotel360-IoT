@@ -2,12 +2,12 @@
 {
 	public class AuthFlow
 	{
-		public bool UseAdalAuthFlow => SimpleAuthOptions == null
-									   || string.IsNullOrWhiteSpace( SimpleAuthOptions.Username )
-		                               || string.IsNullOrWhiteSpace( SimpleAuthOptions.Password )
-									   || string.IsNullOrWhiteSpace( SimpleAuthOptions.ApplicationId )
-									   || string.IsNullOrWhiteSpace( SimpleAuthOptions.ApplicationSecret )
-									   || string.IsNullOrWhiteSpace( SimpleAuthOptions.TenantId );
-		public SimpleAuthOptions SimpleAuthOptions { get; set; }
+		public bool UseAdalAuthFlow => BasicAuthOptions == null
+									   || string.IsNullOrWhiteSpace( BasicAuthOptions.Username )
+		                               || string.IsNullOrWhiteSpace( BasicAuthOptions.Password )
+									   || string.IsNullOrWhiteSpace( BasicAuthOptions.ApplicationId )
+									   || string.IsNullOrWhiteSpace( BasicAuthOptions.ApplicationSecret )
+									   || string.IsNullOrWhiteSpace( BasicAuthOptions.TenantId );
+		public BasicAuthOptions BasicAuthOptions { get; set; }
 	}
 }

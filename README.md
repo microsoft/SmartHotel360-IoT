@@ -321,6 +321,27 @@ Below is diagram showing how the MXChip integrates into the existing architectur
 
 ![IoT Demo MXChip Architecture Diagram](Documents/Images/MxChip-Architecture.png "IoT Demo MXChip Architecture Diagram")
 
+# Basic Authentication Mode
+The Facility Management website and api both support being downgraded from using ADAL to a very simple basic authentication. This mode is **read-only**, meaning sliders are not available on the rooms to change the desired temperature and light values.
+
+**NOTE: This mode is NOT recommended, unless absolutely desired.**
+
+## Downgrading Facility Management Api to Basic Authentication Mode
+The following Application Settings must be supplied. Once set, the Api will downgrade to basic auth.
+* `BasicAuth__ApplicationId`: `clientId` from the **userSettings.json** file from the [User Settings](#User-Settings) section
+* `BasicAuth__ApplicationSecret`: app key obtained from [creating an AAD app](#Set-up-a-Service-Principal-and-register-an-Azure-Active-Directory-application)
+* `BasicAuth__TenantId`: `tenantId` from the **userSettings.json** file from the [User Settings](#User-Settings) section
+* `BasicAuth__Username`: whatever username you desire. This will be the username that **MUST** be supplied when logging into the website.
+* `BasicAuth__Password`: whatever password you desire. This will be the password that **MUST** be supplied when logging into the website.
+
+To verify this change is working, navigate to the `facilityManagementApiUri` (from the **userSettings.json** file from the [User Settings](#User-Settings) section) and add `/swagger` to the end. In the Swagger UI, click the `Authorize` button that will show in the top-right corner and the dialog that pops up should say `Basic authorization`.
+
+## Downgrading Facility Management Website to Basic Authentication Mode
+The following Application Settings must be supplied. Once set, the Website will downgrade to basic auth.
+* `useBasicAuth`: `true`
+
+To verify this change is working, navigate to the `facilityManagementWebsiteUri` (from the **userSettings.json** file from the [User Settings](#User-Settings) section) and you will see fields to enter a username and password to login.
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.microsoft.com.
