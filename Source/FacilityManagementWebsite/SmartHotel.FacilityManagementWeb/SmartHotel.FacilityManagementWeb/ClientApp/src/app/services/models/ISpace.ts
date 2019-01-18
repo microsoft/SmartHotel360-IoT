@@ -1,6 +1,7 @@
-import { IThermostat, IMotion, ILight } from './IDevice';
+import { IThermostat, IMotion, ILight } from './IDeviceValues';
 import { IProperty } from './IProperty';
 import { IPushpinLocation } from 'src/app/map/IPushPinLocation';
+import { IDevice } from './IDevice';
 
 export interface ISpace {
   id: string;
@@ -14,6 +15,7 @@ export interface ISpace {
   imagePath: string;
   childSpaces: ISpace[];
   properties: IProperty[];
+  devices: IDevice[];
   thermostat?: IThermostat;
   motion?: IMotion;
   light?: ILight;

@@ -1,13 +1,7 @@
-export interface IThermostat {
-  desired: number;
-  actual: number;
-}
+import { ISensor } from './ISensor';
 
-export interface ILight {
-  desired: number;
-  actual: number;
-}
-
-export interface IMotion {
-  isMotion: boolean;
+export interface IDevice {
+  id: string;
+  name: string;
+  sensors: ISensor[];
 }
