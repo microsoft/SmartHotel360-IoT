@@ -11,6 +11,7 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 	[ApiController]
 	public class SpacesController : ControllerBase
 	{
+		public const string AdtTokenHeader = "adt_token";
 		private readonly ITopologyClient _client;
 
 		public SpacesController( ITopologyClient client )
@@ -24,7 +25,7 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 		{
 			try
 			{
-				_client.AccessToken = HttpContext.Request.Headers["azure_token"];
+				_client.AccessToken = HttpContext.Request.Headers[AdtTokenHeader];
 
 				var hotels = await _client.GetSpaces();
 
@@ -41,7 +42,7 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 		{
 			try
 			{
-				_client.AccessToken = HttpContext.Request.Headers["azure_token"];
+				_client.AccessToken = HttpContext.Request.Headers[AdtTokenHeader];
 
 				var spacesWithTemperatureAlerts = await _client.GetRoomSpaceTemperatureAlerts();
 

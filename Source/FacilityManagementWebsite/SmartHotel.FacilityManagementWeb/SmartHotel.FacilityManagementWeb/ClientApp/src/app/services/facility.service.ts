@@ -48,7 +48,7 @@ export class FacilityService {
     try {
       await this.updateDtToken()
         .then(() => {
-          this.http.get<ISpace[]>(this.getEndpoint('spaces'), { headers: { 'azure_token': this.dtToken } }
+          this.http.get<ISpace[]>(this.getEndpoint('spaces'), { headers: { 'adt_token': this.dtToken } }
           ).toPromise().then(data => {
             this.spaces = data;
             this.updateSpacesByParentIdMap(this.spaces);
@@ -239,7 +239,7 @@ export class FacilityService {
 
   private async loadAlerts() {
     await this.updateDtToken();
-    const alerts = await this.http.get(this.getEndpoint('spaces/temperaturealerts'), { headers: { 'azure_token': this.dtToken } }
+    const alerts = await this.http.get(this.getEndpoint('spaces/temperaturealerts'), { headers: { 'adt_token': this.dtToken } }
     ).toPromise() as { [spaceId: string]: ISpaceAlert };
 
     if (alerts !== undefined && alerts !== null) {

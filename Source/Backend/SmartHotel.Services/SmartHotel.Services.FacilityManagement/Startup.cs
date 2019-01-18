@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using SmartHotel.Services.FacilityManagement.Models;
+using SmartHotel.Services.FacilityManagement.Swashbuckle;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace SmartHotel.Services.FacilityManagement
@@ -102,6 +103,7 @@ namespace SmartHotel.Services.FacilityManagement
 					 {
 						 { securityDefinitionName, Enumerable.Empty<string>() }
 					 } );
+					 c.OperationFilter<AddRequiredHeaderParameter>();
 				 }
 			 } );
 			services.AddCors();
