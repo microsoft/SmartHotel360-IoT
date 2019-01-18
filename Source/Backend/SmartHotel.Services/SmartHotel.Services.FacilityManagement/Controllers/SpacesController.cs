@@ -12,14 +12,10 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 	public class SpacesController : ControllerBase
 	{
 		private readonly ITopologyClient _client;
-		private readonly AuthFlow _authFlow;
-		private readonly SimpleAuthOptions _simpleAuthOptions;
 
-		public SpacesController( ITopologyClient client, AuthFlow authFlow, IOptions<SimpleAuthOptions> simpleAuthOptions )
+		public SpacesController( ITopologyClient client )
 		{
 			_client = client;
-			_authFlow = authFlow;
-			_simpleAuthOptions = simpleAuthOptions.Value;
 		}
 
 		// GET: api/spaces
@@ -28,7 +24,7 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 		{
 			try
 			{
-				await UpdateAccessTokenAsync();
+				_client.AccessToken = HttpContext.Request.Headers["azure_token"];
 
 				var hotels = await _client.GetSpaces();
 
@@ -45,7 +41,7 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 		{
 			try
 			{
-				await UpdateAccessTokenAsync();
+				_client.AccessToken = HttpContext.Request.Headers["azure_token"];
 
 				var spacesWithTemperatureAlerts = await _client.GetRoomSpaceTemperatureAlerts();
 
@@ -55,24 +51,6 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 			{
 				return StatusCode( 500, e.Message );
 			}
-		}
-
-		private async Task UpdateAccessTokenAsync()
-		{
-			string accessToken;
-			if ( _authFlow.UseAdalAuthFlow )
-			{
-				accessToken = HttpContext.Request.Headers["azure_token"];
-			}
-			else
-			{
-				var authContext = new AuthenticationContext( $"{_simpleAuthOptions.Authority}{_simpleAuthOptions.TenantId}" );
-				AuthenticationResult result = await authContext.AcquireTokenAsync( "0b07f429-9f4b-4714-9392-cc5e8e80c8b0",
-					new ClientCredential( _simpleAuthOptions.ApplicationId, _simpleAuthOptions.ApplicationSecret ) );
-				accessToken = result.AccessToken;
-			}
-
-			_client.AccessToken = accessToken;
 		}
 	}
 }

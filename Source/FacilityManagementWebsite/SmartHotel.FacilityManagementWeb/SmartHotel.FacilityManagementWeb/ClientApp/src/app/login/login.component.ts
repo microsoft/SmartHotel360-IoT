@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FacilityService } from '../services/facility.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -53,11 +54,18 @@ export class LoginComponent implements OnInit {
       }
 
       this.authenticating = true;
-      this.facilityService.simpleAuthLogin(this.f.username.value, this.f.password.value)
-        .subscribe(data => {
-          this.router.navigate([this.returnUrl]);
+      const username = this.f.username.value;
+      const password = this.f.password.value;
+      const encodedUsernamePassword = window.btoa(`${username}:${password}`);
+      const basicAuthData = `Basic ${encodedUsernamePassword}`;
+      this.facilityService.simpleAuthLogin(basicAuthData)
+        .subscribe(() => {
+          this.adalSvc.userInfo.authenticated = true;
+          sessionStorage.setItem(AppComponent.BasicAuthDataSessionStorageKey, basicAuthData);
+          this.facilityService.initialize();
         },
-          error => {
+          (error) => {
+            sessionStorage.removeItem(AppComponent.BasicAuthDataSessionStorageKey);
             this.authenticating = false;
           });
     } else {

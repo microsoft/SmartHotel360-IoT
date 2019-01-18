@@ -6,7 +6,7 @@
     </span>
   </a>
 
-  <div *ngIf="!authenticated" class="nav-login">
+  <div *ngIf="!authenticated && !useSimpleAuth" class="nav-login">
     <span (click)="login()">Login</span>
   </div>
 

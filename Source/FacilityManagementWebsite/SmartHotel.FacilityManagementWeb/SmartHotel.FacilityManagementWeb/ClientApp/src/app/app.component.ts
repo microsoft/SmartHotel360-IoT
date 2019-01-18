@@ -12,6 +12,7 @@ import { BusyService } from './services/busy.service';
 })
 export class AppComponent implements OnInit {
   public static readonly LastLoginSessionStorageKey: string = 'FacilityService_LastLogin';
+  public static readonly BasicAuthDataSessionStorageKey: string = 'FacilityService_BasicAuthData';
 
   constructor(private adalService: AdalService,
     private facilityService: FacilityService,
@@ -21,24 +22,28 @@ export class AppComponent implements OnInit {
   }
 
   public async ngOnInit() {
-    this.adalService.handleWindowCallback();
-    if (this.adalService.userInfo.authenticated) {
-      const lastLoginString = sessionStorage.getItem(AppComponent.LastLoginSessionStorageKey);
-      if (lastLoginString) {
-        const currentLoginTime = new Date().getTime();
-        const lastLoginDate: Date = new Date(lastLoginString);
-        const timeDifference = currentLoginTime - lastLoginDate.getTime();
-        if (timeDifference < 3000) {
-          // duplicate caused by ADAL authentication, stopped execution
-          return;
-        }
-      } else {
-        sessionStorage.setItem(AppComponent.LastLoginSessionStorageKey, new Date().toISOString());
-      }
-      this.busyService.busy();
-
+    if (environment.useSimpleAuth) {
       this.facilityService.executeWhenInitialized(this, this.navigateToDesiredRoute);
-      this.facilityService.initialize();
+    } else {
+      this.adalService.handleWindowCallback();
+      if (this.adalService.userInfo.authenticated) {
+        const lastLoginString = sessionStorage.getItem(AppComponent.LastLoginSessionStorageKey);
+        if (lastLoginString) {
+          const currentLoginTime = new Date().getTime();
+          const lastLoginDate: Date = new Date(lastLoginString);
+          const timeDifference = currentLoginTime - lastLoginDate.getTime();
+          if (timeDifference < 3000) {
+            // duplicate caused by ADAL authentication, stopped execution
+            return;
+          }
+        } else {
+          sessionStorage.setItem(AppComponent.LastLoginSessionStorageKey, new Date().toISOString());
+        }
+        this.busyService.busy();
+
+        this.facilityService.executeWhenInitialized(this, this.navigateToDesiredRoute);
+        this.facilityService.initialize();
+      }
     }
   }
 

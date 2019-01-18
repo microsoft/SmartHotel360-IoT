@@ -6,6 +6,7 @@ import { IDesired } from './models/IDesired';
 import { ISpace } from './models/ISpace';
 import { ISpaceAlert } from './models/ISpaceAlert';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 class InitializationCallbackContainer {
   constructor(requester: any, callback: (requester: any) => void) {
@@ -61,8 +62,14 @@ export class FacilityService {
     }
   }
 
-  public simpleAuthLogin(username: string, password: string) {
-    return this.http.post(this.getEndpoint('auth'), { username, password });
+  public simpleAuthLogin(basicAuthHeader: string) {
+    return this.http.get<string>(this.getEndpoint('auth/getdttoken'), {
+      headers: { Authorization: basicAuthHeader },
+      responseType: 'text' as 'json'
+    })
+      .pipe(map((t: string) => {
+        this.dtToken = t;
+      }));
   }
 
   public terminate() {
@@ -223,6 +230,9 @@ export class FacilityService {
   }
 
   private async updateDtToken(): Promise<void> {
+    if (environment.useSimpleAuth) {
+      return Promise.resolve();
+    }
     await this.adalSvc.acquireToken(`${environment.resourceId}`)
       .toPromise()
       .then(token => {
