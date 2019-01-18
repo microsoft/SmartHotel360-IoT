@@ -2,12 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import * as AuthenticationContext from 'adal-angular/lib/adal';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { TenantComponent } from './tenant/tenant.component';
-import { AdalService } from 'adal-angular4';
 import { AppRoutingModule } from './app-routing.module';
 import { FloorComponent } from './floor/floor.component';
 import { HotelComponent } from './hotel/hotel.component';
@@ -27,8 +25,28 @@ import { MapComponent } from './map/map.component';
 import { AuthenticationInterceptor } from './common/authentication-interceptor';
 import { TsiChartComponent } from './tsi-chart/tsi-chart.component';
 
-const initializeApp = (environmentService: EnvironmentService) => {
-  return () => {
+import { AdalService, AdalGuard } from 'adal-angular4';
+import * as AuthenticationContext from 'adal-angular/lib/adal';
+import 'tsiclient';
+import { environment } from 'src/environments/environment';
+
+const initializeApp = (environmentService: EnvironmentService, adalService: AdalService) => {
+  return async () => {
+    adalService.init(environment.adalConfig);
+    const userInfo = adalService.userInfo;
+
+    adalService.handleWindowCallback();
+    if (userInfo && userInfo.authenticated) {
+      adalService.acquireToken('https://api.timeseries.azure.com/')
+        .subscribe(result => {
+          const token = result;
+          console.log(`TSI Token retrieved: ${token}`);
+        });
+    } else {
+      adalService.login();
+      return;
+    }
+
     const loadEnvironmentPromise = environmentService.loadEnvironment();
     return loadEnvironmentPromise;
   };
@@ -63,6 +81,7 @@ const initializeApp = (environmentService: EnvironmentService) => {
   providers: [
     AdalService,
     AuthenticationGuard,
+    AdalGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthenticationInterceptor,
@@ -73,7 +92,7 @@ const initializeApp = (environmentService: EnvironmentService) => {
       provide: APP_INITIALIZER,
       useFactory: initializeApp,
       multi: true,
-      deps: [EnvironmentService]
+      deps: [EnvironmentService, AdalService]
     }
   ],
   bootstrap: [AppComponent]

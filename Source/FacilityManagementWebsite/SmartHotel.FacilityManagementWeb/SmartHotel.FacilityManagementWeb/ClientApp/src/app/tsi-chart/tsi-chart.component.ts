@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdalService } from 'adal-angular4';
+import { EnvironmentService } from '../services/environment.service';
 
 @Component({
   selector: 'app-tsi-chart',
@@ -7,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TsiChartComponent implements OnInit {
 
-  constructor() { }
+  constructor(adalService: AdalService) {
+    
+    console.log('tsiui-chart-rendering create');
 
+
+    const token = adalService.getCachedToken('https://api.timeseries.azure.com/');
+    
+    console.log(`tsiui-chart-rendering token loaded: ${token != null}`);
+   }
   ngOnInit() {
   }
 
