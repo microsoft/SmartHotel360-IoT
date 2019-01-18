@@ -25,6 +25,7 @@
     "ng5-slider": "^1.1.3",
     "ngx-spinner": "^6.1.2",
     "rxjs": "~6.3.3",
+    "tsiclient": "^1.2.24",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

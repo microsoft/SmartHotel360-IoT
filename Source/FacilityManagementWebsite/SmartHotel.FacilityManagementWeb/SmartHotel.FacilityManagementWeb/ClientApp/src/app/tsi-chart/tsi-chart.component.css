@@ -1,0 +1,10 @@
+@import '~tsiclient/tsiclient';
+
+.chart-rendering-content {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 5px;
+  
+}
