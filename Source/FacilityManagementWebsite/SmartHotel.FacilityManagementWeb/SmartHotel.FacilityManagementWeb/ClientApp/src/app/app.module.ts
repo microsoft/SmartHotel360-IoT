@@ -25,6 +25,7 @@ import { EnvironmentService } from './services/environment.service';
 import { SecurePipe } from './pipes/secure.pipe';
 import { MapComponent } from './map/map.component';
 import { AuthenticationInterceptor } from './common/authentication-interceptor';
+import { TsiChartComponent } from './tsi-chart/tsi-chart.component';
 
 const initializeApp = (environmentService: EnvironmentService) => {
   return () => {
@@ -47,7 +48,8 @@ const initializeApp = (environmentService: EnvironmentService) => {
     LoadingComponent,
     SlidePanelComponent,
     SecurePipe,
-    MapComponent
+    MapComponent,
+    TsiChartComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
