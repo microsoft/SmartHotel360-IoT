@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
-import { ILight, IThermostat, IMotion } from '../services/models/IDevice';
-import { ISensor } from '../services/models/ISensor';
+import { ILight, IThermostat, IMotion } from '../services/models/IDeviceValues';
+import { ISensorReading } from '../services/models/ISensorReading';
 import { environment } from '../../environments/environment';
 import { IDesired } from '../services/models/IDesired';
 import { ChangeContext, Options } from 'ng5-slider';
@@ -27,7 +27,7 @@ export class FloorComponent implements OnInit, OnDestroy {
     private busyService: BusyService) {
     this.roomsById = new Map<string, ISpace>();
     this.desiredDataByRoomIdThenSensorId = new Map<string, Map<string, IDesired>>();
-    this.sensorDataByRoomIdThenSensorId = new Map<string, Map<string, ISensor>>();
+    this.sensorDataByRoomIdThenSensorId = new Map<string, Map<string, ISensorReading>>();
   }
 
   @ViewChild('breadcumbs') private breadcrumbs: BreadcrumbComponent;
@@ -43,11 +43,13 @@ export class FloorComponent implements OnInit, OnDestroy {
   public rooms: ISpace[] = null;
   private roomsById: Map<string, ISpace>;
   private desiredDataByRoomIdThenSensorId: Map<string, Map<string, IDesired>>;
-  private sensorDataByRoomIdThenSensorId: Map<string, Map<string, ISensor>>;
+  private sensorDataByRoomIdThenSensorId: Map<string, Map<string, ISensorReading>>;
   private sensorInterval;
   private theromstatSliderTimeout;
   private lightSliderTimeout;
   private isUpdatingSliders = false;
+
+  get useBasicAuth() { return environment.useBasicAuth; }
 
   thermostatSliderOptions: Options = {
     showTicks: false,
@@ -146,7 +148,7 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   loadSensorData() {
     if (this.rooms != null) {
-      this.facilityService.getSensorData(this.rooms).then((sensors: ISensor[]) => {
+      this.facilityService.getSensorData(this.rooms).then((sensors: ISensorReading[]) => {
         if (sensors != null && sensors.length > 0) {
           sensors.forEach(sensor => {
             switch (sensor.sensorDataType) {
@@ -165,7 +167,7 @@ export class FloorComponent implements OnInit, OnDestroy {
         sensors.forEach(s => {
           let sensorDataForRoom = this.sensorDataByRoomIdThenSensorId.get(s.roomId);
           if (!sensorDataForRoom) {
-            sensorDataForRoom = new Map<string, ISensor>();
+            sensorDataForRoom = new Map<string, ISensorReading>();
             this.sensorDataByRoomIdThenSensorId.set(s.roomId, sensorDataForRoom);
           }
 
@@ -175,7 +177,7 @@ export class FloorComponent implements OnInit, OnDestroy {
     }
   }
 
-  setLightReading(sensor: ISensor) {
+  setLightReading(sensor: ISensorReading) {
     const actual = this.getSensorReading(sensor);
     const desired = this.getDesiredValue(sensor);
 
@@ -189,7 +191,7 @@ export class FloorComponent implements OnInit, OnDestroy {
     }
   }
 
-  setTemperatureReading(sensor: ISensor) {
+  setTemperatureReading(sensor: ISensorReading) {
     const actual = this.getSensorReading(sensor);
     const desired = this.getDesiredValue(sensor);
 
@@ -204,7 +206,7 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   }
 
-  setMotionReading(sensor: ISensor) {
+  setMotionReading(sensor: ISensorReading) {
 
     const motion: IMotion = { isMotion: sensor.sensorReading.toLowerCase() === 'true' };
     const room = this.roomsById.get(sensor.roomId);
@@ -215,7 +217,7 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   }
 
-  getSensorReading(sensor: ISensor) {
+  getSensorReading(sensor: ISensorReading) {
 
     try {
       return JSON.parse(sensor.sensorReading);
@@ -224,7 +226,7 @@ export class FloorComponent implements OnInit, OnDestroy {
     return null;
   }
 
-  getDesiredValue(sensor: ISensor) {
+  getDesiredValue(sensor: ISensorReading) {
 
     try {
       let desired: IDesired = null;

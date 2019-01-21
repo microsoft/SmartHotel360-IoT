@@ -56,6 +56,8 @@ export class TenantComponent implements OnInit, OnDestroy {
         }
       });
     });
+
+    const sensorIds = self.facilityService.getDescendantSensorIds(self.hotelBrands[0].id);
   }
 
   chooseHotelBrand(hotelBrand: ISpace) {

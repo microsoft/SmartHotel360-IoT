@@ -26,6 +26,7 @@ namespace SmartHotel.Services.FacilityManagement
 		private readonly string ApiPath = "api/v1.0/";
 
 		private readonly string SpacesPath = "spaces";
+		private readonly string DevicesPath = "devices";
 
 		private const string FirstFourLevelsSpacesFilter = "maxlevel=4&minlevel=1";
 		private const string FifthLevelSpacesFilter = "maxlevel=5&minlevel=5";
@@ -33,6 +34,9 @@ namespace SmartHotel.Services.FacilityManagement
 		private const string PropertiesIncludesFilter = "Properties";
 		private const string TypesIncludesFilter = "Types";
 		private const string ValuesIncludesFilter = "Values";
+		private const string SensorsIncludesFilter = "Sensors";
+		private const string SensorsTypesIncludesFilter = "SensorsTypes";
+		private const string TraverseDownFilter = "traverse=Down";
 
 		private readonly IHttpClientFactory _clientFactory;
 		private readonly IConfiguration _config;
@@ -120,7 +124,8 @@ namespace SmartHotel.Services.FacilityManagement
 			{
 				string highestLevelParentSpaceId = highestLevelSpace.ParentSpaceId;
 				hierarchicalSpaces.AddRange( spacesByParentId[highestLevelParentSpaceId] );
-				BuildSpaceHierarchyAndReturnRoomSpaces( hierarchicalSpaces, spacesByParentId );
+				string typeToGetDevicesFor = highestLevelSpace.Type == FloorTypeName ? FloorTypeName : HotelBrandTypeName;
+				await BuildSpaceHierarchyAndReturnRoomSpacesAsync( hierarchicalSpaces, spacesByParentId, typeToGetDevicesFor, httpClient );
 			}
 
 			if ( hierarchicalSpaces.Count == 1 && !FloorTypeName.Equals( hierarchicalSpaces[0].Type, StringComparison.OrdinalIgnoreCase ) )
@@ -164,16 +169,49 @@ namespace SmartHotel.Services.FacilityManagement
 			return alertMessagesBySpaceId;
 		}
 
-		private static void BuildSpaceHierarchyAndReturnRoomSpaces( List<Space> hierarchicalSpaces, Dictionary<string, List<Space>> allSpacesByParentId )
+		private async Task BuildSpaceHierarchyAndReturnRoomSpacesAsync( List<Space> hierarchicalSpaces,
+			Dictionary<string, List<Space>> allSpacesByParentId, string typeToGetDevicesFor,
+			HttpClient httpClient, Dictionary<string, List<Device>> devicesBySpaceIdFromAncestor = null )
 		{
 			foreach ( Space parentSpace in hierarchicalSpaces )
 			{
+				Dictionary<string, List<Device>> devicesBySpaceId = devicesBySpaceIdFromAncestor;
+				if ( ( devicesBySpaceId == null || devicesBySpaceId.Count == 0 )
+					&& parentSpace.Type == typeToGetDevicesFor )
+				{
+					devicesBySpaceId = await GetAllDescendantDevicesBySpaceIdForSpace( parentSpace.Id, httpClient );
+				}
+
+				if ( devicesBySpaceId != null
+					&& devicesBySpaceId.TryGetValue( parentSpace.Id, out List<Device> devicesForSpace ) )
+				{
+					parentSpace.Devices = devicesForSpace;
+				}
+
 				if ( allSpacesByParentId.TryGetValue( parentSpace.Id, out List<Space> childSpaces ) )
 				{
+					if ( parentSpace.ChildSpaces == null )
+					{
+						parentSpace.ChildSpaces = new List<Space>();
+					}
+
 					parentSpace.ChildSpaces.AddRange( childSpaces );
-					BuildSpaceHierarchyAndReturnRoomSpaces( childSpaces, allSpacesByParentId );
+					await BuildSpaceHierarchyAndReturnRoomSpacesAsync( childSpaces, allSpacesByParentId, typeToGetDevicesFor,
+						httpClient, devicesBySpaceId );
 				}
 			}
+		}
+
+		private async Task<Dictionary<string, List<Device>>> GetAllDescendantDevicesBySpaceIdForSpace( string spaceId, HttpClient httpClient )
+		{
+			string devicesString = await GetFromDigitalTwins( httpClient,
+				$"{ApiPath}{DevicesPath}" +
+				$"?spaceId={spaceId}&{IncludesFilter}={TypesIncludesFilter},{SensorsIncludesFilter},{SensorsTypesIncludesFilter}" +
+				$"&{TraverseDownFilter}" );
+			var devices = JsonConvert.DeserializeObject<Device[]>( devicesString );
+
+			return devices.GroupBy( d => d.spaceId )
+				.ToDictionary( g => g.Key, g => g.ToList() );
 		}
 
 		private Space GetHighestLevelSpace( Space tenantSpace, Space hotelBrandSpace, Space hotelSpace, Space floorSpace )

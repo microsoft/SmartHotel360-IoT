@@ -6,11 +6,6 @@ namespace SmartHotel.Services.FacilityManagement.Models
 	[DataContract]
 	public class Space
 	{
-		public Space()
-		{
-			ChildSpaces = new List<Space>();
-		}
-
 		[DataMember]
 		public string Id { get; set; }
 		[DataMember]
@@ -34,5 +29,7 @@ namespace SmartHotel.Services.FacilityManagement.Models
 		public List<Space> ChildSpaces { get; set; }
 		[DataMember]
 		public List<Value> Values { get; set; }
+		[DataMember]
+		public List<Device> Devices { get; set; }
 	}
 }

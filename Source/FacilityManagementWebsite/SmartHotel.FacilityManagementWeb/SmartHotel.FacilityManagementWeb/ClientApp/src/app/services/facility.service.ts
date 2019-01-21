@@ -6,6 +6,8 @@ import { IDesired } from './models/IDesired';
 import { ISpace } from './models/ISpace';
 import { ISpaceAlert } from './models/ISpaceAlert';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { ISensor } from './models/ISensor';
 
 class InitializationCallbackContainer {
   constructor(requester: any, callback: (requester: any) => void) {
@@ -46,7 +48,7 @@ export class FacilityService {
     try {
       await this.updateDtToken()
         .then(() => {
-          this.http.get<ISpace[]>(this.getEndpoint('spaces'), { headers: { 'azure_token': this.dtToken } }
+          this.http.get<ISpace[]>(this.getEndpoint('spaces'), { headers: { 'adt_token': this.dtToken } }
           ).toPromise().then(data => {
             this.spaces = data;
             this.updateSpacesByParentIdMap(this.spaces);
@@ -59,6 +61,16 @@ export class FacilityService {
       console.error('Failed to initialize and load spaces.');
       console.error(error);
     }
+  }
+
+  public simpleAuthLogin(basicAuthHeader: string) {
+    return this.http.get<string>(this.getEndpoint('auth/getdttoken'), {
+      headers: { Authorization: basicAuthHeader },
+      responseType: 'text' as 'json'
+    })
+      .pipe(map((t: string) => {
+        this.dtToken = t;
+      }));
   }
 
   public terminate() {
@@ -174,37 +186,26 @@ export class FacilityService {
     return this.temperatureAlertsObservable;
   }
 
-  // public async getTemperatureAlerts(): Promise<ITempAlert[]> {
-  //   if (!this.isInitialized) {
-  //     throw this.notInitializedError;
-  //   }
+  public getDescendantSensorIds(topSpaceId: string): string[] {
+    const childSpaces = this.spacesByParentId.get(topSpaceId);
+    if (childSpaces) {
+      let descendantSensorIds: string[] = [];
+      childSpaces.forEach(childSpace => {
+        if (childSpace.devices) {
+          childSpace.devices.forEach(device => {
+            if (device.sensors) {
+              descendantSensorIds = descendantSensorIds.concat(device.sensors.map(sensor => sensor.id));
+            }
+          });
+        }
 
-  //   const promise = new Promise<ITempAlert[]>((resolve, reject) => {
-  //     this.adalSvc.acquireToken(`${environment.resourceId}`)
-  //       .toPromise()
-  //       .then(
-  //         token => {
-  //           this.http.get(this.getEndpoint('spaces/temperaturealerts'), { headers: { 'azure_token': token } }
-  //           ).toPromise().then((data: { [spaceId: string]: string }) => {
-  //             if (data !== undefined && data !== null) {
-  //               const keys = Object.keys(data);
-  //               const tempAlerts: ITempAlert[] = [];
-
-  //               keys.forEach(k => tempAlerts.push({
-  //                 spaceFriendlyId: k,
-  //                 alertMessage: data[k]
-  //               }));
-  //               resolve(tempAlerts);
-  //             } else {
-  //               resolve(null);
-  //             }
-  //           });
-  //         }
-  //       );
-  //   });
-
-  //   return promise;
-  // }
+        descendantSensorIds = descendantSensorIds.concat(this.getDescendantSensorIds(childSpace.id));
+      });
+      return descendantSensorIds;
+    } else {
+      return [];
+    }
+  }
 
 
 
@@ -219,6 +220,9 @@ export class FacilityService {
   }
 
   private async updateDtToken(): Promise<void> {
+    if (environment.useBasicAuth) {
+      return Promise.resolve();
+    }
     await this.adalSvc.acquireToken(`${environment.resourceId}`)
       .toPromise()
       .then(token => {
@@ -235,7 +239,7 @@ export class FacilityService {
 
   private async loadAlerts() {
     await this.updateDtToken();
-    const alerts = await this.http.get(this.getEndpoint('spaces/temperaturealerts'), { headers: { 'azure_token': this.dtToken } }
+    const alerts = await this.http.get(this.getEndpoint('spaces/temperaturealerts'), { headers: { 'adt_token': this.dtToken } }
     ).toPromise() as { [spaceId: string]: ISpaceAlert };
 
     if (alerts !== undefined && alerts !== null) {

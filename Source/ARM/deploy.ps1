@@ -381,6 +381,10 @@ Write-Host
 Write-Host "Setting Facility Manangement Api App Settings"
 $facilityManagementApiSettings = "--settings ManagementApiUrl=`"$dtManagementEndpoint`" MongoDBConnectionString=`"$cosmosDbConnectionString`" AzureAd__Audience=`"$clientId`" IoTHubConnectionString=`"$iotHubServiceConnectionString`""
 $facilityManagementApiSettingsResults = az webapp config appsettings set -n $facilityManagementApiName -g $resourceGroupName $powershellEscape $facilityManagementApiSettings
+Write-Host "Setting Facility Manangement Api to be Always On"
+$facilityManagementApiConfigResults = az webapp config set -n $facilityManagementApiName -g $resourceGroupName --always-on true
+Write-Host "Setting Facility Manangement Api to be Https Only"
+$facilityManagementApiUpdateResults = az webapp update -n $facilityManagementApiName -g $resourceGroupName --https-only true
 
 Write-Host
 Write-Host "Setting Azure Function App Settings"
@@ -404,6 +408,10 @@ Write-Host
 Write-Host "Setting Facility Management Website App Settings"
 $websiteSettings = "--settings adalConfig__tenant=`"$tenantId`" adalConfig__clientId=`"$clientId`" adalConfig__endpointsString=`"$adalEndpointsString`" apiEndpoint=`"$facilityManagementApiEndpoint`" azureMapsKey=`"$azureMapsKey`""
 $websiteSettingsResults = az webapp config appsettings set -n $facilityManagementWebsiteName -g $resourceGroupName $powershellEscape $websiteSettings
+Write-Host "Setting Facility Manangement Website to be Https Only"
+$websiteConfigResults = az webapp config set -n $facilityManagementWebsiteName -g $resourceGroupName --always-on true
+Write-Host "Setting Facility Manangement Website to be Https Only"
+$websiteUpdateResults = az webapp update -n $facilityManagementWebsiteName -g $resourceGroupName --https-only true
 
 Write-Host
 Write-Host "Updating Facility Management Website environment files to point to the deployed azure resources when running locally."

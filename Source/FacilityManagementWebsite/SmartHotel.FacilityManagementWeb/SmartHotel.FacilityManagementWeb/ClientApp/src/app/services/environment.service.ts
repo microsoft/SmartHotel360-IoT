@@ -28,6 +28,7 @@ export class EnvironmentService {
         });
         environment.apiEndpoint = environmentVariables['apiEndpoint'];
         environment.azureMapsKey = environmentVariables['azureMapsKey'];
+        environment.useBasicAuth = environmentVariables['useBasicAuth'] === 'true';
       });
   }
 }

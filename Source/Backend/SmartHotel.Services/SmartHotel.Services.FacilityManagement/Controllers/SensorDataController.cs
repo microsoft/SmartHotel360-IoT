@@ -12,8 +12,8 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 	[ApiController]
 	public class SensorDataController : ControllerBase
 	{
-		private IConfiguration _config;
-		private MongoClient _documentClient;
+		private readonly IConfiguration _config;
+		private readonly MongoClient _documentClient;
 
 		public SensorDataController( IConfiguration config )
 		{

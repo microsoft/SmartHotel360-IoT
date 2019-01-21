@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using SmartHotel.Services.FacilityManagement.Models;
 
 namespace SmartHotel.Services.FacilityManagement.Controllers
 {
@@ -8,6 +11,7 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 	[ApiController]
 	public class SpacesController : ControllerBase
 	{
+		public const string AdtTokenHeader = "adt_token";
 		private readonly ITopologyClient _client;
 
 		public SpacesController( ITopologyClient client )
@@ -19,10 +23,10 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 		[HttpGet]
 		public async Task<IActionResult> Get()
 		{
-			_client.AccessToken = HttpContext.Request.Headers["azure_token"];
-
 			try
 			{
+				_client.AccessToken = HttpContext.Request.Headers[AdtTokenHeader];
+
 				var hotels = await _client.GetSpaces();
 
 				return Ok( hotels );
@@ -36,10 +40,10 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 		[HttpGet( "[action]" )]
 		public async Task<IActionResult> TemperatureAlerts()
 		{
-			_client.AccessToken = HttpContext.Request.Headers["azure_token"];
-
 			try
 			{
+				_client.AccessToken = HttpContext.Request.Headers[AdtTokenHeader];
+
 				var spacesWithTemperatureAlerts = await _client.GetRoomSpaceTemperatureAlerts();
 
 				return Ok( spacesWithTemperatureAlerts );
