@@ -393,7 +393,7 @@ $functionSettingsResults = az webapp config appsettings set -n $functionSiteName
 
 $facilityManagementWebsiteName = $outputs.websiteName.value
 $facilityManagementApiEndpoint = "$facilityManagementApiUri/api"
-$azureMapsKey = "TODO Real Value Here"
+$azureMapsKey = $outputs.mapsPrimaryKey.value
 
 $adalEndpointsJson = @(
     @{
