@@ -25,6 +25,7 @@ export class TenantComponent implements OnInit, OnDestroy {
   public tenantId: string;
   public hotelBrands: ISpace[] = null;
   public hotelGeoLocations: IPushpinLocation[] = [];
+  public sensorIds: string[] = [];
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -58,6 +59,16 @@ export class TenantComponent implements OnInit, OnDestroy {
     });
 
     const sensorIds = self.facilityService.getDescendantSensorIds(self.hotelBrands[0].id);
+
+    // console.log(self.hotelBrands[0]);
+    // console.log(`Hotel Brand Id: ${self.hotelBrands[0].id}`);
+    // console.log(`Sensors: ${sensorIds}`);
+
+    sensorIds.forEach(id => {
+      if (id != null) {
+        self.sensorIds.push(id);
+      }
+    });
   }
 
   chooseHotelBrand(hotelBrand: ISpace) {

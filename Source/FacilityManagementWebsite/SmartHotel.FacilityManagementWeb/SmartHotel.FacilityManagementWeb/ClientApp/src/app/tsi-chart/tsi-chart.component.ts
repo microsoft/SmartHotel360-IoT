@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { AdalService } from 'adal-angular4';
 import { EnvironmentService } from '../services/environment.service';
 import TsiClient from 'tsiclient';
@@ -8,7 +8,9 @@ import TsiClient from 'tsiclient';
   templateUrl: './tsi-chart.component.html',
   styleUrls: ['./tsi-chart.component.css']
 })
-export class TsiChartComponent implements OnInit {
+export class TsiChartComponent implements OnInit, OnChanges {
+
+  @Input() public sensorIds: string[];
 
   private token: string;
   private client: any;
@@ -26,11 +28,19 @@ export class TsiChartComponent implements OnInit {
   }
 
   private initializeAvgOccupancy() {
+    
+    const filteredSensors = [];
+    filteredSensors.push(this.sensorIds[0]);
+    filteredSensors.push('e8d17c19-7dff-46a2-a3d0-2576e086ad9b'); // comment this line to see that it works with one sensor id
+    // filteredSensors.push(this.sensorIds[1]);
+    
+    console.log(filteredSensors);
+
     const lineChart = this.client.ux.LineChart(document.getElementById('chart2'));
     const tsqExpressions = [];
     const startDate = new Date('2019-01-14T00:00:00Z');
     const endDate = new Date('2019-01-16T00:00:00Z');
-    tsqExpressions.push(new this.client.ux.TsqExpression({ timeSeriesId: ['003f3d1c-359e-449a-83cb-39ebaf062f7e'] }, // instance json
+    tsqExpressions.push(new this.client.ux.TsqExpression({ timeSeriesId: filteredSensors }, // instance json
       {
         'Avg Occupancy': {
           kind: 'numeric',
@@ -42,7 +52,7 @@ export class TsiChartComponent implements OnInit {
       { from: startDate, to: endDate, bucketSize: '30m' }, // search span
       '#60B9AE', // color
       'Occupied')); // alias
-    tsqExpressions.push(new this.client.ux.TsqExpression({ timeSeriesId: ['003f3d1c-359e-449a-83cb-39ebaf062f7e'] }, // instance json
+    tsqExpressions.push(new this.client.ux.TsqExpression({ timeSeriesId: filteredSensors }, // instance json
       {
         'Min Occupancy': {
           kind: 'numeric',
@@ -54,7 +64,7 @@ export class TsiChartComponent implements OnInit {
       { from: startDate, to: endDate, bucketSize: '30m' }, // search span
       'red', // color
       'Occupied Min')); // alias
-    tsqExpressions.push(new this.client.ux.TsqExpression({ timeSeriesId: ['003f3d1c-359e-449a-83cb-39ebaf062f7e'] }, // instance json
+    tsqExpressions.push(new this.client.ux.TsqExpression({ timeSeriesId: filteredSensors }, // instance json
       {
         'Max Occupancy': {
           kind: 'numeric',
@@ -76,12 +86,23 @@ export class TsiChartComponent implements OnInit {
 
       });
 
-      return null;
+    return null;
   }
 
   ngOnInit() {
 
-    this.initializeAvgOccupancy();
+
+
+
+  }
+
+  ngOnChanges() {
+
+    if (this.sensorIds != null && this.sensorIds.length > 0) {
+      console.log(`Sensor Ids loaded: ${this.sensorIds.length > 0}`);
+
+      this.initializeAvgOccupancy();
+    }
   }
 
 
