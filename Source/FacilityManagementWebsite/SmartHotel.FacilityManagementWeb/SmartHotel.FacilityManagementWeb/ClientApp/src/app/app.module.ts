@@ -25,28 +25,12 @@ import { MapComponent } from './map/map.component';
 import { AuthenticationInterceptor } from './common/authentication-interceptor';
 import { TsiChartComponent } from './tsi-chart/tsi-chart.component';
 
-import { AdalService, AdalGuard } from 'adal-angular4';
-import * as AuthenticationContext from 'adal-angular/lib/adal';
+import { AdalService } from 'adal-angular4';
+import * as AuthenticationContext from 'adal-angular4/node_modules/adal-angular/lib/adal';
 import 'tsiclient';
-import { environment } from 'src/environments/environment';
 
-const initializeApp = (environmentService: EnvironmentService, adalService: AdalService) => {
-  return async () => {
-    adalService.init(environment.adalConfig);
-    const userInfo = adalService.userInfo;
-
-    adalService.handleWindowCallback();
-    if (userInfo && userInfo.authenticated) {
-      adalService.acquireToken('https://api.timeseries.azure.com/')
-        .subscribe(result => {
-          const token = result;
-          console.log(`TSI Token retrieved: ${token}`);
-        });
-    } else {
-      adalService.login();
-      return;
-    }
-
+const initializeApp = (environmentService: EnvironmentService) => {
+  return () => {
     const loadEnvironmentPromise = environmentService.loadEnvironment();
     return loadEnvironmentPromise;
   };
@@ -81,7 +65,6 @@ const initializeApp = (environmentService: EnvironmentService, adalService: Adal
   providers: [
     AdalService,
     AuthenticationGuard,
-    AdalGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthenticationInterceptor,
@@ -92,7 +75,7 @@ const initializeApp = (environmentService: EnvironmentService, adalService: Adal
       provide: APP_INITIALIZER,
       useFactory: initializeApp,
       multi: true,
-      deps: [EnvironmentService, AdalService]
+      deps: [EnvironmentService]
     }
   ],
   bootstrap: [AppComponent]

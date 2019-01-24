@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { AdalService } from 'adal-angular4';
-import { EnvironmentService } from '../services/environment.service';
 import TsiClient from 'tsiclient';
 
 @Component({
@@ -12,28 +11,21 @@ export class TsiChartComponent implements OnInit, OnChanges {
 
   @Input() public sensorIds: string[];
 
+  private tokenRetrieved = false;
   private token: string;
   private client: any;
   private environmentFqdn = '6b193177-b605-4746-83a0-75fbbc885ebf.env.timeseries.azure.com';
   private resource = 'https://api.timeseries.azure.com/';
 
-  constructor(adalService: AdalService) {
-
-    console.log('tsiui-chart-rendering create');
-
-    this.token = adalService.getCachedToken(this.resource);
-    this.client = new TsiClient();
-
-    console.log(`tsiui-chart-rendering token loaded: ${this.token != null}`);
+  constructor(private adalService: AdalService) {
   }
 
   private initializeAvgOccupancy() {
-    
     const filteredSensors = [];
     filteredSensors.push(this.sensorIds[0]);
     filteredSensors.push('e8d17c19-7dff-46a2-a3d0-2576e086ad9b'); // comment this line to see that it works with one sensor id
     // filteredSensors.push(this.sensorIds[1]);
-    
+
     console.log(filteredSensors);
 
     const lineChart = this.client.ux.LineChart(document.getElementById('chart2'));
@@ -91,19 +83,35 @@ export class TsiChartComponent implements OnInit, OnChanges {
 
   ngOnInit() {
 
+    console.log('tsiui-chart-rendering create');
+
+    this.token = this.adalService.getCachedToken(this.resource);
+    if (!this.token) {
+      this.adalService.acquireToken('https://api.timeseries.azure.com/')
+        .subscribe(result => {
+          this.token = result;
+          console.log(`TSI Token retrieved: ${this.token}`);
+          this.tokenRetrieved = true;
+          this.tryUpdateChart();
+        });
+    }
+    this.client = new TsiClient();
+
+    console.log(`tsiui-chart-rendering token loaded: ${this.token != null}`);
 
 
 
   }
 
   ngOnChanges() {
+    this.tryUpdateChart();
+  }
 
-    if (this.sensorIds != null && this.sensorIds.length > 0) {
+  private tryUpdateChart() {
+    if (this.tokenRetrieved && this.sensorIds != null && this.sensorIds.length > 0) {
       console.log(`Sensor Ids loaded: ${this.sensorIds.length > 0}`);
 
       this.initializeAvgOccupancy();
     }
   }
-
-
 }
