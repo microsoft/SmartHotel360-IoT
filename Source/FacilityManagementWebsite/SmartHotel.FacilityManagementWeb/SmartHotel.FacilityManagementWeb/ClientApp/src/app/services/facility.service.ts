@@ -186,7 +186,7 @@ export class FacilityService {
     return this.temperatureAlertsObservable;
   }
 
-  public getDescendantSensorIds(topSpaceId: string): string[] {
+  public getDescendantSensorIds(topSpaceId: string, dataType: string): string[] {
     const childSpaces = this.spacesByParentId.get(topSpaceId);
     if (childSpaces) {
       let descendantSensorIds: string[] = [];
@@ -194,12 +194,13 @@ export class FacilityService {
         if (childSpace.devices) {
           childSpace.devices.forEach(device => {
             if (device.sensors) {
-              descendantSensorIds = descendantSensorIds.concat(device.sensors.map(sensor => sensor.id));
+              descendantSensorIds = descendantSensorIds
+              .concat(device.sensors.filter(s => s.dataType === dataType).map(sensor => sensor.id));
             }
           });
         }
 
-        descendantSensorIds = descendantSensorIds.concat(this.getDescendantSensorIds(childSpace.id));
+        descendantSensorIds = descendantSensorIds.concat(this.getDescendantSensorIds(childSpace.id, dataType));
       });
       return descendantSensorIds;
     } else {
@@ -305,6 +306,7 @@ export class FacilityService {
       try {
         callbackContainer.Callback(callbackContainer.Requester);
       } catch (err) {
+        console.log(err);
         let requesterName = '';
         if (callbackContainer.Requester.constructor && callbackContainer.Requester.constructor.name) {
           requesterName = callbackContainer.Requester.constructor.name;

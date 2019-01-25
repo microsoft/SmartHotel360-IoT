@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { ISpaceAlert } from '../services/models/ISpaceAlert';
 import { SubscriptionUtilities } from '../helpers/subscription-utilities';
 import { IPushpinLocation, getPushpinLocation } from '../map/IPushPinLocation';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-tenant',
@@ -25,7 +26,9 @@ export class TenantComponent implements OnInit, OnDestroy {
   public tenantId: string;
   public hotelBrands: ISpace[] = null;
   public hotelGeoLocations: IPushpinLocation[] = [];
-  public sensorIds: string[] = [];
+  public motionSensorIds: string[] = [];
+  public lightSensorIds: string[] = [];
+  public tempSensorIds: string[] = [];
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -39,12 +42,15 @@ export class TenantComponent implements OnInit, OnDestroy {
   }
 
   loadHotelBrands(self: TenantComponent) {
+    console.log(environment.adalConfig);
     const hotelBrands = self.facilityService.getChildSpaces(self.tenantId);
     if (!hotelBrands) {
       self.navigationService.navigateToTopSpaces(self.facilityService.getSpaces());
       return;
     }
     self.hotelBrands = hotelBrands;
+
+    // console.log(hotelBrands);
 
     self.subscriptions.push(self.facilityService.getTemperatureAlerts()
       .subscribe(tempAlerts => self.temperatureAlertsUpdated(self.hotelBrands, tempAlerts)));
@@ -58,17 +64,26 @@ export class TenantComponent implements OnInit, OnDestroy {
       });
     });
 
-    const sensorIds = self.facilityService.getDescendantSensorIds(self.hotelBrands[0].id);
-
-    // console.log(self.hotelBrands[0]);
-    // console.log(`Hotel Brand Id: ${self.hotelBrands[0].id}`);
-    // console.log(`Sensors: ${sensorIds}`);
-
-    sensorIds.forEach(id => {
-      if (id != null) {
-        self.sensorIds.push(id);
-      }
-    });
+    for (const brand of self.hotelBrands) {
+      const motionSensorIds = self.facilityService.getDescendantSensorIds(brand.id, 'Motion');
+      motionSensorIds.forEach(id => {
+        if (id != null) {
+          self.motionSensorIds.push(id);
+        }
+      });
+      const lightSensorIds = self.facilityService.getDescendantSensorIds(brand.id, 'Light');
+      lightSensorIds.forEach(id => {
+        if (id != null) {
+          self.lightSensorIds.push(id);
+        }
+      });
+      const tempSensorIds = self.facilityService.getDescendantSensorIds(brand.id, 'Temperature');
+      tempSensorIds.forEach(id => {
+        if (id != null) {
+          self.tempSensorIds.push(id);
+        }
+      });
+    }
   }
 
   chooseHotelBrand(hotelBrand: ISpace) {

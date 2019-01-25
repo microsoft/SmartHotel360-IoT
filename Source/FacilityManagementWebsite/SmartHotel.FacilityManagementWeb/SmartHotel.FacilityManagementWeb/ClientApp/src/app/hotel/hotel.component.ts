@@ -33,6 +33,10 @@ export class HotelComponent implements OnInit, OnDestroy {
   public hotelIndex: number;
   public floors: ISpace[] = null;
   public hotelGeoLocations: IPushpinLocation[] = [];
+  public motionSensorIds: string[] = [];
+  public lightSensorIds: string[] = [];
+  public tempSensorIds: string[] = [];
+
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -52,12 +56,18 @@ export class HotelComponent implements OnInit, OnDestroy {
 
   loadFloors(self: HotelComponent) {
     if (self.hotelBrandId) {
+
       const hotel = self.facilityService.getSpace(self.hotelBrandId, self.hotelId);
       if (!hotel) {
         self.breadcrumbs.returnToHotelBrand();
         return;
       }
       self.hotelName = hotel.friendlyName;
+
+
+      console.log(`hotel component: hotel id ${self.hotelId}`);
+      self.filterSensorIds(hotel);
+
       const pushpinLocation = getPushpinLocation(hotel);
       if (pushpinLocation) {
         self.hotelGeoLocations.push(pushpinLocation);
@@ -71,8 +81,32 @@ export class HotelComponent implements OnInit, OnDestroy {
     }
     self.floors = floors;
 
+    // console.log(`hotel floor 0: ${ JSON.stringify(self.floors[0])}`);
+    console.log(`Floors: ${self.floors.length}`)
+
     self.subscriptions.push(self.facilityService.getTemperatureAlerts()
       .subscribe(tempAlerts => self.temperatureAlertsUpdated(self.floors, tempAlerts)));
+  }
+
+  private filterSensorIds(hotel: ISpace) {
+      const motionSensorIds = this.facilityService.getDescendantSensorIds(hotel.id, 'Motion');
+      motionSensorIds.forEach(id => {
+        if (id != null) {
+          this.motionSensorIds.push(id);
+        }
+      });
+      const lightSensorIds = this.facilityService.getDescendantSensorIds(hotel.id, 'Light');
+      lightSensorIds.forEach(id => {
+        if (id != null) {
+          this.lightSensorIds.push(id);
+        }
+      });
+      const tempSensorIds = this.facilityService.getDescendantSensorIds(hotel.id, 'Temperature');
+      tempSensorIds.forEach(id => {
+        if (id != null) {
+          this.tempSensorIds.push(id);
+        }
+      });
   }
 
   chooseFloor(floor: ISpace) {

@@ -30,6 +30,9 @@ export class HotelBrandComponent implements OnInit, OnDestroy {
   public hotelBrandId: string;
   public hotels: ISpace[] = null;
   public hotelGeoLocations: IPushpinLocation[] = [];
+  public motionSensorIds: string[] = [];
+  public lightSensorIds: string[] = [];
+  public tempSensorIds: string[] = [];
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -53,12 +56,16 @@ export class HotelBrandComponent implements OnInit, OnDestroy {
       self.hotelBrandName = hotelBrand.friendlyName;
     }
 
+    console.log(`hotel, brand id: ${self.hotelBrandId}`);
+
     const hotels = self.facilityService.getChildSpaces(self.hotelBrandId);
     if (!hotels) {
       self.navigationService.navigateToTopSpaces(self.facilityService.getSpaces());
       return;
     }
     self.hotels = hotels;
+
+    self.filterSensorIds(hotels);
 
     self.subscriptions.push(self.facilityService.getTemperatureAlerts()
       .subscribe(tempAlerts => self.temperatureAlertsUpdated(self.hotels, tempAlerts)));
@@ -69,6 +76,29 @@ export class HotelBrandComponent implements OnInit, OnDestroy {
         self.hotelGeoLocations.push(pushpinLocation);
       }
     });
+  }
+
+  private filterSensorIds(hotels: ISpace[]) {
+    for (const hotel of hotels) {
+      const motionSensorIds = this.facilityService.getDescendantSensorIds(hotel.id, 'Motion');
+      motionSensorIds.forEach(id => {
+        if (id != null) {
+          this.motionSensorIds.push(id);
+        }
+      });
+      const lightSensorIds = this.facilityService.getDescendantSensorIds(hotel.id, 'Light');
+      lightSensorIds.forEach(id => {
+        if (id != null) {
+          this.lightSensorIds.push(id);
+        }
+      });
+      const tempSensorIds = this.facilityService.getDescendantSensorIds(hotel.id, 'Temperature');
+      tempSensorIds.forEach(id => {
+        if (id != null) {
+          this.tempSensorIds.push(id);
+        }
+      });
+    }
   }
 
   chooseHotel(hotel: ISpace) {
