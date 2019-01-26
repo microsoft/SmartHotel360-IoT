@@ -148,6 +148,7 @@ try
 }
 catch
 {
+    Reset-Console-Coloring
     az extension add -n $azureCliIotExtensionName
 }
 
@@ -173,7 +174,7 @@ $UTCNow = (Get-Date).ToUniversalTime()
  
 $UTCTimeTick = $UTCNow.Ticks.tostring()
 
-$TemplateParameters = "_currentDateTimeInTicks=$UTCTimeTick"
+$TemplateParameters = "_currentDateTimeInTicks=$UTCTimeTick _clientId=$clientId"
 
 # Start the Azure deployment
 $StartTimeLocal = Get-Date

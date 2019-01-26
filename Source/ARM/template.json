@@ -10,6 +10,12 @@
         "description": "the current datetime in ticks. this is used to generate a unique string for every deployment"
       }
     },
+    "_clientId": {
+      "type": "string",
+      "metadata": {
+        "description": "The Id of the AAD Application"
+      }
+    },
     "acr_location": {
       "defaultValue": "westcentralus",
       "type": "string"
@@ -56,22 +62,6 @@
     "event_hub_namespace_location": {
       "defaultValue": "West US",
       "type": "string"
-    },
-    "event_hub_namespace_sku_name": {
-      "defaultValue": "Basic",
-      "type": "string",
-      "allowedValues": [
-        "Basic",
-        "Standard"
-      ]
-    },
-    "event_hub_namespace_sku_tier": {
-      "defaultValue": "Basic",
-      "type": "string",
-      "allowedValues": [
-        "Basic",
-        "Standard"
-      ]
     },
     "storage_location": {
       "defaultValue": "westus2",
@@ -158,6 +148,30 @@
     "webapi_config_name": {
       "defaultValue": "web",
       "type": "string"
+    },
+    "maps_sku_name": {
+      "defaultValue": "s1",
+      "type": "string"
+    },
+    "maps_sku_tier": {
+      "defaultValue": "Standard",
+      "type": "string"
+    },
+    "tsi_sku_name": {
+      "defaultValue": "S1",
+      "type": "string"
+    },
+    "tsi_kind": {
+      "defaultValue": "Standard",
+      "type": "string"
+    },
+    "tsi_location": {
+      "defaultValue": "westus2",
+      "type": "string"
+    },
+    "tsi_eventSource_location": {
+      "defaultValue": "westus2",
+      "type": "string"
     }
   },
   "variables": {
@@ -179,6 +193,8 @@
     "EventHubFullName": "[concat(variables('EventHubNamespaceName'), '/', variables('EventHubName'))]",
     "EventHubConsumerAuthorizationRuleName": "[concat(variables('EventHubFullName'), '/', parameters('event_hub_authorizationRules_consumer_name'))]",
     "EventHubProducerAuthorizationRuleName": "[concat(variables('EventHubFullName'), '/', parameters('event_hub_authorizationRules_producer_name'))]",
+    "EventHubOwnerAuthorizationRuleName": "[concat(variables('EventHubFullName'), '/owner')]",
+    "EventHubTsiConsumerGroupName": "tsigroup",
     "DigitalTwinsName": "[concat(variables('ResourceNamePrefix'), 'DigitalTwins', variables('UniqueStringBasedOnTimeStamp'))]",
     "AKSClusterName": "[concat(variables('ResourceNamePrefix'), 'AKSCluster', variables('UniqueStringBasedOnTimeStamp'))]",
     "WebsiteASPName": "[concat(variables('ResourceNamePrefix'), 'FacilityMgmtASP', variables('UniqueStringBasedOnTimeStamp'))]",
@@ -188,7 +204,9 @@
     "WebApiName": "[concat(variables('ResourceNamePrefix'), 'FacilityMgmtApi', variables('UniqueStringBasedOnTimeStamp'))]",
     "WebApiConfigName": "[concat(variables('WebApiName'), '/', parameters('webapi_config_name'))]",
     "WebApiHostNameBindingsName": "[concat(variables('WebApiName'), '/', toLower(variables('WebApiName')), '.azurewebsites.net')]",
-    "MapsName": "[concat(variables('ResourceNamePrefix'), 'Maps', variables('UniqueStringBasedOnTimeStamp'))]"
+    "MapsName": "[concat(variables('ResourceNamePrefix'), 'Maps', variables('UniqueStringBasedOnTimeStamp'))]",
+    "TimeSeriesInsightsName": "[concat(variables('ResourceNamePrefix'), 'Tsi', variables('UniqueStringBasedOnTimeStamp'))]",
+    "TimeSeriesInsightsEventSourceName": "[concat(variables('ResourceNamePrefix'), 'Tsi-EventSource', variables('UniqueStringBasedOnTimeStamp'))]"
   },
   "resources": [
     {
@@ -274,8 +292,8 @@
       "comments": "EventHub Namespace containing the EventHub to forward DeviceMessages from the Digital Twins instance.",
       "type": "Microsoft.EventHub/namespaces",
       "sku": {
-        "name": "[parameters('event_hub_namespace_sku_name')]",
-        "tier": "[parameters('event_hub_namespace_sku_tier')]",
+        "name": "Standard",
+        "tier": "Standard",
         "capacity": 1
       },
       "name": "[variables('EventHubNamespaceName')]",
@@ -465,6 +483,38 @@
           "Send"
         ]
       },
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', variables('EventHubNamespaceName'))]",
+        "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('EventHubNamespaceName'), variables('EventHubName'))]"
+      ]
+    },
+    {
+      "comments": "Authorization Rule for Event Hub Owner.",
+      "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationRules",
+      "name": "[variables('EventHubOwnerAuthorizationRuleName')]",
+      "apiVersion": "2017-04-01",
+      "location": "[parameters('event_hub_namespace_location')]",
+      "scale": null,
+      "properties": {
+        "rights": [
+          "Send",
+          "Manage",
+          "Listen"
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', variables('EventHubNamespaceName'))]",
+        "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('EventHubNamespaceName'), variables('EventHubName'))]"
+      ]
+    },
+    {
+      "comments": "Event Hub Consumer group for Time Series Insights to use.",
+      "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+      "name": "[concat(variables('EventHubNamespaceName'), '/', variables('EventHubName'), '/', variables('EventHubTsiConsumerGroupName'))]",
+      "apiVersion": "2017-04-01",
+      "location": "[parameters('event_hub_namespace_location')]",
+      "scale": null,
+      "properties": {},
       "dependsOn": [
         "[resourceId('Microsoft.EventHub/namespaces', variables('EventHubNamespaceName'))]",
         "[resourceId('Microsoft.EventHub/namespaces/eventhubs', variables('EventHubNamespaceName'), variables('EventHubName'))]"
@@ -1000,8 +1050,8 @@
       "comments": "Azure Maps account.",
       "type": "Microsoft.Maps/accounts",
       "sku": {
-        "name": "s1",
-        "tier": "Standard"
+        "name": "[parameters('maps_sku_name')]",
+        "tier": "[parameters('maps_sku_tier')]"
       },
       "name": "[variables('MapsName')]",
       "apiVersion": "2018-05-01",
@@ -1011,6 +1061,62 @@
         "x-ms-client-id": "f1b0ed4d-dbf5-4128-98be-88893ed64732"
       },
       "dependsOn": []
+    },
+    {
+      "comments": "Time Series Insights Account",
+      "type": "Microsoft.TimeSeriesInsights/environments",
+      "sku": {
+        "name": "[parameters('tsi_sku_name')]",
+        "capacity": 1
+      },
+      "kind": "[parameters('tsi_kind')]",
+      "name": "[variables('TimeSeriesInsightsName')]",
+      "apiVersion": "2017-11-15",
+      "location": "[parameters('tsi_location')]",
+      "scale": null,
+      "properties": {
+        "dataRetentionTime": "P30D",
+        "storageLimitExceededBehavior": "PurgeOldData"
+      },
+      "dependsOn": []
+    },
+    {
+      "comments": "Time Series Insights Account's access policy for the AAD Application.",
+      "type": "Microsoft.TimeSeriesInsights/environments/accesspolicies",
+      "name": "[concat(variables('TimeSeriesInsightsName'), '/ownerAccessPolicy')]",
+      "apiVersion": "2017-11-15",
+      "scale": null,
+      "properties": {
+        "principalObjectId": "[parameters('_clientId')]",
+        "roles": [
+          "Reader",
+          "Contributor"
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.TimeSeriesInsights/environments', variables('TimeSeriesInsightsName'))]"
+      ]
+    },
+    {
+      "comments": "Time Series Insights Account's Event Source.",
+      "type": "Microsoft.TimeSeriesInsights/environments/eventsources",
+      "kind": "Microsoft.EventHub",
+      "name": "[concat(variables('TimeSeriesInsightsName'), '/', variables('TimeSeriesInsightsEventSourceName'))]",
+      "apiVersion": "2017-11-15",
+      "location": "[parameters('tsi_eventSource_location')]",
+      "scale": null,
+      "properties": {
+        "eventSourceResourceId": "[concat(resourceId('Microsoft.EventHub/namespaces', variables('EventHubFullName')]",
+        "eventHubName": "[variables('EventHubName')]",
+        "serviceBusNamespace": "[variables('EventHubNamespaceName')]",
+        "consumerGroupName": "[variables('EventHubTsiConsumerGroupName')]",
+        "keyName": "owner",
+        "timestampPropertyName": "EventTimestamp"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.TimeSeriesInsights/environments', variables('TimeSeriesInsightsName'))]",
+        "[resourceId('Microsoft.EventHub/namespaces', variables('EventHubNamespaceName'))]"
+      ]
     }
   ],
   "outputs": {
@@ -1081,6 +1187,10 @@
     "mapsPrimaryKey": {
       "type": "string",
       "value": "[listKeys(resourceId('Microsoft.Maps/accounts', variables('MapsName')), '2018-05-01').primaryKey]"
+    },
+    "tsiFQDN": {
+      "value": "[reference(resourceId('Microsoft.TimeSeriesInsights/environments', variables('TimeSeriesInsightsName'))).dataAccessFQDN]",
+      "type": "string"
     }
   }
 }
