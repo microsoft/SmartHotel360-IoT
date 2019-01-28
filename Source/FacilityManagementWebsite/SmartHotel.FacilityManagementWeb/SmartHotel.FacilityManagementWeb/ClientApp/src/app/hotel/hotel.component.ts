@@ -64,10 +64,6 @@ export class HotelComponent implements OnInit, OnDestroy {
       }
       self.hotelName = hotel.friendlyName;
 
-
-      console.log(`hotel component: hotel id ${self.hotelId}`);
-      self.filterSensorIds(hotel);
-
       const pushpinLocation = getPushpinLocation(hotel);
       if (pushpinLocation) {
         self.hotelGeoLocations.push(pushpinLocation);
@@ -80,33 +76,34 @@ export class HotelComponent implements OnInit, OnDestroy {
       return;
     }
     self.floors = floors;
-
-    // console.log(`hotel floor 0: ${ JSON.stringify(self.floors[0])}`);
-    console.log(`Floors: ${self.floors.length}`)
+    self.filterSensorIds(floors);
 
     self.subscriptions.push(self.facilityService.getTemperatureAlerts()
       .subscribe(tempAlerts => self.temperatureAlertsUpdated(self.floors, tempAlerts)));
   }
 
-  private filterSensorIds(hotel: ISpace) {
-      const motionSensorIds = this.facilityService.getDescendantSensorIds(hotel.id, 'Motion');
+  private filterSensorIds(floors: ISpace[]) {
+
+      for (const floor of floors) {
+      const motionSensorIds = this.facilityService.getDescendantSensorIds(floor.id, 'Motion');
       motionSensorIds.forEach(id => {
-        if (id != null) {
+        if (id) {
           this.motionSensorIds.push(id);
         }
       });
-      const lightSensorIds = this.facilityService.getDescendantSensorIds(hotel.id, 'Light');
+      const lightSensorIds = this.facilityService.getDescendantSensorIds(floor.id, 'Light');
       lightSensorIds.forEach(id => {
-        if (id != null) {
+        if (id) {
           this.lightSensorIds.push(id);
         }
       });
-      const tempSensorIds = this.facilityService.getDescendantSensorIds(hotel.id, 'Temperature');
+      const tempSensorIds = this.facilityService.getDescendantSensorIds(floor.id, 'Temperature');
       tempSensorIds.forEach(id => {
-        if (id != null) {
+        if (id) {
           this.tempSensorIds.push(id);
         }
       });
+    }
   }
 
   chooseFloor(floor: ISpace) {

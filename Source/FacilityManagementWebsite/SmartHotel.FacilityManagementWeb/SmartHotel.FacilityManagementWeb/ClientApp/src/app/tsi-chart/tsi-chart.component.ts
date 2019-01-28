@@ -18,7 +18,7 @@ export class TsiChartComponent implements OnInit, OnChanges {
   private tokenRetrieved = false;
   private token: string;
   private client: any;
-  
+
   constructor(private adalService: AdalService, private facilityService: FacilityService) {
   }
 
@@ -28,7 +28,7 @@ export class TsiChartComponent implements OnInit, OnChanges {
     const dateTimeNowUTC = new Date();
     const thirtyDaysBack = new Date();
     thirtyDaysBack.setDate(dateTimeNowUTC.getDate() - Number(environment.tsiHowManyDays));
-    
+
     const startDate = thirtyDaysBack.toISOString();
     const endDate = dateTimeNowUTC.toISOString();
 
@@ -85,15 +85,13 @@ export class TsiChartComponent implements OnInit, OnChanges {
   }
 
   private initializeToken(self: TsiChartComponent) {
-    
-    console.log(environment.tsiApi);
+
     self.client = new TsiClient();
     self.token = self.adalService.getCachedToken(environment.tsiApi);
     if (!self.token) {
       self.adalService.acquireToken(environment.tsiApi)
         .subscribe(result => {
           self.token = result;
-          console.log(`TSI Token retrieved: ${self.token}`);
           self.tokenRetrieved = true;
           self.tryUpdateChart();
         });
@@ -108,12 +106,11 @@ export class TsiChartComponent implements OnInit, OnChanges {
   }
 
   private tryUpdateChart() {
-    if (this.tokenRetrieved && this.motionSensorIds != null 
+    if (this.tokenRetrieved && this.motionSensorIds && this.lightSensorIds && this.tempSensorIds
       && this.motionSensorIds.length > 0
       && this.lightSensorIds.length > 0
       && this.tempSensorIds.length > 0) {
-      console.log('Sensor Ids loaded.');
-      
+
       this.initializeChart();
     }
   }

@@ -56,8 +56,6 @@ export class HotelBrandComponent implements OnInit, OnDestroy {
       self.hotelBrandName = hotelBrand.friendlyName;
     }
 
-    console.log(`hotel, brand id: ${self.hotelBrandId}`);
-
     const hotels = self.facilityService.getChildSpaces(self.hotelBrandId);
     if (!hotels) {
       self.navigationService.navigateToTopSpaces(self.facilityService.getSpaces());
@@ -82,19 +80,19 @@ export class HotelBrandComponent implements OnInit, OnDestroy {
     for (const hotel of hotels) {
       const motionSensorIds = this.facilityService.getDescendantSensorIds(hotel.id, 'Motion');
       motionSensorIds.forEach(id => {
-        if (id != null) {
+        if (id) {
           this.motionSensorIds.push(id);
         }
       });
       const lightSensorIds = this.facilityService.getDescendantSensorIds(hotel.id, 'Light');
       lightSensorIds.forEach(id => {
-        if (id != null) {
+        if (id) {
           this.lightSensorIds.push(id);
         }
       });
       const tempSensorIds = this.facilityService.getDescendantSensorIds(hotel.id, 'Temperature');
       tempSensorIds.forEach(id => {
-        if (id != null) {
+        if (id) {
           this.tempSensorIds.push(id);
         }
       });

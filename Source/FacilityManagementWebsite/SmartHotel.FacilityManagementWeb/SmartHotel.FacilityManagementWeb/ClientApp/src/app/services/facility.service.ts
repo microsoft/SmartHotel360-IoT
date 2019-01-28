@@ -306,7 +306,7 @@ export class FacilityService {
       try {
         callbackContainer.Callback(callbackContainer.Requester);
       } catch (err) {
-        console.log(err);
+        console.error(err);
         let requesterName = '';
         if (callbackContainer.Requester.constructor && callbackContainer.Requester.constructor.name) {
           requesterName = callbackContainer.Requester.constructor.name;

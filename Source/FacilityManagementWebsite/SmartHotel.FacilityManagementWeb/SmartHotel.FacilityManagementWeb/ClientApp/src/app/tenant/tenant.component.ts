@@ -42,15 +42,12 @@ export class TenantComponent implements OnInit, OnDestroy {
   }
 
   loadHotelBrands(self: TenantComponent) {
-    console.log(environment.adalConfig);
     const hotelBrands = self.facilityService.getChildSpaces(self.tenantId);
     if (!hotelBrands) {
       self.navigationService.navigateToTopSpaces(self.facilityService.getSpaces());
       return;
     }
     self.hotelBrands = hotelBrands;
-
-    // console.log(hotelBrands);
 
     self.subscriptions.push(self.facilityService.getTemperatureAlerts()
       .subscribe(tempAlerts => self.temperatureAlertsUpdated(self.hotelBrands, tempAlerts)));
@@ -67,19 +64,19 @@ export class TenantComponent implements OnInit, OnDestroy {
     for (const brand of self.hotelBrands) {
       const motionSensorIds = self.facilityService.getDescendantSensorIds(brand.id, 'Motion');
       motionSensorIds.forEach(id => {
-        if (id != null) {
+        if (id) {
           self.motionSensorIds.push(id);
         }
       });
       const lightSensorIds = self.facilityService.getDescendantSensorIds(brand.id, 'Light');
       lightSensorIds.forEach(id => {
-        if (id != null) {
+        if (id) {
           self.lightSensorIds.push(id);
         }
       });
       const tempSensorIds = self.facilityService.getDescendantSensorIds(brand.id, 'Temperature');
       tempSensorIds.forEach(id => {
-        if (id != null) {
+        if (id) {
           self.tempSensorIds.push(id);
         }
       });
