@@ -29,7 +29,11 @@ namespace SmartHotel.IoT.Provisioning.Common
 
 			if ( !Guid.TryParse( contentSanitized, out var createdId ) )
 			{
-				Console.WriteLine( $"ERROR: Returned value from POST did not parse into a guid: {content}" );
+				if ( response.RequestMessage.Method == HttpMethod.Post )
+				{
+					Console.WriteLine( $"ERROR: Returned value from {HttpMethod.Post} did not parse into a guid: {content}" );
+				}
+
 				return Guid.Empty;
 			}
 
