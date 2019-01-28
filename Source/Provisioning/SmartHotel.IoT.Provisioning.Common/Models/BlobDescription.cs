@@ -8,6 +8,7 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 	    public const string FileBlobType = "File";
 	    public const string NoneBlobType = "None";
 	    public const string JpegContentType = "image/jpeg";
+	    public const string PngContentType = "image/png";
 
 		public string name { get; set; }
 		public string type { get; set; }

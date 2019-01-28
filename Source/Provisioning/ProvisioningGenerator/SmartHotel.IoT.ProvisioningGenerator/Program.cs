@@ -252,7 +252,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 				subtype = BlobDescription.NoneBlobType,
 				description = "Brand image",
 				filepath = $"{ImageFolderRelativePath}/brands/brand{brandNumber}.png",
-				contentType = BlobDescription.JpegContentType
+				contentType = BlobDescription.PngContentType
 			};
 
 			// Create the hotels
@@ -292,7 +292,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 					subtype = BlobDescription.NoneBlobType,
 					description = "Hotel image",
 					filepath = $"{ImageFolderRelativePath}/hotels/{hotelType.Name.ToLower()}.png",
-					contentType = BlobDescription.JpegContentType
+					contentType = BlobDescription.PngContentType
 				};
 
 				string brandHotelPrefix = $"{brand.Name}-{hotel.Name}-".Replace( " ", string.Empty );
@@ -331,7 +331,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 						subtype = BlobDescription.NoneBlobType,
 						description = "Floor image",
 						filepath = $"{ImageFolderRelativePath}/floors/{hotelType.Name.ToLower()}{imagePathSuffix}.png",
-						contentType = BlobDescription.JpegContentType
+						contentType = BlobDescription.PngContentType
 					};
 
 					if ( !isVipFloor && !string.IsNullOrEmpty( hotel.RegularFloorEmployeeUser ) )

@@ -13,7 +13,7 @@ blob:
   subtype: None
   description: Brand image
   filepath: ../Images/brands/brand2.png
-  contentType: image/jpeg
+  contentType: image/png
 spaces:
 - name: Contoso Elite 1
   description: SmartHotel360 Contoso Elite 1
@@ -38,7 +38,7 @@ spaces:
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sh.png
-    contentType: image/jpeg
+    contentType: image/png
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -53,7 +53,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 101
       description: Room 101
@@ -218,7 +218,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 201
       description: Room 201
@@ -383,7 +383,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 301
       description: Room 301
@@ -548,7 +548,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 401
       description: Room 401
@@ -714,7 +714,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/shvip.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 501
       description: Room 501
@@ -799,7 +799,7 @@ spaces:
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sh.png
-    contentType: image/jpeg
+    contentType: image/png
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -814,7 +814,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 101
       description: Room 101
@@ -979,7 +979,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 201
       description: Room 201
@@ -1144,7 +1144,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 301
       description: Room 301
@@ -1309,7 +1309,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 401
       description: Room 401
@@ -1475,7 +1475,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/shvip.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 501
       description: Room 501
@@ -1560,7 +1560,7 @@ spaces:
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sl.png
-    contentType: image/jpeg
+    contentType: image/png
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -1575,7 +1575,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 101
       description: Room 101
@@ -1740,7 +1740,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 201
       description: Room 201
@@ -1905,7 +1905,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 301
       description: Room 301
@@ -2070,7 +2070,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 401
       description: Room 401
@@ -2236,7 +2236,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/slvip.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 501
       description: Room 501
@@ -2321,7 +2321,7 @@ spaces:
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sh.png
-    contentType: image/jpeg
+    contentType: image/png
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -2336,7 +2336,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 101
       description: Room 101
@@ -2501,7 +2501,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 201
       description: Room 201
@@ -2666,7 +2666,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 301
       description: Room 301
@@ -2831,7 +2831,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 401
       description: Room 401
@@ -2997,7 +2997,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/shvip.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 501
       description: Room 501
@@ -3082,7 +3082,7 @@ spaces:
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sl.png
-    contentType: image/jpeg
+    contentType: image/png
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -3097,7 +3097,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 101
       description: Room 101
@@ -3262,7 +3262,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 201
       description: Room 201
@@ -3427,7 +3427,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 301
       description: Room 301
@@ -3592,7 +3592,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 401
       description: Room 401
@@ -3758,7 +3758,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/slvip.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 501
       description: Room 501
@@ -3843,7 +3843,7 @@ spaces:
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sl.png
-    contentType: image/jpeg
+    contentType: image/png
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -3858,7 +3858,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 101
       description: Room 101
@@ -4023,7 +4023,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 201
       description: Room 201
@@ -4188,7 +4188,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 301
       description: Room 301
@@ -4353,7 +4353,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 401
       description: Room 401
@@ -4519,7 +4519,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/slvip.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 501
       description: Room 501
@@ -4604,7 +4604,7 @@ spaces:
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sh.png
-    contentType: image/jpeg
+    contentType: image/png
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -4619,7 +4619,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 101
       description: Room 101
@@ -4784,7 +4784,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 201
       description: Room 201
@@ -4949,7 +4949,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 301
       description: Room 301
@@ -5114,7 +5114,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 401
       description: Room 401
@@ -5280,7 +5280,7 @@ spaces:
       subtype: None
       description: Floor image
       filepath: ../Images/floors/shvip.png
-      contentType: image/jpeg
+      contentType: image/png
     spaces:
     - name: Room 501
       description: Room 501
