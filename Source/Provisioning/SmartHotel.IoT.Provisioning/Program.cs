@@ -641,9 +641,11 @@ namespace SmartHotel.IoT.Provisioning
 				blobContent.Headers.ContentType = MediaTypeHeaderValue.Parse( blobDescription.contentType );
 				multipartContent.Add( blobContent, "contents" );
 
+				Console.WriteLine();
 				HttpRequestMessage request;
 				if ( imageBlobIdProperty == null )
 				{
+					Console.WriteLine($"Creating new blob for Space ({spaceId}) from file: {blobDescription.filepath}");
 					request = new HttpRequestMessage( HttpMethod.Post, "spaces/blobs" )
 					{
 						Content = multipartContent
@@ -651,6 +653,7 @@ namespace SmartHotel.IoT.Provisioning
 				}
 				else
 				{
+					Console.WriteLine($"Updating blob for Space ({spaceId}) from file: {blobDescription.filepath}");
 					request = new HttpRequestMessage( HttpMethod.Patch, $"spaces/blobs/{imageBlobIdProperty.Value}" )
 					{
 						Content = multipartContent
