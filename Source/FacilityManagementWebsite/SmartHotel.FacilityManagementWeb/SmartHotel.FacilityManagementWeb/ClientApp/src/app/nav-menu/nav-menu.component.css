@@ -22,19 +22,34 @@
   margin-left: 15px;
 }
 
-.logout-description {
+.logout-container {
+  display: flex; 
+  flex-direction: column; 
   margin-left: auto;
-  color: red;
-  font-size: 14px;
-  
 }
+
+.logout-text-div {
+  width: 100%; 
+  margin: 0 auto; 
+  text-align: right;
+}
+
+.logout-text {
+  margin-top: 5px;
+  color: #00b0f0;
+}
+
+.login-text {
+  margin-top: 10px;
+  color: #00b0f0;
+}
+
 
 .logout-user-description {
   margin-right: 23px; 
   margin-top: 13px;
-  /* color: #9e9e9e; */
+  color: #9e9e9e;
   font-size: 14px;
-  color: red;
 }
 
 
