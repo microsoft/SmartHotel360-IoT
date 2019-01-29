@@ -1,20 +1,32 @@
-<div class='main-nav'>
-  <a href="/">
-    <img src='/assets/images/logo.svg' />
-    <span>
-      - Facility Management
-    </span>
-  </a>
+<div class='main-nav' style=''>
 
-  <div *ngIf="!authenticated && !useBasicAuth" class="nav-login">
-    <span (click)="login()">Login</span>
+  <div class='flex-container'>
+    <a href="/">
+      <img class='logo-image' src='/assets/images/logo.png' />
+    </a>
+    <a href="/">
+      <div class='flex-container'>
+        <div class='logo-text'>
+          -
+        </div>
+
+        <div class='logo-text'>
+          Facility Management
+        </div>
+      </div>
+    </a>
   </div>
 
-  <div *ngIf="authenticated" class="nav-display">
-    <div class="displayName">
-      {{userName}}
-    </div>
-    <span (click)="logout()">Logout</span>
-  </div>
+</div>
 
+
+<div *ngIf="!authenticated && !useBasicAuth" class="nav-login">
+  <span (click)="login()">Login</span>
+</div>
+
+<div *ngIf="authenticated" class="nav-display">
+  <div class="displayName">
+    {{userName}}
+  </div>
+  <span (click)="logout()">Logout</span>
 </div>
