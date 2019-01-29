@@ -8,6 +8,7 @@ import { ISpaceAlert } from '../services/models/ISpaceAlert';
 import { Subscription } from 'rxjs';
 import { SubscriptionUtilities } from '../helpers/subscription-utilities';
 import { IPushpinLocation, getPushpinLocation } from '../map/IPushPinLocation';
+import { SensorType } from '../services/models/SensorType';
 
 @Component({
   selector: 'app-hotel-brand',
@@ -30,6 +31,9 @@ export class HotelBrandComponent implements OnInit, OnDestroy {
   public hotelBrandId: string;
   public hotels: ISpace[] = null;
   public hotelGeoLocations: IPushpinLocation[] = [];
+  public motionSensorIds: string[] = [];
+  public lightSensorIds: string[] = [];
+  public tempSensorIds: string[] = [];
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -60,6 +64,8 @@ export class HotelBrandComponent implements OnInit, OnDestroy {
     }
     self.hotels = hotels;
 
+    self.filterSensorIds(hotels);
+
     self.subscriptions.push(self.facilityService.getTemperatureAlerts()
       .subscribe(tempAlerts => self.temperatureAlertsUpdated(self.hotels, tempAlerts)));
 
@@ -69,6 +75,29 @@ export class HotelBrandComponent implements OnInit, OnDestroy {
         self.hotelGeoLocations.push(pushpinLocation);
       }
     });
+  }
+
+  private filterSensorIds(hotels: ISpace[]) {
+    for (const hotel of hotels) {
+      const motionSensorIds = this.facilityService.getDescendantSensorIds(hotel.id, SensorType.Motion);
+      motionSensorIds.forEach(id => {
+        if (id) {
+          this.motionSensorIds.push(id);
+        }
+      });
+      const lightSensorIds = this.facilityService.getDescendantSensorIds(hotel.id, SensorType.Light);
+      lightSensorIds.forEach(id => {
+        if (id) {
+          this.lightSensorIds.push(id);
+        }
+      });
+      const tempSensorIds = this.facilityService.getDescendantSensorIds(hotel.id, SensorType.Temperature);
+      tempSensorIds.forEach(id => {
+        if (id) {
+          this.tempSensorIds.push(id);
+        }
+      });
+    }
   }
 
   chooseHotel(hotel: ISpace) {

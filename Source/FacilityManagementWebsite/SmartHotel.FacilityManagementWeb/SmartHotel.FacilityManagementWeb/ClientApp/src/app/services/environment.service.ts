@@ -29,6 +29,9 @@ export class EnvironmentService {
         environment.apiEndpoint = environmentVariables['apiEndpoint'];
         environment.azureMapsKey = environmentVariables['azureMapsKey'];
         environment.useBasicAuth = environmentVariables['useBasicAuth'] === 'true';
+        environment.tsiFqdn = environmentVariables['tsiFqdn'];
+        environment.tsiApi = environmentVariables['tsiApi'];
+        environment.tsiHowManyDays = environmentVariables['tsiHowManyDays'];
       });
   }
 }

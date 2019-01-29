@@ -2,12 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import * as AuthenticationContext from 'adal-angular/lib/adal';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { TenantComponent } from './tenant/tenant.component';
-import { AdalService } from 'adal-angular4';
 import { AppRoutingModule } from './app-routing.module';
 import { FloorComponent } from './floor/floor.component';
 import { HotelComponent } from './hotel/hotel.component';
@@ -25,6 +23,11 @@ import { EnvironmentService } from './services/environment.service';
 import { SecurePipe } from './pipes/secure.pipe';
 import { MapComponent } from './map/map.component';
 import { AuthenticationInterceptor } from './common/authentication-interceptor';
+import { TsiChartComponent } from './tsi-chart/tsi-chart.component';
+
+import { AdalService } from 'adal-angular4';
+import * as AuthenticationContext from 'adal-angular4/node_modules/adal-angular/lib/adal';
+import 'tsiclient';
 
 const initializeApp = (environmentService: EnvironmentService) => {
   return () => {
@@ -47,7 +50,8 @@ const initializeApp = (environmentService: EnvironmentService) => {
     LoadingComponent,
     SlidePanelComponent,
     SecurePipe,
-    MapComponent
+    MapComponent,
+    TsiChartComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

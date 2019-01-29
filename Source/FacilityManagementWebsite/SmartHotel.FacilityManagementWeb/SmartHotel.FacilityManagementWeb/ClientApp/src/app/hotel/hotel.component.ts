@@ -8,6 +8,7 @@ import { SubscriptionUtilities } from '../helpers/subscription-utilities';
 import { Subscription } from 'rxjs';
 import { ISpaceAlert } from '../services/models/ISpaceAlert';
 import { IPushpinLocation, getPushpinLocation } from '../map/IPushPinLocation';
+import { SensorType } from '../services/models/SensorType';
 
 @Component({
   selector: 'app-hotel',
@@ -33,6 +34,10 @@ export class HotelComponent implements OnInit, OnDestroy {
   public hotelIndex: number;
   public floors: ISpace[] = null;
   public hotelGeoLocations: IPushpinLocation[] = [];
+  public motionSensorIds: string[] = [];
+  public lightSensorIds: string[] = [];
+  public tempSensorIds: string[] = [];
+
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -52,12 +57,14 @@ export class HotelComponent implements OnInit, OnDestroy {
 
   loadFloors(self: HotelComponent) {
     if (self.hotelBrandId) {
+
       const hotel = self.facilityService.getSpace(self.hotelBrandId, self.hotelId);
       if (!hotel) {
         self.breadcrumbs.returnToHotelBrand();
         return;
       }
       self.hotelName = hotel.friendlyName;
+
       const pushpinLocation = getPushpinLocation(hotel);
       if (pushpinLocation) {
         self.hotelGeoLocations.push(pushpinLocation);
@@ -70,9 +77,34 @@ export class HotelComponent implements OnInit, OnDestroy {
       return;
     }
     self.floors = floors;
+    self.filterSensorIds(floors);
 
     self.subscriptions.push(self.facilityService.getTemperatureAlerts()
       .subscribe(tempAlerts => self.temperatureAlertsUpdated(self.floors, tempAlerts)));
+  }
+
+  private filterSensorIds(floors: ISpace[]) {
+
+      for (const floor of floors) {
+      const motionSensorIds = this.facilityService.getDescendantSensorIds(floor.id, SensorType.Motion);
+      motionSensorIds.forEach(id => {
+        if (id) {
+          this.motionSensorIds.push(id);
+        }
+      });
+      const lightSensorIds = this.facilityService.getDescendantSensorIds(floor.id, SensorType.Light);
+      lightSensorIds.forEach(id => {
+        if (id) {
+          this.lightSensorIds.push(id);
+        }
+      });
+      const tempSensorIds = this.facilityService.getDescendantSensorIds(floor.id, SensorType.Temperature);
+      tempSensorIds.forEach(id => {
+        if (id) {
+          this.tempSensorIds.push(id);
+        }
+      });
+    }
   }
 
   chooseFloor(floor: ISpace) {

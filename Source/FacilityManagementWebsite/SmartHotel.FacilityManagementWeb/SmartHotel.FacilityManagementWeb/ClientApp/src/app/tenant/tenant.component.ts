@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { ISpaceAlert } from '../services/models/ISpaceAlert';
 import { SubscriptionUtilities } from '../helpers/subscription-utilities';
 import { IPushpinLocation, getPushpinLocation } from '../map/IPushPinLocation';
+import { SensorType } from '../services/models/SensorType';
 
 @Component({
   selector: 'app-tenant',
@@ -25,6 +26,9 @@ export class TenantComponent implements OnInit, OnDestroy {
   public tenantId: string;
   public hotelBrands: ISpace[] = null;
   public hotelGeoLocations: IPushpinLocation[] = [];
+  public motionSensorIds: string[] = [];
+  public lightSensorIds: string[] = [];
+  public tempSensorIds: string[] = [];
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -57,7 +61,26 @@ export class TenantComponent implements OnInit, OnDestroy {
       });
     });
 
-    const sensorIds = self.facilityService.getDescendantSensorIds(self.hotelBrands[0].id);
+    for (const brand of self.hotelBrands) {
+      const motionSensorIds = self.facilityService.getDescendantSensorIds(brand.id, SensorType.Motion);
+      motionSensorIds.forEach(id => {
+        if (id) {
+          self.motionSensorIds.push(id);
+        }
+      });
+      const lightSensorIds = self.facilityService.getDescendantSensorIds(brand.id, SensorType.Light);
+      lightSensorIds.forEach(id => {
+        if (id) {
+          self.lightSensorIds.push(id);
+        }
+      });
+      const tempSensorIds = self.facilityService.getDescendantSensorIds(brand.id, SensorType.Temperature);
+      tempSensorIds.forEach(id => {
+        if (id) {
+          self.tempSensorIds.push(id);
+        }
+      });
+    }
   }
 
   chooseHotelBrand(hotelBrand: ISpace) {
