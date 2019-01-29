@@ -1,4 +1,4 @@
-<div class='main-nav' style=''>
+<div class='main-nav'>
 
   <div class='flex-container'>
     <a href="/">
@@ -16,15 +16,25 @@
       </div>
     </a>
 
-    <div class='logout-description'>
-      <div class='logout-user'>
-        {{userName}}
+    <div style='display: flex; flex-direction: column; margin-left: auto'>
+      <div class='logout-user-description'>
+        <div class=''>
+          <!-- {{userName}} -->
+          Head of Operations SmartHotel
+        </div>
+
+        <div *ngIf="authenticated" (click)='logout()' class='' style='width: 100%; margin: 0 auto; text-align: right;'>
+          <div style='margin-top: 5px'>Logout</div>
+        </div>
+
+        <div *ngIf="!authenticated && !useBasicAuth" (click)='login()' class=''>
+            Login
+          </div>
       </div>
     </div>
 
+
   </div>
-
-
 
   <hr width='100%' class='horizonal-line'>
 
