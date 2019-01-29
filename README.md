@@ -66,10 +66,24 @@ To obtain the service principal Id, open a **Powershell** window and follow thes
 ### Set permissions and security for the Application
 
 Click settings --> Required Permissions
-* Click `Add` on the top left
-* Under select an API, type `Azure`, then choose `Azure Digital Twins (Azure Smart Spaces Service)`
-* Check the Read/Write Access delegated permissions box
-* Save
+* Digital Twins API
+  * Click `Add` on the top left
+  * Under select an API, type `Azure`, then choose `Azure Digital Twins (Azure Smart Spaces Service)`
+    * NOTE: If this option does NOT show, you may need to register the Digital Twins resource provider using the following steps in a **Powershell** window:
+       1. `Login-AzureRmAccount -SubscriptionId {subcription id}`
+       2. `Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.IoTSpaces'`
+       3. Wait until the provider registration is complete, can be checked via: `Get-AzureRmResourceProvider -ProviderNamespace 'Microsoft.IoTSpaces'`
+  * Check the Read/Write Access delegated permissions box
+  * Save
+* Time Series Insights API
+  * Click `Add` on the top left
+  * Under select an API, type `Azure`, then choose `Azure Time Series Insights`
+    * NOTE: If this option does NOT show, you may need to register the Time Series Insights resource provider using the following steps in a **Powershell** window:
+       1. `Login-AzureRmAccount -SubscriptionId {subcription id}`
+       2. `Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.TimeSeriesInsights'`
+       3. Wait until the provider registration is complete, can be checked via: `Get-AzureRmResourceProvider -ProviderNamespace 'Microsoft.TimeSeriesInsights'`
+  * Check the Access Azure Time Series Insights service delegated permissions box
+  * Save
 * Click `Grant Permissions` (right next to the Add button).
 
 ## Create a service principal for AKS Cluster
@@ -99,15 +113,16 @@ You need to create users having access to your AAD. These can either be users cr
    3. **Hotel 1 Manager**: This user is able to view all the Floors under the first Hotel.
    4. **Hotel 1 Employee**: This user is able to view Non-VIP Floors under the first Hotel.
 * The following users are optional. They help provide more visibility into the Role Based Access Control (RBAC) functionality of Digital Twins.
-   1. **Hotel 2 Manager**
-   2. **Hotel 3 Manager**
-   3. **Hotel 4 Manager**
-   4. **Hotel 5 Manager**
-   5. **Hotel 6 Manager**
-   6. **Hotel 7 Manager**
-   7. **Hotel 8 Manager**
-   8. **Hotel 9 Manager**
-   9. **Hotel 10 Manager**
+   1. **Hotel Brand 2 Manager**
+   2. **Hotel 2 Manager**
+   3. **Hotel 3 Manager**
+   4. **Hotel 4 Manager**
+   5. **Hotel 5 Manager**
+   6. **Hotel 6 Manager**
+   7. **Hotel 7 Manager**
+   8. **Hotel 8 Manager**
+   9. **Hotel 9 Manager**
+   10. **Hotel 10 Manager**
 
 ## Provision resources in Azure
 In `/Source/ARM/` folder of this repository is the deployment script to create and stand up all of the resources to run this demo in Azure. To execute the deployment script, run the following in a **Powershell** window:
