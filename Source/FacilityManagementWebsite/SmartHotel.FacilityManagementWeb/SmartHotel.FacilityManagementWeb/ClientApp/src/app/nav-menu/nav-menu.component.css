@@ -39,11 +39,21 @@
   color: #00b0f0;
 }
 
+.logout-text span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .login-text {
   margin-top: 10px;
   color: #00b0f0;
+  cursor: pointer;
 }
 
+.login-text span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 
 .logout-user-description {
   margin-right: 23px; 
@@ -61,28 +71,18 @@
 .horizonal-line {
   display: block;
     height: 1px;
-    border: 0;
     border-top: 1px solid #9e9e9e;
-    margin: 0;
     padding: 0; 
     margin-top: 11px;
+    margin-left: 24px;
+    margin-right: 24px;
 }
-
-/* .main-nav div {
-  margin-top: 60px;
-} */
 
 .main-nav a:link, a:visited, a:hover, a:active {
   font-family: "Poppins";
   font-weight: 200;
   text-decoration: none;
 }
-
-/* .main-nav span {
-  margin-left: 16px;
-  vertical-align: middle;
-
-} */
 
 .nav-login {
   margin-top: 12px;
