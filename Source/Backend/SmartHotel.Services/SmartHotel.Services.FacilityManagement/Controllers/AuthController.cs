@@ -34,5 +34,22 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
 				return StatusCode( 500, e.Message );
 			}
 		}
+
+		[HttpGet("[action]")]
+		public async Task<IActionResult> GetTsiToken()
+		{
+			try
+			{
+				var authContext = new AuthenticationContext( $"{_basicAuthOptions.Authority}{_basicAuthOptions.TenantId}" );
+				AuthenticationResult result = await authContext.AcquireTokenAsync( "https://api.timeseries.azure.com/",
+					new ClientCredential( _basicAuthOptions.ApplicationId, _basicAuthOptions.ApplicationSecret ) );
+
+				return Ok( result.AccessToken );
+			}
+			catch ( Exception e )
+			{
+				return StatusCode( 500, e.Message );
+			}
+		}
 	}
 }
