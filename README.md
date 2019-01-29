@@ -328,9 +328,6 @@ The Facility Management website and api both support being downgraded from using
 
 ## Downgrading Facility Management Api to Basic Authentication Mode
 The following Application Settings must be supplied. Once set, the Api will downgrade to basic auth.
-* `BasicAuth__ApplicationId`: `clientId` from the **userSettings.json** file from the [User Settings](#User-Settings) section
-* `BasicAuth__ApplicationSecret`: app key obtained from [creating an AAD app](#Set-up-a-Service-Principal-and-register-an-Azure-Active-Directory-application)
-* `BasicAuth__TenantId`: `tenantId` from the **userSettings.json** file from the [User Settings](#User-Settings) section
 * `BasicAuth__Username`: whatever username you desire. This will be the username that **MUST** be supplied when logging into the website.
 * `BasicAuth__Password`: whatever password you desire. This will be the password that **MUST** be supplied when logging into the website.
 

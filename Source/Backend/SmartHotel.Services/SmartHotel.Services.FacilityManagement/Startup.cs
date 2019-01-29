@@ -49,8 +49,8 @@ namespace SmartHotel.Services.FacilityManagement
 				services.AddAuthentication( JwtBearerDefaults.AuthenticationScheme )
 					.AddJwtBearer( options =>
 					 {
-						 options.Audience = azureAdOptions.Audience;
-						 options.Authority = azureAdOptions.Authority;
+						 options.Audience = azureAdOptions.ApplicationId;
+						 options.Authority = azureAdOptions.PassThroughAuthority;
 						 options.TokenValidationParameters = new TokenValidationParameters
 						 {
 							 ValidateIssuer = false

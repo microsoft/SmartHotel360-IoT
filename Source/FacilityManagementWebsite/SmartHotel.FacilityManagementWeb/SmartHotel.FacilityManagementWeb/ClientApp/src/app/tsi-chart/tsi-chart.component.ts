@@ -15,7 +15,6 @@ export class TsiChartComponent implements OnInit, OnChanges {
   @Input() public lightSensorIds: string[];
   @Input() public tempSensorIds: string[];
 
-  private tokenRetrieved = false;
   private token: string;
   private client: any;
 
@@ -81,24 +80,14 @@ export class TsiChartComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.facilityService.executeWhenInitialized(this, this.initializeToken);
+    this.facilityService.executeWhenInitialized(this, this.initialize);
   }
 
-  private initializeToken(self: TsiChartComponent) {
+  private initialize(self: TsiChartComponent) {
 
     self.client = new TsiClient();
-    self.token = self.adalService.getCachedToken(environment.tsiApi);
-    if (!self.token) {
-      self.adalService.acquireToken(environment.tsiApi)
-        .subscribe(result => {
-          self.token = result;
-          self.tokenRetrieved = true;
-          self.tryUpdateChart();
-        });
-    } else {
-      self.tokenRetrieved = true;
-      self.tryUpdateChart();
-    }
+    self.token = self.facilityService.getTimeSeriesInsightsToken();
+    self.tryUpdateChart();
   }
 
   ngOnChanges() {
@@ -106,7 +95,7 @@ export class TsiChartComponent implements OnInit, OnChanges {
   }
 
   private tryUpdateChart() {
-    if (this.tokenRetrieved && this.motionSensorIds && this.lightSensorIds && this.tempSensorIds
+    if (this.motionSensorIds && this.lightSensorIds && this.tempSensorIds
       && this.motionSensorIds.length > 0
       && this.lightSensorIds.length > 0
       && this.tempSensorIds.length > 0) {

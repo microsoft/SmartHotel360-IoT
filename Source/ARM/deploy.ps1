@@ -378,7 +378,7 @@ $functionSiteName = $outputs.functionSiteName.value
 
 Write-Host
 Write-Host "Setting Facility Manangement Api App Settings"
-$facilityManagementApiSettings = "--settings ManagementApiUrl=`"$dtManagementEndpoint`" MongoDBConnectionString=`"$cosmosDbConnectionString`" AzureAd__Audience=`"$clientId`" IoTHubConnectionString=`"$iotHubServiceConnectionString`""
+$facilityManagementApiSettings = "--settings ManagementApiUrl=`"$dtManagementEndpoint`" MongoDBConnectionString=`"$cosmosDbConnectionString`" AzureAd__ApplicationId=`"$clientId`" AzureAd__ApplicationSecret=`"$clientSecret`" AzureAd__TenantId=`"$tenantId`"  IoTHubConnectionString=`"$iotHubServiceConnectionString`""
 $facilityManagementApiSettingsResults = az webapp config appsettings set -n $facilityManagementApiName -g $resourceGroupName $powershellEscape $facilityManagementApiSettings
 Write-Host "Setting Facility Manangement Api to be Always On"
 $facilityManagementApiConfigResults = az webapp config set -n $facilityManagementApiName -g $resourceGroupName --always-on true

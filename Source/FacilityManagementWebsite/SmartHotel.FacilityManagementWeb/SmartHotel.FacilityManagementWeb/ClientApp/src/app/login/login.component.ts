@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
       const encodedUsernamePassword = window.btoa(`${username}:${password}`);
       const basicAuthData = `Basic ${encodedUsernamePassword}`;
       this.busyService.busy();
-      this.facilityService.simpleAuthLogin(basicAuthData)
+      this.facilityService.basicAuthLogin(basicAuthData)
         .subscribe(() => {
           this.adalSvc.userInfo.authenticated = true;
           sessionStorage.setItem(AppComponent.BasicAuthDataSessionStorageKey, basicAuthData);
