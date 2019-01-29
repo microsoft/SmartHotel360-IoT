@@ -15,18 +15,29 @@
         </div>
       </div>
     </a>
+
+    <div class='logout-description'>
+      <div class='logout-user'>
+        {{userName}}
+      </div>
+    </div>
+
   </div>
 
-</div>
 
 
-<div *ngIf="!authenticated && !useBasicAuth" class="nav-login">
-  <span (click)="login()">Login</span>
-</div>
+  <hr width='100%' class='horizonal-line'>
 
-<div *ngIf="authenticated" class="nav-display">
-  <div class="displayName">
-    {{userName}}
+
+  <!-- <div *ngIf="!authenticated && !useBasicAuth" class="nav-login">
+    <span (click)="login()">Login</span>
   </div>
-  <span (click)="logout()">Logout</span>
+
+  <div *ngIf="authenticated" class="nav-display">
+    <div class="displayName">
+      Head of Operations SmartHotel
+    </div>
+    <span (click)="logout()" style='color: red;'>Logout</span>
+  </div> -->
+
 </div>
