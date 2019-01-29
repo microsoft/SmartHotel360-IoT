@@ -18,16 +18,20 @@
 
     <div class='logout-container'>
       <div class='logout-user-description'>
-        <div class=''>
+        <div>
           {{userName}}
         </div>
 
         <div *ngIf="authenticated" (click)='logout()' class='logout-text-div'>
-          <div class='logout-text'>Logout</div>
+          <div class='logout-text'>
+            <span>Logout</span>
+          </div>
         </div>
 
         <div *ngIf="!authenticated && !useBasicAuth" (click)='login()' class='logout-text-div'>
-            <div class='login-text'>Login</div>
+            <div class='login-text'>
+                <span>Login</span>
+            </div>
           </div>
       </div>
     </div>
@@ -35,18 +39,6 @@
 
   </div>
 
-  <hr width='100%' class='horizonal-line'>
-
-
-  <!-- <div *ngIf="!authenticated && !useBasicAuth" class="nav-login">
-    <span (click)="login()">Login</span>
-  </div>
-
-  <div *ngIf="authenticated" class="nav-display">
-    <div class="displayName">
-      Head of Operations SmartHotel
-    </div>
-    <span (click)="logout()" style='color: red;'>Logout</span>
-  </div> -->
+  <hr width='100%' class='horizonal-line' />  
 
 </div>
