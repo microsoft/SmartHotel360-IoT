@@ -44,7 +44,7 @@ export class TsiChartComponent implements OnInit, OnChanges {
         { property: 'Occupied', type: 'Double' }, // measure column
         ['avg'], // measure type,
         { from: startDate, to: endDate, bucketSize: '30m' },  // time range
-        null, // split by value, for you probably just null
+        null, // split by value
         '#60B9AE', // color
         'Occupied')  // display name
     );
@@ -55,7 +55,7 @@ export class TsiChartComponent implements OnInit, OnChanges {
         { property: 'Light', type: 'Double' }, // measure column
         ['avg'], // measure type
         { from: startDate, to: endDate, bucketSize: '30m' },  // time range
-        null, // split by value, for you probably just null
+        null, // split by value
         'Green', // color
         'Light')  // display name
     );
@@ -66,7 +66,7 @@ export class TsiChartComponent implements OnInit, OnChanges {
         { property: 'Temperature', type: 'Double' }, // measure column
         ['avg'], // measure type
         { from: startDate, to: endDate, bucketSize: '30m' },  // time range
-        null, // split by value, for you probably just null
+        null, // split by value
         'Red', // color
         'Temperature')  // display name
     );

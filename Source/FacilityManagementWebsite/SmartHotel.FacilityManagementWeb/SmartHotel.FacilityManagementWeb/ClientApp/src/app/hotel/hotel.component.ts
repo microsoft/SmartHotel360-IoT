@@ -8,6 +8,7 @@ import { SubscriptionUtilities } from '../helpers/subscription-utilities';
 import { Subscription } from 'rxjs';
 import { ISpaceAlert } from '../services/models/ISpaceAlert';
 import { IPushpinLocation, getPushpinLocation } from '../map/IPushPinLocation';
+import { SensorType } from '../services/models/SensorType';
 
 @Component({
   selector: 'app-hotel',
@@ -85,19 +86,19 @@ export class HotelComponent implements OnInit, OnDestroy {
   private filterSensorIds(floors: ISpace[]) {
 
       for (const floor of floors) {
-      const motionSensorIds = this.facilityService.getDescendantSensorIds(floor.id, 'Motion');
+      const motionSensorIds = this.facilityService.getDescendantSensorIds(floor.id, SensorType.Motion);
       motionSensorIds.forEach(id => {
         if (id) {
           this.motionSensorIds.push(id);
         }
       });
-      const lightSensorIds = this.facilityService.getDescendantSensorIds(floor.id, 'Light');
+      const lightSensorIds = this.facilityService.getDescendantSensorIds(floor.id, SensorType.Light);
       lightSensorIds.forEach(id => {
         if (id) {
           this.lightSensorIds.push(id);
         }
       });
-      const tempSensorIds = this.facilityService.getDescendantSensorIds(floor.id, 'Temperature');
+      const tempSensorIds = this.facilityService.getDescendantSensorIds(floor.id, SensorType.Temperature);
       tempSensorIds.forEach(id => {
         if (id) {
           this.tempSensorIds.push(id);

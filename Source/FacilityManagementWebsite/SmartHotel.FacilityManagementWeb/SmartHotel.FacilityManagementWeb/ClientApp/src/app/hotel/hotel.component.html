@@ -13,11 +13,8 @@
   </div>
 </div>
 <div class="floors-dashboard" *ngIf="floors !== null">
-  <div>
-    <app-tsi-chart [tempSensorIds]="tempSensorIds" [lightSensorIds]="lightSensorIds" [motionSensorIds]="motionSensorIds"></app-tsi-chart>
-  </div>
 
-  <div class="floors-dash-1"><img src="/assets/images/floor-dash-1.jpg" /></div>
+  <div class="floors-dash-1"><app-tsi-chart [tempSensorIds]="tempSensorIds" [lightSensorIds]="lightSensorIds" [motionSensorIds]="motionSensorIds"></app-tsi-chart></div>
   <div class="floors-dash-1">
     <app-map [pushpinLocations]="hotelGeoLocations"></app-map>
   </div>
