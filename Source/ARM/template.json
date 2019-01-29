@@ -161,10 +161,6 @@
       "defaultValue": "S1",
       "type": "string"
     },
-    "tsi_kind": {
-      "defaultValue": "Standard",
-      "type": "string"
-    },
     "tsi_location": {
       "defaultValue": "westus2",
       "type": "string"
@@ -1069,7 +1065,6 @@
         "name": "[parameters('tsi_sku_name')]",
         "capacity": 1
       },
-      "kind": "[parameters('tsi_kind')]",
       "name": "[variables('TimeSeriesInsightsName')]",
       "apiVersion": "2017-11-15",
       "location": "[parameters('tsi_location')]",
@@ -1106,11 +1101,12 @@
       "location": "[parameters('tsi_eventSource_location')]",
       "scale": null,
       "properties": {
-        "eventSourceResourceId": "[concat(resourceId('Microsoft.EventHub/namespaces', variables('EventHubFullName')]",
+        "eventSourceResourceId": "[concat(resourceId('Microsoft.EventHub/namespaces', variables('EventHubNamespaceName')), '/EventHub/', variables('EventHubName'))]",
         "eventHubName": "[variables('EventHubName')]",
         "serviceBusNamespace": "[variables('EventHubNamespaceName')]",
         "consumerGroupName": "[variables('EventHubTsiConsumerGroupName')]",
         "keyName": "owner",
+        "sharedAccessKey": "[listKeys(resourceId('Microsoft.EventHub/namespaces/eventhubs/authorizationRules',variables('EventHubNamespaceName'),variables('EventHubName'),'owner'),'2015-08-01').primaryKey]",
         "timestampPropertyName": "EventTimestamp"
       },
       "dependsOn": [

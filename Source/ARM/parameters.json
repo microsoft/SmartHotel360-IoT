@@ -80,9 +80,6 @@
         "tsi_sku_name": {
           "value": "S1"
         },
-        "tsi_kind": {
-          "value": "Standard"
-        },
         "tsi_location": {
           "value": "westus2"
         },

@@ -174,16 +174,14 @@ $UTCNow = (Get-Date).ToUniversalTime()
  
 $UTCTimeTick = $UTCNow.Ticks.tostring()
 
-$TemplateParameters = "_currentDateTimeInTicks=$UTCTimeTick _clientId=$clientId"
-
 # Start the Azure deployment
 $StartTimeLocal = Get-Date
 Write-Host "Starting deployment at $StartTimeLocal (local time)...";
 $deploymentName = "SmartHotel360-IoT-Demo"
 if($parametersFilePath -and (Test-Path $parametersFilePath)) {
-    $deploymentResultString = az group deployment create -n $deploymentName -g $resourceGroupName --template-file $templateFilePath --parameters $parametersFilePath --parameters $TemplateParameters
+    $deploymentResultString = az group deployment create -n $deploymentName -g $resourceGroupName --template-file $templateFilePath --parameters $parametersFilePath --parameters _currentDateTimeInTicks=$UTCTimeTick _clientId=$clientId
 } else {
-    $deploymentResultString = az group deployment create -n $deploymentName -g $resourceGroupName --template-file $templateFilePath --parameters $TemplateParameters
+    $deploymentResultString = az group deployment create -n $deploymentName -g $resourceGroupName --template-file $templateFilePath --parameters _currentDateTimeInTicks=$UTCTimeTick _clientId=$clientId
 }
 
 $deploymentResult = $deploymentResultString | ConvertFrom-Json
