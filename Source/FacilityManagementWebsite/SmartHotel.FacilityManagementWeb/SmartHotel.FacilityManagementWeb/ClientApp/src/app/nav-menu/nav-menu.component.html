@@ -16,19 +16,18 @@
       </div>
     </a>
 
-    <div style='display: flex; flex-direction: column; margin-left: auto'>
+    <div class='logout-container'>
       <div class='logout-user-description'>
         <div class=''>
-          <!-- {{userName}} -->
-          Head of Operations SmartHotel
+          {{userName}}
         </div>
 
-        <div *ngIf="authenticated" (click)='logout()' class='' style='width: 100%; margin: 0 auto; text-align: right;'>
-          <div style='margin-top: 5px'>Logout</div>
+        <div *ngIf="authenticated" (click)='logout()' class='logout-text-div'>
+          <div class='logout-text'>Logout</div>
         </div>
 
-        <div *ngIf="!authenticated && !useBasicAuth" (click)='login()' class=''>
-            Login
+        <div *ngIf="!authenticated && !useBasicAuth" (click)='login()' class='logout-text-div'>
+            <div class='login-text'>Login</div>
           </div>
       </div>
     </div>
