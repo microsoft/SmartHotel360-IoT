@@ -34,6 +34,8 @@ namespace SmartHotel.Devices.RoomDevice
 		private static readonly Random Random = new Random();
 		private static int _randomizationDelay = 60000;
 
+		private static CancellationTokenSource _cts;
+
 		static async Task Main( string[] args )
 		{
 			SensorInfosByDataType[TelemetryMessage.TemperatureDataType] = new SensorInfo( 74.0, double.MinValue );
@@ -47,7 +49,7 @@ namespace SmartHotel.Devices.RoomDevice
 
 			Configuration = builder.Build();
 
-			CancellationTokenSource cts = new CancellationTokenSource();
+			_cts = new CancellationTokenSource();
 
 			try
 			{
@@ -56,7 +58,7 @@ namespace SmartHotel.Devices.RoomDevice
 					_motionTimer?.Dispose();
 
 					e.Cancel = true;
-					cts.Cancel();
+					_cts.Cancel();
 					Console.WriteLine( "Exiting..." );
 				};
 
@@ -73,7 +75,7 @@ namespace SmartHotel.Devices.RoomDevice
 
 				TimeSpan startupDelay = TimeSpan.FromSeconds( double.Parse( Configuration[StartupDelayInSecondsSetting] ) );
 				Console.WriteLine( $"Waiting {startupDelay.TotalSeconds} seconds to startup..." );
-				await Task.Delay( startupDelay, cts.Token );
+				await Task.Delay( startupDelay, _cts.Token );
 
 				_motionTimer = new Timer( RandomizeMotionValue, null, 5000, _randomizationDelay );
 
@@ -86,11 +88,7 @@ namespace SmartHotel.Devices.RoomDevice
 					Environment.Exit( 2 );
 				}
 
-				HubDeviceClient =
-					DeviceClient.CreateFromConnectionString( Configuration[IoTHubDeviceConnectionStringSetting], TransportType.Mqtt );
-				IoTHubDeviceId = IotHubConnectionStringBuilder.Create( Configuration[IoTHubDeviceConnectionStringSetting] ).DeviceId;
-				await HubDeviceClient.SetMethodHandlerAsync( "SetDesiredTemperature", SetDesiredTemperature, null );
-				await HubDeviceClient.SetMethodHandlerAsync( "SetDesiredAmbientLight", SetAmbientLight, null );
+				await CreateHubDeviceClientAsync();
 
 				Console.WriteLine( "Connection to Digital Twins: " + DeviceInfo.ConnectionString );
 				TopologyDeviceClient = DeviceClient.CreateFromConnectionString( DeviceInfo.ConnectionString );
@@ -102,7 +100,7 @@ namespace SmartHotel.Devices.RoomDevice
 				}
 				else
 				{
-					await Task.WhenAll( SimulateData( cts.Token ) );
+					await Task.WhenAll( SimulateData( _cts.Token ) );
 				}
 			}
 			catch ( Exception ex )
@@ -248,6 +246,51 @@ namespace SmartHotel.Devices.RoomDevice
 				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( MessageIntervalInMilliSecondsSetting ).Value )
 				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( IoTHubDeviceConnectionStringSetting ).Value )
 				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( StartupDelayInSecondsSetting ).Value );
+		}
+
+		private static async Task CreateHubDeviceClientAsync()
+		{
+			var newHubDeviceClient =
+				DeviceClient.CreateFromConnectionString( Configuration[IoTHubDeviceConnectionStringSetting], TransportType.Mqtt );
+			newHubDeviceClient.SetConnectionStatusChangesHandler( HubDeviceClientConnectionStatusChanged );
+			await newHubDeviceClient.OpenAsync();
+			await newHubDeviceClient.SetMethodHandlerAsync( "SetDesiredTemperature", SetDesiredTemperature, null );
+			await newHubDeviceClient.SetMethodHandlerAsync( "SetDesiredAmbientLight", SetAmbientLight, null );
+
+			HubDeviceClient = newHubDeviceClient;
+			IoTHubDeviceId = IotHubConnectionStringBuilder.Create( Configuration[IoTHubDeviceConnectionStringSetting] ).DeviceId;
+		}
+
+		private static async void HubDeviceClientConnectionStatusChanged( ConnectionStatus status, ConnectionStatusChangeReason reason )
+		{
+			Console.WriteLine( $"{nameof( HubDeviceClient )} connection status changed to: {status}, because of {reason}" );
+			if ( status == ConnectionStatus.Disconnected || status == ConnectionStatus.Disabled )
+			{
+				HubDeviceClient.Dispose();
+
+				await Task.Delay( 5000 );
+				try
+				{
+					Console.WriteLine($"Attempting first reconnect of {nameof(HubDeviceClient)}...");
+					await CreateHubDeviceClientAsync();
+				}
+				catch ( Exception e )
+				{
+					Console.WriteLine( $"Error occurred attempting first reconnect of {nameof( HubDeviceClient )}: {e}" );
+					await Task.Delay( 5000 );
+					try
+					{
+						Console.WriteLine( $"Attempting final reconnect of {nameof( HubDeviceClient )}..." );
+						await CreateHubDeviceClientAsync();
+					}
+					catch ( Exception ex )
+					{
+						Console.WriteLine( $"Error occurred attempting final reconnect of {nameof( HubDeviceClient )}. Exiting application: {ex}" );
+						_cts.Cancel();
+						Environment.Exit( 999 );
+					}
+				}
+			}
 		}
 	}
 }
