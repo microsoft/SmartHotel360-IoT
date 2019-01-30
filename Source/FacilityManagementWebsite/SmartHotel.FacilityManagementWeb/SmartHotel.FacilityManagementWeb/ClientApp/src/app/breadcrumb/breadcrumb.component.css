@@ -21,11 +21,6 @@
   margin-right: 10px;
 }
 
-.header-spacer-hotel {
-  margin-left: 12px;
-  margin-right: 15px;
-}
-
 .header-link-active:hover {
   cursor: pointer;
   color: #9e9e9e;
