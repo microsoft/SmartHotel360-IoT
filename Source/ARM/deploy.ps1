@@ -393,6 +393,7 @@ $functionSettingsResults = az webapp config appsettings set -n $functionSiteName
 $facilityManagementWebsiteName = $outputs.websiteName.value
 $facilityManagementApiEndpoint = "$facilityManagementApiUri/api"
 $azureMapsKey = $outputs.mapsPrimaryKey.value
+$tsiFQDN = $outputs.tsiFQDN.value
 
 $adalEndpointsJson = @(
     @{
@@ -405,7 +406,7 @@ $adalEndpointsString = ConvertTo-Json -InputObject $adalEndpointsJson -Compress
 
 Write-Host
 Write-Host "Setting Facility Management Website App Settings"
-$websiteSettings = "--settings adalConfig__tenant=`"$tenantId`" adalConfig__clientId=`"$clientId`" adalConfig__endpointsString=`"$adalEndpointsString`" apiEndpoint=`"$facilityManagementApiEndpoint`" azureMapsKey=`"$azureMapsKey`""
+$websiteSettings = "--settings adalConfig__tenant=`"$tenantId`" adalConfig__clientId=`"$clientId`" adalConfig__endpointsString=`"$adalEndpointsString`" apiEndpoint=`"$facilityManagementApiEndpoint`" azureMapsKey=`"$azureMapsKey`" tsiFqdn=`"$tsiFQDN`""
 $websiteSettingsResults = az webapp config appsettings set -n $facilityManagementWebsiteName -g $resourceGroupName $powershellEscape $websiteSettings
 Write-Host "Setting Facility Manangement Website to be Https Only"
 $websiteConfigResults = az webapp config set -n $facilityManagementWebsiteName -g $resourceGroupName --always-on true
@@ -431,6 +432,7 @@ foreach($filename in $environmentFileNames)
     $fileContent = $fileContent.Replace("{apiUri}","$facilityManagementApiUri")
     $fileContent = $fileContent.Replace("{apiEndpoint}","$facilityManagementApiEndpoint")
     $fileContent = $fileContent.Replace("{azureMapsKey}","$azureMapsKey")
+    $fileContent = $fileContent.Replace("{tsiFqdn}","$tsiFQDN")
     
     $fileContent | Set-Content $fullFilePath -Force
 
@@ -627,6 +629,7 @@ $savedSettings = [PSCustomObject]@{
     iotHubConnectionString = $iotHubServiceConnectionString
     cosmosDbConnectionString = $cosmosDbConnectionString
     azureMapsKey = $azureMapsKey
+    tsiFQGN = $tsiFQDN
     roomDevicesApiEndpoint = "http://$roomDevicesApiUri/api"
     demoRoomSpaceId = $demoRoomSpaceId
     demoRoomKubernetesDeployment = $demoRoomKubernetesDeploymentName

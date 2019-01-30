@@ -26,7 +26,7 @@ export class TsiChartComponent implements OnInit, OnChanges {
 
     const dateTimeNowUTC = new Date();
     const thirtyDaysBack = new Date();
-    thirtyDaysBack.setDate(dateTimeNowUTC.getDate() - Number(environment.tsiHowManyDays));
+    thirtyDaysBack.setDate(dateTimeNowUTC.getDate() - environment.tsiHowManyDays);
 
     const startDate = thirtyDaysBack.toISOString();
     const endDate = dateTimeNowUTC.toISOString();

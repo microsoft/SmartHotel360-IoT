@@ -74,7 +74,7 @@ export class FacilityService {
       }));
   }
 
-  private basicAuthRetrieveDtToken(basicAuthHeader: string): Observable<string> {
+  private basicAuthRetrieveDtToken(basicAuthHeader: string) {
     return this.http.get<string>(this.getEndpoint('auth/getdttoken'), {
       headers: { Authorization: basicAuthHeader },
       responseType: 'text' as 'json'
@@ -84,7 +84,7 @@ export class FacilityService {
       }));
   }
 
-  private basicAuthRetreiveTsiToken(basicAuthHeader: string): Observable<string> {
+  private basicAuthRetreiveTsiToken(basicAuthHeader: string) {
     return this.http.get<string>(this.getEndpoint('auth/gettsitoken'), {
       headers: { Authorization: basicAuthHeader },
       responseType: 'text' as 'json'
