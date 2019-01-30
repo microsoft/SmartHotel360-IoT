@@ -1,1 +1,24 @@
 
+.header-link {
+  font-size: 18px;
+  color: #bc4c1b;
+}
+
+.header-link-active {
+  color: #253748;
+}
+
+.header-spacer {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.header-link-active:hover {
+  cursor: pointer;
+  color: #bc4c1b;
+  text-decoration: underline;
+}
+
+.header {
+  font-size: 22px;
+}
