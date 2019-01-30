@@ -84,38 +84,3 @@
   text-decoration: none;
 }
 
-.nav-login {
-  margin-top: 12px;
-  margin-right: 16px;
-}
-
-.nav-login span {
-  font-size: 12px;
-  color: white;
-  font-family: "Poppins";
-}
-
-.nav-login span:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.nav-display {
-  color: white;
-  font-family: "Poppins";
-  margin-top: 7px;
-  margin-right: 16px;
-  text-align: right;
-  font-size: 12px;
-}
-
-  .nav-display span {
-    color: #bc4c1b;
-    font-size: 10px !important;
-  }
-
-.nav-display span:hover {
-  cursor: pointer;
-  color: white;
-  text-decoration: underline;
-}
