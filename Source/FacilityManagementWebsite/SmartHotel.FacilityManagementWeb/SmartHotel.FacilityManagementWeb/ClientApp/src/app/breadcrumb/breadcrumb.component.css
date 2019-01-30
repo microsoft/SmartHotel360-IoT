@@ -1,24 +1,35 @@
+.header {
+  font-size: 22px;
+  font-family: "Poppins";
+  font-weight: 200;
+  text-decoration: none;
+  margin-left: 44px;
+  margin-top: 14px;
+  color: #9e9e9e;
+}
 
 .header-link {
-  font-size: 18px;
-  color: #bc4c1b;
+  color: #00b0f0;
 }
 
 .header-link-active {
-  color: #253748;
+  color: #9e9e9e;
 }
 
 .header-spacer {
-  margin-left: 8px;
-  margin-right: 8px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.header-spacer-hotel {
+  margin-left: 12px;
+  margin-right: 15px;
 }
 
 .header-link-active:hover {
   cursor: pointer;
-  color: #bc4c1b;
+  color: #9e9e9e;
   text-decoration: underline;
 }
 
-.header {
-  font-size: 22px;
-}
+

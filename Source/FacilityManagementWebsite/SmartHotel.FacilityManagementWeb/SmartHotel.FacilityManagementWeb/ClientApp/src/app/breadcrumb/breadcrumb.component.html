@@ -6,7 +6,7 @@
         <span class="header-spacer">|</span>
         <span class="header-link" [class.header-link-active]="hotelName" (click)="returnToHotelBrand()">{{hotelBrandName}}</span>
         <span *ngIf="hotelName">
-          <span class="header-spacer">|</span>
+          <span class="header-spacer-hotel">|</span>
           <span class="header-link" [class.header-link-active]="floorName" (click)="returnToHotel()">{{hotelName}}</span>
           <span *ngIf="floorName">
             <span class="header-spacer">|</span>
@@ -19,7 +19,7 @@
       <span *ngIf="hotelBrandId; else hotelNotSupported">
         <span class="header-link" [class.header-link-active]="hotelName" (click)="returnToHotelBrand()">hotels</span>
         <span *ngIf="hotelName">
-          <span class="header-spacer">|</span>
+          <span class="header-spacer-hotel">|</span>
           <span class="header-link" [class.header-link-active]="floorName" (click)="returnToHotel()">{{hotelName}}</span>
           <span *ngIf="floorName">
             <span class="header-spacer">|</span>
