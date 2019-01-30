@@ -10,12 +10,6 @@
         "description": "the current datetime in ticks. this is used to generate a unique string for every deployment"
       }
     },
-    "_clientId": {
-      "type": "string",
-      "metadata": {
-        "description": "The Id of the AAD Application"
-      }
-    },
     "acr_location": {
       "defaultValue": "westcentralus",
       "type": "string"
@@ -1074,23 +1068,6 @@
         "storageLimitExceededBehavior": "PurgeOldData"
       },
       "dependsOn": []
-    },
-    {
-      "comments": "Time Series Insights Account's access policy for the AAD Application.",
-      "type": "Microsoft.TimeSeriesInsights/environments/accesspolicies",
-      "name": "[concat(variables('TimeSeriesInsightsName'), '/ownerAccessPolicy')]",
-      "apiVersion": "2017-11-15",
-      "scale": null,
-      "properties": {
-        "principalObjectId": "[parameters('_clientId')]",
-        "roles": [
-          "Reader",
-          "Contributor"
-        ]
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.TimeSeriesInsights/environments', variables('TimeSeriesInsightsName'))]"
-      ]
     },
     {
       "comments": "Time Series Insights Account's Event Source.",

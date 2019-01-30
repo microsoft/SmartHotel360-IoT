@@ -189,6 +189,17 @@ When the deployment script is complete, it will output a `userSettings.json` fil
 * `Source/FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb/ClientApp/src/environments/environment.ts`
 * `Source/FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb/ClientApp/src/environments/environment.prod.ts`
 
+## Add Time Series Insights Data Access Policy
+You will need to give the Azure AD Application you created [earlier](#Set-up-a-Service-Principal-and-register-an-Azure-Active-Directory-application) access to the Time Series Insights environment for the charts to work.
+1. Upon completion of the deployment, navigate to the Time Series Insights environment that was created in the portal. It's name should be something like: `sh360iot-Tsi-*`.
+2. Select `Data Access Policies` from the left side menu.
+3. Click `Add` from the top left
+4. Under `Select user` enter the `clientId` value from the **userSettings.json** file from the [User Settings](#User-Settings) into the search box, and then choose the AD Application when it shows up.
+5. Under `Select role` check `Reader` AND `Contributor`
+6. Click OK
+
+At the writing of this we were unable to get the ARM template deployment to create this data access policy successfully, thus requiring the manual step.
+
 ## Success!
 To verify that everything is working correctly, open up the `facilityManagementWebsiteUri` (from the `userSettings.json` in the browser and log in with one of the two users created during the provisioning steps.
 
