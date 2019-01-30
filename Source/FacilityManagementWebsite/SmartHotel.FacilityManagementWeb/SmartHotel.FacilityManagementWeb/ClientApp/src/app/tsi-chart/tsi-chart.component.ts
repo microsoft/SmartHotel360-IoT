@@ -25,10 +25,10 @@ export class TsiChartComponent implements OnInit, OnChanges {
     const lineChart = this.client.ux.LineChart(document.getElementById('tsichart'));
 
     const dateTimeNowUTC = new Date();
-    const thirtyDaysBack = new Date();
-    thirtyDaysBack.setDate(dateTimeNowUTC.getDate() - environment.tsiHowManyDays);
+    const nDaysBack = new Date();
+    nDaysBack.setDate(dateTimeNowUTC.getDate() - environment.tsiHowManyDays);
 
-    const startDate = thirtyDaysBack.toISOString();
+    const startDate = nDaysBack.toISOString();
     const endDate = dateTimeNowUTC.toISOString();
 
     const motionPredicate = this.buildPredicateString(this.motionSensorIds);
@@ -95,7 +95,8 @@ export class TsiChartComponent implements OnInit, OnChanges {
   }
 
   private tryUpdateChart() {
-    if (this.motionSensorIds && this.lightSensorIds && this.tempSensorIds
+    if ( this.client
+      && this.motionSensorIds && this.lightSensorIds && this.tempSensorIds
       && this.motionSensorIds.length > 0
       && this.lightSensorIds.length > 0
       && this.tempSensorIds.length > 0) {
