@@ -268,6 +268,7 @@ namespace SmartHotel.Devices.RoomDevice
 			{
 				HubDeviceClient.Dispose();
 
+				// Wait 5 seconds before trying to reconnect
 				await Task.Delay( 5000 );
 				try
 				{
@@ -277,7 +278,8 @@ namespace SmartHotel.Devices.RoomDevice
 				catch ( Exception e )
 				{
 					Console.WriteLine( $"Error occurred attempting first reconnect of {nameof( HubDeviceClient )}: {e}" );
-					await Task.Delay( 5000 );
+					// Wait 1 minute before trying to reconnect
+					await Task.Delay( 1 * 60 * 1000 );
 					try
 					{
 						Console.WriteLine( $"Attempting final reconnect of {nameof( HubDeviceClient )}..." );
