@@ -1,9 +1,14 @@
 /* On small screens, the nav menu spans the full width of the screen. Leave a space for it.*/
-/* app-nav-menu {
+
+.main-container {
+  display: flex; 
+  flex-direction: column;
+}
+
+app-nav-menu {
   position: fixed;
-  left: 0;
   width: 100%;
-} */
+}
 
 .content {
   margin-top: 48px;
