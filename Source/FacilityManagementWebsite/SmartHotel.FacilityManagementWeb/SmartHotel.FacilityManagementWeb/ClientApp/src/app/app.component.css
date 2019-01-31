@@ -1,8 +1,17 @@
 /* On small screens, the nav menu spans the full width of the screen. Leave a space for it.*/
+
+.main-container {
+  display: flex; 
+  flex-direction: column;
+  width: 1920px;
+  max-width: 1920px;
+  display: inline-block;
+}
+
 app-nav-menu {
   position: fixed;
-  left: 0;
   width: 100%;
+  z-index: 1000;
 }
 
 .content {
@@ -10,9 +19,6 @@ app-nav-menu {
 }
 
 .fixed-header {
-  position: absolute;
-  top: 0;
-  height: 48px;
   z-index: 1000;
 }
 
