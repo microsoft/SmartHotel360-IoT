@@ -21,6 +21,9 @@ namespace SmartHotel.Devices.RoomDevice
 		private static readonly string MessageIntervalInMilliSecondsSetting = "MessageIntervalInMilliSeconds";
 		private static readonly string StartupDelayInSecondsSetting = "StartupDelayInSeconds";
 
+		private static readonly TimeSpan HubDeviceClientFirstReconnectDelay = TimeSpan.FromSeconds(5);
+		private static readonly TimeSpan HubDeviceClientSecondReconnectDelay = TimeSpan.FromMinutes(1);
+
 		private static readonly ConcurrentDictionary<string, SensorInfo> SensorInfosByDataType =
 			new ConcurrentDictionary<string, SensorInfo>( StringComparer.OrdinalIgnoreCase );
 
@@ -268,8 +271,7 @@ namespace SmartHotel.Devices.RoomDevice
 			{
 				HubDeviceClient.Dispose();
 
-				// Wait 5 seconds before trying to reconnect
-				await Task.Delay( 5000 );
+				await Task.Delay( HubDeviceClientFirstReconnectDelay );
 				try
 				{
 					Console.WriteLine($"Attempting first reconnect of {nameof(HubDeviceClient)}...");
@@ -278,8 +280,7 @@ namespace SmartHotel.Devices.RoomDevice
 				catch ( Exception e )
 				{
 					Console.WriteLine( $"Error occurred attempting first reconnect of {nameof( HubDeviceClient )}: {e}" );
-					// Wait 1 minute before trying to reconnect
-					await Task.Delay( 1 * 60 * 1000 );
+					await Task.Delay(HubDeviceClientSecondReconnectDelay);
 					try
 					{
 						Console.WriteLine( $"Attempting final reconnect of {nameof( HubDeviceClient )}..." );
