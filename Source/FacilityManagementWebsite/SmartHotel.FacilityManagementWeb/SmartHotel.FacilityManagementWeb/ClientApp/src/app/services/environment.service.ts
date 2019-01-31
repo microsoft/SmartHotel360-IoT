@@ -30,8 +30,10 @@ export class EnvironmentService {
         environment.azureMapsKey = environmentVariables['azureMapsKey'];
         environment.useBasicAuth = environmentVariables['useBasicAuth'] === 'true';
         environment.tsiFqdn = environmentVariables['tsiFqdn'];
-        environment.tsiApi = environmentVariables['tsiApi'];
-        environment.tsiHowManyDays = environmentVariables['tsiHowManyDays'];
+        const tsiHowManyDays = environmentVariables['tsiHowManyDays'];
+        if (tsiHowManyDays) {
+          environment.tsiHowManyDays = +tsiHowManyDays;
+        }
       });
   }
 }

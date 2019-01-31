@@ -66,10 +66,24 @@ To obtain the service principal Id, open a **Powershell** window and follow thes
 ### Set permissions and security for the Application
 
 Click settings --> Required Permissions
-* Click `Add` on the top left
-* Under select an API, type `Azure`, then choose `Azure Digital Twins (Azure Smart Spaces Service)`
-* Check the Read/Write Access delegated permissions box
-* Save
+* Digital Twins API
+  * Click `Add` on the top left
+  * Under select an API, type `Azure`, then choose `Azure Digital Twins (Azure Smart Spaces Service)`
+    * NOTE: If this option does NOT show, you may need to register the Digital Twins resource provider using the following steps in a **Powershell** window:
+       1. `Login-AzureRmAccount -SubscriptionId {subcription id}`
+       2. `Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.IoTSpaces'`
+       3. Wait until the provider registration is complete, can be checked via: `Get-AzureRmResourceProvider -ProviderNamespace 'Microsoft.IoTSpaces'`
+  * Check the Read/Write Access delegated permissions box
+  * Save
+* Time Series Insights API
+  * Click `Add` on the top left
+  * Under select an API, type `Azure`, then choose `Azure Time Series Insights`
+    * NOTE: If this option does NOT show, you may need to register the Time Series Insights resource provider using the following steps in a **Powershell** window:
+       1. `Login-AzureRmAccount -SubscriptionId {subcription id}`
+       2. `Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.TimeSeriesInsights'`
+       3. Wait until the provider registration is complete, can be checked via: `Get-AzureRmResourceProvider -ProviderNamespace 'Microsoft.TimeSeriesInsights'`
+  * Check the Access Azure Time Series Insights service delegated permissions box
+  * Save
 * Click `Grant Permissions` (right next to the Add button).
 
 ## Create a service principal for AKS Cluster
@@ -99,15 +113,16 @@ You need to create users having access to your AAD. These can either be users cr
    3. **Hotel 1 Manager**: This user is able to view all the Floors under the first Hotel.
    4. **Hotel 1 Employee**: This user is able to view Non-VIP Floors under the first Hotel.
 * The following users are optional. They help provide more visibility into the Role Based Access Control (RBAC) functionality of Digital Twins.
-   1. **Hotel 2 Manager**
-   2. **Hotel 3 Manager**
-   3. **Hotel 4 Manager**
-   4. **Hotel 5 Manager**
-   5. **Hotel 6 Manager**
-   6. **Hotel 7 Manager**
-   7. **Hotel 8 Manager**
-   8. **Hotel 9 Manager**
-   9. **Hotel 10 Manager**
+   1. **Hotel Brand 2 Manager**
+   2. **Hotel 2 Manager**
+   3. **Hotel 3 Manager**
+   4. **Hotel 4 Manager**
+   5. **Hotel 5 Manager**
+   6. **Hotel 6 Manager**
+   7. **Hotel 7 Manager**
+   8. **Hotel 8 Manager**
+   9. **Hotel 9 Manager**
+   10. **Hotel 10 Manager**
 
 ## Provision resources in Azure
 In `/Source/ARM/` folder of this repository is the deployment script to create and stand up all of the resources to run this demo in Azure. To execute the deployment script, run the following in a **Powershell** window:
@@ -173,6 +188,17 @@ When the deployment script is complete, it will output a `userSettings.json` fil
 * `Source/Backend/SmartHotel.PhysicalDevices/SmartHotel.PhysicalDevices.MXChip/Device/config.h`
 * `Source/FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb/ClientApp/src/environments/environment.ts`
 * `Source/FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb/ClientApp/src/environments/environment.prod.ts`
+
+## Add Time Series Insights Data Access Policy
+You will need to give the Azure AD Application you created [earlier](#Set-up-a-Service-Principal-and-register-an-Azure-Active-Directory-application) access to the Time Series Insights environment for the charts to work.
+1. Upon completion of the deployment, navigate to the Time Series Insights environment that was created in the portal. It's name should be something like: `sh360iot-Tsi-*`.
+2. Select `Data Access Policies` from the left side menu.
+3. Click `Add` from the top left
+4. Under `Select user` enter the `clientId` value from the **userSettings.json** file from the [User Settings](#User-Settings) into the search box, and then choose the AD Application when it shows up.
+5. Under `Select role` check `Reader` AND `Contributor`
+6. Click OK
+
+At the writing of this we were unable to get the ARM template deployment to create this data access policy successfully, thus requiring the manual step.
 
 ## Success!
 To verify that everything is working correctly, open up the `facilityManagementWebsiteUri` (from the `userSettings.json` in the browser and log in with one of the two users created during the provisioning steps.
@@ -327,17 +353,14 @@ The Facility Management website and api both support being downgraded from using
 **NOTE: This mode is NOT recommended, unless absolutely desired.**
 
 ## Downgrading Facility Management Api to Basic Authentication Mode
-The following Application Settings must be supplied. Once set, the Api will downgrade to basic auth.
-* `BasicAuth__ApplicationId`: `clientId` from the **userSettings.json** file from the [User Settings](#User-Settings) section
-* `BasicAuth__ApplicationSecret`: app key obtained from [creating an AAD app](#Set-up-a-Service-Principal-and-register-an-Azure-Active-Directory-application)
-* `BasicAuth__TenantId`: `tenantId` from the **userSettings.json** file from the [User Settings](#User-Settings) section
+The following Application Settings must be supplied (in addition to the ones that are supplied via the deployment). Once set, the Api will downgrade to basic auth.
 * `BasicAuth__Username`: whatever username you desire. This will be the username that **MUST** be supplied when logging into the website.
 * `BasicAuth__Password`: whatever password you desire. This will be the password that **MUST** be supplied when logging into the website.
 
 To verify this change is working, navigate to the `facilityManagementApiUri` (from the **userSettings.json** file from the [User Settings](#User-Settings) section) and add `/swagger` to the end. In the Swagger UI, click the `Authorize` button that will show in the top-right corner and the dialog that pops up should say `Basic authorization`.
 
 ## Downgrading Facility Management Website to Basic Authentication Mode
-The following Application Settings must be supplied. Once set, the Website will downgrade to basic auth.
+The following Application Settings must be supplied (in addition to the ones that are supplied via the deployment). Once set, the Website will downgrade to basic auth.
 * `useBasicAuth`: `true`
 
 To verify this change is working, navigate to the `facilityManagementWebsiteUri` (from the **userSettings.json** file from the [User Settings](#User-Settings) section) and you will see fields to enter a username and password to login.

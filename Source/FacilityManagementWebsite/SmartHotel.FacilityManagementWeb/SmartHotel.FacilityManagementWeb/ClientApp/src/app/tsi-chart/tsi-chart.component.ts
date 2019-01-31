@@ -15,7 +15,6 @@ export class TsiChartComponent implements OnInit, OnChanges {
   @Input() public lightSensorIds: string[];
   @Input() public tempSensorIds: string[];
 
-  private tokenRetrieved = false;
   private token: string;
   private client: any;
 
@@ -26,10 +25,10 @@ export class TsiChartComponent implements OnInit, OnChanges {
     const lineChart = this.client.ux.LineChart(document.getElementById('tsichart'));
 
     const dateTimeNowUTC = new Date();
-    const thirtyDaysBack = new Date();
-    thirtyDaysBack.setDate(dateTimeNowUTC.getDate() - Number(environment.tsiHowManyDays));
+    const nDaysBack = new Date();
+    nDaysBack.setDate(dateTimeNowUTC.getDate() - environment.tsiHowManyDays);
 
-    const startDate = thirtyDaysBack.toISOString();
+    const startDate = nDaysBack.toISOString();
     const endDate = dateTimeNowUTC.toISOString();
 
     const motionPredicate = this.buildPredicateString(this.motionSensorIds);
@@ -81,24 +80,14 @@ export class TsiChartComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.facilityService.executeWhenInitialized(this, this.initializeToken);
+    this.facilityService.executeWhenInitialized(this, this.initialize);
   }
 
-  private initializeToken(self: TsiChartComponent) {
+  private initialize(self: TsiChartComponent) {
 
     self.client = new TsiClient();
-    self.token = self.adalService.getCachedToken(environment.tsiApi);
-    if (!self.token) {
-      self.adalService.acquireToken(environment.tsiApi)
-        .subscribe(result => {
-          self.token = result;
-          self.tokenRetrieved = true;
-          self.tryUpdateChart();
-        });
-    } else {
-      self.tokenRetrieved = true;
-      self.tryUpdateChart();
-    }
+    self.token = self.facilityService.getTimeSeriesInsightsToken();
+    self.tryUpdateChart();
   }
 
   ngOnChanges() {
@@ -106,7 +95,8 @@ export class TsiChartComponent implements OnInit, OnChanges {
   }
 
   private tryUpdateChart() {
-    if (this.tokenRetrieved && this.motionSensorIds && this.lightSensorIds && this.tempSensorIds
+    if ( this.client
+      && this.motionSensorIds && this.lightSensorIds && this.tempSensorIds
       && this.motionSensorIds.length > 0
       && this.lightSensorIds.length > 0
       && this.tempSensorIds.length > 0) {

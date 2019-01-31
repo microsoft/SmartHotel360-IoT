@@ -148,6 +148,7 @@ try
 }
 catch
 {
+    Reset-Console-Coloring
     az extension add -n $azureCliIotExtensionName
 }
 
@@ -173,16 +174,14 @@ $UTCNow = (Get-Date).ToUniversalTime()
  
 $UTCTimeTick = $UTCNow.Ticks.tostring()
 
-$TemplateParameters = "_currentDateTimeInTicks=$UTCTimeTick"
-
 # Start the Azure deployment
 $StartTimeLocal = Get-Date
 Write-Host "Starting deployment at $StartTimeLocal (local time)...";
 $deploymentName = "SmartHotel360-IoT-Demo"
 if($parametersFilePath -and (Test-Path $parametersFilePath)) {
-    $deploymentResultString = az group deployment create -n $deploymentName -g $resourceGroupName --template-file $templateFilePath --parameters $parametersFilePath --parameters $TemplateParameters
+    $deploymentResultString = az group deployment create -n $deploymentName -g $resourceGroupName --template-file $templateFilePath --parameters $parametersFilePath --parameters _currentDateTimeInTicks=$UTCTimeTick
 } else {
-    $deploymentResultString = az group deployment create -n $deploymentName -g $resourceGroupName --template-file $templateFilePath --parameters $TemplateParameters
+    $deploymentResultString = az group deployment create -n $deploymentName -g $resourceGroupName --template-file $templateFilePath --parameters _currentDateTimeInTicks=$UTCTimeTick
 }
 
 $deploymentResult = $deploymentResultString | ConvertFrom-Json
@@ -379,7 +378,7 @@ $functionSiteName = $outputs.functionSiteName.value
 
 Write-Host
 Write-Host "Setting Facility Manangement Api App Settings"
-$facilityManagementApiSettings = "--settings ManagementApiUrl=`"$dtManagementEndpoint`" MongoDBConnectionString=`"$cosmosDbConnectionString`" AzureAd__Audience=`"$clientId`" IoTHubConnectionString=`"$iotHubServiceConnectionString`""
+$facilityManagementApiSettings = "--settings ManagementApiUrl=`"$dtManagementEndpoint`" MongoDBConnectionString=`"$cosmosDbConnectionString`" AzureAd__ApplicationId=`"$clientId`" AzureAd__ApplicationSecret=`"$clientSecret`" AzureAd__TenantId=`"$tenantId`"  IoTHubConnectionString=`"$iotHubServiceConnectionString`""
 $facilityManagementApiSettingsResults = az webapp config appsettings set -n $facilityManagementApiName -g $resourceGroupName $powershellEscape $facilityManagementApiSettings
 Write-Host "Setting Facility Manangement Api to be Always On"
 $facilityManagementApiConfigResults = az webapp config set -n $facilityManagementApiName -g $resourceGroupName --always-on true
@@ -394,6 +393,7 @@ $functionSettingsResults = az webapp config appsettings set -n $functionSiteName
 $facilityManagementWebsiteName = $outputs.websiteName.value
 $facilityManagementApiEndpoint = "$facilityManagementApiUri/api"
 $azureMapsKey = $outputs.mapsPrimaryKey.value
+$tsiFQDN = $outputs.tsiFQDN.value
 
 $adalEndpointsJson = @(
     @{
@@ -406,7 +406,7 @@ $adalEndpointsString = ConvertTo-Json -InputObject $adalEndpointsJson -Compress
 
 Write-Host
 Write-Host "Setting Facility Management Website App Settings"
-$websiteSettings = "--settings adalConfig__tenant=`"$tenantId`" adalConfig__clientId=`"$clientId`" adalConfig__endpointsString=`"$adalEndpointsString`" apiEndpoint=`"$facilityManagementApiEndpoint`" azureMapsKey=`"$azureMapsKey`""
+$websiteSettings = "--settings adalConfig__tenant=`"$tenantId`" adalConfig__clientId=`"$clientId`" adalConfig__endpointsString=`"$adalEndpointsString`" apiEndpoint=`"$facilityManagementApiEndpoint`" azureMapsKey=`"$azureMapsKey`" tsiFqdn=`"$tsiFQDN`""
 $websiteSettingsResults = az webapp config appsettings set -n $facilityManagementWebsiteName -g $resourceGroupName $powershellEscape $websiteSettings
 Write-Host "Setting Facility Manangement Website to be Https Only"
 $websiteConfigResults = az webapp config set -n $facilityManagementWebsiteName -g $resourceGroupName --always-on true
@@ -432,6 +432,7 @@ foreach($filename in $environmentFileNames)
     $fileContent = $fileContent.Replace("{apiUri}","$facilityManagementApiUri")
     $fileContent = $fileContent.Replace("{apiEndpoint}","$facilityManagementApiEndpoint")
     $fileContent = $fileContent.Replace("{azureMapsKey}","$azureMapsKey")
+    $fileContent = $fileContent.Replace("{tsiFqdn}","$tsiFQDN")
     
     $fileContent | Set-Content $fullFilePath -Force
 
@@ -628,6 +629,7 @@ $savedSettings = [PSCustomObject]@{
     iotHubConnectionString = $iotHubServiceConnectionString
     cosmosDbConnectionString = $cosmosDbConnectionString
     azureMapsKey = $azureMapsKey
+    tsiFQGN = $tsiFQDN
     roomDevicesApiEndpoint = "http://$roomDevicesApiUri/api"
     demoRoomSpaceId = $demoRoomSpaceId
     demoRoomKubernetesDeployment = $demoRoomKubernetesDeploymentName

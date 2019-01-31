@@ -18,8 +18,7 @@ export const environment = {
   azureMapsKey: '{azureMapsKey}',
   useBasicAuth: false,
   tsiFqdn: '{tsiFqdn}',
-  tsiApi: '{tsiApi}',
-  tsiHowManyDays: '{tsiHowManyDays}'
+  tsiHowManyDays: 1
 };
 
 /*

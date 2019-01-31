@@ -5,8 +5,8 @@ import { AdalService } from 'adal-angular4';
 import { IDesired } from './models/IDesired';
 import { ISpace } from './models/ISpace';
 import { ISpaceAlert } from './models/ISpaceAlert';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, forkJoin } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { ISensor } from './models/ISensor';
 
 class InitializationCallbackContainer {
@@ -32,6 +32,7 @@ export class FacilityService {
   private spacesByParentId: Map<string, ISpace[]>;
   private callbacksToExecuteWhenInitialized: InitializationCallbackContainer[] = [];
   private dtToken: string;
+  private tsiToken: string;
   private temperatureAlertsSubject: BehaviorSubject<ISpaceAlert[]> = new BehaviorSubject<ISpaceAlert[]>(null);
   private temperatureAlertsObservable: Observable<ISpaceAlert[]>;
   private alertsTimerInterval;
@@ -46,6 +47,7 @@ export class FacilityService {
 
   public async initialize() {
     try {
+      await this.updateTsiToken();
       await this.updateDtToken()
         .then(() => {
           this.http.get<ISpace[]>(this.getEndpoint('spaces'), { headers: { 'adt_token': this.dtToken } }
@@ -63,13 +65,32 @@ export class FacilityService {
     }
   }
 
-  public simpleAuthLogin(basicAuthHeader: string) {
+  public basicAuthLogin(basicAuthHeader: string) {
+    return this.http.get<string>(this.getEndpoint('auth'), {
+      headers: { Authorization: basicAuthHeader }
+    })
+      .pipe(switchMap(() => {
+        return forkJoin(this.basicAuthRetrieveDtToken(basicAuthHeader), this.basicAuthRetreiveTsiToken(basicAuthHeader));
+      }));
+  }
+
+  private basicAuthRetrieveDtToken(basicAuthHeader: string) {
     return this.http.get<string>(this.getEndpoint('auth/getdttoken'), {
       headers: { Authorization: basicAuthHeader },
       responseType: 'text' as 'json'
     })
-      .pipe(map((t: string) => {
-        this.dtToken = t;
+      .pipe(map((token: string) => {
+        this.dtToken = token;
+      }));
+  }
+
+  private basicAuthRetreiveTsiToken(basicAuthHeader: string) {
+    return this.http.get<string>(this.getEndpoint('auth/gettsitoken'), {
+      headers: { Authorization: basicAuthHeader },
+      responseType: 'text' as 'json'
+    })
+      .pipe(map((token: string) => {
+        this.tsiToken = token;
       }));
   }
 
@@ -95,6 +116,14 @@ export class FacilityService {
     }
 
     return this.dtToken;
+  }
+
+  public getTimeSeriesInsightsToken(): string {
+    if (!this.isInitialized) {
+      throw this.notInitializedError;
+    }
+
+    return this.tsiToken;
   }
 
   public getSpace(parentSpaceId: string, spaceId: string): ISpace {
@@ -195,7 +224,7 @@ export class FacilityService {
           childSpace.devices.forEach(device => {
             if (device.sensors) {
               descendantSensorIds = descendantSensorIds
-              .concat(device.sensors.filter(s => s.dataType === dataType).map(sensor => sensor.id));
+                .concat(device.sensors.filter(s => s.dataType === dataType).map(sensor => sensor.id));
             }
           });
         }
@@ -228,6 +257,19 @@ export class FacilityService {
       .toPromise()
       .then(token => {
         this.dtToken = token;
+      });
+  }
+
+  private async updateTsiToken(): Promise<void> {
+    if (environment.useBasicAuth) {
+      return Promise.resolve();
+    }
+    await this.http.get<string>(this.getEndpoint('auth/gettsitoken'), {
+      responseType: 'text' as 'json'
+    })
+      .toPromise()
+      .then(token => {
+        this.tsiToken = token;
       });
   }
 

@@ -26,12 +26,6 @@
         "event_hub_namespace_location": {
             "value": "West US"
         },
-        "event_hub_namespace_sku_name": {
-            "value": "Basic"
-        },
-        "event_hub_namespace_sku_tier": {
-            "value": "Basic"
-        },
         "storage_location": {
             "value": "westus2"
         },
@@ -76,6 +70,21 @@
         },
         "webapi_config_name": {
             "value": "web"
+        },
+        "maps_sku_name": {
+          "value": "s1"
+        },
+        "maps_sku_tier": {
+          "value": "Standard"
+        },
+        "tsi_sku_name": {
+          "value": "S1"
+        },
+        "tsi_location": {
+          "value": "westus2"
+        },
+        "tsi_eventSource_location": {
+          "value": "westus2"
         }
     }
 }
