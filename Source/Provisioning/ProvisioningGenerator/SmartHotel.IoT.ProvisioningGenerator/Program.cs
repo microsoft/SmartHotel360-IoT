@@ -140,6 +140,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			desiredTenantSpace.AddType( new TypeDescription { name = "VIPSuiteRoom", category = "SpaceSubType" } );
 			desiredTenantSpace.AddType( new TypeDescription { name = "ConferenceRoom", category = "SpaceSubType" } );
 			desiredTenantSpace.AddType( new TypeDescription { name = "GymRoom", category = "SpaceSubType" } );
+			desiredTenantSpace.AddType( new TypeDescription { name = "FloorPlan", category = "SpaceBlobSubType" } );
 
 			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
 			{
@@ -176,6 +177,18 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 				name = PropertyKeyDescription.ImageBlobId,
 				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.String,
 				description = "Id of the image blob for the space."
+			} );
+			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
+			{
+				name = PropertyKeyDescription.DetailedImagePath,
+				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.String,
+				description = "Path of the detailed image to display for the space."
+			} );
+			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
+			{
+				name = PropertyKeyDescription.DetailedImageBlobId,
+				primitiveDataType = PropertyKeyDescription.PrimitiveDataType.String,
+				description = "Id of the detailed image blob for the space."
 			} );
 			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
 			{
@@ -245,15 +258,16 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			brandSpaceDescription.AddUser( $"Hotel Brand {brandNumber} Manager" );
 			brandSpaceDescription.AddProperty( new PropertyDescription { name = PropertyKeyDescription.DisplayOrder, value = brandNumber.ToString() } );
 
-			brandSpaceDescription.blob = new BlobDescription
+			brandSpaceDescription.AddBlob( new BlobDescription
 			{
 				name = $"{brand.Name} Blob",
 				type = BlobDescription.FileBlobType,
 				subtype = BlobDescription.NoneBlobType,
 				description = "Brand image",
 				filepath = $"{ImageFolderRelativePath}/brands/brand{brandNumber}.png",
-				contentType = BlobDescription.PngContentType
-			};
+				contentType = BlobDescription.PngContentType,
+				isPrimaryBlob = true
+			} );
 
 			// Create the hotels
 			for ( int hotelIndex = 0; hotelIndex < brand.Hotels.Count; hotelIndex++ )
@@ -285,15 +299,16 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 				hotelSpaceDescription.AddProperty( new PropertyDescription
 				{ name = PropertyKeyDescription.Longitude, value = hotel.Longitude.ToString() } );
 
-				hotelSpaceDescription.blob = new BlobDescription
+				hotelSpaceDescription.AddBlob( new BlobDescription
 				{
 					name = $"{brand.Name} {hotel.Name} Blob",
 					type = BlobDescription.FileBlobType,
 					subtype = BlobDescription.NoneBlobType,
 					description = "Hotel image",
 					filepath = $"{ImageFolderRelativePath}/hotels/{hotelType.Name.ToLower()}.png",
-					contentType = BlobDescription.PngContentType
-				};
+					contentType = BlobDescription.PngContentType,
+					isPrimaryBlob = true
+				} );
 
 				string brandHotelPrefix = $"{brand.Name}-{hotel.Name}-".Replace( " ", string.Empty );
 
@@ -324,15 +339,27 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 						floorSpaceDescription.subType = "VIPFloor";
 					}
 
-					floorSpaceDescription.blob = new BlobDescription
+					floorSpaceDescription.AddBlob( new BlobDescription
 					{
 						name = $"{brand.Name} {hotel.Name} {floorName} Blob",
 						type = BlobDescription.FileBlobType,
 						subtype = BlobDescription.NoneBlobType,
 						description = "Floor image",
 						filepath = $"{ImageFolderRelativePath}/floors/{hotelType.Name.ToLower()}{imagePathSuffix}.png",
-						contentType = BlobDescription.PngContentType
-					};
+						contentType = BlobDescription.PngContentType,
+						isPrimaryBlob = true
+					} );
+
+					floorSpaceDescription.AddBlob( new BlobDescription
+					{
+						name = $"{brand.Name} {hotel.Name} {floorName} Floorplan Blob",
+						type = BlobDescription.FileBlobType,
+						subtype = BlobDescription.FloorplanFileBlobSubType,
+						description = "Floorplan image",
+						filepath = $"{ImageFolderRelativePath}/floorplans/{hotelType.Name.ToLower()}{imagePathSuffix}.svg",
+						contentType = BlobDescription.SvgContentType,
+						isPrimaryBlob = false
+					} );
 
 					if ( !isVipFloor && !string.IsNullOrEmpty( hotel.RegularFloorEmployeeUser ) )
 					{

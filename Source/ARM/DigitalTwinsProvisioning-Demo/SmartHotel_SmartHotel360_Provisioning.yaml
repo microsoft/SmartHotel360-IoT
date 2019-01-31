@@ -7,13 +7,14 @@ users:
 properties:
 - name: DisplayOrder
   value: 1
-blob:
-  name: SmartHotel360 Blob
+blobs:
+- name: SmartHotel360 Blob
   type: File
   subtype: None
   description: Brand image
   filepath: ../Images/brands/brand1.png
   contentType: image/png
+  isPrimaryBlob: true
 spaces:
 - name: SH360 Elite 1
   description: SmartHotel360 SH360 Elite 1
@@ -32,13 +33,14 @@ spaces:
     value: 47.6168
   - name: Longitude
     value: -122.20507
-  blob:
-    name: SmartHotel360 SH360 Elite 1 Blob
+  blobs:
+  - name: SmartHotel360 SH360 Elite 1 Blob
     type: File
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/h.png
     contentType: image/png
+    isPrimaryBlob: true
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -49,13 +51,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blob:
-      name: SmartHotel360 SH360 Elite 1 Floor 01 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 1 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/h.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 1 Floor 01 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/h.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 101
       description: Room 101
@@ -366,13 +375,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blob:
-      name: SmartHotel360 SH360 Elite 1 Floor 02 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 1 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/h.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 1 Floor 02 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/h.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 201
       description: Room 201
@@ -683,13 +699,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blob:
-      name: SmartHotel360 SH360 Elite 1 Floor 03 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 1 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/h.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 1 Floor 03 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/h.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 301
       description: Room 301
@@ -1000,13 +1023,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blob:
-      name: SmartHotel360 SH360 Elite 1 Floor 04 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 1 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/h.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 1 Floor 04 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/h.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 401
       description: Room 401
@@ -1317,13 +1347,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blob:
-      name: SmartHotel360 SH360 Elite 1 Floor 05 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 1 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/h.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 1 Floor 05 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/h.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 501
       description: Room 501
@@ -1634,13 +1671,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blob:
-      name: SmartHotel360 SH360 Elite 1 Floor 06 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 1 Floor 06 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/h.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 1 Floor 06 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/h.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 601
       description: Room 601
@@ -1951,13 +1995,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blob:
-      name: SmartHotel360 SH360 Elite 1 Floor 07 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 1 Floor 07 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/h.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 1 Floor 07 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/h.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 701
       description: Room 701
@@ -2268,13 +2319,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blob:
-      name: SmartHotel360 SH360 Elite 1 Floor 08 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 1 Floor 08 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/h.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 1 Floor 08 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/h.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 801
       description: Room 801
@@ -2584,13 +2642,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blob:
-      name: SmartHotel360 SH360 Elite 1 Floor 09 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 1 Floor 09 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/hvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 1 Floor 09 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/hvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 901
       description: Room 901
@@ -2750,13 +2815,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite1-
-    blob:
-      name: SmartHotel360 SH360 Elite 1 Floor 10 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 1 Floor 10 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/hvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 1 Floor 10 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/hvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 1001
       description: Room 1001
@@ -2925,13 +2997,14 @@ spaces:
     value: 32.87578
   - name: Longitude
     value: -117.20701
-  blob:
-    name: SmartHotel360 SH360 Premium 1 Blob
+  blobs:
+  - name: SmartHotel360 SH360 Premium 1 Blob
     type: File
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/l.png
     contentType: image/png
+    isPrimaryBlob: true
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -2940,13 +3013,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blob:
-      name: SmartHotel360 SH360 Premium 1 Floor 01 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 1 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/l.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 1 Floor 01 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/l.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 101
       description: Room 101
@@ -3030,13 +3110,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blob:
-      name: SmartHotel360 SH360 Premium 1 Floor 02 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 1 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/l.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 1 Floor 02 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/l.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 201
       description: Room 201
@@ -3120,13 +3207,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blob:
-      name: SmartHotel360 SH360 Premium 1 Floor 03 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 1 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/l.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 1 Floor 03 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/l.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 301
       description: Room 301
@@ -3210,13 +3304,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blob:
-      name: SmartHotel360 SH360 Premium 1 Floor 04 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 1 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/l.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 1 Floor 04 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/l.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 401
       description: Room 401
@@ -3300,13 +3401,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blob:
-      name: SmartHotel360 SH360 Premium 1 Floor 05 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 1 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/l.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 1 Floor 05 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/l.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 501
       description: Room 501
@@ -3390,13 +3498,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blob:
-      name: SmartHotel360 SH360 Premium 1 Floor 06 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 1 Floor 06 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/l.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 1 Floor 06 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/l.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 601
       description: Room 601
@@ -3480,13 +3595,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blob:
-      name: SmartHotel360 SH360 Premium 1 Floor 07 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 1 Floor 07 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/l.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 1 Floor 07 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/l.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 701
       description: Room 701
@@ -3570,13 +3692,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blob:
-      name: SmartHotel360 SH360 Premium 1 Floor 08 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 1 Floor 08 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/l.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 1 Floor 08 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/l.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 801
       description: Room 801
@@ -3661,13 +3790,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blob:
-      name: SmartHotel360 SH360 Premium 1 Floor 09 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 1 Floor 09 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/lvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 1 Floor 09 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/lvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 901
       description: Room 901
@@ -3717,13 +3853,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium1-
-    blob:
-      name: SmartHotel360 SH360 Premium 1 Floor 10 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 1 Floor 10 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/lvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 1 Floor 10 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/lvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 1001
       description: Room 1001
@@ -3782,13 +3925,14 @@ spaces:
     value: 51.461514
   - name: Longitude
     value: -0.930454
-  blob:
-    name: SmartHotel360 SH360 Elite 2 Blob
+  blobs:
+  - name: SmartHotel360 SH360 Elite 2 Blob
     type: File
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sh.png
     contentType: image/png
+    isPrimaryBlob: true
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -3797,13 +3941,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite2-
-    blob:
-      name: SmartHotel360 SH360 Elite 2 Floor 01 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 2 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 2 Floor 01 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 101
       description: Room 101
@@ -3862,13 +4013,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite2-
-    blob:
-      name: SmartHotel360 SH360 Elite 2 Floor 02 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 2 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 2 Floor 02 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 201
       description: Room 201
@@ -3927,13 +4085,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite2-
-    blob:
-      name: SmartHotel360 SH360 Elite 2 Floor 03 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 2 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 2 Floor 03 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 301
       description: Room 301
@@ -3992,13 +4157,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite2-
-    blob:
-      name: SmartHotel360 SH360 Elite 2 Floor 04 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 2 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 2 Floor 04 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 401
       description: Room 401
@@ -4058,13 +4230,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite2-
-    blob:
-      name: SmartHotel360 SH360 Elite 2 Floor 05 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 2 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/shvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 2 Floor 05 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/shvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 501
       description: Room 501
@@ -4103,13 +4282,14 @@ spaces:
     value: 40.418301
   - name: Longitude
     value: -3.798159
-  blob:
-    name: SmartHotel360 SH360 Elite 3 Blob
+  blobs:
+  - name: SmartHotel360 SH360 Elite 3 Blob
     type: File
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sh.png
     contentType: image/png
+    isPrimaryBlob: true
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -4118,13 +4298,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite3-
-    blob:
-      name: SmartHotel360 SH360 Elite 3 Floor 01 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 3 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 3 Floor 01 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 101
       description: Room 101
@@ -4183,13 +4370,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite3-
-    blob:
-      name: SmartHotel360 SH360 Elite 3 Floor 02 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 3 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 3 Floor 02 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 201
       description: Room 201
@@ -4248,13 +4442,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite3-
-    blob:
-      name: SmartHotel360 SH360 Elite 3 Floor 03 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 3 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 3 Floor 03 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 301
       description: Room 301
@@ -4313,13 +4514,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite3-
-    blob:
-      name: SmartHotel360 SH360 Elite 3 Floor 04 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 3 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 3 Floor 04 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 401
       description: Room 401
@@ -4379,13 +4587,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite3-
-    blob:
-      name: SmartHotel360 SH360 Elite 3 Floor 05 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 3 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/shvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 3 Floor 05 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/shvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 501
       description: Room 501
@@ -4424,13 +4639,14 @@ spaces:
     value: 48.177382
   - name: Longitude
     value: 11.593678
-  blob:
-    name: SmartHotel360 SH360 Elite 4 Blob
+  blobs:
+  - name: SmartHotel360 SH360 Elite 4 Blob
     type: File
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sl.png
     contentType: image/png
+    isPrimaryBlob: true
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -4439,13 +4655,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite4-
-    blob:
-      name: SmartHotel360 SH360 Elite 4 Floor 01 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 4 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 4 Floor 01 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 101
       description: Room 101
@@ -4504,13 +4727,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite4-
-    blob:
-      name: SmartHotel360 SH360 Elite 4 Floor 02 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 4 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 4 Floor 02 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 201
       description: Room 201
@@ -4569,13 +4799,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite4-
-    blob:
-      name: SmartHotel360 SH360 Elite 4 Floor 03 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 4 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 4 Floor 03 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 301
       description: Room 301
@@ -4634,13 +4871,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite4-
-    blob:
-      name: SmartHotel360 SH360 Elite 4 Floor 04 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 4 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 4 Floor 04 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 401
       description: Room 401
@@ -4700,13 +4944,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Elite4-
-    blob:
-      name: SmartHotel360 SH360 Elite 4 Floor 05 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Elite 4 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/slvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Elite 4 Floor 05 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/slvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 501
       description: Room 501
@@ -4745,13 +4996,14 @@ spaces:
     value: 35.62666
   - name: Longitude
     value: 139.740525
-  blob:
-    name: SmartHotel360 SH360 Premium 2 Blob
+  blobs:
+  - name: SmartHotel360 SH360 Premium 2 Blob
     type: File
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sl.png
     contentType: image/png
+    isPrimaryBlob: true
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -4760,13 +5012,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium2-
-    blob:
-      name: SmartHotel360 SH360 Premium 2 Floor 01 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 2 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 2 Floor 01 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 101
       description: Room 101
@@ -4825,13 +5084,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium2-
-    blob:
-      name: SmartHotel360 SH360 Premium 2 Floor 02 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 2 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 2 Floor 02 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 201
       description: Room 201
@@ -4890,13 +5156,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium2-
-    blob:
-      name: SmartHotel360 SH360 Premium 2 Floor 03 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 2 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 2 Floor 03 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 301
       description: Room 301
@@ -4955,13 +5228,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium2-
-    blob:
-      name: SmartHotel360 SH360 Premium 2 Floor 04 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 2 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 2 Floor 04 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 401
       description: Room 401
@@ -5021,13 +5301,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium2-
-    blob:
-      name: SmartHotel360 SH360 Premium 2 Floor 05 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 2 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/slvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 2 Floor 05 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/slvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 501
       description: Room 501
@@ -5066,13 +5353,14 @@ spaces:
     value: 37.574767
   - name: Longitude
     value: 126.979306
-  blob:
-    name: SmartHotel360 SH360 Premium 3 Blob
+  blobs:
+  - name: SmartHotel360 SH360 Premium 3 Blob
     type: File
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sl.png
     contentType: image/png
+    isPrimaryBlob: true
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -5081,13 +5369,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium3-
-    blob:
-      name: SmartHotel360 SH360 Premium 3 Floor 01 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 3 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 3 Floor 01 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 101
       description: Room 101
@@ -5146,13 +5441,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium3-
-    blob:
-      name: SmartHotel360 SH360 Premium 3 Floor 02 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 3 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 3 Floor 02 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 201
       description: Room 201
@@ -5211,13 +5513,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium3-
-    blob:
-      name: SmartHotel360 SH360 Premium 3 Floor 03 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 3 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 3 Floor 03 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 301
       description: Room 301
@@ -5276,13 +5585,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium3-
-    blob:
-      name: SmartHotel360 SH360 Premium 3 Floor 04 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 3 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 3 Floor 04 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 401
       description: Room 401
@@ -5342,13 +5658,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: SmartHotel360-SH360Premium3-
-    blob:
-      name: SmartHotel360 SH360 Premium 3 Floor 05 Blob
+    blobs:
+    - name: SmartHotel360 SH360 Premium 3 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/slvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: SmartHotel360 SH360 Premium 3 Floor 05 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/slvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 501
       description: Room 501

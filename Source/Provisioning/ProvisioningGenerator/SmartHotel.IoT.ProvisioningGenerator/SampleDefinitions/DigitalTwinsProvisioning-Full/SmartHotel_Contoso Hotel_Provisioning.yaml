@@ -7,13 +7,14 @@ users:
 properties:
 - name: DisplayOrder
   value: 2
-blob:
-  name: Contoso Hotel Blob
+blobs:
+- name: Contoso Hotel Blob
   type: File
   subtype: None
   description: Brand image
   filepath: ../Images/brands/brand2.png
   contentType: image/png
+  isPrimaryBlob: true
 spaces:
 - name: Contoso Elite 1
   description: SmartHotel360 Contoso Elite 1
@@ -32,13 +33,14 @@ spaces:
     value: 30.070911
   - name: Longitude
     value: 31.016627
-  blob:
-    name: Contoso Hotel Contoso Elite 1 Blob
+  blobs:
+  - name: Contoso Hotel Contoso Elite 1 Blob
     type: File
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sh.png
     contentType: image/png
+    isPrimaryBlob: true
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -47,13 +49,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite1-
-    blob:
-      name: Contoso Hotel Contoso Elite 1 Floor 01 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Elite 1 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Elite 1 Floor 01 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 101
       description: Room 101
@@ -212,13 +221,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite1-
-    blob:
-      name: Contoso Hotel Contoso Elite 1 Floor 02 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Elite 1 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Elite 1 Floor 02 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 201
       description: Room 201
@@ -377,13 +393,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite1-
-    blob:
-      name: Contoso Hotel Contoso Elite 1 Floor 03 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Elite 1 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Elite 1 Floor 03 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 301
       description: Room 301
@@ -542,13 +565,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite1-
-    blob:
-      name: Contoso Hotel Contoso Elite 1 Floor 04 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Elite 1 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Elite 1 Floor 04 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 401
       description: Room 401
@@ -708,13 +738,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite1-
-    blob:
-      name: Contoso Hotel Contoso Elite 1 Floor 05 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Elite 1 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/shvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Elite 1 Floor 05 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/shvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 501
       description: Room 501
@@ -793,13 +830,14 @@ spaces:
     value: -26.04631
   - name: Longitude
     value: 28.019991
-  blob:
-    name: Contoso Hotel Contoso Premium 1 Blob
+  blobs:
+  - name: Contoso Hotel Contoso Premium 1 Blob
     type: File
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sh.png
     contentType: image/png
+    isPrimaryBlob: true
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -808,13 +846,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium1-
-    blob:
-      name: Contoso Hotel Contoso Premium 1 Floor 01 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 1 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 1 Floor 01 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 101
       description: Room 101
@@ -973,13 +1018,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium1-
-    blob:
-      name: Contoso Hotel Contoso Premium 1 Floor 02 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 1 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 1 Floor 02 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 201
       description: Room 201
@@ -1138,13 +1190,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium1-
-    blob:
-      name: Contoso Hotel Contoso Premium 1 Floor 03 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 1 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 1 Floor 03 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 301
       description: Room 301
@@ -1303,13 +1362,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium1-
-    blob:
-      name: Contoso Hotel Contoso Premium 1 Floor 04 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 1 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 1 Floor 04 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 401
       description: Room 401
@@ -1469,13 +1535,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium1-
-    blob:
-      name: Contoso Hotel Contoso Premium 1 Floor 05 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 1 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/shvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 1 Floor 05 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/shvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 501
       description: Room 501
@@ -1554,13 +1627,14 @@ spaces:
     value: 19.366462
   - name: Longitude
     value: -99.264738
-  blob:
-    name: Contoso Hotel Contoso Elite 2 Blob
+  blobs:
+  - name: Contoso Hotel Contoso Elite 2 Blob
     type: File
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sl.png
     contentType: image/png
+    isPrimaryBlob: true
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -1569,13 +1643,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite2-
-    blob:
-      name: Contoso Hotel Contoso Elite 2 Floor 01 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Elite 2 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Elite 2 Floor 01 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 101
       description: Room 101
@@ -1734,13 +1815,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite2-
-    blob:
-      name: Contoso Hotel Contoso Elite 2 Floor 02 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Elite 2 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Elite 2 Floor 02 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 201
       description: Room 201
@@ -1899,13 +1987,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite2-
-    blob:
-      name: Contoso Hotel Contoso Elite 2 Floor 03 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Elite 2 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Elite 2 Floor 03 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 301
       description: Room 301
@@ -2064,13 +2159,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite2-
-    blob:
-      name: Contoso Hotel Contoso Elite 2 Floor 04 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Elite 2 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Elite 2 Floor 04 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 401
       description: Room 401
@@ -2230,13 +2332,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite2-
-    blob:
-      name: Contoso Hotel Contoso Elite 2 Floor 05 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Elite 2 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/slvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Elite 2 Floor 05 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/slvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 501
       description: Room 501
@@ -2315,13 +2424,14 @@ spaces:
     value: -23.609299
   - name: Longitude
     value: -46.697277
-  blob:
-    name: Contoso Hotel Contoso Elite 3 Blob
+  blobs:
+  - name: Contoso Hotel Contoso Elite 3 Blob
     type: File
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sh.png
     contentType: image/png
+    isPrimaryBlob: true
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -2330,13 +2440,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite3-
-    blob:
-      name: Contoso Hotel Contoso Elite 3 Floor 01 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Elite 3 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Elite 3 Floor 01 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 101
       description: Room 101
@@ -2495,13 +2612,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite3-
-    blob:
-      name: Contoso Hotel Contoso Elite 3 Floor 02 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Elite 3 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Elite 3 Floor 02 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 201
       description: Room 201
@@ -2660,13 +2784,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite3-
-    blob:
-      name: Contoso Hotel Contoso Elite 3 Floor 03 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Elite 3 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Elite 3 Floor 03 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 301
       description: Room 301
@@ -2825,13 +2956,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite3-
-    blob:
-      name: Contoso Hotel Contoso Elite 3 Floor 04 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Elite 3 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Elite 3 Floor 04 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 401
       description: Room 401
@@ -2991,13 +3129,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoElite3-
-    blob:
-      name: Contoso Hotel Contoso Elite 3 Floor 05 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Elite 3 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/shvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Elite 3 Floor 05 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/shvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 501
       description: Room 501
@@ -3076,13 +3221,14 @@ spaces:
     value: -33.796785
   - name: Longitude
     value: 151.138782
-  blob:
-    name: Contoso Hotel Contoso Premium 2 Blob
+  blobs:
+  - name: Contoso Hotel Contoso Premium 2 Blob
     type: File
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sl.png
     contentType: image/png
+    isPrimaryBlob: true
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -3091,13 +3237,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium2-
-    blob:
-      name: Contoso Hotel Contoso Premium 2 Floor 01 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 2 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 2 Floor 01 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 101
       description: Room 101
@@ -3256,13 +3409,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium2-
-    blob:
-      name: Contoso Hotel Contoso Premium 2 Floor 02 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 2 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 2 Floor 02 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 201
       description: Room 201
@@ -3421,13 +3581,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium2-
-    blob:
-      name: Contoso Hotel Contoso Premium 2 Floor 03 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 2 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 2 Floor 03 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 301
       description: Room 301
@@ -3586,13 +3753,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium2-
-    blob:
-      name: Contoso Hotel Contoso Premium 2 Floor 04 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 2 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 2 Floor 04 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 401
       description: Room 401
@@ -3752,13 +3926,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium2-
-    blob:
-      name: Contoso Hotel Contoso Premium 2 Floor 05 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 2 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/slvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 2 Floor 05 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/slvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 501
       description: Room 501
@@ -3837,13 +4018,14 @@ spaces:
     value: 40.756722
   - name: Longitude
     value: -73.990022
-  blob:
-    name: Contoso Hotel Contoso Premium 3 Blob
+  blobs:
+  - name: Contoso Hotel Contoso Premium 3 Blob
     type: File
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sl.png
     contentType: image/png
+    isPrimaryBlob: true
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -3852,13 +4034,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium3-
-    blob:
-      name: Contoso Hotel Contoso Premium 3 Floor 01 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 3 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 3 Floor 01 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 101
       description: Room 101
@@ -4017,13 +4206,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium3-
-    blob:
-      name: Contoso Hotel Contoso Premium 3 Floor 02 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 3 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 3 Floor 02 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 201
       description: Room 201
@@ -4182,13 +4378,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium3-
-    blob:
-      name: Contoso Hotel Contoso Premium 3 Floor 03 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 3 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 3 Floor 03 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 301
       description: Room 301
@@ -4347,13 +4550,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium3-
-    blob:
-      name: Contoso Hotel Contoso Premium 3 Floor 04 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 3 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sl.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 3 Floor 04 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sl.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 401
       description: Room 401
@@ -4513,13 +4723,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium3-
-    blob:
-      name: Contoso Hotel Contoso Premium 3 Floor 05 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 3 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/slvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 3 Floor 05 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/slvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 501
       description: Room 501
@@ -4598,13 +4815,14 @@ spaces:
     value: 48.833505
   - name: Longitude
     value: 2.266099
-  blob:
-    name: Contoso Hotel Contoso Premium 4 Blob
+  blobs:
+  - name: Contoso Hotel Contoso Premium 4 Blob
     type: File
     subtype: None
     description: Hotel image
     filepath: ../Images/hotels/sh.png
     contentType: image/png
+    isPrimaryBlob: true
   spaces:
   - name: Floor 01
     description: Floor 1
@@ -4613,13 +4831,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium4-
-    blob:
-      name: Contoso Hotel Contoso Premium 4 Floor 01 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 4 Floor 01 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 4 Floor 01 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 101
       description: Room 101
@@ -4778,13 +5003,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium4-
-    blob:
-      name: Contoso Hotel Contoso Premium 4 Floor 02 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 4 Floor 02 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 4 Floor 02 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 201
       description: Room 201
@@ -4943,13 +5175,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium4-
-    blob:
-      name: Contoso Hotel Contoso Premium 4 Floor 03 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 4 Floor 03 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 4 Floor 03 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 301
       description: Room 301
@@ -5108,13 +5347,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium4-
-    blob:
-      name: Contoso Hotel Contoso Premium 4 Floor 04 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 4 Floor 04 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/sh.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 4 Floor 04 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/sh.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 401
       description: Room 401
@@ -5274,13 +5520,20 @@ spaces:
     properties:
     - name: DeviceIdPrefix
       value: ContosoHotel-ContosoPremium4-
-    blob:
-      name: Contoso Hotel Contoso Premium 4 Floor 05 Blob
+    blobs:
+    - name: Contoso Hotel Contoso Premium 4 Floor 05 Blob
       type: File
       subtype: None
       description: Floor image
       filepath: ../Images/floors/shvip.png
       contentType: image/png
+      isPrimaryBlob: true
+    - name: Contoso Hotel Contoso Premium 4 Floor 05 Floorplan Blob
+      type: File
+      subtype: FloorplanFile
+      description: Floorplan image
+      filepath: ../Images/floorplans/shvip.svg
+      contentType: image/svg+xml
     spaces:
     - name: Room 501
       description: Room 501
