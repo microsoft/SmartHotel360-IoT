@@ -3,9 +3,7 @@
 .main-container {
   display: flex; 
   flex-direction: column;
-  width: 1920px;
-  max-width: 1920px;
-  display: inline-block;
+
 }
 
 app-nav-menu {
