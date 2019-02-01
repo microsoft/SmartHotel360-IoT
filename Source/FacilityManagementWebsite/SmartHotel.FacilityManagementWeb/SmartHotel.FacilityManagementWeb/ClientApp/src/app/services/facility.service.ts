@@ -319,6 +319,10 @@ export class FacilityService {
         if (imagePathProperty) {
           space.imagePath = imagePathProperty.value;
         }
+        const detailedImagePathProperty = space.properties.find(p => p.name === 'DetailedImagePath');
+        if (detailedImagePathProperty) {
+          space.detailedImagePath = detailedImagePathProperty.value;
+        }
       }
       this.updateSpacesByParentIdMap(space.childSpaces);
     });

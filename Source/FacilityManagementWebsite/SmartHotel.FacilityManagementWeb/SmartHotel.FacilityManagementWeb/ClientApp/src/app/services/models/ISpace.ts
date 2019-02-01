@@ -13,6 +13,7 @@ export interface ISpace {
   subtype: string;
   subtypeId: number;
   imagePath: string;
+  detailedImagePath: string;
   childSpaces: ISpace[];
   properties: IProperty[];
   devices: IDevice[];
