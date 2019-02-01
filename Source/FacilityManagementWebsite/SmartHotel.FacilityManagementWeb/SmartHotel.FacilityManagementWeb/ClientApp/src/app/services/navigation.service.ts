@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ISpace } from './models/ISpace';
+import { SpaceType } from './models/SpaceType';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,11 @@ export class NavigationService {
 
   public navigateToTopSpaces(spaces: ISpace[]) {
     const firstSpace = spaces[0];
-    if (firstSpace.type.toLowerCase() === 'hotelbrand') {
+    if (firstSpace.type.toLowerCase() === SpaceType.HotelBrand) {
       this.returnToHome(firstSpace.parentSpaceId);
-    } else if (firstSpace.type.toLowerCase() === 'hotel') {
+    } else if (firstSpace.type.toLowerCase() === SpaceType.Hotel) {
       this.chooseHotelBrand(undefined, firstSpace.parentSpaceId);
-    } else if (firstSpace.type.toLowerCase() === 'floor') {
+    } else if (firstSpace.type.toLowerCase() === SpaceType.Floor) {
       this.chooseHotel(undefined, undefined, undefined, firstSpace.parentSpaceId, spaces.indexOf(firstSpace));
     }
   }
