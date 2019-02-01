@@ -12,8 +12,13 @@
   overflow-x: hidden;
   
   margin-top: 17px;
+  margin-left: 24px;
 
   padding: 0;
+
+  /* border-style: solid;
+  border-color: grey;
+  border-width: 1px; */
 }
 
 .card {
@@ -21,11 +26,16 @@
   height: 315px;
   background-color: #FFFFFF;
 
-  margin-left: 24px;
+  margin-right: 24px;
   margin-top: 2px;
   margin-bottom: 18px;
 
   padding: 0;
+
+  /* border-style: solid;
+  border-color: grey;
+  border-width: 1px; */
+
 }
 
 .card-name {
@@ -34,67 +44,6 @@
   
   padding-top: 10px;
   padding-left: 16px;
-}
-
-.card-logo {
-  
-  height: 280px;
-
-  /* border-style: solid;
-  border-color: grey;
-  border-width: 1px; */
-}
-
-.card-logo-inner-container {
-  /* background-color: green;  */
-  width: 100%; 
-  height: 100%;
-}
-
-.card-logo-image  {
-  height: 100%;
-  width: 100%;
-}
-
-
-.card-alert-image {
-  margin-left: 400px;
-  margin-top: -595px;
-}
-
-.dashboard-cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  height: 390px;
-  width: 100%;
-  /* overflow: scroll; 
-  overflow-x: hidden; */
-  
-  margin-top: 22px;
-
-  padding: 0;
-}
-
-.dashboard-map-card {
-  width: 652px;
-  height: 391px;
-  background-color: #FFFFFF;
-
-  margin-left: 24px;
-  margin-top: 2px;
-}
-
-.dashboard-map-item {
-
-  padding-top: 11px;
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-bottom: 43px;
-
-  width: 100%;
-  height: 100%;
-  
 }
 
 
