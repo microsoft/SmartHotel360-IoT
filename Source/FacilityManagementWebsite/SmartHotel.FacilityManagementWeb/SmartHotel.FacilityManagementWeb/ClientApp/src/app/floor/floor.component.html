@@ -3,6 +3,16 @@
 
 <div class="floorplan-root">
   <div #floorplanContainer id="floorplanContainer"></div>
+  <div *ngIf="selectedRoom" class="room-info-panel">
+    <div class="motion-status-panel">
+      <div *ngIf="selectedRoom && selectedRoom.motion.isMotion" class="occupied">
+        occupied
+      </div>
+      <div *ngIf="selectedRoom && !selectedRoom.motion.isMotion" class="vacant">
+        vacant
+      </div>
+    </div>
+  </div>
 </div>
 <!-- <div class="rooms">
   <div *ngFor="let room of rooms" class="room">
