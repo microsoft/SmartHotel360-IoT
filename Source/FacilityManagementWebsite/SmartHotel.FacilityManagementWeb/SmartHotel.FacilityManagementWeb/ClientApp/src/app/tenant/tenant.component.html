@@ -1,14 +1,14 @@
 <app-breadcrumb [tenantId]="tenantId"></app-breadcrumb>
 
-<div class="hotelbrands-top-row">
-  <div class="hotelbrands">
-    <div *ngFor="let hotelBrand of hotelBrands" class="hotelbrand" (click)="chooseHotelBrand(hotelBrand)">
-      <img class="hotelbrand-image" [src]="getHotelBrandImage(hotelBrand) | secure | async" />
-      <div class="hotelbrand-button">
+<div class="cards-container">
+  <div *ngFor="let hotelBrand of hotelBrands" class="" (click)="chooseHotelBrand(hotelBrand)">
+    <!-- <img class="hotelbrand-image" [src]="getHotelBrandImage(hotelBrand) | secure | async" /> -->
+    <div class='card'>
+      <div class='card-name'>
         {{hotelBrand.friendlyName}}
       </div>
-      <img src="/assets/images/alert.png" class="alert-image" *ngIf="hotelBrand.hasAlert" />
     </div>
+    <!-- <img src="/assets/images/alert.png" class="alert-image" *ngIf="hotelBrand.hasAlert" /> -->
   </div>
 </div>
 
