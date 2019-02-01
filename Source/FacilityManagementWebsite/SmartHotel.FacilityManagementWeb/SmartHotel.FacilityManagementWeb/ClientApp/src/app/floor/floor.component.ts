@@ -411,7 +411,9 @@ export class FloorComponent implements OnInit, OnDestroy {
         const roomOverlayGroups = self.svg.selectAll('g[id^=room_]');
         const roomOverlays = roomOverlayGroups.selectAll('polygon');
         const roomAlerts = self.svg.selectAll('path');
-        roomOverlays.style('fill', 'transparent');
+        roomOverlays.style('fill', 'transparent')
+        .style('stroke', 'transparent')
+        .style('stroke-width', '4px');
         roomAlerts.style('fill', 'transparent');
 
         roomOverlayGroups.on('click', function () {
@@ -422,6 +424,6 @@ export class FloorComponent implements OnInit, OnDestroy {
   }
 
   roomClicked(roomOverlayGroup: d3.Selection<d3.BaseType, {}, null, undefined>) {
-    roomOverlayGroup.select('polygon').style('border', 'red');
+    roomOverlayGroup.select('polygon').style('stroke', 'red');
   }
 }
