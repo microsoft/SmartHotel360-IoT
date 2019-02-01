@@ -1,5 +1,9 @@
+.floorplan-root {
+  width: 100%;
+}
+
 section {
-  margin: 4px 64px 0px 26px;
+  margin: 4px 64px 0 26px;
 }
 
 .rooms {
@@ -36,8 +40,8 @@ section {
 
 .alert-image {
   position: absolute;
-  right: 0px;
-  top: 0px;
+  right: 0;
+  top: 0;
   height: 26px;
 }
 
@@ -125,11 +129,11 @@ section {
   text-transform: uppercase;
 }
 
-  .floor-button:hover {
-    cursor: pointer;
-    background-color: pink;
-    transition: background-color .35s ease-in;
-  }
+.floor-button:hover {
+  cursor: pointer;
+  background-color: pink;
+  transition: background-color .35s ease-in;
+}
 
 .led-light-on {
   margin: 0 auto;

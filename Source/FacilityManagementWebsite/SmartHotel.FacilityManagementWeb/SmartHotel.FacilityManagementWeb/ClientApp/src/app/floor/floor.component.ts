@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
 import { ILight, IThermostat, IMotion } from '../services/models/IDeviceValues';
@@ -12,6 +12,8 @@ import { BusyService } from '../services/busy.service';
 import { ISpaceAlert } from '../services/models/ISpaceAlert';
 import { Subscription } from 'rxjs';
 import { SubscriptionUtilities } from '../helpers/subscription-utilities';
+import * as d3 from 'd3';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-floor',
@@ -31,6 +33,7 @@ export class FloorComponent implements OnInit, OnDestroy {
   }
 
   @ViewChild('breadcumbs') private breadcrumbs: BreadcrumbComponent;
+  @ViewChild('floorplanContainer') private floorplanContainerDiv: ElementRef;
   public tenantId: string;
   public hotelBrandId: string;
   public hotelBrandName: string;
@@ -48,6 +51,8 @@ export class FloorComponent implements OnInit, OnDestroy {
   private theromstatSliderTimeout;
   private lightSliderTimeout;
   private isUpdatingSliders = false;
+
+  private svg: d3.Selection<any, {}, null, undefined>;
 
   get useBasicAuth() { return environment.useBasicAuth; }
 
@@ -113,6 +118,8 @@ export class FloorComponent implements OnInit, OnDestroy {
     self.rooms.forEach(room => self.roomsById.set(room.id, room));
     self.loadDesiredData();
     self.setupTimer();
+
+    self.initializeFloorplan(self, floor);
 
     self.subscriptions.push(self.facilityService.getTemperatureAlerts()
       .subscribe(tempAlerts => self.temperatureAlertsUpdated(self.rooms, tempAlerts)));
@@ -388,5 +395,33 @@ export class FloorComponent implements OnInit, OnDestroy {
         }
       });
     }
+  }
+
+  initializeFloorplan(self: FloorComponent, floor: ISpace) {
+    const dtToken = this.facilityService.getDigitalTwinsToken();
+    // floor.detailedImagePath
+    d3.xml('/assets/floorplan.svg', {
+      headers: { 'Authorization': `Bearer ${dtToken}` }
+    })
+      .then((result: XMLDocument) => {
+        const svgNodeFromFile = result.getElementsByTagName('svg')[0];
+        const svgNode = d3.select(self.floorplanContainerDiv.nativeElement)
+          .node().appendChild(svgNodeFromFile);
+        self.svg = d3.select(svgNode);
+        const roomOverlayGroups = self.svg.selectAll('g[id^=room_]');
+        const roomOverlays = roomOverlayGroups.selectAll('polygon');
+        const roomAlerts = self.svg.selectAll('path');
+        roomOverlays.style('fill', 'transparent');
+        roomAlerts.style('fill', 'transparent');
+
+        roomOverlayGroups.on('click', function () {
+          const shape = d3.select(this);
+          self.roomClicked(shape);
+        });
+      });
+  }
+
+  roomClicked(roomOverlayGroup: d3.Selection<d3.BaseType, {}, null, undefined>) {
+    roomOverlayGroup.select('polygon').style('border', 'red');
   }
 }

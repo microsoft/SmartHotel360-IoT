@@ -1,7 +1,10 @@
 <app-breadcrumb #breadcumbs [tenantId]="tenantId" [hotelBrandId]="hotelBrandId" [hotelBrandName]="hotelBrandName"
   [hotelId]="hotelId" [hotelIndex]="hotelIndex" [hotelName]="hotelName" [floorName]="floorName"></app-breadcrumb>
 
-<div class="rooms">
+<div class="floorplan-root">
+  <div #floorplanContainer id="floorplanContainer"></div>
+</div>
+<!-- <div class="rooms">
   <div *ngFor="let room of rooms" class="room">
     <div class="room-header">
       {{ room.friendlyName }}
@@ -54,4 +57,4 @@
         (userChangeEnd)="sliderChangeEnd()" (userChange)="lightSliderValueChange(room, $event)"></ng5-slider>
     </div>
   </div>
-</div>
+</div> -->
