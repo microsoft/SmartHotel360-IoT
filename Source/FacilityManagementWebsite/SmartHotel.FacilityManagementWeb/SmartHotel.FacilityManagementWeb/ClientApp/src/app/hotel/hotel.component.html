@@ -14,13 +14,22 @@
 </div>
 
 
-<div class="floors-dashboard" *ngIf="floors !== null">
+<div class="dashboard-cards-container" *ngIf="floors !== null">
 
-  <div class="floors-dash-1">
+  <div class="dashboard-map-card">
+    <div class="card-name">
+      Location
+    </div>
+    <div class="dashboard-map-item">
+      <app-map [pushpinLocations]="hotelGeoLocations"></app-map>
+    </div>
+  </div>
+
+  <!-- <div class="">
     <app-tsi-chart [tempSensorIds]="tempSensorIds" [lightSensorIds]="lightSensorIds" [motionSensorIds]="motionSensorIds"></app-tsi-chart>
-  </div>
-  <div class="floors-dash-1">
-    <app-map [pushpinLocations]="hotelGeoLocations"></app-map>
-  </div>
-  <!-- <div class="floors-dash-2"><img src="/assets/images/floor-dash-3.jpg" /></div> -->
+  </div> -->
+
+
+  <!-- <div class=""><img src="/assets/images/floor-dash-3.jpg">
+  </div> -->
 </div>
