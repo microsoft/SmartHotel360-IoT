@@ -38,8 +38,8 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotels/sh.png
-    contentType: image/png
+    filepath: ../Images/hotels/sh.jpg
+    contentType: image/jpeg
     isPrimaryBlob: true
   spaces:
   - name: Floor 01
@@ -54,8 +54,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Elite 1 Floor 01 Floorplan Blob
       type: File
@@ -126,8 +126,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Elite 1 Floor 02 Floorplan Blob
       type: File
@@ -198,8 +198,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Elite 1 Floor 03 Floorplan Blob
       type: File
@@ -270,8 +270,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Elite 1 Floor 04 Floorplan Blob
       type: File
@@ -343,8 +343,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/shvip.png
-      contentType: image/png
+      filepath: ../Images/floors/shvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Elite 1 Floor 05 Floorplan Blob
       type: File
@@ -395,8 +395,8 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotels/sh.png
-    contentType: image/png
+    filepath: ../Images/hotels/sh.jpg
+    contentType: image/jpeg
     isPrimaryBlob: true
   spaces:
   - name: Floor 01
@@ -411,8 +411,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 1 Floor 01 Floorplan Blob
       type: File
@@ -483,8 +483,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 1 Floor 02 Floorplan Blob
       type: File
@@ -555,8 +555,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 1 Floor 03 Floorplan Blob
       type: File
@@ -627,8 +627,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 1 Floor 04 Floorplan Blob
       type: File
@@ -700,8 +700,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/shvip.png
-      contentType: image/png
+      filepath: ../Images/floors/shvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 1 Floor 05 Floorplan Blob
       type: File
@@ -752,8 +752,8 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotels/sl.png
-    contentType: image/png
+    filepath: ../Images/hotels/sl.jpg
+    contentType: image/jpeg
     isPrimaryBlob: true
   spaces:
   - name: Floor 01
@@ -768,8 +768,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Elite 2 Floor 01 Floorplan Blob
       type: File
@@ -840,8 +840,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Elite 2 Floor 02 Floorplan Blob
       type: File
@@ -912,8 +912,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Elite 2 Floor 03 Floorplan Blob
       type: File
@@ -984,8 +984,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Elite 2 Floor 04 Floorplan Blob
       type: File
@@ -1057,8 +1057,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/slvip.png
-      contentType: image/png
+      filepath: ../Images/floors/slvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Elite 2 Floor 05 Floorplan Blob
       type: File
@@ -1109,8 +1109,8 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotels/sh.png
-    contentType: image/png
+    filepath: ../Images/hotels/sh.jpg
+    contentType: image/jpeg
     isPrimaryBlob: true
   spaces:
   - name: Floor 01
@@ -1125,8 +1125,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Elite 3 Floor 01 Floorplan Blob
       type: File
@@ -1197,8 +1197,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Elite 3 Floor 02 Floorplan Blob
       type: File
@@ -1269,8 +1269,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Elite 3 Floor 03 Floorplan Blob
       type: File
@@ -1341,8 +1341,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Elite 3 Floor 04 Floorplan Blob
       type: File
@@ -1414,8 +1414,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/shvip.png
-      contentType: image/png
+      filepath: ../Images/floors/shvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Elite 3 Floor 05 Floorplan Blob
       type: File
@@ -1466,8 +1466,8 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotels/sl.png
-    contentType: image/png
+    filepath: ../Images/hotels/sl.jpg
+    contentType: image/jpeg
     isPrimaryBlob: true
   spaces:
   - name: Floor 01
@@ -1482,8 +1482,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 2 Floor 01 Floorplan Blob
       type: File
@@ -1554,8 +1554,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 2 Floor 02 Floorplan Blob
       type: File
@@ -1626,8 +1626,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 2 Floor 03 Floorplan Blob
       type: File
@@ -1698,8 +1698,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 2 Floor 04 Floorplan Blob
       type: File
@@ -1771,8 +1771,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/slvip.png
-      contentType: image/png
+      filepath: ../Images/floors/slvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 2 Floor 05 Floorplan Blob
       type: File
@@ -1823,8 +1823,8 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotels/sl.png
-    contentType: image/png
+    filepath: ../Images/hotels/sl.jpg
+    contentType: image/jpeg
     isPrimaryBlob: true
   spaces:
   - name: Floor 01
@@ -1839,8 +1839,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 3 Floor 01 Floorplan Blob
       type: File
@@ -1911,8 +1911,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 3 Floor 02 Floorplan Blob
       type: File
@@ -1983,8 +1983,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 3 Floor 03 Floorplan Blob
       type: File
@@ -2055,8 +2055,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 3 Floor 04 Floorplan Blob
       type: File
@@ -2128,8 +2128,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/slvip.png
-      contentType: image/png
+      filepath: ../Images/floors/slvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 3 Floor 05 Floorplan Blob
       type: File
@@ -2180,8 +2180,8 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotels/sh.png
-    contentType: image/png
+    filepath: ../Images/hotels/sh.jpg
+    contentType: image/jpeg
     isPrimaryBlob: true
   spaces:
   - name: Floor 01
@@ -2196,8 +2196,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 4 Floor 01 Floorplan Blob
       type: File
@@ -2268,8 +2268,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 4 Floor 02 Floorplan Blob
       type: File
@@ -2340,8 +2340,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 4 Floor 03 Floorplan Blob
       type: File
@@ -2412,8 +2412,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 4 Floor 04 Floorplan Blob
       type: File
@@ -2485,8 +2485,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/shvip.png
-      contentType: image/png
+      filepath: ../Images/floors/shvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: Contoso Hotel Contoso Premium 4 Floor 05 Floorplan Blob
       type: File

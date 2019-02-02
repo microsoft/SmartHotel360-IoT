@@ -305,8 +305,8 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 					type = BlobDescription.FileBlobType,
 					subtype = BlobDescription.NoneBlobType,
 					description = "Hotel image",
-					filepath = $"{ImageFolderRelativePath}/hotels/{hotelType.Name.ToLower()}.png",
-					contentType = BlobDescription.PngContentType,
+					filepath = $"{ImageFolderRelativePath}/hotels/{hotelType.Name.ToLower()}.jpg",
+					contentType = BlobDescription.JpegContentType,
 					isPrimaryBlob = true
 				} );
 
@@ -345,8 +345,8 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 						type = BlobDescription.FileBlobType,
 						subtype = BlobDescription.NoneBlobType,
 						description = "Floor image",
-						filepath = $"{ImageFolderRelativePath}/floors/{hotelType.Name.ToLower()}{imagePathSuffix}.png",
-						contentType = BlobDescription.PngContentType,
+						filepath = $"{ImageFolderRelativePath}/floors/{hotelType.Name.ToLower()}{imagePathSuffix}.jpg",
+						contentType = BlobDescription.JpegContentType,
 						isPrimaryBlob = true
 					} );
 

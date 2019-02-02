@@ -38,8 +38,8 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotels/h.png
-    contentType: image/png
+    filepath: ../Images/hotels/h.jpg
+    contentType: image/jpeg
     isPrimaryBlob: true
   spaces:
   - name: Floor 01
@@ -56,8 +56,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/h.png
-      contentType: image/png
+      filepath: ../Images/floors/h.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 1 Floor 01 Floorplan Blob
       type: File
@@ -380,8 +380,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/h.png
-      contentType: image/png
+      filepath: ../Images/floors/h.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 1 Floor 02 Floorplan Blob
       type: File
@@ -704,8 +704,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/h.png
-      contentType: image/png
+      filepath: ../Images/floors/h.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 1 Floor 03 Floorplan Blob
       type: File
@@ -1028,8 +1028,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/h.png
-      contentType: image/png
+      filepath: ../Images/floors/h.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 1 Floor 04 Floorplan Blob
       type: File
@@ -1352,8 +1352,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/h.png
-      contentType: image/png
+      filepath: ../Images/floors/h.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 1 Floor 05 Floorplan Blob
       type: File
@@ -1676,8 +1676,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/h.png
-      contentType: image/png
+      filepath: ../Images/floors/h.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 1 Floor 06 Floorplan Blob
       type: File
@@ -2000,8 +2000,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/h.png
-      contentType: image/png
+      filepath: ../Images/floors/h.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 1 Floor 07 Floorplan Blob
       type: File
@@ -2324,8 +2324,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/h.png
-      contentType: image/png
+      filepath: ../Images/floors/h.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 1 Floor 08 Floorplan Blob
       type: File
@@ -2647,8 +2647,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/hvip.png
-      contentType: image/png
+      filepath: ../Images/floors/hvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 1 Floor 09 Floorplan Blob
       type: File
@@ -2820,8 +2820,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/hvip.png
-      contentType: image/png
+      filepath: ../Images/floors/hvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 1 Floor 10 Floorplan Blob
       type: File
@@ -3002,8 +3002,8 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotels/l.png
-    contentType: image/png
+    filepath: ../Images/hotels/l.jpg
+    contentType: image/jpeg
     isPrimaryBlob: true
   spaces:
   - name: Floor 01
@@ -3018,8 +3018,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/l.png
-      contentType: image/png
+      filepath: ../Images/floors/l.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 1 Floor 01 Floorplan Blob
       type: File
@@ -3265,8 +3265,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/l.png
-      contentType: image/png
+      filepath: ../Images/floors/l.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 1 Floor 02 Floorplan Blob
       type: File
@@ -3512,8 +3512,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/l.png
-      contentType: image/png
+      filepath: ../Images/floors/l.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 1 Floor 03 Floorplan Blob
       type: File
@@ -3759,8 +3759,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/l.png
-      contentType: image/png
+      filepath: ../Images/floors/l.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 1 Floor 04 Floorplan Blob
       type: File
@@ -4006,8 +4006,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/l.png
-      contentType: image/png
+      filepath: ../Images/floors/l.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 1 Floor 05 Floorplan Blob
       type: File
@@ -4253,8 +4253,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/l.png
-      contentType: image/png
+      filepath: ../Images/floors/l.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 1 Floor 06 Floorplan Blob
       type: File
@@ -4500,8 +4500,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/l.png
-      contentType: image/png
+      filepath: ../Images/floors/l.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 1 Floor 07 Floorplan Blob
       type: File
@@ -4747,8 +4747,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/l.png
-      contentType: image/png
+      filepath: ../Images/floors/l.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 1 Floor 08 Floorplan Blob
       type: File
@@ -4995,8 +4995,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/lvip.png
-      contentType: image/png
+      filepath: ../Images/floors/lvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 1 Floor 09 Floorplan Blob
       type: File
@@ -5138,8 +5138,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/lvip.png
-      contentType: image/png
+      filepath: ../Images/floors/lvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 1 Floor 10 Floorplan Blob
       type: File
@@ -5290,8 +5290,8 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotels/sh.png
-    contentType: image/png
+    filepath: ../Images/hotels/sh.jpg
+    contentType: image/jpeg
     isPrimaryBlob: true
   spaces:
   - name: Floor 01
@@ -5306,8 +5306,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 2 Floor 01 Floorplan Blob
       type: File
@@ -5478,8 +5478,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 2 Floor 02 Floorplan Blob
       type: File
@@ -5650,8 +5650,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 2 Floor 03 Floorplan Blob
       type: File
@@ -5822,8 +5822,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 2 Floor 04 Floorplan Blob
       type: File
@@ -5995,8 +5995,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/shvip.png
-      contentType: image/png
+      filepath: ../Images/floors/shvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 2 Floor 05 Floorplan Blob
       type: File
@@ -6087,8 +6087,8 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotels/sh.png
-    contentType: image/png
+    filepath: ../Images/hotels/sh.jpg
+    contentType: image/jpeg
     isPrimaryBlob: true
   spaces:
   - name: Floor 01
@@ -6103,8 +6103,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 3 Floor 01 Floorplan Blob
       type: File
@@ -6275,8 +6275,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 3 Floor 02 Floorplan Blob
       type: File
@@ -6447,8 +6447,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 3 Floor 03 Floorplan Blob
       type: File
@@ -6619,8 +6619,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sh.png
-      contentType: image/png
+      filepath: ../Images/floors/sh.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 3 Floor 04 Floorplan Blob
       type: File
@@ -6792,8 +6792,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/shvip.png
-      contentType: image/png
+      filepath: ../Images/floors/shvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 3 Floor 05 Floorplan Blob
       type: File
@@ -6884,8 +6884,8 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotels/sl.png
-    contentType: image/png
+    filepath: ../Images/hotels/sl.jpg
+    contentType: image/jpeg
     isPrimaryBlob: true
   spaces:
   - name: Floor 01
@@ -6900,8 +6900,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 4 Floor 01 Floorplan Blob
       type: File
@@ -7072,8 +7072,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 4 Floor 02 Floorplan Blob
       type: File
@@ -7244,8 +7244,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 4 Floor 03 Floorplan Blob
       type: File
@@ -7416,8 +7416,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 4 Floor 04 Floorplan Blob
       type: File
@@ -7589,8 +7589,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/slvip.png
-      contentType: image/png
+      filepath: ../Images/floors/slvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Elite 4 Floor 05 Floorplan Blob
       type: File
@@ -7681,8 +7681,8 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotels/sl.png
-    contentType: image/png
+    filepath: ../Images/hotels/sl.jpg
+    contentType: image/jpeg
     isPrimaryBlob: true
   spaces:
   - name: Floor 01
@@ -7697,8 +7697,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 2 Floor 01 Floorplan Blob
       type: File
@@ -7869,8 +7869,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 2 Floor 02 Floorplan Blob
       type: File
@@ -8041,8 +8041,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 2 Floor 03 Floorplan Blob
       type: File
@@ -8213,8 +8213,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 2 Floor 04 Floorplan Blob
       type: File
@@ -8386,8 +8386,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/slvip.png
-      contentType: image/png
+      filepath: ../Images/floors/slvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 2 Floor 05 Floorplan Blob
       type: File
@@ -8478,8 +8478,8 @@ spaces:
     type: File
     subtype: None
     description: Hotel image
-    filepath: ../Images/hotels/sl.png
-    contentType: image/png
+    filepath: ../Images/hotels/sl.jpg
+    contentType: image/jpeg
     isPrimaryBlob: true
   spaces:
   - name: Floor 01
@@ -8494,8 +8494,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 3 Floor 01 Floorplan Blob
       type: File
@@ -8666,8 +8666,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 3 Floor 02 Floorplan Blob
       type: File
@@ -8838,8 +8838,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 3 Floor 03 Floorplan Blob
       type: File
@@ -9010,8 +9010,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/sl.png
-      contentType: image/png
+      filepath: ../Images/floors/sl.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 3 Floor 04 Floorplan Blob
       type: File
@@ -9183,8 +9183,8 @@ spaces:
       type: File
       subtype: None
       description: Floor image
-      filepath: ../Images/floors/slvip.png
-      contentType: image/png
+      filepath: ../Images/floors/slvip.jpg
+      contentType: image/jpeg
       isPrimaryBlob: true
     - name: SmartHotel360 SH360 Premium 3 Floor 05 Floorplan Blob
       type: File

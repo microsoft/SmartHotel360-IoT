@@ -23,7 +23,7 @@ import { isFulfilled } from 'q';
 export class FloorComponent implements OnInit, OnDestroy {
 
   private static readonly AlertFillColor = 'yellow';
-  private static readonly AlertIdPrefix = 'alert_';
+  private static readonly AlertIdPrefix = 'alarm_';
   private static readonly RoomUnselectedColor = 'transparent';
   private static readonly RoomSelectedColor = 'yellow';
   private static readonly RoomSelectionThickness = '4px';
@@ -418,8 +418,8 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   initializeFloorplan(self: FloorComponent) {
     const dtToken = this.facilityService.getDigitalTwinsToken();
-    // self.floor.detailedImagePath
-    d3.xml('/assets/floorplan.svg', {
+    
+    d3.xml(self.floor.detailedImagePath, {
       headers: { 'Authorization': `Bearer ${dtToken}` }
     })
       .then((result: XMLDocument) => {
