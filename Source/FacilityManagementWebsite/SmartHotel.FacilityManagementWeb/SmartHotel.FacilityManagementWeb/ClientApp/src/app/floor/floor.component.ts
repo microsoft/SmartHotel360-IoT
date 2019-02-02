@@ -64,8 +64,8 @@ export class FloorComponent implements OnInit, OnDestroy {
   private isUpdatingSliders = false;
 
   private svg: d3.Selection<any, {}, null, undefined>;
-  private roomOverlayGroups: d3.Selection<SVGGElement, {}, null, {}>;
   private roomOverlayPolygons: d3.Selection<SVGPolygonElement, ISpace, SVGGElement, {}>;
+  private roomAlertPaths: d3.Selection<SVGPathElement, ISpace, SVGGElement, {}>;
 
   get useBasicAuth() { return environment.useBasicAuth; }
 
@@ -412,6 +412,8 @@ export class FloorComponent implements OnInit, OnDestroy {
         }
       });
     }
+
+    this.updateAlerts();
   }
 
   initializeFloorplan(self: FloorComponent) {
@@ -425,7 +427,7 @@ export class FloorComponent implements OnInit, OnDestroy {
         const svgNode = d3.select(self.floorplanContainerDiv.nativeElement)
           .node().appendChild(svgNodeFromFile);
         self.svg = d3.select(svgNode);
-        const roomOverlayGroups = self.svg.selectAll<SVGGElement, {}>(`g[id^=${FloorComponent.RoomOverlayIdPrefix}]`);
+        const roomOverlayGroups = self.svg.selectAll<SVGGElement, ISpace>(`g[id^=${FloorComponent.RoomOverlayIdPrefix}]`);
         self.roomOverlayPolygons = roomOverlayGroups.selectAll('polygon');
         self.roomOverlayPolygons.style('fill', FloorComponent.RoomOverlayVacantFill)
           .style('fill-opacity', 0.7)
@@ -449,10 +451,20 @@ export class FloorComponent implements OnInit, OnDestroy {
 
         self.updateRoomMotionStatus();
 
-        const roomAlertGroups = self.svg.selectAll(`g[id^=${FloorComponent.AlertIdPrefix}]`);
-        const roomAlerts = roomAlertGroups.selectAll('path');
-        roomAlerts.style('display', 'none')
+        const roomAlertGroups = self.svg.selectAll<SVGGElement, ISpace>(`g[id^=${FloorComponent.AlertIdPrefix}]`);
+        self.roomAlertPaths = roomAlertGroups.selectAll('path');
+        self.roomAlertPaths.style('display', 'none')
           .style('fill', FloorComponent.AlertFillColor);
+
+        self.roomAlertPaths.datum(function () {
+          const pathElement = d3.select(this);
+          const gElement = d3.select(pathElement.node().parentNode);
+          const alertId = gElement.attr('id');
+          const alertNumber = +alertId.replace(FloorComponent.AlertIdPrefix, '');
+          const alertNumberConvertedForCurrentFloor = (100 * self.floor.number) + alertNumber;
+          const matchingRoom = self.rooms.find(r => r.number === alertNumberConvertedForCurrentFloor);
+          return matchingRoom;
+        });
       });
   }
 
@@ -488,5 +500,16 @@ export class FloorComponent implements OnInit, OnDestroy {
       (room: ISpace) => (room.motion && room.motion.isMotion)
         ? FloorComponent.RoomOverlayOccupiedFill
         : FloorComponent.RoomOverlayVacantFill);
+  }
+
+  updateAlerts() {
+    if (!this.roomAlertPaths) {
+      return;
+    }
+
+    this.roomAlertPaths.style('display',
+      (room: ISpace) => room.hasAlert
+        ? 'unset'
+        : 'none');
   }
 }
