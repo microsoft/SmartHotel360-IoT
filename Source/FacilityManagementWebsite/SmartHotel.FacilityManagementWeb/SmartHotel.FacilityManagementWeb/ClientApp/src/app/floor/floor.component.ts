@@ -418,7 +418,7 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   initializeFloorplan(self: FloorComponent) {
     const dtToken = this.facilityService.getDigitalTwinsToken();
-    
+
     d3.xml(self.floor.detailedImagePath, {
       headers: { 'Authorization': `Bearer ${dtToken}` }
     })
@@ -427,6 +427,7 @@ export class FloorComponent implements OnInit, OnDestroy {
         const svgNode = d3.select(self.floorplanContainerDiv.nativeElement)
           .node().appendChild(svgNodeFromFile);
         self.svg = d3.select(svgNode);
+        self.svg.selectAll('title').remove();
         const roomOverlayGroups = self.svg.selectAll<SVGGElement, ISpace>(`g[id^=${FloorComponent.RoomOverlayIdPrefix}]`);
         self.roomOverlayPolygons = roomOverlayGroups.selectAll('polygon');
         self.roomOverlayPolygons.style('fill', FloorComponent.RoomOverlayVacantFill)
