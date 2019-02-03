@@ -1,5 +1,6 @@
 .floorplan-root {
   width: 100%;
+  position: relative;
 }
 
 .legend-panel-container {
@@ -39,7 +40,7 @@
 }
 
 .room-info-panel {
-  position: fixed;
+  position: absolute;
   left: 26px;
   bottom: 26px;
   width: 700px;
