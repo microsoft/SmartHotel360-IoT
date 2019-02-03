@@ -2,6 +2,42 @@
   width: 100%;
 }
 
+.legend-panel-container {
+  float: right;
+  position: relative;
+}
+
+.legend-panel {
+  position: absolute;
+  top: 0;
+  right: 80px;
+  font-family: Poppins;
+  font-size: 22px;
+  color: #9e9e9e;
+}
+
+.legend-entry-container {
+  display: flex;
+}
+
+.legend-entry-container.bottom {
+  margin-top: 44px;
+}
+
+.legend-entry-container .legend-icon {
+  width: 36px;
+  height: 36px;
+  margin-right: 18px;
+}
+
+.legend-entry-container .occupied {
+  background: #64deff;
+}
+
+.legend-entry-container .vacant {
+  background: #8e8e8e;
+}
+
 .room-info-panel {
   position: fixed;
   left: 26px;

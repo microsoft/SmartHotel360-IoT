@@ -2,6 +2,18 @@
   [hotelId]="hotelId" [hotelIndex]="hotelIndex" [hotelName]="hotelName" [floorName]="floorName"></app-breadcrumb>
 
 <div class="floorplan-root">
+  <div class="legend-panel-container">
+    <div class="legend-panel">
+      <div class="legend-entry-container">
+        <div class="legend-icon occupied"></div>
+        occupied
+      </div>
+      <div class="legend-entry-container bottom">
+        <div class="legend-icon vacant"></div>
+        vacant
+      </div>
+    </div>
+  </div>
   <div #floorplanContainer id="floorplanContainer"></div>
   <div *ngIf="selectedRoom" class="room-info-panel">
     <div class="motion-status-panel">
