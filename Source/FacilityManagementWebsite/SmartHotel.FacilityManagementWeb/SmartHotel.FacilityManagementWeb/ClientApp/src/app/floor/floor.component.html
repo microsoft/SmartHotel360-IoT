@@ -17,7 +17,7 @@
   <div #floorplanContainer id="floorplanContainer"></div>
   <div *ngIf="selectedRoom" class="room-info-panel">
     <div class="motion-status-panel">
-      <div *ngIf="selectedRoom && selectedRoom.motion.isMotion" class="occupied">
+      <div *ngIf="selectedRoom && selectedRoom.motion && selectedRoom.motion.isMotion" class="occupied">
         occupied
       </div>
       <div *ngIf="selectedRoom && !selectedRoom.motion.isMotion" class="vacant">

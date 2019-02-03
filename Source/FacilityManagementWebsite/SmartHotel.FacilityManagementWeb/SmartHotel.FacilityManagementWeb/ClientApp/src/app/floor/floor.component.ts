@@ -500,7 +500,7 @@ export class FloorComponent implements OnInit, OnDestroy {
     }
 
     this.roomOverlayPolygons.style('fill',
-      (room: ISpace) => (room.motion && room.motion.isMotion)
+      (room: ISpace) => (room && room.motion && room.motion.isMotion)
         ? FloorComponent.RoomOverlayOccupiedFill
         : FloorComponent.RoomOverlayVacantFill);
   }
@@ -512,11 +512,11 @@ export class FloorComponent implements OnInit, OnDestroy {
 
     this.roomAlertPaths.each(function (room: ISpace) {
       const alertPath = d3.select(this);
-      alertPath.style('display', room.hasAlert
+      alertPath.style('display', room && room.hasAlert
         ? 'unset'
         : 'none');
       alertPath.selectAll('title')
-        .text(room.hasAlert ? room.alertMessage : '');
+        .text(room && room.hasAlert ? room.alertMessage : '');
     });
   }
 }
