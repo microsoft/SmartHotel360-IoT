@@ -71,154 +71,75 @@
   height: 100%;
   background: #8e8e8e;
 }
-/*
-section {
-  margin: 4px 64px 0 26px;
-}
 
-.rooms {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 0 0 14px;
-}
-
-.room {
-  width: 250px;
+.room-info-panel .grid {
   display: grid;
-  grid-template-columns: 1fr 62px 62px;
-  grid-template-rows: 48px 32px 32px 32px 32px 32px 32px;
-  background-color: #d4d4d4;
-  padding: 16px;
-  margin: 4px 4px 8px 12px;
+  grid-template-columns: 125px 125px 282px 125px;
 }
 
-.room-header {
-  grid-row: 1;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  color: #bc4c1b;
-  font-size: 18px;
-  font-weight: 300;
-  position: relative;
-}
-
-.room-subtype {
-  color: #bc4c1b;
-  font-size: 12px;
-  font-weight: 150;
-}
-
-.alert-image {
+.room-info-panel .room-type-grid {
   position: absolute;
-  right: 0;
-  top: 0;
-  height: 26px;
+  left: 22px;
+  top: 12px;
 }
 
-.room-occupancy {
-  grid-row: 2;
+.room-type-grid .room-type {
+  grid-column: 1;
 }
 
-.room-temp {
-  grid-row: 4;
+.room-info-panel .room-temp-grid {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  top: 100px;
 }
 
-.room-light {
-  grid-row: 6;
+.room-temp-grid .room-temp {
+  grid-column: 1;
 }
 
-.room-label {
-  grid-row: 3;
-  color: #378d93;
-  font-size: 14px;
-}
-
-.room-desired {
+.room-info-panel .desired {
   grid-column: 2;
   text-align: center;
 }
 
-.room-actual-label {
+.room-info-panel .slider {
   grid-column: 3;
+}
+
+.room-info-panel .actual {
+  grid-column: 4;
   text-align: center;
 }
 
-.room-actual {
-  grid-column: 3;
-  text-align: center;
-  font-size: 18px;
-  font-family: Poppins-SemiBold;
-  color: #bc4c1b;
+.room-info-panel .room-lights-grid {
+  position: absolute;
+  left: 22px;
+  top: 158px;
 }
 
-.room-temp-slider {
-  grid-row: 5;
-  grid-column-start: 2;
-  grid-column-end: 4;
-  text-align: center;
-  font-size: 18px;
-  font-family: Poppins-SemiBold;
-}
-
-.room-light-slider {
-  grid-row: 7;
-  grid-column-start: 2;
-  grid-column-end: 4;
-  text-align: center;
-  font-size: 18px;
-  font-family: Poppins-SemiBold;
-}
-
-.room-unavailable {
-  grid-column-start: 2;
-  grid-column-end: 4;
-  color: darkgray;
-  text-align: center;
-}
-
-.room-device {
+.room-lights-grid .room-lights {
   grid-column: 1;
-  font-family: Poppins-SemiBold;
 }
 
-.floor-image {
-  background-color: gray;
-  background-image: url("/assets/images/placeholder.png");
-  background-position: center center;
-  height: 304px;
+.room-info-panel .light-label {
+  font-family: Poppins-ExtraLight;
+  font-size: 28px;
+  color: #00b0f0;
 }
 
-.floor-button {
-  background-color: #bc4c1b;
-  text-align: center;
-  height: 48px;
-  width: 100%;
-  color: white;
-  font-size: 19px;
-  line-height: 48px;
-  text-transform: uppercase;
+.room-info-panel .grid-labels {
+  position: absolute;
+  left: 22px;
+  top: 76px;
+  font-size: 20px;
 }
 
-.floor-button:hover {
-  cursor: pointer;
-  background-color: pink;
-  transition: background-color .35s ease-in;
+.room-info-panel .alert-message {
+  position: absolute;
+  left: 22px;
+  bottom: 12px;
+  font-family: Poppins;
+  font-size: 18px;
+  color: #9e9e9e;
 }
-
-.led-light-on {
-  margin: 0 auto;
-  width: 20px;
-  height: 20px;
-  background-color: #24E0FF;
-  border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px, #3F8CFF 0 2px 14px;
-}
-
-.led-light-off {
-  margin: 0 auto;
-  width: 20px;
-  height: 20px;
-  background-color: #16879a;
-  border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px, #3F8CFF 0 2px 0;
-} */
