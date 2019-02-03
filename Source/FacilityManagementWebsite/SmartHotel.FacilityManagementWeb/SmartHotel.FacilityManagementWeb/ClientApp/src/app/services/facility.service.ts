@@ -8,6 +8,7 @@ import { ISpaceAlert } from './models/ISpaceAlert';
 import { BehaviorSubject, Observable, forkJoin } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { ISensor } from './models/ISensor';
+import { SpaceType } from './models/SpaceType';
 
 class InitializationCallbackContainer {
   constructor(requester: any, callback: (requester: any) => void) {
@@ -314,10 +315,15 @@ export class FacilityService {
     this.spacesByParentId.set(spaces[0].parentSpaceId, spaces.sort(this.getSpacesSortResult));
 
     spaces.forEach(space => {
+      this.setSpaceNumber(space);
       if (space.properties) {
         const imagePathProperty = space.properties.find(p => p.name === 'ImagePath');
         if (imagePathProperty) {
           space.imagePath = imagePathProperty.value;
+        }
+        const detailedImagePathProperty = space.properties.find(p => p.name === 'DetailedImagePath');
+        if (detailedImagePathProperty) {
+          space.detailedImagePath = detailedImagePathProperty.value;
         }
       }
       this.updateSpacesByParentIdMap(space.childSpaces);
@@ -341,6 +347,14 @@ export class FacilityService {
       }
     }
     return a.name.localeCompare(b.name);
+  }
+
+  private setSpaceNumber(space: ISpace) {
+    if (space.type.toLowerCase() === SpaceType.Floor) {
+      space.number = +space.name.replace('Floor ', '');
+    } else if (space.type.toLowerCase() === SpaceType.Room) {
+      space.number = +space.name.replace('Room ', '');
+    }
   }
 
   private onInitialized() {

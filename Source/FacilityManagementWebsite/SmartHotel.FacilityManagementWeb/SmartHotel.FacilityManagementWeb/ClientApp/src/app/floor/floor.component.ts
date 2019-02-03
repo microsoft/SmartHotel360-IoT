@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
 import { ILight, IThermostat, IMotion } from '../services/models/IDeviceValues';
@@ -12,6 +12,7 @@ import { BusyService } from '../services/busy.service';
 import { ISpaceAlert } from '../services/models/ISpaceAlert';
 import { Subscription } from 'rxjs';
 import { SubscriptionUtilities } from '../helpers/subscription-utilities';
+import * as d3 from 'd3';
 
 @Component({
   selector: 'app-floor',
@@ -20,7 +21,14 @@ import { SubscriptionUtilities } from '../helpers/subscription-utilities';
 })
 export class FloorComponent implements OnInit, OnDestroy {
 
-  private subscriptions: Subscription[] = [];
+  private static readonly AlertFillColor = 'yellow';
+  private static readonly AlertIdPrefix = 'alarm_';
+  private static readonly RoomUnselectedColor = 'transparent';
+  private static readonly RoomSelectedColor = 'yellow';
+  private static readonly RoomSelectionThickness = '4px';
+  private static readonly RoomOverlayIdPrefix = 'room_';
+  private static readonly RoomOverlayOccupiedFill = '#64deff';
+  private static readonly RoomOverlayVacantFill = '#8e8e8e';
 
   constructor(private route: ActivatedRoute,
     private facilityService: FacilityService,
@@ -31,6 +39,7 @@ export class FloorComponent implements OnInit, OnDestroy {
   }
 
   @ViewChild('breadcumbs') private breadcrumbs: BreadcrumbComponent;
+  @ViewChild('floorplanContainer') private floorplanContainerDiv: ElementRef;
   public tenantId: string;
   public hotelBrandId: string;
   public hotelBrandName: string;
@@ -41,6 +50,10 @@ export class FloorComponent implements OnInit, OnDestroy {
   public floorName: string;
 
   public rooms: ISpace[] = null;
+  public selectedRoom: ISpace;
+
+  private floor: ISpace;
+  private subscriptions: Subscription[] = [];
   private roomsById: Map<string, ISpace>;
   private desiredDataByRoomIdThenSensorId: Map<string, Map<string, IDesired>>;
   private sensorDataByRoomIdThenSensorId: Map<string, Map<string, ISensorReading>>;
@@ -48,6 +61,10 @@ export class FloorComponent implements OnInit, OnDestroy {
   private theromstatSliderTimeout;
   private lightSliderTimeout;
   private isUpdatingSliders = false;
+
+  private svg: d3.Selection<any, {}, null, undefined>;
+  private roomOverlayPolygons: d3.Selection<SVGPolygonElement, ISpace, SVGGElement, {}>;
+  private roomAlertPaths: d3.Selection<SVGPathElement, ISpace, SVGGElement, {}>;
 
   get useBasicAuth() { return environment.useBasicAuth; }
 
@@ -103,16 +120,18 @@ export class FloorComponent implements OnInit, OnDestroy {
   loadRooms(self: FloorComponent) {
 
     self.busyService.busy();
-    const floor = self.facilityService.getSpace(self.hotelId, self.floorId);
-    if (!floor) {
+    self.floor = self.facilityService.getSpace(self.hotelId, self.floorId);
+    if (!self.floor) {
       self.breadcrumbs.returnToHotel();
       return;
     }
-    self.floorName = floor.friendlyName;
+    self.floorName = self.floor.friendlyName;
     self.rooms = self.facilityService.getChildSpaces(self.floorId);
     self.rooms.forEach(room => self.roomsById.set(room.id, room));
     self.loadDesiredData();
     self.setupTimer();
+
+    self.initializeFloorplan(self);
 
     self.subscriptions.push(self.facilityService.getTemperatureAlerts()
       .subscribe(tempAlerts => self.temperatureAlertsUpdated(self.rooms, tempAlerts)));
@@ -174,6 +193,10 @@ export class FloorComponent implements OnInit, OnDestroy {
           sensorDataForRoom.set(s.sensorId, s);
         });
       });
+
+      if (this.roomOverlayPolygons) {
+        this.updateRoomMotionStatus();
+      }
     }
   }
 
@@ -388,5 +411,112 @@ export class FloorComponent implements OnInit, OnDestroy {
         }
       });
     }
+
+    this.updateAlerts();
+  }
+
+  initializeFloorplan(self: FloorComponent) {
+    const dtToken = this.facilityService.getDigitalTwinsToken();
+
+    d3.xml(self.floor.detailedImagePath, {
+      headers: { 'Authorization': `Bearer ${dtToken}` }
+    })
+      .then((result: XMLDocument) => {
+        const svgNodeFromFile = result.getElementsByTagName('svg')[0];
+        const svgNode = d3.select(self.floorplanContainerDiv.nativeElement)
+          .node().appendChild(svgNodeFromFile);
+        self.svg = d3.select(svgNode);
+        self.svg.selectAll('title').remove();
+        const roomOverlayGroups = self.svg.selectAll<SVGGElement, ISpace>(`g[id^=${FloorComponent.RoomOverlayIdPrefix}]`);
+        self.roomOverlayPolygons = roomOverlayGroups.selectAll('polygon');
+        self.roomOverlayPolygons.style('fill', FloorComponent.RoomOverlayVacantFill)
+          .style('fill-opacity', 0.7)
+          .style('stroke', FloorComponent.RoomUnselectedColor)
+          .style('stroke-width', FloorComponent.RoomSelectionThickness)
+          .style('cursor', 'pointer');
+
+        self.roomOverlayPolygons.datum(function () {
+          const polygonElement = d3.select(this);
+          const gElement = d3.select(polygonElement.node().parentNode);
+          const roomOverlayId = gElement.attr('id');
+          const roomOverlayNumber = +roomOverlayId.replace(FloorComponent.RoomOverlayIdPrefix, '');
+          const roomOverlayNumberConvertedForCurrentFloor = (100 * self.floor.number) + roomOverlayNumber;
+          const matchingRoom = self.rooms.find(r => r.number === roomOverlayNumberConvertedForCurrentFloor);
+          return matchingRoom;
+        });
+
+        self.roomOverlayPolygons.on('click', function (room: ISpace) {
+          const shape = d3.select(this);
+          self.roomClicked(room, shape);
+        });
+
+        self.updateRoomMotionStatus();
+
+        const roomAlertGroups = self.svg.selectAll<SVGGElement, ISpace>(`g[id^=${FloorComponent.AlertIdPrefix}]`);
+        self.roomAlertPaths = roomAlertGroups.selectAll('path');
+        self.roomAlertPaths.append('title');
+        self.roomAlertPaths.style('display', 'none')
+          .style('fill', FloorComponent.AlertFillColor)
+          .style('cursor', 'pointer');
+
+        self.roomAlertPaths.datum(function () {
+          const pathElement = d3.select(this);
+          const gElement = d3.select(pathElement.node().parentNode);
+          const alertId = gElement.attr('id');
+          const alertNumber = +alertId.replace(FloorComponent.AlertIdPrefix, '');
+          const alertNumberConvertedForCurrentFloor = (100 * self.floor.number) + alertNumber;
+          const matchingRoom = self.rooms.find(r => r.number === alertNumberConvertedForCurrentFloor);
+          return matchingRoom;
+        });
+      });
+  }
+
+  roomClicked(room: ISpace, roomOverlay: d3.Selection<SVGPolygonElement, {}, null, {}>) {
+    if (this.selectedRoom === room) {
+      this.updateRoomOverlayStroke(roomOverlay, FloorComponent.RoomUnselectedColor);
+      this.selectedRoom = undefined;
+    } else {
+      if (this.selectedRoom) {
+        const selectRoomNumberConvertedToRoomOverlayNumber = this.selectedRoom.number - (100 * this.floor.number);
+        const roomOverlayId = selectRoomNumberConvertedToRoomOverlayNumber < 10
+          ? selectRoomNumberConvertedToRoomOverlayNumber.toString().padStart(2, '0')
+          : selectRoomNumberConvertedToRoomOverlayNumber.toString();
+        const previousSelectedRoomOverlayGroup = this.svg.selectAll<SVGGElement, {}>(`#${FloorComponent.RoomOverlayIdPrefix}${roomOverlayId}`);
+        this.updateRoomOverlayStroke(previousSelectedRoomOverlayGroup.selectAll('polygon'), FloorComponent.RoomUnselectedColor);
+      }
+
+      this.updateRoomOverlayStroke(roomOverlay, FloorComponent.RoomSelectedColor);
+      this.selectedRoom = room;
+    }
+  }
+
+  updateRoomOverlayStroke(roomOverlay: d3.Selection<SVGPolygonElement, {}, SVGGElement, {}>, desiredStroke: string) {
+    roomOverlay.style('stroke', desiredStroke);
+  }
+
+  updateRoomMotionStatus() {
+    if (!this.roomOverlayPolygons) {
+      return;
+    }
+
+    this.roomOverlayPolygons.style('fill',
+      (room: ISpace) => (room.motion && room.motion.isMotion)
+        ? FloorComponent.RoomOverlayOccupiedFill
+        : FloorComponent.RoomOverlayVacantFill);
+  }
+
+  updateAlerts() {
+    if (!this.roomAlertPaths) {
+      return;
+    }
+
+    this.roomAlertPaths.each(function (room: ISpace) {
+      const alertPath = d3.select(this);
+      alertPath.style('display', room.hasAlert
+        ? 'unset'
+        : 'none');
+      alertPath.selectAll('title')
+        .text(room.hasAlert ? room.alertMessage : '');
+    });
   }
 }

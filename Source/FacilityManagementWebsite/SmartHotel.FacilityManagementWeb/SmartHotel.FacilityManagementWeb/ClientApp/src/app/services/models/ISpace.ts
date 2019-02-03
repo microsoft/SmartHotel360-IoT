@@ -8,11 +8,13 @@ export interface ISpace {
   parentSpaceId: string;
   name: string;
   friendlyName: string;
+  number?: number;
   type: string;
   typeId: number;
   subtype: string;
   subtypeId: number;
   imagePath: string;
+  detailedImagePath: string;
   childSpaces: ISpace[];
   properties: IProperty[];
   devices: IDevice[];

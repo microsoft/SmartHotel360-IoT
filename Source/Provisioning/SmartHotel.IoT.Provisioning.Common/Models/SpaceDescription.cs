@@ -42,7 +42,7 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 		[YamlMember( Order = 15 )]
 		public IList<RoleAssignmentDescription> roleAssignments { get; set; }
 		[YamlMember( Order = 16 )]
-		public BlobDescription blob { get; set; }
+		public IList<BlobDescription> blobs { get; set; }
 
 		public Space ToDigitalTwins( Guid parentId )
 		{
@@ -165,6 +165,16 @@ namespace SmartHotel.IoT.Provisioning.Common.Models
 			}
 
 			roleAssignments.Add( roleAssignmentDescription );
+		}
+
+		public void AddBlob( BlobDescription blobDescription )
+		{
+			if ( blobs == null )
+			{
+				blobs = new List<BlobDescription>();
+			}
+
+			blobs.Add( blobDescription );
 		}
 	}
 }

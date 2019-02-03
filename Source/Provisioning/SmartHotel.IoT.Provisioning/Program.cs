@@ -102,8 +102,6 @@ namespace SmartHotel.IoT.Provisioning
 
 				Console.WriteLine( "Creating spaces and endpoints..." );
 
-
-
 				await CreateSpacesAsync( httpClient, provisioningDescription.spaces, Guid.Empty, Guid.Empty, userAadObjectIds );
 				Console.WriteLine();
 				Console.WriteLine();
@@ -241,9 +239,9 @@ namespace SmartHotel.IoT.Provisioning
 					await CreatePropertiesAsync( httpClient, spaceDescription.properties, spaceId );
 				}
 
-				if ( spaceDescription.blob != null )
+				if ( spaceDescription.blobs != null )
 				{
-					await CreateBlobAsync( httpClient, spaceDescription.blob, spaceId );
+					await CreateBlobAsync( httpClient, spaceDescription.blobs, spaceId );
 				}
 
 				if ( spaceDescription.spaces != null )
@@ -612,7 +610,7 @@ namespace SmartHotel.IoT.Provisioning
 			}
 		}
 
-		private async Task CreateBlobAsync( HttpClient httpClient, BlobDescription blobDescription, Guid spaceId )
+		private async Task CreateBlobAsync( HttpClient httpClient, IList<BlobDescription> blobDescriptions, Guid spaceId )
 		{
 			if ( spaceId == Guid.Empty )
 			{
@@ -622,66 +620,86 @@ namespace SmartHotel.IoT.Provisioning
 			Space space = await SpaceHelpers.GetSpaceAsync( httpClient, spaceId, "Properties" );
 
 			Property imageBlobIdProperty = space.Properties.FirstOrDefault( p => p.Name == PropertyKeyDescription.ImageBlobId );
-
-			Metadata metadata = blobDescription.ToDigitalTwinsMetadata( spaceId );
-			var multipartContent = new MultipartFormDataContent( "USER_DEFINED_BOUNDARY" );
-			var metadataContent = new StringContent( JsonConvert.SerializeObject( metadata ), Encoding.UTF8, "application/json" );
-			metadataContent.Headers.ContentType = MediaTypeHeaderValue.Parse( "application/json; charset=utf-8" );
-			multipartContent.Add( metadataContent, "metadata" );
-
-			string blobContentFilePath = blobDescription.filepath;
-			if ( !Path.IsPathFullyQualified( blobContentFilePath ) )
+			Property detailedImageBlobIdProperty = space.Properties.FirstOrDefault( p => p.Name == PropertyKeyDescription.DetailedImageBlobId );
+			foreach ( BlobDescription blobDescription in blobDescriptions )
 			{
-				blobContentFilePath = Path.Combine( _directoryContainingDigitalTwinsProvisioningFile, blobContentFilePath );
-			}
-
-			using ( FileStream s = File.OpenRead( blobContentFilePath ) )
-			{
-				var blobContent = new StreamContent( s );
-				blobContent.Headers.ContentType = MediaTypeHeaderValue.Parse( blobDescription.contentType );
-				multipartContent.Add( blobContent, "contents" );
-
-				Console.WriteLine();
-				HttpRequestMessage request;
-				if ( imageBlobIdProperty == null )
+				Property desiredBlobIdProperty;
+				string desiredImagePathPropertyName;
+				string desitedImageBlobIdPropertyName;
+				if ( blobDescription.isPrimaryBlob )
 				{
-					Console.WriteLine($"Creating new blob for Space ({spaceId}) from file: {blobDescription.filepath}");
-					request = new HttpRequestMessage( HttpMethod.Post, "spaces/blobs" )
-					{
-						Content = multipartContent
-					};
+					desiredBlobIdProperty = imageBlobIdProperty;
+					desiredImagePathPropertyName = PropertyKeyDescription.ImagePath;
+					desitedImageBlobIdPropertyName = PropertyKeyDescription.ImageBlobId;
 				}
 				else
 				{
-					Console.WriteLine($"Updating blob for Space ({spaceId}) from file: {blobDescription.filepath}");
-					request = new HttpRequestMessage( HttpMethod.Patch, $"spaces/blobs/{imageBlobIdProperty.Value}" )
-					{
-						Content = multipartContent
-					};
+					desiredBlobIdProperty = detailedImageBlobIdProperty;
+					desiredImagePathPropertyName = PropertyKeyDescription.DetailedImagePath;
+					desitedImageBlobIdPropertyName = PropertyKeyDescription.DetailedImageBlobId;
 				}
 
-				var response = await httpClient.SendAsync( request );
-				Guid blobId = await response.GetIdAsync();
 
-				if ( imageBlobIdProperty == null )
+				Metadata metadata = blobDescription.ToDigitalTwinsMetadata( spaceId );
+				var multipartContent = new MultipartFormDataContent( "USER_DEFINED_BOUNDARY" );
+				var metadataContent = new StringContent( JsonConvert.SerializeObject( metadata ), Encoding.UTF8, "application/json" );
+				metadataContent.Headers.ContentType = MediaTypeHeaderValue.Parse( "application/json; charset=utf-8" );
+				multipartContent.Add( metadataContent, "metadata" );
+
+				string blobContentFilePath = blobDescription.filepath;
+				if ( !Path.IsPathFullyQualified( blobContentFilePath ) )
 				{
-					var uriBuilder = new UriBuilder( $"{httpClient.BaseAddress}spaces/blobs/{blobId}/contents/latest" );
+					blobContentFilePath = Path.Combine( _directoryContainingDigitalTwinsProvisioningFile, blobContentFilePath );
+				}
 
-					var imagePathProperty = new Property
+				using ( FileStream s = File.OpenRead( blobContentFilePath ) )
+				{
+					var blobContent = new StreamContent( s );
+					blobContent.Headers.ContentType = MediaTypeHeaderValue.Parse( blobDescription.contentType );
+					multipartContent.Add( blobContent, "contents" );
+
+					Console.WriteLine();
+					HttpRequestMessage request;
+					if ( desiredBlobIdProperty == null )
 					{
-						Name = PropertyKeyDescription.ImagePath,
-						Value = uriBuilder.Uri.ToString()
-					};
-
-					await imagePathProperty.CreateOrUpdatePropertyAsync( spaceId, httpClient, JsonSerializerSettings );
-
-					imageBlobIdProperty = new Property
+						Console.WriteLine( $"Creating new blob for Space ({spaceId}) from file: {blobDescription.filepath}" );
+						request = new HttpRequestMessage( HttpMethod.Post, "spaces/blobs" )
+						{
+							Content = multipartContent
+						};
+					}
+					else
 					{
-						Name = PropertyKeyDescription.ImageBlobId,
-						Value = blobId.ToString()
-					};
+						Console.WriteLine( $"Updating blob for Space ({spaceId}) from file: {blobDescription.filepath}" );
+						request = new HttpRequestMessage( HttpMethod.Patch, $"spaces/blobs/{desiredBlobIdProperty.Value}" )
+						{
+							Content = multipartContent
+						};
+					}
 
-					await imageBlobIdProperty.CreateOrUpdatePropertyAsync( spaceId, httpClient, JsonSerializerSettings );
+					var response = await httpClient.SendAsync( request );
+					Guid blobId = await response.GetIdAsync();
+
+					if ( desiredBlobIdProperty == null )
+					{
+						var uriBuilder = new UriBuilder( $"{httpClient.BaseAddress}spaces/blobs/{blobId}/contents/latest" );
+
+						var imagePathProperty = new Property
+						{
+							Name = desiredImagePathPropertyName,
+							Value = uriBuilder.Uri.ToString()
+						};
+
+						await imagePathProperty.CreateOrUpdatePropertyAsync( spaceId, httpClient, JsonSerializerSettings );
+
+						imageBlobIdProperty = new Property
+						{
+							Name = desitedImageBlobIdPropertyName,
+							Value = blobId.ToString()
+						};
+
+						await imageBlobIdProperty.CreateOrUpdatePropertyAsync( spaceId, httpClient, JsonSerializerSettings );
+					}
 				}
 			}
 		}

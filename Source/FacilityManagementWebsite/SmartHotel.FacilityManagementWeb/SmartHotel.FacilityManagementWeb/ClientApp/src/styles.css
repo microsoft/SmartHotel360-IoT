@@ -12,6 +12,11 @@
   src: url("/assets/fonts//Poppins/Poppins-SemiBold.woff");
 }
 
+@font-face {
+  font-family: "Poppins-ExtraLight";
+  src: url("/assets/fonts//Poppins/Poppins-ExtraLight.woff");
+}
+
 body {
   color: #253748;
   font-family: Poppins;

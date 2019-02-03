@@ -1,5 +1,79 @@
+.floorplan-root {
+  width: 100%;
+}
+
+.legend-panel-container {
+  float: right;
+  position: relative;
+}
+
+.legend-panel {
+  position: absolute;
+  top: 0;
+  right: 80px;
+  font-family: Poppins;
+  font-size: 22px;
+  color: #9e9e9e;
+}
+
+.legend-entry-container {
+  display: flex;
+}
+
+.legend-entry-container.bottom {
+  margin-top: 44px;
+}
+
+.legend-entry-container .legend-icon {
+  width: 36px;
+  height: 36px;
+  margin-right: 18px;
+}
+
+.legend-entry-container .occupied {
+  background: #64deff;
+}
+
+.legend-entry-container .vacant {
+  background: #8e8e8e;
+}
+
+.room-info-panel {
+  position: fixed;
+  left: 26px;
+  bottom: 26px;
+  width: 700px;
+  height: 260px;
+  background: #efefef;
+}
+
+.motion-status-panel {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 300px;
+  height: 46px;
+  line-height: 46px;
+  text-align: center;
+  font-family: Poppins-ExtraLight;
+  font-size: 28px;
+  color: white;
+}
+
+.motion-status-panel .occupied {
+  width: 100%;
+  height: 100%;
+  background: #64deff;
+}
+
+.motion-status-panel .vacant {
+  width: 100%;
+  height: 100%;
+  background: #8e8e8e;
+}
+/*
 section {
-  margin: 4px 64px 0px 26px;
+  margin: 4px 64px 0 26px;
 }
 
 .rooms {
@@ -36,8 +110,8 @@ section {
 
 .alert-image {
   position: absolute;
-  right: 0px;
-  top: 0px;
+  right: 0;
+  top: 0;
   height: 26px;
 }
 
@@ -125,11 +199,11 @@ section {
   text-transform: uppercase;
 }
 
-  .floor-button:hover {
-    cursor: pointer;
-    background-color: pink;
-    transition: background-color .35s ease-in;
-  }
+.floor-button:hover {
+  cursor: pointer;
+  background-color: pink;
+  transition: background-color .35s ease-in;
+}
 
 .led-light-on {
   margin: 0 auto;
@@ -147,4 +221,4 @@ section {
   background-color: #16879a;
   border-radius: 50%;
   box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px, #3F8CFF 0 2px 0;
-}
+} */

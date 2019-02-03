@@ -29,6 +29,8 @@ spaces:
     category: SpaceSubType
   - name: GymRoom
     category: SpaceSubType
+  - name: FloorPlan
+    category: SpaceBlobSubType
   users:
   - Head Of Operations
   resources:
@@ -52,6 +54,12 @@ spaces:
   - name: ImageBlobId
     primitiveDataType: string
     description: Id of the image blob for the space.
+  - name: DetailedImagePath
+    primitiveDataType: string
+    description: Path of the detailed image to display for the space.
+  - name: DetailedImageBlobId
+    primitiveDataType: string
+    description: Id of the detailed image blob for the space.
   - name: Latitude
     primitiveDataType: string
     description: Geo Position
