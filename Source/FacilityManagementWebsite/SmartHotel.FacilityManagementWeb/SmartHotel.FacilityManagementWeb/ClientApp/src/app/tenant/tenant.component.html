@@ -15,7 +15,6 @@
 <div class="hotelbrands-dashboard" *ngIf="hotelBrands !== null">
 
   <div class="hotelbrands-dash-1"><app-tsi-chart [tempSensorIds]="tempSensorIds" [lightSensorIds]="lightSensorIds" [motionSensorIds]="motionSensorIds"></app-tsi-chart></div>
-  <div class="hotelbrands-dash-2"><img src="/assets/images/brand-dash-2.jpg" /></div>
   <div class="hotelbrands-dash-2">
     <app-map [pushpinLocations]="hotelGeoLocations"></app-map>
   </div>
