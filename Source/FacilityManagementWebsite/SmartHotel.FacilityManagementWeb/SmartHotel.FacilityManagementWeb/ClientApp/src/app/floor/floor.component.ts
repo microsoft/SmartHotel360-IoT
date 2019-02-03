@@ -13,7 +13,6 @@ import { ISpaceAlert } from '../services/models/ISpaceAlert';
 import { Subscription } from 'rxjs';
 import { SubscriptionUtilities } from '../helpers/subscription-utilities';
 import * as d3 from 'd3';
-import { isFulfilled } from 'q';
 
 @Component({
   selector: 'app-floor',
@@ -433,7 +432,8 @@ export class FloorComponent implements OnInit, OnDestroy {
         self.roomOverlayPolygons.style('fill', FloorComponent.RoomOverlayVacantFill)
           .style('fill-opacity', 0.7)
           .style('stroke', FloorComponent.RoomUnselectedColor)
-          .style('stroke-width', FloorComponent.RoomSelectionThickness);
+          .style('stroke-width', FloorComponent.RoomSelectionThickness)
+          .style('cursor', 'pointer');
 
         self.roomOverlayPolygons.datum(function () {
           const polygonElement = d3.select(this);
@@ -454,8 +454,10 @@ export class FloorComponent implements OnInit, OnDestroy {
 
         const roomAlertGroups = self.svg.selectAll<SVGGElement, ISpace>(`g[id^=${FloorComponent.AlertIdPrefix}]`);
         self.roomAlertPaths = roomAlertGroups.selectAll('path');
+        self.roomAlertPaths.append('title');
         self.roomAlertPaths.style('display', 'none')
-          .style('fill', FloorComponent.AlertFillColor);
+          .style('fill', FloorComponent.AlertFillColor)
+          .style('cursor', 'pointer');
 
         self.roomAlertPaths.datum(function () {
           const pathElement = d3.select(this);
@@ -508,9 +510,13 @@ export class FloorComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.roomAlertPaths.style('display',
-      (room: ISpace) => room.hasAlert
+    this.roomAlertPaths.each(function (room: ISpace) {
+      const alertPath = d3.select(this);
+      alertPath.style('display', room.hasAlert
         ? 'unset'
         : 'none');
+      alertPath.selectAll('title')
+        .text(room.hasAlert ? room.alertMessage : '');
+    });
   }
 }
