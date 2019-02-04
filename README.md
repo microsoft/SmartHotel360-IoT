@@ -156,6 +156,9 @@ If you want to have devices active in every hotel you will need to add the follo
 
 **NOTE: The full deployment can take well over an hour.**
 
+### Making Digital Twins Provisioning Changes
+If you choose to modify any of the provisioning by increasing the number of rooms that are included in a floor, a new floorplan (found in `/Source/ARM/Images/floorplans`) file will be required. Otherwise any new rooms will most likely not be displayed or accessible in the floorplan view. Make sure to mimic the svg structure and id naming to ensure the website functions properly.
+
 ## User Settings
 When the deployment script is complete, it will output a `userSettings.json` file with information needed for the rest of the deployment.
 
