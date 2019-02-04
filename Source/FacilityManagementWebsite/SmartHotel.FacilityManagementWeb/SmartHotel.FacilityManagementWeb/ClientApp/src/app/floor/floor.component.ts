@@ -430,7 +430,6 @@ export class FloorComponent implements OnInit, OnDestroy {
         const roomOverlayGroups = self.svg.selectAll<SVGGElement, ISpace>(`g[id^=${FloorComponent.RoomOverlayIdPrefix}]`);
         self.roomOverlayPolygons = roomOverlayGroups.selectAll('polygon');
         self.roomOverlayPolygons.style('fill', FloorComponent.RoomOverlayVacantFill)
-          .style('fill-opacity', 0.7)
           .style('stroke', FloorComponent.RoomUnselectedColor)
           .style('stroke-width', FloorComponent.RoomSelectionThickness)
           .style('cursor', 'pointer');
@@ -443,7 +442,8 @@ export class FloorComponent implements OnInit, OnDestroy {
           const roomOverlayNumberConvertedForCurrentFloor = (100 * self.floor.number) + roomOverlayNumber;
           const matchingRoom = self.rooms.find(r => r.number === roomOverlayNumberConvertedForCurrentFloor);
           return matchingRoom;
-        });
+        })
+          .style('fill-opacity', (room: ISpace) => room ? 0.8 : 0);
 
         self.roomOverlayPolygons.on('click', function (room: ISpace) {
           const shape = d3.select(this);
@@ -472,6 +472,10 @@ export class FloorComponent implements OnInit, OnDestroy {
   }
 
   roomClicked(room: ISpace, roomOverlay: d3.Selection<SVGPolygonElement, {}, null, {}>) {
+    if (!room) {
+      return;
+    }
+
     if (this.selectedRoom === room) {
       this.updateRoomOverlayStroke(roomOverlay, FloorComponent.RoomUnselectedColor);
       this.selectedRoom = undefined;
