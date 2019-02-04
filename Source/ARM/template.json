@@ -10,6 +10,12 @@
         "description": "the current datetime in ticks. this is used to generate a unique string for every deployment"
       }
     },
+    "_clientApplicationObjectId": {
+      "type": "string",
+      "metadata": {
+        "description": "The Id of the AAD Application"
+      }
+    },
     "acr_location": {
       "defaultValue": "westcentralus",
       "type": "string"
@@ -1089,6 +1095,23 @@
       "dependsOn": [
         "[resourceId('Microsoft.TimeSeriesInsights/environments', variables('TimeSeriesInsightsName'))]",
         "[resourceId('Microsoft.EventHub/namespaces', variables('EventHubNamespaceName'))]"
+      ]
+    },
+    {
+      "comments": "Time Series Insights Account's access policy for the AAD Application.",
+      "type": "Microsoft.TimeSeriesInsights/environments/accesspolicies",
+      "name": "[concat(variables('TimeSeriesInsightsName'), '/ownerAccessPolicy')]",
+      "apiVersion": "2017-11-15",
+      "scale": null,
+      "properties": {
+        "principalObjectId": "[parameters('_clientApplicationObjectId')]",
+        "roles": [
+          "Reader",
+          "Contributor"
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.TimeSeriesInsights/environments', variables('TimeSeriesInsightsName'))]"
       ]
     }
   ],
