@@ -29,7 +29,7 @@ spaces:
     category: SpaceSubType
   - name: GymRoom
     category: SpaceSubType
-  - name: FloorPlan
+  - name: FloorplanFile
     category: SpaceBlobSubType
   users:
   - Head Of Operations
