@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, HostListener } from '@angular/core';
 import { AdalService } from 'adal-angular4';
 import { environment } from '../environments/environment';
 import { FacilityService } from './services/facility.service';
@@ -10,7 +10,7 @@ import { BusyService } from './services/busy.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   public static readonly LastLoginSessionStorageKey: string = 'FacilityService_LastLogin';
   public static readonly BasicAuthDataSessionStorageKey: string = 'FacilityService_BasicAuthData';
 
@@ -47,6 +47,10 @@ export class AppComponent implements OnInit {
     }
   }
 
+  public ngAfterViewInit() {
+    this.handleWindowSize(window.innerWidth, window.innerHeight);
+  }
+
   private navigateToDesiredRoute(self: AppComponent) {
     try {
       const spaces = self.facilityService.getSpaces();
@@ -57,6 +61,25 @@ export class AppComponent implements OnInit {
       }
     } finally {
       self.busyService.idle();
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onresize(event) {
+    const width: number = event.target.innerWidth;
+    const height: number = event.target.innerHeight;
+    this.handleWindowSize(width, height);
+  }
+
+  private handleWindowSize(width: number, height: number) {
+    // Hack to ensure that when the browser viewport is >= 1920x938 no scrollbar shows
+    // but the scrollbars show when less than that. hack because the Floorplan svg files cause scrollbars because of extra whitespace
+    const body = document.getElementById('body');
+    if (width < 1920 || height < 938) {
+      body.style.overflow = 'visible';
+    } else {
+      window.scroll(0, 0);
+      body.style.overflow = 'hidden';
     }
   }
 }
