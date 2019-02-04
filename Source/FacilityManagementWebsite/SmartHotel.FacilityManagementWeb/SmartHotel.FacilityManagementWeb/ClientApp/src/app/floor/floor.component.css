@@ -10,8 +10,8 @@
 
 .legend-panel {
   position: absolute;
-  top: 0;
-  right: 80px;
+  top: 4;
+  right: 95px;
   font-family: Poppins;
   font-size: 22px;
   color: #9e9e9e;
@@ -42,16 +42,25 @@
 .room-info-panel {
   position: absolute;
   left: 26px;
-  bottom: 26px;
+  bottom: 78px;
   width: 700px;
   height: 260px;
   background: #efefef;
 }
 
+.room-info-panel .roomName {
+  position: absolute;
+  left: 16px;
+  top: -57px;
+  font-family: Poppins-ExtraLight;
+  font-size: 36px;
+  color: #00b0f0;
+}
+
 .motion-status-panel {
   position: absolute;
   top: 12px;
-  right: 12px;
+  right: 9px;
   width: 300px;
   height: 46px;
   line-height: 46px;
@@ -75,13 +84,13 @@
 
 .room-info-panel .grid {
   display: grid;
-  grid-template-columns: 125px 125px 282px 125px;
+  grid-template-columns: 140px 117px 282px 104px;
 }
 
 .room-info-panel .room-type-grid {
   position: absolute;
-  left: 22px;
-  top: 12px;
+  left: 18px;
+  top: 16px;
 }
 
 .room-type-grid .room-type {
@@ -90,9 +99,8 @@
 
 .room-info-panel .room-temp-grid {
   position: absolute;
-  left: 22px;
-  right: 22px;
-  top: 100px;
+  left: 18px;
+  top: 95px;
 }
 
 .room-temp-grid .room-temp {
@@ -115,8 +123,8 @@
 
 .room-info-panel .room-lights-grid {
   position: absolute;
-  left: 22px;
-  top: 158px;
+  left: 18px;
+  top: 154px;
 }
 
 .room-lights-grid .room-lights {
@@ -131,14 +139,15 @@
 
 .room-info-panel .grid-labels {
   position: absolute;
-  left: 22px;
-  top: 76px;
+  left: 28px;
+  top: 71px;
   font-size: 20px;
+  grid-template-columns: 129px 117px 282px 110px;
 }
 
 .room-info-panel .alert-message {
   position: absolute;
-  left: 22px;
+  left: 18px;
   bottom: 12px;
   font-family: Poppins;
   font-size: 18px;
