@@ -8,9 +8,9 @@
   flex-direction: row;
   height: 369px;
   width: 100%;
-  overflow: scroll; 
+  overflow-y: auto;
   overflow-x: hidden;
-  
+
   margin-top: 17px;
 
   padding: 0;
@@ -26,18 +26,20 @@
   margin-bottom: 18px;
 
   padding: 0;
+
+  cursor: pointer;
 }
 
 .card-name {
   font-size: 18px;
   color: #3899c6;
-  
+
   padding-top: 10px;
   padding-left: 16px;
 }
 
 .card-logo {
-  
+
   height: 280px;
 
   /* border-style: solid;
@@ -47,15 +49,14 @@
 
 .card-logo-inner-container {
   /* background-color: green;  */
-  width: 100%; 
+  width: 100%;
   height: 100%;
 }
 
-.card-logo-image  {
+.card-logo-image {
   height: 100%;
   width: 100%;
 }
-
 
 .card-alert-image {
   margin-left: 400px;
@@ -68,9 +69,9 @@
   flex-direction: row;
   height: 390px;
   width: 100%;
-  /* overflow: scroll; 
+  /* overflow: scroll;
   overflow-x: hidden; */
-  
+
   margin-top: 22px;
 
   padding: 0;
@@ -94,20 +95,16 @@
 
   width: 100%;
   height: 100%;
-  
+
 }
-
-
 @font-face {
   font-family: "Poppins";
   src: url("/assets/fonts//Poppins/Poppins-Regular.woff");
 }
-
 @font-face {
   font-family: "Poppins-SemiBold";
   src: url("/assets/fonts//Poppins/Poppins-SemiBold.woff");
 }
-
 @font-face {
   font-family: "Poppins-ExtraLight";
   src: url("/assets/fonts//Poppins/Poppins-ExtraLight.woff");
@@ -120,7 +117,7 @@ body {
   line-height: 1.4285;
   overflow: hidden;
   background-color: #efefef;
-  
+
   width: 1918px;
   max-width: 1918px;
 }
@@ -189,10 +186,12 @@ body {
 
 img {
   border: 0;
-  vertical-align: middle
+  vertical-align: middle;
 }
 
-*, ::after, ::before {
+*,
+::after,
+::before {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }

@@ -2,12 +2,12 @@
 
 <div class="cards-container">
   <div *ngFor="let hotelBrand of hotelBrands" class="" (click)="chooseHotelBrand(hotelBrand)">
-    
+
     <div class='card'>
         <div class='card-name'>
           {{hotelBrand.friendlyName}}
         </div>
-  
+
         <div class='card-logo'>
           <div class='card-logo-inner-container'>
             <img class="bcard-logo-image" [src]="getHotelBrandImage(hotelBrand)  | secure | async" />
@@ -15,11 +15,11 @@
           </div>
         </div>
       </div>
-    
+
   </div>
 </div>
 
-<div class="hotelbrands-dashboard" *ngIf="hotelBrands !== null">
+<div class="dashboard-cards-container" *ngIf="hotelBrands !== null">
 
   <div class="dashboard-map-card">
     <div class="card-name">
@@ -35,7 +35,7 @@
 
 <!-- <div class="hotelbrands-dash-2"><img src="/assets/images/brand-dash-2.jpg" /></div>
 
-  <div class="hotelbrands-dash-1"><img src="/assets/images/brand-dash-4.jpg" /></div> 
+  <div class="hotelbrands-dash-1"><img src="/assets/images/brand-dash-4.jpg" /></div>
 
   <div class="hotelbrands-dash-1"><img src="/assets/images/scheduled maintenance.jpg" /></div>
 
