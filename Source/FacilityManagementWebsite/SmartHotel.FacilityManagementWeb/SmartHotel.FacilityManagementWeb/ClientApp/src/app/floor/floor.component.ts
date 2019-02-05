@@ -98,6 +98,8 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     document.body.classList.add('white-background');
+    document.getElementById('main-nav-container').classList.add('white-background');
+    // TODO: Nav-Menu background class change
     this.route.params.subscribe(params => {
       this.tenantId = params['tId'];
       this.hotelBrandId = params['hbId'];
@@ -112,7 +114,8 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     document.body.classList.remove('white-background');
-
+    document.getElementById('main-nav-container').classList.remove('white-background');
+    // TODO: Remove Nav-Menu background class change
     if (this.sensorInterval != null) {
       clearInterval(this.sensorInterval);
     }
