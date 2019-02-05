@@ -10,7 +10,7 @@
 
 .legend-panel {
   position: absolute;
-  top: 4;
+  top: 4px;
   right: 95px;
   font-family: Poppins;
   font-size: 22px;

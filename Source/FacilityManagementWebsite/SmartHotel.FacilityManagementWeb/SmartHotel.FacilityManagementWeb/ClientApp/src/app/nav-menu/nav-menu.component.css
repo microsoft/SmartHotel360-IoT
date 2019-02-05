@@ -1,7 +1,11 @@
 .main-nav {
   width: 100%;
   height: 66px;
-  background-color: #EFEFEF;
+  background-color: #efefef;
+}
+
+.main-nav.white-background {
+  background-color: #fff;
 }
 
 .logo-image {
@@ -22,14 +26,14 @@
 }
 
 .logout-container {
-  display: flex; 
-  flex-direction: column; 
+  display: flex;
+  flex-direction: column;
   margin-left: auto;
 }
 
 .logout-text-div {
-  width: 100%; 
-  margin: 0 auto; 
+  width: 100%;
+  margin: 0 auto;
   text-align: right;
 }
 
@@ -55,33 +59,34 @@
 }
 
 .logout-user-description {
-  margin-right: 23px; 
+  margin-right: 23px;
   margin-top: 13px;
   color: #9e9e9e;
   font-size: 14px;
 }
 
-
 .flex-container {
   display: flex;
-  
+
 }
 
 .horizonal-line {
   display: block;
-    height: 1px;
-    border-color: #9e9e9e;
-    border-top: 0px solid #9e9e9e;
-    border-left: 0px solid #9e9e9e;
-    padding: 0; 
-    margin-top: 8px;
-    margin-left: 24px;
-    margin-right: 22px;
+  height: 1px;
+  border-color: #9e9e9e;
+  border-top: 0 solid #9e9e9e;
+  border-left: 0 solid #9e9e9e;
+  padding: 0;
+  margin-top: 8px;
+  margin-left: 24px;
+  margin-right: 22px;
 }
 
-.main-nav a:link, a:visited, a:hover, a:active {
+.main-nav a:link,
+a:active,
+a:hover,
+a:visited {
   font-family: "Poppins";
   font-weight: 200;
   text-decoration: none;
 }
-
