@@ -122,6 +122,10 @@ body {
   max-width: 1918px;
 }
 
+body.white-background {
+  background-color: #fff;
+}
+
 .custom-slider .ng5-slider {
   margin: 0;
 }

@@ -97,6 +97,7 @@ export class FloorComponent implements OnInit, OnDestroy {
   };
 
   ngOnInit() {
+    document.body.classList.add('white-background');
     this.route.params.subscribe(params => {
       this.tenantId = params['tId'];
       this.hotelBrandId = params['hbId'];
@@ -110,6 +111,8 @@ export class FloorComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    document.body.classList.remove('white-background');
+
     if (this.sensorInterval != null) {
       clearInterval(this.sensorInterval);
     }
