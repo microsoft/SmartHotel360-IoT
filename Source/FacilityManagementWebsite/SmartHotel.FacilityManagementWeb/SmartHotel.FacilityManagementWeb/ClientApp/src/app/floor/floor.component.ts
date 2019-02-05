@@ -199,10 +199,6 @@ export class FloorComponent implements OnInit, OnDestroy {
           sensorDataForRoom.set(s.sensorId, s);
         });
       });
-
-      if (this.roomOverlayPolygons) {
-        this.updateRoomMotionStatus();
-      }
     }
   }
 
@@ -242,6 +238,10 @@ export class FloorComponent implements OnInit, OnDestroy {
 
     if (room != null) {
       room.motion = motion;
+      if (this.svg) {
+        const roomOverlaySelection = this.getSelectionForRoomOverlay(room);
+        this.updateRoomMotionStatus(roomOverlaySelection.selectAll('polygon'));
+      }
     }
 
   }
@@ -456,7 +456,7 @@ export class FloorComponent implements OnInit, OnDestroy {
           self.roomClicked(room, shape);
         });
 
-        self.updateRoomMotionStatus();
+        self.updateRoomMotionStatus(this.roomOverlayPolygons);
 
         const roomAlertGroups = self.svg.selectAll<SVGGElement, ISpace>(`g[id^=${FloorComponent.AlertIdPrefix}]`);
         self.roomAlertPaths = roomAlertGroups.selectAll('path');
@@ -487,11 +487,7 @@ export class FloorComponent implements OnInit, OnDestroy {
       this.selectedRoom = undefined;
     } else {
       if (this.selectedRoom) {
-        const selectRoomNumberConvertedToRoomOverlayNumber = this.selectedRoom.number - (100 * this.floor.number);
-        const roomOverlayId = selectRoomNumberConvertedToRoomOverlayNumber < 10
-          ? selectRoomNumberConvertedToRoomOverlayNumber.toString().padStart(2, '0')
-          : selectRoomNumberConvertedToRoomOverlayNumber.toString();
-        const previousSelectedRoomOverlayGroup = this.svg.selectAll<SVGGElement, {}>(`#${FloorComponent.RoomOverlayIdPrefix}${roomOverlayId}`);
+        const previousSelectedRoomOverlayGroup = this.getSelectionForRoomOverlay(this.selectedRoom);
         this.updateRoomOverlayStroke(previousSelectedRoomOverlayGroup.selectAll('polygon'), FloorComponent.RoomUnselectedColor);
       }
 
@@ -504,12 +500,12 @@ export class FloorComponent implements OnInit, OnDestroy {
     roomOverlay.style('stroke', desiredStroke);
   }
 
-  updateRoomMotionStatus() {
-    if (!this.roomOverlayPolygons) {
+  updateRoomMotionStatus(polygonsSelection: d3.Selection<SVGPolygonElement, ISpace, SVGGElement, {}>) {
+    if (!polygonsSelection) {
       return;
     }
 
-    this.roomOverlayPolygons.style('fill',
+    polygonsSelection.style('fill',
       (room: ISpace) => (room && room.motion && room.motion.isMotion)
         ? FloorComponent.RoomOverlayOccupiedFill
         : FloorComponent.RoomOverlayVacantFill);
@@ -528,5 +524,13 @@ export class FloorComponent implements OnInit, OnDestroy {
       alertPath.selectAll('title')
         .text(room && room.hasAlert ? room.alertMessage : '');
     });
+  }
+
+  getSelectionForRoomOverlay(room: ISpace): d3.Selection<SVGGElement, ISpace, any, {}> {
+    const selectRoomNumberConvertedToRoomOverlayNumber = room.number - (100 * this.floor.number);
+    const roomOverlayId = selectRoomNumberConvertedToRoomOverlayNumber < 10
+      ? selectRoomNumberConvertedToRoomOverlayNumber.toString().padStart(2, '0')
+      : selectRoomNumberConvertedToRoomOverlayNumber.toString();
+    return this.svg.selectAll<SVGGElement, ISpace>(`#${FloorComponent.RoomOverlayIdPrefix}${roomOverlayId}`);
   }
 }
