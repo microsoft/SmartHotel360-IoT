@@ -25,17 +25,6 @@ body {
   overflow: hidden;
 }
 
-.body-heading {
-  font-family: Poppins;
-  font-size: 22px;
-}
-
-.body-content {
-  padding-top: 20px;
-  font-size: 16px;
-}
-
-
 .custom-slider .ng5-slider {
   margin: 0;
 }
