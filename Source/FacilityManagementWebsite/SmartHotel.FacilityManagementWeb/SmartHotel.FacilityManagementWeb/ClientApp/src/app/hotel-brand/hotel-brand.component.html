@@ -11,9 +11,10 @@
       <div class='card-logo'>
         <div class='card-logo-inner-container'>
           <img class="card-logo-image" [src]="getHotelImage(hotel) | secure | async" />
-          <img src="/assets/images/alert.png" class="card-alert-image" *ngIf="hotel.hasAlert" />
         </div>
       </div>
+
+      <img src="/assets/images/alert.png" class="card-alert-image" *ngIf="hotel.hasAlert" />
     </div>
 
   </div>
@@ -39,8 +40,8 @@
   </div> -->
 
 <!-- <div class="hotels-dash-2"><img src="/assets/images/hotel-dash-2.jpg" /></div>
-  
-  <div class="hotels-dash-1"><img src="/assets/images/hotel-dash-4.jpg" ></div> 
+
+  <div class="hotels-dash-1"><img src="/assets/images/hotel-dash-4.jpg" ></div>
 
   <div class="hotels-dash-1"><img src="/assets/images/scheduled maintenance.jpg" /></div>
 -->

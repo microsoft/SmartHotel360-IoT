@@ -3,19 +3,20 @@
 
 <div class="cards-container">
   <div *ngFor="let floor of floors" (click)="chooseFloor(floor)">
-    
+
     <div class='card'>
-        <div class='card-name'>
-          {{floor.friendlyName}}
-        </div>
-  
-        <div class='card-logo'>
-          <div class='card-logo-inner-container'>
-            <img class="card-logo-image" [src]="getFloorImage(floor) | secure | async" />
-            <img src="/assets/images/alert.png" class="card-alert-image" *ngIf="floor.hasAlert" />
-          </div>
+      <div class='card-name'>
+        {{floor.friendlyName}}
+      </div>
+
+      <div class='card-logo'>
+        <div class='card-logo-inner-container'>
+          <img class="card-logo-image" [src]="getFloorImage(floor) | secure | async" />
         </div>
       </div>
+
+      <img src="/assets/images/alert.png" class="card-alert-image" *ngIf="floor.hasAlert" />
+    </div>
 
   </div>
 </div>
@@ -40,6 +41,6 @@
 
 
 <!-- <div class=""><img src="/assets/images/floor-dash-3.jpg">
-  </div> 
+  </div>
 <div class="floors-dash-2"><img src="/assets/images/cleaning schedule.jpg" /></div>
 -->

@@ -4,17 +4,18 @@
   <div *ngFor="let hotelBrand of hotelBrands" class="" (click)="chooseHotelBrand(hotelBrand)">
 
     <div class='card'>
-        <div class='card-name'>
-          {{hotelBrand.friendlyName}}
-        </div>
+      <div class='card-name'>
+        {{hotelBrand.friendlyName}}
+      </div>
 
-        <div class='card-logo'>
-          <div class='card-logo-inner-container'>
-            <img class="bcard-logo-image" [src]="getHotelBrandImage(hotelBrand)  | secure | async" />
-            <img src="/assets/images/alert.png" class="bcard-alert-image" *ngIf="hotelBrand.hasAlert" />
-          </div>
+      <div class='card-logo'>
+        <div class='card-logo-inner-container'>
+          <img class="bcard-logo-image" [src]="getHotelBrandImage(hotelBrand)  | secure | async" />
         </div>
       </div>
+
+      <img src="/assets/images/alert.png" class="card-alert-image" *ngIf="hotelBrand.hasAlert" />
+    </div>
 
   </div>
 </div>
