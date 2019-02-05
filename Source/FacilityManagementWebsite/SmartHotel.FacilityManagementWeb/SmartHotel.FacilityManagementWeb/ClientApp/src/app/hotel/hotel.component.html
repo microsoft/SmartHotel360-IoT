@@ -3,13 +3,20 @@
 
 <div class="cards-container">
   <div *ngFor="let floor of floors" (click)="chooseFloor(floor)">
-    <!-- <img class="floor-image" [src]="getFloorImage(floor) | secure | async" /> -->
+    
     <div class='card'>
-      <div class='card-name'>
-        {{floor.friendlyName}}
+        <div class='card-name'>
+          {{floor.friendlyName}}
+        </div>
+  
+        <div class='card-logo'>
+          <div class='card-logo-inner-container'>
+            <img class="card-logo-image" [src]="getFloorImage(floor) | secure | async" />
+            <img src="/assets/images/alert.png" class="card-alert-image" *ngIf="floor.hasAlert" />
+          </div>
+        </div>
       </div>
-    </div>
-    <!-- <img src="/assets/images/alert.png" class="alert-image" *ngIf="floor.hasAlert" /> -->
+
   </div>
 </div>
 
@@ -23,15 +30,16 @@
     <div class="dashboard-map-item">
       <app-map [pushpinLocations]="hotelGeoLocations"></app-map>
     </div>
-  <div class="floors-dash-2"><img src="/assets/images/cleaning schedule.jpg" /></div>
-</div>
-  </div>
 
-  <!-- <div class="">
+  </div>
+</div>
+
+<!-- <div class="">
     <app-tsi-chart [tempSensorIds]="tempSensorIds" [lightSensorIds]="lightSensorIds" [motionSensorIds]="motionSensorIds"></app-tsi-chart>
   </div> -->
 
 
-  <!-- <div class=""><img src="/assets/images/floor-dash-3.jpg">
-  </div> -->
-</div>
+<!-- <div class=""><img src="/assets/images/floor-dash-3.jpg">
+  </div> 
+<div class="floors-dash-2"><img src="/assets/images/cleaning schedule.jpg" /></div>
+-->
