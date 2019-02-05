@@ -140,7 +140,7 @@ namespace SmartHotel.IoT.ProvisioningGenerator
 			desiredTenantSpace.AddType( new TypeDescription { name = "VIPSuiteRoom", category = "SpaceSubType" } );
 			desiredTenantSpace.AddType( new TypeDescription { name = "ConferenceRoom", category = "SpaceSubType" } );
 			desiredTenantSpace.AddType( new TypeDescription { name = "GymRoom", category = "SpaceSubType" } );
-			desiredTenantSpace.AddType( new TypeDescription { name = "FloorPlan", category = "SpaceBlobSubType" } );
+			desiredTenantSpace.AddType( new TypeDescription { name = BlobDescription.FloorplanFileBlobSubType, category = "SpaceBlobSubType" } );
 
 			desiredTenantSpace.AddPropertyKey( new PropertyKeyDescription
 			{

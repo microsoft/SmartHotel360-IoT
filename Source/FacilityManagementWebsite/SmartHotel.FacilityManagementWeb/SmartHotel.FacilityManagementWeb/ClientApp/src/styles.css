@@ -22,37 +22,27 @@ body {
   font-family: Poppins;
   margin: 0;
   line-height: 1.4285;
+  overflow: hidden;
 }
-
-.body-heading {
-  font-family: Poppins;
-  font-size: 22px;
-}
-
-.body-content {
-  padding-top: 20px;
-  font-size: 16px;
-}
-
 
 .custom-slider .ng5-slider {
   margin: 0;
 }
 
 .custom-slider .ng5-slider .ng5-slider-bar {
-  background: #5C84A8;
+  background: #9e9e9e;
   height: 2px;
 }
 
 .custom-slider .ng5-slider .ng5-slider-selection {
-  background: #273847;
+  background: #9e9e9e;
 }
 
 .custom-slider .ng5-slider .ng5-slider-pointer {
-  width: 16px;
-  height: 16px;
-  top: -8px;
-  background-color: #273847;
+  width: 30px;
+  height: 30px;
+  top: -15px;
+  background-color: #00b0f0;
 }
 
 .custom-slider .ng5-slider .ng5-slider-pointer:focus {
