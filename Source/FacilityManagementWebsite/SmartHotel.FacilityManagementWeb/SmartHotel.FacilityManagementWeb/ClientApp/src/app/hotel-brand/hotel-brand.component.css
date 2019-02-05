@@ -1,4 +1,6 @@
-section {
+
+
+/* section {
   margin: 4px 64px 0px 26px;
 }
 
@@ -50,6 +52,7 @@ section {
   height: 26px;
 }
 
+
 .hotel-button:hover {
   cursor: pointer;
   background-color: #f39f7b;
@@ -84,4 +87,4 @@ img {
 
 _:-ms-lang(x), .hotels-dashboard {
   margin-top: 7px;
-}
+} */
