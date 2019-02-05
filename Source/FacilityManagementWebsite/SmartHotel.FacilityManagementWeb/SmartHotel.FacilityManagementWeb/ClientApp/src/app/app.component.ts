@@ -75,7 +75,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     // Hack to ensure that when the browser viewport is >= 1920x938 no scrollbar shows
     // but the scrollbars show when less than that. hack because the Floorplan svg files cause scrollbars because of extra whitespace
     const body = document.body;
-    if (width < 1920 || height < 938) {
+    if (width < 1920 || height < 931) {
       body.style.overflow = 'visible';
     } else {
       window.scroll(0, 0);
