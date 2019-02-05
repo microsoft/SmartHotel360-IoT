@@ -1,24 +1,42 @@
 <app-breadcrumb [tenantId]="tenantId"></app-breadcrumb>
 
-<div class="hotelbrands-top-row">
-  <div class="hotelbrands">
-    <div *ngFor="let hotelBrand of hotelBrands" class="hotelbrand" (click)="chooseHotelBrand(hotelBrand)">
-      <img class="hotelbrand-image" [src]="getHotelBrandImage(hotelBrand) | secure | async" />
-      <div class="hotelbrand-button">
-        {{hotelBrand.friendlyName}}
+<div class="cards-container">
+  <div *ngFor="let hotelBrand of hotelBrands" class="" (click)="chooseHotelBrand(hotelBrand)">
+    
+    <div class='card'>
+        <div class='card-name'>
+          {{hotelBrand.friendlyName}}
+        </div>
+  
+        <div class='card-logo'>
+          <div class='card-logo-inner-container'>
+            <img class="bcard-logo-image" [src]="getHotelBrandImage(hotelBrand)  | secure | async" />
+            <img src="/assets/images/alert.png" class="bcard-alert-image" *ngIf="hotelBrand.hasAlert" />
+          </div>
+        </div>
       </div>
-      <img src="/assets/images/alert.png" class="alert-image" *ngIf="hotelBrand.hasAlert" />
-    </div>
+    
   </div>
 </div>
 
 <div class="hotelbrands-dashboard" *ngIf="hotelBrands !== null">
 
-  <div class="hotelbrands-dash-1"><app-tsi-chart [tempSensorIds]="tempSensorIds" [lightSensorIds]="lightSensorIds" [motionSensorIds]="motionSensorIds"></app-tsi-chart></div>
-  <div class="hotelbrands-dash-2">
-    <app-map [pushpinLocations]="hotelGeoLocations"></app-map>
+  <div class="dashboard-map-card">
+    <div class="card-name">
+      Location
+    </div>
+    <div class="dashboard-map-item">
+      <app-map [pushpinLocations]="hotelGeoLocations"></app-map>
+    </div>
   </div>
+
+</div>
+<!-- <div class="hotelbrands-dash-1"><app-tsi-chart [tempSensorIds]="tempSensorIds" [lightSensorIds]="lightSensorIds" [motionSensorIds]="motionSensorIds"></app-tsi-chart></div> -->
+
+<!-- <div class="hotelbrands-dash-2"><img src="/assets/images/brand-dash-2.jpg" /></div>
+
+  <div class="hotelbrands-dash-1"><img src="/assets/images/brand-dash-4.jpg" /></div> 
 
   <div class="hotelbrands-dash-1"><img src="/assets/images/scheduled maintenance.jpg" /></div>
 
-</div>
+-->

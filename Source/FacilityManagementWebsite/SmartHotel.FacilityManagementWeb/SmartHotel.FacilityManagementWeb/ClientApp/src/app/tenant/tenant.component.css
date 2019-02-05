@@ -1,6 +1,19 @@
-section {
-  margin: 4px 64px 0 26px;
+.bcard-logo-image {
+  width: 154px;
+  height: 155px;
+  margin-left: 153px;
+  margin-top: 45px;
+  
 }
+
+.bcard-alert-image {
+  height: 26px;
+  width: 29px;
+  margin-left: 93px;
+  margin-top: -210px;
+}
+
+/* 
 
 .hotelbrands-top-row {
   width: 1920px;
@@ -84,4 +97,4 @@ img {
 .hotelbrands-dashboard,
 _:-ms-lang(x) {
   margin-top: 7px;
-}
+} */

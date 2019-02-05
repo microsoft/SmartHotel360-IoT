@@ -1,23 +1,46 @@
 <app-breadcrumb #breadcumbs [tenantId]="tenantId" [hotelBrandId]="hotelBrandId" [hotelBrandName]="hotelBrandName"></app-breadcrumb>
 
-<div class="hotels-top-row">
-  <div class="hotels">
-    <div *ngFor="let hotel of hotels" class="hotel" (click)="chooseHotel(hotel)">
-      <img class="hotel-image" [src]="getHotelImage(hotel) | secure | async" />
-      <div class="hotel-button">
+<div class="cards-container">
+  <div *ngFor="let hotel of hotels" (click)="chooseHotel(hotel)">
+
+    <div class='card'>
+      <div class='card-name'>
         {{hotel.friendlyName}}
       </div>
-      <img src="/assets/images/alert.png" class="alert-image" *ngIf="hotel.hasAlert" />
+
+      <div class='card-logo'>
+        <div class='card-logo-inner-container'>
+          <img class="card-logo-image" [src]="getHotelImage(hotel) | secure | async" />
+          <img src="/assets/images/alert.png" class="card-alert-image" *ngIf="hotel.hasAlert" />
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
 
-<div class="hotels-dashboard" *ngIf="hotels !== null">
+<div class="dashboard-cards-container" *ngIf="hotels !== null">
 
 
-  <div class="hotels-dash-1"><app-tsi-chart [tempSensorIds]="tempSensorIds" [lightSensorIds]="lightSensorIds" [motionSensorIds]="motionSensorIds"></app-tsi-chart></div>
-  <div class="hotels-dash-2">
-    <app-map [pushpinLocations]="hotelGeoLocations"></app-map>
+  <div class="dashboard-map-card">
+    <div class="card-name">
+      Location
+    </div>
+    <div class="dashboard-map-item">
+      <app-map [pushpinLocations]="hotelGeoLocations"></app-map>
+    </div>
+
   </div>
+</div>
+
+
+<!-- <div class="hotels-dash-1">
+    <app-tsi-chart [tempSensorIds]="tempSensorIds" [lightSensorIds]="lightSensorIds" [motionSensorIds]="motionSensorIds"></app-tsi-chart>
+  </div> -->
+
+<!-- <div class="hotels-dash-2"><img src="/assets/images/hotel-dash-2.jpg" /></div>
+  
+  <div class="hotels-dash-1"><img src="/assets/images/hotel-dash-4.jpg" ></div> 
+
   <div class="hotels-dash-1"><img src="/assets/images/scheduled maintenance.jpg" /></div>
-</div>
+-->
