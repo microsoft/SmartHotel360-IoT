@@ -147,7 +147,7 @@
 }
 
 svg.tsi-lineChartSVG.tsi-chartSVG {
-  margin-left: 40px;
+  width: 440px;
 }
 
 .tsi-legend .tsi-seriesLabel .tsi-splitByContainer .tsi-splitByLabel .tsi-colorKey, .tsi-legend .tsi-eventSeriesLabel .tsi-splitByContainer .tsi-splitByLabel .tsi-colorKey, .tsi-legend .tsi-stateSeriesLabel .tsi-splitByContainer .tsi-splitByLabel .tsi-colorKey {
