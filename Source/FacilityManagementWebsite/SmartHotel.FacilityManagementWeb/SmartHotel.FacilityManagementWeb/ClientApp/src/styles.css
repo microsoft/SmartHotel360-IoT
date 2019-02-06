@@ -123,6 +123,47 @@
   top: 0;
 }
 
+.tsi-legend.compact {
+  margin-left:  0px;
+  margin-right: 0px;
+  padding: 0px;
+  top: 0px;
+  width: 100% !important;
+  
+}
+
+.tsi-legend.compact .tsi-seriesLabel .tsi-splitByContainer .tsi-splitByLabel h5, .tsi-legend.compact .tsi-eventSeriesLabel .tsi-splitByContainer .tsi-splitByLabel h5 {
+  max-width: 200px;
+  margin-left: 30px;
+  margin-right: 0px;
+  text-align: left;
+  width: 100%;
+  font-size: 14px; 
+  
+}
+
+.tsi-legend.compact .tsi-seriesLabel {
+  flex-basis: auto; 
+}
+
+svg.tsi-lineChartSVG.tsi-chartSVG {
+  width: 444px;
+}
+
+
+.tsi-legend .tsi-seriesLabel .tsi-splitByContainer .tsi-splitByLabel .tsi-colorKey, .tsi-legend .tsi-eventSeriesLabel .tsi-splitByContainer .tsi-splitByLabel .tsi-colorKey, .tsi-legend .tsi-stateSeriesLabel .tsi-splitByContainer .tsi-splitByLabel .tsi-colorKey {
+  border-radius: 0px;
+}
+
+.tsi-legend.compact .tsi-seriesLabel .tsi-splitByContainer .tsi-splitByLabel .tsi-colorKey, .tsi-legend.compact .tsi-eventSeriesLabel .tsi-splitByContainer .tsi-splitByLabel .tsi-colorKey {
+  display: block;
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  top: -7px; 
+  margin-left: 5px;
+}
+
 @font-face {
   font-family: "Poppins";
   src: url("/assets/fonts//Poppins/Poppins-Regular.woff");

@@ -2,8 +2,11 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  height: 500px;
-  width: 400px;
-  padding: 5px;
   display: flex;
+
+  height: 345px;
+  /* width: 600px; */
+  padding: 0;
+  
 }
+

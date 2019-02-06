@@ -44,19 +44,8 @@ export class TsiChartComponent implements OnInit, OnChanges {
         ['avg'], // measure type,
         { from: startDate, to: endDate, bucketSize: '30m' },  // time range
         null, // split by value
-        '#60B9AE', // color
-        'Occupied')  // display name
-    );
-
-    aggregateExpressions.push(
-      new this.client.ux.AggregateExpression(
-        { predicateString: lightPredicate }, // predicate
-        { property: 'Light', type: 'Double' }, // measure column
-        ['avg'], // measure type
-        { from: startDate, to: endDate, bucketSize: '30m' },  // time range
-        null, // split by value
-        'Green', // color
-        'Light')  // display name
+        '#00b0f0', // color
+        'Occupancy')  // display name
     );
 
     aggregateExpressions.push(
@@ -66,8 +55,19 @@ export class TsiChartComponent implements OnInit, OnChanges {
         ['avg'], // measure type
         { from: startDate, to: endDate, bucketSize: '30m' },  // time range
         null, // split by value
-        'Red', // color
-        'Temperature')  // display name
+        '#45dcff', // color
+        'Temp')  // display name
+    );
+
+    aggregateExpressions.push(
+      new this.client.ux.AggregateExpression(
+        { predicateString: lightPredicate }, // predicate
+        { property: 'Light', type: 'Double' }, // measure column
+        ['avg'], // measure type
+        { from: startDate, to: endDate, bucketSize: '30m' },  // time range
+        null, // split by value
+        '#a4f2ff', // color
+        'Light')  // display name
     );
 
     const currentThis = this;
@@ -75,7 +75,7 @@ export class TsiChartComponent implements OnInit, OnChanges {
       aggregateExpressions.map(function (ae) { return ae.toTsx(); }))
       .then(function (result) {
         const transformedResult = currentThis.client.ux.transformAggregatesForVisualization(result, aggregateExpressions);
-        lineChart.render(transformedResult, { legend: 'compact' }, aggregateExpressions);
+        lineChart.render(transformedResult, {theme: 'light', legend: 'compact', grid: 'false' }, aggregateExpressions);
       });
   }
 
