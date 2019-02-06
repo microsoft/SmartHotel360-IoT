@@ -75,7 +75,8 @@ export class TsiChartComponent implements OnInit, OnChanges {
       aggregateExpressions.map(function (ae) { return ae.toTsx(); }))
       .then(function (result) {
         const transformedResult = currentThis.client.ux.transformAggregatesForVisualization(result, aggregateExpressions);
-        lineChart.render(transformedResult, { legend: 'compact' }, aggregateExpressions);
+        lineChart.render(transformedResult, {theme: 'light', legend: 'compact', grid: 'false' }, aggregateExpressions);
+        
       });
   }
 

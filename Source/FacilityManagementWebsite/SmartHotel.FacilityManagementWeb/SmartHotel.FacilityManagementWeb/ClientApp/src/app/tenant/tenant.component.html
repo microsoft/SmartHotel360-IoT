@@ -31,6 +31,17 @@
     </div>
   </div>
 
+  <div class="dashboard-map-card">
+    <div class="card-name">
+      KPI
+    </div>
+    <div class="dashboard-map-item">
+      <div>
+        <app-tsi-chart [tempSensorIds]="tempSensorIds" [lightSensorIds]="lightSensorIds" [motionSensorIds]="motionSensorIds"></app-tsi-chart>
+      </div>
+    </div>
+  </div>
+
   <div class="dashboard-schedule-card">
     <div class="dashboard-schedule-item">
       <img src="/assets/images/scheduled maintenance.jpg" />
