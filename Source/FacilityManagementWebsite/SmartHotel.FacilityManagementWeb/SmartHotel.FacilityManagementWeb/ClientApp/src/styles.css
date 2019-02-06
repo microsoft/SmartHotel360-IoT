@@ -128,7 +128,7 @@
   margin-right: 0px;
   padding: 0px;
   top: 0px;
-  width: 110% !important;
+  width: 100% !important;
   
 }
 
@@ -147,8 +147,9 @@
 }
 
 svg.tsi-lineChartSVG.tsi-chartSVG {
-  width: 440px;
+  width: 444px;
 }
+
 
 .tsi-legend .tsi-seriesLabel .tsi-splitByContainer .tsi-splitByLabel .tsi-colorKey, .tsi-legend .tsi-eventSeriesLabel .tsi-splitByContainer .tsi-splitByLabel .tsi-colorKey, .tsi-legend .tsi-stateSeriesLabel .tsi-splitByContainer .tsi-splitByLabel .tsi-colorKey {
   border-radius: 0px;
