@@ -1,10 +1,18 @@
-.root-content {
+.background-image {
+  opacity: 0.3;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 66px;
+}
+
+.center-content {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  background-color: #fff;
+  background-color: #efefef;
   padding: 22px;
+  max-width: 400px;
 }
 
 .logo {
@@ -16,36 +24,27 @@
 
 .body-content {
   font-size: 16px;
+  text-align: center;
 }
 
 .basic-auth-form {
-  width: 750px;
-  margin-left: -25%;
-  text-align: center;
+  margin-bottom: -10px;
 }
 
 .login-button {
   background-color: #64deff;
   text-align: center;
   height: 48px;
-  width: 100%;
   color: white;
   font-size: 19px;
   line-height: 48px;
   text-transform: uppercase;
   cursor: pointer;
-  margin-bottom: 10px;
   border: 0;
-}
-
-.login-button.adal {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-}
-
-.basic-auth-form .login-button {
-  width: 50%;
+  display: block;
 }
 
 .login-img {
@@ -55,13 +54,6 @@
 
 .row {
   display: flex;
-}
-
-.column {
-  flex: 1;
-  margin-left: 5px;
-  margin-right: 5px;
-  text-align: left;
 }
 
 .form-group {
@@ -106,4 +98,5 @@
   margin-top: 2px;
   font-size: 80%;
   color: #dc3545;
+  margin-bottom: 10px;
 }
