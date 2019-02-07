@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AdalService } from 'adal-angular4';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -12,7 +12,7 @@ import { BusyService } from '../services/busy.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   private returnUrl: string;
 
@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
   public invalidAuth = false;
 
   ngOnInit() {
+    document.body.classList.add('white-background');
+    document.getElementById('main-nav-container').classList.add('white-background');
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     if (this.adalSvc.userInfo.authenticated) {
       this.router.navigate([this.returnUrl]);
@@ -44,6 +46,11 @@ export class LoginComponent implements OnInit {
         });
       }
     }
+  }
+
+  ngOnDestroy() {
+    document.body.classList.remove('white-background');
+    document.getElementById('main-nav-container').classList.remove('white-background');
   }
 
   // convenience getter for easy access to form fields

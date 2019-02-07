@@ -1,41 +1,49 @@
-section {
-  padding-top: 40px;
-  max-width: 500px;
-  margin: 30px auto auto;
+.background-image {
+  opacity: 0.3;
+  width: 100vw;
+  height: 100vh;
 }
 
-.body-heading {
-  font-family: Poppins;
-  font-size: 22px;
+.center-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: #efefef;
+  padding: 22px;
+  max-width: 400px;
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
 }
 
 .body-content {
-  padding-top: 20px;
   font-size: 16px;
+  text-align: center;
 }
 
 .basic-auth-form {
-  width: 750px;
-  margin-left: -25%;
-  text-align: center;
+  margin-bottom: -10px;
 }
 
 .login-button {
   background-color: #64deff;
   text-align: center;
   height: 48px;
-  width: 100%;
   color: white;
   font-size: 19px;
   line-height: 48px;
   text-transform: uppercase;
   cursor: pointer;
-  margin-bottom: 10px;
   border: 0;
-}
-
-.basic-auth-form .login-button {
   width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .login-img {
@@ -45,13 +53,6 @@ section {
 
 .row {
   display: flex;
-}
-
-.column {
-  flex: 1;
-  margin-left: 5px;
-  margin-right: 5px;
-  text-align: left;
 }
 
 .form-group {
@@ -96,4 +97,5 @@ section {
   margin-top: 2px;
   font-size: 80%;
   color: #dc3545;
+  margin-bottom: 10px;
 }
