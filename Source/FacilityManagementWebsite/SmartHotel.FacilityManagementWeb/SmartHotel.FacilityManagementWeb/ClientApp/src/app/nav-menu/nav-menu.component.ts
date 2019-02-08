@@ -44,7 +44,7 @@ export class NavMenuComponent implements OnInit {
 
   get userName(): string {
     if (environment.useBasicAuth) {
-      return 'Head of Operations SmartHotel';
+      return this.authenticated ? 'Head of Operations' : '';
     }
     return this.adalSvc.userInfo.profile.name;
   }
