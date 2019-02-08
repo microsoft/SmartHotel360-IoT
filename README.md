@@ -206,6 +206,10 @@ At the writing of this we were unable to get the ARM template deployment to crea
 ## Success!
 To verify that everything is working correctly, open up the `facilityManagementWebsiteUri` (from the `userSettings.json` in the browser and log in with one of the two users created during the provisioning steps.
 
+### Changing the Chart timerange in the Facility Management Website
+By default, the chart in the website will show data for the last day. If you wish to see more days back from today, you can update the Application Settings to have an additional field (`tsiHowManyDays`) and enter an integer greater than 1.
+* Keep in mind that the more days you show, the more information will be shown on the map and the worse it may look.
+
 # Running Locally (OPTIONAL)
 Portions of this demo can be run locally. In order to do so, you still **must complete** the [Setup](#setup) section. Once you have completed the provisioning, you can follow these steps to configure, build, and deploy the resource locally.
 
