@@ -226,7 +226,7 @@ namespace SmartHotel.IoT.Provisioning
 
 				if ( spaceDescription.users != null )
 				{
-					await CreateUserRoleAssignmentsAsync( httpClient, spaceDescription.users, spaceId, userAadObjectIds );
+					await CreateSpaceAdminRoleAssignmentsForUsersAsync( httpClient, spaceDescription.users, spaceId, userAadObjectIds );
 				}
 
 				if ( spaceDescription.propertyKeys != null )
@@ -525,7 +525,7 @@ namespace SmartHotel.IoT.Provisioning
 			}
 		}
 
-		private async Task CreateUserRoleAssignmentsAsync( HttpClient httpClient, IList<string> users, Guid spaceId,
+		private async Task CreateSpaceAdminRoleAssignmentsForUsersAsync( HttpClient httpClient, IList<string> users, Guid spaceId,
 			UserAadObjectIdsDescription userAadObjectIds )
 		{
 			if ( spaceId == Guid.Empty )
@@ -547,7 +547,7 @@ namespace SmartHotel.IoT.Provisioning
 
 					var roleAssignment = new RoleAssignment
 					{
-						RoleId = RoleAssignment.RoleIds.User,
+						RoleId = RoleAssignment.RoleIds.SpaceAdmin,
 						ObjectId = oid,
 						ObjectIdType = RoleAssignment.ObjectIdTypes.UserId,
 						TenantId = Tenant,
