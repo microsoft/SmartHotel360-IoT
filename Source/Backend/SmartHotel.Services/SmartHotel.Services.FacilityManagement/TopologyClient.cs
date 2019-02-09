@@ -124,7 +124,7 @@ namespace SmartHotel.Services.FacilityManagement
 			{
 				string highestLevelParentSpaceId = highestLevelSpace.ParentSpaceId;
 				hierarchicalSpaces.AddRange( spacesByParentId[highestLevelParentSpaceId] );
-				string typeToGetDevicesFor = highestLevelSpace.Type == FloorTypeName ? FloorTypeName : HotelBrandTypeName;
+				string typeToGetDevicesFor = highestLevelSpace.Type == FloorTypeName ? FloorTypeName : HotelTypeName;
 				await BuildSpaceHierarchyAndReturnRoomSpacesAsync( hierarchicalSpaces, spacesByParentId, typeToGetDevicesFor, httpClient );
 			}
 
