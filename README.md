@@ -28,7 +28,7 @@ End-to-end setup takes about an hour provided you have all of the development en
 
 ## Demo Scripts
 
-You can a **[demo scripts](Documents/DemoScript)** with a walkthroughs once you have finished the setup of this demo.
+You can find a **[demo scripts](Documents/DemoScript)** with a walkthroughs once you have finished the setup of this demo.
 
 # Setup
 
