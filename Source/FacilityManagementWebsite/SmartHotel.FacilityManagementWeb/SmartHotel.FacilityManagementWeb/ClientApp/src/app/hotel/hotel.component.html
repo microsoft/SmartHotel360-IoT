@@ -1,18 +1,55 @@
-<app-breadcrumb #breadcumbs [tenantId]="tenantId" [hotelBrandId]="hotelBrandId" [hotelBrandName]="hotelBrandName" [hotelId]="hotelId"
-  [hotelIndex]="hotelIndex" [hotelName]="hotelName"></app-breadcrumb>
+<app-breadcrumb #breadcumbs [tenantId]="tenantId" [hotelBrandId]="hotelBrandId" [hotelBrandName]="hotelBrandName"
+  [hotelId]="hotelId" [hotelIndex]="hotelIndex" [hotelName]="hotelName"></app-breadcrumb>
 
-<div class="floors-top-row">
-  <div class="floors">
-    <div *ngFor="let floor of floors" class="floor" (click)="chooseFloor(floor)">
-      <div class="floor-image" [style.background-image]="getFloorImage(floor)"></div>
-      <div class="floor-button">
+<div class="cards-container">
+  <div *ngFor="let floor of floors" (click)="chooseFloor(floor)">
+
+    <div class='card'>
+      <div class='card-name'>
         {{floor.friendlyName}}
+      </div>
+
+      <div class='card-logo'>
+        <div class='card-logo-inner-container'>
+          <img class="card-logo-image" [src]="getFloorImage(floor) | secure | async" />
+        </div>
+      </div>
+
+      <img src="/assets/images/alert.png" class="card-alert-image" *ngIf="floor.hasAlert" />
+    </div>
+
+  </div>
+</div>
+
+
+<div class="dashboard-cards-container" *ngIf="floors !== null">
+
+  <div class="dashboard-map-card">
+    <div class="card-name">
+      Location
+    </div>
+    <div class="dashboard-map-item">
+      <app-map [pushpinLocations]="hotelGeoLocations"></app-map>
+    </div>
+  </div>
+
+  <div class="dashboard-map-card">
+    <div class="card-name">
+      KPI
+    </div>
+    <div class="dashboard-map-item">
+      <div>
+        <app-tsi-chart [tempSensorIds]="tempSensorIds" [lightSensorIds]="lightSensorIds" [motionSensorIds]="motionSensorIds"></app-tsi-chart>
       </div>
     </div>
   </div>
-</div>
-<div class="floors-dashboard" *ngIf="floors !== null">
-  <div class="floors-dash-1"><img src="/assets/images/floor-dash-1.jpg" /></div>
-  <div class="floors-dash-1"><img src="/assets/images/floor-dash-2.jpg" /></div>
-  <div class="floors-dash-2"><img src="/assets/images/floor-dash-3.jpg" /></div>
-</div>
+
+
+  <div class="dashboard-schedule-card">
+    <div class="dashboard-schedule-item">
+      <img src="/assets/images/cleaning schedule.jpg" />
+    </div>
+    <div class="card-name schedule">
+      Today's Cleaning Schedule
+    </div>
+  </div>

@@ -1,16 +1,20 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class='container-fluid'>
+<div class='main-container'>
 
-  <div class='row content'>
-    <router-outlet></router-outlet>
-  </div>
-  <div class='row fixed-header'>
+  <div class='fixed-header'>
     <app-nav-menu></app-nav-menu>
   </div>
-  <div class="alert-button-open" *ngIf="hasAlerts && !areAlertsOpen" (click)="toggleAlertPanel()">
-    <img src="/assets/images/alert.png" class="alert-image" />
+
+  <div>
+    <router-outlet></router-outlet>
   </div>
-  <app-slide-panel class="alert-panel" [class.hittest-hidden]="!areAlertsOpen" [isOpen]="areAlertsOpen">
+
+  
+  
+  <!-- <div class="alert-button-open" *ngIf="hasAlerts && !areAlertsOpen" (click)="toggleAlertPanel()">
+    <img src="/assets/images/alert.png" class="alert-image" />
+  </div> -->
+  <!-- <app-slide-panel class="alert-panel" [class.hittest-hidden]="!areAlertsOpen" [isOpen]="areAlertsOpen">
     <div class="alert-panel-content">
       <span class="alert-panel-content-header">Temperature Alerts</span>
       <ul class="alert-panel-alerts" *ngIf="hasAlerts; else noAlerts">
@@ -26,7 +30,7 @@
         X
       </div>
     </div>
-  </app-slide-panel>
+  </app-slide-panel> -->
   <!--https://github.com/Napster2210/ngx-spinner#ngxspinner-component-->
   <ngx-spinner size="large" type="square-jelly-box"></ngx-spinner>
 </div>

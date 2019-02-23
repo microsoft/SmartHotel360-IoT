@@ -52,6 +52,8 @@ You can find a **[demo scripts](Documents/DemoScript)** with a walkthroughs once
 
  Follow these instructions to [create a service principal and register an Azure Active Directory application](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal?view=azure-cli-latest).
 
+* Choose `Web app / API` as the Application Type
+
 During the creation process you will need to take note of the following information:
 
 * Tenant Id
@@ -63,16 +65,30 @@ To obtain the service principal Id, open a **Powershell** window and follow thes
 1. `Login-AzureRmAccount -SubscriptionId {subcription id}`
 2. `Get-AzureRmADServicePrincipal -ApplicationId {app Id}`
 
+* If `AzureRM` is not installed you will receive errors saying that it needs to be installed. Run the following command in an Administrator Powershell: `Install-Module -Force AzureRM`
+
 ### Set permissions and security for the Application
 
 Click settings --> Required Permissions
-* Click Add on the top left
-* Select the API you'd like to use to get external data into Digital Twins (e.g. Microsoft Graph)
-* Select the permissions that your app needs to have in order to access the correct information
-* Select Save, and then click Add again
-* Select the "Azure Digital Twins" API
-* Check the Read/Write Access delegated permissions box
-* Save, and select Grant Permissions
+* Digital Twins API
+  * Click `Add` on the top left
+  * Under select an API, type `Azure`, then choose `Azure Digital Twins (Azure Smart Spaces Service)`
+    * NOTE: If this option does NOT show, you may need to register the Digital Twins resource provider using the following steps in a **Powershell** window:
+       1. `Login-AzureRmAccount -SubscriptionId {subcription id}`
+       2. `Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.IoTSpaces'`
+       3. Wait until the provider registration is complete, can be checked via: `Get-AzureRmResourceProvider -ProviderNamespace 'Microsoft.IoTSpaces'`
+  * Check the Read/Write Access delegated permissions box
+  * Save
+* Time Series Insights API
+  * Click `Add` on the top left
+  * Under select an API, type `Azure`, then choose `Azure Time Series Insights`
+    * NOTE: If this option does NOT show, you may need to register the Time Series Insights resource provider using the following steps in a **Powershell** window:
+       1. `Login-AzureRmAccount -SubscriptionId {subcription id}`
+       2. `Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.TimeSeriesInsights'`
+       3. Wait until the provider registration is complete, can be checked via: `Get-AzureRmResourceProvider -ProviderNamespace 'Microsoft.TimeSeriesInsights'`
+  * Check the Access Azure Time Series Insights service delegated permissions box
+  * Save
+* Click `Grant Permissions` (right next to the Add button).
 
 ## Create a service principal for AKS Cluster
 To create a service principal for an AKS Cluster, open a **Powershell/Command Prompt/Bash** window and follow these steps:
@@ -101,21 +117,22 @@ You need to create users having access to your AAD. These can either be users cr
    3. **Hotel 1 Manager**: This user is able to view all the Floors under the first Hotel.
    4. **Hotel 1 Employee**: This user is able to view Non-VIP Floors under the first Hotel.
 * The following users are optional. They help provide more visibility into the Role Based Access Control (RBAC) functionality of Digital Twins.
-   1. **Hotel 2 Manager**
-   2. **Hotel 3 Manager**
-   3. **Hotel 4 Manager**
-   4. **Hotel 5 Manager**
-   5. **Hotel 6 Manager**
-   6. **Hotel 7 Manager**
-   7. **Hotel 8 Manager**
-   8. **Hotel 9 Manager**
-   9. **Hotel 10 Manager**
+   1. **Hotel Brand 2 Manager**
+   2. **Hotel 2 Manager**
+   3. **Hotel 3 Manager**
+   4. **Hotel 4 Manager**
+   5. **Hotel 5 Manager**
+   6. **Hotel 6 Manager**
+   7. **Hotel 7 Manager**
+   8. **Hotel 8 Manager**
+   9. **Hotel 9 Manager**
+   10. **Hotel 10 Manager**
 
 ## Provision resources in Azure
 In `/Source/ARM/` folder of this repository is the deployment script to create and stand up all of the resources to run this demo in Azure. To execute the deployment script, run the following in a **Powershell** window:
 
 ```powershell
-.\deploy.ps1 -subscriptionId {subscription id} -resourceGroupName {resource group name} -resourceGroupLocation {resource group location} -managerObjId {manager object id} -employeeObjId {employee object id} -clientId {app id} -clientSecret {app key} -clientServicePrincipalId {service principal id} -aksServicePrincipalId {AKS Service Principal App Id} -aksServicePrincipalKey {AKS Service Principal password}
+.\deploy.ps1 -subscriptionId {subscription id} -resourceGroupName {resource group name} -resourceGroupLocation {resource group location} -clientId {app id} -clientSecret {app key} -clientServicePrincipalId {service principal id} -aksServicePrincipalId {AKS Service Principal App Id} -aksServicePrincipalKey {AKS Service Principal password}
 ```
 
 The following information parameters are required for the deployment script:
@@ -143,6 +160,9 @@ If you want to have devices active in every hotel you will need to add the follo
 
 **NOTE: The full deployment can take well over an hour.**
 
+### Making Digital Twins Provisioning Changes
+If you choose to modify any of the provisioning by increasing the number of rooms that are included in a floor, a new floorplan (found in `/Source/ARM/Images/floorplans`) file will be required. Otherwise any new rooms will most likely not be displayed or accessible in the floorplan view. Make sure to mimic the svg structure and id naming to ensure the website functions properly.
+
 ## User Settings
 When the deployment script is complete, it will output a `userSettings.json` file with information needed for the rest of the deployment.
 
@@ -160,6 +180,7 @@ When the deployment script is complete, it will output a `userSettings.json` fil
     "eventHubConsumerConnectionString": "{consumer connection string to the event hub}",
     "iotHubConnectionString": "{connection string to the iot hub}",
     "cosmosDbConnectionString": "{connection string to the cosmos db}",
+    "azureMapsKey": "{auth key to connect to the Azure Maps resource}",
     "roomDevicesApiEndpoint": "{room devices api endpoint - needed for running the Xamarin Mobile Clients}",
     "demoRoomSpaceId": "{space id of the room needed for running demos using the Xamarin Mobile Clients}",
     "demoRoomKubernetesDeployment": "{name of the demo room kubernetes deployment}",
@@ -170,8 +191,28 @@ When the deployment script is complete, it will output a `userSettings.json` fil
 
 **NOTE:** If you are going to run the IoT Demo for the [Xamarin Mobile Apps](https://github.com/Microsoft/SmartHotel360-mobile-desktop-apps#iot-demo), then you will need the `roomDevicesApiEndpoint` and `mobileRoomSpaceId` values from the `userSettings.json` file.
 
+**IMPORTANT: Anytime you re-run `deploy.ps1`, make sure to revert the following files first, otherwise they will not be updated properly:**
+* `Source/Backend/SmartHotel.PhysicalDevices/SmartHotel.PhysicalDevices.MXChip/Device/config.h`
+* `Source/FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb/ClientApp/src/environments/environment.ts`
+* `Source/FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb/ClientApp/src/environments/environment.prod.ts`
+
+## Add Time Series Insights Data Access Policy
+You will need to give the Azure AD Application you created [earlier](#Set-up-a-Service-Principal-and-register-an-Azure-Active-Directory-application) access to the Time Series Insights environment for the charts to work.
+1. Upon completion of the deployment, navigate to the Time Series Insights environment that was created in the portal. It's name should be something like: `sh360iot-Tsi-*`.
+2. Select `Data Access Policies` from the left side menu.
+3. Click `Add` from the top left
+4. Under `Select user` enter the `clientId` value from the **userSettings.json** file from the [User Settings](#User-Settings) into the search box, and then choose the AD Application when it shows up.
+5. Under `Select role` check `Reader` AND `Contributor`
+6. Click OK
+
+At the writing of this we were unable to get the ARM template deployment to create this data access policy successfully, thus requiring the manual step.
+
 ## Success!
 To verify that everything is working correctly, open up the `facilityManagementWebsiteUri` (from the `userSettings.json` in the browser and log in with one of the two users created during the provisioning steps.
+
+### Changing the Chart timerange in the Facility Management Website
+By default, the chart in the website will show data for the last day. If you wish to see more days back from today, you can update the Application Settings to have an additional field (`tsiHowManyDays`) and enter an integer greater than 1.
+* Keep in mind that the more days you show, the more information will be shown on the map and the worse it may look.
 
 # Running Locally (OPTIONAL)
 Portions of this demo can be run locally. In order to do so, you still **must complete** the [Setup](#setup) section. Once you have completed the provisioning, you can follow these steps to configure, build, and deploy the resource locally.
@@ -316,6 +357,24 @@ For this demo we are utilizing a number of the built in sensors/components of th
 Below is diagram showing how the MXChip integrates into the existing architecture. NOTE: The Iot Hub, Azure Function and Digital Twins are the same as displayed in the [main architecture diagram](#SmartHotel360---IoT-Demo).
 
 ![IoT Demo MXChip Architecture Diagram](Documents/Images/MxChip-Architecture.png "IoT Demo MXChip Architecture Diagram")
+
+# Basic Authentication Mode
+The Facility Management website and api both support being downgraded from using ADAL to a very simple basic authentication. This mode is **read-only**, meaning sliders are not available on the rooms to change the desired temperature and light values.
+
+**NOTE: This mode is NOT recommended, unless absolutely desired.**
+
+## Downgrading Facility Management Api to Basic Authentication Mode
+The following Application Settings must be supplied (in addition to the ones that are supplied via the deployment). Once set, the Api will downgrade to basic auth.
+* `BasicAuth__Username`: whatever username you desire. This will be the username that **MUST** be supplied when logging into the website.
+* `BasicAuth__Password`: whatever password you desire. This will be the password that **MUST** be supplied when logging into the website.
+
+To verify this change is working, navigate to the `facilityManagementApiUri` (from the **userSettings.json** file from the [User Settings](#User-Settings) section) and add `/swagger` to the end. In the Swagger UI, click the `Authorize` button that will show in the top-right corner and the dialog that pops up should say `Basic authorization`.
+
+## Downgrading Facility Management Website to Basic Authentication Mode
+The following Application Settings must be supplied (in addition to the ones that are supplied via the deployment). Once set, the Website will downgrade to basic auth.
+* `useBasicAuth`: `true`
+
+To verify this change is working, navigate to the `facilityManagementWebsiteUri` (from the **userSettings.json** file from the [User Settings](#User-Settings) section) and you will see fields to enter a username and password to login.
 
 # Contributing
 

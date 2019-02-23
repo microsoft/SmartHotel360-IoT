@@ -1,0 +1,12 @@
+.chart-rendering-content {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: flex;
+
+  height: 345px;
+  /* width: 600px; */
+  padding: 0;
+  
+}
+

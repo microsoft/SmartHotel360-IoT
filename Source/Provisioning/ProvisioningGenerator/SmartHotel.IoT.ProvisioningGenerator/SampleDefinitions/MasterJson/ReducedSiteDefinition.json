@@ -1,4 +1,5 @@
 {
+  "OutputDirectory": "DigitalTwinsProvisioning-Demo",
   "HotelTypes": [
     {
       "Name": "H",
@@ -8,8 +9,8 @@
       "NumberRoomsPerVipFloor": 10,
       "IncludeGym": true,
       "IncludeConferenceRoom": true,
-      "MinTempAlertThreshold":  65,
-      "MaxTempAlertThreshold":  85
+      "MinTempAlertThreshold": 65,
+      "MaxTempAlertThreshold": 85
     },
     {
       "Name": "L",
@@ -19,8 +20,8 @@
       "NumberRoomsPerVipFloor": 8,
       "IncludeGym": true,
       "IncludeConferenceRoom": true,
-      "MinTempAlertThreshold":  65,
-      "MaxTempAlertThreshold":  85
+      "MinTempAlertThreshold": 65,
+      "MaxTempAlertThreshold": 85
     },
     {
       "Name": "SH",
@@ -30,8 +31,8 @@
       "NumberRoomsPerVipFloor": 4,
       "IncludeGym": true,
       "IncludeConferenceRoom": true,
-      "MinTempAlertThreshold":  65,
-      "MaxTempAlertThreshold":  85
+      "MinTempAlertThreshold": 65,
+      "MaxTempAlertThreshold": 85
     },
     {
       "Name": "SL",
@@ -41,8 +42,8 @@
       "NumberRoomsPerVipFloor": 4,
       "IncludeGym": true,
       "IncludeConferenceRoom": true,
-      "MinTempAlertThreshold":  65,
-      "MaxTempAlertThreshold":  85
+      "MinTempAlertThreshold": 65,
+      "MaxTempAlertThreshold": 85
     }
   ],
   "Brands": [
@@ -53,43 +54,57 @@
           "Name": "SH360 Elite 1",
           "Type": "H",
           "RegularFloorEmployeeUser": "Employee",
-          "AddDevices": true
+          "AddDevices": true,
+          "Latitude": 47.616800,
+          "Longitude": -122.205070
         },
         {
           "Name": "SH360 Premium 1",
           "Type": "L",
           "RegularFloorEmployeeUser": null,
-          "AddDevices": false
+          "AddDevices": false,
+          "Latitude": 32.875780,
+          "Longitude": -117.207010
         },
         {
           "Name": "SH360 Elite 2",
           "Type": "SH",
           "RegularFloorEmployeeUser": null,
-          "AddDevices": false
+          "AddDevices": false,
+          "Latitude": 51.461514,
+          "Longitude": -0.930454
         },
         {
           "Name": "SH360 Elite 3",
           "Type": "SH",
           "RegularFloorEmployeeUser": null,
-          "AddDevices": false
+          "AddDevices": false,
+          "Latitude": 40.418301,
+          "Longitude": -3.798159
         },
         {
           "Name": "SH360 Elite 4",
           "Type": "SL",
           "RegularFloorEmployeeUser": null,
-          "AddDevices": false
+          "AddDevices": false,
+          "Latitude": 48.177382,
+          "Longitude": 11.593678
         },
         {
           "Name": "SH360 Premium 2",
           "Type": "SL",
           "RegularFloorEmployeeUser": null,
-          "AddDevices": false
+          "AddDevices": false,
+          "Latitude": 35.626660,
+          "Longitude": 139.740525
         },
         {
           "Name": "SH360 Premium 3",
           "Type": "SL",
           "RegularFloorEmployeeUser": null,
-          "AddDevices": false
+          "AddDevices": false,
+          "Latitude": 37.574767,
+          "Longitude": 126.979306
         }
       ]
     },
@@ -100,43 +115,57 @@
           "Name": "Contoso Elite 1",
           "Type": "SH",
           "RegularFloorEmployeeUser": null,
-          "AddDevices": false
+          "AddDevices": false,
+          "Latitude": 30.070911,
+          "Longitude": 31.016627
         },
         {
           "Name": "Contoso Premium 1",
           "Type": "SH",
           "RegularFloorEmployeeUser": null,
-          "AddDevices": false
+          "AddDevices": false,
+          "Latitude": -26.046310,
+          "Longitude": 28.019991
         },
         {
           "Name": "Contoso Elite 2",
           "Type": "SL",
           "RegularFloorEmployeeUser": null,
-          "AddDevices": false
+          "AddDevices": false,
+          "Latitude": 19.366462,
+          "Longitude": -99.264738
         },
         {
           "Name": "Contoso Elite 3",
           "Type": "SH",
           "RegularFloorEmployeeUser": null,
-          "AddDevices": false
+          "AddDevices": false,
+          "Latitude": -23.609299,
+          "Longitude": -46.697277
         },
         {
           "Name": "Contoso Premium 2",
           "Type": "SL",
           "RegularFloorEmployeeUser": null,
-          "AddDevices": false
+          "AddDevices": false,
+          "Latitude": -33.796785,
+          "Longitude": 151.138782
         },
         {
           "Name": "Contoso Premium 3",
           "Type": "SL",
           "RegularFloorEmployeeUser": null,
-          "AddDevices": false
+          "AddDevices": false,
+          "Latitude": 40.756722,
+          "Longitude": -73.990022
         },
         {
           "Name": "Contoso Premium 4",
           "Type": "SH",
           "RegularFloorEmployeeUser": null,
-          "AddDevices": false
+          "AddDevices": false,
+          "Latitude": 48.833505,
+          "Longitude": 2.266099
         }
       ]
     }

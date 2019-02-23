@@ -16,9 +16,9 @@ namespace SmartHotel.Services.FacilityManagement.Controllers
     [ApiController]
     public class DesiredDataController : ControllerBase
     {
-        private IConfiguration _config;
-        private ServiceClient _serviceClient;
-        private MongoClient _documentClient;
+        private readonly IConfiguration _config;
+        private readonly ServiceClient _serviceClient;
+        private readonly MongoClient _documentClient;
 
         public DesiredDataController(IConfiguration config)
         {

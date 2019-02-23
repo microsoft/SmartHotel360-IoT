@@ -4,7 +4,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AdalService } from 'adal-angular4';
 import { IDesired } from './models/IDesired';
 import { ISpace } from './models/ISpace';
-import { ITempAlert } from './models/ITempAlert';
+import { ISpaceAlert } from './models/ISpaceAlert';
+import { BehaviorSubject, Observable, forkJoin } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { ISensor } from './models/ISensor';
+import { SpaceType } from './models/SpaceType';
 
 class InitializationCallbackContainer {
   constructor(requester: any, callback: (requester: any) => void) {
@@ -28,37 +32,74 @@ export class FacilityService {
   private spaces: ISpace[] = null;
   private spacesByParentId: Map<string, ISpace[]>;
   private callbacksToExecuteWhenInitialized: InitializationCallbackContainer[] = [];
+  private dtToken: string;
+  private tsiToken: string;
+  private temperatureAlertsSubject: BehaviorSubject<ISpaceAlert[]> = new BehaviorSubject<ISpaceAlert[]>(null);
+  private temperatureAlertsObservable: Observable<ISpaceAlert[]>;
+  private alertsTimerInterval;
 
   constructor(
     private http: HttpClient,
     private adalSvc: AdalService) {
     this.spacesByParentId = new Map<string, ISpace[]>();
+
+    this.temperatureAlertsObservable = this.temperatureAlertsSubject.asObservable();
   }
 
   public async initialize() {
     try {
-      await this.adalSvc.acquireToken(`${environment.resourceId}`)
-        .toPromise()
-        .then(
-          token => {
-            this.http.get<ISpace[]>(this.getEndpoint('spaces'), { headers: { 'azure_token': token } }
-            ).toPromise().then(data => {
-              this.spaces = data;
-              this.updateSpacesByParentIdMap(this.spaces);
-              this.isInitialized = true;
-              this.onInitialized();
-            });
-          }
-        );
+      await this.updateTsiToken();
+      await this.updateDtToken()
+        .then(() => {
+          this.http.get<ISpace[]>(this.getEndpoint('spaces'), { headers: { 'adt_token': this.dtToken } }
+          ).toPromise().then(data => {
+            this.spaces = data;
+            this.updateSpacesByParentIdMap(this.spaces);
+            this.startAlertsTimer();
+            this.isInitialized = true;
+            this.onInitialized();
+          });
+        });
     } catch (error) {
       console.error('Failed to initialize and load spaces.');
       console.error(error);
     }
   }
 
+  public basicAuthLogin(basicAuthHeader: string) {
+    return this.http.get<string>(this.getEndpoint('auth'), {
+      headers: { Authorization: basicAuthHeader }
+    })
+      .pipe(switchMap(() => {
+        return forkJoin(this.basicAuthRetrieveDtToken(basicAuthHeader), this.basicAuthRetreiveTsiToken(basicAuthHeader));
+      }));
+  }
+
+  private basicAuthRetrieveDtToken(basicAuthHeader: string) {
+    return this.http.get<string>(this.getEndpoint('auth/getdttoken'), {
+      headers: { Authorization: basicAuthHeader },
+      responseType: 'text' as 'json'
+    })
+      .pipe(map((token: string) => {
+        this.dtToken = token;
+      }));
+  }
+
+  private basicAuthRetreiveTsiToken(basicAuthHeader: string) {
+    return this.http.get<string>(this.getEndpoint('auth/gettsitoken'), {
+      headers: { Authorization: basicAuthHeader },
+      responseType: 'text' as 'json'
+    })
+      .pipe(map((token: string) => {
+        this.tsiToken = token;
+      }));
+  }
+
   public terminate() {
     this.spaces = undefined;
     this.spacesByParentId.clear();
+    this.temperatureAlertsSubject.next(null);
+    clearInterval(this.alertsTimerInterval);
     this.isInitialized = false;
   }
 
@@ -68,6 +109,22 @@ export class FacilityService {
     }
 
     return this.spaces;
+  }
+
+  public getDigitalTwinsToken(): string {
+    if (!this.isInitialized) {
+      throw this.notInitializedError;
+    }
+
+    return this.dtToken;
+  }
+
+  public getTimeSeriesInsightsToken(): string {
+    if (!this.isInitialized) {
+      throw this.notInitializedError;
+    }
+
+    return this.tsiToken;
   }
 
   public getSpace(parentSpaceId: string, spaceId: string): ISpace {
@@ -151,37 +208,37 @@ export class FacilityService {
     return promise;
   }
 
-  public async getTemperatureAlerts(): Promise<ITempAlert[]> {
+  public getTemperatureAlerts(): Observable<ISpaceAlert[]> {
     if (!this.isInitialized) {
       throw this.notInitializedError;
     }
 
-    const promise = new Promise<ITempAlert[]>((resolve, reject) => {
-      this.adalSvc.acquireToken(`${environment.resourceId}`)
-        .toPromise()
-        .then(
-          token => {
-            this.http.get(this.getEndpoint('spaces/temperaturealerts'), { headers: { 'azure_token': token } }
-            ).toPromise().then((data: { [spaceId: string]: string }) => {
-              if (data !== undefined && data !== null) {
-                const keys = Object.keys(data);
-                const tempAlerts: ITempAlert[] = [];
-
-                keys.forEach(k => tempAlerts.push({
-                  spaceFriendlyId: k,
-                  alertMessage: data[k]
-                }));
-                resolve(tempAlerts);
-              } else {
-                resolve(null);
-              }
-            });
-          }
-        );
-    });
-
-    return promise;
+    return this.temperatureAlertsObservable;
   }
+
+  public getDescendantSensorIds(topSpaceId: string, dataType: string): string[] {
+    const childSpaces = this.spacesByParentId.get(topSpaceId);
+    if (childSpaces) {
+      let descendantSensorIds: string[] = [];
+      childSpaces.forEach(childSpace => {
+        if (childSpace.devices) {
+          childSpace.devices.forEach(device => {
+            if (device.sensors) {
+              descendantSensorIds = descendantSensorIds
+                .concat(device.sensors.filter(s => s.dataType === dataType).map(sensor => sensor.id));
+            }
+          });
+        }
+
+        descendantSensorIds = descendantSensorIds.concat(this.getDescendantSensorIds(childSpace.id, dataType));
+      });
+      return descendantSensorIds;
+    } else {
+      return [];
+    }
+  }
+
+
 
   public executeWhenInitialized(requester: any, callback: (requester: any) => void): boolean {
     if (this.isInitialized) {
@@ -191,6 +248,53 @@ export class FacilityService {
 
     this.callbacksToExecuteWhenInitialized.push(new InitializationCallbackContainer(requester, callback));
     return false;
+  }
+
+  private async updateDtToken(): Promise<void> {
+    if (environment.useBasicAuth) {
+      return Promise.resolve();
+    }
+    await this.adalSvc.acquireToken(`${environment.resourceId}`)
+      .toPromise()
+      .then(token => {
+        this.dtToken = token;
+      });
+  }
+
+  private async updateTsiToken(): Promise<void> {
+    if (environment.useBasicAuth) {
+      return Promise.resolve();
+    }
+    await this.http.get<string>(this.getEndpoint('auth/gettsitoken'), {
+      responseType: 'text' as 'json'
+    })
+      .toPromise()
+      .then(token => {
+        this.tsiToken = token;
+      });
+  }
+
+  private startAlertsTimer() {
+    this.loadAlerts()
+      .then(() => {
+        this.alertsTimerInterval = setInterval(this.loadAlerts.bind(this), environment.sensorDataTimer);
+      });
+  }
+
+  private async loadAlerts() {
+    await this.updateDtToken();
+    const alerts = await this.http.get(this.getEndpoint('spaces/temperaturealerts'), { headers: { 'adt_token': this.dtToken } }
+    ).toPromise() as { [spaceId: string]: ISpaceAlert };
+
+    if (alerts !== undefined && alerts !== null) {
+      const keys = Object.keys(alerts);
+      const tempAlerts: ISpaceAlert[] = [];
+
+      keys.forEach(k => tempAlerts.push(alerts[k]));
+      this.temperatureAlertsSubject.next(tempAlerts);
+    } else {
+      this.temperatureAlertsSubject.next(null);
+    }
   }
 
   private getEndpoint(path: string): string {
@@ -211,10 +315,15 @@ export class FacilityService {
     this.spacesByParentId.set(spaces[0].parentSpaceId, spaces.sort(this.getSpacesSortResult));
 
     spaces.forEach(space => {
+      this.setSpaceNumber(space);
       if (space.properties) {
         const imagePathProperty = space.properties.find(p => p.name === 'ImagePath');
         if (imagePathProperty) {
           space.imagePath = imagePathProperty.value;
+        }
+        const detailedImagePathProperty = space.properties.find(p => p.name === 'DetailedImagePath');
+        if (detailedImagePathProperty) {
+          space.detailedImagePath = detailedImagePathProperty.value;
         }
       }
       this.updateSpacesByParentIdMap(space.childSpaces);
@@ -240,11 +349,20 @@ export class FacilityService {
     return a.name.localeCompare(b.name);
   }
 
+  private setSpaceNumber(space: ISpace) {
+    if (space.type.toLowerCase() === SpaceType.Floor) {
+      space.number = +space.name.replace('Floor ', '');
+    } else if (space.type.toLowerCase() === SpaceType.Room) {
+      space.number = +space.name.replace('Room ', '');
+    }
+  }
+
   private onInitialized() {
     this.callbacksToExecuteWhenInitialized.forEach((callbackContainer: InitializationCallbackContainer) => {
       try {
         callbackContainer.Callback(callbackContainer.Requester);
       } catch (err) {
+        console.error(err);
         let requesterName = '';
         if (callbackContainer.Requester.constructor && callbackContainer.Requester.constructor.name) {
           requesterName = callbackContainer.Requester.constructor.name;

@@ -69,11 +69,13 @@ namespace SmartHotel.IoT.Provisioning.Common
 			return null;
 		}
 
-		public static async Task CreatePropertyAsync( this Property property, Guid spaceId, HttpClient httpClient,
+		public static async Task CreateOrUpdatePropertyAsync( this Property property, Guid spaceId, HttpClient httpClient,
 			JsonSerializerSettings jsonSerializerSettings )
 		{
 			Console.WriteLine( $"Creating Property for Space {spaceId}: {JsonConvert.SerializeObject( property, Formatting.Indented, jsonSerializerSettings )}" );
-			var request = HttpMethod.Post.CreateRequest( $"spaces/{spaceId}/properties", JsonConvert.SerializeObject( property, jsonSerializerSettings ) );
+
+			var propertyArray = new[] { property };
+			var request = HttpMethod.Put.CreateRequest( $"spaces/{spaceId}/properties", JsonConvert.SerializeObject( propertyArray, jsonSerializerSettings ) );
 			var response = await httpClient.SendAsync( request );
 			Console.WriteLine( response.IsSuccessStatusCode ? "succeeded..." : "failed..." );
 		}

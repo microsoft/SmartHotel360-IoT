@@ -148,6 +148,7 @@ try
 }
 catch
 {
+    Reset-Console-Coloring
     az extension add -n $azureCliIotExtensionName
 }
 
@@ -173,16 +174,14 @@ $UTCNow = (Get-Date).ToUniversalTime()
  
 $UTCTimeTick = $UTCNow.Ticks.tostring()
 
-$TemplateParameters = "_currentDateTimeInTicks=$UTCTimeTick"
-
 # Start the Azure deployment
 $StartTimeLocal = Get-Date
 Write-Host "Starting deployment at $StartTimeLocal (local time)...";
 $deploymentName = "SmartHotel360-IoT-Demo"
 if($parametersFilePath -and (Test-Path $parametersFilePath)) {
-    $deploymentResultString = az group deployment create -n $deploymentName -g $resourceGroupName --template-file $templateFilePath --parameters $parametersFilePath --parameters $TemplateParameters
+    $deploymentResultString = az group deployment create -n $deploymentName -g $resourceGroupName --template-file $templateFilePath --parameters $parametersFilePath --parameters _currentDateTimeInTicks=$UTCTimeTick
 } else {
-    $deploymentResultString = az group deployment create -n $deploymentName -g $resourceGroupName --template-file $templateFilePath --parameters $TemplateParameters
+    $deploymentResultString = az group deployment create -n $deploymentName -g $resourceGroupName --template-file $templateFilePath --parameters _currentDateTimeInTicks=$UTCTimeTick
 }
 
 $deploymentResult = $deploymentResultString | ConvertFrom-Json
@@ -379,18 +378,43 @@ $functionSiteName = $outputs.functionSiteName.value
 
 Write-Host
 Write-Host "Setting Facility Manangement Api App Settings"
-$facilityManagementApiSettings = "--settings ManagementApiUrl=`"$dtManagementEndpoint`" MongoDBConnectionString=`"$cosmosDbConnectionString`" AzureAd__Audience=`"$clientId`" IoTHubConnectionString=`"$iotHubServiceConnectionString`""
+$facilityManagementApiSettings = "--settings ManagementApiUrl=`"$dtManagementEndpoint`" MongoDBConnectionString=`"$cosmosDbConnectionString`" AzureAd__ApplicationId=`"$clientId`" AzureAd__ApplicationSecret=`"$clientSecret`" AzureAd__TenantId=`"$tenantId`"  IoTHubConnectionString=`"$iotHubServiceConnectionString`""
 $facilityManagementApiSettingsResults = az webapp config appsettings set -n $facilityManagementApiName -g $resourceGroupName $powershellEscape $facilityManagementApiSettings
+Write-Host "Setting Facility Manangement Api to be Always On"
+$facilityManagementApiConfigResults = az webapp config set -n $facilityManagementApiName -g $resourceGroupName --always-on true
+Write-Host "Setting Facility Manangement Api to be Https Only"
+$facilityManagementApiUpdateResults = az webapp update -n $facilityManagementApiName -g $resourceGroupName --https-only true
 
 Write-Host
 Write-Host "Setting Azure Function App Settings"
 $functionSettings = "--settings CosmosDBConnectionString=`"$cosmosDbConnectionString`" EventHubConnectionString=`"$eventHubConsumerConnnection`" AzureWebJobsDashboard=`"$storageConnectionString`" AzureWebJobsStorage=`"$storageConnectionString`""
-$functionSettingsResults =az webapp config appsettings set -n $functionSiteName -g $resourceGroupName $powershellEscape $functionSettings
+$functionSettingsResults = az webapp config appsettings set -n $functionSiteName -g $resourceGroupName $powershellEscape $functionSettings
 
+$facilityManagementWebsiteName = $outputs.websiteName.value
 $facilityManagementApiEndpoint = "$facilityManagementApiUri/api"
+$azureMapsKey = $outputs.mapsPrimaryKey.value
+$tsiFQDN = $outputs.tsiFQDN.value
+
+$adalEndpointsJson = @(
+    @{
+        url = "`"$facilityManagementApiUri`""
+        resourceId = "`"$clientId`""
+    }
+)
+
+$adalEndpointsString = ConvertTo-Json -InputObject $adalEndpointsJson -Compress
 
 Write-Host
-Write-Host "Updating Facility Management Website environment files to point to the deployed azure resources."
+Write-Host "Setting Facility Management Website App Settings"
+$websiteSettings = "--settings adalConfig__tenant=`"$tenantId`" adalConfig__clientId=`"$clientId`" adalConfig__endpointsString=`"$adalEndpointsString`" apiEndpoint=`"$facilityManagementApiEndpoint`" azureMapsKey=`"$azureMapsKey`" tsiFqdn=`"$tsiFQDN`""
+$websiteSettingsResults = az webapp config appsettings set -n $facilityManagementWebsiteName -g $resourceGroupName $powershellEscape $websiteSettings
+Write-Host "Setting Facility Manangement Website to be Https Only"
+$websiteConfigResults = az webapp config set -n $facilityManagementWebsiteName -g $resourceGroupName --always-on true
+Write-Host "Setting Facility Manangement Website to be Https Only"
+$websiteUpdateResults = az webapp update -n $facilityManagementWebsiteName -g $resourceGroupName --https-only true
+
+Write-Host
+Write-Host "Updating Facility Management Website environment files to point to the deployed azure resources when running locally."
 Write-Host
 
 $websiteEnvironmentsDirectory = "../FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb/ClientApp/src/environments"
@@ -407,6 +431,8 @@ foreach($filename in $environmentFileNames)
     $fileContent = $fileContent.Replace("{clientId}","$clientId")
     $fileContent = $fileContent.Replace("{apiUri}","$facilityManagementApiUri")
     $fileContent = $fileContent.Replace("{apiEndpoint}","$facilityManagementApiEndpoint")
+    $fileContent = $fileContent.Replace("{azureMapsKey}","$azureMapsKey")
+    $fileContent = $fileContent.Replace("{tsiFqdn}","$tsiFQDN")
     
     $fileContent | Set-Content $fullFilePath -Force
 
@@ -416,7 +442,6 @@ foreach($filename in $environmentFileNames)
 
 # Publish the Website
 $publishOutputFolder = "./webapp"
-$facilityManagementWebsiteName = $outputs.websiteName.value
 $deploymentZip = "./SmartHotel.FacilityManagementWeb.Deployment.zip"
 Write-Host "Publishing the Facility Management website..."
 Push-Location "../FacilityManagementWebsite/SmartHotel.FacilityManagementWeb/SmartHotel.FacilityManagementWeb"
@@ -603,6 +628,8 @@ $savedSettings = [PSCustomObject]@{
     eventHubConsumerConnectionString = $eventHubConsumerConnnection
     iotHubConnectionString = $iotHubServiceConnectionString
     cosmosDbConnectionString = $cosmosDbConnectionString
+    azureMapsKey = $azureMapsKey
+    tsiFQGN = $tsiFQDN
     roomDevicesApiEndpoint = "http://$roomDevicesApiUri/api"
     demoRoomSpaceId = $demoRoomSpaceId
     demoRoomKubernetesDeployment = $demoRoomKubernetesDeploymentName
@@ -622,5 +649,5 @@ Write-Host
 Write-Host
 Write-Host 'Required settings have been saved to ' $outfile
 Write-Host
-Write-Host "Deployment took $totalTimeInMinutes"
+Write-Host "Deployment took $totalTimeInMinutes minutes"
 Write-Host

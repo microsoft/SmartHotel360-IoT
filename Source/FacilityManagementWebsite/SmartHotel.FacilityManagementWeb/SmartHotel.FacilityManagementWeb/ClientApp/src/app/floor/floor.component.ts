@@ -1,14 +1,18 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FacilityService } from '../services/facility.service';
-import { ILight, IThermostat, IMotion } from '../services/models/IDevice';
-import { ISensor } from '../services/models/ISensor';
+import { ILight, IThermostat, IMotion } from '../services/models/IDeviceValues';
+import { ISensorReading } from '../services/models/ISensorReading';
 import { environment } from '../../environments/environment';
 import { IDesired } from '../services/models/IDesired';
 import { ChangeContext, Options } from 'ng5-slider';
 import { ISpace } from '../services/models/ISpace';
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { BusyService } from '../services/busy.service';
+import { ISpaceAlert } from '../services/models/ISpaceAlert';
+import { Subscription } from 'rxjs';
+import { SubscriptionUtilities } from '../helpers/subscription-utilities';
+import * as d3 from 'd3';
 
 @Component({
   selector: 'app-floor',
@@ -17,15 +21,25 @@ import { BusyService } from '../services/busy.service';
 })
 export class FloorComponent implements OnInit, OnDestroy {
 
+  private static readonly AlertFillColor = 'yellow';
+  private static readonly AlertIdPrefix = 'alarm_';
+  private static readonly RoomUnselectedColor = 'transparent';
+  private static readonly RoomSelectedColor = 'yellow';
+  private static readonly RoomSelectionThickness = '4px';
+  private static readonly RoomOverlayIdPrefix = 'room_';
+  private static readonly RoomOverlayOccupiedFill = '#64deff';
+  private static readonly RoomOverlayVacantFill = '#8e8e8e';
+
   constructor(private route: ActivatedRoute,
     private facilityService: FacilityService,
     private busyService: BusyService) {
     this.roomsById = new Map<string, ISpace>();
     this.desiredDataByRoomIdThenSensorId = new Map<string, Map<string, IDesired>>();
-    this.sensorDataByRoomIdThenSensorId = new Map<string, Map<string, ISensor>>();
+    this.sensorDataByRoomIdThenSensorId = new Map<string, Map<string, ISensorReading>>();
   }
 
   @ViewChild('breadcumbs') private breadcrumbs: BreadcrumbComponent;
+  @ViewChild('floorplanContainer') private floorplanContainerDiv: ElementRef;
   public tenantId: string;
   public hotelBrandId: string;
   public hotelBrandName: string;
@@ -36,13 +50,23 @@ export class FloorComponent implements OnInit, OnDestroy {
   public floorName: string;
 
   public rooms: ISpace[] = null;
+  public selectedRoom: ISpace;
+
+  private floor: ISpace;
+  private subscriptions: Subscription[] = [];
   private roomsById: Map<string, ISpace>;
   private desiredDataByRoomIdThenSensorId: Map<string, Map<string, IDesired>>;
-  private sensorDataByRoomIdThenSensorId: Map<string, Map<string, ISensor>>;
+  private sensorDataByRoomIdThenSensorId: Map<string, Map<string, ISensorReading>>;
   private sensorInterval;
   private theromstatSliderTimeout;
   private lightSliderTimeout;
   private isUpdatingSliders = false;
+
+  private svg: d3.Selection<any, {}, null, undefined>;
+  private roomOverlayPolygons: d3.Selection<SVGPolygonElement, ISpace, SVGGElement, {}>;
+  private roomAlertPaths: d3.Selection<SVGPathElement, ISpace, SVGGElement, {}>;
+
+  get useBasicAuth() { return environment.useBasicAuth; }
 
   thermostatSliderOptions: Options = {
     showTicks: false,
@@ -73,6 +97,9 @@ export class FloorComponent implements OnInit, OnDestroy {
   };
 
   ngOnInit() {
+    document.body.classList.add('white-background');
+    document.getElementById('main-nav-container').classList.add('white-background');
+    // TODO: Nav-Menu background class change
     this.route.params.subscribe(params => {
       this.tenantId = params['tId'];
       this.hotelBrandId = params['hbId'];
@@ -86,24 +113,34 @@ export class FloorComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    document.body.classList.remove('white-background');
+    document.getElementById('main-nav-container').classList.remove('white-background');
+    // TODO: Remove Nav-Menu background class change
     if (this.sensorInterval != null) {
       clearInterval(this.sensorInterval);
     }
+
+    this.subscriptions.forEach(s => SubscriptionUtilities.tryUnsubscribe(s));
   }
 
   loadRooms(self: FloorComponent) {
 
     self.busyService.busy();
-    const floor = self.facilityService.getSpace(self.hotelId, self.floorId);
-    if (!floor) {
+    self.floor = self.facilityService.getSpace(self.hotelId, self.floorId);
+    if (!self.floor) {
       self.breadcrumbs.returnToHotel();
       return;
     }
-    self.floorName = floor.friendlyName;
+    self.floorName = self.floor.friendlyName;
     self.rooms = self.facilityService.getChildSpaces(self.floorId);
     self.rooms.forEach(room => self.roomsById.set(room.id, room));
     self.loadDesiredData();
     self.setupTimer();
+
+    self.initializeFloorplan(self);
+
+    self.subscriptions.push(self.facilityService.getTemperatureAlerts()
+      .subscribe(tempAlerts => self.temperatureAlertsUpdated(self.rooms, tempAlerts)));
   }
 
   setupTimer() {
@@ -136,7 +173,7 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   loadSensorData() {
     if (this.rooms != null) {
-      this.facilityService.getSensorData(this.rooms).then((sensors: ISensor[]) => {
+      this.facilityService.getSensorData(this.rooms).then((sensors: ISensorReading[]) => {
         if (sensors != null && sensors.length > 0) {
           sensors.forEach(sensor => {
             switch (sensor.sensorDataType) {
@@ -155,7 +192,7 @@ export class FloorComponent implements OnInit, OnDestroy {
         sensors.forEach(s => {
           let sensorDataForRoom = this.sensorDataByRoomIdThenSensorId.get(s.roomId);
           if (!sensorDataForRoom) {
-            sensorDataForRoom = new Map<string, ISensor>();
+            sensorDataForRoom = new Map<string, ISensorReading>();
             this.sensorDataByRoomIdThenSensorId.set(s.roomId, sensorDataForRoom);
           }
 
@@ -165,7 +202,7 @@ export class FloorComponent implements OnInit, OnDestroy {
     }
   }
 
-  setLightReading(sensor: ISensor) {
+  setLightReading(sensor: ISensorReading) {
     const actual = this.getSensorReading(sensor);
     const desired = this.getDesiredValue(sensor);
 
@@ -179,7 +216,7 @@ export class FloorComponent implements OnInit, OnDestroy {
     }
   }
 
-  setTemperatureReading(sensor: ISensor) {
+  setTemperatureReading(sensor: ISensorReading) {
     const actual = this.getSensorReading(sensor);
     const desired = this.getDesiredValue(sensor);
 
@@ -194,18 +231,22 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   }
 
-  setMotionReading(sensor: ISensor) {
+  setMotionReading(sensor: ISensorReading) {
 
     const motion: IMotion = { isMotion: sensor.sensorReading.toLowerCase() === 'true' };
     const room = this.roomsById.get(sensor.roomId);
 
     if (room != null) {
       room.motion = motion;
+      if (this.svg) {
+        const roomOverlaySelection = this.getSelectionForRoomOverlay(room);
+        this.updateRoomMotionStatus(roomOverlaySelection.selectAll('polygon'));
+      }
     }
 
   }
 
-  getSensorReading(sensor: ISensor) {
+  getSensorReading(sensor: ISensorReading) {
 
     try {
       return JSON.parse(sensor.sensorReading);
@@ -214,7 +255,7 @@ export class FloorComponent implements OnInit, OnDestroy {
     return null;
   }
 
-  getDesiredValue(sensor: ISensor) {
+  getDesiredValue(sensor: ISensorReading) {
 
     try {
       let desired: IDesired = null;
@@ -353,5 +394,143 @@ export class FloorComponent implements OnInit, OnDestroy {
 
   getFriendlyRoomType(room: ISpace) {
     return room.subtype.replace('Room', '').replace('VIP', 'VIP ').replace('Conference', 'Conference Room');
+  }
+
+  temperatureAlertsUpdated(spaces: ISpace[], spaceAlerts: ISpaceAlert[]) {
+    if (!spaces) {
+      return;
+    }
+    if (!spaceAlerts) {
+      spaces.forEach(space => {
+        space.hasAlert = false;
+        space.alertMessage = null;
+      });
+    } else {
+      spaces.forEach(space => {
+        const alertForSpace = spaceAlerts.find(alert => alert.spaceId === space.id);
+        if (alertForSpace) {
+          space.hasAlert = true;
+          space.alertMessage = alertForSpace.message;
+        } else {
+          space.hasAlert = false;
+          space.alertMessage = null;
+        }
+      });
+    }
+
+    this.updateAlerts();
+  }
+
+  initializeFloorplan(self: FloorComponent) {
+    const dtToken = this.facilityService.getDigitalTwinsToken();
+
+    d3.xml(self.floor.detailedImagePath, {
+      headers: { 'Authorization': `Bearer ${dtToken}` }
+    })
+      .then((result: XMLDocument) => {
+        const svgNodeFromFile = result.getElementsByTagName('svg')[0];
+        const svgNode = d3.select(self.floorplanContainerDiv.nativeElement)
+          .node().appendChild(svgNodeFromFile);
+        self.svg = d3.select(svgNode);
+        self.svg.selectAll('title').remove();
+        const roomOverlayGroups = self.svg.selectAll<SVGGElement, ISpace>(`g[id^=${FloorComponent.RoomOverlayIdPrefix}]`);
+        self.roomOverlayPolygons = roomOverlayGroups.selectAll('polygon');
+        self.roomOverlayPolygons.style('fill', FloorComponent.RoomOverlayVacantFill)
+          .style('stroke', FloorComponent.RoomUnselectedColor)
+          .style('stroke-width', FloorComponent.RoomSelectionThickness)
+          .style('cursor', 'pointer');
+
+        self.roomOverlayPolygons.datum(function () {
+          const polygonElement = d3.select(this);
+          const gElement = d3.select(polygonElement.node().parentNode);
+          const roomOverlayId = gElement.attr('id');
+          const roomOverlayNumber = +roomOverlayId.replace(FloorComponent.RoomOverlayIdPrefix, '');
+          const roomOverlayNumberConvertedForCurrentFloor = (100 * self.floor.number) + roomOverlayNumber;
+          const matchingRoom = self.rooms.find(r => r.number === roomOverlayNumberConvertedForCurrentFloor);
+          return matchingRoom;
+        })
+          .style('fill-opacity', (room: ISpace) => room ? 0.8 : 0);
+
+        self.roomOverlayPolygons.on('click', function (room: ISpace) {
+          const shape = d3.select(this);
+          self.roomClicked(room, shape);
+        });
+
+        self.updateRoomMotionStatus(this.roomOverlayPolygons);
+
+        const roomAlertGroups = self.svg.selectAll<SVGGElement, ISpace>(`g[id^=${FloorComponent.AlertIdPrefix}]`);
+        self.roomAlertPaths = roomAlertGroups.selectAll('path');
+        self.roomAlertPaths.append('title');
+        self.roomAlertPaths.style('display', 'none')
+          .style('fill', FloorComponent.AlertFillColor)
+          .style('cursor', 'pointer');
+
+        self.roomAlertPaths.datum(function () {
+          const pathElement = d3.select(this);
+          const gElement = d3.select(pathElement.node().parentNode);
+          const alertId = gElement.attr('id');
+          const alertNumber = +alertId.replace(FloorComponent.AlertIdPrefix, '');
+          const alertNumberConvertedForCurrentFloor = (100 * self.floor.number) + alertNumber;
+          const matchingRoom = self.rooms.find(r => r.number === alertNumberConvertedForCurrentFloor);
+          return matchingRoom;
+        });
+      });
+  }
+
+  roomClicked(room: ISpace, roomOverlay: d3.Selection<SVGPolygonElement, {}, null, {}>) {
+    if (!room) {
+      return;
+    }
+
+    if (this.selectedRoom === room) {
+      this.updateRoomOverlayStroke(roomOverlay, FloorComponent.RoomUnselectedColor);
+      this.selectedRoom = undefined;
+    } else {
+      if (this.selectedRoom) {
+        const previousSelectedRoomOverlayGroup = this.getSelectionForRoomOverlay(this.selectedRoom);
+        this.updateRoomOverlayStroke(previousSelectedRoomOverlayGroup.selectAll('polygon'), FloorComponent.RoomUnselectedColor);
+      }
+
+      this.updateRoomOverlayStroke(roomOverlay, FloorComponent.RoomSelectedColor);
+      this.selectedRoom = room;
+    }
+  }
+
+  updateRoomOverlayStroke(roomOverlay: d3.Selection<SVGPolygonElement, {}, SVGGElement, {}>, desiredStroke: string) {
+    roomOverlay.style('stroke', desiredStroke);
+  }
+
+  updateRoomMotionStatus(polygonsSelection: d3.Selection<SVGPolygonElement, ISpace, SVGGElement, {}>) {
+    if (!polygonsSelection) {
+      return;
+    }
+
+    polygonsSelection.style('fill',
+      (room: ISpace) => (room && room.motion && room.motion.isMotion)
+        ? FloorComponent.RoomOverlayOccupiedFill
+        : FloorComponent.RoomOverlayVacantFill);
+  }
+
+  updateAlerts() {
+    if (!this.roomAlertPaths) {
+      return;
+    }
+
+    this.roomAlertPaths.each(function (room: ISpace) {
+      const alertPath = d3.select(this);
+      alertPath.style('display', room && room.hasAlert
+        ? 'unset'
+        : 'none');
+      alertPath.selectAll('title')
+        .text(room && room.hasAlert ? room.alertMessage : '');
+    });
+  }
+
+  getSelectionForRoomOverlay(room: ISpace): d3.Selection<SVGGElement, ISpace, any, {}> {
+    const selectRoomNumberConvertedToRoomOverlayNumber = room.number - (100 * this.floor.number);
+    const roomOverlayId = selectRoomNumberConvertedToRoomOverlayNumber < 10
+      ? selectRoomNumberConvertedToRoomOverlayNumber.toString().padStart(2, '0')
+      : selectRoomNumberConvertedToRoomOverlayNumber.toString();
+    return this.svg.selectAll<SVGGElement, ISpace>(`#${FloorComponent.RoomOverlayIdPrefix}${roomOverlayId}`);
   }
 }

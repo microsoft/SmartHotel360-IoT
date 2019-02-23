@@ -23,7 +23,9 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/tsiclient/tsiclient.css",
               "src/styles.css"
+              
             ],
             "scripts": []
           },

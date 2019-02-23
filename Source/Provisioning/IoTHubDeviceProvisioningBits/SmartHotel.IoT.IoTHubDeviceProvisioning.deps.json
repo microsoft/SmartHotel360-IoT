@@ -487,28 +487,28 @@
     "McMaster.Extensions.CommandLineUtils/2.2.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4cNl0zV+QINlluLbpfSfZvqBLqlJ8wJz9LDBWP/oFUFK08T49MCv+wtU/1DJLEaGIaFK1fiQJIVFo17V516EUg==",
+      "sha512": "sha512-Zbdiiu616SDIlBGeBZj2U1UZU/mdlT5szgfw+P+DUS8qX9ebMQIOq8vQzxPgNSDsvNqlHIAMeP74d2PTg/O5dw==",
       "path": "mcmaster.extensions.commandlineutils/2.2.5",
       "hashPath": "mcmaster.extensions.commandlineutils.2.2.5.nupkg.sha512"
     },
     "Microsoft.Azure.Amqp/2.3.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-OMc/j8wN59mcgaPMyPyI2b99EXcNLJh7XLEOs6CCuXnSm/Tqf0C63Es6lQsAHWrgt0B0AnKxx7adhjM+8Xrhww==",
+      "sha512": "sha512-bly+A9Jv/kJkZq8cHsSNDNvJxCs2zKI59t3JEWGK/6rfIfhadeL/KwTcJUMvLZCClGA6X+H4SojUvzRRaWsyjA==",
       "path": "microsoft.azure.amqp/2.3.5",
       "hashPath": "microsoft.azure.amqp.2.3.5.nupkg.sha512"
     },
     "Microsoft.Azure.Devices/1.17.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-T5pcDTagAiubc/28q125IT2ZdU7zYgtf4T+k+ODTYGiOcAfIwYDF3EGyN+ThgjPtE+QsjMMAwDjYjc8njVsy2w==",
+      "sha512": "sha512-TBpWsO2MOlzSR72RSVehy/LvJiCCqxrVoTWeTdFyuvjFSjbOiuG6iyF8SdwcoxaKBd52vvX2zaYbloFxKPWcMg==",
       "path": "microsoft.azure.devices/1.17.1",
       "hashPath": "microsoft.azure.devices.1.17.1.nupkg.sha512"
     },
     "Microsoft.Azure.Devices.Shared/1.15.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-D9ga+hia7halbuFVLi8icirPmOUG9/yLR3bQRMcr3HjLmwAW4slT3Bp7XaKEaJYFAWBAf9ubeZb6zhG32lMFIg==",
+      "sha512": "sha512-VxvLqZtURJamnm6LHITRLNkYz6bjmrR7WVPD8yeyunYSPBntX8aLsin11+97d4eaIGqih5N7O6Q6EuOJfQ1QNg==",
       "path": "microsoft.azure.devices.shared/1.15.1",
       "hashPath": "microsoft.azure.devices.shared.1.15.1.nupkg.sha512"
     },
@@ -788,7 +788,7 @@
     "WindowsAzure.Storage/9.3.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3MhTw6Jdh9PkaaOCYi6K/L0Bl+AbBQbD+acn4uLkIUqqC5lts8JnSUZqQygtA6zhiY2bUi7Xmspv3tdJI/qjMA==",
+      "sha512": "sha512-iVH/VhGsViIEo1G89BuK84RBsArJQOFy5sM6mrZ2IeXPcRkEmsy1dWsbgXtXLh1odiTadu2zMEdyUWIkyC2U7w==",
       "path": "windowsazure.storage/9.3.2",
       "hashPath": "windowsazure.storage.9.3.2.nupkg.sha512"
     },

@@ -21,6 +21,9 @@ namespace SmartHotel.Devices.RoomDevice
 		private static readonly string MessageIntervalInMilliSecondsSetting = "MessageIntervalInMilliSeconds";
 		private static readonly string StartupDelayInSecondsSetting = "StartupDelayInSeconds";
 
+		private static readonly TimeSpan HubDeviceClientFirstReconnectDelay = TimeSpan.FromSeconds(5);
+		private static readonly TimeSpan HubDeviceClientSecondReconnectDelay = TimeSpan.FromMinutes(1);
+
 		private static readonly ConcurrentDictionary<string, SensorInfo> SensorInfosByDataType =
 			new ConcurrentDictionary<string, SensorInfo>( StringComparer.OrdinalIgnoreCase );
 
@@ -30,20 +33,17 @@ namespace SmartHotel.Devices.RoomDevice
 		private static DeviceClient HubDeviceClient { get; set; }
 		private static string IoTHubDeviceId { get; set; }
 
-
-		private const string TemperatureDataType = "Temperature";
-		private const string LightDataType = "Light";
-		private const string MotionDataType = "Motion";
-
 		private static Timer _motionTimer;
 		private static readonly Random Random = new Random();
 		private static int _randomizationDelay = 60000;
 
+		private static CancellationTokenSource _cts;
+
 		static async Task Main( string[] args )
 		{
-			SensorInfosByDataType[TemperatureDataType] = new SensorInfo( 74, int.MinValue );
-			SensorInfosByDataType[LightDataType] = new SensorInfo( 1.0, double.MinValue );
-			SensorInfosByDataType[MotionDataType] = new SensorInfo( false, null );
+			SensorInfosByDataType[TelemetryMessage.TemperatureDataType] = new SensorInfo( 74.0, double.MinValue );
+			SensorInfosByDataType[TelemetryMessage.LightDataType] = new SensorInfo( 1.0, double.MinValue );
+			SensorInfosByDataType[TelemetryMessage.MotionDataType] = new SensorInfo( false, null );
 
 			var builder = new ConfigurationBuilder()
 				.SetBasePath( Directory.GetCurrentDirectory() )
@@ -52,7 +52,7 @@ namespace SmartHotel.Devices.RoomDevice
 
 			Configuration = builder.Build();
 
-			CancellationTokenSource cts = new CancellationTokenSource();
+			_cts = new CancellationTokenSource();
 
 			try
 			{
@@ -61,7 +61,7 @@ namespace SmartHotel.Devices.RoomDevice
 					_motionTimer?.Dispose();
 
 					e.Cancel = true;
-					cts.Cancel();
+					_cts.Cancel();
 					Console.WriteLine( "Exiting..." );
 				};
 
@@ -78,7 +78,7 @@ namespace SmartHotel.Devices.RoomDevice
 
 				TimeSpan startupDelay = TimeSpan.FromSeconds( double.Parse( Configuration[StartupDelayInSecondsSetting] ) );
 				Console.WriteLine( $"Waiting {startupDelay.TotalSeconds} seconds to startup..." );
-				await Task.Delay( startupDelay, cts.Token );
+				await Task.Delay( startupDelay, _cts.Token );
 
 				_motionTimer = new Timer( RandomizeMotionValue, null, 5000, _randomizationDelay );
 
@@ -91,11 +91,7 @@ namespace SmartHotel.Devices.RoomDevice
 					Environment.Exit( 2 );
 				}
 
-				HubDeviceClient =
-					DeviceClient.CreateFromConnectionString( Configuration[IoTHubDeviceConnectionStringSetting], TransportType.Mqtt );
-				IoTHubDeviceId = IotHubConnectionStringBuilder.Create(Configuration[IoTHubDeviceConnectionStringSetting]).DeviceId;
-				await HubDeviceClient.SetMethodHandlerAsync( "SetDesiredTemperature", SetDesiredTemperature, null );
-				await HubDeviceClient.SetMethodHandlerAsync( "SetDesiredAmbientLight", SetAmbientLight, null );
+				await CreateHubDeviceClientAsync();
 
 				Console.WriteLine( "Connection to Digital Twins: " + DeviceInfo.ConnectionString );
 				TopologyDeviceClient = DeviceClient.CreateFromConnectionString( DeviceInfo.ConnectionString );
@@ -107,7 +103,7 @@ namespace SmartHotel.Devices.RoomDevice
 				}
 				else
 				{
-					await Task.WhenAll( SimulateData( cts.Token ) );
+					await Task.WhenAll( SimulateData( _cts.Token ) );
 				}
 			}
 			catch ( Exception ex )
@@ -137,7 +133,7 @@ namespace SmartHotel.Devices.RoomDevice
 			}
 
 			Console.WriteLine();
-			Console.WriteLine("Beginning to simulate data...");
+			Console.WriteLine( "Beginning to simulate data..." );
 			Console.WriteLine();
 
 			while ( true )
@@ -150,21 +146,13 @@ namespace SmartHotel.Devices.RoomDevice
 					{
 						continue;
 					}
-					
+
 					if ( sensorInfo.IsCurrentValueDifferent() )
 					{
 						sensorInfo.UpdateLastValueSentWithCurrentValue();
 						var currentValue = sensorInfo.GetCurrentValue();
-						var telemetryMessage = new TelemetryMessage()
-						{
-							SensorId = sensor.Id,
-							SensorReading = currentValue.ToString(),
-							EventTimestamp = DateTime.UtcNow.ToString( "o" ),
-							SensorType = sensor.Type,
-							SensorDataType = sensor.DataType,
-							SpaceId = sensor.SpaceId,
-							IoTHubDeviceId = IoTHubDeviceId
-						};
+						var telemetryMessage = TelemetryMessage.Create( sensor.DeviceId, sensor.Id, sensor.Type, sensor.DataType, currentValue,
+							sensor.SpaceId, IoTHubDeviceId );
 
 						try
 						{
@@ -202,9 +190,9 @@ namespace SmartHotel.Devices.RoomDevice
 			var data = Encoding.UTF8.GetString( methodRequest.Data );
 
 			// Check the payload is a single integer value
-			if ( int.TryParse( data, out int newDesiredTemperature ) )
+			if ( double.TryParse( data, out double newDesiredTemperature ) )
 			{
-				SensorInfo sensorInfo = SensorInfosByDataType[TemperatureDataType];
+				SensorInfo sensorInfo = SensorInfosByDataType[TelemetryMessage.TemperatureDataType];
 				sensorInfo.UpdateCurrentValue( newDesiredTemperature );
 				Console.ForegroundColor = ConsoleColor.Green;
 				Console.WriteLine( "Current Temperature set to {0}°", data );
@@ -229,7 +217,7 @@ namespace SmartHotel.Devices.RoomDevice
 			// Check the payload is a double value
 			if ( double.TryParse( data, out double newAmbientLight ) )
 			{
-				SensorInfo sensorInfo = SensorInfosByDataType[LightDataType];
+				SensorInfo sensorInfo = SensorInfosByDataType[TelemetryMessage.LightDataType];
 				sensorInfo.UpdateCurrentValue( newAmbientLight );
 				Console.WriteLine( "Current Ambient Lighting set to {0} ({0:P})", newAmbientLight );
 				Console.ResetColor();
@@ -249,7 +237,7 @@ namespace SmartHotel.Devices.RoomDevice
 		private static void RandomizeMotionValue( object state )
 		{
 			bool motionDetected = Convert.ToBoolean( Random.Next( 0, 2 ) );
-			SensorInfo sensorInfo = SensorInfosByDataType[MotionDataType];
+			SensorInfo sensorInfo = SensorInfosByDataType[TelemetryMessage.MotionDataType];
 			sensorInfo.UpdateCurrentValue( motionDetected );
 		}
 
@@ -261,6 +249,51 @@ namespace SmartHotel.Devices.RoomDevice
 				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( MessageIntervalInMilliSecondsSetting ).Value )
 				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( IoTHubDeviceConnectionStringSetting ).Value )
 				   && !string.IsNullOrWhiteSpace( Configuration.GetSection( StartupDelayInSecondsSetting ).Value );
+		}
+
+		private static async Task CreateHubDeviceClientAsync()
+		{
+			var newHubDeviceClient =
+				DeviceClient.CreateFromConnectionString( Configuration[IoTHubDeviceConnectionStringSetting], TransportType.Mqtt );
+			newHubDeviceClient.SetConnectionStatusChangesHandler( HubDeviceClientConnectionStatusChanged );
+			await newHubDeviceClient.OpenAsync();
+			await newHubDeviceClient.SetMethodHandlerAsync( "SetDesiredTemperature", SetDesiredTemperature, null );
+			await newHubDeviceClient.SetMethodHandlerAsync( "SetDesiredAmbientLight", SetAmbientLight, null );
+
+			HubDeviceClient = newHubDeviceClient;
+			IoTHubDeviceId = IotHubConnectionStringBuilder.Create( Configuration[IoTHubDeviceConnectionStringSetting] ).DeviceId;
+		}
+
+		private static async void HubDeviceClientConnectionStatusChanged( ConnectionStatus status, ConnectionStatusChangeReason reason )
+		{
+			Console.WriteLine( $"{nameof( HubDeviceClient )} connection status changed to: {status}, because of {reason}" );
+			if ( status == ConnectionStatus.Disconnected || status == ConnectionStatus.Disabled )
+			{
+				HubDeviceClient.Dispose();
+
+				await Task.Delay( HubDeviceClientFirstReconnectDelay );
+				try
+				{
+					Console.WriteLine($"Attempting first reconnect of {nameof(HubDeviceClient)}...");
+					await CreateHubDeviceClientAsync();
+				}
+				catch ( Exception e )
+				{
+					Console.WriteLine( $"Error occurred attempting first reconnect of {nameof( HubDeviceClient )}: {e}" );
+					await Task.Delay(HubDeviceClientSecondReconnectDelay);
+					try
+					{
+						Console.WriteLine( $"Attempting final reconnect of {nameof( HubDeviceClient )}..." );
+						await CreateHubDeviceClientAsync();
+					}
+					catch ( Exception ex )
+					{
+						Console.WriteLine( $"Error occurred attempting final reconnect of {nameof( HubDeviceClient )}. Exiting application: {ex}" );
+						_cts.Cancel();
+						Environment.Exit( 999 );
+					}
+				}
+			}
 		}
 	}
 }
