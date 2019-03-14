@@ -40,6 +40,10 @@ You can find a **[demo scripts](Documents/DemoScript)** with a walkthroughs once
 * [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 * [Angular CLI](https://cli.angular.io/)
+* You also will need the Azure IoT Extension for Azure CLI. You can install it with the following command:
+```
+az extension add -n azure-cli-iot-ext
+```
 * **Required Azure Subscription Permissions**
   1. Create and modify Azure AD Application Registrations or have someone else do it for you
   2. Create a new Service Principal for Role Based Access Control (RBAC) or have someone else do it for you
