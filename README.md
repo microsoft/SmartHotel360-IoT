@@ -1,5 +1,5 @@
 # SmartHotel360
-During **Connect(); 2017** event this year we presented beautiful app demos using Xamarin and many features of Azure. For //build/ 2018's keynote, we updated some components of the back-end API code to support **Azure Kubernetes Service (AKS)**. This repository contains the setup instructions and sample code needed for the Internet of Things (IoT) Demo utilizing Digital Twins that was announced at Ignite 2018.
+During **Connect(); 2017** event this year we presented beautiful app demos using Xamarin and many features of Azure. For //build/ 2018's keynote, we updated some components of the back-end API code to support **Azure Kubernetes Service (AKS)**. This repository contains the setup instructions and sample code needed for the Internet of Things (IoT) Demo utilizing Digital Twins that was announced at **Ignite 2018**.
 
 # SmartHotel360 Repos
 For this reference app scenario, we built several consumer and line-of-business apps and an Azure backend. You can find all SmartHotel360 repos in the following locations:
@@ -18,9 +18,21 @@ Welcome to the SmartHotel360 IoT repository. Here you'll find everything you nee
 
 ![IoT Demo Architecture Diagram](Documents/Images/Architecture.png "IoT Demo Architecture")
 
+Check out our [Channel9 IoT Show Video](https://channel9.msdn.com/Shows/Internet-of-Things-Show/SmartHotel-360-a-demo-powered-by-Azure-Digital-Twins) about the SmartHotel360 Demo Powered by Digital Twnis:
+
 [![SmartHotel360 IoT Demo powered by Azure Digital Twins](https://img.youtube.com/vi/urcmaFVQnF4/0.jpg)](https://www.youtube.com/watch?v=urcmaFVQnF4)
 
-## Getting Started
+## Live Running Website
+
+We have deployed a public environment to show the end result of the website connected to the Digital Twin Solution. Please notice the sliders control will be disabled because we are using the [basic authentication mode](https://github.com/Microsoft/SmartHotel360-IoT#basic-authentication-mode).
+
+* Website: https://aka.ms/smarthotel360-FacilityManagement
+* Username: admin
+* Password: admin
+
+![](Documents/Images/SmartHotel360-FacilityManagement.gif)
+
+# Getting Started
 
 SmartHotel360 uses a **microservice oriented** architecture implemented using containers. For the IoT Demo, there are various services developed in different technologies: .NET Core 2, ASP.NET Core 2, and Angular. These services use different Azure Resources like Digital Twins, App Services, Cosmos DB, Event Hubs, Azure Functions, and IoT Hubs to name a few. The step by step walkthrough for creating and provisioning the demo can be found next in the [Setup](#Setup) section.
 
@@ -152,6 +164,12 @@ The following information parameters are required for the deployment script:
 There is a collection of parameters that are used by the deployment script that determine properties like resource location, pricing tiers, and naming. If you wish to modify any of these parameters you can edit the values in [parameters.json](./arm/parameters.json).
 
 **NOTE: In order to support the number of virtual devices required for the demo in the Kubernetes cluster, it will deploy 3 nodes. Please be aware that this can be a large cost.**
+
+The Resource Group should look like this:
+
+![](Documents/Images/AzurePortal.png)
+
+> Note: Due the amount of resources of this demo the consumption of Azure is around $200 approximately per month with three nodes on the AKS cluster. Depending on the Azure region with the default paramenters.
 
 ### Demo Provisioning Info
 This demo only creates active devices in 1 hotel (SmartHotel360 -> SH360 Elite 1) to reduce the deployment time as well as cost in Azure.
@@ -331,11 +349,9 @@ To set up an MXChip as one of our room devices, follow the instructions from [Ge
 * The instructions from the **Serial monitor usage** section and beyond can be ignored.
 * Once the sketch code is successfully deployed to the MXChip, it will automatically run anytime it is powered.
 
-### Compilation and Deployment
-You may see a large number of warnings when the code is compiled (or uploaded). As long as you don't encounter an error, these can be ignored.
-* **If you receive a fatal error stating that a header file (a .h file) could not be found simply try again. These errors seem to pop up accasionally for no apparent reason.**
+>Note: If you receive a fatal error stating that a header file (a .h file) could not be found simply try again.
 
-### Demo
+### MXChip Demo
 For this demo we are utilizing a number of the built in sensors/components of the device.
 
 * Temperature

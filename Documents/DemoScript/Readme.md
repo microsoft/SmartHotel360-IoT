@@ -14,7 +14,7 @@ The key takeaways of this demo are:
 
 ## Before you begin
 
-You will need to have provisioned a demo environment following the **[setup guide](https://github.com/Microsoft/SmartHotel360-IoT#setup)** with the **[Xamarin Mobile app](https://github.com/Microsoft/SmartHotel360-Mobile#iot-demo)** configured.
+You will need to have provisioned a demo environment following the **[setup guide](https://github.com/Microsoft/SmartHotel360-IoT#setup)** with the **[Xamarin Mobile app](https://github.com/Microsoft/SmartHotel360-Mobile#iot-demo)** configured. Optionally you can configure the MXChip device but it is not required for this demo script.
 
 ## Walkthrough: Facility Management Website
 
@@ -22,7 +22,9 @@ You will need to have provisioned a demo environment following the **[setup guid
 
 ![](Images/LoginPage.png)
 
-2. The SmartHotel360 Manager needs to make sure that everything is functioning properly from an operational standpoint, optimize efficiency of the hotels and ensure that occupants are having the best experience possible at the SmartHotel360.
+2. The SmartHotel360 Manager needs to make sure that everything is functioning properly from an operational standpoint, optimize efficiency of the hotels and ensure that occupants are having the best experience possible at the SmartHotel360 or other Hotel Brands that has access.
+
+![](Images/HomePage.png)
 
 They also can see various operational data points that can help drive more informed decision-making. Concretely, they can see:
 
@@ -30,16 +32,21 @@ They also can see various operational data points that can help drive more infor
 * Location information of the hotels.
 * Scheduled maintenance and upcoming maintenance.
 
-![](Images/HomePage.png)
+![](Images/HotelSelection.png)
 
-3. Click on Floor 1, the facility manager can now access the specific rooms that make up the first floor with live data points being retrieved from the individual spaces themselves.
-In this case, SmartHotel360 has populated the rooms with three key indicators:
+3. Click on **Elite 1**, the facility manager can now access the floors of the SmartHotel360 Elite 1 Hotel:
 
-* Whether it’s currently occupied or vacant.
-* The current temperature in the room.
-* The current lighting in the room.
+![](Images/FloorSelection.png)
+
+Let's select the **Floor 1** with live data points being retrieved from the individual spaces themselves.
 
 ![](Images/Floor1.png)
+
+In this case, SmartHotel360 has populated the rooms with three key indicators:
+
+* Whether it’s currently **occupied** or **vacant**.
+* The current and desired **temperature** in the **room**.
+* The current and desired **lighting** in the room.
 
 The Hotel personnel, depending on the access and permissions granted to them, can also use this data to improve occupant experience by ensuring that the comfort levels are aligned to the preferences of the occupant.
 
@@ -50,6 +57,8 @@ With the Twin Object Models feature that exists in Azure Digital Twins, organiza
 So customers can more accurately reflect the amenities and characteristics of these rooms in their **Azure Digital Twins** instance.
 
 4. Let's focus on the **room 101** supposing a new guest asked us to set the temperature to 65° F and the lights to 100% brightness. Change the values using the slider.
+
+![](Images/Room101.png)
 
 ## Walkthrough: Occupant Experience
 
@@ -83,8 +92,6 @@ Password: 1234
 ![](Images/AmbientSettings.png)
 
 6. Here you can change the values for **lights** and **temperature** and those values will reflect on the **Facility Management** website.
-
-![](Images/MatchValues.png)
 
 ## Summary
 
