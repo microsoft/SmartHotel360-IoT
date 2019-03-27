@@ -56,6 +56,8 @@ You can find a **[demo scripts](Documents/DemoScript)** with a walkthroughs once
 ```
 az extension add -n azure-cli-iot-ext
 ```
+> Note: We have updated the deployment script to work with version 0.7.0 or higher.
+
 * **Required Azure Subscription Permissions**
   1. Create and modify Azure AD Application Registrations or have someone else do it for you
   2. Create a new Service Principal for Role Based Access Control (RBAC) or have someone else do it for you

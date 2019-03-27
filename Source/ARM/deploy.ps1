@@ -215,8 +215,8 @@ Write-Host "Finished deployment at $EndTimeLocal (local time)...";
 Write-Host
 
 $iotHubName = $outputs.iotHubName.value
-$iotHubServiceConnectionString = ((az iot hub show-connection-string -n $iotHubName --resource-group $resourceGroupName --policy-name service) | ConvertFrom-Json).cs
-$iotHubRegistryReadWriteConnectionString = ((az iot hub show-connection-string -n $iotHubName --resource-group $resourceGroupName --policy-name registryReadWrite) | ConvertFrom-Json).cs
+$iotHubServiceConnectionString = ((az iot hub show-connection-string -n $iotHubName --resource-group $resourceGroupName --policy-name service) | ConvertFrom-Json).connectionString
+$iotHubRegistryReadWriteConnectionString = ((az iot hub show-connection-string -n $iotHubName --resource-group $resourceGroupName --policy-name registryReadWrite) | ConvertFrom-Json).connectionString
 
 $cosmosDbName = $outputs.cosmosDbName.value
 $cosmosDbConnectionString = ((az cosmosdb list-connection-strings -n $cosmosDbName -g $resourceGroupName) | ConvertFrom-Json).connectionStrings[0].connectionString
