@@ -19,6 +19,8 @@ Welcome to the SmartHotel360 IoT repository. Here you'll find everything you nee
 
 ![IoT Demo Architecture Diagram](Documents/Images/Architecture.png "IoT Demo Architecture")
 
+[![Build status](https://dev.azure.com/smarthotel360/IoT/_apis/build/status/IoT-CI)](https://dev.azure.com/smarthotel360/IoT/_build/latest?definitionId=-1)
+
 Check out our [Channel9 IoT Show Video](https://channel9.msdn.com/Shows/Internet-of-Things-Show/SmartHotel-360-a-demo-powered-by-Azure-Digital-Twins) about the SmartHotel360 Demo Powered by Digital Twnis:
 
 [![SmartHotel360 IoT Demo powered by Azure Digital Twins](https://img.youtube.com/vi/urcmaFVQnF4/0.jpg)](https://www.youtube.com/watch?v=urcmaFVQnF4)
