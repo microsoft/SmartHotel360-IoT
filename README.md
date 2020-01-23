@@ -1,3 +1,7 @@
+# **The project SmartHotel360 have been retired, we have archived it. It is no longer maintained. You still can fork the repository.**
+
+## For the latest sample references visit: https://aka.ms/tailwindtraders & https://aka.ms/rpsls 
+
 # SmartHotel360
 During **Connect(); 2017** event this year we presented beautiful app demos using Xamarin and many features of Azure. For //build/ 2018's keynote, we updated some components of the back-end API code to support **Azure Kubernetes Service (AKS)**. This repository contains the setup instructions and sample code needed for the Internet of Things (IoT) Demo utilizing Digital Twins that was announced at **Ignite 2018**.
 
@@ -19,21 +23,9 @@ Welcome to the SmartHotel360 IoT repository. Here you'll find everything you nee
 
 ![IoT Demo Architecture Diagram](Documents/Images/Architecture.png "IoT Demo Architecture")
 
-[![Build status](https://dev.azure.com/smarthotel360/IoT/_apis/build/status/IoT-CI)](https://dev.azure.com/smarthotel360/IoT/_build/latest?definitionId=-1)
-
 Check out our [Channel9 IoT Show Video](https://channel9.msdn.com/Shows/Internet-of-Things-Show/SmartHotel-360-a-demo-powered-by-Azure-Digital-Twins) about the SmartHotel360 Demo Powered by Digital Twnis:
 
 [![SmartHotel360 IoT Demo powered by Azure Digital Twins](https://img.youtube.com/vi/urcmaFVQnF4/0.jpg)](https://www.youtube.com/watch?v=urcmaFVQnF4)
-
-## Live Running Website
-
-We have deployed a public environment to show the end result of the website connected to the Digital Twin Solution. Please notice the sliders control will be disabled because we are using the [basic authentication mode](https://github.com/Microsoft/SmartHotel360-IoT#basic-authentication-mode).
-
-* Website: https://aka.ms/smarthotel360-FacilityManagement
-* Username: admin
-* Password: admin
-
-![](Documents/Images/SmartHotel360-FacilityManagement.gif)
 
 # Getting Started
 
